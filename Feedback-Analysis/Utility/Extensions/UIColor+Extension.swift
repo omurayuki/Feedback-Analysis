@@ -3,6 +3,14 @@ import UIKit
 
 extension UIColor {
     
+    class var appFacebookColor: UIColor {
+        return UIColor(red: 59.0 / 255.0, green: 89.0 / 255.0, blue: 152 / 255.0, alpha: 1.0)
+    }
+    
+    class var appTwitterColor: UIColor {
+        return UIColor(red: 0.0 / 255.0, green: 172.0 / 255.0, blue: 238.0 / 255.0, alpha: 1.0)
+    }
+    
     class var appLightishGreen: UIColor {
         return UIColor(red: 96.0 / 255.0, green: 216.0 / 255.0, blue: 124.0 / 255.0, alpha: 1.0)
     }

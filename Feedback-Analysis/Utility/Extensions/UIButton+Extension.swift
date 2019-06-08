@@ -17,6 +17,8 @@ extension UIButton {
         
         private var cornerRadius: CGFloat = 0
         private var borderWidth: CGFloat = 0
+        private var width: CGFloat = 0
+        private var height: CGFloat = 0
         private var borderColor = UIColor.black.cgColor
         private var contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.center
         
@@ -65,6 +67,12 @@ extension UIButton {
             return self
         }
         
+        func size(width: CGFloat, height: CGFloat) -> Builder {
+            self.width = width
+            self.height = height
+            return self
+        }
+        
         func contentHorizontalAlignment(_ contentHorizontalAlignment: UIControl.ContentHorizontalAlignment) -> Builder {
             self.contentHorizontalAlignment = contentHorizontalAlignment
             return self
@@ -79,6 +87,7 @@ extension UIButton {
             button.layer.cornerRadius = cornerRadius
             button.layer.borderWidth = borderWidth
             button.layer.borderColor = borderColor
+            button.frame = CGRect(x: 0, y: 0, width: width, height: height)
             button.contentHorizontalAlignment = contentHorizontalAlignment
             return button
         }

@@ -3,6 +3,6 @@ import UIKit
 
 extension UIBarButtonItem {
     func applyTitleFont() {
-        setTitleTextAttributes([NSAttributedStringKey.font: UIFont.fontBold(.fontSize17)], for: .normal)
+        setTitleTextAttributes([NSAttributedString.Key.font: UIFont.fontBold(.fontSize17)], for: .normal)
     }
 }

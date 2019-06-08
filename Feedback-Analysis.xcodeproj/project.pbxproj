@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		602744EA86362BCEAE02995D /* Pods_Feedback_Analysis.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9999A439B460BE0979C86B1 /* Pods_Feedback_Analysis.framework */; };
+		C94F080D22ABE98E00BF3534 /* SwitchingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94F080C22ABE98E00BF3534 /* SwitchingView.swift */; };
+		C94F080F22ABEBF800BF3534 /* UIVIew+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94F080E22ABEBF800BF3534 /* UIVIew+Extension.swift */; };
 		C95ADED022AB141D00D851A0 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95ADECF22AB141D00D851A0 /* R.generated.swift */; };
 		C97F9D0E22A6CCAA000779EF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C97F9D0D22A6CCAA000779EF /* GoogleService-Info.plist */; };
 		C9A1573522A6CA1F00D7D047 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A1573422A6CA1F00D7D047 /* AppDelegate.swift */; };
@@ -25,11 +27,27 @@
 		C9D9011D22AB51830040390E /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D9011C22AB51830040390E /* UILabel+Extension.swift */; };
 		C9D9011F22AB51C40040390E /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D9011E22AB51C40040390E /* UITextField+Extension.swift */; };
 		C9D9012122AB52760040390E /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D9012022AB52760040390E /* UIViewController+Extension.swift */; };
+		C9D9012522AB53490040390E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D9012422AB53490040390E /* LoginViewController.swift */; };
+		C9D9012722AB53620040390E /* LoginUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D9012622AB53620040390E /* LoginUI.swift */; };
+		C9D9012A22AB538E0040390E /* UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D9012922AB538E0040390E /* UI.swift */; };
+		C9D9012D22AB54220040390E /* Routing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D9012C22AB54220040390E /* Routing.swift */; };
+		C9D9013122AB55F40040390E /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D9013022AB55F40040390E /* LoginPresenter.swift */; };
+		C9D9013422AB5E290040390E /* TopPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D9013322AB5E290040390E /* TopPresenter.swift */; };
+		C9D9013622AB5E350040390E /* TopPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D9013522AB5E350040390E /* TopPresenterImpl.swift */; };
+		C9D9013822AB5E480040390E /* LoginPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D9013722AB5E480040390E /* LoginPresenterImpl.swift */; };
+		C9D9013B22AB5E800040390E /* TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D9013A22AB5E800040390E /* TopViewController.swift */; };
+		C9D9013D22AB5E870040390E /* TopUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D9013C22AB5E870040390E /* TopUI.swift */; };
+		C9D9014122AB77B40040390E /* VerticalStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D9014022AB77B40040390E /* VerticalStackView.swift */; };
+		C9D9014522AB84CD0040390E /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D9014422AB84CD0040390E /* SignupViewController.swift */; };
+		C9D9014722AB84D70040390E /* SignupUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D9014622AB84D70040390E /* SignupUI.swift */; };
+		C9D9014922AB85890040390E /* TopRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D9014822AB85890040390E /* TopRouting.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		180FB39CDDE7BFB741E76AA9 /* Pods-Feedback-Analysis.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Feedback-Analysis.debug.xcconfig"; path = "Target Support Files/Pods-Feedback-Analysis/Pods-Feedback-Analysis.debug.xcconfig"; sourceTree = "<group>"; };
 		A9999A439B460BE0979C86B1 /* Pods_Feedback_Analysis.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Feedback_Analysis.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C94F080C22ABE98E00BF3534 /* SwitchingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchingView.swift; sourceTree = "<group>"; };
+		C94F080E22ABEBF800BF3534 /* UIVIew+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIVIew+Extension.swift"; sourceTree = "<group>"; };
 		C95ADECF22AB141D00D851A0 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
 		C97F9D0D22A6CCAA000779EF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C9A1573122A6CA1F00D7D047 /* Feedback-Analysis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Feedback-Analysis.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -49,6 +67,20 @@
 		C9D9011C22AB51830040390E /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 		C9D9011E22AB51C40040390E /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		C9D9012022AB52760040390E /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		C9D9012422AB53490040390E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		C9D9012622AB53620040390E /* LoginUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUI.swift; sourceTree = "<group>"; };
+		C9D9012922AB538E0040390E /* UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UI.swift; sourceTree = "<group>"; };
+		C9D9012C22AB54220040390E /* Routing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routing.swift; sourceTree = "<group>"; };
+		C9D9013022AB55F40040390E /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
+		C9D9013322AB5E290040390E /* TopPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopPresenter.swift; sourceTree = "<group>"; };
+		C9D9013522AB5E350040390E /* TopPresenterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopPresenterImpl.swift; sourceTree = "<group>"; };
+		C9D9013722AB5E480040390E /* LoginPresenterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenterImpl.swift; sourceTree = "<group>"; };
+		C9D9013A22AB5E800040390E /* TopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopViewController.swift; sourceTree = "<group>"; };
+		C9D9013C22AB5E870040390E /* TopUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopUI.swift; sourceTree = "<group>"; };
+		C9D9014022AB77B40040390E /* VerticalStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalStackView.swift; sourceTree = "<group>"; };
+		C9D9014422AB84CD0040390E /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		C9D9014622AB84D70040390E /* SignupUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupUI.swift; sourceTree = "<group>"; };
+		C9D9014822AB85890040390E /* TopRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopRouting.swift; sourceTree = "<group>"; };
 		DF2047041B81E420DAE3BDD1 /* Pods-Feedback-Analysis.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Feedback-Analysis.release.xcconfig"; path = "Target Support Files/Pods-Feedback-Analysis/Pods-Feedback-Analysis.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -111,6 +143,8 @@
 		C9D9010322AB44150040390E /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				C9D9013F22AB77890040390E /* Custom */,
+				C9D9013E22AB685D0040390E /* Maker */,
 				C9D9011522AB50BC0040390E /* Widget */,
 				C9D9010722AB44C90040390E /* Util */,
 				C9D9010A22AB45570040390E /* Extensions */,
@@ -135,6 +169,11 @@
 		C9D9010622AB44400040390E /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				C9D9012822AB53800040390E /* UI */,
+				C9D9012B22AB54180040390E /* Routing */,
+				C9D9012E22AB55C90040390E /* Presenter */,
+				C9D9013922AB5E700040390E /* Top */,
+				C9D9012222AB532A0040390E /* Account */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -160,6 +199,7 @@
 				C9D9011C22AB51830040390E /* UILabel+Extension.swift */,
 				C9D9011E22AB51C40040390E /* UITextField+Extension.swift */,
 				C9D9012022AB52760040390E /* UIViewController+Extension.swift */,
+				C94F080E22ABEBF800BF3534 /* UIVIew+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -170,6 +210,102 @@
 				C9D9011622AB50D20040390E /* TextComponent.swift */,
 			);
 			path = Widget;
+			sourceTree = "<group>";
+		};
+		C9D9012222AB532A0040390E /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				C9D9012322AB53370040390E /* Login */,
+				C9D9014322AB84B80040390E /* Signup */,
+			);
+			path = Account;
+			sourceTree = "<group>";
+		};
+		C9D9012322AB53370040390E /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				C9D9012422AB53490040390E /* LoginViewController.swift */,
+				C9D9012622AB53620040390E /* LoginUI.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		C9D9012822AB53800040390E /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				C9D9012922AB538E0040390E /* UI.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		C9D9012B22AB54180040390E /* Routing */ = {
+			isa = PBXGroup;
+			children = (
+				C9D9012C22AB54220040390E /* Routing.swift */,
+			);
+			path = Routing;
+			sourceTree = "<group>";
+		};
+		C9D9012E22AB55C90040390E /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				C9D9013222AB5E1B0040390E /* Top */,
+				C9D9012F22AB55DE0040390E /* Account */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		C9D9012F22AB55DE0040390E /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				C9D9013022AB55F40040390E /* LoginPresenter.swift */,
+				C9D9013722AB5E480040390E /* LoginPresenterImpl.swift */,
+			);
+			path = Account;
+			sourceTree = "<group>";
+		};
+		C9D9013222AB5E1B0040390E /* Top */ = {
+			isa = PBXGroup;
+			children = (
+				C9D9013322AB5E290040390E /* TopPresenter.swift */,
+				C9D9013522AB5E350040390E /* TopPresenterImpl.swift */,
+			);
+			path = Top;
+			sourceTree = "<group>";
+		};
+		C9D9013922AB5E700040390E /* Top */ = {
+			isa = PBXGroup;
+			children = (
+				C9D9013A22AB5E800040390E /* TopViewController.swift */,
+				C9D9013C22AB5E870040390E /* TopUI.swift */,
+				C9D9014822AB85890040390E /* TopRouting.swift */,
+			);
+			path = Top;
+			sourceTree = "<group>";
+		};
+		C9D9013E22AB685D0040390E /* Maker */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Maker;
+			sourceTree = "<group>";
+		};
+		C9D9013F22AB77890040390E /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				C9D9014022AB77B40040390E /* VerticalStackView.swift */,
+				C94F080C22ABE98E00BF3534 /* SwitchingView.swift */,
+			);
+			path = Custom;
+			sourceTree = "<group>";
+		};
+		C9D9014322AB84B80040390E /* Signup */ = {
+			isa = PBXGroup;
+			children = (
+				C9D9014422AB84CD0040390E /* SignupViewController.swift */,
+				C9D9014622AB84D70040390E /* SignupUI.swift */,
+			);
+			path = Signup;
 			sourceTree = "<group>";
 		};
 		CAAD1932AE5B4EA8D832F051 /* Frameworks */ = {
@@ -315,20 +451,36 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9D9013822AB5E480040390E /* LoginPresenterImpl.swift in Sources */,
+				C9D9014722AB84D70040390E /* SignupUI.swift in Sources */,
+				C9D9014922AB85890040390E /* TopRouting.swift in Sources */,
+				C9D9013B22AB5E800040390E /* TopViewController.swift in Sources */,
 				C9D9010922AB44D80040390E /* AppUserDefault.swift in Sources */,
 				C9D9010C22AB456D0040390E /* Date+Extension.swift in Sources */,
+				C9D9013622AB5E350040390E /* TopPresenterImpl.swift in Sources */,
+				C94F080D22ABE98E00BF3534 /* SwitchingView.swift in Sources */,
+				C94F080F22ABEBF800BF3534 /* UIVIew+Extension.swift in Sources */,
 				C9D9011022AB4EE20040390E /* UIAlertAction+Extension.swift in Sources */,
+				C9D9012522AB53490040390E /* LoginViewController.swift in Sources */,
+				C9D9013D22AB5E870040390E /* TopUI.swift in Sources */,
+				C9D9013122AB55F40040390E /* LoginPresenter.swift in Sources */,
 				C9D9011B22AB513B0040390E /* UIColor+Extension.swift in Sources */,
 				C9D9012122AB52760040390E /* UIViewController+Extension.swift in Sources */,
+				C9D9012A22AB538E0040390E /* UI.swift in Sources */,
+				C9D9013422AB5E290040390E /* TopPresenter.swift in Sources */,
 				C9D9011722AB50D20040390E /* TextComponent.swift in Sources */,
 				C9D9011222AB4F130040390E /* UIBarButtonItem+Extension.swift in Sources */,
 				C9D9010E22AB458B0040390E /* NSLayoutAnchor+Extension.swift in Sources */,
 				C9D9011422AB502E0040390E /* UIButton+Extension.swift in Sources */,
 				C9D9011D22AB51830040390E /* UILabel+Extension.swift in Sources */,
 				C9A1573522A6CA1F00D7D047 /* AppDelegate.swift in Sources */,
+				C9D9014122AB77B40040390E /* VerticalStackView.swift in Sources */,
 				C9D9011F22AB51C40040390E /* UITextField+Extension.swift in Sources */,
+				C9D9012D22AB54220040390E /* Routing.swift in Sources */,
+				C9D9014522AB84CD0040390E /* SignupViewController.swift in Sources */,
 				C9D9011922AB50FD0040390E /* UIFont+Extension.swift in Sources */,
 				C95ADED022AB141D00D851A0 /* R.generated.swift in Sources */,
+				C9D9012722AB53620040390E /* LoginUI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

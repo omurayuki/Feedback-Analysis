@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RxSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +17,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        window = UIWindow(frame: UIScreen.main.bounds)
+        let vc = TopViewController()
+        var routing: TopRouting = TopRoutingImpl()
+        routing.viewController = vc
+        var ui: TopUI = TopUIImpl()
+        ui.viewController = vc
+        vc.inject(ui: ui, routing: routing, disposeBag: DisposeBag())
+        window?.rootViewController = UINavigationController(rootViewController: vc)
+        window?.makeKeyAndVisible()
         return true
     }
 
