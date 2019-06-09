@@ -50,7 +50,7 @@ class InputView: UIView {
         return label
     }()
     
-    private var field: UITextField = {
+    var field: UITextField = {
         let field = UITextField()
         field.apply(.h4_CharcoalGrey)
         return field
