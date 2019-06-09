@@ -7,15 +7,36 @@ class SignupViewControler: UIViewController {
     
     var ui: SignupUI!
     
-    var disposedBag: DisposeBag!
+    var routing: SignupRouting!
     
-    func inject(dispose: DisposeBag, ui: SignupUI) {
-        self.disposedBag = dispose
+    var disposeBag: DisposeBag! {
+        didSet {
+            ui.faceBookBtn.rx.tap.asDriver()
+                .drive(onNext: { _ in
+
+                }).disposed(by: disposeBag)
+
+            ui.twitterBtn.rx.tap.asDriver()
+                .drive(onNext: { _ in
+                    
+                }).disposed(by: disposeBag)
+
+            ui.mailBtn.rx.tap.asDriver()
+                .drive(onNext: { [unowned self] _ in
+                    self.view.isHidden = true
+                    self.routing.signupWithEmail()
+                }).disposed(by: disposeBag)
+        }
+    }
+    
+    func inject(ui: SignupUI, disposeBag: DisposeBag, routing: SignupRouting) {
         self.ui = ui
+        self.disposeBag = disposeBag
+        self.routing = routing
     }
     
     override func viewDidLoad() {
-        view.backgroundColor = .white
+        super.viewDidLoad()
         ui.setup()
     }
 }

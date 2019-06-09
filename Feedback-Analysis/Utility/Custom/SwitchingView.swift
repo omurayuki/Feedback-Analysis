@@ -2,7 +2,7 @@ import Foundation
 import UIKit
 import RxSwift
 
-enum LoginOrSignup: Int {
+enum LoginOrSignup {
     case login
     case signup
 }
@@ -26,19 +26,23 @@ extension SwitchingView {
         case .login:
             signupVC?.view.removeFromSuperview()
             loginVC = LoginViewControler()
-            var ui: LoginUI = LoginUIImpl()
+            let ui = LoginUIImpl()
+            let routing = LoginRoutingImpl()
             ui.viewController = loginVC
+            routing.viewController = loginVC
             
-            loginVC?.inject(dispose: disposeBag, ui: ui)
+            loginVC?.inject(ui: ui, disposeBag: disposeBag, routing: routing)
             addSubview(loginVC?.view ?? UIView())
             loginVC?.view.fillSuperview()
         case .signup:
             loginVC?.view.removeFromSuperview()
             signupVC = SignupViewControler()
-            var ui: SignupUI = SignupUIImpl()
+            let ui = SignupUIImpl()
+            let routing = SignupRoutingImpl()
             ui.viewController = signupVC
+            routing.viewController = signupVC
             
-            signupVC?.inject(dispose: disposeBag, ui: ui)
+            signupVC?.inject(ui: ui, disposeBag: disposeBag, routing: routing)
             addSubview(signupVC?.view ?? UIView())
             signupVC?.view.fillSuperview()
         }

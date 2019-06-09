@@ -7,15 +7,36 @@ class LoginViewControler: UIViewController {
     
     var ui: LoginUI!
     
-    var disposedBag: DisposeBag!
+    var routing: LoginRouting!
     
-    func inject(dispose: DisposeBag, ui: LoginUI) {
-        self.disposedBag = dispose
+    var disposeBag: DisposeBag! {
+        didSet {
+            ui.faceBookBtn.rx.tap.asDriver()
+                .drive(onNext: { _ in
+                    
+                }).disposed(by: disposeBag)
+            
+            ui.twitterBtn.rx.tap.asDriver()
+                .drive(onNext: { _ in
+                    
+                }).disposed(by: disposeBag)
+            
+            ui.mailBtn.rx.tap.asDriver()
+                .drive(onNext: { [unowned self] _ in
+                    self.view.isHidden = true
+                    self.routing.loginWithEmail()
+                }).disposed(by: disposeBag)
+        }
+    }
+    
+    func inject(ui: LoginUI, disposeBag: DisposeBag, routing: LoginRouting) {
         self.ui = ui
+        self.disposeBag = disposeBag
+        self.routing = routing
     }
     
     override func viewDidLoad() {
-        view.backgroundColor = .white
+        super.viewDidLoad()
         ui.setup()
     }
 }
