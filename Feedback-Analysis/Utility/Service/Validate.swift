@@ -1,7 +1,7 @@
 import Foundation
 
 enum AccountValidation {
-    case ok
+    case ok(String, String)
     case notAccurateChar(String)
     case mailNotEnough(String)
     case passNotEnough(String)
@@ -11,12 +11,12 @@ enum AccountValidation {
 
 struct Validate {
     static func validateAccount(mail: String, pass: String) -> AccountValidation {
-        guard NSPredicate(format: "SELF MATCHES %@", "^\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$")
-            .evaluate(with: mail) else { return .notAccurateChar("emailの形式が間違っています") }
         guard mail.count > 1 else { return .mailNotEnough("メールアドレスを記入してください") }
         guard mail.count < 50 else { return .mailExceeded("メールアドレスが長すぎます") }
         guard pass.count > 5 else { return .passNotEnough("パスワードが短すぎます") }
         guard pass.count < 50 else { return .passExceeded("パスワードが長すぎます") }
-        return .ok
+        guard NSPredicate(format: "SELF MATCHES %@", "^\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$")
+            .evaluate(with: mail) else { return .notAccurateChar("emailの形式が間違っています") }
+        return .ok(mail, pass)
     }
 }

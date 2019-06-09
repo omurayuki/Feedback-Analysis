@@ -11,11 +11,16 @@
 		C94F080D22ABE98E00BF3534 /* SwitchingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94F080C22ABE98E00BF3534 /* SwitchingView.swift */; };
 		C94F080F22ABEBF800BF3534 /* UIVIew+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94F080E22ABEBF800BF3534 /* UIVIew+Extension.swift */; };
 		C95ADED022AB141D00D851A0 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95ADECF22AB141D00D851A0 /* R.generated.swift */; };
+		C97DDD7B22AD543F00A84219 /* SignupInputPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97DDD7A22AD543F00A84219 /* SignupInputPresenter.swift */; };
+		C97DDD7D22AD544E00A84219 /* SignupInputPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97DDD7C22AD544E00A84219 /* SignupInputPresenterImpl.swift */; };
+		C97DDD7F22AD550F00A84219 /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97DDD7E22AD550F00A84219 /* Presenter.swift */; };
+		C97DDD8222AD71C100A84219 /* SignupUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97DDD8122AD71C100A84219 /* SignupUseCase.swift */; };
+		C97DDD8522AD74C900A84219 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97DDD8422AD74C900A84219 /* Account.swift */; };
+		C97DDD8B22AD755B00A84219 /* AccountEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97DDD8A22AD755B00A84219 /* AccountEntity.swift */; };
 		C97F9D0E22A6CCAA000779EF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C97F9D0D22A6CCAA000779EF /* GoogleService-Info.plist */; };
 		C9A1573522A6CA1F00D7D047 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A1573422A6CA1F00D7D047 /* AppDelegate.swift */; };
 		C9A1573C22A6CA2000D7D047 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9A1573B22A6CA2000D7D047 /* Assets.xcassets */; };
 		C9A1573F22A6CA2000D7D047 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9A1573D22A6CA2000D7D047 /* LaunchScreen.storyboard */; };
-		C9CC28E422ACD019006E69E5 /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CC28E322ACD019006E69E5 /* InputView.swift */; };
 		C9CC28E922ACD892006E69E5 /* LoginInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CC28E822ACD892006E69E5 /* LoginInputViewController.swift */; };
 		C9CC28EB22ACD89D006E69E5 /* LoginInputUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CC28EA22ACD89D006E69E5 /* LoginInputUI.swift */; };
 		C9CC28ED22ACDDC1006E69E5 /* LoginRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CC28EC22ACDDC1006E69E5 /* LoginRouting.swift */; };
@@ -41,8 +46,8 @@
 		C9D9012722AB53620040390E /* LoginUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D9012622AB53620040390E /* LoginUI.swift */; };
 		C9D9012A22AB538E0040390E /* UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D9012922AB538E0040390E /* UI.swift */; };
 		C9D9012D22AB54220040390E /* Routing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D9012C22AB54220040390E /* Routing.swift */; };
-		C9D9013122AB55F40040390E /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D9013022AB55F40040390E /* LoginPresenter.swift */; };
-		C9D9013822AB5E480040390E /* LoginPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D9013722AB5E480040390E /* LoginPresenterImpl.swift */; };
+		C9D9013122AB55F40040390E /* LoginInputPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D9013022AB55F40040390E /* LoginInputPresenter.swift */; };
+		C9D9013822AB5E480040390E /* LoginInputPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D9013722AB5E480040390E /* LoginInputPresenterImpl.swift */; };
 		C9D9013B22AB5E800040390E /* TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D9013A22AB5E800040390E /* TopViewController.swift */; };
 		C9D9013D22AB5E870040390E /* TopUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D9013C22AB5E870040390E /* TopUI.swift */; };
 		C9D9014122AB77B40040390E /* VerticalStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D9014022AB77B40040390E /* VerticalStackView.swift */; };
@@ -57,13 +62,18 @@
 		C94F080C22ABE98E00BF3534 /* SwitchingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchingView.swift; sourceTree = "<group>"; };
 		C94F080E22ABEBF800BF3534 /* UIVIew+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIVIew+Extension.swift"; sourceTree = "<group>"; };
 		C95ADECF22AB141D00D851A0 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
+		C97DDD7A22AD543F00A84219 /* SignupInputPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupInputPresenter.swift; sourceTree = "<group>"; };
+		C97DDD7C22AD544E00A84219 /* SignupInputPresenterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupInputPresenterImpl.swift; sourceTree = "<group>"; };
+		C97DDD7E22AD550F00A84219 /* Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
+		C97DDD8122AD71C100A84219 /* SignupUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupUseCase.swift; sourceTree = "<group>"; };
+		C97DDD8422AD74C900A84219 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
+		C97DDD8A22AD755B00A84219 /* AccountEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountEntity.swift; sourceTree = "<group>"; };
 		C97F9D0D22A6CCAA000779EF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C9A1573122A6CA1F00D7D047 /* Feedback-Analysis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Feedback-Analysis.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9A1573422A6CA1F00D7D047 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C9A1573B22A6CA2000D7D047 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C9A1573E22A6CA2000D7D047 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C9A1574022A6CA2000D7D047 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C9CC28E322ACD019006E69E5 /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
 		C9CC28E822ACD892006E69E5 /* LoginInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInputViewController.swift; sourceTree = "<group>"; };
 		C9CC28EA22ACD89D006E69E5 /* LoginInputUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInputUI.swift; sourceTree = "<group>"; };
 		C9CC28EC22ACDDC1006E69E5 /* LoginRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouting.swift; sourceTree = "<group>"; };
@@ -89,8 +99,8 @@
 		C9D9012622AB53620040390E /* LoginUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUI.swift; sourceTree = "<group>"; };
 		C9D9012922AB538E0040390E /* UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UI.swift; sourceTree = "<group>"; };
 		C9D9012C22AB54220040390E /* Routing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routing.swift; sourceTree = "<group>"; };
-		C9D9013022AB55F40040390E /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
-		C9D9013722AB5E480040390E /* LoginPresenterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenterImpl.swift; sourceTree = "<group>"; };
+		C9D9013022AB55F40040390E /* LoginInputPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInputPresenter.swift; sourceTree = "<group>"; };
+		C9D9013722AB5E480040390E /* LoginInputPresenterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInputPresenterImpl.swift; sourceTree = "<group>"; };
 		C9D9013A22AB5E800040390E /* TopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopViewController.swift; sourceTree = "<group>"; };
 		C9D9013C22AB5E870040390E /* TopUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopUI.swift; sourceTree = "<group>"; };
 		C9D9014022AB77B40040390E /* VerticalStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalStackView.swift; sourceTree = "<group>"; };
@@ -119,6 +129,48 @@
 				DF2047041B81E420DAE3BDD1 /* Pods-Feedback-Analysis.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		C97DDD7822AD541F00A84219 /* LoginInput */ = {
+			isa = PBXGroup;
+			children = (
+				C9D9013022AB55F40040390E /* LoginInputPresenter.swift */,
+				C9D9013722AB5E480040390E /* LoginInputPresenterImpl.swift */,
+			);
+			path = LoginInput;
+			sourceTree = "<group>";
+		};
+		C97DDD7922AD542900A84219 /* SignupInput */ = {
+			isa = PBXGroup;
+			children = (
+				C97DDD7A22AD543F00A84219 /* SignupInputPresenter.swift */,
+				C97DDD7C22AD544E00A84219 /* SignupInputPresenterImpl.swift */,
+			);
+			path = SignupInput;
+			sourceTree = "<group>";
+		};
+		C97DDD8022AD71A700A84219 /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				C97DDD8122AD71C100A84219 /* SignupUseCase.swift */,
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
+		C97DDD8322AD74B800A84219 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C97DDD8422AD74C900A84219 /* Account.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C97DDD8922AD755500A84219 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				C97DDD8A22AD755B00A84219 /* AccountEntity.swift */,
+			);
+			path = Entity;
 			sourceTree = "<group>";
 		};
 		C9A1572822A6CA1F00D7D047 = {
@@ -209,6 +261,7 @@
 		C9D9010422AB44270040390E /* DataLayer */ = {
 			isa = PBXGroup;
 			children = (
+				C97DDD8922AD755500A84219 /* Entity */,
 			);
 			path = DataLayer;
 			sourceTree = "<group>";
@@ -216,6 +269,8 @@
 		C9D9010522AB44390040390E /* DomainLayer */ = {
 			isa = PBXGroup;
 			children = (
+				C97DDD8322AD74B800A84219 /* Model */,
+				C97DDD8022AD71A700A84219 /* UseCase */,
 			);
 			path = DomainLayer;
 			sourceTree = "<group>";
@@ -306,6 +361,7 @@
 			isa = PBXGroup;
 			children = (
 				C9D9012F22AB55DE0040390E /* Account */,
+				C97DDD7E22AD550F00A84219 /* Presenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -313,8 +369,8 @@
 		C9D9012F22AB55DE0040390E /* Account */ = {
 			isa = PBXGroup;
 			children = (
-				C9D9013022AB55F40040390E /* LoginPresenter.swift */,
-				C9D9013722AB5E480040390E /* LoginPresenterImpl.swift */,
+				C97DDD7822AD541F00A84219 /* LoginInput */,
+				C97DDD7922AD542900A84219 /* SignupInput */,
 			);
 			path = Account;
 			sourceTree = "<group>";
@@ -341,7 +397,6 @@
 			children = (
 				C9D9014022AB77B40040390E /* VerticalStackView.swift */,
 				C94F080C22ABE98E00BF3534 /* SwitchingView.swift */,
-				C9CC28E322ACD019006E69E5 /* InputView.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -499,14 +554,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9D9013822AB5E480040390E /* LoginPresenterImpl.swift in Sources */,
-				C9CC28E422ACD019006E69E5 /* InputView.swift in Sources */,
+				C9D9013822AB5E480040390E /* LoginInputPresenterImpl.swift in Sources */,
 				C9CC28F222AD3BA6006E69E5 /* SignupRouting.swift in Sources */,
 				C9D9014722AB84D70040390E /* SignupUI.swift in Sources */,
 				C9D9014922AB85890040390E /* TopRouting.swift in Sources */,
 				C9D9013B22AB5E800040390E /* TopViewController.swift in Sources */,
 				C9D9010922AB44D80040390E /* AppUserDefault.swift in Sources */,
 				C9D9010C22AB456D0040390E /* Date+Extension.swift in Sources */,
+				C97DDD7B22AD543F00A84219 /* SignupInputPresenter.swift in Sources */,
 				C9CC28F422AD3BEB006E69E5 /* SignupInputViewController.swift in Sources */,
 				C94F080D22ABE98E00BF3534 /* SwitchingView.swift in Sources */,
 				C94F080F22ABEBF800BF3534 /* UIVIew+Extension.swift in Sources */,
@@ -515,7 +570,7 @@
 				C9CC28F822AD3C03006E69E5 /* SignupInputRouting.swift in Sources */,
 				C9D9012522AB53490040390E /* LoginViewController.swift in Sources */,
 				C9D9013D22AB5E870040390E /* TopUI.swift in Sources */,
-				C9D9013122AB55F40040390E /* LoginPresenter.swift in Sources */,
+				C9D9013122AB55F40040390E /* LoginInputPresenter.swift in Sources */,
 				C9CC28ED22ACDDC1006E69E5 /* LoginRouting.swift in Sources */,
 				C9D9011B22AB513B0040390E /* UIColor+Extension.swift in Sources */,
 				C9D9012122AB52760040390E /* UIViewController+Extension.swift in Sources */,
@@ -530,13 +585,18 @@
 				C9D9011D22AB51830040390E /* UILabel+Extension.swift in Sources */,
 				C9A1573522A6CA1F00D7D047 /* AppDelegate.swift in Sources */,
 				C9D9014122AB77B40040390E /* VerticalStackView.swift in Sources */,
+				C97DDD8B22AD755B00A84219 /* AccountEntity.swift in Sources */,
 				C9D9011F22AB51C40040390E /* UITextField+Extension.swift in Sources */,
+				C97DDD7D22AD544E00A84219 /* SignupInputPresenterImpl.swift in Sources */,
 				C9CC28F622AD3BF8006E69E5 /* SignupInputUI.swift in Sources */,
+				C97DDD7F22AD550F00A84219 /* Presenter.swift in Sources */,
 				C9D9012D22AB54220040390E /* Routing.swift in Sources */,
 				C9D9014522AB84CD0040390E /* SignupViewController.swift in Sources */,
 				C9D9011922AB50FD0040390E /* UIFont+Extension.swift in Sources */,
 				C95ADED022AB141D00D851A0 /* R.generated.swift in Sources */,
 				C9D9012722AB53620040390E /* LoginUI.swift in Sources */,
+				C97DDD8222AD71C100A84219 /* SignupUseCase.swift in Sources */,
+				C97DDD8522AD74C900A84219 /* Account.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -3,8 +3,10 @@ import UIKit
 protocol LoginInputUI: UI {
     var cancelBtn: UIBarButtonItem { get }
     var navItem: UINavigationItem { get }
-    var mailInput: InputView { get }
-    var passInput: InputView { get }
+    var mailTitle: UILabel { get }
+    var mailField: UITextField { get }
+    var passTitle: UILabel { get }
+    var passField: UITextField { get }
     var loginBtn: UIButton { get }
     var passRemindBtn: UIButton { get }
     var navBar: UINavigationBar { get }
@@ -35,24 +37,30 @@ final class LoginInputUIImpl: LoginInputUI {
         return bar
     }()
     
-    var mailInput: InputView = {
-        let input = InputView.Builder()
-            .title("メールアドレス")
-            .hint("メールアドレスを入力")
-            .alignment(.left)
-            .keyboardType(.emailAddress)
-            .build()
-        return input
+    var mailTitle: UILabel = {
+        let label = UILabel()
+        label.apply(.cap, title: "メールアドレス")
+        label.textAlignment = .left
+        return label
     }()
     
-    var passInput: InputView = {
-        let input = InputView.Builder()
-            .title("パスワード")
-            .hint("パスワードを入力")
-            .alignment(.left)
-            .keyboardType(.default)
-            .build()
-        return input
+    var mailField: UITextField = {
+        let field = UITextField()
+        field.apply(.h4, hint: "メールアドレスを入力")
+        return field
+    }()
+    
+    var passTitle: UILabel = {
+        let label = UILabel()
+        label.apply(.cap, title: "パスワード")
+        label.textAlignment = .left
+        return label
+    }()
+    
+    var passField: UITextField = {
+        let field = UITextField()
+        field.apply(.h4, hint: "パスワードを入力")
+        return field
     }()
     
     var loginBtn: UIButton = {
@@ -82,7 +90,7 @@ extension LoginInputUIImpl {
         vc.view.backgroundColor = .white
         navItem.leftBarButtonItem = cancelBtn
         navBar.pushItem(navItem, animated: true)
-        [navBar, mailInput, passInput, loginBtn, passRemindBtn].forEach { vc.view.addSubview($0) }
+        [navBar, mailTitle, mailField, passTitle, passField, loginBtn, passRemindBtn].forEach { vc.view.addSubview($0) }
         
         navBar.anchor()
             .centerXToSuperview()
@@ -90,19 +98,33 @@ extension LoginInputUIImpl {
             .width(to: vc.view.widthAnchor)
             .activate()
         
-        mailInput.anchor()
-            .top(to: navBar.bottomAnchor)
-            .width(to: vc.view.widthAnchor)
+        mailTitle.anchor()
+            .centerXToSuperview()
+            .top(to: navBar.bottomAnchor, constant: 35)
+            .width(to: vc.view.widthAnchor, multiplier: 0.7)
             .activate()
         
-        passInput.anchor()
-            .top(to: mailInput.bottomAnchor, constant: vc.view.frame.height / 10)
-            .width(to: vc.view.widthAnchor)
+        mailField.anchor()
+            .centerXToSuperview()
+            .top(to: mailTitle.bottomAnchor, constant: 10)
+            .width(to: vc.view.widthAnchor, multiplier: 0.7)
+            .activate()
+        
+        passTitle.anchor()
+            .centerXToSuperview()
+            .top(to: mailField.bottomAnchor, constant: 20)
+            .width(to: vc.view.widthAnchor, multiplier: 0.7)
+            .activate()
+        
+        passField.anchor()
+            .centerXToSuperview()
+            .top(to: passTitle.bottomAnchor, constant: 10)
+            .width(to: vc.view.widthAnchor, multiplier: 0.7)
             .activate()
 
         loginBtn.anchor()
             .centerXToSuperview()
-            .top(to: passInput.bottomAnchor, constant: vc.view.frame.height / 6)
+            .top(to: passField.bottomAnchor, constant: 40)
             .width(to: vc.view.widthAnchor, multiplier: 0.5)
             .height(to: vc.view.heightAnchor, multiplier: 0.05)
             .activate()

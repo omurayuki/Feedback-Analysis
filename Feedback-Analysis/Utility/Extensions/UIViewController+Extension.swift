@@ -31,4 +31,9 @@ extension UIViewController {
             navi.view.isUserInteractionEnabled = enabled
         }
     }
+    
+    func showError(message: String) {
+        let alert = UIAlertController.createSimpleOkMessage(title: "エラー", message: message)
+        present(alert, animated: true)
+    }
 }
