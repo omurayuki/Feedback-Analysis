@@ -11,7 +11,11 @@ final class SignupInputRoutingImpl: SignupInputRouting {
     var viewController: UIViewController?
     
     func moveMainPage() {
-        print("main")
+        let vc = MainTabController(timeline: UIViewController(),
+                                   notification: UIViewController(),
+                                   mailList: UIViewController(),
+                                   mypage: UIViewController())
+        viewController?.present(vc, animated: true)
     }
     
     func cancel() {

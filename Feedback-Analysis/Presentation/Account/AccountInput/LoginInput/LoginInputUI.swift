@@ -17,27 +17,31 @@ final class LoginInputUIImpl: LoginInputUI {
     
     private(set) var mailTitle: UILabel = {
         let label = UILabel()
-        label.apply(.cap, title: "メールアドレス")
+        label.apply(.cap_White, title: "メールアドレス")
         label.textAlignment = .left
         return label
     }()
     
     private(set) var mailField: UITextField = {
         let field = UITextField()
-        field.apply(.h4, hint: "メールアドレスを入力")
+        field.apply(.h4)
+        field.backgroundColor = UIColor(white: 1, alpha: 0.5)
+        field.layer.cornerRadius = 5
         return field
     }()
     
     private(set) var passTitle: UILabel = {
         let label = UILabel()
-        label.apply(.cap, title: "パスワード")
+        label.apply(.cap_White, title: "パスワード")
         label.textAlignment = .left
         return label
     }()
     
     private(set) var passField: UITextField = {
         let field = UITextField()
-        field.apply(.h4, hint: "パスワードを入力")
+        field.apply(.h4)
+        field.backgroundColor = UIColor(white: 1, alpha: 0.5)
+        field.layer.cornerRadius = 5
         return field
     }()
     
@@ -65,8 +69,7 @@ final class LoginInputUIImpl: LoginInputUI {
 extension LoginInputUIImpl {
     func setup() {
         guard let vc = viewController else { return }
-        vc.view.backgroundColor = .white
-        vc.navigationItem.title = "ログイン"
+        vc.view.backgroundColor = .appMainColor
         [mailTitle, mailField, passTitle, passField, loginBtn, passRemindBtn].forEach { vc.view.addSubview($0) }
         
         mailTitle.anchor()
@@ -79,6 +82,7 @@ extension LoginInputUIImpl {
             .centerXToSuperview()
             .top(to: mailTitle.bottomAnchor, constant: 10)
             .width(to: vc.view.widthAnchor, multiplier: 0.7)
+            .height(constant: 30)
             .activate()
         
         passTitle.anchor()
@@ -91,6 +95,7 @@ extension LoginInputUIImpl {
             .centerXToSuperview()
             .top(to: passTitle.bottomAnchor, constant: 10)
             .width(to: vc.view.widthAnchor, multiplier: 0.7)
+            .height(constant: 30)
             .activate()
 
         loginBtn.anchor()

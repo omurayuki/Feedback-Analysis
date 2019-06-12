@@ -14,14 +14,16 @@ final class RemindUIImpl: RemindUI {
     
     var mailTitle: UILabel = {
         let label = UILabel()
-        label.apply(.cap, title: "メールアドレス")
+        label.apply(.cap_White, title: "メールアドレス")
         label.textAlignment = .left
         return label
     }()
     
     var mailField: UITextField = {
         let field = UITextField()
-        field.apply(.h4, hint: "メールアドレスを入力")
+        field.apply(.h4)
+        field.backgroundColor = UIColor(white: 1, alpha: 0.5)
+        field.layer.cornerRadius = 5
         return field
     }()
     
@@ -39,8 +41,7 @@ final class RemindUIImpl: RemindUI {
 extension RemindUIImpl {
     func setup() {
         guard let vc = viewController else { return }
-        vc.view.backgroundColor = .white
-        vc.navigationItem.title = "リマインド"
+        vc.view.backgroundColor = .appMainColor
         [mailTitle, mailField, submitBtn].forEach { vc.view.addSubview($0) }
         
         mailTitle.anchor()
@@ -53,6 +54,7 @@ extension RemindUIImpl {
             .centerXToSuperview()
             .top(to: mailTitle.bottomAnchor, constant: 10)
             .width(to: vc.view.widthAnchor, multiplier: 0.7)
+            .height(constant: 30)
             .activate()
         
         submitBtn.anchor()

@@ -70,4 +70,8 @@ extension UIColor {
     class var appOliveGreen: UIColor {
         return #colorLiteral(red: 0.6196078431, green: 0.7019607843, blue: 0.05882352941, alpha: 1)
     }
+    
+    class var appMainColor: UIColor {
+        return UIColor(red: 14.0 / 255.0, green: 47.0 / 255.0, blue: 86.0 / 255.0, alpha: 1.0)
+    }
 }

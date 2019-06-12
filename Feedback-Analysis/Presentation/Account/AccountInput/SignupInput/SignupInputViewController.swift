@@ -56,8 +56,6 @@ extension SignupInputViewController: SignupInputPresenterView {
     }
     
     func didSignupSuccess(account: Account) {
-        print("遷移")
-        print(account.email)
-        print(account.authToken)
+        routing.moveMainPage()
     }
 }

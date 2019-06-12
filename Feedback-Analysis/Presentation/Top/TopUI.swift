@@ -20,8 +20,7 @@ final class TopUIImpl: TopUI {
     
     private(set) var icon: UIImageView = {
         let image = UIImageView()
-        image.backgroundColor = .gray
-        image.layer.cornerRadius = 50
+        image.image = #imageLiteral(resourceName: "logo_non_title")
         return image
     }()
     
@@ -49,7 +48,7 @@ final class TopUIImpl: TopUI {
 extension TopUIImpl {
     func setup() {
         guard let vc = viewController else { return }
-        vc.view.backgroundColor = .white
+        vc.view.backgroundColor = .appMainColor
         vc.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         vc.navigationController?.navigationBar.shadowImage = UIImage()
         [iconWrapView, loginBtn, signupBtn].forEach { vc.view.addSubview($0) }
@@ -65,13 +64,13 @@ extension TopUIImpl {
         icon.anchor()
             .centerXToSuperview()
             .centerYToSuperview()
-            .width(constant: 100)
-            .height(constant: 100)
+            .width(constant: 250)
+            .height(constant: 250)
             .activate()
         
         loginBtn.anchor()
             .centerXToSuperview()
-            .top(to: iconWrapView.bottomAnchor, constant: 50)
+            .top(to: iconWrapView.bottomAnchor, constant: 20)
             .width(to: vc.view.widthAnchor, multiplier: 0.7)
             .height(constant: 50)
             .activate()

@@ -62,8 +62,6 @@ extension LoginInputViewController: LoginInputPresenterView {
     }
     
     func didLoginSuccess(account: Account) {
-        print("ログイン")
-        print(account.email)
-        print(account.authToken)
+        routing.moveMainPage()
     }
 }

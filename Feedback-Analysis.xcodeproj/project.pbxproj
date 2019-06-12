@@ -11,6 +11,7 @@
 		C90535CB22AFBD55006B2E04 /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90535CA22AFBD55006B2E04 /* Provider.swift */; };
 		C94F080F22ABEBF800BF3534 /* UIVIew+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94F080E22ABEBF800BF3534 /* UIVIew+Extension.swift */; };
 		C95ADED022AB141D00D851A0 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95ADECF22AB141D00D851A0 /* R.generated.swift */; };
+		C95E08AB22B11750000C41C7 /* MainTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95E08AA22B11750000C41C7 /* MainTabController.swift */; };
 		C97DDD7B22AD543F00A84219 /* SignupInputPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97DDD7A22AD543F00A84219 /* SignupInputPresenter.swift */; };
 		C97DDD7D22AD544E00A84219 /* SignupInputPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97DDD7C22AD544E00A84219 /* SignupInputPresenterImpl.swift */; };
 		C97DDD7F22AD550F00A84219 /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97DDD7E22AD550F00A84219 /* Presenter.swift */; };
@@ -67,6 +68,7 @@
 		C90535CA22AFBD55006B2E04 /* Provider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Provider.swift; sourceTree = "<group>"; };
 		C94F080E22ABEBF800BF3534 /* UIVIew+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIVIew+Extension.swift"; sourceTree = "<group>"; };
 		C95ADECF22AB141D00D851A0 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
+		C95E08AA22B11750000C41C7 /* MainTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabController.swift; sourceTree = "<group>"; };
 		C97DDD7A22AD543F00A84219 /* SignupInputPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupInputPresenter.swift; sourceTree = "<group>"; };
 		C97DDD7C22AD544E00A84219 /* SignupInputPresenterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupInputPresenterImpl.swift; sourceTree = "<group>"; };
 		C97DDD7E22AD550F00A84219 /* Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
@@ -147,6 +149,14 @@
 				C90535CA22AFBD55006B2E04 /* Provider.swift */,
 			);
 			path = Provider;
+			sourceTree = "<group>";
+		};
+		C95E08A922B116EF000C41C7 /* MainTab */ = {
+			isa = PBXGroup;
+			children = (
+				C95E08AA22B11750000C41C7 /* MainTabController.swift */,
+			);
+			path = MainTab;
 			sourceTree = "<group>";
 		};
 		C97DDD7822AD541F00A84219 /* LoginInput */ = {
@@ -344,6 +354,7 @@
 				C9D9012E22AB55C90040390E /* Presenter */,
 				C9D9013922AB5E700040390E /* Top */,
 				C9D9012222AB532A0040390E /* Account */,
+				C95E08A922B116EF000C41C7 /* MainTab */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -604,6 +615,7 @@
 				C97DDD7B22AD543F00A84219 /* SignupInputPresenter.swift in Sources */,
 				C9CC28F422AD3BEB006E69E5 /* SignupInputViewController.swift in Sources */,
 				C94F080F22ABEBF800BF3534 /* UIVIew+Extension.swift in Sources */,
+				C95E08AB22B11750000C41C7 /* MainTabController.swift in Sources */,
 				C9B55D0F22B0FE2E00845381 /* RemingRouting.swift in Sources */,
 				C9CC28E922ACD892006E69E5 /* LoginInputViewController.swift in Sources */,
 				C9D9011022AB4EE20040390E /* UIAlertAction+Extension.swift in Sources */,
