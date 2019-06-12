@@ -1,9 +1,6 @@
 import UIKit
 
 protocol SignupInputUI: UI {
-    var cancelBtn: UIBarButtonItem { get }
-    var navItem: UINavigationItem { get }
-    var navBar: UINavigationBar { get }
     var mailTitle: UILabel { get }
     var mailField: UITextField { get }
     var passTitle: UILabel { get }
@@ -15,58 +12,39 @@ protocol SignupInputUI: UI {
 
 final class SignupInputUIImpl: SignupInputUI {
     
-    var viewController: UIViewController?
+    weak var viewController: UIViewController?
     
-    var cancelBtn: UIBarButtonItem = {
-        let button = UIBarButtonItem(title: "戻る", style: .plain, target: nil, action: nil)
-        return button
-    }()
-    
-    var navItem: UINavigationItem = {
-        let nav = UINavigationItem()
-        nav.title = "新規登録"
-        return nav
-    }()
-    
-    var navBar: UINavigationBar = {
-        let bar = UINavigationBar()
-        bar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-        bar.shadowImage = UIImage()
-        bar.barTintColor = .white
-        return bar
-    }()
-    
-    var mailTitle: UILabel = {
+    private(set) var mailTitle: UILabel = {
         let label = UILabel()
         label.apply(.cap, title: "メールアドレス")
         label.textAlignment = .left
         return label
     }()
     
-    var mailField: UITextField = {
+    private(set) var mailField: UITextField = {
         let field = UITextField()
         field.apply(.h4, hint: "メールアドレスを入力")
         return field
     }()
     
-    var passTitle: UILabel = {
+    private(set) var passTitle: UILabel = {
         let label = UILabel()
         label.apply(.cap, title: "パスワード")
         label.textAlignment = .left
         return label
     }()
     
-    var passField: UITextField = {
+    private(set) var passField: UITextField = {
         let field = UITextField()
         field.apply(.h4, hint: "パスワードを入力")
         return field
     }()
     
-    var signupBtn: UIButton = {
+    private(set) var signupBtn: UIButton = {
         let button = UIButton.Builder()
             .title("新規登録")
             .component(.title_White)
-            .backgroundColor(.appLightishGreen)
+            .backgroundColor(.appFacebookColor)
             .cornerRadius(7)
             .build()
         return button
@@ -77,19 +55,12 @@ extension SignupInputUIImpl {
     func setup() {
         guard let vc = viewController else { return }
         vc.view.backgroundColor = .white
-        navItem.leftBarButtonItem = cancelBtn
-        navBar.pushItem(navItem, animated: true)
-        [navBar, mailTitle, mailField, passTitle, passField, signupBtn].forEach { vc.view.addSubview($0) }
-        
-        navBar.anchor()
-            .centerXToSuperview()
-            .top(to: vc.view.safeAreaLayoutGuide.topAnchor)
-            .width(to: vc.view.widthAnchor)
-            .activate()
+        vc.navigationItem.title = "新規登録"
+        [mailTitle, mailField, passTitle, passField, signupBtn].forEach { vc.view.addSubview($0) }
         
         mailTitle.anchor()
             .centerXToSuperview()
-            .top(to: navBar.bottomAnchor, constant: 35)
+            .top(to: vc.view.safeAreaLayoutGuide.topAnchor, constant: 35)
             .width(to: vc.view.widthAnchor, multiplier: 0.7)
             .activate()
         
@@ -114,8 +85,8 @@ extension SignupInputUIImpl {
         signupBtn.anchor()
             .centerXToSuperview()
             .top(to: passField.bottomAnchor, constant: 50)
-            .width(to: vc.view.widthAnchor, multiplier: 0.5)
-            .height(to: vc.view.heightAnchor, multiplier: 0.05)
+            .width(to: vc.view.widthAnchor, multiplier: 0.7)
+            .height(constant: 50)
             .activate()
     }
 }

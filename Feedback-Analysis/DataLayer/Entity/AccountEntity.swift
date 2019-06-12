@@ -1,6 +1,8 @@
 import Foundation
 
-struct AccountEntity {
+protocol Entity {}
+
+struct AccountEntity: Entity {
     let email: String
     let authToken: String
 }

@@ -1,24 +1,25 @@
 import Foundation
+import UIKit
 import RxSwift
 import RxCocoa
 
-class LoginInputPresenterImpl: LoginInputPresenter {
-    weak var view: LoginInputPresenterView!
+class RemindPresenterImpl: RemindPresenter {
+    var view: RemindPresenterView!
     var isLoading: BehaviorRelay<Bool> = BehaviorRelay<Bool>(value: false)
-    private var useCase: LoginUseCase
+    var useCase: RemindUseCase
     
-    init(useCase: LoginUseCase) {
+    init(useCase: RemindUseCase) {
         self.useCase = useCase
     }
     
-    func login(email: String, pass: String) {
+    func reissuePassword(email: String) {
         view.updateLoading(true)
-        useCase.login(email: email, pass: pass)
+        useCase.reissuePassword(email: email)
             .subscribe { result in
                 switch result {
-                case .success(let account):
+                case .success(_):
                     self.view.updateLoading(false)
-                    self.view.didLoginSuccess(account: account)
+                    self.view.didSubmitSuccess()
                 case .error(let error):
                     self.view.updateLoading(false)
                     self.view.showError(message: error.localizedDescription)

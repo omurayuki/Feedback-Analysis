@@ -2,7 +2,7 @@ import UIKit
 import RxSwift
 
 protocol SignupInputRouting: Routing {
-    func transitionMainPage()
+    func moveMainPage()
     func cancel()
 }
 
@@ -10,7 +10,7 @@ final class SignupInputRoutingImpl: SignupInputRouting {
     
     var viewController: UIViewController?
     
-    func transitionMainPage() {
+    func moveMainPage() {
         print("main")
     }
     

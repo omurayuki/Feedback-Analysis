@@ -1,10 +1,11 @@
 import Foundation
 import RxSwift
 
-protocol SignupUseCase {
-    func signup(email: String, pass: String) -> Single<Account>}
+protocol LoginUseCase {
+    func login(email: String, pass: String) -> Single<Account>
+}
 
-struct SignupUseCaseImpl: SignupUseCase {
+struct LoginUseCaseImpl: LoginUseCase {
     
     private(set) var repository: AccountRepository
     
@@ -12,9 +13,9 @@ struct SignupUseCaseImpl: SignupUseCase {
         self.repository = repository
     }
     
-    func signup(email: String, pass: String) -> Single<Account> {
+    func login(email: String, pass: String) -> Single<Account> {
         return repository
-                .signup(email: email, pass: pass)
+                .login(email: email, pass: pass)
                 .map { AccountTranslator().translate($0) }
     }
 }

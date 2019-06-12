@@ -1,41 +1,32 @@
 import Foundation
-import RxSwift
 import UIKit
+import RxSwift
+import RxCocoa
 
 class SignupInputPresenterImpl: SignupInputPresenter {
     weak var view: SignupInputPresenterView!
+    var isLoading: BehaviorRelay<Bool> = BehaviorRelay<Bool>(value: false)
+    private var useCase: SignupUseCase
     
-    
-    func signup(mail: String, password: String) {
-        print("ok")
+    init(useCase: SignupUseCase) {
+        self.useCase = useCase
     }
     
-    func setup() {
-        print("ok")
+    func signup(email mail: String, pass: String) {
+        view.updateLoading(true)
+        useCase.signup(email: mail, pass: pass)
+            .subscribe { result in
+                switch result {
+                case .success(let account):
+                    // userdefaultsに保存処理
+                    self.view.updateLoading(false)
+                    self.view.didSignupSuccess(account: account)
+                case .error(let error):
+                    self.view.updateLoading(false)
+                    self.view.showError(message: error.localizedDescription)
+                }
+            }.disposed(by: view.disposeBag)
     }
+    
+    func setup() {}
 }
-
-//class LoginPresenterImpl: LoginPresenter {
-//    weak var view: LoginPresenterView!
-//    private var useCase: LoginUseCase
-//
-//    init(useCase: LoginUseCase) {
-//        self.useCase = useCase
-//    }
-//
-//    func setup() {
-//
-//    }
-//
-//    func login(email: String, password: String) {
-//        useCase.login(email: email, password: password)
-//            .subscribe(onSuccess: { (account) in
-//                AppUserDefaults.setAccountEmail(email: account.email)
-//                AppUserDefaults.setAuthToken(token: account.authToken)
-//                self.view.didLoginSuccess(email: account.email)
-//            }, onError: { error in
-//                self.view.showError(message: self.useCase.getLoginErrorMessage(statusCode: ErrorChecker.getStatusCode(error: error)))
-//            })
-//            .disposed(by: view.disposeBag)
-//    }
-//}

@@ -1,14 +1,15 @@
+import Foundation
 import UIKit
 import RxSwift
 import RxCocoa
 
-class SignupInputViewController: UIViewController {
+class RemindViewController: UIViewController {
     
-    var ui: SignupInputUI!
+    var ui: RemindUI!
     
-    var routing: SignupInputRouting!
+    var routing: RemindRouting!
     
-    var presenter: SignupInputPresenter! {
+    var presenter: RemindPresenter! {
         didSet {
             presenter.view = self
         }
@@ -16,31 +17,30 @@ class SignupInputViewController: UIViewController {
     
     var disposeBag: DisposeBag! {
         didSet {
-            ui.signupBtn.rx.tap.asDriver()
+            ui.submitBtn.rx.tap.asDriver()
                 .drive(onNext: { [unowned self] _ in
                     self.validateAccount(email: self.ui.mailField.text ?? "",
-                                         pass: self.ui.passField.text ?? "",
-                                         account: { _email, _pass in
-                        self.presenter.signup(email: _email, pass: _pass)
+                                         account: { _email, _ in
+                        self.presenter.reissuePassword(email: _email)
                     })
                 }).disposed(by: disposeBag)
             
             presenter.isLoading
-                .subscribe(onNext: { [unowned self] isLoading in
+                .subscribe(onNext: { isLoading in
                     self.view.endEditing(true)
                     self.setIndicator(show: isLoading)
                 }).disposed(by: disposeBag)
         }
     }
     
-    func inject(ui: SignupInputUI,
-                presenter: SignupInputPresenter,
+    func inject(ui: RemindUI,
+                presenter: RemindPresenter,
                 disposeBag: DisposeBag,
-                routing: SignupInputRouting) {
+                routing: RemindRouting) {
         self.ui = ui
         self.presenter = presenter
-        self.disposeBag = disposeBag
         self.routing = routing
+        self.disposeBag = disposeBag
     }
     
     override func viewDidLoad() {
@@ -49,15 +49,13 @@ class SignupInputViewController: UIViewController {
     }
 }
 
-extension SignupInputViewController: SignupInputPresenterView {
+extension RemindViewController: RemindPresenterView {
     
     func updateLoading(_ isLoading: Bool) {
         presenter.isLoading.accept(isLoading)
     }
     
-    func didSignupSuccess(account: Account) {
-        print("遷移")
-        print(account.email)
-        print(account.authToken)
+    func didSubmitSuccess() {
+        self.routing.dismiss()
     }
 }

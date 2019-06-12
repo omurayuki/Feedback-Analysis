@@ -5,14 +5,13 @@ protocol TopUI: UI {
     var icon: UIImageView { get }
     var loginBtn: UIButton { get }
     var signupBtn: UIButton { get }
-    var switchingView: SwitchingView { get }
     
     func setup()
 }
 
 final class TopUIImpl: TopUI {
     
-    var viewController: UIViewController?
+    weak var viewController: UIViewController?
     
     private(set) var iconWrapView: UIView = {
         let view = UIView()
@@ -29,8 +28,9 @@ final class TopUIImpl: TopUI {
     private(set) var loginBtn: UIButton = {
         let button = UIButton.Builder()
             .title("ログイン")
-            .component(.h4)
-            .backgroundColor(.white)
+            .component(.title_White)
+            .backgroundColor(.appFacebookColor)
+            .cornerRadius(7)
             .build()
         return button
     }()
@@ -38,15 +38,11 @@ final class TopUIImpl: TopUI {
     private(set) var signupBtn: UIButton = {
         let button = UIButton.Builder()
             .title("新規登録")
-            .component(.h4)
-            .backgroundColor(.white)
+            .component(.title_White)
+            .backgroundColor(.appFacebookColor)
+            .cornerRadius(7)
             .build()
         return button
-    }()
-    
-    var switchingView: SwitchingView = {
-        let view = SwitchingView()
-        return view
     }()
 }
 
@@ -56,8 +52,7 @@ extension TopUIImpl {
         vc.view.backgroundColor = .white
         vc.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         vc.navigationController?.navigationBar.shadowImage = UIImage()
-        let stack = setupStack()
-        [iconWrapView, stack, switchingView].forEach { vc.view.addSubview($0) }
+        [iconWrapView, loginBtn, signupBtn].forEach { vc.view.addSubview($0) }
         iconWrapView.addSubview(icon)
         
         iconWrapView.anchor()
@@ -75,30 +70,17 @@ extension TopUIImpl {
             .activate()
         
         loginBtn.anchor()
-            .width(constant: vc.view.frame.width / 2)
+            .centerXToSuperview()
+            .top(to: iconWrapView.bottomAnchor, constant: 50)
+            .width(to: vc.view.widthAnchor, multiplier: 0.7)
+            .height(constant: 50)
             .activate()
         
         signupBtn.anchor()
-            .width(constant: vc.view.frame.width / 2)
+            .centerXToSuperview()
+            .top(to: loginBtn.bottomAnchor, constant: 35)
+            .width(to: vc.view.widthAnchor, multiplier: 0.7)
+            .height(constant: 50)
             .activate()
-        
-        stack.anchor()
-            .top(to: iconWrapView.bottomAnchor)
-            .width(to: vc.view.widthAnchor)
-            .activate()
-        
-        switchingView.anchor()
-            .top(to: stack.bottomAnchor)
-            .bottom(to: vc.view.bottomAnchor)
-            .width(to: vc.view.widthAnchor)
-            .activate()
-    }
-    
-    private func setupStack() -> UIStackView {
-        let stack = UIStackView(arrangedSubviews: [
-            loginBtn,
-            signupBtn
-        ])
-        return stack
     }
 }

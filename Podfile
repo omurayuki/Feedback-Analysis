@@ -19,4 +19,5 @@ target 'Feedback-Analysis' do
     pod 'Firebase/Messaging'
     pod "SkeletonView"
     pod 'Charts'
+    pod 'MBProgressHUD', '~> 1.1.0'
 end

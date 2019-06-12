@@ -11,16 +11,14 @@ class TopViewController: UIViewController {
     
     var disposeBag: DisposeBag! {
         didSet {
-            ui?.loginBtn.rx.tap.asDriver()
-                .drive(onNext: { [unowned self] _ in
-                    self.ui.switchingView.showLoginOrSignup(disposeBag: self.disposeBag,
-                                                            tag: .login)
+            ui.loginBtn.rx.tap.asDriver()
+                .drive(onNext: { _ in
+                    self.routing.login()
                 }).disposed(by: disposeBag)
             
-            ui?.signupBtn.rx.tap.asDriver()
-                .drive(onNext: { [unowned self] _ in
-                    self.ui.switchingView.showLoginOrSignup(disposeBag: self.disposeBag,
-                                                            tag: .signup)
+            ui.signupBtn.rx.tap.asDriver()
+                .drive(onNext: { _ in
+                    self.routing.signup()
                 }).disposed(by: disposeBag)
         }
     }
@@ -31,16 +29,12 @@ class TopViewController: UIViewController {
         self.disposeBag = disposeBag
     }
     
-    override func loadView() {
-        super.loadView()
-        ui.switchingView.showLoginOrSignup(disposeBag: self.disposeBag,
-                                           tag: .login)
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         ui?.setup()
-        ui.switchingView.showLoginOrSignup(disposeBag: self.disposeBag,
-                                           tag: .login)
     }
 }
+
+//ますワードリマインド
+//タブバー
+//一番初めに作るべきところから

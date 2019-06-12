@@ -121,6 +121,7 @@ PODS:
   - KeychainAccess (3.2.0)
   - Kingfisher (5.5.0)
   - leveldb-library (1.20)
+  - MBProgressHUD (1.1.0)
   - nanopb (0.3.901):
     - nanopb/decode (= 0.3.901)
     - nanopb/encode (= 0.3.901)
@@ -148,6 +149,7 @@ DEPENDENCIES:
   - Firebase/Storage
   - KeychainAccess
   - Kingfisher (~> 5.0)
+  - MBProgressHUD (~> 1.1.0)
   - R.swift
   - ReachabilitySwift
   - RxCocoa (~> 5)
@@ -176,6 +178,7 @@ SPEC REPOS:
     - KeychainAccess
     - Kingfisher
     - leveldb-library
+    - MBProgressHUD
     - nanopb
     - Protobuf
     - R.swift
@@ -207,6 +210,7 @@ SPEC CHECKSUMS:
   KeychainAccess: 3b1bf8a77eb4c6ea1ce9404c292e48f948954c6b
   Kingfisher: 6fe5e67a90fd335e49b0f5c075ff55ac5ebedd94
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
+  MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   Protobuf: 3f617b9a6e73605565086864c9bc26b2bf2dd5a3
   R.swift: f5a87643b91ea569d23d6afb3eee9c743edde239
@@ -217,6 +221,6 @@ SPEC CHECKSUMS:
   RxSwift: 8b0671caa829a763bbce7271095859121cbd895f
   SkeletonView: 6cbb80f82f8bdee3f9093e2fa03b84819b4bd826
 
-PODFILE CHECKSUM: cab0666790cebb99e3b3c1b430212a39731aceb6
+PODFILE CHECKSUM: 8c11758ae5d86d20f107efc4cb69cae63c56c5a8
 
 COCOAPODS: 1.7.0.beta.2

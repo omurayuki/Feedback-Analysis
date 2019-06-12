@@ -9,17 +9,42 @@ class LoginInputViewController: UIViewController {
     
     var routing: LoginInputRouting!
     
+    var presenter: LoginInputPresenter! {
+        didSet {
+            presenter.view = self
+        }
+    }
+    
     var disposeBag: DisposeBag! {
         didSet {
-            ui.cancelBtn.rx.tap.asDriver()
+            ui.loginBtn.rx.tap.asDriver()
                 .drive(onNext: { [unowned self] _ in
-                    self.routing.cancel()
+                    self.validateAccount(email: self.ui.mailField.text ?? "",
+                                         pass: self.ui.passField.text ?? "",
+                                         account: { _email, _pass in
+                        self.presenter.login(email: _email, pass: _pass)
+                    })
+                }).disposed(by: disposeBag)
+            
+            ui.passRemindBtn.rx.tap.asDriver()
+                .drive(onNext: { _ in
+                    self.routing.moveRemindPage()
+                }).disposed(by: disposeBag)
+            
+            presenter.isLoading
+                .subscribe(onNext: { [unowned self] isLoading in
+                    self.view.endEditing(true)
+                    self.setIndicator(show: isLoading)
                 }).disposed(by: disposeBag)
         }
     }
     
-    func inject(ui: LoginInputUI, disposeBag: DisposeBag, routing: LoginInputRouting) {
+    func inject(ui: LoginInputUI,
+                presenter: LoginInputPresenter,
+                disposeBag: DisposeBag,
+                routing: LoginInputRouting) {
         self.ui = ui
+        self.presenter = presenter
         self.disposeBag = disposeBag
         self.routing = routing
     }
@@ -27,5 +52,18 @@ class LoginInputViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         ui.setup()
+    }
+}
+
+extension LoginInputViewController: LoginInputPresenterView {
+    
+    func updateLoading(_ isLoading: Bool) {
+        presenter.isLoading.accept(isLoading)
+    }
+    
+    func didLoginSuccess(account: Account) {
+        print("ログイン")
+        print(account.email)
+        print(account.authToken)
     }
 }

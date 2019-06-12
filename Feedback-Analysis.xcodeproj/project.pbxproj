@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		602744EA86362BCEAE02995D /* Pods_Feedback_Analysis.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9999A439B460BE0979C86B1 /* Pods_Feedback_Analysis.framework */; };
-		C94F080D22ABE98E00BF3534 /* SwitchingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94F080C22ABE98E00BF3534 /* SwitchingView.swift */; };
+		C90535CB22AFBD55006B2E04 /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90535CA22AFBD55006B2E04 /* Provider.swift */; };
 		C94F080F22ABEBF800BF3534 /* UIVIew+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94F080E22ABEBF800BF3534 /* UIVIew+Extension.swift */; };
 		C95ADED022AB141D00D851A0 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95ADECF22AB141D00D851A0 /* R.generated.swift */; };
 		C97DDD7B22AD543F00A84219 /* SignupInputPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97DDD7A22AD543F00A84219 /* SignupInputPresenter.swift */; };
@@ -17,15 +17,24 @@
 		C97DDD8222AD71C100A84219 /* SignupUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97DDD8122AD71C100A84219 /* SignupUseCase.swift */; };
 		C97DDD8522AD74C900A84219 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97DDD8422AD74C900A84219 /* Account.swift */; };
 		C97DDD8B22AD755B00A84219 /* AccountEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97DDD8A22AD755B00A84219 /* AccountEntity.swift */; };
+		C97DDD8E22AD82AC00A84219 /* AccountRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97DDD8D22AD82AC00A84219 /* AccountRepository.swift */; };
+		C97DDD9122AD83CC00A84219 /* AccountTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97DDD9022AD83CC00A84219 /* AccountTranslator.swift */; };
+		C97DDD9322AD85ED00A84219 /* Translator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97DDD9222AD85ED00A84219 /* Translator.swift */; };
+		C97DDD9622AD879800A84219 /* AccountDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97DDD9522AD879800A84219 /* AccountDataStore.swift */; };
 		C97F9D0E22A6CCAA000779EF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C97F9D0D22A6CCAA000779EF /* GoogleService-Info.plist */; };
 		C9A1573522A6CA1F00D7D047 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A1573422A6CA1F00D7D047 /* AppDelegate.swift */; };
 		C9A1573C22A6CA2000D7D047 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9A1573B22A6CA2000D7D047 /* Assets.xcassets */; };
 		C9A1573F22A6CA2000D7D047 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9A1573D22A6CA2000D7D047 /* LaunchScreen.storyboard */; };
+		C9B55D0B22B0FE1B00845381 /* RemindViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B55D0A22B0FE1B00845381 /* RemindViewController.swift */; };
+		C9B55D0D22B0FE2200845381 /* RemindUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B55D0C22B0FE2200845381 /* RemindUI.swift */; };
+		C9B55D0F22B0FE2E00845381 /* RemingRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B55D0E22B0FE2E00845381 /* RemingRouting.swift */; };
+		C9B55D1222B1010200845381 /* RemindPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B55D1122B1010200845381 /* RemindPresenter.swift */; };
+		C9B55D1422B1010C00845381 /* RemindPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B55D1322B1010C00845381 /* RemindPresenterImpl.swift */; };
+		C9B55D1622B1062600845381 /* RemindUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B55D1522B1062600845381 /* RemindUseCase.swift */; };
+		C9C844B522AFADB000083280 /* LoginUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C844B422AFADB000083280 /* LoginUseCase.swift */; };
 		C9CC28E922ACD892006E69E5 /* LoginInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CC28E822ACD892006E69E5 /* LoginInputViewController.swift */; };
 		C9CC28EB22ACD89D006E69E5 /* LoginInputUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CC28EA22ACD89D006E69E5 /* LoginInputUI.swift */; };
-		C9CC28ED22ACDDC1006E69E5 /* LoginRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CC28EC22ACDDC1006E69E5 /* LoginRouting.swift */; };
 		C9CC28EF22AD1288006E69E5 /* LoginInputRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CC28EE22AD1288006E69E5 /* LoginInputRouting.swift */; };
-		C9CC28F222AD3BA6006E69E5 /* SignupRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CC28F122AD3BA6006E69E5 /* SignupRouting.swift */; };
 		C9CC28F422AD3BEB006E69E5 /* SignupInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CC28F322AD3BEB006E69E5 /* SignupInputViewController.swift */; };
 		C9CC28F622AD3BF8006E69E5 /* SignupInputUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CC28F522AD3BF8006E69E5 /* SignupInputUI.swift */; };
 		C9CC28F822AD3C03006E69E5 /* SignupInputRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CC28F722AD3C03006E69E5 /* SignupInputRouting.swift */; };
@@ -42,8 +51,6 @@
 		C9D9011D22AB51830040390E /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D9011C22AB51830040390E /* UILabel+Extension.swift */; };
 		C9D9011F22AB51C40040390E /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D9011E22AB51C40040390E /* UITextField+Extension.swift */; };
 		C9D9012122AB52760040390E /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D9012022AB52760040390E /* UIViewController+Extension.swift */; };
-		C9D9012522AB53490040390E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D9012422AB53490040390E /* LoginViewController.swift */; };
-		C9D9012722AB53620040390E /* LoginUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D9012622AB53620040390E /* LoginUI.swift */; };
 		C9D9012A22AB538E0040390E /* UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D9012922AB538E0040390E /* UI.swift */; };
 		C9D9012D22AB54220040390E /* Routing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D9012C22AB54220040390E /* Routing.swift */; };
 		C9D9013122AB55F40040390E /* LoginInputPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D9013022AB55F40040390E /* LoginInputPresenter.swift */; };
@@ -51,15 +58,13 @@
 		C9D9013B22AB5E800040390E /* TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D9013A22AB5E800040390E /* TopViewController.swift */; };
 		C9D9013D22AB5E870040390E /* TopUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D9013C22AB5E870040390E /* TopUI.swift */; };
 		C9D9014122AB77B40040390E /* VerticalStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D9014022AB77B40040390E /* VerticalStackView.swift */; };
-		C9D9014522AB84CD0040390E /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D9014422AB84CD0040390E /* SignupViewController.swift */; };
-		C9D9014722AB84D70040390E /* SignupUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D9014622AB84D70040390E /* SignupUI.swift */; };
 		C9D9014922AB85890040390E /* TopRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D9014822AB85890040390E /* TopRouting.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		180FB39CDDE7BFB741E76AA9 /* Pods-Feedback-Analysis.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Feedback-Analysis.debug.xcconfig"; path = "Target Support Files/Pods-Feedback-Analysis/Pods-Feedback-Analysis.debug.xcconfig"; sourceTree = "<group>"; };
 		A9999A439B460BE0979C86B1 /* Pods_Feedback_Analysis.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Feedback_Analysis.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C94F080C22ABE98E00BF3534 /* SwitchingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchingView.swift; sourceTree = "<group>"; };
+		C90535CA22AFBD55006B2E04 /* Provider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Provider.swift; sourceTree = "<group>"; };
 		C94F080E22ABEBF800BF3534 /* UIVIew+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIVIew+Extension.swift"; sourceTree = "<group>"; };
 		C95ADECF22AB141D00D851A0 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
 		C97DDD7A22AD543F00A84219 /* SignupInputPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupInputPresenter.swift; sourceTree = "<group>"; };
@@ -68,17 +73,26 @@
 		C97DDD8122AD71C100A84219 /* SignupUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupUseCase.swift; sourceTree = "<group>"; };
 		C97DDD8422AD74C900A84219 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		C97DDD8A22AD755B00A84219 /* AccountEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountEntity.swift; sourceTree = "<group>"; };
+		C97DDD8D22AD82AC00A84219 /* AccountRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountRepository.swift; sourceTree = "<group>"; };
+		C97DDD9022AD83CC00A84219 /* AccountTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTranslator.swift; sourceTree = "<group>"; };
+		C97DDD9222AD85ED00A84219 /* Translator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Translator.swift; sourceTree = "<group>"; };
+		C97DDD9522AD879800A84219 /* AccountDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDataStore.swift; sourceTree = "<group>"; };
 		C97F9D0D22A6CCAA000779EF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C9A1573122A6CA1F00D7D047 /* Feedback-Analysis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Feedback-Analysis.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9A1573422A6CA1F00D7D047 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C9A1573B22A6CA2000D7D047 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C9A1573E22A6CA2000D7D047 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C9A1574022A6CA2000D7D047 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C9B55D0A22B0FE1B00845381 /* RemindViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindViewController.swift; sourceTree = "<group>"; };
+		C9B55D0C22B0FE2200845381 /* RemindUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindUI.swift; sourceTree = "<group>"; };
+		C9B55D0E22B0FE2E00845381 /* RemingRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemingRouting.swift; sourceTree = "<group>"; };
+		C9B55D1122B1010200845381 /* RemindPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindPresenter.swift; sourceTree = "<group>"; };
+		C9B55D1322B1010C00845381 /* RemindPresenterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindPresenterImpl.swift; sourceTree = "<group>"; };
+		C9B55D1522B1062600845381 /* RemindUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindUseCase.swift; sourceTree = "<group>"; };
+		C9C844B422AFADB000083280 /* LoginUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUseCase.swift; sourceTree = "<group>"; };
 		C9CC28E822ACD892006E69E5 /* LoginInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInputViewController.swift; sourceTree = "<group>"; };
 		C9CC28EA22ACD89D006E69E5 /* LoginInputUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInputUI.swift; sourceTree = "<group>"; };
-		C9CC28EC22ACDDC1006E69E5 /* LoginRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouting.swift; sourceTree = "<group>"; };
 		C9CC28EE22AD1288006E69E5 /* LoginInputRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInputRouting.swift; sourceTree = "<group>"; };
-		C9CC28F122AD3BA6006E69E5 /* SignupRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupRouting.swift; sourceTree = "<group>"; };
 		C9CC28F322AD3BEB006E69E5 /* SignupInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupInputViewController.swift; sourceTree = "<group>"; };
 		C9CC28F522AD3BF8006E69E5 /* SignupInputUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupInputUI.swift; sourceTree = "<group>"; };
 		C9CC28F722AD3C03006E69E5 /* SignupInputRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupInputRouting.swift; sourceTree = "<group>"; };
@@ -95,8 +109,6 @@
 		C9D9011C22AB51830040390E /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 		C9D9011E22AB51C40040390E /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		C9D9012022AB52760040390E /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
-		C9D9012422AB53490040390E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		C9D9012622AB53620040390E /* LoginUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUI.swift; sourceTree = "<group>"; };
 		C9D9012922AB538E0040390E /* UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UI.swift; sourceTree = "<group>"; };
 		C9D9012C22AB54220040390E /* Routing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routing.swift; sourceTree = "<group>"; };
 		C9D9013022AB55F40040390E /* LoginInputPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInputPresenter.swift; sourceTree = "<group>"; };
@@ -104,8 +116,6 @@
 		C9D9013A22AB5E800040390E /* TopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopViewController.swift; sourceTree = "<group>"; };
 		C9D9013C22AB5E870040390E /* TopUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopUI.swift; sourceTree = "<group>"; };
 		C9D9014022AB77B40040390E /* VerticalStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalStackView.swift; sourceTree = "<group>"; };
-		C9D9014422AB84CD0040390E /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
-		C9D9014622AB84D70040390E /* SignupUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupUI.swift; sourceTree = "<group>"; };
 		C9D9014822AB85890040390E /* TopRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopRouting.swift; sourceTree = "<group>"; };
 		DF2047041B81E420DAE3BDD1 /* Pods-Feedback-Analysis.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Feedback-Analysis.release.xcconfig"; path = "Target Support Files/Pods-Feedback-Analysis/Pods-Feedback-Analysis.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -131,6 +141,14 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		C90535C922AFBD33006B2E04 /* Provider */ = {
+			isa = PBXGroup;
+			children = (
+				C90535CA22AFBD55006B2E04 /* Provider.swift */,
+			);
+			path = Provider;
+			sourceTree = "<group>";
+		};
 		C97DDD7822AD541F00A84219 /* LoginInput */ = {
 			isa = PBXGroup;
 			children = (
@@ -153,6 +171,8 @@
 			isa = PBXGroup;
 			children = (
 				C97DDD8122AD71C100A84219 /* SignupUseCase.swift */,
+				C9C844B422AFADB000083280 /* LoginUseCase.swift */,
+				C9B55D1522B1062600845381 /* RemindUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -171,6 +191,31 @@
 				C97DDD8A22AD755B00A84219 /* AccountEntity.swift */,
 			);
 			path = Entity;
+			sourceTree = "<group>";
+		};
+		C97DDD8C22AD829B00A84219 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				C97DDD8D22AD82AC00A84219 /* AccountRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		C97DDD8F22AD83B100A84219 /* Translator */ = {
+			isa = PBXGroup;
+			children = (
+				C97DDD9222AD85ED00A84219 /* Translator.swift */,
+				C97DDD9022AD83CC00A84219 /* AccountTranslator.swift */,
+			);
+			path = Translator;
+			sourceTree = "<group>";
+		};
+		C97DDD9422AD878900A84219 /* DataStore */ = {
+			isa = PBXGroup;
+			children = (
+				C97DDD9522AD879800A84219 /* AccountDataStore.swift */,
+			);
+			path = DataStore;
 			sourceTree = "<group>";
 		};
 		C9A1572822A6CA1F00D7D047 = {
@@ -208,13 +253,23 @@
 			path = "Feedback-Analysis";
 			sourceTree = "<group>";
 		};
-		C9CC28E522ACD02C006E69E5 /* AccountInput */ = {
+		C9B55D0922B0FE0700845381 /* Remind */ = {
 			isa = PBXGroup;
 			children = (
-				C9CC28E622ACD03A006E69E5 /* LoginInput */,
-				C9CC28E722ACD045006E69E5 /* SignupInput */,
+				C9B55D0A22B0FE1B00845381 /* RemindViewController.swift */,
+				C9B55D0C22B0FE2200845381 /* RemindUI.swift */,
+				C9B55D0E22B0FE2E00845381 /* RemingRouting.swift */,
 			);
-			path = AccountInput;
+			path = Remind;
+			sourceTree = "<group>";
+		};
+		C9B55D1022B100F100845381 /* Remind */ = {
+			isa = PBXGroup;
+			children = (
+				C9B55D1122B1010200845381 /* RemindPresenter.swift */,
+				C9B55D1322B1010C00845381 /* RemindPresenterImpl.swift */,
+			);
+			path = Remind;
 			sourceTree = "<group>";
 		};
 		C9CC28E622ACD03A006E69E5 /* LoginInput */ = {
@@ -224,7 +279,8 @@
 				C9CC28EA22ACD89D006E69E5 /* LoginInputUI.swift */,
 				C9CC28EE22AD1288006E69E5 /* LoginInputRouting.swift */,
 			);
-			path = LoginInput;
+			name = LoginInput;
+			path = AccountInput/LoginInput;
 			sourceTree = "<group>";
 		};
 		C9CC28E722ACD045006E69E5 /* SignupInput */ = {
@@ -234,7 +290,8 @@
 				C9CC28F522AD3BF8006E69E5 /* SignupInputUI.swift */,
 				C9CC28F722AD3C03006E69E5 /* SignupInputRouting.swift */,
 			);
-			path = SignupInput;
+			name = SignupInput;
+			path = AccountInput/SignupInput;
 			sourceTree = "<group>";
 		};
 		C9CC28F922AD5024006E69E5 /* Service */ = {
@@ -261,6 +318,9 @@
 		C9D9010422AB44270040390E /* DataLayer */ = {
 			isa = PBXGroup;
 			children = (
+				C90535C922AFBD33006B2E04 /* Provider */,
+				C97DDD9422AD878900A84219 /* DataStore */,
+				C97DDD8C22AD829B00A84219 /* Repository */,
 				C97DDD8922AD755500A84219 /* Entity */,
 			);
 			path = DataLayer;
@@ -269,8 +329,9 @@
 		C9D9010522AB44390040390E /* DomainLayer */ = {
 			isa = PBXGroup;
 			children = (
-				C97DDD8322AD74B800A84219 /* Model */,
 				C97DDD8022AD71A700A84219 /* UseCase */,
+				C97DDD8F22AD83B100A84219 /* Translator */,
+				C97DDD8322AD74B800A84219 /* Model */,
 			);
 			path = DomainLayer;
 			sourceTree = "<group>";
@@ -324,21 +385,11 @@
 		C9D9012222AB532A0040390E /* Account */ = {
 			isa = PBXGroup;
 			children = (
-				C9D9012322AB53370040390E /* Login */,
-				C9D9014322AB84B80040390E /* Signup */,
-				C9CC28E522ACD02C006E69E5 /* AccountInput */,
+				C9CC28E622ACD03A006E69E5 /* LoginInput */,
+				C9CC28E722ACD045006E69E5 /* SignupInput */,
+				C9B55D0922B0FE0700845381 /* Remind */,
 			);
 			path = Account;
-			sourceTree = "<group>";
-		};
-		C9D9012322AB53370040390E /* Login */ = {
-			isa = PBXGroup;
-			children = (
-				C9D9012422AB53490040390E /* LoginViewController.swift */,
-				C9D9012622AB53620040390E /* LoginUI.swift */,
-				C9CC28EC22ACDDC1006E69E5 /* LoginRouting.swift */,
-			);
-			path = Login;
 			sourceTree = "<group>";
 		};
 		C9D9012822AB53800040390E /* UI */ = {
@@ -360,8 +411,8 @@
 		C9D9012E22AB55C90040390E /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
-				C9D9012F22AB55DE0040390E /* Account */,
 				C97DDD7E22AD550F00A84219 /* Presenter.swift */,
+				C9D9012F22AB55DE0040390E /* Account */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -371,6 +422,7 @@
 			children = (
 				C97DDD7822AD541F00A84219 /* LoginInput */,
 				C97DDD7922AD542900A84219 /* SignupInput */,
+				C9B55D1022B100F100845381 /* Remind */,
 			);
 			path = Account;
 			sourceTree = "<group>";
@@ -396,19 +448,8 @@
 			isa = PBXGroup;
 			children = (
 				C9D9014022AB77B40040390E /* VerticalStackView.swift */,
-				C94F080C22ABE98E00BF3534 /* SwitchingView.swift */,
 			);
 			path = Custom;
-			sourceTree = "<group>";
-		};
-		C9D9014322AB84B80040390E /* Signup */ = {
-			isa = PBXGroup;
-			children = (
-				C9D9014422AB84CD0040390E /* SignupViewController.swift */,
-				C9D9014622AB84D70040390E /* SignupUI.swift */,
-				C9CC28F122AD3BA6006E69E5 /* SignupRouting.swift */,
-			);
-			path = Signup;
 			sourceTree = "<group>";
 		};
 		CAAD1932AE5B4EA8D832F051 /* Frameworks */ = {
@@ -555,48 +596,53 @@
 			buildActionMask = 2147483647;
 			files = (
 				C9D9013822AB5E480040390E /* LoginInputPresenterImpl.swift in Sources */,
-				C9CC28F222AD3BA6006E69E5 /* SignupRouting.swift in Sources */,
-				C9D9014722AB84D70040390E /* SignupUI.swift in Sources */,
 				C9D9014922AB85890040390E /* TopRouting.swift in Sources */,
+				C97DDD9622AD879800A84219 /* AccountDataStore.swift in Sources */,
 				C9D9013B22AB5E800040390E /* TopViewController.swift in Sources */,
 				C9D9010922AB44D80040390E /* AppUserDefault.swift in Sources */,
 				C9D9010C22AB456D0040390E /* Date+Extension.swift in Sources */,
 				C97DDD7B22AD543F00A84219 /* SignupInputPresenter.swift in Sources */,
 				C9CC28F422AD3BEB006E69E5 /* SignupInputViewController.swift in Sources */,
-				C94F080D22ABE98E00BF3534 /* SwitchingView.swift in Sources */,
 				C94F080F22ABEBF800BF3534 /* UIVIew+Extension.swift in Sources */,
+				C9B55D0F22B0FE2E00845381 /* RemingRouting.swift in Sources */,
 				C9CC28E922ACD892006E69E5 /* LoginInputViewController.swift in Sources */,
 				C9D9011022AB4EE20040390E /* UIAlertAction+Extension.swift in Sources */,
 				C9CC28F822AD3C03006E69E5 /* SignupInputRouting.swift in Sources */,
-				C9D9012522AB53490040390E /* LoginViewController.swift in Sources */,
 				C9D9013D22AB5E870040390E /* TopUI.swift in Sources */,
 				C9D9013122AB55F40040390E /* LoginInputPresenter.swift in Sources */,
-				C9CC28ED22ACDDC1006E69E5 /* LoginRouting.swift in Sources */,
+				C9B55D0D22B0FE2200845381 /* RemindUI.swift in Sources */,
 				C9D9011B22AB513B0040390E /* UIColor+Extension.swift in Sources */,
 				C9D9012122AB52760040390E /* UIViewController+Extension.swift in Sources */,
 				C9D9012A22AB538E0040390E /* UI.swift in Sources */,
+				C97DDD9322AD85ED00A84219 /* Translator.swift in Sources */,
 				C9D9011722AB50D20040390E /* TextComponent.swift in Sources */,
 				C9D9011222AB4F130040390E /* UIBarButtonItem+Extension.swift in Sources */,
+				C9B55D1422B1010C00845381 /* RemindPresenterImpl.swift in Sources */,
 				C9CC28EF22AD1288006E69E5 /* LoginInputRouting.swift in Sources */,
 				C9D9010E22AB458B0040390E /* NSLayoutAnchor+Extension.swift in Sources */,
 				C9CC28FB22AD505A006E69E5 /* Validate.swift in Sources */,
+				C97DDD9122AD83CC00A84219 /* AccountTranslator.swift in Sources */,
 				C9D9011422AB502E0040390E /* UIButton+Extension.swift in Sources */,
 				C9CC28EB22ACD89D006E69E5 /* LoginInputUI.swift in Sources */,
 				C9D9011D22AB51830040390E /* UILabel+Extension.swift in Sources */,
 				C9A1573522A6CA1F00D7D047 /* AppDelegate.swift in Sources */,
 				C9D9014122AB77B40040390E /* VerticalStackView.swift in Sources */,
+				C9B55D0B22B0FE1B00845381 /* RemindViewController.swift in Sources */,
 				C97DDD8B22AD755B00A84219 /* AccountEntity.swift in Sources */,
 				C9D9011F22AB51C40040390E /* UITextField+Extension.swift in Sources */,
 				C97DDD7D22AD544E00A84219 /* SignupInputPresenterImpl.swift in Sources */,
+				C90535CB22AFBD55006B2E04 /* Provider.swift in Sources */,
 				C9CC28F622AD3BF8006E69E5 /* SignupInputUI.swift in Sources */,
+				C9B55D1622B1062600845381 /* RemindUseCase.swift in Sources */,
+				C9B55D1222B1010200845381 /* RemindPresenter.swift in Sources */,
 				C97DDD7F22AD550F00A84219 /* Presenter.swift in Sources */,
 				C9D9012D22AB54220040390E /* Routing.swift in Sources */,
-				C9D9014522AB84CD0040390E /* SignupViewController.swift in Sources */,
 				C9D9011922AB50FD0040390E /* UIFont+Extension.swift in Sources */,
 				C95ADED022AB141D00D851A0 /* R.generated.swift in Sources */,
-				C9D9012722AB53620040390E /* LoginUI.swift in Sources */,
 				C97DDD8222AD71C100A84219 /* SignupUseCase.swift in Sources */,
 				C97DDD8522AD74C900A84219 /* Account.swift in Sources */,
+				C97DDD8E22AD82AC00A84219 /* AccountRepository.swift in Sources */,
+				C9C844B522AFADB000083280 /* LoginUseCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
