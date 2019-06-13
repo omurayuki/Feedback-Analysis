@@ -1,6 +1,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import Firebase
 
 class SignupInputViewController: UIViewController {
     
@@ -56,6 +57,10 @@ extension SignupInputViewController: SignupInputPresenterView {
     }
     
     func didSignupSuccess(account: Account) {
+        presenter.setData(documentRef: .userRef, fields: Initial.userData)
+    }
+    
+    func didSaveUserData() {
         routing.moveMainPage()
     }
 }

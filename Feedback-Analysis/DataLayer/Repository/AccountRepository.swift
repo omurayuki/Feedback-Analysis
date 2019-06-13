@@ -5,6 +5,7 @@ protocol AccountRepository {
     func signup(email: String, pass: String) -> Single<AccountEntity>
     func login(email: String, pass: String) -> Single<AccountEntity>
     func reissuePassword(email: String) -> Single<()>
+    func setData(documentRef: FirebaseDocumentRef, fields: [String : Any]) -> Single<()>
 }
 
 struct AccountRepositoryImpl: AccountRepository {
@@ -23,5 +24,9 @@ struct AccountRepositoryImpl: AccountRepository {
     
     func reissuePassword(email: String) -> Single<()> {
         return dataStore.reissuePassword(email: email)
+    }
+    
+    func setData(documentRef: FirebaseDocumentRef, fields: [String : Any]) -> Single<()> {
+        return dataStore.setData(documentRef: documentRef, fields: fields)
     }
 }

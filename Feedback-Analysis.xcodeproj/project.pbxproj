@@ -26,6 +26,15 @@
 		C9A1573522A6CA1F00D7D047 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A1573422A6CA1F00D7D047 /* AppDelegate.swift */; };
 		C9A1573C22A6CA2000D7D047 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9A1573B22A6CA2000D7D047 /* Assets.xcassets */; };
 		C9A1573F22A6CA2000D7D047 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9A1573D22A6CA2000D7D047 /* LaunchScreen.storyboard */; };
+		C9A6065922B1DF8700184E0F /* TimelineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A6065822B1DF8700184E0F /* TimelineCell.swift */; };
+		C9A6065B22B2633600184E0F /* UIStackView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A6065A22B2633600184E0F /* UIStackView+Extension.swift */; };
+		C9A6065D22B2643F00184E0F /* TimelineCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A6065C22B2643F00184E0F /* TimelineCell+Extension.swift */; };
+		C9A6066122B2676B00184E0F /* MypagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A6066022B2676B00184E0F /* MypagePresenter.swift */; };
+		C9A6066722B26CCB00184E0F /* MypagePresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A6066622B26CCB00184E0F /* MypagePresenterImpl.swift */; };
+		C9A6066A22B26DDB00184E0F /* MypageUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A6066922B26DDB00184E0F /* MypageUseCase.swift */; };
+		C9A6066C22B26E1F00184E0F /* MypageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A6066B22B26E1F00184E0F /* MypageRepository.swift */; };
+		C9A6066F22B2980700184E0F /* Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A6066E22B2980700184E0F /* Firebase.swift */; };
+		C9A6067122B2980D00184E0F /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A6067022B2980D00184E0F /* Const.swift */; };
 		C9B55D0B22B0FE1B00845381 /* RemindViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B55D0A22B0FE1B00845381 /* RemindViewController.swift */; };
 		C9B55D0D22B0FE2200845381 /* RemindUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B55D0C22B0FE2200845381 /* RemindUI.swift */; };
 		C9B55D0F22B0FE2E00845381 /* RemingRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B55D0E22B0FE2E00845381 /* RemingRouting.swift */; };
@@ -60,6 +69,10 @@
 		C9D9013D22AB5E870040390E /* TopUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D9013C22AB5E870040390E /* TopUI.swift */; };
 		C9D9014122AB77B40040390E /* VerticalStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D9014022AB77B40040390E /* VerticalStackView.swift */; };
 		C9D9014922AB85890040390E /* TopRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D9014822AB85890040390E /* TopRouting.swift */; };
+		C9ED71FE22B137C400BDB9A7 /* MypageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9ED71FD22B137C400BDB9A7 /* MypageViewController.swift */; };
+		C9ED720022B137CD00BDB9A7 /* MypageUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9ED71FF22B137CD00BDB9A7 /* MypageUI.swift */; };
+		C9ED720222B137D700BDB9A7 /* MypageRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9ED720122B137D700BDB9A7 /* MypageRouting.swift */; };
+		C9ED720422B16A7700BDB9A7 /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9ED720322B16A7600BDB9A7 /* CustomSegmentedControl.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -85,6 +98,15 @@
 		C9A1573B22A6CA2000D7D047 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C9A1573E22A6CA2000D7D047 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C9A1574022A6CA2000D7D047 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C9A6065822B1DF8700184E0F /* TimelineCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineCell.swift; sourceTree = "<group>"; };
+		C9A6065A22B2633600184E0F /* UIStackView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extension.swift"; sourceTree = "<group>"; };
+		C9A6065C22B2643F00184E0F /* TimelineCell+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimelineCell+Extension.swift"; sourceTree = "<group>"; };
+		C9A6066022B2676B00184E0F /* MypagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypagePresenter.swift; sourceTree = "<group>"; };
+		C9A6066622B26CCB00184E0F /* MypagePresenterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypagePresenterImpl.swift; sourceTree = "<group>"; };
+		C9A6066922B26DDB00184E0F /* MypageUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageUseCase.swift; sourceTree = "<group>"; };
+		C9A6066B22B26E1F00184E0F /* MypageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageRepository.swift; sourceTree = "<group>"; };
+		C9A6066E22B2980700184E0F /* Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Firebase.swift; sourceTree = "<group>"; };
+		C9A6067022B2980D00184E0F /* Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
 		C9B55D0A22B0FE1B00845381 /* RemindViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindViewController.swift; sourceTree = "<group>"; };
 		C9B55D0C22B0FE2200845381 /* RemindUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindUI.swift; sourceTree = "<group>"; };
 		C9B55D0E22B0FE2E00845381 /* RemingRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemingRouting.swift; sourceTree = "<group>"; };
@@ -119,6 +141,10 @@
 		C9D9013C22AB5E870040390E /* TopUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopUI.swift; sourceTree = "<group>"; };
 		C9D9014022AB77B40040390E /* VerticalStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalStackView.swift; sourceTree = "<group>"; };
 		C9D9014822AB85890040390E /* TopRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopRouting.swift; sourceTree = "<group>"; };
+		C9ED71FD22B137C400BDB9A7 /* MypageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageViewController.swift; sourceTree = "<group>"; };
+		C9ED71FF22B137CD00BDB9A7 /* MypageUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageUI.swift; sourceTree = "<group>"; };
+		C9ED720122B137D700BDB9A7 /* MypageRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageRouting.swift; sourceTree = "<group>"; };
+		C9ED720322B16A7600BDB9A7 /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
 		DF2047041B81E420DAE3BDD1 /* Pods-Feedback-Analysis.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Feedback-Analysis.release.xcconfig"; path = "Target Support Files/Pods-Feedback-Analysis/Pods-Feedback-Analysis.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -183,6 +209,7 @@
 				C97DDD8122AD71C100A84219 /* SignupUseCase.swift */,
 				C9C844B422AFADB000083280 /* LoginUseCase.swift */,
 				C9B55D1522B1062600845381 /* RemindUseCase.swift */,
+				C9A6066922B26DDB00184E0F /* MypageUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -207,6 +234,7 @@
 			isa = PBXGroup;
 			children = (
 				C97DDD8D22AD82AC00A84219 /* AccountRepository.swift */,
+				C9A6066B22B26E1F00184E0F /* MypageRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -263,6 +291,32 @@
 			path = "Feedback-Analysis";
 			sourceTree = "<group>";
 		};
+		C9A6065722B1DF6000184E0F /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				C9A6065822B1DF8700184E0F /* TimelineCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		C9A6066822B26D9800184E0F /* Mypage */ = {
+			isa = PBXGroup;
+			children = (
+				C9A6066022B2676B00184E0F /* MypagePresenter.swift */,
+				C9A6066622B26CCB00184E0F /* MypagePresenterImpl.swift */,
+			);
+			path = Mypage;
+			sourceTree = "<group>";
+		};
+		C9A6066D22B297E600184E0F /* Const */ = {
+			isa = PBXGroup;
+			children = (
+				C9A6066E22B2980700184E0F /* Firebase.swift */,
+				C9A6067022B2980D00184E0F /* Const.swift */,
+			);
+			path = Const;
+			sourceTree = "<group>";
+		};
 		C9B55D0922B0FE0700845381 /* Remind */ = {
 			isa = PBXGroup;
 			children = (
@@ -315,6 +369,7 @@
 		C9D9010322AB44150040390E /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				C9A6066D22B297E600184E0F /* Const */,
 				C9CC28F922AD5024006E69E5 /* Service */,
 				C9D9013F22AB77890040390E /* Custom */,
 				C9D9013E22AB685D0040390E /* Maker */,
@@ -349,12 +404,14 @@
 		C9D9010622AB44400040390E /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				C9A6065722B1DF6000184E0F /* Cell */,
 				C9D9012822AB53800040390E /* UI */,
 				C9D9012B22AB54180040390E /* Routing */,
 				C9D9012E22AB55C90040390E /* Presenter */,
 				C9D9013922AB5E700040390E /* Top */,
 				C9D9012222AB532A0040390E /* Account */,
 				C95E08A922B116EF000C41C7 /* MainTab */,
+				C9ED71FC22B1375300BDB9A7 /* Mypage */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -381,6 +438,8 @@
 				C9D9011E22AB51C40040390E /* UITextField+Extension.swift */,
 				C9D9012022AB52760040390E /* UIViewController+Extension.swift */,
 				C94F080E22ABEBF800BF3534 /* UIVIew+Extension.swift */,
+				C9A6065A22B2633600184E0F /* UIStackView+Extension.swift */,
+				C9A6065C22B2643F00184E0F /* TimelineCell+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -424,6 +483,7 @@
 			children = (
 				C97DDD7E22AD550F00A84219 /* Presenter.swift */,
 				C9D9012F22AB55DE0040390E /* Account */,
+				C9A6066822B26D9800184E0F /* Mypage */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -459,8 +519,19 @@
 			isa = PBXGroup;
 			children = (
 				C9D9014022AB77B40040390E /* VerticalStackView.swift */,
+				C9ED720322B16A7600BDB9A7 /* CustomSegmentedControl.swift */,
 			);
 			path = Custom;
+			sourceTree = "<group>";
+		};
+		C9ED71FC22B1375300BDB9A7 /* Mypage */ = {
+			isa = PBXGroup;
+			children = (
+				C9ED71FD22B137C400BDB9A7 /* MypageViewController.swift */,
+				C9ED71FF22B137CD00BDB9A7 /* MypageUI.swift */,
+				C9ED720122B137D700BDB9A7 /* MypageRouting.swift */,
+			);
+			path = Mypage;
 			sourceTree = "<group>";
 		};
 		CAAD1932AE5B4EA8D832F051 /* Frameworks */ = {
@@ -606,6 +677,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9A6066C22B26E1F00184E0F /* MypageRepository.swift in Sources */,
 				C9D9013822AB5E480040390E /* LoginInputPresenterImpl.swift in Sources */,
 				C9D9014922AB85890040390E /* TopRouting.swift in Sources */,
 				C97DDD9622AD879800A84219 /* AccountDataStore.swift in Sources */,
@@ -613,26 +685,34 @@
 				C9D9010922AB44D80040390E /* AppUserDefault.swift in Sources */,
 				C9D9010C22AB456D0040390E /* Date+Extension.swift in Sources */,
 				C97DDD7B22AD543F00A84219 /* SignupInputPresenter.swift in Sources */,
+				C9A6066722B26CCB00184E0F /* MypagePresenterImpl.swift in Sources */,
+				C9A6066122B2676B00184E0F /* MypagePresenter.swift in Sources */,
 				C9CC28F422AD3BEB006E69E5 /* SignupInputViewController.swift in Sources */,
 				C94F080F22ABEBF800BF3534 /* UIVIew+Extension.swift in Sources */,
+				C9ED720222B137D700BDB9A7 /* MypageRouting.swift in Sources */,
 				C95E08AB22B11750000C41C7 /* MainTabController.swift in Sources */,
 				C9B55D0F22B0FE2E00845381 /* RemingRouting.swift in Sources */,
 				C9CC28E922ACD892006E69E5 /* LoginInputViewController.swift in Sources */,
 				C9D9011022AB4EE20040390E /* UIAlertAction+Extension.swift in Sources */,
+				C9A6065D22B2643F00184E0F /* TimelineCell+Extension.swift in Sources */,
 				C9CC28F822AD3C03006E69E5 /* SignupInputRouting.swift in Sources */,
 				C9D9013D22AB5E870040390E /* TopUI.swift in Sources */,
 				C9D9013122AB55F40040390E /* LoginInputPresenter.swift in Sources */,
 				C9B55D0D22B0FE2200845381 /* RemindUI.swift in Sources */,
 				C9D9011B22AB513B0040390E /* UIColor+Extension.swift in Sources */,
 				C9D9012122AB52760040390E /* UIViewController+Extension.swift in Sources */,
+				C9A6066A22B26DDB00184E0F /* MypageUseCase.swift in Sources */,
 				C9D9012A22AB538E0040390E /* UI.swift in Sources */,
 				C97DDD9322AD85ED00A84219 /* Translator.swift in Sources */,
 				C9D9011722AB50D20040390E /* TextComponent.swift in Sources */,
 				C9D9011222AB4F130040390E /* UIBarButtonItem+Extension.swift in Sources */,
+				C9A6065922B1DF8700184E0F /* TimelineCell.swift in Sources */,
 				C9B55D1422B1010C00845381 /* RemindPresenterImpl.swift in Sources */,
 				C9CC28EF22AD1288006E69E5 /* LoginInputRouting.swift in Sources */,
+				C9ED71FE22B137C400BDB9A7 /* MypageViewController.swift in Sources */,
 				C9D9010E22AB458B0040390E /* NSLayoutAnchor+Extension.swift in Sources */,
 				C9CC28FB22AD505A006E69E5 /* Validate.swift in Sources */,
+				C9A6067122B2980D00184E0F /* Const.swift in Sources */,
 				C97DDD9122AD83CC00A84219 /* AccountTranslator.swift in Sources */,
 				C9D9011422AB502E0040390E /* UIButton+Extension.swift in Sources */,
 				C9CC28EB22ACD89D006E69E5 /* LoginInputUI.swift in Sources */,
@@ -646,11 +726,15 @@
 				C90535CB22AFBD55006B2E04 /* Provider.swift in Sources */,
 				C9CC28F622AD3BF8006E69E5 /* SignupInputUI.swift in Sources */,
 				C9B55D1622B1062600845381 /* RemindUseCase.swift in Sources */,
+				C9A6065B22B2633600184E0F /* UIStackView+Extension.swift in Sources */,
+				C9A6066F22B2980700184E0F /* Firebase.swift in Sources */,
 				C9B55D1222B1010200845381 /* RemindPresenter.swift in Sources */,
 				C97DDD7F22AD550F00A84219 /* Presenter.swift in Sources */,
+				C9ED720422B16A7700BDB9A7 /* CustomSegmentedControl.swift in Sources */,
 				C9D9012D22AB54220040390E /* Routing.swift in Sources */,
 				C9D9011922AB50FD0040390E /* UIFont+Extension.swift in Sources */,
 				C95ADED022AB141D00D851A0 /* R.generated.swift in Sources */,
+				C9ED720022B137CD00BDB9A7 /* MypageUI.swift in Sources */,
 				C97DDD8222AD71C100A84219 /* SignupUseCase.swift in Sources */,
 				C97DDD8522AD74C900A84219 /* Account.swift in Sources */,
 				C97DDD8E22AD82AC00A84219 /* AccountRepository.swift in Sources */,

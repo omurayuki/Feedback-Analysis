@@ -49,8 +49,7 @@ extension TopUIImpl {
     func setup() {
         guard let vc = viewController else { return }
         vc.view.backgroundColor = .appMainColor
-        vc.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-        vc.navigationController?.navigationBar.shadowImage = UIImage()
+        vc.clearNavBar()
         [iconWrapView, loginBtn, signupBtn].forEach { vc.view.addSubview($0) }
         iconWrapView.addSubview(icon)
         

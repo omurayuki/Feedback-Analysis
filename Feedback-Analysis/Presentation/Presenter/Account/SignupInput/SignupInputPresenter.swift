@@ -7,6 +7,7 @@ protocol SignupInputPresenter: Presenter {
     var isLoading: BehaviorRelay<Bool> { get }
     
     func signup(email: String, pass: String)
+    func setData(documentRef: FirebaseDocumentRef, fields: [String: Any])
 }
 
 protocol SignupInputPresenterView: class {
@@ -17,6 +18,7 @@ protocol SignupInputPresenterView: class {
                 disposeBag: DisposeBag,
                 routing: SignupInputRouting)
     func didSignupSuccess(account: Account)
+    func didSaveUserData()
     func showError(message: String)
     func updateLoading(_ isLoading: Bool)
 }

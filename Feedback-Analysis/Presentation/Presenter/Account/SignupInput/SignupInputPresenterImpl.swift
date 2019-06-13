@@ -4,6 +4,7 @@ import RxSwift
 import RxCocoa
 
 class SignupInputPresenterImpl: SignupInputPresenter {
+    
     weak var view: SignupInputPresenterView!
     var isLoading: BehaviorRelay<Bool> = BehaviorRelay<Bool>(value: false)
     private var useCase: SignupUseCase
@@ -18,9 +19,23 @@ class SignupInputPresenterImpl: SignupInputPresenter {
             .subscribe { result in
                 switch result {
                 case .success(let account):
-                    // userdefaultsに保存処理
-                    self.view.updateLoading(false)
+                    AppUserDefaults.setAuthToken(token: account.authToken)
+                    AppUserDefaults.setAccountEmail(email: account.email)
                     self.view.didSignupSuccess(account: account)
+                case .error(let error):
+                    self.view.updateLoading(false)
+                    self.view.showError(message: error.localizedDescription)
+                }
+            }.disposed(by: view.disposeBag)
+    }
+    
+    func setData(documentRef: FirebaseDocumentRef, fields: [String : Any]) {
+        useCase.setData(documentRef: documentRef, fields: fields)
+            .subscribe { result in
+                switch result {
+                case .success(_):
+                    self.view.updateLoading(false)
+                    self.view.didSaveUserData()
                 case .error(let error):
                     self.view.updateLoading(false)
                     self.view.showError(message: error.localizedDescription)

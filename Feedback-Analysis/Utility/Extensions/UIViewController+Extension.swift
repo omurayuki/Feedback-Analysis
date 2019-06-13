@@ -58,4 +58,9 @@ extension UIViewController {
             MBProgressHUD.hide(for: view, animated: true)
         }
     }
+    
+    func clearNavBar() {
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+    }
 }

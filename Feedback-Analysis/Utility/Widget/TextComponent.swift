@@ -32,6 +32,7 @@ enum TextComponent {
     case h4_PurpleyGrey
     case h4_CoolGrey
     case h4_Bold
+    case h4_appMain
     case title
     case title_White
     case title_Black40
@@ -52,6 +53,8 @@ enum TextComponent {
     case cap_LightGray
     case cap_Bold
     case cap_Bold_White
+    case appMain
+    case body_CoolGrey13
     
     var font: UIFont {
         switch self {
@@ -61,9 +64,9 @@ enum TextComponent {
             return .font(.fontSize22)
         case .h3, .h3_White, .h3_coolGrey, .h3_CharcoalGrey, .h3_OliveGreen:
             return .font(.fontSize20)
-        case .h4, .h4_White, .h4_CharcoalGrey25, .h4_CharcoalGrey, .h4_LightishGreen, .h4_ReddishOrange, .h4_PurpleyGrey, .h4_CoolGrey:
+        case .h4, .h4_White, .h4_CharcoalGrey25, .h4_CharcoalGrey, .h4_LightishGreen, .h4_ReddishOrange, .h4_PurpleyGrey, .h4_CoolGrey, .h4_appMain:
             return .font(.fontSize17)
-        case .title, .title_White, .title_Black40, .title_CharcoalGrey, .title_LightishGreen, .title_Bold_LightishGreen:
+        case .title, .title_White, .title_Black40, .title_CharcoalGrey, .title_LightishGreen, .title_Bold_LightishGreen, .body_CoolGrey13:
             return .font(.fontSize13)
         case .body, .body_LightGray, .body_CharcoalGrey80, .body_CoolGrey, .body_CharcoalGrey, .body_White:
             return .font(.fontSize12)
@@ -77,7 +80,7 @@ enum TextComponent {
             return .fontBold(.fontSize20)
         case .h4_Bold:
             return .fontBold(.fontSize17)
-        case .title_Bold:
+        case .title_Bold, .appMain:
             return .fontBold(.fontSize13)
         case .body_Bold, .body_Bold_White:
             return .fontBold(.fontSize12)
@@ -102,7 +105,7 @@ enum TextComponent {
             return .appCharcoalGrey25
         case .body_CharcoalGrey80:
             return .appCharcoalGrey80
-        case .body_CoolGrey, .h3_coolGrey, .h4_CoolGrey:
+        case .body_CoolGrey, .h3_coolGrey, .h4_CoolGrey, .body_CoolGrey13:
             return .appCoolGrey
         case .h2_LightishGreen, .h4_LightishGreen, .title_LightishGreen, .title_Bold_LightishGreen:
             return .appLightishGreen
@@ -112,6 +115,8 @@ enum TextComponent {
             return .appPurpleyGrey
         case .h1_Bold_OliveGreen, .h2_OliveGreen, .h3_OliveGreen:
             return .appOliveGreen
+        case .h4_appMain, .appMain:
+            return .appMainColor
         }
     }
 }

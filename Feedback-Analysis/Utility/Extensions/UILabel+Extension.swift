@@ -13,6 +13,4 @@ extension UILabel {
         backgroundColor = .clear
         font = textComponent.font
     }
-    
-    
 }

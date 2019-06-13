@@ -6,12 +6,6 @@ import FirebaseCore
 import FirebaseAuth
 import RxSwift
 
-enum FirebaseError: Error {
-    case networkError
-    case resultError(Error)
-    case unknown
-}
-
 struct Provider {
     
     func signup(email: String, pass: String) -> Single<AccountEntity> {
@@ -62,10 +56,11 @@ struct Provider {
         })
     }
     
-    func setData(documentRef: DocumentReference,
+    func setData(documentRef: FirebaseDocumentRef,
                  fields: [String: Any]) -> Single<()> {
         return Single.create(subscribe: { single -> Disposable in
             documentRef
+                .destination
                 .setData(fields, completion: { error in
                     if let error = error {
                         single(.error(FirebaseError.resultError(error)))

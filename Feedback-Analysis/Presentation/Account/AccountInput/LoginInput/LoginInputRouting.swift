@@ -13,10 +13,7 @@ final class LoginInputRoutingImpl: LoginInputRouting {
     var viewController: UIViewController?
     
     func moveMainPage() {
-        let vc = MainTabController(timeline: UIViewController(),
-                                   notification: UIViewController(),
-                                   mailList: UIViewController(),
-                                   mypage: UIViewController())
+        let vc = MainTabController()
         viewController?.present(vc, animated: true)
     }
     
