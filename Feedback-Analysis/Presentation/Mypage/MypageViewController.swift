@@ -4,8 +4,14 @@ import RxSwift
 import RxCocoa
 
 class MypageViewController: UIViewController {
-    // struct作成 そのためにapi叩く unknownのデータを取得する　済み!!そのために新規登録時にunknownのデータをfirestoreに置く
-    // data切り替え
+    // 編集画面作成とつなぎこみ
+    // 画像関係着手
+    // 設定画面作成
+    // 設定画面つなぎこみ
+    // 目標投稿画面作成
+    // 目標投稿APIつなぎこみ
+    // タイムライン取得
+    // data切り替え()
     // tableview切り出し
     // segmentedControl切り出し
     // 投稿ボタン作成
@@ -24,17 +30,25 @@ class MypageViewController: UIViewController {
     var disposeBag: DisposeBag! {
         didSet {
             ui.editBtn.rx.tap.asDriver()
-                .drive(onNext: { _ in
-                    print("変更画面へ遷移")
+                .drive(onNext: { [unowned self] _ in
+                    self.routing.moveEditPage(user: ["name": self.ui.userName.text ?? "",
+                                                     "content": self.ui.contentField.text ?? "",
+                                                     "residence": self.ui.residenceField.text ?? "",
+                                                     "birth": self.ui.birthDayField.text ?? ""])
                 }).disposed(by: disposeBag)
         }
     }
     
-    func inject(ui: MypageUI, presenter: MypagePresenter, routing: MypageRouting, disposeBag: DisposeBag) {
+    func inject(ui: MypageUI,
+                presenter: MypagePresenter,
+                routing: MypageRouting,
+                disposeBag: DisposeBag) {
         self.ui = ui
         self.presenter = presenter
         self.routing = routing
         self.disposeBag = disposeBag
+        
+        self.presenter.fetch(to: .userRef, completion: nil)
     }
     
     override func viewDidLoad() {
@@ -63,12 +77,9 @@ extension MypageViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: TimelineCell.self),
                                                        for: indexPath) as? TimelineCell else { return UITableViewCell() }
-        cell.configure(photo: #imageLiteral(resourceName: "logo"),
-                       name: "ゆうきんぐ", time: "5時間前",
-                       content: "wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww",
-                       postImage: [#imageLiteral(resourceName: "logo"), #imageLiteral(resourceName: "logo"), #imageLiteral(resourceName: "logo"), #imageLiteral(resourceName: "logo")],
-                       commentted: "5",
-                       like: "13")
+        cell.configure(photo: #imageLiteral(resourceName: "logo"), name: "ゆうきんぐ",
+                       time: "5時間前", content: "wwwwwwwwwwwwwwwww",
+                       postImage: [#imageLiteral(resourceName: "logo"), #imageLiteral(resourceName: "logo"), #imageLiteral(resourceName: "logo"), #imageLiteral(resourceName: "logo")], commentted: "5", like: "13")
         return cell
     }
 }
@@ -83,7 +94,15 @@ extension MypageViewController: MypagePresenterView {
         presenter.isLoading.accept(isLoading)
     }
     
-    func didLoginSuccess(account: Account) {
-        print(account)
+    func didFetchUserData(user: User) {
+        ui.updateUser(user: user)
+    }
+}
+
+extension MypageViewController: UpdatingDelegate {
+    func updateMypage(completion: @escaping () -> Void) {
+        presenter.fetch(to: .userRef) {
+            completion()
+        }
     }
 }

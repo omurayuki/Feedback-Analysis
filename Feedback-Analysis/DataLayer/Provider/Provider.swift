@@ -72,10 +72,11 @@ struct Provider {
         })
     }
     
-    func update(documentRef: DocumentReference,
+    func update(documentRef: FirebaseDocumentRef,
                 fields: [String: Any]) -> Single<()> {
         return Single.create(subscribe: { single -> Disposable in
             documentRef
+                .destination
                 .updateData(fields, completion: { error in
                     if let error = error {
                         single(.error(FirebaseError.resultError(error)))
@@ -87,18 +88,24 @@ struct Provider {
         })
     }
     
-    func get(documentRef: DocumentReference) -> Single<DocumentSnapshot> {
+    func get(documentRef: FirebaseDocumentRef) -> Single<[String: Any]> {
         return Single.create(subscribe: { single -> Disposable in
-            documentRef.getDocument(completion: { snapshot, error in
-                if let error = error {
-                    single(.error(FirebaseError.resultError(error)))
-                    return
-                }
-                guard let snapshot = snapshot else {
-                    single(.error(FirebaseError.unknown))
-                    return
-                }
-                single(.success(snapshot))
+            documentRef
+                .destination
+                .getDocument(completion: { snapshot, error in
+                    if let error = error {
+                        single(.error(FirebaseError.resultError(error)))
+                        return
+                    }
+                    guard let snapshot = snapshot, snapshot.exists else {
+                        single(.error(FirebaseError.unknown))
+                        return
+                    }
+                    guard let documentData = snapshot.data() else {
+                        single(.error(FirebaseError.unknown))
+                        return
+                    }
+                    single(.success(documentData))
             })
             return Disposables.create()
         })

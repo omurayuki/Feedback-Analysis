@@ -2,27 +2,25 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-class MypagePresenterImpl: MypagePresenter {
-    
-    var view: MypagePresenterView!
+class EditPresenterImpl: EditPresenter {
+    var view: EditPresenterView!
     
     var isLoading: BehaviorRelay<Bool> = BehaviorRelay<Bool>(value: false)
     
-    private var useCase: MypageUseCase
+    private var useCase: EditUseCase
     
-    init(useCase: MypageUseCase) {
+    init(useCase: EditUseCase) {
         self.useCase = useCase
     }
     
-    func fetch(to documentRef: FirebaseDocumentRef, completion: (() -> Void)? = nil) {
-        self.view.updateLoading(true)
-        useCase.fetch(to: documentRef)
+    func update(to documentRef: FirebaseDocumentRef, user: Update) {
+        view.updateLoading(true)
+        useCase.update(to: documentRef, user: user)
             .subscribe { result in
                 switch result {
-                case .success(let response):
+                case .success(_):
                     self.view.updateLoading(false)
-                    self.view.didFetchUserData(user: response)
-                    completion?()
+                    self.view.didEditUserData()
                 case .error(let error):
                     self.view.updateLoading(false)
                     self.view.showError(message: error.localizedDescription)

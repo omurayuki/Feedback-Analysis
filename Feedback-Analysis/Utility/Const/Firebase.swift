@@ -23,7 +23,7 @@ enum FirebaseDocumentRef {
 
 struct Initial {
     static let userData = ["name": "未設定", "content": "紹介文を記入しましょう",
-                           "destination": "不明", "birth": "未設定",
+                           "residence": "不明", "birth": "未設定",
                            "follow": 0, "follower": 0,
                            "created_at": FieldValue.serverTimestamp()] as [String : Any]
 }

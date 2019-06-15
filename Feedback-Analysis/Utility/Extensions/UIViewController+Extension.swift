@@ -51,6 +51,20 @@ extension UIViewController {
         }
     }
     
+    func validateUser(name: String, content: String,
+                      residence: String, birth: String,
+                      account execute: @escaping (_ name: String, _ content: String, _ residence: String, _ birth: String) -> Void) {
+        switch UserValidation.validateUser(name: name, content: content, residence: residence, birth: birth) {
+        case .empty(let str):            self.showError(message: str)
+        case .nameExceeded(let str):     self.showError(message: str)
+        case .contentExceeded(let str):  self.showError(message: str)
+        case .ok(let name,
+                 let content,
+                 let residence,
+                 let birth): execute(name, content, residence, birth)
+        }
+    }
+    
     func setIndicator(show: Bool) {
         if show {
             MBProgressHUD.showAdded(to: view, animated: true)

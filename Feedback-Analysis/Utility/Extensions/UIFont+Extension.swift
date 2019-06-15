@@ -15,6 +15,7 @@ extension UIFont {
         case fontSize22 = 22.0
         case fontSize20 = 20.0
         case fontSize17 = 17.0
+        case fontSize16 = 16.0
         case fontSize14 = 14.0
         case fontSize13 = 13.0
         case fontSize12 = 12.0

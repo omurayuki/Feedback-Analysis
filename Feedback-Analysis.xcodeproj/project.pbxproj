@@ -9,6 +9,16 @@
 /* Begin PBXBuildFile section */
 		602744EA86362BCEAE02995D /* Pods_Feedback_Analysis.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9999A439B460BE0979C86B1 /* Pods_Feedback_Analysis.framework */; };
 		C90535CB22AFBD55006B2E04 /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90535CA22AFBD55006B2E04 /* Provider.swift */; };
+		C91FA65422B4FF84006D9E6D /* EditPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91FA65322B4FF84006D9E6D /* EditPresenter.swift */; };
+		C91FA65622B4FF8B006D9E6D /* EditPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91FA65522B4FF8B006D9E6D /* EditPresenterImpl.swift */; };
+		C91FA65822B50401006D9E6D /* EditUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91FA65722B50401006D9E6D /* EditUseCase.swift */; };
+		C91FA65B22B53F9C006D9E6D /* Update.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91FA65A22B53F9C006D9E6D /* Update.swift */; };
+		C91FA65D22B5686B006D9E6D /* DateFormatter+ Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91FA65C22B5686B006D9E6D /* DateFormatter+ Extension.swift */; };
+		C91FA66022B577BB006D9E6D /* Residence.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91FA65F22B577BB006D9E6D /* Residence.swift */; };
+		C91FA66222B57D1E006D9E6D /* UIPickerView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91FA66122B57D1E006D9E6D /* UIPickerView+Extension.swift */; };
+		C926CD9E22B3C417008672AA /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C926CD9D22B3C417008672AA /* EditViewController.swift */; };
+		C926CDA022B3C41E008672AA /* EditUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C926CD9F22B3C41E008672AA /* EditUI.swift */; };
+		C926CDA222B3C425008672AA /* EditRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C926CDA122B3C425008672AA /* EditRouting.swift */; };
 		C94F080F22ABEBF800BF3534 /* UIVIew+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94F080E22ABEBF800BF3534 /* UIVIew+Extension.swift */; };
 		C95ADED022AB141D00D851A0 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95ADECF22AB141D00D851A0 /* R.generated.swift */; };
 		C95E08AB22B11750000C41C7 /* MainTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95E08AA22B11750000C41C7 /* MainTabController.swift */; };
@@ -35,6 +45,11 @@
 		C9A6066C22B26E1F00184E0F /* MypageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A6066B22B26E1F00184E0F /* MypageRepository.swift */; };
 		C9A6066F22B2980700184E0F /* Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A6066E22B2980700184E0F /* Firebase.swift */; };
 		C9A6067122B2980D00184E0F /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A6067022B2980D00184E0F /* Const.swift */; };
+		C9A6067322B2A60A00184E0F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A6067222B2A60A00184E0F /* User.swift */; };
+		C9A6067522B2A69D00184E0F /* UserEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A6067422B2A69D00184E0F /* UserEntity.swift */; };
+		C9A6067722B2A88500184E0F /* UserTranslater.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A6067622B2A88500184E0F /* UserTranslater.swift */; };
+		C9A6067922B2AAB600184E0F /* UserDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A6067822B2AAB600184E0F /* UserDataStore.swift */; };
+		C9AED93C22B4CDD2002D37A0 /* UnderlinedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9AED93B22B4CDD2002D37A0 /* UnderlinedTextField.swift */; };
 		C9B55D0B22B0FE1B00845381 /* RemindViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B55D0A22B0FE1B00845381 /* RemindViewController.swift */; };
 		C9B55D0D22B0FE2200845381 /* RemindUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B55D0C22B0FE2200845381 /* RemindUI.swift */; };
 		C9B55D0F22B0FE2E00845381 /* RemingRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B55D0E22B0FE2E00845381 /* RemingRouting.swift */; };
@@ -77,8 +92,20 @@
 
 /* Begin PBXFileReference section */
 		180FB39CDDE7BFB741E76AA9 /* Pods-Feedback-Analysis.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Feedback-Analysis.debug.xcconfig"; path = "Target Support Files/Pods-Feedback-Analysis/Pods-Feedback-Analysis.debug.xcconfig"; sourceTree = "<group>"; };
+		440CE6FDB95D81B063478286 /* Pods-Feedback-Analysis.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Feedback-Analysis.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Feedback-Analysis/Pods-Feedback-Analysis.debug.xcconfig"; sourceTree = "<group>"; };
+		99D1C6F9B4826294E3E1CBDF /* Pods-Feedback-Analysis.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Feedback-Analysis.release.xcconfig"; path = "Pods/Target Support Files/Pods-Feedback-Analysis/Pods-Feedback-Analysis.release.xcconfig"; sourceTree = "<group>"; };
 		A9999A439B460BE0979C86B1 /* Pods_Feedback_Analysis.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Feedback_Analysis.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C90535CA22AFBD55006B2E04 /* Provider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Provider.swift; sourceTree = "<group>"; };
+		C91FA65322B4FF84006D9E6D /* EditPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPresenter.swift; sourceTree = "<group>"; };
+		C91FA65522B4FF8B006D9E6D /* EditPresenterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPresenterImpl.swift; sourceTree = "<group>"; };
+		C91FA65722B50401006D9E6D /* EditUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditUseCase.swift; sourceTree = "<group>"; };
+		C91FA65A22B53F9C006D9E6D /* Update.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Update.swift; sourceTree = "<group>"; };
+		C91FA65C22B5686B006D9E6D /* DateFormatter+ Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+ Extension.swift"; sourceTree = "<group>"; };
+		C91FA65F22B577BB006D9E6D /* Residence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Residence.swift; sourceTree = "<group>"; };
+		C91FA66122B57D1E006D9E6D /* UIPickerView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIPickerView+Extension.swift"; sourceTree = "<group>"; };
+		C926CD9D22B3C417008672AA /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
+		C926CD9F22B3C41E008672AA /* EditUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditUI.swift; sourceTree = "<group>"; };
+		C926CDA122B3C425008672AA /* EditRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditRouting.swift; sourceTree = "<group>"; };
 		C94F080E22ABEBF800BF3534 /* UIVIew+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIVIew+Extension.swift"; sourceTree = "<group>"; };
 		C95ADECF22AB141D00D851A0 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
 		C95E08AA22B11750000C41C7 /* MainTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabController.swift; sourceTree = "<group>"; };
@@ -107,6 +134,11 @@
 		C9A6066B22B26E1F00184E0F /* MypageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageRepository.swift; sourceTree = "<group>"; };
 		C9A6066E22B2980700184E0F /* Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Firebase.swift; sourceTree = "<group>"; };
 		C9A6067022B2980D00184E0F /* Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
+		C9A6067222B2A60A00184E0F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		C9A6067422B2A69D00184E0F /* UserEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEntity.swift; sourceTree = "<group>"; };
+		C9A6067622B2A88500184E0F /* UserTranslater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTranslater.swift; sourceTree = "<group>"; };
+		C9A6067822B2AAB600184E0F /* UserDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataStore.swift; sourceTree = "<group>"; };
+		C9AED93B22B4CDD2002D37A0 /* UnderlinedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlinedTextField.swift; sourceTree = "<group>"; };
 		C9B55D0A22B0FE1B00845381 /* RemindViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindViewController.swift; sourceTree = "<group>"; };
 		C9B55D0C22B0FE2200845381 /* RemindUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindUI.swift; sourceTree = "<group>"; };
 		C9B55D0E22B0FE2E00845381 /* RemingRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemingRouting.swift; sourceTree = "<group>"; };
@@ -165,6 +197,8 @@
 			children = (
 				180FB39CDDE7BFB741E76AA9 /* Pods-Feedback-Analysis.debug.xcconfig */,
 				DF2047041B81E420DAE3BDD1 /* Pods-Feedback-Analysis.release.xcconfig */,
+				440CE6FDB95D81B063478286 /* Pods-Feedback-Analysis.debug.xcconfig */,
+				99D1C6F9B4826294E3E1CBDF /* Pods-Feedback-Analysis.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -175,6 +209,31 @@
 				C90535CA22AFBD55006B2E04 /* Provider.swift */,
 			);
 			path = Provider;
+			sourceTree = "<group>";
+		};
+		C91FA65222B4FF78006D9E6D /* Edit */ = {
+			isa = PBXGroup;
+			children = (
+				C91FA65322B4FF84006D9E6D /* EditPresenter.swift */,
+				C91FA65522B4FF8B006D9E6D /* EditPresenterImpl.swift */,
+			);
+			path = Edit;
+			sourceTree = "<group>";
+		};
+		C91FA65922B53F67006D9E6D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C91FA65A22B53F9C006D9E6D /* Update.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C91FA65E22B5778E006D9E6D /* Const */ = {
+			isa = PBXGroup;
+			children = (
+				C91FA65F22B577BB006D9E6D /* Residence.swift */,
+			);
+			path = Const;
 			sourceTree = "<group>";
 		};
 		C95E08A922B116EF000C41C7 /* MainTab */ = {
@@ -210,6 +269,7 @@
 				C9C844B422AFADB000083280 /* LoginUseCase.swift */,
 				C9B55D1522B1062600845381 /* RemindUseCase.swift */,
 				C9A6066922B26DDB00184E0F /* MypageUseCase.swift */,
+				C91FA65722B50401006D9E6D /* EditUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -218,6 +278,7 @@
 			isa = PBXGroup;
 			children = (
 				C97DDD8422AD74C900A84219 /* Account.swift */,
+				C9A6067222B2A60A00184E0F /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -226,6 +287,7 @@
 			isa = PBXGroup;
 			children = (
 				C97DDD8A22AD755B00A84219 /* AccountEntity.swift */,
+				C9A6067422B2A69D00184E0F /* UserEntity.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -244,6 +306,7 @@
 			children = (
 				C97DDD9222AD85ED00A84219 /* Translator.swift */,
 				C97DDD9022AD83CC00A84219 /* AccountTranslator.swift */,
+				C9A6067622B2A88500184E0F /* UserTranslater.swift */,
 			);
 			path = Translator;
 			sourceTree = "<group>";
@@ -252,6 +315,7 @@
 			isa = PBXGroup;
 			children = (
 				C97DDD9522AD879800A84219 /* AccountDataStore.swift */,
+				C9A6067822B2AAB600184E0F /* UserDataStore.swift */,
 			);
 			path = DataStore;
 			sourceTree = "<group>";
@@ -284,6 +348,7 @@
 				C9D9010522AB44390040390E /* DomainLayer */,
 				C9D9010622AB44400040390E /* Presentation */,
 				C9A1573B22A6CA2000D7D047 /* Assets.xcassets */,
+				C91FA65E22B5778E006D9E6D /* Const */,
 				C9A1573D22A6CA2000D7D047 /* LaunchScreen.storyboard */,
 				C97F9D0D22A6CCAA000779EF /* GoogleService-Info.plist */,
 				C9A1574022A6CA2000D7D047 /* Info.plist */,
@@ -304,6 +369,7 @@
 			children = (
 				C9A6066022B2676B00184E0F /* MypagePresenter.swift */,
 				C9A6066622B26CCB00184E0F /* MypagePresenterImpl.swift */,
+				C91FA65222B4FF78006D9E6D /* Edit */,
 			);
 			path = Mypage;
 			sourceTree = "<group>";
@@ -315,6 +381,16 @@
 				C9A6067022B2980D00184E0F /* Const.swift */,
 			);
 			path = Const;
+			sourceTree = "<group>";
+		};
+		C9A6067A22B3C3C000184E0F /* Edit */ = {
+			isa = PBXGroup;
+			children = (
+				C926CD9D22B3C417008672AA /* EditViewController.swift */,
+				C926CD9F22B3C41E008672AA /* EditUI.swift */,
+				C926CDA122B3C425008672AA /* EditRouting.swift */,
+			);
+			path = Edit;
 			sourceTree = "<group>";
 		};
 		C9B55D0922B0FE0700845381 /* Remind */ = {
@@ -404,6 +480,7 @@
 		C9D9010622AB44400040390E /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				C91FA65922B53F67006D9E6D /* Model */,
 				C9A6065722B1DF6000184E0F /* Cell */,
 				C9D9012822AB53800040390E /* UI */,
 				C9D9012B22AB54180040390E /* Routing */,
@@ -428,6 +505,7 @@
 			isa = PBXGroup;
 			children = (
 				C9D9010B22AB456D0040390E /* Date+Extension.swift */,
+				C91FA65C22B5686B006D9E6D /* DateFormatter+ Extension.swift */,
 				C9D9010D22AB458B0040390E /* NSLayoutAnchor+Extension.swift */,
 				C9D9010F22AB4EE20040390E /* UIAlertAction+Extension.swift */,
 				C9D9011122AB4F130040390E /* UIBarButtonItem+Extension.swift */,
@@ -440,6 +518,7 @@
 				C94F080E22ABEBF800BF3534 /* UIVIew+Extension.swift */,
 				C9A6065A22B2633600184E0F /* UIStackView+Extension.swift */,
 				C9A6065C22B2643F00184E0F /* TimelineCell+Extension.swift */,
+				C91FA66122B57D1E006D9E6D /* UIPickerView+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -520,6 +599,7 @@
 			children = (
 				C9D9014022AB77B40040390E /* VerticalStackView.swift */,
 				C9ED720322B16A7600BDB9A7 /* CustomSegmentedControl.swift */,
+				C9AED93B22B4CDD2002D37A0 /* UnderlinedTextField.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -530,6 +610,7 @@
 				C9ED71FD22B137C400BDB9A7 /* MypageViewController.swift */,
 				C9ED71FF22B137CD00BDB9A7 /* MypageUI.swift */,
 				C9ED720122B137D700BDB9A7 /* MypageRouting.swift */,
+				C9A6067A22B3C3C000184E0F /* Edit */,
 			);
 			path = Mypage;
 			sourceTree = "<group>";
@@ -682,22 +763,27 @@
 				C9D9014922AB85890040390E /* TopRouting.swift in Sources */,
 				C97DDD9622AD879800A84219 /* AccountDataStore.swift in Sources */,
 				C9D9013B22AB5E800040390E /* TopViewController.swift in Sources */,
+				C91FA65D22B5686B006D9E6D /* DateFormatter+ Extension.swift in Sources */,
 				C9D9010922AB44D80040390E /* AppUserDefault.swift in Sources */,
 				C9D9010C22AB456D0040390E /* Date+Extension.swift in Sources */,
+				C9A6067522B2A69D00184E0F /* UserEntity.swift in Sources */,
 				C97DDD7B22AD543F00A84219 /* SignupInputPresenter.swift in Sources */,
 				C9A6066722B26CCB00184E0F /* MypagePresenterImpl.swift in Sources */,
 				C9A6066122B2676B00184E0F /* MypagePresenter.swift in Sources */,
 				C9CC28F422AD3BEB006E69E5 /* SignupInputViewController.swift in Sources */,
+				C9A6067922B2AAB600184E0F /* UserDataStore.swift in Sources */,
 				C94F080F22ABEBF800BF3534 /* UIVIew+Extension.swift in Sources */,
 				C9ED720222B137D700BDB9A7 /* MypageRouting.swift in Sources */,
 				C95E08AB22B11750000C41C7 /* MainTabController.swift in Sources */,
 				C9B55D0F22B0FE2E00845381 /* RemingRouting.swift in Sources */,
 				C9CC28E922ACD892006E69E5 /* LoginInputViewController.swift in Sources */,
 				C9D9011022AB4EE20040390E /* UIAlertAction+Extension.swift in Sources */,
+				C91FA66022B577BB006D9E6D /* Residence.swift in Sources */,
 				C9A6065D22B2643F00184E0F /* TimelineCell+Extension.swift in Sources */,
 				C9CC28F822AD3C03006E69E5 /* SignupInputRouting.swift in Sources */,
 				C9D9013D22AB5E870040390E /* TopUI.swift in Sources */,
 				C9D9013122AB55F40040390E /* LoginInputPresenter.swift in Sources */,
+				C926CD9E22B3C417008672AA /* EditViewController.swift in Sources */,
 				C9B55D0D22B0FE2200845381 /* RemindUI.swift in Sources */,
 				C9D9011B22AB513B0040390E /* UIColor+Extension.swift in Sources */,
 				C9D9012122AB52760040390E /* UIViewController+Extension.swift in Sources */,
@@ -708,17 +794,25 @@
 				C9D9011222AB4F130040390E /* UIBarButtonItem+Extension.swift in Sources */,
 				C9A6065922B1DF8700184E0F /* TimelineCell.swift in Sources */,
 				C9B55D1422B1010C00845381 /* RemindPresenterImpl.swift in Sources */,
+				C91FA65622B4FF8B006D9E6D /* EditPresenterImpl.swift in Sources */,
 				C9CC28EF22AD1288006E69E5 /* LoginInputRouting.swift in Sources */,
+				C91FA65422B4FF84006D9E6D /* EditPresenter.swift in Sources */,
+				C91FA65822B50401006D9E6D /* EditUseCase.swift in Sources */,
 				C9ED71FE22B137C400BDB9A7 /* MypageViewController.swift in Sources */,
 				C9D9010E22AB458B0040390E /* NSLayoutAnchor+Extension.swift in Sources */,
 				C9CC28FB22AD505A006E69E5 /* Validate.swift in Sources */,
 				C9A6067122B2980D00184E0F /* Const.swift in Sources */,
+				C91FA65B22B53F9C006D9E6D /* Update.swift in Sources */,
+				C926CDA022B3C41E008672AA /* EditUI.swift in Sources */,
 				C97DDD9122AD83CC00A84219 /* AccountTranslator.swift in Sources */,
 				C9D9011422AB502E0040390E /* UIButton+Extension.swift in Sources */,
 				C9CC28EB22ACD89D006E69E5 /* LoginInputUI.swift in Sources */,
 				C9D9011D22AB51830040390E /* UILabel+Extension.swift in Sources */,
 				C9A1573522A6CA1F00D7D047 /* AppDelegate.swift in Sources */,
+				C9AED93C22B4CDD2002D37A0 /* UnderlinedTextField.swift in Sources */,
+				C9A6067322B2A60A00184E0F /* User.swift in Sources */,
 				C9D9014122AB77B40040390E /* VerticalStackView.swift in Sources */,
+				C9A6067722B2A88500184E0F /* UserTranslater.swift in Sources */,
 				C9B55D0B22B0FE1B00845381 /* RemindViewController.swift in Sources */,
 				C97DDD8B22AD755B00A84219 /* AccountEntity.swift in Sources */,
 				C9D9011F22AB51C40040390E /* UITextField+Extension.swift in Sources */,
@@ -733,11 +827,13 @@
 				C9ED720422B16A7700BDB9A7 /* CustomSegmentedControl.swift in Sources */,
 				C9D9012D22AB54220040390E /* Routing.swift in Sources */,
 				C9D9011922AB50FD0040390E /* UIFont+Extension.swift in Sources */,
+				C91FA66222B57D1E006D9E6D /* UIPickerView+Extension.swift in Sources */,
 				C95ADED022AB141D00D851A0 /* R.generated.swift in Sources */,
 				C9ED720022B137CD00BDB9A7 /* MypageUI.swift in Sources */,
 				C97DDD8222AD71C100A84219 /* SignupUseCase.swift in Sources */,
 				C97DDD8522AD74C900A84219 /* Account.swift in Sources */,
 				C97DDD8E22AD82AC00A84219 /* AccountRepository.swift in Sources */,
+				C926CDA222B3C425008672AA /* EditRouting.swift in Sources */,
 				C9C844B522AFADB000083280 /* LoginUseCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

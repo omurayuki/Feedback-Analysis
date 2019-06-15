@@ -1,0 +1,57 @@
+import Foundation
+
+enum Residence: String, CaseIterable {
+    case hokkaido = "北海道"
+    case aomori = "青森"
+    case akita = "秋田"
+    case iwate = "岩手"
+    case yamagata = "山形"
+    case miyagi = "宮城"
+    case niigata = "新潟"
+    case hukushima = "福島"
+    case ishikawa = "石川"
+    case toyama = "富山"
+    case gunnma = "群馬"
+    case tochigi = "栃木"
+    case ibaraki = "茨城"
+    case nagano = "長野"
+    case saitama = "埼玉"
+    case toukyo = "東京"
+    case chiba = "千葉"
+    case kanagawa = "神奈川"
+    case yamanasi = "山梨"
+    case sizuoka = "静岡"
+    case aichi = "愛知"
+    case gifu = "岐阜"
+    case hukui = "福井"
+    case kyoto = "京都"
+    case siga = "滋賀"
+    case mie = "三重"
+    case wakayama = "和歌山"
+    case nara = "奈良"
+    case osaka = "大阪"
+    case hyogo = "兵庫"
+    case tottori = "鳥取"
+    case shimane = "島根"
+    case okayama = "岡山"
+    case kagawa = "香川"
+    case tokushima = "徳島"
+    case kochi = "高知"
+    case ehime = "愛媛"
+    case hiroshima = "広島"
+    case yamaguchi = "山口"
+    case hukuoka = "福岡"
+    case oita = "大分"
+    case miyazaki = "宮崎"
+    case kumamoto = "熊本"
+    case saga = "佐賀"
+    case nagasaki = "長崎"
+    case kagoshama = "鹿児島"
+    case okinawa = "沖縄"
+}
+
+extension Residence {
+    static func getResidence() -> [String] {
+        return allCases.compactMap { $0.rawValue }
+    }
+}

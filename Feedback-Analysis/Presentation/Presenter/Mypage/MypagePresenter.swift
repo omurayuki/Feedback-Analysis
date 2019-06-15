@@ -5,8 +5,9 @@ import RxCocoa
 
 protocol MypagePresenter: Presenter {
     var view: MypagePresenterView! { get set }
-    
     var isLoading: BehaviorRelay<Bool> { get }
+    
+    func fetch(to: FirebaseDocumentRef, completion: (() -> Void)?)
 }
 
 protocol MypagePresenterView: class {
@@ -16,7 +17,7 @@ protocol MypagePresenterView: class {
                 presenter: MypagePresenter,
                 routing: MypageRouting,
                 disposeBag: DisposeBag)
-    func didLoginSuccess(account: Account)
+    func didFetchUserData(user: User)
     func showError(message: String)
     func updateLoading(_ isLoading: Bool)
 }

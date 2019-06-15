@@ -5,7 +5,7 @@ protocol MypageUI: UI {
     var userImage: UIImageView { get }
     var userName: UILabel { get }
     var editBtn: UIButton { get }
-    var profileField: UILabel { get }
+    var contentField: UILabel { get }
     var residence: UILabel { get }
     var residenceField: UILabel { get }
     var birthDay: UILabel { get }
@@ -18,6 +18,7 @@ protocol MypageUI: UI {
     var timelineTable: UITableView { get }
     
     func setup()
+    func updateUser(user: User)
 }
 
 final class MypageUIImpl: MypageUI {
@@ -44,7 +45,7 @@ final class MypageUIImpl: MypageUI {
     
     private(set) var userName: UILabel = {
         let label = UILabel()
-        label.apply(.h2_Bold, title: "ゆうきんぐ")
+        label.apply(.h2_Bold)
         return label
     }()
     
@@ -59,9 +60,9 @@ final class MypageUIImpl: MypageUI {
         return button
     }()
     
-    private(set) var profileField: UILabel = {
+    private(set) var contentField: UILabel = {
         let label = UILabel()
-        label.apply(.title, title: "hohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohoho")
+        label.apply(.title)
         label.numberOfLines = 0
         return label
     }()
@@ -74,7 +75,7 @@ final class MypageUIImpl: MypageUI {
     
     private(set) var residenceField: UILabel = {
         let label = UILabel()
-        label.apply(.body_CoolGrey, title: "京都")
+        label.apply(.body_CoolGrey)
         return label
     }()
     
@@ -86,13 +87,13 @@ final class MypageUIImpl: MypageUI {
     
     private(set) var birthDayField: UILabel = {
         let label = UILabel()
-        label.apply(.body_CoolGrey, title: "1994年3月19日")
+        label.apply(.body_CoolGrey)
         return label
     }()
     
     private(set) var followCount: UILabel = {
         let label = UILabel()
-        label.apply(.body_Bold, title: "50")
+        label.apply(.body_Bold, title: "0")
         return label
     }()
     
@@ -104,7 +105,7 @@ final class MypageUIImpl: MypageUI {
     
     private(set) var followerCount: UILabel = {
         let label = UILabel()
-        label.apply(.body_Bold, title: "240")
+        label.apply(.body_Bold, title: "0")
         return label
     }()
     
@@ -141,7 +142,7 @@ extension MypageUIImpl {
         let followerStack = UIStackView.setupStack(lhs: followerCount, rhs: follower, spacing: 5)
         
         [headerImage, userImage, userName,
-         editBtn, profileField, residenceStack,
+         editBtn, contentField, residenceStack,
          birthStack, followStack, followerStack,
          timelineSegmented, timelineTable].forEach { vc.view.addSubview($0) }
         
@@ -168,19 +169,19 @@ extension MypageUIImpl {
             .right(to: vc.view.rightAnchor, constant: -20)
             .activate()
         
-        profileField.anchor()
+        contentField.anchor()
             .top(to: userName.bottomAnchor, constant: 10)
             .left(to: vc.view.leftAnchor, constant: 20)
             .right(to: vc.view.rightAnchor, constant: -20)
             .activate()
         
         residenceStack.anchor()
-            .top(to: profileField.bottomAnchor, constant: 10)
+            .top(to: contentField.bottomAnchor, constant: 10)
             .left(to: vc.view.leftAnchor, constant: 20)
             .activate()
         
         birthStack.anchor()
-            .top(to: profileField.bottomAnchor, constant: 10)
+            .top(to: contentField.bottomAnchor, constant: 10)
             .left(to: residenceStack.rightAnchor, constant: 15)
             .activate()
         
@@ -206,5 +207,14 @@ extension MypageUIImpl {
             .width(to: vc.view.widthAnchor)
             .height(to: vc.view.heightAnchor, multiplier: 0.5)
             .activate()
+    }
+    
+    func updateUser(user: User) {
+        userName.text = user.name
+        contentField.text = user.content
+        birthDayField.text = user.birth
+        residenceField.text = user.residence
+        followCount.text = String(user.follow)
+        followerCount.text = String(user.follower)
     }
 }

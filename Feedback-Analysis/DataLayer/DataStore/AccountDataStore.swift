@@ -1,6 +1,5 @@
 import Foundation
 import RxSwift
-import FirebaseAuth
 
 protocol AccountDataStore {
     func signup(email: String, pass: String) -> Single<AccountEntity>
