@@ -11,14 +11,13 @@ protocol EditPresenter: Presenter {
 }
 
 protocol EditPresenterView: class {
-    typealias U = [String: String]
     var disposeBag: DisposeBag! { get }
     
     func inject(ui: EditUI,
                 presenter: EditPresenter,
                 routing: EditRouting,
                 disposeBag: DisposeBag,
-                user: U)
+                user: UpdatingItem)
     func showError(message: String)
     func didEditUserData()
     func updateLoading(_ isLoading: Bool)

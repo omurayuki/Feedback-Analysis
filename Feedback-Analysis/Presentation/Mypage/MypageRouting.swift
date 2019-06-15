@@ -3,14 +3,14 @@ import UIKit
 import RxSwift
 
 protocol MypageRouting: Routing {
-    func moveEditPage(user: [String: String])
+    func moveEditPage(user: UpdatingItem)
 }
 
 final class MypageRoutingImpl: MypageRouting {
     
     var viewController: UIViewController?
     
-    func moveEditPage(user: [String: String]) {
+    func moveEditPage(user: UpdatingItem) {
         let repository = MypageRepositoryImpl.shared
         let useCase = EditUseCaseImpl(repository: repository)
         let presenter = EditPresenterImpl(useCase: useCase)

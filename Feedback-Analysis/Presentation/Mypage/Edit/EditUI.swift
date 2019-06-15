@@ -21,16 +21,15 @@ protocol EditUI: UI {
     var residenceField: UITextField { get }
     var residenceDoneBtn: UIBarButtonItem { get }
     var residenceToolBar: UIToolbar { get }
+    var residencePickerView: UIPickerView { get }
     var birth: UILabel { get }
     var birthField: UITextField { get }
     var datePicker: UIDatePicker { get }
     var viewTapGesture: UITapGestureRecognizer { get }
     
     func setup()
-    func setupToolBar(_ textField: UITextField,
-                      toolBar: UIToolbar,
-                      type: PickerType,
-                      content: Array<String>)
+    func mapping(user: UpdatingItem)
+    func adjustForKeyboard(notification: Notification)
 }
 
 final class EditUIImpl: EditUI {
@@ -176,6 +175,12 @@ final class EditUIImpl: EditUI {
         return accessoryToolbar
     }()
     
+    private(set) var residencePickerView: UIPickerView = {
+        let pv = UIPickerView()
+        pv.backgroundColor = .white
+        return pv
+    }()
+    
     private(set) var birth: UILabel = {
         let label = UILabel()
         label.apply(.h5_Bold, title: "生年月日")
@@ -227,6 +232,8 @@ extension EditUIImpl {
         birthField.inputView = datePicker
         
         residenceToolBar.items = [residenceDoneBtn]
+        residenceField.inputView = residencePickerView
+        residenceField.inputAccessoryView = residenceToolBar
         
         let nameStack = UIStackView.setupStack(lhs: name, rhs: nameField, spacing: 20)
         let residenceStack = UIStackView.setupStack(lhs: residence, rhs: residenceField, spacing: 20)
@@ -340,15 +347,23 @@ extension EditUIImpl {
             .activate()
         }
     
-    func setupToolBar(_ textField: UITextField,
-                      toolBar: UIToolbar,
-                      type: PickerType,
-                      content: Array<String>) {
+    func mapping(user: UpdatingItem) {
+        nameField.text = user.name
+        contentField.text = user.content
+        residenceField.text = user.residence
+        birthField.text = user.birth
+    }
+    
+    func adjustForKeyboard(notification: Notification) {
         guard let vc = viewController else { return }
-        textField.inputView = UIPickerView.getPickerView(type: type, vc: vc)
-        textField.inputAccessoryView = toolBar
-        textField.text = content[0]
+        if notification.name == UIResponder.keyboardWillHideNotification {
+            vc.view.frame = CGRect(x: 0, y: 0, width: vc.view.bounds.width, height: vc.view.bounds.height)
+        } else {
+            vc.view.frame = CGRect(x: 0, y: -contentField.frame.height, width: vc.view.bounds.width, height: vc.view.bounds.height)
+        }
+        contentField.scrollIndicatorInsets = contentField.contentInset
+        
+        let selectedRange = contentField.selectedRange
+        contentField.scrollRangeToVisible(selectedRange)
     }
 }
-
-class ResidencePickerView: UIPickerView {}

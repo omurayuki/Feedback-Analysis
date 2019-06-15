@@ -31,10 +31,10 @@ class MypageViewController: UIViewController {
         didSet {
             ui.editBtn.rx.tap.asDriver()
                 .drive(onNext: { [unowned self] _ in
-                    self.routing.moveEditPage(user: ["name": self.ui.userName.text ?? "",
-                                                     "content": self.ui.contentField.text ?? "",
-                                                     "residence": self.ui.residenceField.text ?? "",
-                                                     "birth": self.ui.birthDayField.text ?? ""])
+                    self.routing.moveEditPage(user: UpdatingItem(name: self.ui.userName.text ?? "",
+                                                                 content: self.ui.contentField.text ?? "",
+                                                                 residence: self.ui.residenceField.text ?? "",
+                                                                 birth: self.ui.birthDayField.text ?? ""))
                 }).disposed(by: disposeBag)
         }
     }
