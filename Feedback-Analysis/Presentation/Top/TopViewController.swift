@@ -23,7 +23,9 @@ class TopViewController: UIViewController {
         }
     }
     
-    func inject(ui: TopUI, routing: TopRouting, disposeBag: DisposeBag) {
+    func inject(ui: TopUI,
+                routing: TopRouting,
+                disposeBag: DisposeBag) {
         self.ui = ui
         self.routing = routing
         self.disposeBag = disposeBag
@@ -34,7 +36,3 @@ class TopViewController: UIViewController {
         ui?.setup()
     }
 }
-
-//ますワードリマインド
-//タブバー
-//一番初めに作るべきところから

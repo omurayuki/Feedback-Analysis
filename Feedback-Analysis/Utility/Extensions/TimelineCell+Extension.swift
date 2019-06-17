@@ -3,7 +3,7 @@ import UIKit
 
 extension TimelineCell {
     
-    func mappingImages(images: [UIImage]? = nil) {
+    func adjustImagesSpace(images: [UIImage]? = nil) {
         let mappedImages = [leftTopImage, rightTopImage, leftBottomImage, rightBottomImage]
         if images?.count == 1 || images?.count == 2 {
             images?.enumerated().forEach { index, image in

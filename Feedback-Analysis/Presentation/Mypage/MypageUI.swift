@@ -27,18 +27,15 @@ final class MypageUIImpl: MypageUI {
     
     private(set) var headerImage: UIImageView = {
         let image = UIImageView()
-        image.backgroundColor = .gray
-        image.image = #imageLiteral(resourceName: "twitter_header_photo_1")
         return image
     }()
     
     private(set) var userImage: UIImageView = {
         let image = UIImageView()
-        image.backgroundColor = .blue
         image.layer.cornerRadius = 30
         image.layer.borderWidth = 2
         image.layer.borderColor = UIColor.white.cgColor
-        image.image = #imageLiteral(resourceName: "logo")
+        image.backgroundColor = .white
         image.clipsToBounds = true
         return image
     }()
@@ -210,6 +207,8 @@ extension MypageUIImpl {
     }
     
     func updateUser(user: User) {
+        headerImage.setImage(url: user.headerImage)
+        userImage.setImage(url: user.userImage)
         userName.text = user.name
         contentField.text = user.content
         birthDayField.text = user.birth

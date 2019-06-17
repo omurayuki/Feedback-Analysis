@@ -4,7 +4,8 @@ import RxSwift
 import RxCocoa
 
 class MypageViewController: UIViewController {
-    // 編集画面作成とつなぎこみ
+    
+    
     // 画像関係着手
     // 設定画面作成
     // 設定画面つなぎこみ
@@ -15,7 +16,11 @@ class MypageViewController: UIViewController {
     // tableview切り出し
     // segmentedControl切り出し
     // 投稿ボタン作成
-    // 編集画面作成
+    // 目標編集画面作成
+    // コメント機能実装
+    // リプライ機能実装
+    // チャット機能実装
+    // 強み分析機能実装
     
     var ui: MypageUI!
     
@@ -31,7 +36,8 @@ class MypageViewController: UIViewController {
         didSet {
             ui.editBtn.rx.tap.asDriver()
                 .drive(onNext: { [unowned self] _ in
-                    self.routing.moveEditPage(user: UpdatingItem(name: self.ui.userName.text ?? "",
+                    self.routing.moveEditPage(user: UpdatingItem(userImage: self.ui.userImage.image ?? UIImage(),
+                                                                 name: self.ui.userName.text ?? "",
                                                                  content: self.ui.contentField.text ?? "",
                                                                  residence: self.ui.residenceField.text ?? "",
                                                                  birth: self.ui.birthDayField.text ?? ""))

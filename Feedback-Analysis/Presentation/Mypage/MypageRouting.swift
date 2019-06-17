@@ -21,11 +21,14 @@ final class MypageRoutingImpl: MypageRouting {
         vc.delegate = viewController as? MypageViewController
         ui.viewController = vc
         routing.viewController = vc
+        let imagePicker = ImagePicker(presentationController: vc, delegate: vc as ImagePickerDelegate)
+        
         vc.inject(ui: ui,
                   presenter: presenter,
                   routing: routing,
                   disposeBag: DisposeBag(),
-                  user: user)
+                  user: user,
+                  imagePicker: imagePicker)
         viewController?.present(vc, animated: true)
     }
 }

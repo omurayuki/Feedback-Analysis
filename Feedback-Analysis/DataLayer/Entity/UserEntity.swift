@@ -1,6 +1,8 @@
 import Foundation
 
 struct UserEntity: Entity {
+    let headerImage: String
+    let userImage: String
     let name: String
     let content: String
     let residence: String
@@ -10,6 +12,8 @@ struct UserEntity: Entity {
     
     init(document: [String: Any]) {
         guard
+            let headerImage = document["header_image"] as? String,
+            let userImage = document["user_image"] as? String,
             let name = document["name"] as? String,
             let content = document["content"] as? String,
             let residence = document["residence"] as? String,
@@ -17,6 +21,8 @@ struct UserEntity: Entity {
             let follow = document["follow"] as? Int,
             let follower = document["follower"] as? Int
         else {
+            self.headerImage = ""
+            self.userImage = ""
             self.name = ""
             self.content = ""
             self.residence = ""
@@ -25,6 +31,8 @@ struct UserEntity: Entity {
             self.follower = 0
             return
         }
+        self.headerImage = headerImage
+        self.userImage = userImage
         self.name = name
         self.content = content
         self.residence = residence

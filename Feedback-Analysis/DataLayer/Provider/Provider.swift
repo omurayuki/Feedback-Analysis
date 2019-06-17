@@ -4,6 +4,7 @@ import Firebase
 import FirebaseFirestore
 import FirebaseCore
 import FirebaseAuth
+import FirebaseStorage
 import RxSwift
 
 struct Provider {
@@ -51,6 +52,35 @@ struct Provider {
                     single(.error(FirebaseError.resultError(error)))
                 }
                 single(.success(()))
+            })
+            return Disposables.create()
+        })
+    }
+    
+    func uploadImage(_ image: UIImage, at storageRef: FirebaseStorageRef) -> Single<URL> {
+        return Single.create(subscribe: { single -> Disposable in
+            guard let imageData = image.pngData() else {
+                return Disposables.create()
+            }
+            storageRef
+                .destination
+                .putData(imageData, metadata: nil, completion: { (metadata, error) in
+                if let error = error {
+                    single(.error(FirebaseError.resultError(error)))
+                    return
+                }
+                storageRef
+                    .destination
+                    .downloadURL(completion: { (url, error) in
+                    if let error = error {
+                        single(.error(FirebaseError.resultError(error)))
+                    }
+                    guard let url = url else {
+                        single(.error(FirebaseError.unknown))
+                        return
+                    }
+                    single(.success(url))
+                })
             })
             return Disposables.create()
         })

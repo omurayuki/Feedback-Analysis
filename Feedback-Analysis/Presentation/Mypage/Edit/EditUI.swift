@@ -7,11 +7,9 @@ protocol EditUI: UI {
     var cancelBtn: UIBarButtonItem { get }
     var saveBtn: UIBarButtonItem { get }
     var headerImage: UIImageView { get }
-    var headerImageEditView: UIView { get }
     var gesture: UIGestureRecognizer { get }
     var headerImageEditBtn: UIButton { get }
     var userImage: UIImageView { get }
-    var userImageEditView: UIView { get }
     var userImageEditBtn: UIButton { get }
     var name: UILabel { get }
     var nameField: UITextField { get }
@@ -29,6 +27,7 @@ protocol EditUI: UI {
     
     func setup()
     func mapping(user: UpdatingItem)
+    func setImage(image: UIImage?)
     func adjustForKeyboard(notification: Notification)
 }
 
@@ -69,6 +68,8 @@ final class EditUIImpl: EditUI {
     
     private(set) var headerImage: UIImageView = {
         let image = UIImageView()
+        image.isUserInteractionEnabled = true
+        image.clipsToBounds = true
         image.image = #imageLiteral(resourceName: "twitter_header_photo_1")
         return image
     }()
@@ -88,16 +89,19 @@ final class EditUIImpl: EditUI {
         let button = UIButton()
         button.backgroundColor = .clear
         button.setImage(#imageLiteral(resourceName: "add"), for: .normal)
+        button.imageView?.isUserInteractionEnabled = true
+        button.imageView?.clipsToBounds = true
         return button
     }()
     
     private(set) var userImage: UIImageView = {
         let image = UIImageView()
-        image.backgroundColor = .blue
+        image.backgroundColor = .white
         image.layer.cornerRadius = 30
         image.layer.borderWidth = 2
         image.layer.borderColor = UIColor.white.cgColor
         image.image = #imageLiteral(resourceName: "logo")
+        image.isUserInteractionEnabled = true
         image.clipsToBounds = true
         return image
     }()
@@ -242,10 +246,10 @@ extension EditUIImpl {
         [navBar, headerImage, userImage, borderView, nameStack,
          content, contentField, residenceStack, birthStack].forEach { vc.view.addSubview($0) }
         headerImage.addSubview(headerImageEditView)
-        headerImageEditView.addSubview(headerImageEditBtn)
-        headerImageEditView.addGestureRecognizer(gesture)
+        headerImage.addSubview(headerImageEditBtn)
+        headerImage.addGestureRecognizer(gesture)
         userImage.addSubview(userImageEditView)
-        userImageEditView.addSubview(userImageEditBtn)
+        userImage.addSubview(userImageEditBtn)
         
         navBar.anchor()
             .top(to: vc.view.safeAreaLayoutGuide.topAnchor)
@@ -282,7 +286,8 @@ extension EditUIImpl {
         userImageEditBtn.anchor()
             .width(constant: 30)
             .height(constant: 30)
-            .centerToSuperview()
+            .centerXToSuperview()
+            .centerYToSuperview()
             .activate()
         
         borderView.anchor()
@@ -348,10 +353,15 @@ extension EditUIImpl {
         }
     
     func mapping(user: UpdatingItem) {
+        userImage.image = user.userImage
         nameField.text = user.name
         contentField.text = user.content
         residenceField.text = user.residence
         birthField.text = user.birth
+    }
+    
+    func setImage(image: UIImage?) {
+        userImage.image = image
     }
     
     func adjustForKeyboard(notification: Notification) {

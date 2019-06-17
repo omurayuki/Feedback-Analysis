@@ -4,6 +4,7 @@ import RxSwift
 protocol MypageRepository {
     func fetch(to documentRef: FirebaseDocumentRef) -> Single<UserEntity>
     func update(to documentRef: FirebaseDocumentRef, user: Update) -> Single<()>
+    func uploadImage(_ image: UIImage, at storageRef: FirebaseStorageRef) -> Single<URL>
 }
 
 struct MypageRepositoryImpl: MypageRepository {
@@ -18,5 +19,9 @@ struct MypageRepositoryImpl: MypageRepository {
     
     func update(to documentRef: FirebaseDocumentRef, user: Update) -> Single<()> {
         return dataStore.update(to: documentRef, user: user)
+    }
+    
+    func uploadImage(_ image: UIImage, at storageRef: FirebaseStorageRef) -> Single<URL> {
+        return dataStore.uploadImage(image, at: storageRef)
     }
 }

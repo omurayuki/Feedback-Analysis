@@ -14,13 +14,26 @@ class EditPresenterImpl: EditPresenter {
     }
     
     func update(to documentRef: FirebaseDocumentRef, user: Update) {
-        view.updateLoading(true)
         useCase.update(to: documentRef, user: user)
             .subscribe { result in
                 switch result {
                 case .success(_):
                     self.view.updateLoading(false)
                     self.view.didEditUserData()
+                case .error(let error):
+                    self.view.updateLoading(false)
+                    self.view.showError(message: error.localizedDescription)
+                }
+            }.disposed(by: view.disposeBag)
+    }
+    
+    func uploadImage(_ image: UIImage, at storageRef: FirebaseStorageRef) {
+        view.updateLoading(true)
+        useCase.uploadImage(image, at: storageRef)
+            .subscribe { result in
+                switch result {
+                case .success(let url):
+                    self.view.didUploadImage(userImage: url.absoluteString)
                 case .error(let error):
                     self.view.updateLoading(false)
                     self.view.showError(message: error.localizedDescription)

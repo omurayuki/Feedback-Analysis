@@ -180,7 +180,7 @@ extension TimelineCell {
         userName.text = name
         postedTime.text = time
         postContent.text = content
-        postImage?.count ?? 0 >= 1 ? mappingImages(images: postImage) : mappingImages(images: nil)
+        postImage?.count ?? 0 >= 1 ? adjustImagesSpace(images: postImage) : adjustImagesSpace(images: nil)
         commentCount.text = commentted
         likeCount.text = like
     }

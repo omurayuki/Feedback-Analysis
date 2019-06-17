@@ -1,6 +1,8 @@
 import Foundation
 
 struct User {
+    let headerImage: String
+    let userImage: String
     let name: String
     let content: String
     let residence: String
@@ -9,6 +11,8 @@ struct User {
     let follower: Int
     
     init(entity: UserEntity) {
+        self.headerImage = entity.headerImage
+        self.userImage = entity.userImage
         self.name = entity.name
         self.content = entity.content
         self.residence = entity.residence
