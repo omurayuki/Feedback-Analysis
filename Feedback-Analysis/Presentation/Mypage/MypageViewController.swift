@@ -87,7 +87,7 @@ extension MypageViewController: UITableViewDataSource {
                                                        for: indexPath) as? TimelineCell else { return UITableViewCell() }
         cell.configure(photo: #imageLiteral(resourceName: "logo"), name: "ゆうきんぐ",
                        time: "5時間前", content: "wwwwwwwwwwwwwwwww",
-                       postImage: [#imageLiteral(resourceName: "logo_transparent"), #imageLiteral(resourceName: "logo_transparent"), #imageLiteral(resourceName: "logo_transparent"), #imageLiteral(resourceName: "logo_transparent")], commentted: "5", like: "13")
+                       postImage: [#imageLiteral(resourceName: "川"), #imageLiteral(resourceName: "川"), #imageLiteral(resourceName: "川"), #imageLiteral(resourceName: "川")], commentted: "5", like: "13")
         return cell
     }
 }

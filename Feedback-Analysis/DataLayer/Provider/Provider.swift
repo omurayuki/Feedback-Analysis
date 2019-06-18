@@ -69,6 +69,26 @@ struct Provider {
         })
     }
     
+    func update(with email: String, oldPass: String, newPass: String) -> Single<()> {
+        return Single.create(subscribe: { single -> Disposable in
+            let credential = EmailAuthProvider.credential(withEmail: email, password: oldPass)
+            Auth.auth().currentUser?.reauthenticate(with: credential, completion: { authResult, error in
+                if let error = error {
+                    single(.error(FirebaseError.resultError(error)))
+                    return
+                }
+                authResult?.user.updatePassword(to: newPass, completion: { error in
+                    if let error = error {
+                        single(.error(FirebaseError.resultError(error)))
+                        return
+                    }
+                    single(.success(()))
+                })
+            })
+            return Disposables.create()
+        })
+    }
+    
     func reissuePassword(email: String) -> Single<()> {
         return Single.create(subscribe: { single -> Disposable in
             Auth.auth().languageCode = "ja"

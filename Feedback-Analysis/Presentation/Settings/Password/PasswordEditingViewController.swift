@@ -3,13 +3,13 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class EmailEditingViewController: UIViewController {
+class PasswordEditingViewController: UIViewController {
     
-    var ui: EmailEditingUI!
+    var ui: PasswordEditingUI!
     
-    var routing: EmailEditingRouting!
+    var routing: PasswordEditingRouting!
     
-    var presenter: EmailEditingPresenter! {
+    var presenter: PasswordEditingPresenter! {
         didSet {
             presenter.view = self
         }
@@ -18,10 +18,12 @@ class EmailEditingViewController: UIViewController {
     var disposeBag: DisposeBag! {
         didSet {
             ui.updateBtn.rx.tap.asDriver()
-                .drive(onNext: { [unowned self] _ in
+                .drive(onNext: { _ in
                     self.validateAccount(email: self.ui.emailField.text ?? "",
-                                         account: { _email, _, _  in
-                        self.presenter.update(with: _email)
+                                         pass: self.ui.oldPasswordField.text ?? "",
+                                         rePass: self.ui.newPasswordField.text ?? "",
+                                         account: { _email, _old, _new in
+                        self.presenter.update(with: _email, oldPass: _old, newPass: _new)
                     })
                 }).disposed(by: disposeBag)
             
@@ -33,9 +35,9 @@ class EmailEditingViewController: UIViewController {
         }
     }
     
-    func inject(ui: EmailEditingUI,
-                routing: EmailEditingRouting,
-                presenter: EmailEditingPresenter,
+    func inject(ui: PasswordEditingUI,
+                routing: PasswordEditingRouting,
+                presenter: PasswordEditingPresenter,
                 disposeBag: DisposeBag) {
         self.ui = ui
         self.routing = routing
@@ -45,12 +47,11 @@ class EmailEditingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        ui.setup(with: AppUserDefaults.getAccountEmail())
-        // ここで渡すべきでない？
+        ui.setup()
     }
 }
 
-extension EmailEditingViewController: EmailEditingPresenterView {
+extension PasswordEditingViewController: PasswordEditingPresenterView {
     
     func updateLoading(_ isLoading: Bool) {
         presenter.isLoading.accept(isLoading)

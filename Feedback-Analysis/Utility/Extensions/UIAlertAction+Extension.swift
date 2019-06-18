@@ -90,6 +90,28 @@ extension UIAlertController {
         return alert
     }
     
+    class func createActionSheet(title: String,
+                                 message: String,
+                                 okCompletion: (() -> Void)? = nil,
+                                 cancelCompletion: (() -> Void)? = nil) -> UIAlertController {
+        let alert: UIAlertController = UIAlertController(title: title, message: message, preferredStyle:  UIAlertController.Style.actionSheet)
+        
+        let defaultAction: UIAlertAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler:{
+            (action: UIAlertAction!) -> Void in
+            if let completion = okCompletion {
+                completion()
+            }
+        })
+        let cancelAction: UIAlertAction = UIAlertAction(title: "キャンセル", style: UIAlertAction.Style.cancel, handler:{ (action: UIAlertAction!) -> Void in
+            if let completion = cancelCompletion {
+                completion()
+            }
+        })
+        alert.addAction(cancelAction)
+        alert.addAction(defaultAction)
+        return alert
+    }
+    
     /// UIAlertActionを追加して返す。
     /// 各引数はUIAlertActionのinitと同じ。
     ///

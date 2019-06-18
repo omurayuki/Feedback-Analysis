@@ -3,8 +3,8 @@ import UIKit
 import RxSwift
 
 protocol SettingsRouting: Routing {
-    func movePassEditPage()
     func moveEmailEditPage()
+    func movePassEditPage()
     func moveTopPage()
     func dismiss()
 }
@@ -12,10 +12,6 @@ protocol SettingsRouting: Routing {
 final class SettingsRoutingImpl: SettingsRouting {
     
     var viewController: UIViewController?
-    
-    func movePassEditPage() {
-        print("pass")
-    }
     
     func moveEmailEditPage() {
         let repository = AccountRepositoryImpl.shared
@@ -25,6 +21,25 @@ final class SettingsRoutingImpl: SettingsRouting {
         
         let ui = EmailEditingUIImpl()
         let routing = EmailEditingRoutingImpl()
+        ui.viewController = vc
+        routing.viewController = vc
+        
+        vc.inject(ui: ui,
+                  routing: routing,
+                  presenter: presenter,
+                  disposeBag: DisposeBag())
+        
+        viewController?.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func movePassEditPage() {
+        let repository = AccountRepositoryImpl.shared
+        let useCase = SettingsUseCaseImpl(repository: repository)
+        let presenter = PasswordEditingPresenterImpl(useCase: useCase)
+        let vc = PasswordEditingViewController()
+        
+        let ui = PasswordEditingUIImpl()
+        let routing = PasswordEditingRoutingImpl()
         ui.viewController = vc
         routing.viewController = vc
         

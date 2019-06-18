@@ -20,7 +20,7 @@ class RemindViewController: UIViewController {
             ui.submitBtn.rx.tap.asDriver()
                 .drive(onNext: { [unowned self] _ in
                     self.validateAccount(email: self.ui.mailField.text ?? "",
-                                         account: { _email, _ in
+                                         account: { _email, _, _  in
                         self.presenter.reissuePassword(email: _email)
                     })
                 }).disposed(by: disposeBag)

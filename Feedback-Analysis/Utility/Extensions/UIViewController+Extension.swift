@@ -38,16 +38,26 @@ extension UIViewController {
         present(alert, animated: true)
     }
     
+    func showSuccess(message: String) {
+        let alert = UIAlertController.createSimpleOkMessage(title: "成功", message: message)
+        present(alert, animated: true)
+    }
+    
+    func validatePasswordMatch(pass: String, rePass: String, completion: @escaping (_ pass: String?) -> Void) {
+        pass == rePass ? completion(pass) : completion(nil)
+    }
+    
     func validateAccount(email: String,
                          pass: String? = nil,
-                         account execute: @escaping (_ email: String, _ pass: String) -> Void) {
-        switch AccountValidation.validateAccount(email: email, pass: pass) {
+                         rePass: String? = nil,
+                         account execute: @escaping (_ email: String, _ pass: String, _ rePass: String) -> Void) {
+        switch AccountValidation.validateAccount(email: email, pass: pass, rePass: rePass) {
         case .mailNotEnough(let str):     self.showError(message: str)
         case .mailExceeded(let str):      self.showError(message: str)
         case .passNotEnough(let str):     self.showError(message: str)
         case .passExceeded(let str):      self.showError(message: str)
         case .notAccurateChar(let str):   self.showError(message: str)
-        case .ok(let email, let pass):    execute(email, pass ?? "")
+        case .ok(let email, let pass, let rePass):    execute(email, pass ?? "", rePass ?? "")
         }
     }
     

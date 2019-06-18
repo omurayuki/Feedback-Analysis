@@ -2,9 +2,9 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-class EmailEditingPresenterImpl: EmailEditingPresenter {
+class PasswordEditingPresenterImpl: PasswordEditingPresenter {
     
-    var view: EmailEditingPresenterView!
+    var view: PasswordEditingPresenterView!
     
     var isLoading: BehaviorRelay<Bool> = BehaviorRelay<Bool>(value: false)
     
@@ -14,15 +14,14 @@ class EmailEditingPresenterImpl: EmailEditingPresenter {
         self.useCase = useCase
     }
     
-    func update(with email: String) {
+    func update(with email: String, oldPass: String, newPass: String) {
         view.updateLoading(true)
-        useCase.update(with: email)
+        useCase.update(with: email, oldPass: oldPass, newPass: newPass)
             .subscribe { result in
                 switch result {
                 case .success(_):
                     self.view.updateLoading(false)
-                    AppUserDefaults.setAccountEmail(email: email)
-                    self.view.showSuccess(message: "メールアドレスを変更しました")
+                    self.view.showSuccess(message: "パスワードを変更しました")
                 case .error(let error):
                     self.view.updateLoading(false)
                     self.view.showError(message: error.localizedDescription)

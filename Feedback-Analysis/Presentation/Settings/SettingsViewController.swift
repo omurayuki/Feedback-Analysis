@@ -100,7 +100,7 @@ extension SettingsViewController: UITableViewDelegate {
         case .account:
             switch indexPath.row {
             case SettingsSection.Account.passwordEdit.rawValue:
-                print("pass")
+                routing.movePassEditPage()
             case SettingsSection.Account.emailEdit.rawValue:
                 routing.moveEmailEditPage()
             default: return
@@ -108,7 +108,12 @@ extension SettingsViewController: UITableViewDelegate {
         case .general:
             switch indexPath.row {
             case SettingsSection.General.logout.rawValue:
-                presenter.logout()
+                let alert = UIAlertController.createActionSheet(title: "メッセージ",
+                                                                message: "ログアウトしますか？",
+                                                                okCompletion: {
+                    self.presenter.logout()
+                })
+                present(alert, animated: true)
             default: return
             }
         }

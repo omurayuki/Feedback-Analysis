@@ -24,7 +24,8 @@ final class LoginInputUIImpl: LoginInputUI {
     
     private(set) var mailField: PaddingTextField = {
         let field = PaddingTextField()
-        field.apply(.h4)
+        field.apply(.h5_appSub)
+        field.textColor = .appSubColor
         field.backgroundColor = UIColor(white: 1, alpha: 0.5)
         field.layer.cornerRadius = 5
         return field
@@ -39,7 +40,8 @@ final class LoginInputUIImpl: LoginInputUI {
     
     private(set) var passField: PaddingTextField = {
         let field = PaddingTextField()
-        field.apply(.h4)
+        field.apply(.h5_appSub)
+        field.textColor = .appSubColor
         field.backgroundColor = UIColor(white: 1, alpha: 0.5)
         field.layer.cornerRadius = 5
         return field

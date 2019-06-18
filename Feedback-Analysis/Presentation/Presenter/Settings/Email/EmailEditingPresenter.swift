@@ -18,7 +18,7 @@ protocol EmailEditingPresenterView: class {
                 routing: EmailEditingRouting,
                 presenter: EmailEditingPresenter,
                 disposeBag: DisposeBag)
-    func didUpdateSuccess()
     func showError(message: String)
+    func showSuccess(message: String)
     func updateLoading(_ isLoading: Bool)
 }

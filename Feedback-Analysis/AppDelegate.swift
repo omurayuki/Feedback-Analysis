@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         vc.inject(ui: ui, routing: routing, disposeBag: DisposeBag())
         window?.rootViewController = UINavigationController(rootViewController: vc)
         window?.makeKeyAndVisible()
-
+        
         return true
     }
 

@@ -21,7 +21,7 @@ class SignupInputViewController: UIViewController {
                 .drive(onNext: { [unowned self] _ in
                     self.validateAccount(email: self.ui.mailField.text ?? "",
                                          pass: self.ui.passField.text ?? "",
-                                         account: { _email, _pass in
+                                         account: { _email, _pass, _  in
                         self.presenter.signup(email: _email, pass: _pass)
                     })
                 }).disposed(by: disposeBag)

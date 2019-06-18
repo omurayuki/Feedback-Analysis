@@ -40,6 +40,11 @@
 		C97F9D0E22A6CCAA000779EF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C97F9D0D22A6CCAA000779EF /* GoogleService-Info.plist */; };
 		C98E1BB622B7370100D132D5 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98E1BB522B7370100D132D5 /* UIImageView+Extension.swift */; };
 		C98E1BB822B7456700D132D5 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98E1BB722B7456700D132D5 /* ImagePicker.swift */; };
+		C99116AA22B8A30C007C67C7 /* PasswordEditingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99116A922B8A30C007C67C7 /* PasswordEditingViewController.swift */; };
+		C99116AC22B8A318007C67C7 /* PasswordEditingUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99116AB22B8A318007C67C7 /* PasswordEditingUI.swift */; };
+		C99116AE22B8A323007C67C7 /* PasswordEditingRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99116AD22B8A323007C67C7 /* PasswordEditingRouting.swift */; };
+		C99116B022B8A912007C67C7 /* PasswordEditingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99116AF22B8A912007C67C7 /* PasswordEditingPresenter.swift */; };
+		C99116B222B8A917007C67C7 /* PasswordEditingPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99116B122B8A917007C67C7 /* PasswordEditingPresenterImpl.swift */; };
 		C9A1573522A6CA1F00D7D047 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A1573422A6CA1F00D7D047 /* AppDelegate.swift */; };
 		C9A1573C22A6CA2000D7D047 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9A1573B22A6CA2000D7D047 /* Assets.xcassets */; };
 		C9A1573F22A6CA2000D7D047 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9A1573D22A6CA2000D7D047 /* LaunchScreen.storyboard */; };
@@ -143,6 +148,11 @@
 		C97F9D0D22A6CCAA000779EF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C98E1BB522B7370100D132D5 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 		C98E1BB722B7456700D132D5 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		C99116A922B8A30C007C67C7 /* PasswordEditingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordEditingViewController.swift; sourceTree = "<group>"; };
+		C99116AB22B8A318007C67C7 /* PasswordEditingUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordEditingUI.swift; sourceTree = "<group>"; };
+		C99116AD22B8A323007C67C7 /* PasswordEditingRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordEditingRouting.swift; sourceTree = "<group>"; };
+		C99116AF22B8A912007C67C7 /* PasswordEditingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordEditingPresenter.swift; sourceTree = "<group>"; };
+		C99116B122B8A917007C67C7 /* PasswordEditingPresenterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordEditingPresenterImpl.swift; sourceTree = "<group>"; };
 		C9A1573122A6CA1F00D7D047 /* Feedback-Analysis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Feedback-Analysis.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9A1573422A6CA1F00D7D047 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C9A1573B22A6CA2000D7D047 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -691,6 +701,9 @@
 		C9F2496D22B79C28007E82A0 /* Password */ = {
 			isa = PBXGroup;
 			children = (
+				C99116A922B8A30C007C67C7 /* PasswordEditingViewController.swift */,
+				C99116AB22B8A318007C67C7 /* PasswordEditingUI.swift */,
+				C99116AD22B8A323007C67C7 /* PasswordEditingRouting.swift */,
 			);
 			path = Password;
 			sourceTree = "<group>";
@@ -698,6 +711,8 @@
 		C9F2497422B7B30A007E82A0 /* password */ = {
 			isa = PBXGroup;
 			children = (
+				C99116AF22B8A912007C67C7 /* PasswordEditingPresenter.swift */,
+				C99116B122B8A917007C67C7 /* PasswordEditingPresenterImpl.swift */,
 			);
 			path = password;
 			sourceTree = "<group>";
@@ -862,6 +877,8 @@
 				C97DDD9622AD879800A84219 /* AccountDataStore.swift in Sources */,
 				C9D9013B22AB5E800040390E /* TopViewController.swift in Sources */,
 				C91FA65D22B5686B006D9E6D /* DateFormatter+ Extension.swift in Sources */,
+				C99116AA22B8A30C007C67C7 /* PasswordEditingViewController.swift in Sources */,
+				C99116B022B8A912007C67C7 /* PasswordEditingPresenter.swift in Sources */,
 				C9F2497922B7B34E007E82A0 /* EmailEditingPresenterImpl.swift in Sources */,
 				C9035CB222B7773D006DFAB9 /* SettingsRouting.swift in Sources */,
 				C9D9010922AB44D80040390E /* AppUserDefault.swift in Sources */,
@@ -883,10 +900,12 @@
 				C91FA66022B577BB006D9E6D /* Residence.swift in Sources */,
 				C9F2496F22B79CBF007E82A0 /* EmailEditingViewController.swift in Sources */,
 				C9A6065D22B2643F00184E0F /* TimelineCell+Extension.swift in Sources */,
+				C99116AC22B8A318007C67C7 /* PasswordEditingUI.swift in Sources */,
 				C9035CAE22B7772A006DFAB9 /* SettingsViewController.swift in Sources */,
 				C9CC28F822AD3C03006E69E5 /* SignupInputRouting.swift in Sources */,
 				C9D9013D22AB5E870040390E /* TopUI.swift in Sources */,
 				C9D9013122AB55F40040390E /* LoginInputPresenter.swift in Sources */,
+				C99116B222B8A917007C67C7 /* PasswordEditingPresenterImpl.swift in Sources */,
 				C926CD9E22B3C417008672AA /* EditViewController.swift in Sources */,
 				C9B55D0D22B0FE2200845381 /* RemindUI.swift in Sources */,
 				C9D9011B22AB513B0040390E /* UIColor+Extension.swift in Sources */,
@@ -919,6 +938,7 @@
 				C9D9014122AB77B40040390E /* VerticalStackView.swift in Sources */,
 				C98E1BB622B7370100D132D5 /* UIImageView+Extension.swift in Sources */,
 				C9A6067722B2A88500184E0F /* UserTranslater.swift in Sources */,
+				C99116AE22B8A323007C67C7 /* PasswordEditingRouting.swift in Sources */,
 				C9B55D0B22B0FE1B00845381 /* RemindViewController.swift in Sources */,
 				C9F2497B22B88E93007E82A0 /* PaddingTextField.swift in Sources */,
 				C9F2497722B7B345007E82A0 /* EmailEditingPresenter.swift in Sources */,

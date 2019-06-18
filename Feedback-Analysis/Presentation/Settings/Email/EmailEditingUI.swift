@@ -19,15 +19,16 @@ final class EmailEditingUIImpl: EmailEditingUI {
         return label
     }()
     
-    var emailField: PaddingTextField = {
+    private(set) var emailField: PaddingTextField = {
         let field = PaddingTextField()
-        field.apply(.h4)
+        field.apply(.h5_appSub)
+        field.textColor = .appSubColor
         field.backgroundColor = UIColor(white: 1, alpha: 0.5)
         field.layer.cornerRadius = 5
         return field
     }()
     
-    var updateBtn: UIButton = {
+    private(set) var updateBtn: UIButton = {
         let button = UIButton.Builder()
             .title("送信")
             .component(.title_White)
