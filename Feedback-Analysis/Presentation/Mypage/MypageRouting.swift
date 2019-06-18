@@ -4,6 +4,7 @@ import RxSwift
 
 protocol MypageRouting: Routing {
     func moveEditPage(user: UpdatingItem)
+    func moveSettingsPage()
 }
 
 final class MypageRoutingImpl: MypageRouting {
@@ -29,6 +30,28 @@ final class MypageRoutingImpl: MypageRouting {
                   disposeBag: DisposeBag(),
                   user: user,
                   imagePicker: imagePicker)
+        
         viewController?.present(vc, animated: true)
+    }
+    
+    func moveSettingsPage() {
+        let repository = AccountRepositoryImpl.shared
+        let useCase = SettingsUseCaseImpl(repository: repository)
+        let presenter = SettingsPresenterImpl(useCase: useCase)
+        let vc = SettingsViewController()
+        
+        let ui = SettingsUIImpl()
+        let routing = SettingsRoutingImpl()
+        ui.viewController = vc
+        ui.settingsTable.dataSource = vc
+        ui.settingsTable.delegate = vc
+        routing.viewController = vc
+        
+        vc.inject(ui: ui,
+                  presenter: presenter,
+                  routing: routing,
+                  disposeBag: DisposeBag())
+        
+        viewController?.present(UINavigationController(rootViewController: vc), animated: true)
     }
 }

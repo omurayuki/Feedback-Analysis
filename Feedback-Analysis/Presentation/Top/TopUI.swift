@@ -20,7 +20,7 @@ final class TopUIImpl: TopUI {
     
     private(set) var icon: UIImageView = {
         let image = UIImageView()
-        image.image = #imageLiteral(resourceName: "logo_non_title")
+        image.image = #imageLiteral(resourceName: "logo_transparent")
         return image
     }()
     
@@ -28,7 +28,7 @@ final class TopUIImpl: TopUI {
         let button = UIButton.Builder()
             .title("ログイン")
             .component(.title_White)
-            .backgroundColor(.appFacebookColor)
+            .backgroundColor(.appSubColor)
             .cornerRadius(7)
             .build()
         return button
@@ -38,7 +38,7 @@ final class TopUIImpl: TopUI {
         let button = UIButton.Builder()
             .title("新規登録")
             .component(.title_White)
-            .backgroundColor(.appFacebookColor)
+            .backgroundColor(.appSubColor)
             .cornerRadius(7)
             .build()
         return button

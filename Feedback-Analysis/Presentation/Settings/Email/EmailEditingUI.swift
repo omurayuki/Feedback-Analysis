@@ -1,25 +1,25 @@
 import UIKit
 
-protocol RemindUI: UI {
+protocol EmailEditingUI: UI {
     var mailTitle: UILabel { get }
-    var mailField: PaddingTextField { get }
-    var submitBtn: UIButton { get }
+    var emailField: PaddingTextField { get }
+    var updateBtn: UIButton { get }
     
-    func setup()
+    func setup(with email: String)
 }
 
-final class RemindUIImpl: RemindUI {
+final class EmailEditingUIImpl: EmailEditingUI {
     
-    var viewController: UIViewController?
+    weak var viewController: UIViewController?
     
-    var mailTitle: UILabel = {
+    private(set) var mailTitle: UILabel = {
         let label = UILabel()
         label.apply(.appMain10, title: "メールアドレス")
         label.textAlignment = .left
         return label
     }()
     
-    var mailField: PaddingTextField = {
+    var emailField: PaddingTextField = {
         let field = PaddingTextField()
         field.apply(.h4)
         field.backgroundColor = UIColor(white: 1, alpha: 0.5)
@@ -27,7 +27,7 @@ final class RemindUIImpl: RemindUI {
         return field
     }()
     
-    var submitBtn: UIButton = {
+    var updateBtn: UIButton = {
         let button = UIButton.Builder()
             .title("送信")
             .component(.title_White)
@@ -38,11 +38,12 @@ final class RemindUIImpl: RemindUI {
     }()
 }
 
-extension RemindUIImpl {
-    func setup() {
+extension EmailEditingUIImpl {
+    func setup(with email: String) {
         guard let vc = viewController else { return }
         vc.view.backgroundColor = .appMainColor
-        [mailTitle, mailField, submitBtn].forEach { vc.view.addSubview($0) }
+        
+        [mailTitle, emailField, updateBtn].forEach { vc.view.addSubview($0) }
         
         mailTitle.anchor()
             .centerXToSuperview()
@@ -50,18 +51,20 @@ extension RemindUIImpl {
             .width(to: vc.view.widthAnchor, multiplier: 0.7)
             .activate()
         
-        mailField.anchor()
+        emailField.anchor()
             .centerXToSuperview()
             .top(to: mailTitle.bottomAnchor, constant: 10)
             .width(to: vc.view.widthAnchor, multiplier: 0.7)
-            .height(constant: 30)
+            .height(constant: 35)
             .activate()
         
-        submitBtn.anchor()
+        updateBtn.anchor()
             .centerXToSuperview()
-            .top(to: mailField.bottomAnchor, constant: 35)
+            .top(to: emailField.bottomAnchor, constant: 40)
             .width(to: vc.view.widthAnchor, multiplier: 0.7)
             .height(constant: 50)
             .activate()
+        
+        emailField.text = email
     }
 }

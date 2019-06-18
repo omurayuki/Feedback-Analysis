@@ -44,6 +44,31 @@ struct Provider {
         })
     }
     
+    func logout() -> Single<()> {
+        return Single.create(subscribe: { single -> Disposable in
+            do {
+                try Auth.auth().signOut()
+                single(.success(()))
+            } catch let error {
+                single(.error(FirebaseError.resultError(error)))
+            }
+            return Disposables.create()
+        })
+    }
+    
+    func update(with email: String) -> Single<()> {
+        return Single.create(subscribe: { single -> Disposable in
+            Auth.auth().currentUser?.updateEmail(to: email, completion: { error in
+                if let error = error {
+                    single(.error(FirebaseError.resultError(error)))
+                    return
+                }
+                single(.success(()))
+            })
+            return Disposables.create()
+        })
+    }
+    
     func reissuePassword(email: String) -> Single<()> {
         return Single.create(subscribe: { single -> Disposable in
             Auth.auth().languageCode = "ja"

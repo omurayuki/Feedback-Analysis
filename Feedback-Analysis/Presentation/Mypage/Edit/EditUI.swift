@@ -12,16 +12,16 @@ protocol EditUI: UI {
     var userImage: UIImageView { get }
     var userImageEditBtn: UIButton { get }
     var name: UILabel { get }
-    var nameField: UITextField { get }
+    var nameField: PaddingTextField { get }
     var content: UILabel { get }
     var contentField: UITextView { get }
     var residence: UILabel { get }
-    var residenceField: UITextField { get }
+    var residenceField: PaddingTextField { get }
     var residenceDoneBtn: UIBarButtonItem { get }
     var residenceToolBar: UIToolbar { get }
     var residencePickerView: UIPickerView { get }
     var birth: UILabel { get }
-    var birthField: UITextField { get }
+    var birthField: PaddingTextField { get }
     var datePicker: UIDatePicker { get }
     var viewTapGesture: UITapGestureRecognizer { get }
     
@@ -56,13 +56,13 @@ final class EditUIImpl: EditUI {
     
     private(set) var cancelBtn: UIBarButtonItem = {
         let item = UIBarButtonItem(title: "キャンセル", style: .plain, target: nil, action: nil)
-        item.tintColor = .appMainColor
+        item.tintColor = .appSubColor
         return item
     }()
     
     private(set) var saveBtn: UIBarButtonItem = {
         let item = UIBarButtonItem(title: "保存", style: .plain, target: nil, action: nil)
-        item.tintColor = .appMainColor
+        item.tintColor = .appSubColor
         return item
     }()
     
@@ -100,7 +100,6 @@ final class EditUIImpl: EditUI {
         image.layer.cornerRadius = 30
         image.layer.borderWidth = 2
         image.layer.borderColor = UIColor.white.cgColor
-        image.image = #imageLiteral(resourceName: "logo")
         image.isUserInteractionEnabled = true
         image.clipsToBounds = true
         return image
@@ -122,14 +121,14 @@ final class EditUIImpl: EditUI {
     
     private(set) var name: UILabel = {
         let label = UILabel()
-        label.apply(.h5_Bold, title: "名前")
+        label.apply(.h5_appSub_bold, title: "名前")
         return label
     }()
     
-    private(set) var nameField: UITextField = {
-        let field = UITextField()
-        field.apply(.h5, hint: "  名前を記入")
-        field.textColor = .appMainColor
+    private(set) var nameField: PaddingTextField = {
+        let field = PaddingTextField()
+        field.apply(.h5_appSub, hint: "名前を記入")
+        field.textColor = .appSubColor
         field.backgroundColor = UIColor(white: 0.5, alpha: 0.2)
         field.layer.cornerRadius = 5
         return field
@@ -137,14 +136,14 @@ final class EditUIImpl: EditUI {
     
     private(set) var content: UILabel = {
         let label = UILabel()
-        label.apply(.h5_Bold, title: "自己紹介")
+        label.apply(.h5_appSub_bold, title: "自己紹介")
         return label
     }()
     
     private(set) var contentField: UITextView = {
         let textView = UITextView()
         textView.font = UIFont.systemFont(ofSize: 16)
-        textView.textColor = .appMainColor
+        textView.textColor = .appSubColor
         textView.backgroundColor = UIColor(white: 0.5, alpha: 0.2)
         textView.layer.cornerRadius = 5
         return textView
@@ -152,14 +151,14 @@ final class EditUIImpl: EditUI {
     
     private(set) var residence: UILabel = {
         let label = UILabel()
-        label.apply(.h5_Bold, title: "居住")
+        label.apply(.h5_appSub_bold, title: "居住")
         return label
     }()
     
-    private(set) var residenceField: UITextField = {
-        let field = UITextField()
-        field.apply(.h5, hint: "  居住地を記入")
-        field.textColor = .appMainColor
+    private(set) var residenceField: PaddingTextField = {
+        let field = PaddingTextField()
+        field.apply(.h5_appSub, hint: "居住地を記入")
+        field.textColor = .appSubColor
         field.backgroundColor = UIColor(white: 0.5, alpha: 0.2)
         field.layer.cornerRadius = 5
         return field
@@ -187,14 +186,14 @@ final class EditUIImpl: EditUI {
     
     private(set) var birth: UILabel = {
         let label = UILabel()
-        label.apply(.h5_Bold, title: "生年月日")
+        label.apply(.h5_appSub_bold, title: "生年月日")
         return label
     }()
     
-    private(set) var birthField: UITextField = {
-        let field = UITextField()
-        field.apply(.h5, hint: "  生年月日を記入")
-        field.textColor = .appMainColor
+    private(set) var birthField: PaddingTextField = {
+        let field = PaddingTextField()
+        field.apply(.h5_appSub, hint: "生年月日を記入")
+        field.textColor = .appSubColor
         field.backgroundColor = UIColor(white: 0.5, alpha: 0.2)
         field.layer.cornerRadius = 5
         return field
@@ -225,7 +224,7 @@ extension EditUIImpl {
     
     func setup() {
         guard let vc = viewController else { return }
-        vc.view.backgroundColor = .white
+        vc.view.backgroundColor = .appMainColor
         vc.view.addGestureRecognizer(viewTapGesture)
         
         navItem.leftBarButtonItem = cancelBtn

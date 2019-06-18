@@ -114,6 +114,8 @@ class TimelineCell: UITableViewCell {
 extension TimelineCell {
     
     private func setup() {
+        backgroundColor = .appMainColor
+        
         let lhsImageStack = UIStackView.setupStack(lhs: leftTopImage, rhs: rightTopImage, spacing: 5)
         let rhsImageStack = UIStackView.setupStack(lhs: leftBottomImage, rhs: rightBottomImage, spacing: 5)
         let imageStack = UIStackView.setupVerticalStack(lhs: lhsImageStack, rhs: rhsImageStack, spacing: 5)

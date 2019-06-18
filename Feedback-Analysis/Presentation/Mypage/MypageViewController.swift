@@ -4,9 +4,6 @@ import RxSwift
 import RxCocoa
 
 class MypageViewController: UIViewController {
-    
-    
-    // 画像関係着手
     // 設定画面作成
     // 設定画面つなぎこみ
     // 目標投稿画面作成
@@ -34,6 +31,11 @@ class MypageViewController: UIViewController {
     
     var disposeBag: DisposeBag! {
         didSet {
+            ui.settingsBtn.rx.tap.asDriver()
+                .drive(onNext: { [unowned self] _ in
+                    self.routing.moveSettingsPage()
+                }).disposed(by: disposeBag)
+            
             ui.editBtn.rx.tap.asDriver()
                 .drive(onNext: { [unowned self] _ in
                     self.routing.moveEditPage(user: UpdatingItem(userImage: self.ui.userImage.image ?? UIImage(),
@@ -85,7 +87,7 @@ extension MypageViewController: UITableViewDataSource {
                                                        for: indexPath) as? TimelineCell else { return UITableViewCell() }
         cell.configure(photo: #imageLiteral(resourceName: "logo"), name: "ゆうきんぐ",
                        time: "5時間前", content: "wwwwwwwwwwwwwwwww",
-                       postImage: [#imageLiteral(resourceName: "logo"), #imageLiteral(resourceName: "logo"), #imageLiteral(resourceName: "logo"), #imageLiteral(resourceName: "logo")], commentted: "5", like: "13")
+                       postImage: [#imageLiteral(resourceName: "logo_transparent"), #imageLiteral(resourceName: "logo_transparent"), #imageLiteral(resourceName: "logo_transparent"), #imageLiteral(resourceName: "logo_transparent")], commentted: "5", like: "13")
         return cell
     }
 }

@@ -6,6 +6,8 @@ protocol AccountRepository {
     func login(email: String, pass: String) -> Single<AccountEntity>
     func reissuePassword(email: String) -> Single<()>
     func setData(documentRef: FirebaseDocumentRef, fields: [String : Any]) -> Single<()>
+    func logout() -> Single<()>
+    func update(with email: String) -> Single<()>
 }
 
 struct AccountRepositoryImpl: AccountRepository {
@@ -28,5 +30,13 @@ struct AccountRepositoryImpl: AccountRepository {
     
     func setData(documentRef: FirebaseDocumentRef, fields: [String : Any]) -> Single<()> {
         return dataStore.setData(documentRef: documentRef, fields: fields)
+    }
+    
+    func logout() -> Single<()> {
+        return dataStore.logout()
+    }
+    
+    func update(with email: String) -> Single<()> {
+        return dataStore.update(with: email)
     }
 }

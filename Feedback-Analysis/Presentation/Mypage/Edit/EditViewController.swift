@@ -45,7 +45,7 @@ class EditViewController: UIViewController {
                     self.imagePicker?.present(from: self.view)
                 }).disposed(by: disposeBag)
             
-            Observable.of(Residence.getResidence())
+            Observable.of(Residence.residences)
                 .bind(to: self.ui.residencePickerView.rx.itemTitles) {
                     return $1
                 }.disposed(by: disposeBag)

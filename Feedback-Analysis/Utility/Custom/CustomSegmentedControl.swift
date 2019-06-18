@@ -10,8 +10,8 @@ class CustomSegmentedControl: UIView {
     private var selectorView: UIView!
     
     var textColor:UIColor = .black
-    var selectorViewColor: UIColor = .appMainColor
-    var selectorTextColor: UIColor = .appMainColor
+    var selectorViewColor: UIColor = .appSubColor
+    var selectorTextColor: UIColor = .appSubColor
     
     weak var delegate: CustomSegmentedControlDelegate?
     
@@ -24,7 +24,7 @@ class CustomSegmentedControl: UIView {
     
     override func draw(_ rect: CGRect) {
         super.draw(rect)
-        self.backgroundColor = UIColor.white
+        self.backgroundColor = .appMainColor
         updateView()
     }
     

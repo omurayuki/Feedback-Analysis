@@ -51,7 +51,7 @@ enum Residence: String, CaseIterable {
 }
 
 extension Residence {
-    static func getResidence() -> [String] {
+    static var residences: [String] {
         return allCases.compactMap { $0.rawValue }
     }
 }

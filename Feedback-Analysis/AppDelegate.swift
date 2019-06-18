@@ -1,11 +1,3 @@
-//
-//  AppDelegate.swift
-//  Feedback-Analysis
-//
-//  Created by オムラユウキ on 2019/06/05.
-//  Copyright © 2019 Swifter. All rights reserved.
-//
-
 import UIKit
 import RxSwift
 import Firebase
@@ -18,6 +10,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         window = UIWindow(frame: UIScreen.main.bounds)
+        FirebaseApp.configure()
+        
+        UINavigationBar.appearance().tintColor = .appSubColor
+        UINavigationBar.appearance().backIndicatorImage = UIImage()
+        UINavigationBar.appearance().backIndicatorTransitionMaskImage = UIImage()
         
         let vc = TopViewController()
         var routing: TopRouting = TopRoutingImpl()
@@ -27,8 +24,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         vc.inject(ui: ui, routing: routing, disposeBag: DisposeBag())
         window?.rootViewController = UINavigationController(rootViewController: vc)
         window?.makeKeyAndVisible()
-        
-        FirebaseApp.configure()
 
         return true
     }

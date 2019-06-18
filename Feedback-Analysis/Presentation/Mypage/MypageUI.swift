@@ -4,6 +4,7 @@ protocol MypageUI: UI {
     var headerImage: UIImageView { get }
     var userImage: UIImageView { get }
     var userName: UILabel { get }
+    var settingsBtn: UIButton { get }
     var editBtn: UIButton { get }
     var contentField: UILabel { get }
     var residence: UILabel { get }
@@ -49,7 +50,18 @@ final class MypageUIImpl: MypageUI {
     private(set) var editBtn: UIButton = {
         let button = UIButton.Builder()
             .title("   変更   ")
-            .border(width: 1, color: UIColor.appMainColor.cgColor)
+            .border(width: 1, color: UIColor.appSubColor.cgColor)
+            .cornerRadius(15)
+            .backgroundColor(.clear)
+            .component(.appMain)
+            .build()
+        return button
+    }()
+    
+    private(set) var settingsBtn: UIButton = {
+        let button = UIButton.Builder()
+            .title("   設定   ")
+            .border(width: 1, color: UIColor.appSubColor.cgColor)
             .cornerRadius(15)
             .backgroundColor(.clear)
             .component(.appMain)
@@ -122,6 +134,8 @@ final class MypageUIImpl: MypageUI {
         let table = UITableView()
         table.estimatedRowHeight = 400
         table.rowHeight = UITableView.automaticDimension
+        table.backgroundColor = .appMainColor
+        table.separatorColor = .appSubColor
         table.register(TimelineCell.self, forCellReuseIdentifier: String(describing: TimelineCell.self))
         return table
     }()
@@ -130,7 +144,7 @@ final class MypageUIImpl: MypageUI {
 extension MypageUIImpl {
     func setup() {
         guard let vc = viewController else { return }
-        vc.view.backgroundColor = .white
+        vc.view.backgroundColor = .appMainColor
         vc.clearNavBar()
         
         let residenceStack = UIStackView.setupStack(lhs: residence, rhs: residenceField, spacing: 5)
@@ -138,8 +152,8 @@ extension MypageUIImpl {
         let followStack = UIStackView.setupStack(lhs: followCount, rhs: follow, spacing: 5)
         let followerStack = UIStackView.setupStack(lhs: followerCount, rhs: follower, spacing: 5)
         
-        [headerImage, userImage, userName,
-         editBtn, contentField, residenceStack,
+        [headerImage, userImage, userName, editBtn,
+         settingsBtn, contentField, residenceStack,
          birthStack, followStack, followerStack,
          timelineSegmented, timelineTable].forEach { vc.view.addSubview($0) }
         
@@ -164,6 +178,11 @@ extension MypageUIImpl {
         editBtn.anchor()
             .top(to: headerImage.bottomAnchor, constant: 10)
             .right(to: vc.view.rightAnchor, constant: -20)
+            .activate()
+        
+        settingsBtn.anchor()
+            .top(to: headerImage.bottomAnchor, constant: 10)
+            .right(to: editBtn.leftAnchor, constant: -20)
             .activate()
         
         contentField.anchor()
