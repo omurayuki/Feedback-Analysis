@@ -31,8 +31,10 @@ class EditViewController: UIViewController {
     var disposeBag: DisposeBag! {
         didSet {
             ui.cancelBtn.rx.tap.asDriver()
-                .drive(onNext: { _ in
-                    self.routing.dismiss()
+                .drive(onNext: { [unowned self] _ in
+                    self.showActionSheet(title: "注意", message: "情報が失われますがよろしいですか？") {
+                        self.routing.dismiss()
+                    }
                 }).disposed(by: disposeBag)
             
             ui.saveBtn.rx.tap.asDriver()
@@ -46,12 +48,12 @@ class EditViewController: UIViewController {
                 }).disposed(by: disposeBag)
             
             Observable.of(Residence.residences)
-                .bind(to: self.ui.residencePickerView.rx.itemTitles) {
+                .bind(to: ui.residencePickerView.rx.itemTitles) {
                     return $1
                 }.disposed(by: disposeBag)
             
             ui.residencePickerView.rx.modelSelected(String.self).asDriver()
-                .drive(onNext: { str in
+                .drive(onNext: { [unowned self] str in
                     self.ui.residenceField.text = str.first
                 }).disposed(by: disposeBag)
             

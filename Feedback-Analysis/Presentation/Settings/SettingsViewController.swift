@@ -42,6 +42,20 @@ class SettingsViewController: UIViewController {
 
 extension SettingsViewController: SettingsPresenterView {
     
+    func didSelectPass() {
+        routing.movePassEditPage()
+    }
+    
+    func didSelectEmail() {
+        routing.moveEmailEditPage()
+    }
+    
+    func didSelectLogout() {
+        showActionSheet(title: "メッセージ", message: "ログアウトしますか？") {
+            self.presenter.logout()
+        }
+    }
+    
     func didLogoutSuccess() {
         routing.moveTopPage()
     }
@@ -77,45 +91,17 @@ extension SettingsViewController: UITableViewDataSource {
         guard let section = SettingsSection(rawValue: indexPath.section) else { return UITableViewCell() }
         switch section {
         case .account:
-            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: UITableViewCell.self), for: indexPath)
-            cell.textLabel?.text = AccountItem.sharedItems[indexPath.row].title
-            cell.textLabel?.font = .systemFont(ofSize: 13)
-            cell.accessoryType = .disclosureIndicator
-            return cell
+            return createCell(tableView: tableView, item: AccountItem.sharedItems, indexPath: indexPath)
         case .general:
-            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: UITableViewCell.self), for: indexPath)
-            cell.textLabel?.text = GeneralItem.sharedItems[indexPath.row].title
-            cell.textLabel?.font = .systemFont(ofSize: 13)
-            cell.accessoryType = .disclosureIndicator
-            return cell
+            return createCell(tableView: tableView, item: GeneralItem.sharedItems, indexPath: indexPath)
         }
     }
-}
-
-extension SettingsViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        guard let section = SettingsSection(rawValue: indexPath.section) else { return }
-        switch section {
-        case .account:
-            switch indexPath.row {
-            case SettingsSection.Account.passwordEdit.rawValue:
-                routing.movePassEditPage()
-            case SettingsSection.Account.emailEdit.rawValue:
-                routing.moveEmailEditPage()
-            default: return
-            }
-        case .general:
-            switch indexPath.row {
-            case SettingsSection.General.logout.rawValue:
-                let alert = UIAlertController.createActionSheet(title: "メッセージ",
-                                                                message: "ログアウトしますか？",
-                                                                okCompletion: {
-                    self.presenter.logout()
-                })
-                present(alert, animated: true)
-            default: return
-            }
-        }
+    
+    private func createCell<T: Item>(tableView: UITableView, item: [T], indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: UITableViewCell.self), for: indexPath)
+        cell.textLabel?.text = item[indexPath.row].title
+        cell.textLabel?.font = .systemFont(ofSize: 13)
+        cell.accessoryType = .disclosureIndicator
+        return cell
     }
 }

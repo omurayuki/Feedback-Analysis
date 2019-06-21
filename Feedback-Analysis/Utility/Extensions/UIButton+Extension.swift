@@ -14,6 +14,7 @@ extension UIButton {
         private var imageEdgeInsets: UIEdgeInsets = .zero
         
         private var backgroundColor: UIColor?
+        private var tintColor: UIColor?
         
         private var cornerRadius: CGFloat = 0
         private var borderWidth: CGFloat = 0
@@ -73,6 +74,11 @@ extension UIButton {
             return self
         }
         
+        func tintColor(_ color: UIColor) -> Builder {
+            self.tintColor = color
+            return self
+        }
+        
         func contentHorizontalAlignment(_ contentHorizontalAlignment: UIControl.ContentHorizontalAlignment) -> Builder {
             self.contentHorizontalAlignment = contentHorizontalAlignment
             return self
@@ -89,6 +95,7 @@ extension UIButton {
             button.layer.borderColor = borderColor
             button.frame = CGRect(x: 0, y: 0, width: width, height: height)
             button.contentHorizontalAlignment = contentHorizontalAlignment
+            button.tintColor = tintColor
             return button
         }
     }

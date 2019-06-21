@@ -7,7 +7,7 @@ struct Update {
     let residence: String
     let birth: String
     
-    enum Key {
+    fileprivate enum Key {
         case userImage
         case name
         case content

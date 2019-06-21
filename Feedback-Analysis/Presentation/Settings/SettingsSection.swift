@@ -25,11 +25,15 @@ extension SettingsSection {
     }
 }
 
-class AccountItem {
+protocol Item {
+    var title: String { get }
+}
+
+class AccountItem: Item {
     
     let title: String
     
-    init(title: String) {
+    private init(title: String) {
         self.title  = title
     }
     
@@ -49,11 +53,11 @@ class AccountItem {
     }
 }
 
-class GeneralItem {
+class GeneralItem: Item {
     
     let title: String
     
-    init(title: String) {
+    private init(title: String) {
         self.title  = title
     }
     

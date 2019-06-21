@@ -18,7 +18,9 @@ struct AccountRepositoryImpl: AccountRepository {
     private let dataStore = AccountDataStoreFactory.createAccountDataStore()
     
     func signup(email: String, pass: String) -> Single<AccountEntity> {
-        return dataStore.signup(email: email, pass: pass)
+        return dataStore.signup(email: email, pass: pass).do(onSuccess: { entity in
+            print(entity)
+        })
     }
     
     func login(email: String, pass: String) -> Single<AccountEntity> {

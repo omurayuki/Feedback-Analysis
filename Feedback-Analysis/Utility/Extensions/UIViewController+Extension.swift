@@ -87,4 +87,13 @@ extension UIViewController {
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         navigationController?.navigationBar.shadowImage = UIImage()
     }
+    
+    func showActionSheet(title: String, message: String, completion: @escaping () -> Void) {
+        let alert = UIAlertController.createActionSheet(title: title,
+                                                        message: message,
+                                                        okCompletion: {
+            completion()
+        })
+        present(alert, animated: true)
+    }
 }

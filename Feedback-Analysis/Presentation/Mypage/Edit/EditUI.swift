@@ -44,7 +44,7 @@ final class EditUIImpl: EditUI {
     
     private(set) var navBar: UINavigationBar = {
         let nav = UINavigationBar()
-        nav.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        nav.setBackgroundImage(UIImage(), for: .default)
         nav.shadowImage = UIImage()
         return nav
     }()

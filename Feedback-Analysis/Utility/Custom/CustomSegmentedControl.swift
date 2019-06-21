@@ -9,13 +9,13 @@ class CustomSegmentedControl: UIView {
     private var buttons: [UIButton]!
     private var selectorView: UIView!
     
-    var textColor:UIColor = .black
-    var selectorViewColor: UIColor = .appSubColor
-    var selectorTextColor: UIColor = .appSubColor
+    var textColor:UIColor = .appSubColor
+    var selectorViewColor: UIColor = .appSelectColor
+    var selectorTextColor: UIColor = .appSelectColor
     
     weak var delegate: CustomSegmentedControlDelegate?
     
-    public private(set) var selectedIndex : Int = 0
+    public var selectedIndex : Int = 0
     
     convenience init(frame: CGRect, buttonTitle: [String]) {
         self.init(frame: frame)
@@ -95,8 +95,9 @@ extension CustomSegmentedControl {
         for buttonTitle in buttonTitles {
             let button = UIButton(type: .system)
             button.setTitle(buttonTitle, for: .normal)
-            button.addTarget(self, action:#selector(CustomSegmentedControl.buttonAction(sender:)), for: .touchUpInside)
+            button.addTarget(self, action: #selector(CustomSegmentedControl.buttonAction(sender:)), for: .touchUpInside)
             button.setTitleColor(textColor, for: .normal)
+            button.titleLabel?.font = .boldSystemFont(ofSize: 13)
             buttons.append(button)
         }
         buttons[0].setTitleColor(selectorTextColor, for: .normal)

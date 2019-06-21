@@ -4,10 +4,11 @@ import RxSwift
 import RxCocoa
 
 class MypageViewController: UIViewController {
-    // 設定画面作成
-    // 設定画面つなぎこみ
-    // 目標投稿画面作成
-    // 目標投稿APIつなぎこみ
+    //// localstoreに保存するやつ変える
+    //// [unowned self]
+    // 目標投稿APIつなぎこみ cloudFunctions
+    // push通知設定
+    
     // タイムライン取得
     // data切り替え()
     // tableview切り出し
@@ -43,6 +44,11 @@ class MypageViewController: UIViewController {
                                                                  content: self.ui.contentField.text ?? "",
                                                                  residence: self.ui.residenceField.text ?? "",
                                                                  birth: self.ui.birthDayField.text ?? ""))
+                }).disposed(by: disposeBag)
+            
+            ui.goalPostBtn.rx.tap.asDriver()
+                .drive(onNext: { [unowned self] _ in
+                    self.routing.moveGoalPostPage()
                 }).disposed(by: disposeBag)
         }
     }

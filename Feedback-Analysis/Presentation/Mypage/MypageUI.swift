@@ -17,6 +17,7 @@ protocol MypageUI: UI {
     var follower: UILabel { get }
     var timelineSegmented: CustomSegmentedControl { get }
     var timelineTable: UITableView { get }
+    var goalPostBtn: UIButton { get }
     
     func setup()
     func updateUser(user: User)
@@ -125,7 +126,7 @@ final class MypageUIImpl: MypageUI {
     }()
     
     private(set) var timelineSegmented: CustomSegmentedControl = {
-        let segment = CustomSegmentedControl(frame: CGRect(), buttonTitle: ["目標", "達成", "いいね"])
+        let segment = CustomSegmentedControl(frame: CGRect(), buttonTitle: ["目標", "達成", "下書き", "いいね"])
         segment.backgroundColor = .clear
         return segment
     }()
@@ -135,9 +136,19 @@ final class MypageUIImpl: MypageUI {
         table.estimatedRowHeight = 400
         table.rowHeight = UITableView.automaticDimension
         table.backgroundColor = .appMainColor
-        table.separatorColor = .appSubColor
+        table.separatorColor = .appCoolGrey
         table.register(TimelineCell.self, forCellReuseIdentifier: String(describing: TimelineCell.self))
         return table
+    }()
+    
+    private(set) var goalPostBtn: UIButton = {
+        let button = UIButton.Builder()
+            .backgroundColor(.appSubColor)
+            .tintColor(.white)
+            .image(#imageLiteral(resourceName: "goal_post"))
+            .cornerRadius(25)
+            .build()
+        return button
     }()
 }
 
@@ -155,7 +166,7 @@ extension MypageUIImpl {
         [headerImage, userImage, userName, editBtn,
          settingsBtn, contentField, residenceStack,
          birthStack, followStack, followerStack,
-         timelineSegmented, timelineTable].forEach { vc.view.addSubview($0) }
+         timelineSegmented, timelineTable, goalPostBtn].forEach { vc.view.addSubview($0) }
         
         headerImage.anchor()
             .top(to: vc.view.topAnchor)
@@ -222,6 +233,13 @@ extension MypageUIImpl {
             .top(to: timelineSegmented.bottomAnchor, constant: 2)
             .width(to: vc.view.widthAnchor)
             .height(to: vc.view.heightAnchor, multiplier: 0.5)
+            .activate()
+        
+        goalPostBtn.anchor()
+            .right(to: vc.view.rightAnchor, constant: -20)
+            .bottom(to: vc.view.safeAreaLayoutGuide.bottomAnchor, constant: -20)
+            .width(constant: 50)
+            .height(constant: 50)
             .activate()
     }
     

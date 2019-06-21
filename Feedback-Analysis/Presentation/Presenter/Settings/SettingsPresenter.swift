@@ -16,6 +16,9 @@ protocol SettingsPresenterView: class {
                 presenter: SettingsPresenter,
                 routing: SettingsRouting,
                 disposeBag: DisposeBag)
+    func didSelectPass()
+    func didSelectEmail()
+    func didSelectLogout()
     func didLogoutSuccess()
     func showError(message: String)
 }

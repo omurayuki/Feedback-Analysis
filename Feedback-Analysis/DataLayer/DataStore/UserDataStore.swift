@@ -12,10 +12,7 @@ struct UserDataStoreImpl: UserDataStore {
     func fetch(to documentRef: FirebaseDocumentRef) -> Single<UserEntity> {
         return Provider()
             .get(documentRef: documentRef)
-            .map { hoge in
-                UserEntity(document: hoge)
-                
-        }
+            .map { UserEntity(document: $0) }
     }
     
     func update(to documentRef: FirebaseDocumentRef, user: Update) -> Single<()> {

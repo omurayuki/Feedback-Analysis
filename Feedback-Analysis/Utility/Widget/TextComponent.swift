@@ -60,6 +60,7 @@ enum TextComponent {
     case appMain10
     case h5_appSub_bold
     case h5_appSub
+    case h3_appSub
     
     var font: UIFont {
         switch self {
@@ -83,7 +84,7 @@ enum TextComponent {
             return .fontBold(.fontSize30)
         case .h2_Bold, .h2_Bold_LightGray:
             return .fontBold(.fontSize22)
-        case .h3_Bold:
+        case .h3_Bold, .h3_appSub:
             return .fontBold(.fontSize20)
         case .h4_Bold:
             return .fontBold(.fontSize17)
@@ -124,7 +125,7 @@ enum TextComponent {
             return .appPurpleyGrey
         case .h1_Bold_OliveGreen, .h2_OliveGreen, .h3_OliveGreen:
             return .appOliveGreen
-        case .h4_appMain, .appMain, .appMain10, .h5_appSub_bold, .h5_appSub:
+        case .h4_appMain, .appMain, .appMain10, .h5_appSub_bold, .h5_appSub, .h3_appSub:
             return .appSubColor
         }
     }

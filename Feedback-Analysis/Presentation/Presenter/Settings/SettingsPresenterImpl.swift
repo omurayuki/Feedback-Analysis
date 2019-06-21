@@ -1,7 +1,8 @@
 import Foundation
+import UIKit
 import RxSwift
 
-class SettingsPresenterImpl: SettingsPresenter {
+class SettingsPresenterImpl: NSObject, SettingsPresenter {
     
     var view: SettingsPresenterView!
     
@@ -24,4 +25,27 @@ class SettingsPresenterImpl: SettingsPresenter {
     }
     
     func setup() {}
+}
+
+extension SettingsPresenterImpl: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        guard let section = SettingsSection(rawValue: indexPath.section) else { return }
+        switch section {
+        case .account:
+            switch indexPath.row {
+            case SettingsSection.Account.passwordEdit.rawValue:
+                self.view.didSelectPass()
+            case SettingsSection.Account.emailEdit.rawValue:
+                self.view.didSelectEmail()
+            default: return
+            }
+        case .general:
+            switch indexPath.row {
+            case SettingsSection.General.logout.rawValue:
+                self.view.didSelectLogout()
+            default: return
+            }
+        }
+    }
 }
