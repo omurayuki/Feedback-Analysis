@@ -39,3 +39,19 @@ enum UserValidation {
         return .ok(name, content, residence, birth)
     }
 }
+
+enum GoalPostValidation {
+    case ok(Array<String>, String?, String?, String?, String?)
+    case empty(String)
+    case exceeded(String)
+    
+    static func validate(genre: [String], newThings: String? = nil,
+                         expectedResult1: String? = nil, expectedResult2: String? = nil,
+                         expectedResult3: String? = nil) -> GoalPostValidation {
+        guard genre.count >= 1 else { return .empty("ジャンルを一つ以上選択してください") }
+        if let newThings = newThings, let expectedResult1 = expectedResult1, let expectedResult2 = expectedResult2, let expectedResult3 = expectedResult3 {
+            guard newThings.count > 1 && expectedResult1.count > 1 && expectedResult2.count > 1 && expectedResult3.count > 1 else { return .empty("空白を埋めてください") }
+        }
+        return .ok(genre, newThings, expectedResult1, expectedResult2, expectedResult3)
+    }
+}

@@ -54,28 +54,34 @@ class GoalPostViewController: UIViewController {
             
             ui.draftBtn.rx.tap.asDriver()
                 .drive(onNext: { [unowned self] _ in
-                    let goalPost = GoalPost(genre: self.genres, newThings: newThingsView.newThingsField.text ?? "",
-                                            goal: ["goal1": expectedResultView.expectedResultField1.text ?? "",
-                                                   "goal2": expectedResultView.expectedResultField2.text ?? "",
-                                                   "goal3": expectedResultView.expectedResultField3.text ?? ""],
-                                            deadline: expectedResultView.deadline.text ?? "", achievedFlag: false,
-                                            draftFlag: true, likeCount: 0,
-                                            commentedCount: 0, createdAt: FieldValue.serverTimestamp(),
-                                            updatedAt: FieldValue.serverTimestamp())
-                    self.presenter.post(to: .goalPostRef, fields: goalPost)
+                    self.validateGoalPost(genre: self.genres,
+                                          execute: { _genres, _newThings, _expectedResultField1, _expectedResultField2, _expectedResultField3 in
+                        let goalPost = self.createGoalPost(genre: _genres,
+                                                           newThings: _newThings,
+                                                           expectedResultField1: _expectedResultField1,
+                                                           expectedResultField2: _expectedResultField2,
+                                                           expectedResultField3: _expectedResultField3,
+                                                           deadline: expectedResultView.deadline.text ?? "", draft: true)
+                        self.presenter.post(to: .goalPostRef, fields: goalPost)
+                    })
                 }).disposed(by: disposeBag)
             
             ui.saveBtn.rx.tap.asDriver()
                 .drive(onNext: { [unowned self] _ in
-                    let goalPost = GoalPost(genre: self.genres, newThings: newThingsView.newThingsField.text ?? "",
-                                            goal: ["goal1": expectedResultView.expectedResultField1.text ?? "",
-                                                   "goal2": expectedResultView.expectedResultField2.text ?? "",
-                                                   "goal3": expectedResultView.expectedResultField3.text ?? ""],
-                                            deadline: expectedResultView.deadline.text ?? "", achievedFlag: false,
-                                            draftFlag: false, likeCount: 0,
-                                            commentedCount: 0, createdAt: FieldValue.serverTimestamp(),
-                                            updatedAt: FieldValue.serverTimestamp())
-                    self.presenter.post(to: .goalPostRef, fields: goalPost)
+                    self.validateGoalPost(genre: self.genres,
+                                          newThings: newThingsView.newThingsField.text ?? "",
+                                          expectedResult1: expectedResultView.expectedResultField1.text ?? "",
+                                          expectedResult2: expectedResultView.expectedResultField2.text ?? "",
+                                          expectedResult3: expectedResultView.expectedResultField3.text ?? "",
+                                          execute: { _genres, _newThings, _expectedResultField1, _expectedResultField2, _expectedResultField3 in
+                        let goalPost = self.createGoalPost(genre: _genres,
+                                                           newThings: _newThings,
+                                                           expectedResultField1: _expectedResultField1,
+                                                           expectedResultField2: _expectedResultField2,
+                                                           expectedResultField3: _expectedResultField3,
+                                                           deadline: expectedResultView.deadline.text ?? "", draft: false)
+                        self.presenter.post(to: .goalPostRef, fields: goalPost)
+                    })
                 }).disposed(by: disposeBag)
        
             genreView.array.forEach { button in
@@ -123,6 +129,45 @@ class GoalPostViewController: UIViewController {
         super.viewDidLoad()
         ui.setup()
         ui.setupSlideScrollView(slides: ui.slides)
+    }
+}
+
+extension GoalPostViewController {
+    
+    func validateGoalPost(genre: [String],
+                          newThings: String? = nil,
+                          expectedResult1: String? = nil,
+                          expectedResult2: String? = nil,
+                          expectedResult3: String? = nil,
+                          execute: @escaping (_ genre: [String], _ newThings: String,
+                                              _ expectedResult1: String, _ expectedResult2: String, _ expectedResult3: String) -> Void) {
+        switch GoalPostValidation.validate(genre: genre,
+                                           newThings: newThings,
+                                           expectedResult1: expectedResult1,
+                                           expectedResult2: expectedResult2,
+                                           expectedResult3: expectedResult3) {
+        case .empty(let str):          self.showError(message: str)
+        case .exceeded(let str):       self.showError(message: str)
+        case .ok(let genre, let newThings,
+                 let expectedResult1, let expectedResult2,
+                 let expectedResult3): execute(genre, newThings ?? "", expectedResult1 ?? "", expectedResult2 ?? "", expectedResult3 ?? "")
+        }
+    }
+    
+    func createGoalPost(genre: [String],
+                        newThings: String,
+                        expectedResultField1: String,
+                        expectedResultField2: String,
+                        expectedResultField3: String,
+                        deadline: String, draft: Bool) -> GoalPost {
+        return GoalPost(genre: genre, newThings: newThings,
+                        goal: ["goal1": expectedResultField1,
+                               "goal2": expectedResultField2,
+                               "goal3": expectedResultField3],
+                        deadline: deadline, achievedFlag: false,
+                        draftFlag: draft, likeCount: 0,
+                        commentedCount: 0, createdAt: FieldValue.serverTimestamp(),
+                        updatedAt: FieldValue.serverTimestamp())
     }
 }
 

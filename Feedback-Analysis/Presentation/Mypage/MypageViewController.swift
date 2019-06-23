@@ -4,7 +4,11 @@ import RxSwift
 import RxCocoa
 
 class MypageViewController: UIViewController {
-    // 目標投稿APIつなぎこみ cloudFunctions
+    // deleteのcloudFunction
+    // 目標をタイムラインに表示
+    // skeltonview
+    // 目標詳細(ツイッターみたいなイメージのUI)
+    // 目標編集
     // push通知設定
     // validationチェック(文字数, すべて(genreの場合はgenresを見てからならエラー的な))
     // タイムライン取得

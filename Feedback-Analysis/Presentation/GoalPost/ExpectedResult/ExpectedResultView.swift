@@ -28,7 +28,7 @@ final class ExpectedResultView: UIView {
     
     private(set) var expectedResultField1: PaddingTextField = {
         let field = PaddingTextField()
-        field.apply(.h5_appSub)
+        field.apply(.h5_appSub, hint: "ex) ◯◯を任されるようになる")
         field.textColor = .appSubColor
         field.backgroundColor = UIColor(white: 0.5, alpha: 0.2)
         field.layer.cornerRadius = 5
@@ -37,7 +37,7 @@ final class ExpectedResultView: UIView {
     
     private(set) var expectedResultField2: PaddingTextField = {
         let field = PaddingTextField()
-        field.apply(.h5_appSub)
+        field.apply(.h5_appSub, hint: "ex) ◯◯なスキルを高める")
         field.textColor = .appSubColor
         field.backgroundColor = UIColor(white: 0.5, alpha: 0.2)
         field.layer.cornerRadius = 5
@@ -46,7 +46,7 @@ final class ExpectedResultView: UIView {
     
     private(set) var expectedResultField3: PaddingTextField = {
         let field = PaddingTextField()
-        field.apply(.h5_appSub)
+        field.apply(.h5_appSub, hint: "ex) ◯◯を完了させる")
         field.textColor = .appSubColor
         field.backgroundColor = UIColor(white: 0.5, alpha: 0.2)
         field.layer.cornerRadius = 5

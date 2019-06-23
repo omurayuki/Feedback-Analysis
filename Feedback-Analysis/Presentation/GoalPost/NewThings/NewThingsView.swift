@@ -11,7 +11,7 @@ final class NewThingsView: UIView {
     
     private(set) var newThingsField: PaddingTextField = {
         let field = PaddingTextField()
-        field.apply(.h5_appSub)
+        field.apply(.h5_appSub, hint: "ex) ◯◯の仕事を始めた")
         field.textColor = .appSubColor
         field.backgroundColor = UIColor(white: 0.5, alpha: 0.2)
         field.layer.cornerRadius = 5

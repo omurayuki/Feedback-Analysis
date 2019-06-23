@@ -29,10 +29,19 @@ export const onUsersPostUpdate = functions.firestore.document('/Users/{userId}/G
     await copyToRootWithUsersPostSnapshot(change.after, context);
 });
 
+export const onUserPostDelete = functions.firestore.document('/Users/{userId}/Goals/{postId}').onDelete(async (snapshot, _) => {
+    await deleteToRootWithUsersPostSnapshot(snapshot);
+});
+
 async function copyToRootWithUsersPostSnapshot(snapshot: FirebaseFirestore.DocumentSnapshot, context: functions.EventContext) {
     const postId = snapshot.id;
     const userId = context.params.userId;
     const post = snapshot.data() as RootPost;
     post.authorRef = firestore.collection('Users').doc(userId);
     await firestore.collection('Goals').doc(postId).set(post, { merge: true });
+}
+
+async function deleteToRootWithUsersPostSnapshot(snapshot: FirebaseFirestore.DocumentSnapshot) {
+    const postId = snapshot.id;
+    await firestore.collection('Goals').doc(postId).delete();
 }
