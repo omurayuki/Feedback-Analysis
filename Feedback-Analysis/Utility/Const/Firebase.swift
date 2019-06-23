@@ -17,11 +17,11 @@ enum FirebaseDocumentRef {
         switch self {
         case .userRef:
             return Firestore.firestore()
-                .collection("User")
+                .collection("Users")
                 .document(AppUserDefaults.getAuthToken())
         case .goalPostRef:
             return Firestore.firestore()
-                .collection("User")
+                .collection("Users")
                 .document(AppUserDefaults.getAuthToken())
                 .collection("Goals")
                 .document()

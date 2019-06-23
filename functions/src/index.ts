@@ -21,11 +21,11 @@ interface RootPost extends Post {
     authorRef?: FirebaseFirestore.DocumentReference;
 }
 
-export const onUserPostCreate = functions.firestore.document('/User/{userId}/Goals/{postId}').onCreate(async (snapshot, context) => {
+export const onUserPostCreate = functions.firestore.document('/Users/{userId}/Goals/{postId}').onCreate(async (snapshot, context) => {
     await copyToRootWithUsersPostSnapshot(snapshot, context);
 });
 
-export const onUsersPostUpdate = functions.firestore.document('/User/{userId}/Goals/{postId}').onUpdate(async (change, context) => {
+export const onUsersPostUpdate = functions.firestore.document('/Users/{userId}/Goals/{postId}').onUpdate(async (change, context) => {
     await copyToRootWithUsersPostSnapshot(change.after, context);
 });
 
@@ -33,6 +33,6 @@ async function copyToRootWithUsersPostSnapshot(snapshot: FirebaseFirestore.Docum
     const postId = snapshot.id;
     const userId = context.params.userId;
     const post = snapshot.data() as RootPost;
-    post.authorRef = firestore.collection('User').doc(userId);
+    post.authorRef = firestore.collection('Users').doc(userId);
     await firestore.collection('Goals').doc(postId).set(post, { merge: true });
 }
