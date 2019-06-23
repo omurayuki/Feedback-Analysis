@@ -17,11 +17,10 @@ class EmailEditingPresenterImpl: EmailEditingPresenter {
     func update(with email: String) {
         view.updateLoading(true)
         useCase.update(with: email)
-            .subscribe { result in
+            .subscribe { [unowned self] result in
                 switch result {
                 case .success(_):
                     self.view.updateLoading(false)
-                    AppUserDefaults.setAccountEmail(email: email)
                     self.view.showSuccess(message: "メールアドレスを変更しました")
                 case .error(let error):
                     self.view.updateLoading(false)

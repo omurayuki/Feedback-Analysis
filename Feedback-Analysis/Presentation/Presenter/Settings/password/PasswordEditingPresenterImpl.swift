@@ -17,7 +17,7 @@ class PasswordEditingPresenterImpl: PasswordEditingPresenter {
     func update(with email: String, oldPass: String, newPass: String) {
         view.updateLoading(true)
         useCase.update(with: email, oldPass: oldPass, newPass: newPass)
-            .subscribe { result in
+            .subscribe { [unowned self] result in
                 switch result {
                 case .success(_):
                     self.view.updateLoading(false)

@@ -19,8 +19,6 @@ class SignupInputPresenterImpl: SignupInputPresenter {
             .subscribe { result in
                 switch result {
                 case .success(let account):
-                    AppUserDefaults.setAuthToken(token: account.authToken)
-                    AppUserDefaults.setAccountEmail(email: account.email)
                     self.view.didSignupSuccess(account: account)
                 case .error(let error):
                     self.view.updateLoading(false)
@@ -31,7 +29,7 @@ class SignupInputPresenterImpl: SignupInputPresenter {
     
     func setData(documentRef: FirebaseDocumentRef, fields: [String : Any]) {
         useCase.setData(documentRef: documentRef, fields: fields)
-            .subscribe { result in
+            .subscribe { [unowned self] result in
                 switch result {
                 case .success(_):
                     self.view.updateLoading(false)

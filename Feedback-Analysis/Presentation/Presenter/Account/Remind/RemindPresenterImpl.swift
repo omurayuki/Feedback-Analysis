@@ -15,7 +15,7 @@ class RemindPresenterImpl: RemindPresenter {
     func reissuePassword(email: String) {
         view.updateLoading(true)
         useCase.reissuePassword(email: email)
-            .subscribe { result in
+            .subscribe { [unowned self] result in
                 switch result {
                 case .success(_):
                     self.view.updateLoading(false)

@@ -38,6 +38,7 @@
 		C97901D222B9DE1300C245B2 /* GenreButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97901D122B9DE1300C245B2 /* GenreButton.swift */; };
 		C97901D422B9EC0400C245B2 /* sample.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97901D322B9EC0400C245B2 /* sample.swift */; };
 		C97901D622BA02B700C245B2 /* Animation+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97901D522BA02B700C245B2 /* Animation+Extension.swift */; };
+		C979404922BF447A00929C2A /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C979404822BF447A00929C2A /* Array+Extension.swift */; };
 		C97DDD7B22AD543F00A84219 /* SignupInputPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97DDD7A22AD543F00A84219 /* SignupInputPresenter.swift */; };
 		C97DDD7D22AD544E00A84219 /* SignupInputPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97DDD7C22AD544E00A84219 /* SignupInputPresenterImpl.swift */; };
 		C97DDD7F22AD550F00A84219 /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97DDD7E22AD550F00A84219 /* Presenter.swift */; };
@@ -163,6 +164,7 @@
 		C97901D122B9DE1300C245B2 /* GenreButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreButton.swift; sourceTree = "<group>"; };
 		C97901D322B9EC0400C245B2 /* sample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sample.swift; sourceTree = "<group>"; };
 		C97901D522BA02B700C245B2 /* Animation+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Animation+Extension.swift"; sourceTree = "<group>"; };
+		C979404822BF447A00929C2A /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
 		C97DDD7A22AD543F00A84219 /* SignupInputPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupInputPresenter.swift; sourceTree = "<group>"; };
 		C97DDD7C22AD544E00A84219 /* SignupInputPresenterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupInputPresenterImpl.swift; sourceTree = "<group>"; };
 		C97DDD7E22AD550F00A84219 /* Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
@@ -666,6 +668,7 @@
 				C958D9E622B62B9900565EDE /* UIImage+Extension.swift */,
 				C98E1BB522B7370100D132D5 /* UIImageView+Extension.swift */,
 				C97901D522BA02B700C245B2 /* Animation+Extension.swift */,
+				C979404822BF447A00929C2A /* Array+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -997,6 +1000,7 @@
 				C91FA66022B577BB006D9E6D /* Residence.swift in Sources */,
 				C9EA654C22BC1A27002BE1C8 /* GoalDataStore.swift in Sources */,
 				C9F2496F22B79CBF007E82A0 /* EmailEditingViewController.swift in Sources */,
+				C979404922BF447A00929C2A /* Array+Extension.swift in Sources */,
 				C9A6065D22B2643F00184E0F /* TimelineCell+Extension.swift in Sources */,
 				C99116AC22B8A318007C67C7 /* PasswordEditingUI.swift in Sources */,
 				C9035CAE22B7772A006DFAB9 /* SettingsViewController.swift in Sources */,

@@ -15,7 +15,7 @@ class EditPresenterImpl: EditPresenter {
     
     func update(to documentRef: FirebaseDocumentRef, user: Update) {
         useCase.update(to: documentRef, user: user)
-            .subscribe { result in
+            .subscribe { [unowned self] result in
                 switch result {
                 case .success(_):
                     self.view.updateLoading(false)
@@ -30,7 +30,7 @@ class EditPresenterImpl: EditPresenter {
     func uploadImage(_ image: UIImage, at storageRef: FirebaseStorageRef) {
         view.updateLoading(true)
         useCase.uploadImage(image, at: storageRef)
-            .subscribe { result in
+            .subscribe { [unowned self] result in
                 switch result {
                 case .success(let url):
                     self.view.didUploadImage(userImage: url.absoluteString)

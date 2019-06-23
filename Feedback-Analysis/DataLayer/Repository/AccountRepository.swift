@@ -18,13 +18,17 @@ struct AccountRepositoryImpl: AccountRepository {
     private let dataStore = AccountDataStoreFactory.createAccountDataStore()
     
     func signup(email: String, pass: String) -> Single<AccountEntity> {
-        return dataStore.signup(email: email, pass: pass).do(onSuccess: { entity in
-            print(entity)
+        return dataStore.signup(email: email, pass: pass).do(onSuccess: { account in
+            AppUserDefaults.setAuthToken(token: account.authToken)
+            AppUserDefaults.setAccountEmail(email: account.email)
         })
     }
     
     func login(email: String, pass: String) -> Single<AccountEntity> {
-        return dataStore.login(email: email, pass: pass)
+        return dataStore.login(email: email, pass: pass).do(onSuccess: { account in
+            AppUserDefaults.setAuthToken(token: account.authToken)
+            AppUserDefaults.setAccountEmail(email: account.email)
+        })
     }
     
     func reissuePassword(email: String) -> Single<()> {
@@ -40,7 +44,9 @@ struct AccountRepositoryImpl: AccountRepository {
     }
     
     func update(with email: String) -> Single<()> {
-        return dataStore.update(with: email)
+        return dataStore.update(with: email).do(onSuccess: { _ in
+            AppUserDefaults.setAccountEmail(email: email)
+        })
     }
     
     func update(with email: String, oldPass: String, newPass: String) -> Single<()> {

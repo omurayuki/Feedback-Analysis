@@ -4,11 +4,9 @@ import RxSwift
 import RxCocoa
 
 class MypageViewController: UIViewController {
-    //// localstoreに保存するやつ変える
-    //// [unowned self]
     // 目標投稿APIつなぎこみ cloudFunctions
     // push通知設定
-    
+    // validationチェック(文字数, すべて(genreの場合はgenresを見てからならエラー的な))
     // タイムライン取得
     // data切り替え()
     // tableview切り出し

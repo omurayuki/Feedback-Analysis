@@ -17,7 +17,7 @@ class MypagePresenterImpl: MypagePresenter {
     func fetch(to documentRef: FirebaseDocumentRef, completion: (() -> Void)? = nil) {
         self.view.updateLoading(true)
         useCase.fetch(to: documentRef)
-            .subscribe { result in
+            .subscribe { [unowned self] result in
                 switch result {
                 case .success(let response):
                     self.view.updateLoading(false)

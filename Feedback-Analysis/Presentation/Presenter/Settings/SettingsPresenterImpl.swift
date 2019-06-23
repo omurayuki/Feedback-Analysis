@@ -14,7 +14,7 @@ class SettingsPresenterImpl: NSObject, SettingsPresenter {
     
     func logout() {
         useCase.logout()
-            .subscribe { result in
+            .subscribe { [unowned self] result in
                 switch result {
                 case .success(_):
                     self.view.didLogoutSuccess()

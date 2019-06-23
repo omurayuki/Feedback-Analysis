@@ -16,13 +16,16 @@ class GoalPostPresenterImpl: NSObject, GoalPostPresenter {
     }
     
     func post(to documentRef: FirebaseDocumentRef, fields: GoalPost) {
+        view.updateLoading(true)
         useCase.post(to: documentRef, fields: fields)
-            .subscribe { result in
+            .subscribe { [unowned self] result in
                 switch result {
                 case .success(_):
+                    self.view.updateLoading(false)
                     self.view.didPostSuccess()
                 case .error(let error):
-                    return
+                    self.view.updateLoading(false)
+                    self.view.showError(message: error.localizedDescription)
                 }
             }.disposed(by: view.disposeBag)
     }
