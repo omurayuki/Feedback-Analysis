@@ -16,7 +16,8 @@ protocol MypageUI: UI {
     var followerCount: UILabel { get }
     var follower: UILabel { get }
     var timelineSegmented: CustomSegmentedControl { get }
-    var timelineTable: UITableView { get }
+    var containerView: UIView { get }
+    var timelinePages: UIPageViewController { get set }
     var goalPostBtn: UIButton { get }
     
     func setup()
@@ -131,14 +132,16 @@ final class MypageUIImpl: MypageUI {
         return segment
     }()
     
-    private(set) var timelineTable: UITableView = {
-        let table = UITableView()
-        table.estimatedRowHeight = 400
-        table.rowHeight = UITableView.automaticDimension
-        table.backgroundColor = .appMainColor
-        table.separatorColor = .appCoolGrey
-        table.register(TimelineCell.self, forCellReuseIdentifier: String(describing: TimelineCell.self))
-        return table
+    private(set) var containerView: UIView = {
+        let view = UIView()
+        return view
+    }()
+    
+    var timelinePages: UIPageViewController = {
+        let pageVC = UIPageViewController(transitionStyle: .scroll,
+                                          navigationOrientation: .horizontal,
+                                          options: nil)
+        return pageVC
     }()
     
     private(set) var goalPostBtn: UIButton = {
@@ -163,10 +166,13 @@ extension MypageUIImpl {
         let followStack = UIStackView.setupStack(lhs: followCount, rhs: follow, spacing: 5)
         let followerStack = UIStackView.setupStack(lhs: followerCount, rhs: follower, spacing: 5)
         
+        vc.addChild(timelinePages)
         [headerImage, userImage, userName, editBtn,
          settingsBtn, contentField, residenceStack,
          birthStack, followStack, followerStack,
-         timelineSegmented, timelineTable, goalPostBtn].forEach { vc.view.addSubview($0) }
+         timelineSegmented, containerView, goalPostBtn].forEach { vc.view.addSubview($0) }
+        containerView.addSubview(timelinePages.view)
+        timelinePages.didMove(toParent: vc)
         
         headerImage.anchor()
             .top(to: vc.view.topAnchor)
@@ -229,10 +235,14 @@ extension MypageUIImpl {
             .height(constant: 35)
             .activate()
         
-        timelineTable.anchor()
+        containerView.anchor()
             .top(to: timelineSegmented.bottomAnchor, constant: 2)
             .width(to: vc.view.widthAnchor)
             .height(to: vc.view.heightAnchor, multiplier: 0.5)
+            .activate()
+        
+        timelinePages.view.anchor()
+            .edgesToSuperview()
             .activate()
         
         goalPostBtn.anchor()

@@ -2,7 +2,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-class MypagePresenterImpl: MypagePresenter {
+class MypagePresenterImpl: NSObject, MypagePresenter {
     
     var view: MypagePresenterView!
     
@@ -31,4 +31,22 @@ class MypagePresenterImpl: MypagePresenter {
     }
     
     func setup() {}
+}
+
+extension MypagePresenterImpl: CustomSegmentedControlDelegate {
+    
+    func changeToIndex(index: Int) {
+        view.didSelectSegment(with: index)
+    }
+}
+
+extension MypagePresenterImpl: UIPageViewControllerDelegate {
+    
+    func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
+        view.willTransitionTo(pageViewController, pendingViewControllers: pendingViewControllers)
+    }
+    
+    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+        view.didFinishAnimating(pageViewController, finished: finished, previousViewControllers: previousViewControllers, transitionCompleted: completed)
+    }
 }

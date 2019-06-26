@@ -4,11 +4,15 @@ import RxSwift
 import RxCocoa
 
 class MypageViewController: UIViewController {
-    // deleteのcloudFunction
+    // pageviewControllerの中に数分のtableviewを作って、それぞれがpresenterなどを持っている
+    // そしてdataSourceも持っているので、それぞれが叩くことでキャッシュされる
+    
+    
     // 目標をタイムラインに表示
     // skeltonview
     // 目標詳細(ツイッターみたいなイメージのUI)
     // 目標編集
+    // 目標投稿時のimage選択(複数)
     // push通知設定
     // validationチェック(文字数, すべて(genreの場合はgenresを見てからならエラー的な))
     // タイムライン取得
@@ -22,9 +26,15 @@ class MypageViewController: UIViewController {
     // チャット機能実装
     // 強み分析機能実装
     
+    private var currentIndex: Int?
+    
+    private var pendingIndex: Int?
+    
     var ui: MypageUI!
     
     var routing: MypageRouting!
+    
+    var viewControllers: [UIViewController]!
     
     var presenter: MypagePresenter! {
         didSet {
@@ -58,10 +68,12 @@ class MypageViewController: UIViewController {
     func inject(ui: MypageUI,
                 presenter: MypagePresenter,
                 routing: MypageRouting,
+                viewControllers: [UIViewController],
                 disposeBag: DisposeBag) {
         self.ui = ui
         self.presenter = presenter
         self.routing = routing
+        self.viewControllers = viewControllers
         self.disposeBag = disposeBag
         
         self.presenter.fetch(to: .userRef, completion: nil)
@@ -70,38 +82,8 @@ class MypageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         ui.setup()
+        ui.timelinePages.setViewControllers([viewControllers.first!], direction: .forward, animated: true, completion: nil)
     }
-}
-
-extension MypageViewController: CustomSegmentedControlDelegate {
-    
-    func changeToIndex(index: Int) {
-        print(index)
-    }
-}
-
-extension MypageViewController: UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: TimelineCell.self),
-                                                       for: indexPath) as? TimelineCell else { return UITableViewCell() }
-        cell.configure(photo: #imageLiteral(resourceName: "logo"), name: "ゆうきんぐ",
-                       time: "5時間前", content: "wwwwwwwwwwwwwwwww",
-                       postImage: [#imageLiteral(resourceName: "川"), #imageLiteral(resourceName: "川"), #imageLiteral(resourceName: "川"), #imageLiteral(resourceName: "川")], commentted: "5", like: "13")
-        return cell
-    }
-}
-
-extension MypageViewController: UITableViewDelegate {
-    
 }
 
 extension MypageViewController: MypagePresenterView {
@@ -113,6 +95,21 @@ extension MypageViewController: MypagePresenterView {
     func didFetchUserData(user: User) {
         ui.updateUser(user: user)
     }
+    
+    func didSelectSegment(with index: Int) {
+        ui.timelinePages.setViewControllers([viewControllers[index]], direction: .forward, animated: true, completion: nil)
+    }
+    
+    func willTransitionTo(_ pageViewController: UIPageViewController, pendingViewControllers: [UIViewController]) {
+        pendingIndex = viewControllers.firstIndex(of: pendingViewControllers.first!)
+    }
+    
+    func didFinishAnimating(_ pageViewController: UIPageViewController, finished: Bool,
+                            previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+        guard completed else { return }
+        currentIndex = pendingIndex
+        if let index = currentIndex { ui.timelineSegmented.setIndex(index: index) }
+    }
 }
 
 extension MypageViewController: UpdatingDelegate {
@@ -120,5 +117,24 @@ extension MypageViewController: UpdatingDelegate {
         presenter.fetch(to: .userRef) {
             completion()
         }
+    }
+}
+
+extension MypageViewController: UIPageViewControllerDataSource {
+    
+    func pageViewController(_ pageViewController: UIPageViewController,
+                            viewControllerAfter viewController: UIViewController) -> UIViewController? {
+        var index = viewController.view.tag
+        if index == viewControllers.count - 1 { return nil }
+        index = index + 1
+        return viewControllers[index]
+    }
+    
+    func pageViewController(_ pageViewController: UIPageViewController,
+                            viewControllerBefore viewController: UIViewController) -> UIViewController? {
+        var index = viewController.view.tag
+        index = index - 1
+        if index < 0 { return nil }
+        return viewControllers[index]
     }
 }
