@@ -30,14 +30,9 @@ extension MainTabController {
     }
     
     private func initMypageVC() -> MypageViewController {
-        let sample1 = createController()
-        let sample2 = UIViewController()
-        sample2.view.backgroundColor = .white
-        let sample3 = UIViewController()
-        sample3.view.backgroundColor = .blue
-        let sample4 = UIViewController()
-        sample4.view.backgroundColor = .gray
-        [sample1, sample2, sample3, sample4].enumerated().forEach { index, controller in controller.view.tag = index }
+        let controllers = [createGoalController(), createCompleteController(),
+                           createDraftController(), createIineController()]
+        controllers.enumerated().forEach { index, controller in controller.view.tag = index }
         
         let repository = MypageRepositoryImpl.shared
         let useCase = MypageUseCaseImpl(repository: repository)
@@ -54,13 +49,16 @@ extension MainTabController {
         vc.inject(ui: ui,
                   presenter: presenter,
                   routing: routing,
-                  viewControllers: [sample1, sample2, sample3, sample4],
+                  viewControllers: controllers,
                   disposeBag: DisposeBag())
         
         return vc
     }
+}
+
+extension MainTabController {
     
-    func createController() -> UIViewController {
+    private func createGoalController() -> UIViewController {
         let repository = GoalRepositoryImpl.shared
         let useCase = GoalPostUseCaseImpl(repository: repository)
         let presenter = GoalPresenterImpl(useCase: useCase)
@@ -73,5 +71,23 @@ extension MainTabController {
         routing.viewController = vc
         vc.inject(ui: ui, presenter: presenter, routing: routing, disposeBag: DisposeBag())
         return vc
+    }
+    
+    private func createCompleteController() -> UIViewController {
+        let completeVC = UIViewController()
+        completeVC.view.backgroundColor = .white
+        return completeVC
+    }
+    
+    private func createDraftController() -> UIViewController {
+        let draftVC = UIViewController()
+        draftVC.view.backgroundColor = .blue
+        return draftVC
+    }
+    
+    private func createIineController() -> UIViewController {
+        let iineVC = UIViewController()
+        iineVC.view.backgroundColor = .green
+        return iineVC
     }
 }

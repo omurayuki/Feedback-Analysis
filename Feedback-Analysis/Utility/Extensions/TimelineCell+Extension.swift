@@ -17,7 +17,7 @@ extension TimelineCell {
             images?.enumerated().forEach { index, image in
                 mappedImages[index].image = image
             }
-        } else if images?.count == nil {
+        } else if images?.count == nil || images?.count == 0 {
             mappedImages.forEach { $0.isHidden = true }
         }
     }

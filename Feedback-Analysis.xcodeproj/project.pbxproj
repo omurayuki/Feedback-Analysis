@@ -37,6 +37,7 @@
 		C978FD2422C6071900859851 /* GoalPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C978FD2322C6071800859851 /* GoalPresenterImpl.swift */; };
 		C978FD2622C60B3A00859851 /* GoalTranslater.swift in Sources */ = {isa = PBXBuildFile; fileRef = C978FD2522C60B3A00859851 /* GoalTranslater.swift */; };
 		C978FD2822C6105600859851 /* memo.strings in Resources */ = {isa = PBXBuildFile; fileRef = C978FD2722C6105600859851 /* memo.strings */; };
+		C978FD2A22C67D4700859851 /* GoalPostViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C978FD2922C67D4700859851 /* GoalPostViewController+Extension.swift */; };
 		C97901CD22B9534B00C245B2 /* NewThingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97901CC22B9534B00C245B2 /* NewThingsView.swift */; };
 		C97901D022B95AA800C245B2 /* GenreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97901CF22B95AA800C245B2 /* GenreView.swift */; };
 		C97901D222B9DE1300C245B2 /* GenreButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97901D122B9DE1300C245B2 /* GenreButton.swift */; };
@@ -172,6 +173,7 @@
 		C978FD2322C6071800859851 /* GoalPresenterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalPresenterImpl.swift; sourceTree = "<group>"; };
 		C978FD2522C60B3A00859851 /* GoalTranslater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalTranslater.swift; sourceTree = "<group>"; };
 		C978FD2722C6105600859851 /* memo.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = memo.strings; sourceTree = "<group>"; };
+		C978FD2922C67D4700859851 /* GoalPostViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GoalPostViewController+Extension.swift"; sourceTree = "<group>"; };
 		C97901CC22B9534B00C245B2 /* NewThingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewThingsView.swift; sourceTree = "<group>"; };
 		C97901CF22B95AA800C245B2 /* GenreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreView.swift; sourceTree = "<group>"; };
 		C97901D122B9DE1300C245B2 /* GenreButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreButton.swift; sourceTree = "<group>"; };
@@ -750,6 +752,7 @@
 				C98E1BB522B7370100D132D5 /* UIImageView+Extension.swift */,
 				C97901D522BA02B700C245B2 /* Animation+Extension.swift */,
 				C979404822BF447A00929C2A /* Array+Extension.swift */,
+				C978FD2922C67D4700859851 /* GoalPostViewController+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1117,6 +1120,7 @@
 				C9ED71FE22B137C400BDB9A7 /* MypageViewController.swift in Sources */,
 				C9D9010E22AB458B0040390E /* NSLayoutAnchor+Extension.swift in Sources */,
 				C9CC28FB22AD505A006E69E5 /* Validate.swift in Sources */,
+				C978FD2A22C67D4700859851 /* GoalPostViewController+Extension.swift in Sources */,
 				C9A6067122B2980D00184E0F /* Const.swift in Sources */,
 				C978FD2622C60B3A00859851 /* GoalTranslater.swift in Sources */,
 				C91FA65B22B53F9C006D9E6D /* Update.swift in Sources */,

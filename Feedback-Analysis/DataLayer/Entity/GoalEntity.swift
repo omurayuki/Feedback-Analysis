@@ -1,23 +1,22 @@
 import Foundation
 import FirebaseFirestore
 
+////    let postImage: [String]?
 struct GoalEntity: Entity {
     let user: UserEntity
-    let genre: [String]
+    let genre: [String: String]
     let newThings: String
     let goal: [String: String]
     let achievedFlag: Bool
     let draftFlag: Bool
     let deadLine: String
-//    let postImage: [String]?
     let likeCount: Int
     let commentedCount: Int
     let createdAt: Timestamp
-    // commentId, replyIdどうするか
     
     init(user: UserEntity, document: [String: Any]) {
         guard
-            let genre = document["genre"] as? [String],
+            let genre = document["genre"] as? [String: String],
             let newThings = document["new_things"] as? String,
             let goal = document["goal"] as? [String: String],
             let achievedFlag = document["achieved_flag"] as? Bool,
@@ -28,7 +27,7 @@ struct GoalEntity: Entity {
             let createdAt = document["created_at"] as? Timestamp
         else {
             self.user = UserEntity(document: ["": ""])
-            self.genre = [""]
+            self.genre = ["": ""]
             self.newThings = ""
             self.goal = ["": ""]
             self.achievedFlag = false

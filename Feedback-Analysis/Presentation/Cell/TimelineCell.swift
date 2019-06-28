@@ -42,12 +42,6 @@ class TimelineCell: UITableViewCell {
         return label
     }()
     
-    private(set) var genre3: UILabel = {
-        let label = UILabel()
-        label.apply(.body_CoolGrey)
-        return label
-    }()
-    
     private(set) var newThingsTitle: UILabel = {
         let label = UILabel()
         label.apply(.body_CoolGrey13, title: "新しく始めたこと")
@@ -172,7 +166,7 @@ class TimelineCell: UITableViewCell {
             userPhoto.setImage(url: content.userImage)
             userName.text = content.name
             postedTime.text = content.time
-            setupGenres(content.genre1, content.genre2, content.genre3)
+            setupGenres(content.genre1 ?? "", content.genre2 ?? "")
             newThings.text = content.newThings
             goal1.text = content.goal1
             goal2.text = content.goal2
@@ -194,7 +188,6 @@ class TimelineCell: UITableViewCell {
     }
 }
 
-
 extension TimelineCell {
     
     private func setup() {
@@ -207,7 +200,6 @@ extension TimelineCell {
         let likeStack = UIStackView.setupStack(lhs: likeBtn, rhs: likeCount, spacing: 5)
         
         let genres = UIStackView(arrangedSubviews: [
-            genre3,
             genre2,
             genre1
         ])
@@ -306,15 +298,8 @@ extension TimelineCell {
             .activate()
     }
     
-    private func setupGenres(_ genre1: String, _ genre2: String? = "", _ genre3: String? = "") {
+    private func setupGenres(_ genre1: String, _ genre2: String) {
         self.genre1.text = genre1
-        if genre2 == "" {
-            self.genre2.isHidden = true
-        }
         self.genre2.text = genre2
-        if genre3 == "" {
-            self.genre3.isHidden = true
-        }
-        self.genre3.text = genre3
     }
 }

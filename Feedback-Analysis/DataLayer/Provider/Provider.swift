@@ -186,11 +186,9 @@ struct Provider {
         })
     }
     
-    func observe(documentRef: FirebaseDocumentRef) -> Observable<GoalEntity> {
+    func observe(documentRef: DocumentReference) -> Observable<[String: Any]> {
         return Observable.create({ observer -> Disposable in
-            documentRef
-                .destination
-                .addSnapshotListener({ snapshot, error in
+            documentRef.addSnapshotListener({ snapshot, error in
                 if let error = error {
                     observer.on(.error(FirebaseError.resultError(error)))
                     return
@@ -199,9 +197,41 @@ struct Provider {
                     observer.on(.error(FirebaseError.unknown))
                     return
                 }
-//                document
-//                observer.on(.next(document))
+                observer.on(.next(document))
             })
+            return Disposables.create()
+        })
+    }
+    
+    func observeTimeline(collectionRef: FirebaseCollectionRef) -> Observable<[GoalEntity]> {
+        return Observable.create({ observer -> Disposable in
+            collectionRef
+                .destination
+                .order(by: "updated_at", descending: true)
+                .addSnapshotListener({ goalsSnapshot, error in
+                    if let error = error {
+                        observer.on(.error(FirebaseError.resultError(error)))
+                        return
+                    }
+                    FirebaseDocumentRef
+                        .userRef
+                        .destination
+                        .addSnapshotListener({ userSnapshot, error in
+                            if let error = error {
+                                observer.on(.error(FirebaseError.resultError(error)))
+                                return
+                            }
+                            guard let userDocument = userSnapshot?.data() else {
+                                observer.on(.error(FirebaseError.unknown))
+                                return
+                            }
+                            guard let documents = goalsSnapshot?.documents else {
+                                observer.on(.error(FirebaseError.unknown))
+                                return
+                            }
+                            observer.on(.next(documents.compactMap { GoalEntity(user: UserEntity(document: userDocument), document: $0.data()) }))
+                        })
+                })
             return Disposables.create()
         })
     }

@@ -2,7 +2,7 @@ import Foundation
 import FirebaseFirestore
 
 struct GoalPost {
-    let genre: [String]
+    let genre: [String: String]
     let newThings: String
     let goal: [String: String]
     let deadline: String
