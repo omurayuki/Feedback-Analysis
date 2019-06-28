@@ -4,27 +4,6 @@ import RxSwift
 import RxCocoa
 
 class MypageViewController: UIViewController {
-    // pageviewControllerの中に数分のtableviewを作って、それぞれがpresenterなどを持っている
-    // そしてdataSourceも持っているので、それぞれが叩くことでキャッシュされる
-    
-    
-    // 目標をタイムラインに表示
-    // skeltonview
-    // 目標詳細(ツイッターみたいなイメージのUI)
-    // 目標編集
-    // 目標投稿時のimage選択(複数)
-    // push通知設定
-    // validationチェック(文字数, すべて(genreの場合はgenresを見てからならエラー的な))
-    // タイムライン取得
-    // data切り替え()
-    // tableview切り出し
-    // segmentedControl切り出し
-    // 投稿ボタン作成
-    // 目標編集画面作成
-    // コメント機能実装
-    // リプライ機能実装
-    // チャット機能実装
-    // 強み分析機能実装
     
     private var currentIndex: Int?
     
@@ -113,6 +92,7 @@ extension MypageViewController: MypagePresenterView {
 }
 
 extension MypageViewController: UpdatingDelegate {
+    
     func updateMypage(completion: @escaping () -> Void) {
         presenter.fetch(to: .userRef) {
             completion()

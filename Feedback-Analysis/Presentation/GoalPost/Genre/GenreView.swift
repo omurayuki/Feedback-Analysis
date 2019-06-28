@@ -6,7 +6,7 @@ final class GenreView: UIView {
     
     private(set) var noticeLabel: UILabel = {
         let label = UILabel()
-        label.apply(.h5_appSub, title: "ジャンルを選択しましょう。複数選択しても構いません。")
+        label.apply(.h5_appSub, title: "ジャンルを選択しましょう。最大3つまで選択できます。")
         label.textAlignment = .center
         label.numberOfLines = 0
         return label

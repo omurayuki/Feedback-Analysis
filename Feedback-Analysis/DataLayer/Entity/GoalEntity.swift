@@ -8,6 +8,7 @@ struct GoalEntity: Entity {
     let goal: [String: String]
     let achievedFlag: Bool
     let draftFlag: Bool
+    let deadLine: String
 //    let postImage: [String]?
     let likeCount: Int
     let commentedCount: Int
@@ -21,6 +22,7 @@ struct GoalEntity: Entity {
             let goal = document["goal"] as? [String: String],
             let achievedFlag = document["achieved_flag"] as? Bool,
             let draftFlag = document["draft_flag"] as? Bool,
+            let deadLine = document["deadline"] as? String,
             let likeCount = document["like_count"] as? Int,
             let commentedCount = document["commented_count"] as? Int,
             let createdAt = document["created_at"] as? Timestamp
@@ -31,6 +33,7 @@ struct GoalEntity: Entity {
             self.goal = ["": ""]
             self.achievedFlag = false
             self.draftFlag = false
+            self.deadLine = ""
             self.likeCount = 0
             self.commentedCount = 0
             self.createdAt = Timestamp()
@@ -43,6 +46,7 @@ struct GoalEntity: Entity {
         self.goal = goal
         self.achievedFlag = achievedFlag
         self.draftFlag = draftFlag
+        self.deadLine = deadLine
         self.likeCount = likeCount
         self.commentedCount = commentedCount
         self.createdAt = createdAt

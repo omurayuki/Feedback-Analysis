@@ -49,8 +49,13 @@ enum GoalPostValidation {
                          expectedResult1: String? = nil, expectedResult2: String? = nil,
                          expectedResult3: String? = nil) -> GoalPostValidation {
         guard genre.count >= 1 else { return .empty("ジャンルを一つ以上選択してください") }
+        guard genre.count <= 4 else { return .exceeded("ジャンル選択数は最大3つまでです") }
         if let newThings = newThings, let expectedResult1 = expectedResult1, let expectedResult2 = expectedResult2, let expectedResult3 = expectedResult3 {
             guard newThings.count > 1 && expectedResult1.count > 1 && expectedResult2.count > 1 && expectedResult3.count > 1 else { return .empty("空白を埋めてください") }
+            guard newThings.count <= 25 else { return .exceeded("25文字以下で入力してください") }
+            guard expectedResult1.count <= 25 else { return .exceeded("25文字以下で入力してください") }
+            guard expectedResult2.count <= 25 else { return .exceeded("25文字以下で入力してください") }
+            guard expectedResult3.count <= 25 else { return .exceeded("25文字以下で入力してください") }
         }
         return .ok(genre, newThings, expectedResult1, expectedResult2, expectedResult3)
     }

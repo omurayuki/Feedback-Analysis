@@ -29,6 +29,20 @@ enum FirebaseDocumentRef {
     }
 }
 
+enum FirebaseCollectionRef {
+    case goalsRef
+    
+    var destination: CollectionReference {
+        switch self {
+        case .goalsRef:
+            return Firestore.firestore()
+                .collection("Users")
+                .document(AppUserDefaults.getAuthToken())
+                .collection("Goals")
+        }
+    }
+}
+
 enum FirebaseStorageRef {
     case userImageRef
     

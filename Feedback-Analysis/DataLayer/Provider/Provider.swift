@@ -186,9 +186,11 @@ struct Provider {
         })
     }
     
-    func observe(documentRef: DocumentReference) -> Observable<[String: Any]> {
+    func observe(documentRef: FirebaseDocumentRef) -> Observable<GoalEntity> {
         return Observable.create({ observer -> Disposable in
-            documentRef.addSnapshotListener({ snapshot, error in
+            documentRef
+                .destination
+                .addSnapshotListener({ snapshot, error in
                 if let error = error {
                     observer.on(.error(FirebaseError.resultError(error)))
                     return
@@ -197,7 +199,8 @@ struct Provider {
                     observer.on(.error(FirebaseError.unknown))
                     return
                 }
-                observer.on(.next(document))
+//                document
+//                observer.on(.next(document))
             })
             return Disposables.create()
         })

@@ -30,9 +30,7 @@ extension MainTabController {
     }
     
     private func initMypageVC() -> MypageViewController {
-        
-        let sample1 = UIViewController()
-        sample1.view.backgroundColor = .yellow
+        let sample1 = createController()
         let sample2 = UIViewController()
         sample2.view.backgroundColor = .white
         let sample3 = UIViewController()
@@ -59,6 +57,21 @@ extension MainTabController {
                   viewControllers: [sample1, sample2, sample3, sample4],
                   disposeBag: DisposeBag())
         
+        return vc
+    }
+    
+    func createController() -> UIViewController {
+        let repository = GoalRepositoryImpl.shared
+        let useCase = GoalPostUseCaseImpl(repository: repository)
+        let presenter = GoalPresenterImpl(useCase: useCase)
+        let vc = GoalViewController()
+        
+        let ui = GoalUIImpl()
+        let routing = GoalRoutingImpl()
+        ui.viewController = vc
+        ui.timeline.dataSource = vc.dataSource
+        routing.viewController = vc
+        vc.inject(ui: ui, presenter: presenter, routing: routing, disposeBag: DisposeBag())
         return vc
     }
 }

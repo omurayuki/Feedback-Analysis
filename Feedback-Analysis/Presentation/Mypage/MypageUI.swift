@@ -134,6 +134,7 @@ final class MypageUIImpl: MypageUI {
     
     private(set) var containerView: UIView = {
         let view = UIView()
+        view.backgroundColor = .appMainColor
         return view
     }()
     
@@ -141,6 +142,7 @@ final class MypageUIImpl: MypageUI {
         let pageVC = UIPageViewController(transitionStyle: .scroll,
                                           navigationOrientation: .horizontal,
                                           options: nil)
+        pageVC.view.backgroundColor = .appMainColor
         return pageVC
     }()
     

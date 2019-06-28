@@ -3,6 +3,7 @@ import RxSwift
 
 protocol GoalPostUseCase {
     func post(to documentRef: FirebaseDocumentRef, fields: GoalPost) -> Single<()>
+    func fetch(from collectionRef: FirebaseCollectionRef) -> Observable<[Timeline]>
 }
 
 struct GoalPostUseCaseImpl: GoalPostUseCase {
@@ -15,5 +16,9 @@ struct GoalPostUseCaseImpl: GoalPostUseCase {
     
     func post(to documentRef: FirebaseDocumentRef, fields: GoalPost) -> Single<()> {
         return repository.post(to: documentRef, fields: fields)
+    }
+    
+    func fetch(from collectionRef: FirebaseCollectionRef) -> Observable<[Timeline]> {
+        return repository.fetch(from: collectionRef).map { GoalsTranslater().translate($0) }
     }
 }
