@@ -3,7 +3,7 @@ import RxSwift
 
 protocol GoalDataStore {
     func post(to documentRef: FirebaseDocumentRef, fields: GoalPost) -> Single<()>
-    func fetch(from collectionRef: FirebaseCollectionRef) -> Observable<[GoalEntity]>
+    func fetch(from queryRef: FirebaseQueryRef) -> Observable<[GoalEntity]>
 }
 
 struct GoalDataStoreImpl: GoalDataStore {
@@ -12,8 +12,8 @@ struct GoalDataStoreImpl: GoalDataStore {
         return Provider().setData(documentRef: documentRef, fields: fields.encode())
     }
     
-    func fetch(from collectionRef: FirebaseCollectionRef) -> Observable<[GoalEntity]> {
-        return Provider().observeTimeline(collectionRef: collectionRef)
+    func fetch(from queryRef: FirebaseQueryRef) -> Observable<[GoalEntity]> {
+        return Provider().observeQuery(queryRef: queryRef)
     }
 }
 

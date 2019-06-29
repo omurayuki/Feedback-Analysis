@@ -43,6 +43,49 @@ enum FirebaseCollectionRef {
     }
 }
 
+enum FirebaseQueryRef {
+    case goalRef
+    case completeRef
+    case draftRef
+    case allRef
+    
+    var destination: Query {
+        switch self {
+        case .goalRef:
+            return Firestore.firestore()
+                .collection("Users")
+                .document(AppUserDefaults.getAuthToken())
+                .collection("Goals")
+                .whereField("achieved_flag", isEqualTo: false)
+                .whereField("draft_flag", isEqualTo: false)
+                .order(by: "updated_at", descending: true)
+        case .completeRef:
+            return Firestore.firestore()
+                .collection("Users")
+                .document(AppUserDefaults.getAuthToken())
+                .collection("Goals")
+                .whereField("achieved_flag", isEqualTo: true)
+                .whereField("draft_flag", isEqualTo: false)
+                .order(by: "updated_at", descending: true)
+        case .draftRef:
+            return Firestore.firestore()
+                .collection("Users")
+                .document(AppUserDefaults.getAuthToken())
+                .collection("Goals")
+                .whereField("achieved_flag", isEqualTo: false)
+                .whereField("draft_flag", isEqualTo: true)
+                .order(by: "updated_at", descending: true)
+                
+        case .allRef:
+            return Firestore.firestore()
+                .collection("Users")
+                .document(AppUserDefaults.getAuthToken())
+                .collection("Goals")
+                .order(by: "updated_at", descending: true)
+        }
+    }
+}
+
 enum FirebaseStorageRef {
     case userImageRef
     

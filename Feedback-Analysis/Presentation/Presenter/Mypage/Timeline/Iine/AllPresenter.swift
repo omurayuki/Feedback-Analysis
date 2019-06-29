@@ -3,19 +3,19 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-protocol GoalPresenter {
-    var view: GoalPresenterView! { get set }
+protocol AllPresenter {
+    var view: AllPresenterView! { get set }
     var isLoading: BehaviorRelay<Bool> { get }
     
     func fetch(from queryRef: FirebaseQueryRef, completion: (() -> Void)?)
 }
 
-protocol GoalPresenterView: class {
+protocol AllPresenterView: class {
     var disposeBag: DisposeBag! { get }
     
-    func inject(ui: GoalUI,
-                presenter: GoalPresenter,
-                routing: GoalRouting,
+    func inject(ui: AllUI,
+                presenter: AllPresenter,
+                routing: AllRouting,
                 disposeBag: DisposeBag)
     func didFetchGoalData(timeline: [Timeline])
     func didSelect(row index: Int)

@@ -2,8 +2,8 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-class GoalPresenterImpl: NSObject, GoalPresenter {
-    var view: GoalPresenterView!
+class AllPresenterImpl: NSObject, AllPresenter {
+    var view: AllPresenterView!
     
     var isLoading: BehaviorRelay<Bool> = BehaviorRelay<Bool>(value: false)
     

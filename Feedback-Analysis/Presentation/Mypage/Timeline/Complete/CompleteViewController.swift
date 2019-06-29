@@ -3,7 +3,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class GoalViewController: UIViewController {
+class CompleteViewController: UIViewController {
     
     typealias DataSource = TimelineTableViewDataSource<TimelineCell, Timeline>
     
@@ -11,15 +11,15 @@ class GoalViewController: UIViewController {
         return DataSource(cellReuseIdentifier: String(describing: TimelineCell.self),
                           listItems: [],
                           cellConfigurationHandler: { (cell, item, _) in
-            cell.content = item
+                            cell.content = item
         })
     }()
     
-    var ui: GoalUI!
+    var ui: CompleteUI!
     
-    var routing: GoalRouting!
+    var routing: CompleteRouting!
     
-    var presenter: GoalPresenter! {
+    var presenter: CompletePresenter! {
         didSet {
             presenter.view = self
         }
@@ -35,13 +35,13 @@ class GoalViewController: UIViewController {
         }
     }
     
-    func inject(ui: GoalUI, presenter: GoalPresenter, routing: GoalRouting, disposeBag: DisposeBag) {
+    func inject(ui: CompleteUI, presenter: CompletePresenter, routing: CompleteRouting, disposeBag: DisposeBag) {
         self.ui = ui
         self.presenter = presenter
         self.routing = routing
         self.disposeBag = disposeBag
         
-        self.presenter.fetch(from: .goalRef, completion: nil)
+        self.presenter.fetch(from: .completeRef, completion: nil)
     }
     
     override func viewDidLoad() {
@@ -50,7 +50,7 @@ class GoalViewController: UIViewController {
     }
 }
 
-extension GoalViewController: GoalPresenterView {
+extension CompleteViewController: CompletePresenterView {
     
     func updateLoading(_ isLoading: Bool) {
         presenter.isLoading.accept(isLoading)

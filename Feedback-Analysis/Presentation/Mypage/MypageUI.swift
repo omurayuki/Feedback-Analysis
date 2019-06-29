@@ -127,7 +127,7 @@ final class MypageUIImpl: MypageUI {
     }()
     
     private(set) var timelineSegmented: CustomSegmentedControl = {
-        let segment = CustomSegmentedControl(frame: CGRect(), buttonTitle: ["目標", "達成", "下書き", "いいね"])
+        let segment = CustomSegmentedControl(frame: CGRect(), buttonTitle: ["目標", "達成", "下書き", "すべて"])
         segment.backgroundColor = .clear
         return segment
     }()

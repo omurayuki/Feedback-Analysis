@@ -25,6 +25,18 @@
 		C92E7FE322B90D250031AE4F /* GoalPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E7FE222B90D250031AE4F /* GoalPostViewController.swift */; };
 		C92E7FE522B90D350031AE4F /* GoalPostUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E7FE422B90D350031AE4F /* GoalPostUI.swift */; };
 		C92E7FE722B90D430031AE4F /* GoalPostRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E7FE622B90D430031AE4F /* GoalPostRouting.swift */; };
+		C9328A9822C7193E0065027B /* CompletePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9328A9722C7193E0065027B /* CompletePresenter.swift */; };
+		C9328A9A22C719480065027B /* CompletePresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9328A9922C719480065027B /* CompletePresenterImpl.swift */; };
+		C9328A9C22C72FA00065027B /* DraftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9328A9B22C72FA00065027B /* DraftViewController.swift */; };
+		C9328A9E22C72FBB0065027B /* DraftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9328A9D22C72FBA0065027B /* DraftUI.swift */; };
+		C9328AA022C72FDC0065027B /* DraftRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9328A9F22C72FDC0065027B /* DraftRouting.swift */; };
+		C9328AA222C7300A0065027B /* DraftPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9328AA122C7300A0065027B /* DraftPresenter.swift */; };
+		C9328AA422C730100065027B /* DraftPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9328AA322C730100065027B /* DraftPresenterImpl.swift */; };
+		C9328AA622C732130065027B /* AllViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9328AA522C732130065027B /* AllViewController.swift */; };
+		C9328AA822C7321A0065027B /* AllUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9328AA722C7321A0065027B /* AllUI.swift */; };
+		C9328AAA22C732230065027B /* AllRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9328AA922C732230065027B /* AllRouting.swift */; };
+		C9328AAC22C732A30065027B /* AllPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9328AAB22C732A30065027B /* AllPresenter.swift */; };
+		C9328AAE22C732A90065027B /* AllPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9328AAD22C732A90065027B /* AllPresenterImpl.swift */; };
 		C94F080F22ABEBF800BF3534 /* UIVIew+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94F080E22ABEBF800BF3534 /* UIVIew+Extension.swift */; };
 		C958D9E122B5ACF800565EDE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C958D9E022B5ACF800565EDE /* Localizable.strings */; };
 		C958D9E722B62B9900565EDE /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C958D9E622B62B9900565EDE /* UIImage+Extension.swift */; };
@@ -83,6 +95,9 @@
 		C9A6067522B2A69D00184E0F /* UserEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A6067422B2A69D00184E0F /* UserEntity.swift */; };
 		C9A6067722B2A88500184E0F /* UserTranslater.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A6067622B2A88500184E0F /* UserTranslater.swift */; };
 		C9A6067922B2AAB600184E0F /* UserDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A6067822B2AAB600184E0F /* UserDataStore.swift */; };
+		C9A7F86D22C717EF005B4C44 /* CompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A7F86C22C717EF005B4C44 /* CompleteViewController.swift */; };
+		C9A7F86F22C717F6005B4C44 /* CompleteUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A7F86E22C717F6005B4C44 /* CompleteUI.swift */; };
+		C9A7F87122C71806005B4C44 /* CompleteRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A7F87022C71806005B4C44 /* CompleteRouting.swift */; };
 		C9AED93C22B4CDD2002D37A0 /* UnderlinedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9AED93B22B4CDD2002D37A0 /* UnderlinedTextField.swift */; };
 		C9B55D0B22B0FE1B00845381 /* RemindViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B55D0A22B0FE1B00845381 /* RemindViewController.swift */; };
 		C9B55D0D22B0FE2200845381 /* RemindUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B55D0C22B0FE2200845381 /* RemindUI.swift */; };
@@ -161,6 +176,18 @@
 		C92E7FE222B90D250031AE4F /* GoalPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalPostViewController.swift; sourceTree = "<group>"; };
 		C92E7FE422B90D350031AE4F /* GoalPostUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalPostUI.swift; sourceTree = "<group>"; };
 		C92E7FE622B90D430031AE4F /* GoalPostRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalPostRouting.swift; sourceTree = "<group>"; };
+		C9328A9722C7193E0065027B /* CompletePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletePresenter.swift; sourceTree = "<group>"; };
+		C9328A9922C719480065027B /* CompletePresenterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletePresenterImpl.swift; sourceTree = "<group>"; };
+		C9328A9B22C72FA00065027B /* DraftViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraftViewController.swift; sourceTree = "<group>"; };
+		C9328A9D22C72FBA0065027B /* DraftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraftUI.swift; sourceTree = "<group>"; };
+		C9328A9F22C72FDC0065027B /* DraftRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraftRouting.swift; sourceTree = "<group>"; };
+		C9328AA122C7300A0065027B /* DraftPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraftPresenter.swift; sourceTree = "<group>"; };
+		C9328AA322C730100065027B /* DraftPresenterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraftPresenterImpl.swift; sourceTree = "<group>"; };
+		C9328AA522C732130065027B /* AllViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllViewController.swift; sourceTree = "<group>"; };
+		C9328AA722C7321A0065027B /* AllUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllUI.swift; sourceTree = "<group>"; };
+		C9328AA922C732230065027B /* AllRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllRouting.swift; sourceTree = "<group>"; };
+		C9328AAB22C732A30065027B /* AllPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllPresenter.swift; sourceTree = "<group>"; };
+		C9328AAD22C732A90065027B /* AllPresenterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllPresenterImpl.swift; sourceTree = "<group>"; };
 		C94F080E22ABEBF800BF3534 /* UIVIew+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIVIew+Extension.swift"; sourceTree = "<group>"; };
 		C958D9E022B5ACF800565EDE /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		C958D9E622B62B9900565EDE /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
@@ -221,6 +248,9 @@
 		C9A6067422B2A69D00184E0F /* UserEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEntity.swift; sourceTree = "<group>"; };
 		C9A6067622B2A88500184E0F /* UserTranslater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTranslater.swift; sourceTree = "<group>"; };
 		C9A6067822B2AAB600184E0F /* UserDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataStore.swift; sourceTree = "<group>"; };
+		C9A7F86C22C717EF005B4C44 /* CompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteViewController.swift; sourceTree = "<group>"; };
+		C9A7F86E22C717F6005B4C44 /* CompleteUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteUI.swift; sourceTree = "<group>"; };
+		C9A7F87022C71806005B4C44 /* CompleteRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteRouting.swift; sourceTree = "<group>"; };
 		C9AED93B22B4CDD2002D37A0 /* UnderlinedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlinedTextField.swift; sourceTree = "<group>"; };
 		C9B55D0A22B0FE1B00845381 /* RemindViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindViewController.swift; sourceTree = "<group>"; };
 		C9B55D0C22B0FE2200845381 /* RemindUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindUI.swift; sourceTree = "<group>"; };
@@ -344,6 +374,24 @@
 			path = NewThings;
 			sourceTree = "<group>";
 		};
+		C9328A9522C718FC0065027B /* Draft */ = {
+			isa = PBXGroup;
+			children = (
+				C9328AA122C7300A0065027B /* DraftPresenter.swift */,
+				C9328AA322C730100065027B /* DraftPresenterImpl.swift */,
+			);
+			path = Draft;
+			sourceTree = "<group>";
+		};
+		C9328A9622C719010065027B /* Iine */ = {
+			isa = PBXGroup;
+			children = (
+				C9328AAB22C732A30065027B /* AllPresenter.swift */,
+				C9328AAD22C732A90065027B /* AllPresenterImpl.swift */,
+			);
+			path = Iine;
+			sourceTree = "<group>";
+		};
 		C95E08A922B116EF000C41C7 /* MainTab */ = {
 			isa = PBXGroup;
 			children = (
@@ -364,6 +412,9 @@
 			isa = PBXGroup;
 			children = (
 				C978FD2022C6070900859851 /* Goal */,
+				C9A7F87222C718DC005B4C44 /* Complete */,
+				C9328A9522C718FC0065027B /* Draft */,
+				C9328A9622C719010065027B /* Iine */,
 			);
 			path = Timeline;
 			sourceTree = "<group>";
@@ -492,6 +543,9 @@
 		C988630F22C5E07600CABD62 /* Iine */ = {
 			isa = PBXGroup;
 			children = (
+				C9328AA522C732130065027B /* AllViewController.swift */,
+				C9328AA722C7321A0065027B /* AllUI.swift */,
+				C9328AA922C732230065027B /* AllRouting.swift */,
 			);
 			path = Iine;
 			sourceTree = "<group>";
@@ -499,6 +553,9 @@
 		C988631022C5E07D00CABD62 /* Draft */ = {
 			isa = PBXGroup;
 			children = (
+				C9328A9B22C72FA00065027B /* DraftViewController.swift */,
+				C9328A9D22C72FBA0065027B /* DraftUI.swift */,
+				C9328A9F22C72FDC0065027B /* DraftRouting.swift */,
 			);
 			path = Draft;
 			sourceTree = "<group>";
@@ -506,6 +563,9 @@
 		C988631122C5E08600CABD62 /* Complete */ = {
 			isa = PBXGroup;
 			children = (
+				C9A7F86C22C717EF005B4C44 /* CompleteViewController.swift */,
+				C9A7F86E22C717F6005B4C44 /* CompleteUI.swift */,
+				C9A7F87022C71806005B4C44 /* CompleteRouting.swift */,
 			);
 			path = Complete;
 			sourceTree = "<group>";
@@ -610,6 +670,15 @@
 				C926CDA122B3C425008672AA /* EditRouting.swift */,
 			);
 			path = Edit;
+			sourceTree = "<group>";
+		};
+		C9A7F87222C718DC005B4C44 /* Complete */ = {
+			isa = PBXGroup;
+			children = (
+				C9328A9722C7193E0065027B /* CompletePresenter.swift */,
+				C9328A9922C719480065027B /* CompletePresenterImpl.swift */,
+			);
+			path = Complete;
 			sourceTree = "<group>";
 		};
 		C9B55D0922B0FE0700845381 /* Remind */ = {
@@ -1057,6 +1126,7 @@
 				C9D9014922AB85890040390E /* TopRouting.swift in Sources */,
 				C97DDD9622AD879800A84219 /* AccountDataStore.swift in Sources */,
 				C972692A22BB3BA300CDFD59 /* Genre.swift in Sources */,
+				C9328A9C22C72FA00065027B /* DraftViewController.swift in Sources */,
 				C9D9013B22AB5E800040390E /* TopViewController.swift in Sources */,
 				C91FA65D22B5686B006D9E6D /* DateFormatter+ Extension.swift in Sources */,
 				C99116AA22B8A30C007C67C7 /* PasswordEditingViewController.swift in Sources */,
@@ -1064,6 +1134,7 @@
 				C9F2497922B7B34E007E82A0 /* EmailEditingPresenterImpl.swift in Sources */,
 				C9035CB222B7773D006DFAB9 /* SettingsRouting.swift in Sources */,
 				C9D9010922AB44D80040390E /* AppUserDefault.swift in Sources */,
+				C9A7F87122C71806005B4C44 /* CompleteRouting.swift in Sources */,
 				C97901CD22B9534B00C245B2 /* NewThingsView.swift in Sources */,
 				C988631522C5E10600CABD62 /* GoalUI.swift in Sources */,
 				C9F2497122B79CEE007E82A0 /* EmailEditingUI.swift in Sources */,
@@ -1075,10 +1146,13 @@
 				C97DDD7B22AD543F00A84219 /* SignupInputPresenter.swift in Sources */,
 				C9A6066722B26CCB00184E0F /* MypagePresenterImpl.swift in Sources */,
 				C9A6066122B2676B00184E0F /* MypagePresenter.swift in Sources */,
+				C9328AA822C7321A0065027B /* AllUI.swift in Sources */,
+				C9328AA022C72FDC0065027B /* DraftRouting.swift in Sources */,
 				C9CC28F422AD3BEB006E69E5 /* SignupInputViewController.swift in Sources */,
 				C9A6067922B2AAB600184E0F /* UserDataStore.swift in Sources */,
 				C94F080F22ABEBF800BF3534 /* UIVIew+Extension.swift in Sources */,
 				C9ED720222B137D700BDB9A7 /* MypageRouting.swift in Sources */,
+				C9328AAA22C732230065027B /* AllRouting.swift in Sources */,
 				C95E08AB22B11750000C41C7 /* MainTabController.swift in Sources */,
 				C9B55D0F22B0FE2E00845381 /* RemingRouting.swift in Sources */,
 				C97901D622BA02B700C245B2 /* Animation+Extension.swift in Sources */,
@@ -1093,11 +1167,13 @@
 				C99116AC22B8A318007C67C7 /* PasswordEditingUI.swift in Sources */,
 				C9035CAE22B7772A006DFAB9 /* SettingsViewController.swift in Sources */,
 				C9CC28F822AD3C03006E69E5 /* SignupInputRouting.swift in Sources */,
+				C9A7F86F22C717F6005B4C44 /* CompleteUI.swift in Sources */,
 				C9D9013D22AB5E870040390E /* TopUI.swift in Sources */,
 				C9EA654622BBDAB4002BE1C8 /* GoalPostPresenterImpl.swift in Sources */,
 				C9D9013122AB55F40040390E /* LoginInputPresenter.swift in Sources */,
 				C9EA654A22BC194D002BE1C8 /* GoalRepository.swift in Sources */,
 				C99116B222B8A917007C67C7 /* PasswordEditingPresenterImpl.swift in Sources */,
+				C9328AAE22C732A90065027B /* AllPresenterImpl.swift in Sources */,
 				C926CD9E22B3C417008672AA /* EditViewController.swift in Sources */,
 				C988631B22C5E92000CABD62 /* Timeline.swift in Sources */,
 				C9B55D0D22B0FE2200845381 /* RemindUI.swift in Sources */,
@@ -1105,6 +1181,7 @@
 				C9D9012122AB52760040390E /* UIViewController+Extension.swift in Sources */,
 				C9A6066A22B26DDB00184E0F /* MypageUseCase.swift in Sources */,
 				C978FD2422C6071900859851 /* GoalPresenterImpl.swift in Sources */,
+				C9328A9E22C72FBB0065027B /* DraftUI.swift in Sources */,
 				C9D9012A22AB538E0040390E /* UI.swift in Sources */,
 				C97DDD9322AD85ED00A84219 /* Translator.swift in Sources */,
 				C9D9011722AB50D20040390E /* TextComponent.swift in Sources */,
@@ -1118,6 +1195,7 @@
 				C91FA65822B50401006D9E6D /* EditUseCase.swift in Sources */,
 				C97901D022B95AA800C245B2 /* GenreView.swift in Sources */,
 				C9ED71FE22B137C400BDB9A7 /* MypageViewController.swift in Sources */,
+				C9328AA422C730100065027B /* DraftPresenterImpl.swift in Sources */,
 				C9D9010E22AB458B0040390E /* NSLayoutAnchor+Extension.swift in Sources */,
 				C9CC28FB22AD505A006E69E5 /* Validate.swift in Sources */,
 				C978FD2A22C67D4700859851 /* GoalPostViewController+Extension.swift in Sources */,
@@ -1127,6 +1205,7 @@
 				C972692C22BB4A1B00CDFD59 /* GoalEntity.swift in Sources */,
 				C926CDA022B3C41E008672AA /* EditUI.swift in Sources */,
 				C97DDD9122AD83CC00A84219 /* AccountTranslator.swift in Sources */,
+				C9328AA622C732130065027B /* AllViewController.swift in Sources */,
 				C972692822BB2DD400CDFD59 /* ExpectedResultView.swift in Sources */,
 				C9D9011422AB502E0040390E /* UIButton+Extension.swift in Sources */,
 				C988631322C5E0F200CABD62 /* GoalViewController.swift in Sources */,
@@ -1144,10 +1223,12 @@
 				C9B55D0B22B0FE1B00845381 /* RemindViewController.swift in Sources */,
 				C9F2497B22B88E93007E82A0 /* PaddingTextField.swift in Sources */,
 				C978FD2222C6071200859851 /* GoalPresenter.swift in Sources */,
+				C9328AA222C7300A0065027B /* DraftPresenter.swift in Sources */,
 				C988631922C5E6FF00CABD62 /* TimelineTableViewDataSource.swift in Sources */,
 				C9F2497722B7B345007E82A0 /* EmailEditingPresenter.swift in Sources */,
 				C97DDD8B22AD755B00A84219 /* AccountEntity.swift in Sources */,
 				C9D9011F22AB51C40040390E /* UITextField+Extension.swift in Sources */,
+				C9328A9822C7193E0065027B /* CompletePresenter.swift in Sources */,
 				C97DDD7D22AD544E00A84219 /* SignupInputPresenterImpl.swift in Sources */,
 				C9C2808422BBD6A3002E905E /* GoalPost.swift in Sources */,
 				C90535CB22AFBD55006B2E04 /* Provider.swift in Sources */,
@@ -1159,6 +1240,8 @@
 				C9A6066F22B2980700184E0F /* Firebase.swift in Sources */,
 				C958D9E722B62B9900565EDE /* UIImage+Extension.swift in Sources */,
 				C9EA654422BBDAAA002BE1C8 /* GoalPostPresenter.swift in Sources */,
+				C9328AAC22C732A30065027B /* AllPresenter.swift in Sources */,
+				C9A7F86D22C717EF005B4C44 /* CompleteViewController.swift in Sources */,
 				C9B55D1222B1010200845381 /* RemindPresenter.swift in Sources */,
 				C97DDD7F22AD550F00A84219 /* Presenter.swift in Sources */,
 				C9ED720422B16A7700BDB9A7 /* CustomSegmentedControl.swift in Sources */,
@@ -1168,6 +1251,7 @@
 				C95ADED022AB141D00D851A0 /* R.generated.swift in Sources */,
 				C9ED720022B137CD00BDB9A7 /* MypageUI.swift in Sources */,
 				C9035CB422B77E10006DFAB9 /* SettingsSection.swift in Sources */,
+				C9328A9A22C719480065027B /* CompletePresenterImpl.swift in Sources */,
 				C92E7FE722B90D430031AE4F /* GoalPostRouting.swift in Sources */,
 				C92E7FE522B90D350031AE4F /* GoalPostUI.swift in Sources */,
 				C97DDD8222AD71C100A84219 /* SignupUseCase.swift in Sources */,

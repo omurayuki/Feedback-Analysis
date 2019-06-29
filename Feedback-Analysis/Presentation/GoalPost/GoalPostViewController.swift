@@ -55,6 +55,10 @@ class GoalPostViewController: UIViewController {
             ui.draftBtn.rx.tap.asDriver()
                 .drive(onNext: { [unowned self] _ in
                     self.validateGoalPost(genre: self.genres,
+                                          newThings: newThingsView.newThingsField.text ?? "",
+                                          expectedResult1: expectedResultView.expectedResultField1.text ?? "",
+                                          expectedResult2: expectedResultView.expectedResultField2.text ?? "",
+                                          expectedResult3: expectedResultView.expectedResultField3.text ?? "",
                                           execute: { _genres, _newThings, _expectedResultField1, _expectedResultField2, _expectedResultField3 in
                         let goalPost = self.createGoalPost(genre: _genres,
                                                            newThings: _newThings,

@@ -203,11 +203,10 @@ struct Provider {
         })
     }
     
-    func observeTimeline(collectionRef: FirebaseCollectionRef) -> Observable<[GoalEntity]> {
+    func observeQuery(queryRef: FirebaseQueryRef) -> Observable<[GoalEntity]> {
         return Observable.create({ observer -> Disposable in
-            collectionRef
+            queryRef
                 .destination
-                .order(by: "updated_at", descending: true)
                 .addSnapshotListener({ goalsSnapshot, error in
                     if let error = error {
                         observer.on(.error(FirebaseError.resultError(error)))

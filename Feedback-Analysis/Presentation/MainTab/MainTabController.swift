@@ -74,20 +74,47 @@ extension MainTabController {
     }
     
     private func createCompleteController() -> UIViewController {
-        let completeVC = UIViewController()
-        completeVC.view.backgroundColor = .white
-        return completeVC
+        let repository = GoalRepositoryImpl.shared
+        let useCase = GoalPostUseCaseImpl(repository: repository)
+        let presenter = CompletePresenterImpl(useCase: useCase)
+        let vc = CompleteViewController()
+        
+        let ui = CompleteUIImpl()
+        let routing = CompleteRoutingImpl()
+        ui.viewController = vc
+        ui.timeline.dataSource = vc.dataSource
+        routing.viewController = vc
+        vc.inject(ui: ui, presenter: presenter, routing: routing, disposeBag: DisposeBag())
+        return vc
     }
     
     private func createDraftController() -> UIViewController {
-        let draftVC = UIViewController()
-        draftVC.view.backgroundColor = .blue
-        return draftVC
+        let repository = GoalRepositoryImpl.shared
+        let useCase = GoalPostUseCaseImpl(repository: repository)
+        let presenter = DraftPresenterImpl(useCase: useCase)
+        let vc = DraftViewController()
+        
+        let ui = DraftUIImpl()
+        let routing = DraftRoutingImpl()
+        ui.viewController = vc
+        ui.timeline.dataSource = vc.dataSource
+        routing.viewController = vc
+        vc.inject(ui: ui, presenter: presenter, routing: routing, disposeBag: DisposeBag())
+        return vc
     }
     
     private func createIineController() -> UIViewController {
-        let iineVC = UIViewController()
-        iineVC.view.backgroundColor = .green
-        return iineVC
+        let repository = GoalRepositoryImpl.shared
+        let useCase = GoalPostUseCaseImpl(repository: repository)
+        let presenter = AllPresenterImpl(useCase: useCase)
+        let vc = AllViewController()
+        
+        let ui = AllUIImpl()
+        let routing = AllRoutingImpl()
+        ui.viewController = vc
+        ui.timeline.dataSource = vc.dataSource
+        routing.viewController = vc
+        vc.inject(ui: ui, presenter: presenter, routing: routing, disposeBag: DisposeBag())
+        return vc
     }
 }
