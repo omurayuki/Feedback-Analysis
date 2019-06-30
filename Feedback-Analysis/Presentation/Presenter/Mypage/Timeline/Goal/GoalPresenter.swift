@@ -18,7 +18,7 @@ protocol GoalPresenterView: class {
                 routing: GoalRouting,
                 disposeBag: DisposeBag)
     func didFetchGoalData(timeline: [Timeline])
-    func didSelect(row index: Int)
+    func didSelect(indexPath: IndexPath, tableView: UITableView)
     func showError(message: String)
     func updateLoading(_ isLoading: Bool)
 }

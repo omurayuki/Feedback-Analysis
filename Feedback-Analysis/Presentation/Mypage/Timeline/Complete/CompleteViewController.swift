@@ -5,7 +5,7 @@ import RxCocoa
 
 class CompleteViewController: UIViewController {
     
-    typealias DataSource = TimelineTableViewDataSource<TimelineCell, Timeline>
+    typealias DataSource = TableViewDataSource<TimelineCell, Timeline>
     
     private(set) var dataSource: DataSource = {
         return DataSource(cellReuseIdentifier: String(describing: TimelineCell.self),
@@ -62,7 +62,9 @@ extension CompleteViewController: CompletePresenterView {
         ui.timeline.reloadData()
     }
     
-    func didSelect(row index: Int) {
-        print("hoge")
+    func didSelect(indexPath: IndexPath, tableView: UITableView) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        guard let height = tableView.cellForRow(at: indexPath)?.contentView.frame.height else { return }
+        routing.showDetail(with: dataSource.listItems[indexPath.row], height: height)
     }
 }

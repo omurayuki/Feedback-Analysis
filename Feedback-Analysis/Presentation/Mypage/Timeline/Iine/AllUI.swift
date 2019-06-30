@@ -11,6 +11,9 @@ final class AllUIImpl: AllUI {
     
     var timeline: UITableView = {
         let table = UITableView()
+        table.backgroundView = UIImageView(image: #imageLiteral(resourceName: "logo"))
+        table.backgroundView?.alpha = 0.1
+        table.separatorStyle = .none
         table.backgroundColor = .appMainColor
         table.separatorColor = .appSubColor
         table.estimatedRowHeight = 400

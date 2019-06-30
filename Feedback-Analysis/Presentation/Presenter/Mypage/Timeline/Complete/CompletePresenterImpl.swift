@@ -25,3 +25,9 @@ class CompletePresenterImpl: NSObject, CompletePresenter {
             }).disposed(by: view.disposeBag)
     }
 }
+
+extension CompletePresenterImpl: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        view.didSelect(indexPath: indexPath, tableView: tableView)
+    }
+}

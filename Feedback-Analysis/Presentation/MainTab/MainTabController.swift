@@ -68,6 +68,7 @@ extension MainTabController {
         let routing = GoalRoutingImpl()
         ui.viewController = vc
         ui.timeline.dataSource = vc.dataSource
+        ui.timeline.delegate = presenter
         routing.viewController = vc
         vc.inject(ui: ui, presenter: presenter, routing: routing, disposeBag: DisposeBag())
         return vc
@@ -83,6 +84,7 @@ extension MainTabController {
         let routing = CompleteRoutingImpl()
         ui.viewController = vc
         ui.timeline.dataSource = vc.dataSource
+        ui.timeline.delegate = presenter
         routing.viewController = vc
         vc.inject(ui: ui, presenter: presenter, routing: routing, disposeBag: DisposeBag())
         return vc
@@ -98,6 +100,7 @@ extension MainTabController {
         let routing = DraftRoutingImpl()
         ui.viewController = vc
         ui.timeline.dataSource = vc.dataSource
+        ui.timeline.delegate = presenter
         routing.viewController = vc
         vc.inject(ui: ui, presenter: presenter, routing: routing, disposeBag: DisposeBag())
         return vc
@@ -113,6 +116,7 @@ extension MainTabController {
         let routing = AllRoutingImpl()
         ui.viewController = vc
         ui.timeline.dataSource = vc.dataSource
+        ui.timeline.delegate = presenter
         routing.viewController = vc
         vc.inject(ui: ui, presenter: presenter, routing: routing, disposeBag: DisposeBag())
         return vc

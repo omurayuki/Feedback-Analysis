@@ -1,7 +1,7 @@
 import Foundation
 import UIKit
 
-class TimelineTableViewDataSource<CellType, EntityType>: NSObject, UITableViewDataSource {
+class TableViewDataSource<CellType, EntityType>: NSObject, UITableViewDataSource {
     
     typealias C = CellType
     

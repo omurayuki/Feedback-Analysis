@@ -25,3 +25,9 @@ class DraftPresenterImpl: NSObject, DraftPresenter {
             }).disposed(by: view.disposeBag)
     }
 }
+
+extension DraftPresenterImpl: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        view.didSelect(indexPath: indexPath, tableView: tableView)
+    }
+}
