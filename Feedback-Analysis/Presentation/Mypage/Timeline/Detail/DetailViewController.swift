@@ -2,22 +2,25 @@ import Foundation
 import UIKit
 import RxSwift
 import RxCocoa
+import FirebaseFirestore
 
 class DetailViewController: UIViewController {
     
+    private var documentId = ""
+    
     typealias DetailDataSource = TableViewDataSource<TimelineCell, Timeline>
-    typealias CommentDataStore = TableViewDataSource<TimelineCell, Timeline>
+    typealias CommentDataStore = TableViewDataSource<CommentCell, Timeline>
     
     private(set) var detailDataSource: DetailDataSource = {
         return DetailDataSource(cellReuseIdentifier: String(describing: TimelineCell.self),
-                          listItems: [],
-                          cellConfigurationHandler: { (cell, item, _) in
-                            cell.content = item
+                                listItems: [],
+                                cellConfigurationHandler: { (cell, item, _) in
+                                    cell.content = item
         })
     }()
     
     private(set) var commentDataSource: CommentDataStore = {
-        return CommentDataStore(cellReuseIdentifier: String(describing: TimelineCell.self),
+        return CommentDataStore(cellReuseIdentifier: String(describing: CommentCell.self),
                                 listItems: [],
                                 cellConfigurationHandler: { (cell, item, _) in
                                     cell.content = item
@@ -41,6 +44,11 @@ class DetailViewController: UIViewController {
                     self.routing.moveGoalPostEditPage(with: self.detailDataSource.listItems[0])
                 }).disposed(by: disposeBag)
             
+            ui.submitBtn.rx.tap.asDriver()
+                .drive(onNext: { [unowned self] _ in
+                    self.presenter.fetch()
+                }).disposed(by: disposeBag)
+            
             ui.viewTapGesture.rx.event
                 .bind { [unowned self] _ in
                     self.view.endEditing(true)
@@ -57,6 +65,12 @@ class DetailViewController: UIViewController {
                 .subscribe(onNext: { [unowned self] notification in
                     self.keyboardWillChangeFrame(notification)
                 }).disposed(by: disposeBag)
+            
+            presenter.isLoading
+                .subscribe(onNext: { [unowned self] isLoading in
+                    self.view.endEditing(true)
+                    self.setIndicator(show: isLoading)
+                }).disposed(by: disposeBag)
         }
     }
     
@@ -68,6 +82,13 @@ class DetailViewController: UIViewController {
         self.presenter = presenter
         self.routing = routing
         self.disposeBag = disposeBag
+        
+        // ここで初期のcommentデータを取得
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        self.navigationController?.popViewController(animated: true)
     }
     
     override func viewDidLoad() {
@@ -79,6 +100,7 @@ class DetailViewController: UIViewController {
 extension DetailViewController {
     
     func recieve(data timeline: Timeline, height: CGFloat) {
+        documentId = timeline.documentId
         isEnableEdit(timeline.achievedFlag)
         ui.determineHeight(height: height)
         detailDataSource.listItems.append(timeline)
@@ -107,8 +129,24 @@ extension DetailViewController {
 }
 
 extension DetailViewController: DetailPresenterView {
+    func updateLoading(_ isLoading: Bool) {
+        presenter.isLoading.accept(isLoading)
+    }
     
     func didChangeTextHeight() {
         view.layoutIfNeeded()
+    }
+    
+    func didFetchUser(data: Account) {
+        let comment = Comment(authorToken: data.authToken,
+                              comment: ui.commentField.text,
+                              likeCount: 0, repliedCount: 0,
+                              createdAt: FieldValue.serverTimestamp(),
+                              updatedAt: FieldValue.serverTimestamp())
+        presenter.post(to: .commentRef(documentId), comment: comment)
+    }
+    
+    func didPostSuccess() {
+        print("最新のデータ取得")
     }
 }

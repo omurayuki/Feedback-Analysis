@@ -5,6 +5,43 @@ import GrowingTextView
 
 class DetailPresenterImpl: NSObject, DetailPresenter {
     var view: DetailPresenterView!
+    var isLoading: BehaviorRelay<Bool> = BehaviorRelay<Bool>(value: false)
+    
+    private var useCase: DetailUseCase
+    
+    init(useCase: DetailUseCase) {
+        self.useCase = useCase
+    }
+    
+    func fetch() {
+        view.updateLoading(true)
+        useCase.fetch()
+            .subscribe { [unowned self] result in
+                switch result {
+                case .success(let response):
+                    self.view.updateLoading(false)
+                    self.view.didFetchUser(data: response)
+                case .error(let error):
+                    self.view.updateLoading(false)
+                    self.view.showError(message: error.localizedDescription)
+                }
+            }.disposed(by: view.disposeBag)
+    }
+    
+    func post(to documentRef: FirebaseDocumentRef, comment: Comment) {
+        view.updateLoading(true)
+        useCase.post(to: documentRef, comment: comment)
+            .subscribe { [unowned self] result in
+                switch result {
+                case .success(_):
+                    self.view.updateLoading(false)
+                    self.view.didPostSuccess()
+                case .error(let error):
+                    self.view.updateLoading(false)
+                    self.view.showError(message: error.localizedDescription)
+                }
+            }.disposed(by: view.disposeBag)
+    }
 }
 
 extension DetailPresenterImpl: GrowingTextViewDelegate {

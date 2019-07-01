@@ -13,6 +13,7 @@ enum FirebaseDocumentRef {
     case userRef
     case goalPostRef
     case goalUpdateRef(String)
+    case commentRef(String)
     
     var destination: DocumentReference {
         switch self {
@@ -32,6 +33,12 @@ enum FirebaseDocumentRef {
                 .document(AppUserDefaults.getAuthToken())
                 .collection("Goals")
                 .document(documentId)
+        case .commentRef(let documentId):
+            return Firestore.firestore()
+                .collection("Goals")
+                .document(documentId)
+                .collection("Comments")
+                .document()
         }
     }
 }

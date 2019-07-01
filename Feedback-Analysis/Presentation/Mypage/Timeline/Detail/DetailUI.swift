@@ -45,6 +45,7 @@ final class DetailUIImpl: DetailUI {
     
     var commentTable: UITableView = {
         let table = UITableView()
+        table.register(CommentCell.self, forCellReuseIdentifier: String(describing: CommentCell.self))
         return table
     }()
     

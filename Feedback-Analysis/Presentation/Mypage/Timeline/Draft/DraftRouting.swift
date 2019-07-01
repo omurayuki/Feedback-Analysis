@@ -11,7 +11,9 @@ final class DraftRoutingImpl: DraftRouting {
     var viewController: UIViewController?
     
     func showDetail(with timeline: Timeline, height: CGFloat) {
-        let presenter = DetailPresenterImpl()
+        let repository = DetailRepositoryImpl.shared
+        let useCase = DetailUseCaseImpl(repository: repository)
+        let presenter = DetailPresenterImpl(useCase: useCase)
         let vc = DetailViewController()
         let ui = DetailUIImpl()
         let routing = DetailRoutingImpl()

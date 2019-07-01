@@ -7,7 +7,7 @@ protocol MypagePresenter: Presenter {
     var view: MypagePresenterView! { get set }
     var isLoading: BehaviorRelay<Bool> { get }
     
-    func fetch(to: FirebaseDocumentRef, completion: (() -> Void)?)
+    func fetch(to documentRef: FirebaseDocumentRef, completion: (() -> Void)?)
 }
 
 protocol MypagePresenterView: class {
