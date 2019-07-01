@@ -72,12 +72,14 @@ class EditViewController: UIViewController {
                     self.view.endEditing(true)
                 }.disposed(by: disposeBag)
 
-            NotificationCenter.default.rx.notification(UIResponder.keyboardWillShowNotification, object: nil)
+            NotificationCenter.default.rx
+                .notification(UIResponder.keyboardWillShowNotification, object: nil)
                 .subscribe(onNext: { [unowned self] notification in
                     self.ui.adjustForKeyboard(notification: notification)
                 }).disposed(by: disposeBag)
             
-            NotificationCenter.default.rx.notification(UIResponder.keyboardWillHideNotification, object: nil)
+            NotificationCenter.default.rx
+                .notification(UIResponder.keyboardWillHideNotification, object: nil)
                 .subscribe(onNext: { [unowned self] notification in
                     self.ui.adjustForKeyboard(notification: notification)
                 }).disposed(by: disposeBag)

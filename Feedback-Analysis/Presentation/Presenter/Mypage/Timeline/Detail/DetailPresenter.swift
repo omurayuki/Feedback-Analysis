@@ -15,5 +15,6 @@ protocol DetailPresenterView: class {
                 presenter: DetailPresenter,
                 routing: DetailRouting,
                 disposeBag: DisposeBag)
+    func didChangeTextHeight()
     func showError(message: String)
 }

@@ -27,6 +27,7 @@ class AllPresenterImpl: NSObject, AllPresenter {
 }
 
 extension AllPresenterImpl: UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         view.didSelect(indexPath: indexPath, tableView: tableView)
     }

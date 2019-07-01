@@ -35,7 +35,10 @@ class AllViewController: UIViewController {
         }
     }
     
-    func inject(ui: AllUI, presenter: AllPresenter, routing: AllRouting, disposeBag: DisposeBag) {
+    func inject(ui: AllUI,
+                presenter: AllPresenter,
+                routing: AllRouting,
+                disposeBag: DisposeBag) {
         self.ui = ui
         self.presenter = presenter
         self.routing = routing

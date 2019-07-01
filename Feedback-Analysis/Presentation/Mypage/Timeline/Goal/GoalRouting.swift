@@ -17,6 +17,7 @@ final class GoalRoutingImpl: GoalRouting {
         let routing = DetailRoutingImpl()
         ui.viewController = vc
         ui.detail.dataSource = vc.detailDataSource
+        ui.commentField.delegate = presenter
         routing.viewController = vc
         vc.inject(ui: ui, presenter: presenter, routing: routing, disposeBag: DisposeBag())
         vc.recieve(data: timeline, height: height)

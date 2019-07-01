@@ -40,7 +40,6 @@
 		C941332222C8B2CC0082A01C /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C941332122C8B2CC0082A01C /* DetailViewController.swift */; };
 		C941332422C8B2D20082A01C /* DetailUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C941332322C8B2D20082A01C /* DetailUI.swift */; };
 		C941332622C8B2DC0082A01C /* DetailRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C941332522C8B2DC0082A01C /* DetailRouting.swift */; };
-		C941332822C8B6320082A01C /* DetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C941332722C8B6320082A01C /* DetailCell.swift */; };
 		C941332B22C8BD300082A01C /* DetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C941332A22C8BD300082A01C /* DetailPresenter.swift */; };
 		C941332D22C8BD390082A01C /* DetailPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C941332C22C8BD390082A01C /* DetailPresenterImpl.swift */; };
 		C94F080F22ABEBF800BF3534 /* UIVIew+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94F080E22ABEBF800BF3534 /* UIVIew+Extension.swift */; };
@@ -59,7 +58,6 @@
 		C97901CD22B9534B00C245B2 /* NewThingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97901CC22B9534B00C245B2 /* NewThingsView.swift */; };
 		C97901D022B95AA800C245B2 /* GenreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97901CF22B95AA800C245B2 /* GenreView.swift */; };
 		C97901D222B9DE1300C245B2 /* GenreButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97901D122B9DE1300C245B2 /* GenreButton.swift */; };
-		C97901D422B9EC0400C245B2 /* sample.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97901D322B9EC0400C245B2 /* sample.swift */; };
 		C97901D622BA02B700C245B2 /* Animation+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97901D522BA02B700C245B2 /* Animation+Extension.swift */; };
 		C979404922BF447A00929C2A /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C979404822BF447A00929C2A /* Array+Extension.swift */; };
 		C97DDD7B22AD543F00A84219 /* SignupInputPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97DDD7A22AD543F00A84219 /* SignupInputPresenter.swift */; };
@@ -120,6 +118,12 @@
 		C9CC28F622AD3BF8006E69E5 /* SignupInputUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CC28F522AD3BF8006E69E5 /* SignupInputUI.swift */; };
 		C9CC28F822AD3C03006E69E5 /* SignupInputRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CC28F722AD3C03006E69E5 /* SignupInputRouting.swift */; };
 		C9CC28FB22AD505A006E69E5 /* Validate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CC28FA22AD505A006E69E5 /* Validate.swift */; };
+		C9D77F8222C9C5B20007835B /* GoalPostEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D77F8122C9C5B20007835B /* GoalPostEditViewController.swift */; };
+		C9D77F8422C9C5C10007835B /* GoalPostEditUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D77F8322C9C5C10007835B /* GoalPostEditUI.swift */; };
+		C9D77F8622C9C5C80007835B /* GoalPostEditRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D77F8522C9C5C80007835B /* GoalPostEditRouting.swift */; };
+		C9D77F8822C9CACE0007835B /* GoalPostEditViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D77F8722C9CACE0007835B /* GoalPostEditViewController+Extension.swift */; };
+		C9D77F8B22C9CB5E0007835B /* GoalPostEditPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D77F8A22C9CB5E0007835B /* GoalPostEditPresenter.swift */; };
+		C9D77F8D22C9CB650007835B /* GoalPostEditPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D77F8C22C9CB650007835B /* GoalPostEditPresenterImpl.swift */; };
 		C9D9010922AB44D80040390E /* AppUserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D9010822AB44D80040390E /* AppUserDefault.swift */; };
 		C9D9010C22AB456D0040390E /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D9010B22AB456D0040390E /* Date+Extension.swift */; };
 		C9D9010E22AB458B0040390E /* NSLayoutAnchor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D9010D22AB458B0040390E /* NSLayoutAnchor+Extension.swift */; };
@@ -197,7 +201,6 @@
 		C941332122C8B2CC0082A01C /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		C941332322C8B2D20082A01C /* DetailUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailUI.swift; sourceTree = "<group>"; };
 		C941332522C8B2DC0082A01C /* DetailRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRouting.swift; sourceTree = "<group>"; };
-		C941332722C8B6320082A01C /* DetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCell.swift; sourceTree = "<group>"; };
 		C941332A22C8BD300082A01C /* DetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPresenter.swift; sourceTree = "<group>"; };
 		C941332C22C8BD390082A01C /* DetailPresenterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPresenterImpl.swift; sourceTree = "<group>"; };
 		C94F080E22ABEBF800BF3534 /* UIVIew+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIVIew+Extension.swift"; sourceTree = "<group>"; };
@@ -216,7 +219,6 @@
 		C97901CC22B9534B00C245B2 /* NewThingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewThingsView.swift; sourceTree = "<group>"; };
 		C97901CF22B95AA800C245B2 /* GenreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreView.swift; sourceTree = "<group>"; };
 		C97901D122B9DE1300C245B2 /* GenreButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreButton.swift; sourceTree = "<group>"; };
-		C97901D322B9EC0400C245B2 /* sample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sample.swift; sourceTree = "<group>"; };
 		C97901D522BA02B700C245B2 /* Animation+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Animation+Extension.swift"; sourceTree = "<group>"; };
 		C979404822BF447A00929C2A /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
 		C97DDD7A22AD543F00A84219 /* SignupInputPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupInputPresenter.swift; sourceTree = "<group>"; };
@@ -279,6 +281,12 @@
 		C9CC28F522AD3BF8006E69E5 /* SignupInputUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupInputUI.swift; sourceTree = "<group>"; };
 		C9CC28F722AD3C03006E69E5 /* SignupInputRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupInputRouting.swift; sourceTree = "<group>"; };
 		C9CC28FA22AD505A006E69E5 /* Validate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validate.swift; sourceTree = "<group>"; };
+		C9D77F8122C9C5B20007835B /* GoalPostEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalPostEditViewController.swift; sourceTree = "<group>"; };
+		C9D77F8322C9C5C10007835B /* GoalPostEditUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalPostEditUI.swift; sourceTree = "<group>"; };
+		C9D77F8522C9C5C80007835B /* GoalPostEditRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalPostEditRouting.swift; sourceTree = "<group>"; };
+		C9D77F8722C9CACE0007835B /* GoalPostEditViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GoalPostEditViewController+Extension.swift"; sourceTree = "<group>"; };
+		C9D77F8A22C9CB5E0007835B /* GoalPostEditPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalPostEditPresenter.swift; sourceTree = "<group>"; };
+		C9D77F8C22C9CB650007835B /* GoalPostEditPresenterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalPostEditPresenterImpl.swift; sourceTree = "<group>"; };
 		C9D9010822AB44D80040390E /* AppUserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUserDefault.swift; sourceTree = "<group>"; };
 		C9D9010B22AB456D0040390E /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		C9D9010D22AB458B0040390E /* NSLayoutAnchor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSLayoutAnchor+Extension.swift"; sourceTree = "<group>"; };
@@ -557,7 +565,7 @@
 				C988630E22C5E06F00CABD62 /* Goal */,
 				C988631122C5E08600CABD62 /* Complete */,
 				C988631022C5E07D00CABD62 /* Draft */,
-				C988630F22C5E07600CABD62 /* Iine */,
+				C988630F22C5E07600CABD62 /* All */,
 				C941332022C8B2BB0082A01C /* Detail */,
 			);
 			path = Timeline;
@@ -573,14 +581,14 @@
 			path = Goal;
 			sourceTree = "<group>";
 		};
-		C988630F22C5E07600CABD62 /* Iine */ = {
+		C988630F22C5E07600CABD62 /* All */ = {
 			isa = PBXGroup;
 			children = (
 				C9328AA522C732130065027B /* AllViewController.swift */,
 				C9328AA722C7321A0065027B /* AllUI.swift */,
 				C9328AA922C732230065027B /* AllRouting.swift */,
 			);
-			path = Iine;
+			path = All;
 			sourceTree = "<group>";
 		};
 		C988631022C5E07D00CABD62 /* Draft */ = {
@@ -622,9 +630,7 @@
 				C92E7FE222B90D250031AE4F /* GoalPostViewController.swift */,
 				C92E7FE422B90D350031AE4F /* GoalPostUI.swift */,
 				C92E7FE622B90D430031AE4F /* GoalPostRouting.swift */,
-				C97901CE22B95A7E00C245B2 /* Genre */,
-				C92E7FE822B950B50031AE4F /* NewThings */,
-				C96DD4CE22BB2D68007B2EA3 /* ExpectedResult */,
+				C9D77F8022C9C58D0007835B /* Edit */,
 			);
 			path = GoalPost;
 			sourceTree = "<group>";
@@ -671,7 +677,6 @@
 			isa = PBXGroup;
 			children = (
 				C9A6065822B1DF8700184E0F /* TimelineCell.swift */,
-				C941332722C8B6320082A01C /* DetailCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -739,6 +744,7 @@
 			children = (
 				C9EA654322BBDAAA002BE1C8 /* GoalPostPresenter.swift */,
 				C9EA654522BBDAB4002BE1C8 /* GoalPostPresenterImpl.swift */,
+				C9D77F8922C9CB550007835B /* Edit */,
 			);
 			path = GoalPost;
 			sourceTree = "<group>";
@@ -771,6 +777,35 @@
 				C9CC28FA22AD505A006E69E5 /* Validate.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		C9D77F7F22C9C4ED0007835B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C97901CE22B95A7E00C245B2 /* Genre */,
+				C92E7FE822B950B50031AE4F /* NewThings */,
+				C96DD4CE22BB2D68007B2EA3 /* ExpectedResult */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C9D77F8022C9C58D0007835B /* Edit */ = {
+			isa = PBXGroup;
+			children = (
+				C9D77F8122C9C5B20007835B /* GoalPostEditViewController.swift */,
+				C9D77F8322C9C5C10007835B /* GoalPostEditUI.swift */,
+				C9D77F8522C9C5C80007835B /* GoalPostEditRouting.swift */,
+			);
+			path = Edit;
+			sourceTree = "<group>";
+		};
+		C9D77F8922C9CB550007835B /* Edit */ = {
+			isa = PBXGroup;
+			children = (
+				C9D77F8A22C9CB5E0007835B /* GoalPostEditPresenter.swift */,
+				C9D77F8C22C9CB650007835B /* GoalPostEditPresenterImpl.swift */,
+			);
+			path = Edit;
 			sourceTree = "<group>";
 		};
 		C9D9010322AB44150040390E /* Utility */ = {
@@ -812,6 +847,7 @@
 			isa = PBXGroup;
 			children = (
 				C91FA65922B53F67006D9E6D /* Model */,
+				C9D77F7F22C9C4ED0007835B /* View */,
 				C9A6065722B1DF6000184E0F /* Cell */,
 				C9D9012822AB53800040390E /* UI */,
 				C9D9012B22AB54180040390E /* Routing */,
@@ -856,6 +892,7 @@
 				C97901D522BA02B700C245B2 /* Animation+Extension.swift */,
 				C979404822BF447A00929C2A /* Array+Extension.swift */,
 				C978FD2922C67D4700859851 /* GoalPostViewController+Extension.swift */,
+				C9D77F8722C9CACE0007835B /* GoalPostEditViewController+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -943,7 +980,6 @@
 				C9F2497A22B88E93007E82A0 /* PaddingTextField.swift */,
 				C98E1BB722B7456700D132D5 /* ImagePicker.swift */,
 				C97901D122B9DE1300C245B2 /* GenreButton.swift */,
-				C97901D322B9EC0400C245B2 /* sample.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -1205,6 +1241,8 @@
 				C9035CAE22B7772A006DFAB9 /* SettingsViewController.swift in Sources */,
 				C9CC28F822AD3C03006E69E5 /* SignupInputRouting.swift in Sources */,
 				C9A7F86F22C717F6005B4C44 /* CompleteUI.swift in Sources */,
+				C9D77F8D22C9CB650007835B /* GoalPostEditPresenterImpl.swift in Sources */,
+				C9D77F8822C9CACE0007835B /* GoalPostEditViewController+Extension.swift in Sources */,
 				C9D9013D22AB5E870040390E /* TopUI.swift in Sources */,
 				C9EA654622BBDAB4002BE1C8 /* GoalPostPresenterImpl.swift in Sources */,
 				C9D9013122AB55F40040390E /* LoginInputPresenter.swift in Sources */,
@@ -1220,9 +1258,9 @@
 				C978FD2422C6071900859851 /* GoalPresenterImpl.swift in Sources */,
 				C9328A9E22C72FBB0065027B /* DraftUI.swift in Sources */,
 				C9D9012A22AB538E0040390E /* UI.swift in Sources */,
+				C9D77F8222C9C5B20007835B /* GoalPostEditViewController.swift in Sources */,
 				C97DDD9322AD85ED00A84219 /* Translator.swift in Sources */,
 				C9D9011722AB50D20040390E /* TextComponent.swift in Sources */,
-				C941332822C8B6320082A01C /* DetailCell.swift in Sources */,
 				C9D9011222AB4F130040390E /* UIBarButtonItem+Extension.swift in Sources */,
 				C9A6065922B1DF8700184E0F /* TimelineCell.swift in Sources */,
 				C9B55D1422B1010C00845381 /* RemindPresenterImpl.swift in Sources */,
@@ -1243,6 +1281,7 @@
 				C91FA65B22B53F9C006D9E6D /* Update.swift in Sources */,
 				C972692C22BB4A1B00CDFD59 /* GoalEntity.swift in Sources */,
 				C926CDA022B3C41E008672AA /* EditUI.swift in Sources */,
+				C9D77F8622C9C5C80007835B /* GoalPostEditRouting.swift in Sources */,
 				C97DDD9122AD83CC00A84219 /* AccountTranslator.swift in Sources */,
 				C9328AA622C732130065027B /* AllViewController.swift in Sources */,
 				C972692822BB2DD400CDFD59 /* ExpectedResultView.swift in Sources */,
@@ -1257,7 +1296,6 @@
 				C98E1BB622B7370100D132D5 /* UIImageView+Extension.swift in Sources */,
 				C9A6067722B2A88500184E0F /* UserTranslater.swift in Sources */,
 				C99116AE22B8A323007C67C7 /* PasswordEditingRouting.swift in Sources */,
-				C97901D422B9EC0400C245B2 /* sample.swift in Sources */,
 				C988631722C5E10F00CABD62 /* GoalRouting.swift in Sources */,
 				C9B55D0B22B0FE1B00845381 /* RemindViewController.swift in Sources */,
 				C9F2497B22B88E93007E82A0 /* PaddingTextField.swift in Sources */,
@@ -1266,6 +1304,7 @@
 				C988631922C5E6FF00CABD62 /* TableViewDataSource.swift in Sources */,
 				C9F2497722B7B345007E82A0 /* EmailEditingPresenter.swift in Sources */,
 				C97DDD8B22AD755B00A84219 /* AccountEntity.swift in Sources */,
+				C9D77F8B22C9CB5E0007835B /* GoalPostEditPresenter.swift in Sources */,
 				C9D9011F22AB51C40040390E /* UITextField+Extension.swift in Sources */,
 				C9328A9822C7193E0065027B /* CompletePresenter.swift in Sources */,
 				C97DDD7D22AD544E00A84219 /* SignupInputPresenterImpl.swift in Sources */,
@@ -1292,6 +1331,7 @@
 				C9ED720022B137CD00BDB9A7 /* MypageUI.swift in Sources */,
 				C9035CB422B77E10006DFAB9 /* SettingsSection.swift in Sources */,
 				C9328A9A22C719480065027B /* CompletePresenterImpl.swift in Sources */,
+				C9D77F8422C9C5C10007835B /* GoalPostEditUI.swift in Sources */,
 				C92E7FE722B90D430031AE4F /* GoalPostRouting.swift in Sources */,
 				C92E7FE522B90D350031AE4F /* GoalPostUI.swift in Sources */,
 				C97DDD8222AD71C100A84219 /* SignupUseCase.swift in Sources */,

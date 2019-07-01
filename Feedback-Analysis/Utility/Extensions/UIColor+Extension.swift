@@ -82,4 +82,8 @@ extension UIColor {
     class var appSelectColor: UIColor {
         return UIColor(red: 95.0 / 255.0, green: 103.0 / 255.0, blue: 112.0 / 255.0, alpha: 1)
     }
+    
+    class var tabbarColor: UIColor {
+        return UIColor(red: 247.0 / 255.0, green: 247.0 / 255.0, blue: 247.0 / 255.0, alpha: 1)
+    }
 }

@@ -20,4 +20,5 @@ target 'Feedback-Analysis' do
     pod "SkeletonView"
     pod 'Charts'
     pod 'MBProgressHUD', '~> 1.1.0'
+    pod 'GrowingTextView', '0.7.0'
 end

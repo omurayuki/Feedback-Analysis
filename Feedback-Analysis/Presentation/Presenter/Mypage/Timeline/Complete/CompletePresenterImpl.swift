@@ -27,6 +27,7 @@ class CompletePresenterImpl: NSObject, CompletePresenter {
 }
 
 extension CompletePresenterImpl: UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         view.didSelect(indexPath: indexPath, tableView: tableView)
     }

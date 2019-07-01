@@ -35,7 +35,10 @@ class GoalViewController: UIViewController {
         }
     }
     
-    func inject(ui: GoalUI, presenter: GoalPresenter, routing: GoalRouting, disposeBag: DisposeBag) {
+    func inject(ui: GoalUI,
+                presenter: GoalPresenter,
+                routing: GoalRouting,
+                disposeBag: DisposeBag) {
         self.ui = ui
         self.presenter = presenter
         self.routing = routing

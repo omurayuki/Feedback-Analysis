@@ -1,9 +1,14 @@
 import UIKit
+import GrowingTextView
 
 protocol DetailUI: UI {
+    var textViewBottomConstraint: NSLayoutConstraint { get set }
     var detail: UITableView { get set }
     var commentTable: UITableView { get set }
     var editBtn: UIBarButtonItem { get }
+    var inputToolBar: UIView { get }
+    var commentField: GrowingTextView { get }
+    var viewTapGesture: UITapGestureRecognizer { get }
     
     func setup()
     func determineHeight(height: CGFloat)
@@ -12,6 +17,11 @@ protocol DetailUI: UI {
 final class DetailUIImpl: DetailUI {
     
     var viewController: UIViewController?
+    
+    var textViewBottomConstraint: NSLayoutConstraint = {
+        let constraint = NSLayoutConstraint()
+        return constraint
+    }()
     
     private(set) var editBtn: UIBarButtonItem = {
         let item = UIBarButtonItem()
@@ -35,6 +45,31 @@ final class DetailUIImpl: DetailUI {
         let table = UITableView()
         return table
     }()
+    
+    var inputToolBar: UIView = {
+        let view = UIView()
+        view.backgroundColor = .tabbarColor
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    var commentField: GrowingTextView = {
+        let textView = GrowingTextView()
+        textView.font = UIFont.systemFont(ofSize: 16)
+        textView.textColor = .appSubColor
+        textView.backgroundColor = UIColor(white: 0.5, alpha: 0.2)
+        textView.layer.cornerRadius = 5
+        textView.trimWhiteSpaceWhenEndEditing = true
+        textView.placeholder = "コメントを記入"
+        textView.placeholderColor = UIColor(white: 0.8, alpha: 1.0)
+        textView.translatesAutoresizingMaskIntoConstraints = false
+        return textView
+    }()
+    
+    private(set) var viewTapGesture: UITapGestureRecognizer = {
+        let gesture = UITapGestureRecognizer()
+        return gesture
+    }()
 }
 
 extension DetailUIImpl {
@@ -43,7 +78,9 @@ extension DetailUIImpl {
         guard let vc = viewController else { return }
         vc.navigationItem.rightBarButtonItem = editBtn
         vc.view.backgroundColor = .appMainColor
-        [detail, commentTable].forEach { vc.view.addSubview($0) }
+        inputToolBar.addSubview(commentField)
+        vc.view.addGestureRecognizer(viewTapGesture)
+        [detail, commentTable, inputToolBar].forEach { vc.view.addSubview($0) }
         
         detail.anchor()
             .top(to: vc.view.safeAreaLayoutGuide.topAnchor)
@@ -55,9 +92,36 @@ extension DetailUIImpl {
             .top(to: detail.bottomAnchor)
             .width(to: vc.view.widthAnchor)
             .activate()
+        
+        let topConstraint = commentField.topAnchor.constraint(equalTo: inputToolBar.topAnchor, constant: 8)
+        topConstraint.priority = UILayoutPriority(999)
+        NSLayoutConstraint.activate([
+            inputToolBar.leadingAnchor.constraint(equalTo: vc.view.leadingAnchor),
+            inputToolBar.trailingAnchor.constraint(equalTo: vc.view.trailingAnchor),
+            inputToolBar.bottomAnchor.constraint(equalTo: vc.view.bottomAnchor),
+            topConstraint
+        ])
+        
+        if #available(iOS 11, *) {
+            textViewBottomConstraint = commentField.bottomAnchor.constraint(equalTo: inputToolBar.safeAreaLayoutGuide.bottomAnchor, constant: -8)
+            NSLayoutConstraint.activate([
+                commentField.leadingAnchor.constraint(equalTo: inputToolBar.safeAreaLayoutGuide.leadingAnchor, constant: 8),
+                commentField.trailingAnchor.constraint(equalTo: inputToolBar.safeAreaLayoutGuide.trailingAnchor, constant: -8),
+                textViewBottomConstraint
+            ])
+        } else {
+            let textViewBottomConstraint = commentField.bottomAnchor.constraint(equalTo: inputToolBar.bottomAnchor, constant: -8)
+            NSLayoutConstraint.activate([
+                commentField.leadingAnchor.constraint(equalTo: inputToolBar.leadingAnchor, constant: 8),
+                commentField.trailingAnchor.constraint(equalTo: inputToolBar.trailingAnchor, constant: -8),
+                textViewBottomConstraint
+            ])
+        }
     }
     
     func determineHeight(height: CGFloat) {
-        detail.anchor().height(constant: height).activate()
+        detail.anchor()
+            .height(constant: height)
+            .activate()
     }
 }

@@ -35,7 +35,10 @@ class DraftViewController: UIViewController {
         }
     }
     
-    func inject(ui: DraftUI, presenter: DraftPresenter, routing: DraftRouting, disposeBag: DisposeBag) {
+    func inject(ui: DraftUI,
+                presenter: DraftPresenter,
+                routing: DraftRouting,
+                disposeBag: DisposeBag) {
         self.ui = ui
         self.presenter = presenter
         self.routing = routing

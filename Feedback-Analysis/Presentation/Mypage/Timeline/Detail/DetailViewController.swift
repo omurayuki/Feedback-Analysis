@@ -36,11 +36,34 @@ class DetailViewController: UIViewController {
     
     var disposeBag: DisposeBag! {
         didSet {
+            ui.editBtn.rx.tap.asDriver()
+                .drive(onNext: { [unowned self] _ in
+                    self.routing.moveGoalPostEditPage()
+                }).disposed(by: disposeBag)
             
+            ui.viewTapGesture.rx.event
+                .bind { [unowned self] _ in
+                    self.view.endEditing(true)
+                }.disposed(by: disposeBag)
+            
+            NotificationCenter.default.rx
+                .notification(UIResponder.keyboardWillShowNotification, object: nil)
+                .subscribe(onNext: { [unowned self] notification in
+                    self.keyboardWillChangeFrame(notification)
+                }).disposed(by: disposeBag)
+            
+            NotificationCenter.default.rx
+                .notification(UIResponder.keyboardWillHideNotification, object: nil)
+                .subscribe(onNext: { [unowned self] notification in
+                    self.keyboardWillChangeFrame(notification)
+                }).disposed(by: disposeBag)
         }
     }
     
-    func inject(ui: DetailUI, presenter: DetailPresenter, routing: DetailRouting, disposeBag: DisposeBag) {
+    func inject(ui: DetailUI,
+                presenter: DetailPresenter,
+                routing: DetailRouting,
+                disposeBag: DisposeBag) {
         self.ui = ui
         self.presenter = presenter
         self.routing = routing
@@ -60,6 +83,24 @@ extension DetailViewController {
         detailDataSource.listItems.append(timeline)
         ui.detail.reloadData()
     }
+    
+    func keyboardWillChangeFrame(_ notification: Notification) {
+        if let endFrame = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            var keyboardHeight = UIScreen.main.bounds.height - endFrame.origin.y
+            if #available(iOS 11, *) {
+                if keyboardHeight > 0 {
+                    keyboardHeight = keyboardHeight - view.safeAreaInsets.bottom
+                }
+            }
+            ui.textViewBottomConstraint.constant = -keyboardHeight - 8
+            view.layoutIfNeeded()
+        }
+    }
 }
 
-extension DetailViewController: DetailPresenterView {}
+extension DetailViewController: DetailPresenterView {
+    
+    func didChangeTextHeight() {
+        view.layoutIfNeeded()
+    }
+}
