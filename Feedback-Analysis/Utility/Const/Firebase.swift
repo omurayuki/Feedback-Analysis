@@ -12,6 +12,7 @@ enum FirebaseError: Error {
 enum FirebaseDocumentRef {
     case userRef
     case goalPostRef
+    case goalUpdateRef(String)
     
     var destination: DocumentReference {
         switch self {
@@ -25,6 +26,12 @@ enum FirebaseDocumentRef {
                 .document(AppUserDefaults.getAuthToken())
                 .collection("Goals")
                 .document()
+        case .goalUpdateRef(let documentId):
+            return Firestore.firestore()
+                .collection("Users")
+                .document(AppUserDefaults.getAuthToken())
+                .collection("Goals")
+                .document(documentId)
         }
     }
 }

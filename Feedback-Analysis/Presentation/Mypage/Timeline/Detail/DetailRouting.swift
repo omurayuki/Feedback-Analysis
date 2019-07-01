@@ -3,14 +3,14 @@ import UIKit
 import RxSwift
 
 protocol DetailRouting: Routing {
-    func moveGoalPostEditPage()
+    func moveGoalPostEditPage(with timeline: Timeline)
 }
 
 final class DetailRoutingImpl: DetailRouting {
     
     var viewController: UIViewController?
     
-    func moveGoalPostEditPage() {
+    func moveGoalPostEditPage(with timeline: Timeline) {
         let repository = GoalRepositoryImpl.shared
         let useCase = GoalPostUseCaseImpl(repository: repository)
         let presenter = GoalPostEditPresenterImpl(useCase: useCase)
@@ -27,6 +27,7 @@ final class DetailRoutingImpl: DetailRouting {
                   presenter: presenter,
                   routing: routing,
                   disposeBag: DisposeBag())
+        vc.recieve(data: timeline)
         
         viewController?.present(vc, animated: true)
     }

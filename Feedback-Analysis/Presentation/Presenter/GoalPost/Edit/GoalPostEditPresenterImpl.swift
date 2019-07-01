@@ -15,9 +15,9 @@ class GoalPostEditPresenterImpl: NSObject, GoalPostEditPresenter {
         self.useCase = useCase
     }
     
-    func post(to documentRef: FirebaseDocumentRef, fields: GoalPost) {
+    func update(to documentRef: FirebaseDocumentRef, fields: GoalPost) {
         view.updateLoading(true)
-        useCase.post(to: documentRef, fields: fields)
+        useCase.update(to: documentRef, fields: fields)
             .subscribe { [unowned self] result in
                 switch result {
                 case .success(_):

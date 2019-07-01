@@ -8,6 +8,7 @@ class GoalPostEditViewController: UIViewController {
     
     private var startPoint: CGPoint?
     private var genres = [String]()
+    private var documentId = ""
     
     var ui: GoalPostEditUI!
     
@@ -66,7 +67,7 @@ class GoalPostEditViewController: UIViewController {
                                                            expectedResultField2: _expectedResultField2,
                                                            expectedResultField3: _expectedResultField3,
                                                            deadline: expectedResultView.deadline.text ?? "", draft: false)
-                        self.presenter.post(to: .goalPostRef, fields: goalPost)
+                        self.presenter.update(to: .goalUpdateRef(self.documentId), fields: goalPost)
                     })
                 }).disposed(by: disposeBag)
             
@@ -118,6 +119,22 @@ class GoalPostEditViewController: UIViewController {
     }
 }
 
+extension GoalPostEditViewController {
+    
+    func recieve(data timeline: Timeline) {
+        appendGenreValue(genres: [timeline.genre1 ?? "",
+                                  timeline.genre2 ?? ""])
+        documentId = timeline.documentId
+        ui.mappingContent = timeline
+    }
+    
+    func appendGenreValue(genres: [String]) {
+        genres.forEach {
+            self.genres.append($0)
+        }
+    }
+}
+
 extension GoalPostEditViewController: GoalPostEditPresenterView {
     
     func didPostSuccess() {
@@ -127,10 +144,7 @@ extension GoalPostEditViewController: GoalPostEditPresenterView {
     func didSelectSegment(with index: Int) {
         UIView.Animator(duration: 0.26)
             .animations {
-                self.ui.scrollView.contentOffset = CGPoint(
-                    x: Int(self.ui.scrollView.frame.width) * index,
-                    y: 0
-                )
+                self.ui.scrollView.contentOffset = CGPoint(x: Int(self.ui.scrollView.frame.width) * index, y: 0)
             }.animate()
     }
     

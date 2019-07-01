@@ -38,7 +38,7 @@ class DetailViewController: UIViewController {
         didSet {
             ui.editBtn.rx.tap.asDriver()
                 .drive(onNext: { [unowned self] _ in
-                    self.routing.moveGoalPostEditPage()
+                    self.routing.moveGoalPostEditPage(with: self.detailDataSource.listItems[0])
                 }).disposed(by: disposeBag)
             
             ui.viewTapGesture.rx.event
@@ -79,9 +79,14 @@ class DetailViewController: UIViewController {
 extension DetailViewController {
     
     func recieve(data timeline: Timeline, height: CGFloat) {
+        isEnableEdit(timeline.achievedFlag)
         ui.determineHeight(height: height)
         detailDataSource.listItems.append(timeline)
         ui.detail.reloadData()
+    }
+    
+    func isEnableEdit(_ bool: Bool) {
+        ui.editBtn.isEnabled = !bool
     }
     
     func keyboardWillChangeFrame(_ notification: Notification) {

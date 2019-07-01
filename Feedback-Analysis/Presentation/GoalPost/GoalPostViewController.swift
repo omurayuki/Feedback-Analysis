@@ -145,10 +145,7 @@ extension GoalPostViewController: GoalPostPresenterView {
     func didSelectSegment(with index: Int) {
         UIView.Animator(duration: 0.26)
             .animations {
-                self.ui.scrollView.contentOffset = CGPoint(
-                    x: Int(self.ui.scrollView.frame.width) * index,
-                    y: 0
-                )
+                self.ui.scrollView.contentOffset = CGPoint(x: Int(self.ui.scrollView.frame.width) * index, y: 0)
             }.animate()
     }
     

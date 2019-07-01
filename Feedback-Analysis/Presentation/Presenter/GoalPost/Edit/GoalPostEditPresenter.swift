@@ -7,7 +7,7 @@ protocol GoalPostEditPresenter: Presenter {
     var view: GoalPostEditPresenterView! { get set }
     var isLoading: BehaviorRelay<Bool> { get }
     
-    func post(to documentRef: FirebaseDocumentRef, fields: GoalPost)
+    func update(to documentRef: FirebaseDocumentRef, fields: GoalPost)
 }
 
 protocol GoalPostEditPresenterView: class {

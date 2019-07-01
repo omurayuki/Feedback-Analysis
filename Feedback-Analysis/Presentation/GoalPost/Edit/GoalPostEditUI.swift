@@ -10,6 +10,7 @@ protocol GoalPostEditUI: UI {
     var registerBar: UINavigationBar { get }
     var scrollView: UIScrollView { get }
     var pageControl: UIPageControl { get }
+    var mappingContent: Timeline? { get set }
     
     func setup()
     func setupSlideScrollView(slides: [UIView])
@@ -75,6 +76,25 @@ final class GoalPostEditUIImpl: GoalPostEditUI {
         control.currentPage = 0
         return control
     }()
+    
+    var mappingContent: Timeline? {
+        didSet {
+            guard let genreView = slides[0] as? GenreView else { return }
+            guard let newThingsView = slides[1] as? NewThingsView else { return }
+            guard let expectedResultView = slides[2] as? ExpectedResultView else { return }
+            
+            genreView.array.forEach {
+                $0.description == mappingContent?.genre1 ||
+                $0.description == mappingContent?.genre2 ?
+                    ($0.currentState = .selected) : ($0.currentState = .normal)
+            }
+            newThingsView.newThingsField.text = mappingContent?.newThings
+            expectedResultView.expectedResultField1.text = mappingContent?.goal1
+            expectedResultView.expectedResultField2.text = mappingContent?.goal2
+            expectedResultView.expectedResultField3.text = mappingContent?.goal3
+            expectedResultView.deadline.text = mappingContent?.deadLine
+        }
+    }
 }
 
 extension GoalPostEditUI {
