@@ -16,6 +16,7 @@ struct Timeline {
     let draftFlag: Bool
     let commentedCount: Int
     let likeCount: Int
+    let documentId: String
     
     init(entity: GoalEntity) {
         self.userImage = entity.user.userImage
@@ -33,5 +34,6 @@ struct Timeline {
         self.draftFlag = entity.draftFlag
         self.commentedCount = entity.commentedCount
         self.likeCount = entity.likeCount
+        self.documentId = entity.documentId
     }
 }

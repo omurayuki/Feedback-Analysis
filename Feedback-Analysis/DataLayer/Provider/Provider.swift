@@ -228,7 +228,9 @@ struct Provider {
                                 observer.on(.error(FirebaseError.unknown))
                                 return
                             }
-                            observer.on(.next(documents.compactMap { GoalEntity(user: UserEntity(document: userDocument), document: $0.data()) }))
+                            observer.on(.next(documents.compactMap { GoalEntity(user: UserEntity(document: userDocument),
+                                                                                document: $0.data(),
+                                                                                documentId: $0.documentID) }))
                         })
                 })
             return Disposables.create()

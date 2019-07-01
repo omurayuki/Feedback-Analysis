@@ -89,7 +89,10 @@ extension DetailViewController {
             var keyboardHeight = UIScreen.main.bounds.height - endFrame.origin.y
             if #available(iOS 11, *) {
                 if keyboardHeight > 0 {
-                    keyboardHeight = keyboardHeight - view.safeAreaInsets.bottom
+                    ui.isHiddenSubmitBtn(false)
+                    keyboardHeight = keyboardHeight - view.safeAreaInsets.bottom + ui.submitBtn.frame.height + 8
+                } else {
+                    ui.isHiddenSubmitBtn(true)
                 }
             }
             ui.textViewBottomConstraint.constant = -keyboardHeight - 8

@@ -13,8 +13,9 @@ struct GoalEntity: Entity {
     let likeCount: Int
     let commentedCount: Int
     let createdAt: Timestamp
+    let documentId: String
     
-    init(user: UserEntity, document: [String: Any]) {
+    init(user: UserEntity, document: [String: Any], documentId: String) {
         guard
             let genre = document["genre"] as? [String: String],
             let newThings = document["new_things"] as? String,
@@ -36,6 +37,7 @@ struct GoalEntity: Entity {
             self.likeCount = 0
             self.commentedCount = 0
             self.createdAt = Timestamp()
+            self.documentId = ""
             return
         }
         
@@ -49,5 +51,6 @@ struct GoalEntity: Entity {
         self.likeCount = likeCount
         self.commentedCount = commentedCount
         self.createdAt = createdAt
+        self.documentId = documentId
     }
 }

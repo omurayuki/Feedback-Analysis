@@ -8,10 +8,12 @@ protocol DetailUI: UI {
     var editBtn: UIBarButtonItem { get }
     var inputToolBar: UIView { get }
     var commentField: GrowingTextView { get }
+    var submitBtn: UIButton { get }
     var viewTapGesture: UITapGestureRecognizer { get }
     
     func setup()
     func determineHeight(height: CGFloat)
+    func isHiddenSubmitBtn(_ bool: Bool)
 }
 
 final class DetailUIImpl: DetailUI {
@@ -66,6 +68,18 @@ final class DetailUIImpl: DetailUI {
         return textView
     }()
     
+    private(set) var submitBtn: UIButton = {
+        let button = UIButton.Builder()
+            .title("   返信   ")
+            .border(width: 1, color: UIColor.appMainColor.cgColor)
+            .cornerRadius(15)
+            .backgroundColor(.appSubColor)
+            .component(.appSub)
+            .build()
+        button.isHidden = true
+        return button
+    }()
+    
     private(set) var viewTapGesture: UITapGestureRecognizer = {
         let gesture = UITapGestureRecognizer()
         return gesture
@@ -78,7 +92,7 @@ extension DetailUIImpl {
         guard let vc = viewController else { return }
         vc.navigationItem.rightBarButtonItem = editBtn
         vc.view.backgroundColor = .appMainColor
-        inputToolBar.addSubview(commentField)
+        [commentField, submitBtn].forEach { inputToolBar.addSubview($0) }
         vc.view.addGestureRecognizer(viewTapGesture)
         [detail, commentTable, inputToolBar].forEach { vc.view.addSubview($0) }
         
@@ -91,6 +105,7 @@ extension DetailUIImpl {
         commentTable.anchor()
             .top(to: detail.bottomAnchor)
             .width(to: vc.view.widthAnchor)
+            .bottom(to: inputToolBar.topAnchor)
             .activate()
         
         let topConstraint = commentField.topAnchor.constraint(equalTo: inputToolBar.topAnchor, constant: 8)
@@ -117,11 +132,23 @@ extension DetailUIImpl {
                 textViewBottomConstraint
             ])
         }
+        
+        submitBtn.anchor()
+            .top(to: commentField.bottomAnchor, constant: 10)
+            .right(to: commentField.rightAnchor, constant: -2)
+            .activate()
     }
     
     func determineHeight(height: CGFloat) {
         detail.anchor()
             .height(constant: height)
             .activate()
+    }
+    
+    func isHiddenSubmitBtn(_ bool: Bool) {
+        UIView.Animator(duration: 1.0)
+            .animations {
+                self.submitBtn.isHidden = bool
+            }.animate()
     }
 }
