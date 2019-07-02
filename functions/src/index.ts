@@ -34,6 +34,23 @@ export const onUserPostDelete = functions.firestore.document('/Users/{userId}/Go
 });
 
 export const onUserCommentPosted = functions.firestore.document('/Goals/{postId}/Comments/{commentId}').onCreate(async (_, context) => {
+  await updateCommentdCountInGoal(context)
+});
+
+async function copyToRootWithUsersPostSnapshot(snapshot: FirebaseFirestore.DocumentSnapshot, context: functions.EventContext) {
+  const postId = snapshot.id;
+  const userId = context.params.userId;
+  const post = snapshot.data() as RootPost;
+  post.authorRef = firestore.collection('Users').doc(userId);
+  await firestore.collection('Goals').doc(postId).set(post, { merge: true });
+}
+
+async function deleteToRootWithUsersPostSnapshot(snapshot: FirebaseFirestore.DocumentSnapshot) {
+  const postId = snapshot.id;
+  await firestore.collection('Goals').doc(postId).delete();
+}
+
+async function updateCommentdCountInGoal(context: functions.EventContext) {
   const postId = context.params.postId;
   let index = 0;
   let author_token = '';
@@ -56,17 +73,4 @@ export const onUserCommentPosted = functions.firestore.document('/Goals/{postId}
     });
   await firestore.collection('Goals').doc(postId).set({ commented_count: index }, { merge: true });
   await firestore.collection('Users').doc(author_token).collection('Goals').doc(postId).set({ commented_count: index }, { merge: true });
-});
-
-async function copyToRootWithUsersPostSnapshot(snapshot: FirebaseFirestore.DocumentSnapshot, context: functions.EventContext) {
-  const postId = snapshot.id;
-  const userId = context.params.userId;
-  const post = snapshot.data() as RootPost;
-  post.authorRef = firestore.collection('Users').doc(userId);
-  await firestore.collection('Goals').doc(postId).set(post, { merge: true });
-}
-
-async function deleteToRootWithUsersPostSnapshot(snapshot: FirebaseFirestore.DocumentSnapshot) {
-  const postId = snapshot.id;
-  await firestore.collection('Goals').doc(postId).delete();
 }
