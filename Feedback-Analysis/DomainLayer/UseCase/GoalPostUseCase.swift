@@ -24,6 +24,6 @@ struct GoalPostUseCaseImpl: GoalPostUseCase {
     }
     
     func fetch(from queryRef: FirebaseQueryRef) -> Observable<[Timeline]> {
-        return repository.fetch(from: queryRef).map { GoalsTranslater().translate($0) }
+        return repository.fetch(from: queryRef).map { GoalsTranslator().translate($0) }
     }
 }

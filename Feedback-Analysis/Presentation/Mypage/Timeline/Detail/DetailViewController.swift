@@ -9,7 +9,7 @@ class DetailViewController: UIViewController {
     private var documentId = ""
     
     typealias DetailDataSource = TableViewDataSource<TimelineCell, Timeline>
-    typealias CommentDataStore = TableViewDataSource<CommentCell, Timeline>
+    typealias CommentDataStore = TableViewDataSource<CommentCell, Comment>
     
     private(set) var detailDataSource: DetailDataSource = {
         return DetailDataSource(cellReuseIdentifier: String(describing: TimelineCell.self),
@@ -46,6 +46,7 @@ class DetailViewController: UIViewController {
             
             ui.submitBtn.rx.tap.asDriver()
                 .drive(onNext: { [unowned self] _ in
+                    self.ui.commentField.text = ""
                     self.presenter.fetch()
                 }).disposed(by: disposeBag)
             
@@ -82,8 +83,6 @@ class DetailViewController: UIViewController {
         self.presenter = presenter
         self.routing = routing
         self.disposeBag = disposeBag
-        
-        // ここで初期のcommentデータを取得
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -105,6 +104,7 @@ extension DetailViewController {
         ui.determineHeight(height: height)
         detailDataSource.listItems.append(timeline)
         ui.detail.reloadData()
+        presenter.get(from: .commentRef(goalDocument: documentId))
     }
     
     func isEnableEdit(_ bool: Bool) {
@@ -138,15 +138,21 @@ extension DetailViewController: DetailPresenterView {
     }
     
     func didFetchUser(data: Account) {
-        let comment = Comment(authorToken: data.authToken,
+        let comment = CommentPost(authorToken: data.authToken,
                               comment: ui.commentField.text,
                               likeCount: 0, repliedCount: 0,
                               createdAt: FieldValue.serverTimestamp(),
                               updatedAt: FieldValue.serverTimestamp())
-        presenter.post(to: .commentRef(documentId), comment: comment)
+        presenter.post(to: .commentRef(goalDocument: documentId), comment: comment)
     }
     
     func didPostSuccess() {
-        print("最新のデータ取得")
+        presenter.get(from: .commentRef(goalDocument: documentId))
+    }
+    
+    func didFetchComments(comments: [Comment]) {
+        commentDataSource.listItems = []
+        commentDataSource.listItems += comments
+        ui.commentTable.reloadData()
     }
 }

@@ -8,7 +8,8 @@ protocol DetailPresenter {
     var isLoading: BehaviorRelay<Bool> { get }
     
     func fetch()
-    func post(to documentRef: FirebaseDocumentRef, comment: Comment)
+    func post(to documentRef: FirebaseDocumentRef, comment: CommentPost)
+    func get(from queryRef: FirebaseQueryRef)
 }
 
 protocol DetailPresenterView: class {
@@ -21,6 +22,7 @@ protocol DetailPresenterView: class {
     func didChangeTextHeight()
     func didFetchUser(data: Account)
     func didPostSuccess()
+    func didFetchComments(comments: [Comment])
     func showError(message: String)
     func updateLoading(_ isLoading: Bool)
 }

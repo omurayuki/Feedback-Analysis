@@ -24,6 +24,9 @@
 		C926CD9E22B3C417008672AA /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C926CD9D22B3C417008672AA /* EditViewController.swift */; };
 		C926CDA022B3C41E008672AA /* EditUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C926CD9F22B3C41E008672AA /* EditUI.swift */; };
 		C926CDA222B3C425008672AA /* EditRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C926CDA122B3C425008672AA /* EditRouting.swift */; };
+		C92E0BBB22CAFEF8007A2F0C /* CommentEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E0BBA22CAFEF8007A2F0C /* CommentEntity.swift */; };
+		C92E0BBD22CB0145007A2F0C /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E0BBC22CB0145007A2F0C /* Comment.swift */; };
+		C92E0BBF22CB02BC007A2F0C /* CommentTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E0BBE22CB02BC007A2F0C /* CommentTranslator.swift */; };
 		C92E7FE322B90D250031AE4F /* GoalPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E7FE222B90D250031AE4F /* GoalPostViewController.swift */; };
 		C92E7FE522B90D350031AE4F /* GoalPostUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E7FE422B90D350031AE4F /* GoalPostUI.swift */; };
 		C92E7FE722B90D430031AE4F /* GoalPostRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E7FE622B90D430031AE4F /* GoalPostRouting.swift */; };
@@ -54,7 +57,7 @@
 		C972692C22BB4A1B00CDFD59 /* GoalEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C972692B22BB4A1A00CDFD59 /* GoalEntity.swift */; };
 		C978FD2222C6071200859851 /* GoalPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C978FD2122C6071200859851 /* GoalPresenter.swift */; };
 		C978FD2422C6071900859851 /* GoalPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C978FD2322C6071800859851 /* GoalPresenterImpl.swift */; };
-		C978FD2622C60B3A00859851 /* GoalTranslater.swift in Sources */ = {isa = PBXBuildFile; fileRef = C978FD2522C60B3A00859851 /* GoalTranslater.swift */; };
+		C978FD2622C60B3A00859851 /* GoalTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C978FD2522C60B3A00859851 /* GoalTranslator.swift */; };
 		C978FD2822C6105600859851 /* memo.strings in Resources */ = {isa = PBXBuildFile; fileRef = C978FD2722C6105600859851 /* memo.strings */; };
 		C978FD2A22C67D4700859851 /* GoalPostViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C978FD2922C67D4700859851 /* GoalPostViewController+Extension.swift */; };
 		C97901CD22B9534B00C245B2 /* NewThingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97901CC22B9534B00C245B2 /* NewThingsView.swift */; };
@@ -99,7 +102,7 @@
 		C9A6067122B2980D00184E0F /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A6067022B2980D00184E0F /* Const.swift */; };
 		C9A6067322B2A60A00184E0F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A6067222B2A60A00184E0F /* User.swift */; };
 		C9A6067522B2A69D00184E0F /* UserEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A6067422B2A69D00184E0F /* UserEntity.swift */; };
-		C9A6067722B2A88500184E0F /* UserTranslater.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A6067622B2A88500184E0F /* UserTranslater.swift */; };
+		C9A6067722B2A88500184E0F /* UserTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A6067622B2A88500184E0F /* UserTranslator.swift */; };
 		C9A6067922B2AAB600184E0F /* UserDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A6067822B2AAB600184E0F /* UserDataStore.swift */; };
 		C9A7F86D22C717EF005B4C44 /* CompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A7F86C22C717EF005B4C44 /* CompleteViewController.swift */; };
 		C9A7F86F22C717F6005B4C44 /* CompleteUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A7F86E22C717F6005B4C44 /* CompleteUI.swift */; };
@@ -127,7 +130,7 @@
 		C9D77F8B22C9CB5E0007835B /* GoalPostEditPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D77F8A22C9CB5E0007835B /* GoalPostEditPresenter.swift */; };
 		C9D77F8D22C9CB650007835B /* GoalPostEditPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D77F8C22C9CB650007835B /* GoalPostEditPresenterImpl.swift */; };
 		C9D77F8F22CA41870007835B /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D77F8E22CA41870007835B /* CommentCell.swift */; };
-		C9D77F9122CA59110007835B /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D77F9022CA59110007835B /* Comment.swift */; };
+		C9D77F9122CA59110007835B /* CommentPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D77F9022CA59110007835B /* CommentPost.swift */; };
 		C9D77F9322CA63120007835B /* DetailUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D77F9222CA63120007835B /* DetailUseCase.swift */; };
 		C9D9010922AB44D80040390E /* AppUserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D9010822AB44D80040390E /* AppUserDefault.swift */; };
 		C9D9010C22AB456D0040390E /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D9010B22AB456D0040390E /* Date+Extension.swift */; };
@@ -190,6 +193,9 @@
 		C926CD9D22B3C417008672AA /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
 		C926CD9F22B3C41E008672AA /* EditUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditUI.swift; sourceTree = "<group>"; };
 		C926CDA122B3C425008672AA /* EditRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditRouting.swift; sourceTree = "<group>"; };
+		C92E0BBA22CAFEF8007A2F0C /* CommentEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentEntity.swift; sourceTree = "<group>"; };
+		C92E0BBC22CB0145007A2F0C /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		C92E0BBE22CB02BC007A2F0C /* CommentTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTranslator.swift; sourceTree = "<group>"; };
 		C92E7FE222B90D250031AE4F /* GoalPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalPostViewController.swift; sourceTree = "<group>"; };
 		C92E7FE422B90D350031AE4F /* GoalPostUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalPostUI.swift; sourceTree = "<group>"; };
 		C92E7FE622B90D430031AE4F /* GoalPostRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalPostRouting.swift; sourceTree = "<group>"; };
@@ -220,7 +226,7 @@
 		C972692B22BB4A1A00CDFD59 /* GoalEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalEntity.swift; sourceTree = "<group>"; };
 		C978FD2122C6071200859851 /* GoalPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalPresenter.swift; sourceTree = "<group>"; };
 		C978FD2322C6071800859851 /* GoalPresenterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalPresenterImpl.swift; sourceTree = "<group>"; };
-		C978FD2522C60B3A00859851 /* GoalTranslater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalTranslater.swift; sourceTree = "<group>"; };
+		C978FD2522C60B3A00859851 /* GoalTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalTranslator.swift; sourceTree = "<group>"; };
 		C978FD2722C6105600859851 /* memo.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = memo.strings; sourceTree = "<group>"; };
 		C978FD2922C67D4700859851 /* GoalPostViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GoalPostViewController+Extension.swift"; sourceTree = "<group>"; };
 		C97901CC22B9534B00C245B2 /* NewThingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewThingsView.swift; sourceTree = "<group>"; };
@@ -267,7 +273,7 @@
 		C9A6067022B2980D00184E0F /* Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
 		C9A6067222B2A60A00184E0F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		C9A6067422B2A69D00184E0F /* UserEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEntity.swift; sourceTree = "<group>"; };
-		C9A6067622B2A88500184E0F /* UserTranslater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTranslater.swift; sourceTree = "<group>"; };
+		C9A6067622B2A88500184E0F /* UserTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTranslator.swift; sourceTree = "<group>"; };
 		C9A6067822B2AAB600184E0F /* UserDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataStore.swift; sourceTree = "<group>"; };
 		C9A7F86C22C717EF005B4C44 /* CompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteViewController.swift; sourceTree = "<group>"; };
 		C9A7F86E22C717F6005B4C44 /* CompleteUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteUI.swift; sourceTree = "<group>"; };
@@ -295,7 +301,7 @@
 		C9D77F8A22C9CB5E0007835B /* GoalPostEditPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalPostEditPresenter.swift; sourceTree = "<group>"; };
 		C9D77F8C22C9CB650007835B /* GoalPostEditPresenterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalPostEditPresenterImpl.swift; sourceTree = "<group>"; };
 		C9D77F8E22CA41870007835B /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
-		C9D77F9022CA59110007835B /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		C9D77F9022CA59110007835B /* CommentPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentPost.swift; sourceTree = "<group>"; };
 		C9D77F9222CA63120007835B /* DetailUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailUseCase.swift; sourceTree = "<group>"; };
 		C9D9010822AB44D80040390E /* AppUserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUserDefault.swift; sourceTree = "<group>"; };
 		C9D9010B22AB456D0040390E /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
@@ -383,7 +389,7 @@
 			children = (
 				C91FA65A22B53F9C006D9E6D /* Update.swift */,
 				C9C2808322BBD6A3002E905E /* GoalPost.swift */,
-				C9D77F9022CA59110007835B /* Comment.swift */,
+				C9D77F9022CA59110007835B /* CommentPost.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -526,6 +532,7 @@
 				C97DDD8422AD74C900A84219 /* Account.swift */,
 				C9A6067222B2A60A00184E0F /* User.swift */,
 				C988631A22C5E92000CABD62 /* Timeline.swift */,
+				C92E0BBC22CB0145007A2F0C /* Comment.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -536,6 +543,7 @@
 				C97DDD8A22AD755B00A84219 /* AccountEntity.swift */,
 				C9A6067422B2A69D00184E0F /* UserEntity.swift */,
 				C972692B22BB4A1A00CDFD59 /* GoalEntity.swift */,
+				C92E0BBA22CAFEF8007A2F0C /* CommentEntity.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -556,8 +564,9 @@
 			children = (
 				C97DDD9222AD85ED00A84219 /* Translator.swift */,
 				C97DDD9022AD83CC00A84219 /* AccountTranslator.swift */,
-				C9A6067622B2A88500184E0F /* UserTranslater.swift */,
-				C978FD2522C60B3A00859851 /* GoalTranslater.swift */,
+				C9A6067622B2A88500184E0F /* UserTranslator.swift */,
+				C978FD2522C60B3A00859851 /* GoalTranslator.swift */,
+				C92E0BBE22CB02BC007A2F0C /* CommentTranslator.swift */,
 			);
 			path = Translator;
 			sourceTree = "<group>";
@@ -1286,6 +1295,7 @@
 				C941332D22C8BD390082A01C /* DetailPresenterImpl.swift in Sources */,
 				C9CC28EF22AD1288006E69E5 /* LoginInputRouting.swift in Sources */,
 				C91FA65422B4FF84006D9E6D /* EditPresenter.swift in Sources */,
+				C92E0BBF22CB02BC007A2F0C /* CommentTranslator.swift in Sources */,
 				C91FA65822B50401006D9E6D /* EditUseCase.swift in Sources */,
 				C97901D022B95AA800C245B2 /* GenreView.swift in Sources */,
 				C9ED71FE22B137C400BDB9A7 /* MypageViewController.swift in Sources */,
@@ -1294,7 +1304,7 @@
 				C9CC28FB22AD505A006E69E5 /* Validate.swift in Sources */,
 				C978FD2A22C67D4700859851 /* GoalPostViewController+Extension.swift in Sources */,
 				C9A6067122B2980D00184E0F /* Const.swift in Sources */,
-				C978FD2622C60B3A00859851 /* GoalTranslater.swift in Sources */,
+				C978FD2622C60B3A00859851 /* GoalTranslator.swift in Sources */,
 				C91FA65B22B53F9C006D9E6D /* Update.swift in Sources */,
 				C972692C22BB4A1B00CDFD59 /* GoalEntity.swift in Sources */,
 				C926CDA022B3C41E008672AA /* EditUI.swift in Sources */,
@@ -1312,14 +1322,15 @@
 				C9A6067322B2A60A00184E0F /* User.swift in Sources */,
 				C9D9014122AB77B40040390E /* VerticalStackView.swift in Sources */,
 				C98E1BB622B7370100D132D5 /* UIImageView+Extension.swift in Sources */,
-				C9D77F9122CA59110007835B /* Comment.swift in Sources */,
-				C9A6067722B2A88500184E0F /* UserTranslater.swift in Sources */,
+				C9D77F9122CA59110007835B /* CommentPost.swift in Sources */,
+				C9A6067722B2A88500184E0F /* UserTranslator.swift in Sources */,
 				C99116AE22B8A323007C67C7 /* PasswordEditingRouting.swift in Sources */,
 				C988631722C5E10F00CABD62 /* GoalRouting.swift in Sources */,
 				C9B55D0B22B0FE1B00845381 /* RemindViewController.swift in Sources */,
 				C9F2497B22B88E93007E82A0 /* PaddingTextField.swift in Sources */,
 				C978FD2222C6071200859851 /* GoalPresenter.swift in Sources */,
 				C9328AA222C7300A0065027B /* DraftPresenter.swift in Sources */,
+				C92E0BBB22CAFEF8007A2F0C /* CommentEntity.swift in Sources */,
 				C988631922C5E6FF00CABD62 /* TableViewDataSource.swift in Sources */,
 				C9F2497722B7B345007E82A0 /* EmailEditingPresenter.swift in Sources */,
 				C97DDD8B22AD755B00A84219 /* AccountEntity.swift in Sources */,
@@ -1355,6 +1366,7 @@
 				C92E7FE722B90D430031AE4F /* GoalPostRouting.swift in Sources */,
 				C92E7FE522B90D350031AE4F /* GoalPostUI.swift in Sources */,
 				C97DDD8222AD71C100A84219 /* SignupUseCase.swift in Sources */,
+				C92E0BBD22CB0145007A2F0C /* Comment.swift in Sources */,
 				C97DDD8522AD74C900A84219 /* Account.swift in Sources */,
 				C97DDD8E22AD82AC00A84219 /* AccountRepository.swift in Sources */,
 				C926CDA222B3C425008672AA /* EditRouting.swift in Sources */,

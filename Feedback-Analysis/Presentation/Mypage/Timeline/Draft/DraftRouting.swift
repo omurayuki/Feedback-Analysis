@@ -19,6 +19,7 @@ final class DraftRoutingImpl: DraftRouting {
         let routing = DetailRoutingImpl()
         ui.viewController = vc
         ui.detail.dataSource = vc.detailDataSource
+        ui.commentTable.dataSource = vc.commentDataSource
         ui.commentField.delegate = presenter
         routing.viewController = vc
         vc.inject(ui: ui, presenter: presenter, routing: routing, disposeBag: DisposeBag())

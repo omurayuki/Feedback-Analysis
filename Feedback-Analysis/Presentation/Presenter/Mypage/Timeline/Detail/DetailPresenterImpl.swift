@@ -28,7 +28,7 @@ class DetailPresenterImpl: NSObject, DetailPresenter {
             }.disposed(by: view.disposeBag)
     }
     
-    func post(to documentRef: FirebaseDocumentRef, comment: Comment) {
+    func post(to documentRef: FirebaseDocumentRef, comment: CommentPost) {
         view.updateLoading(true)
         useCase.post(to: documentRef, comment: comment)
             .subscribe { [unowned self] result in
@@ -41,6 +41,18 @@ class DetailPresenterImpl: NSObject, DetailPresenter {
                     self.view.showError(message: error.localizedDescription)
                 }
             }.disposed(by: view.disposeBag)
+    }
+    
+    func get(from queryRef: FirebaseQueryRef) {
+        view.updateLoading(true)
+        useCase.get(from: queryRef)
+            .subscribe(onNext: { result in
+                self.view.updateLoading(false)
+                self.view.didFetchComments(comments: result)
+            }, onError: { error in
+                self.view.updateLoading(false)
+                self.view.showError(message: error.localizedDescription)
+            }).disposed(by: view.disposeBag)
     }
 }
 

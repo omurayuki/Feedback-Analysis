@@ -1,7 +1,7 @@
 import Foundation
 import FirebaseFirestore
 
-struct Comment {
+struct CommentPost {
     let authorToken: String
     let comment: String
     let likeCount: Int

@@ -96,9 +96,10 @@ final class CommentCell: UITableViewCell {
         return button
     }()
     
-    var content: Timeline? {
+    var content: Comment? {
         didSet {
-            
+            self.userName.text = content?.name
+            self.comment.text = content?.comment
         }
     }
     

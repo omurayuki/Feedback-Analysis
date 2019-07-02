@@ -11,9 +11,10 @@ enum FirebaseError: Error {
 
 enum FirebaseDocumentRef {
     case userRef
+    case authorRef(authorToken: String)
     case goalPostRef
-    case goalUpdateRef(String)
-    case commentRef(String)
+    case goalUpdateRef(goalDocument: String)
+    case commentRef(goalDocument: String)
     
     var destination: DocumentReference {
         switch self {
@@ -21,6 +22,10 @@ enum FirebaseDocumentRef {
             return Firestore.firestore()
                 .collection("Users")
                 .document(AppUserDefaults.getAuthToken())
+        case .authorRef(let token):
+            return Firestore.firestore()
+                .collection("Users")
+                .document(token)
         case .goalPostRef:
             return Firestore.firestore()
                 .collection("Users")
@@ -62,6 +67,7 @@ enum FirebaseQueryRef {
     case completeRef
     case draftRef
     case allRef
+    case commentRef(goalDocument: String)
     
     var destination: Query {
         switch self {
@@ -95,6 +101,12 @@ enum FirebaseQueryRef {
                 .collection("Users")
                 .document(AppUserDefaults.getAuthToken())
                 .collection("Goals")
+                .order(by: "updated_at", descending: true)
+        case .commentRef(let documentId):
+            return Firestore.firestore()
+                .collection("Goals")
+                .document(documentId)
+                .collection("Comments")
                 .order(by: "updated_at", descending: true)
         }
     }

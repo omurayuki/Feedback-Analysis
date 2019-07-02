@@ -236,4 +236,45 @@ struct Provider {
             return Disposables.create()
         })
     }
+    
+    func observeQuery(queryRef: FirebaseQueryRef) -> Observable<[CommentEntity]> {
+        var userDocuments = [String: Any]()
+        return Observable.create({ observer -> Disposable in
+            queryRef
+                .destination
+                .addSnapshotListener({ commentSnapshot, error in
+                    if let error = error {
+                        observer.on(.error(FirebaseError.resultError(error)))
+                        return
+                    }
+                    guard let documents = commentSnapshot?.documents else {
+                        observer.on(.error(FirebaseError.unknown))
+                        return
+                    }
+                    documents.forEach {
+                        guard let token = $0.data()["author_token"] as? String else {
+                            observer.on(.error(FirebaseError.unknown))
+                            return
+                        }
+                        FirebaseDocumentRef
+                            .authorRef(authorToken: token)
+                            .destination
+                            .addSnapshotListener({ userSnapshot, errorq in
+                                if let error = error {
+                                    observer.on(.error(FirebaseError.resultError(error)))
+                                    return
+                                }
+                                guard let userDocument = userSnapshot?.data() else {
+                                    observer.on(.error(FirebaseError.unknown))
+                                    return
+                                }
+                                userDocuments = userDocument
+                            })
+                        observer.on(.next(documents.compactMap { CommentEntity(user: UserEntity(document: userDocuments),
+                                                                            document: $0.data()) }))
+                    }
+                })
+            return Disposables.create()
+        })
+    }
 }
