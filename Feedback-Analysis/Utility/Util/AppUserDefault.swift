@@ -28,6 +28,15 @@ class AppUserDefaults {
     class func setFirstLaunchFrag() {
         putBoolValue(true, keyName: "FirstLaunch")
     }
+    
+    class func getGoalDocument() -> String {
+        return getStringValue(keyName: "goalDocument")
+    }
+    
+    // goalDocumentId
+    class func setGoalDocument(id: String) {
+        putStringValue(id, keyName: "goalDocument")
+    }
 }
 
 extension AppUserDefaults {

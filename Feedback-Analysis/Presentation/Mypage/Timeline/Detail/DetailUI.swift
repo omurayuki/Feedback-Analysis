@@ -14,6 +14,7 @@ protocol DetailUI: UI {
     func setup()
     func determineHeight(height: CGFloat)
     func isHiddenSubmitBtn(_ bool: Bool)
+    func clearCommentField()
 }
 
 final class DetailUIImpl: DetailUI {
@@ -150,6 +151,13 @@ extension DetailUIImpl {
         UIView.Animator(duration: 1.0)
             .animations {
                 self.submitBtn.isHidden = bool
+            }.animate()
+    }
+    
+    func clearCommentField() {
+        UIView.Animator(duration: 2.0)
+            .animations {
+                self.commentField.text = ""
             }.animate()
     }
 }

@@ -32,43 +32,7 @@ final class CommentCell: UITableViewCell {
         return label
     }()
     
-    private(set) var leftTopImage: UIImageView = {
-        let image = UIImageView()
-        image.clipsToBounds = true
-        image.contentMode = .scaleAspectFill
-        image.layer.cornerRadius = 10
-        image.layer.maskedCorners = [.layerMinXMinYCorner]
-        return image
-    }()
-    
-    private(set) var rightTopImage: UIImageView = {
-        let image = UIImageView()
-        image.clipsToBounds = true
-        image.contentMode = .scaleAspectFill
-        image.layer.cornerRadius = 10
-        image.layer.maskedCorners = [.layerMaxXMinYCorner]
-        return image
-    }()
-    
-    private(set) var leftBottomImage: UIImageView = {
-        let image = UIImageView()
-        image.clipsToBounds = true
-        image.contentMode = .scaleAspectFill
-        image.layer.cornerRadius = 10
-        image.layer.maskedCorners = [.layerMinXMaxYCorner]
-        return image
-    }()
-    
-    private(set) var rightBottomImage: UIImageView = {
-        let image = UIImageView()
-        image.clipsToBounds = true
-        image.contentMode = .scaleAspectFill
-        image.layer.cornerRadius = 10
-        image.layer.maskedCorners = [.layerMaxXMaxYCorner]
-        return image
-    }()
-    
-    private(set) var commentCount: UILabel = {
+    private(set) var repliedCount: UILabel = {
         let label = UILabel()
         label.apply(.title_Bold)
         return label
@@ -98,8 +62,14 @@ final class CommentCell: UITableViewCell {
     
     var content: Comment? {
         didSet {
+            guard let url = content?.userImage else { return }
+            guard let repliedCount = content?.repliedCount else { return }
+            guard let likeCount = content?.likeCount else { return }
             self.userName.text = content?.name
             self.comment.text = content?.comment
+            self.userPhoto.setImage(url: url)
+            self.repliedCount.text = "\(repliedCount)"
+            self.likeCount.text = "\(likeCount)"
         }
     }
     
@@ -117,21 +87,11 @@ extension CommentCell {
     private func setup() {
         backgroundColor = .appMainColor
         
-        let lhsImageStack = UIStackView.setupStack(lhs: leftTopImage, rhs: rightTopImage, spacing: 5)
-        let rhsImageStack = UIStackView.setupStack(lhs: leftBottomImage, rhs: rightBottomImage, spacing: 5)
-        let imageStack = UIStackView.setupVerticalStack(lhs: lhsImageStack, rhs: rhsImageStack, spacing: 5)
-        let commentStack = UIStackView.setupStack(lhs: commentBtn, rhs: commentCount, spacing: 5)
+        let commentStack = UIStackView.setupStack(lhs: commentBtn, rhs: repliedCount, spacing: 5)
         let likeStack = UIStackView.setupStack(lhs: likeBtn, rhs: likeCount, spacing: 5)
         
         [userPhoto, userName, postedTime,
-         comment, imageStack, commentStack, likeStack].forEach { addSubview($0) }
-        
-        [leftTopImage, rightTopImage, leftBottomImage, rightBottomImage].forEach {
-            $0.anchor()
-                .width(constant: (frame.width / 1.1) / 2.0 - 5.0)
-                .height(constant: 70)
-                .activate()
-        }
+         comment, commentStack, likeStack].forEach { addSubview($0) }
         
         userPhoto.anchor()
             .top(to: topAnchor, constant: 5)
@@ -157,20 +117,14 @@ extension CommentCell {
             .width(constant: frame.width / 1.1)
             .activate()
         
-        imageStack.anchor()
-            .top(to: comment.bottomAnchor, constant: 15)
-            .left(to: userPhoto.rightAnchor, constant: 10)
-            .right(to: rightAnchor, constant: -20)
-            .activate()
-        
         commentStack.anchor()
-            .top(to: imageStack.bottomAnchor, constant: 5)
+            .top(to: comment.bottomAnchor, constant: 5)
             .left(to: userPhoto.rightAnchor, constant: 10)
             .bottom(to: bottomAnchor)
             .activate()
         
         likeStack.anchor()
-            .top(to: imageStack.bottomAnchor, constant: 5)
+            .top(to: comment.bottomAnchor, constant: 5)
             .left(to: commentStack.rightAnchor, constant: 20)
             .bottom(to: bottomAnchor)
             .activate()

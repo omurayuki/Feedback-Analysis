@@ -6,8 +6,6 @@ import FirebaseFirestore
 
 class DetailViewController: UIViewController {
     
-    private var documentId = ""
-    
     typealias DetailDataSource = TableViewDataSource<TimelineCell, Timeline>
     typealias CommentDataStore = TableViewDataSource<CommentCell, Comment>
     
@@ -46,7 +44,6 @@ class DetailViewController: UIViewController {
             
             ui.submitBtn.rx.tap.asDriver()
                 .drive(onNext: { [unowned self] _ in
-                    self.ui.commentField.text = ""
                     self.presenter.fetch()
                 }).disposed(by: disposeBag)
             
@@ -99,12 +96,15 @@ class DetailViewController: UIViewController {
 extension DetailViewController {
     
     func recieve(data timeline: Timeline, height: CGFloat) {
-        documentId = timeline.documentId
-        isEnableEdit(timeline.achievedFlag)
-        ui.determineHeight(height: height)
-        detailDataSource.listItems.append(timeline)
-        ui.detail.reloadData()
-        presenter.get(from: .commentRef(goalDocument: documentId))
+        presenter.set(document: timeline.documentId) {
+            self.isEnableEdit(timeline.achievedFlag)
+            self.ui.determineHeight(height: height)
+            self.detailDataSource.listItems.append(timeline)
+            self.ui.detail.reloadData()
+            self.presenter.getDocumentId(completion: { [unowned self] documentId in
+                self.presenter.get(from: .commentRef(goalDocument: documentId))
+            })
+        }
     }
     
     func isEnableEdit(_ bool: Bool) {
@@ -143,11 +143,16 @@ extension DetailViewController: DetailPresenterView {
                               likeCount: 0, repliedCount: 0,
                               createdAt: FieldValue.serverTimestamp(),
                               updatedAt: FieldValue.serverTimestamp())
-        presenter.post(to: .commentRef(goalDocument: documentId), comment: comment)
+        presenter.getDocumentId(completion: { [unowned self] documentId in
+            self.presenter.post(to: .commentRef(goalDocument: documentId), comment: comment)
+        })
     }
     
     func didPostSuccess() {
-        presenter.get(from: .commentRef(goalDocument: documentId))
+        ui.clearCommentField()
+        presenter.getDocumentId(completion: { [unowned self] documentId in
+            self.presenter.get(from: .commentRef(goalDocument: documentId))
+        })
     }
     
     func didFetchComments(comments: [Comment]) {

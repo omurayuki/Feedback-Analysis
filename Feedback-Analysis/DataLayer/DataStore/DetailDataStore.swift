@@ -5,6 +5,8 @@ protocol DetailDataStore {
     func fetch() -> Single<AccountEntity>
     func post(to documentRef: FirebaseDocumentRef, comment: CommentPost) -> Single<()>
     func get(from queryRef: FirebaseQueryRef) -> Observable<[CommentEntity]>
+    func set(document id: String) -> Single<()>
+    func getDocumentId() -> Single<String>
 }
 
 struct DetailDataStoreImpl: DetailDataStore {
@@ -22,6 +24,21 @@ struct DetailDataStoreImpl: DetailDataStore {
     
     func get(from queryRef: FirebaseQueryRef) -> Observable<[CommentEntity]> {
         return Provider().observeQuery(queryRef: queryRef)
+    }
+    
+    func set(document id: String) -> Single<()> {
+        return Single.create(subscribe: { single -> Disposable in
+            AppUserDefaults.setGoalDocument(id: id)
+            single(.success(()))
+            return Disposables.create()
+        })
+    }
+    
+    func getDocumentId() -> Single<String> {
+        return Single.create(subscribe: { single -> Disposable in
+            single(.success(AppUserDefaults.getGoalDocument()))
+            return Disposables.create()
+        })
     }
 }
 

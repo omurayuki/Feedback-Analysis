@@ -34,7 +34,6 @@ class DetailPresenterImpl: NSObject, DetailPresenter {
             .subscribe { [unowned self] result in
                 switch result {
                 case .success(_):
-                    self.view.updateLoading(false)
                     self.view.didPostSuccess()
                 case .error(let error):
                     self.view.updateLoading(false)
@@ -47,12 +46,36 @@ class DetailPresenterImpl: NSObject, DetailPresenter {
         view.updateLoading(true)
         useCase.get(from: queryRef)
             .subscribe(onNext: { result in
-                self.view.updateLoading(false)
                 self.view.didFetchComments(comments: result)
+                self.view.updateLoading(false)
             }, onError: { error in
                 self.view.updateLoading(false)
                 self.view.showError(message: error.localizedDescription)
             }).disposed(by: view.disposeBag)
+    }
+    
+    func set(document id: String, completion: @escaping () -> Void) {
+        useCase.set(document: id)
+            .subscribe { result in
+                switch result {
+                case .success(_):
+                    completion()
+                case .error(_):
+                    break
+                }
+            }.disposed(by: view.disposeBag)
+    }
+    
+    func getDocumentId(completion: @escaping (String) -> Void) {
+        useCase.getDocumentId()
+            .subscribe { result in
+                switch result {
+                case .success(let documentId):
+                    completion(documentId)
+                case .error(_):
+                    return
+                }
+            }.disposed(by: view.disposeBag)
     }
 }
 

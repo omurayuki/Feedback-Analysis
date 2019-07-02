@@ -5,6 +5,8 @@ protocol DetailUseCase {
     func fetch() -> Single<Account>
     func post(to documentRef: FirebaseDocumentRef, comment: CommentPost) -> Single<()>
     func get(from queryRef: FirebaseQueryRef) -> Observable<[Comment]>
+    func set(document id: String) -> Single<()>
+    func getDocumentId() -> Single<String>
 }
 
 struct DetailUseCaseImpl: DetailUseCase {
@@ -27,5 +29,13 @@ struct DetailUseCaseImpl: DetailUseCase {
     
     func get(from queryRef: FirebaseQueryRef) -> Observable<[Comment]> {
         return repository.get(from: queryRef).map { CommentsTranslator().translate($0) }
+    }
+    
+    func set(document id: String) -> Single<()> {
+        return repository.set(document: id)
+    }
+    
+    func getDocumentId() -> Single<String> {
+        return repository.getDocumentId()
     }
 }

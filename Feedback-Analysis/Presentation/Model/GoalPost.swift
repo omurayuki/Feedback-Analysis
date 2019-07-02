@@ -10,6 +10,7 @@ struct GoalPost {
     let draftFlag: Bool
     let likeCount: Int
     let commentedCount: Int
+    let authorToken: String
     let createdAt: FieldValue
     let updatedAt: FieldValue
     
@@ -22,6 +23,7 @@ struct GoalPost {
         case draftFlag
         case likeCount
         case commentedCount
+        case authorToken
         case createdAt
         case updatedAt
         
@@ -35,6 +37,7 @@ struct GoalPost {
             case .draftFlag:       return "draft_flag"
             case .likeCount:       return "like_count"
             case .commentedCount:  return "commented_count"
+            case .authorToken:     return "author_token"
             case .createdAt:       return "created_at"
             case .updatedAt:       return "updated_at"
             }
@@ -50,6 +53,7 @@ struct GoalPost {
                 Key.draftFlag.description: draftFlag,
                 Key.likeCount.description: likeCount,
                 Key.commentedCount.description: commentedCount,
+                Key.authorToken.description: authorToken,
                 Key.createdAt.description: createdAt,
                 Key.updatedAt.description: updatedAt]
     }

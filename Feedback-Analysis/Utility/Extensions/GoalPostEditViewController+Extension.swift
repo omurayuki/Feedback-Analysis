@@ -37,7 +37,8 @@ extension GoalPostEditViewController {
                                "goal3": expectedResultField3],
                         deadline: deadline, achievedFlag: false,
                         draftFlag: draft, likeCount: 0,
-                        commentedCount: 0, createdAt: FieldValue.serverTimestamp(),
+                        commentedCount: 0, authorToken: AppUserDefaults.getAuthToken(),
+                        createdAt: FieldValue.serverTimestamp(),
                         updatedAt: FieldValue.serverTimestamp())
     }
 }

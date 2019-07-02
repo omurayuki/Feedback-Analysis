@@ -10,6 +10,8 @@ protocol DetailPresenter {
     func fetch()
     func post(to documentRef: FirebaseDocumentRef, comment: CommentPost)
     func get(from queryRef: FirebaseQueryRef)
+    func set(document id: String, completion: @escaping () -> Void)
+    func getDocumentId(completion: @escaping (String) -> Void)
 }
 
 protocol DetailPresenterView: class {

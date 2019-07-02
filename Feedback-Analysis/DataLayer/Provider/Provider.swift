@@ -238,7 +238,7 @@ struct Provider {
     }
     
     func observeQuery(queryRef: FirebaseQueryRef) -> Observable<[CommentEntity]> {
-        var userDocuments = [String: Any]()
+        var userDocuments = [[String: Any]]()
         return Observable.create({ observer -> Disposable in
             queryRef
                 .destination
@@ -268,11 +268,16 @@ struct Provider {
                                     observer.on(.error(FirebaseError.unknown))
                                     return
                                 }
-                                userDocuments = userDocument
+                                userDocuments.append(userDocument)
                             })
-                        observer.on(.next(documents.compactMap { CommentEntity(user: UserEntity(document: userDocuments),
-                                                                            document: $0.data()) }))
                     }
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
+                        observer.on(.next(documents.enumerated().compactMap { index, data in
+                            CommentEntity(user: UserEntity(document: userDocuments[index]),
+                                          document: data.data())
+                            
+                        }))
+                    })
                 })
             return Disposables.create()
         })
