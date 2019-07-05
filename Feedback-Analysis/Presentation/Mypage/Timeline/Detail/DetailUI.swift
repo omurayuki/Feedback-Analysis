@@ -37,7 +37,7 @@ final class DetailUIImpl: DetailUI {
     var detail: UITableView = {
         let table = UITableView()
         table.backgroundColor = .appMainColor
-        table.separatorColor = .appSubColor
+        table.separatorColor = .appCoolGrey
         table.separatorInset = .zero
         table.estimatedRowHeight = 400
         table.rowHeight = UITableView.automaticDimension
@@ -47,7 +47,13 @@ final class DetailUIImpl: DetailUI {
     
     var commentTable: UITableView = {
         let table = UITableView()
+        table.backgroundView = UIImageView(image: #imageLiteral(resourceName: "logo"))
+        table.backgroundView?.alpha = 0.1
+        table.backgroundView?.clipsToBounds = true
+        table.backgroundView?.contentMode = UIView.ContentMode.scaleAspectFit
         table.backgroundColor = .appMainColor
+        table.separatorColor = .appCoolGrey
+        table.tableFooterView = UIView()
         table.register(CommentCell.self, forCellReuseIdentifier: String(describing: CommentCell.self))
         return table
     }()

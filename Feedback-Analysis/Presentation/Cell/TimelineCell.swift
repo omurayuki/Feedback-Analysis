@@ -185,12 +185,6 @@ final class TimelineCell: UITableViewCell {
         }
     }
     
-    var state: Bool! {
-        didSet {
-            likeBtn.titleLabel?.textColor = state ? .red : .appCoolGrey
-        }
-    }
-    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setup()

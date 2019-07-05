@@ -71,7 +71,7 @@ extension GoalViewController: GoalPresenterView {
     func didSelect(indexPath: IndexPath, tableView: UITableView) {
         tableView.deselectRow(at: indexPath, animated: true)
         guard let height = tableView.cellForRow(at: indexPath)?.contentView.frame.height else { return }
-        routing.showDetail(with: dataSource.listItems[indexPath.row], height: height)
+        routing.showDetail(with: dataSource.listItems[indexPath.row], height: height + 1)
     }
     
     func didCheckIfYouLiked(_ bool: Bool) {

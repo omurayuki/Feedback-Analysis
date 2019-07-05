@@ -13,9 +13,11 @@ final class GoalUIImpl: GoalUI {
         let table = UITableView()
         table.backgroundView = UIImageView(image: #imageLiteral(resourceName: "logo"))
         table.backgroundView?.alpha = 0.1
-        table.separatorStyle = .none
+        table.backgroundView?.clipsToBounds = true
+        table.backgroundView?.contentMode = UIView.ContentMode.scaleAspectFit
         table.backgroundColor = .appMainColor
-        table.separatorColor = .appSubColor
+        table.separatorColor = .appCoolGrey
+        table.tableFooterView = UIView()
         table.estimatedRowHeight = 400
         table.rowHeight = UITableView.automaticDimension
         table.register(TimelineCell.self, forCellReuseIdentifier: String(describing: TimelineCell.self))
