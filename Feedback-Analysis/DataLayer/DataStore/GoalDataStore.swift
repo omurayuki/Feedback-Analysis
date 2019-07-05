@@ -9,6 +9,8 @@ protocol GoalDataStore {
     func get(documentRef: FirebaseDocumentRef) -> Single<Bool>
     func create(documentRef: FirebaseDocumentRef, value: [String: Any]) -> Single<()>
     func delete(documentRef: FirebaseDocumentRef) -> Single<()>
+    func setSelected(index: Int) -> Single<()>
+    func getSelected() -> Single<Int>
 }
 
 struct GoalDataStoreImpl: GoalDataStore {
@@ -39,6 +41,21 @@ struct GoalDataStoreImpl: GoalDataStore {
     
     func delete(documentRef: FirebaseDocumentRef) -> Single<()> {
         return Provider().delete(documentRef: documentRef)
+    }
+    
+    func setSelected(index: Int) -> Single<()> {
+        return Single.create(subscribe: { single -> Disposable in
+            AppUserDefaults.setSelected(index: index)
+            single(.success(()))
+            return Disposables.create()
+        })
+    }
+    
+    func getSelected() -> Single<Int> {
+        return Single.create(subscribe: { single -> Disposable in
+            single(.success(AppUserDefaults.getSelected()))
+            return Disposables.create()
+        })
     }
 }
 

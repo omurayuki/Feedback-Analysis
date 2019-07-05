@@ -6,6 +6,8 @@ import FirebaseFirestore
 
 class CompleteViewController: UIViewController {
     
+    private var didSelectIndex = Int()
+    
     typealias DataSource = TableViewDataSource<TimelineCell, Timeline>
     
     private(set) lazy var dataSource: DataSource = {
@@ -72,17 +74,34 @@ extension CompleteViewController: CompletePresenterView {
         guard let height = tableView.cellForRow(at: indexPath)?.contentView.frame.height else { return }
         routing.showDetail(with: dataSource.listItems[indexPath.row], height: height)
     }
+    
+    func didCheckIfYouLiked(_ bool: Bool) {
+        switch bool {
+        case false:
+            presenter.create(documentRef: .likeUserRef(goalDocument: self.dataSource.listItems[didSelectIndex].documentId),
+                             value: [:])
+        case true:
+            presenter.delete(documentRef: .likeUserRef(goalDocument: self.dataSource.listItems[didSelectIndex].documentId))
+        }
+    }
+    
+    func didCreateLikeRef() {
+        self.presenter.update(to: .goalUpdateRef(author_token: self.dataSource.listItems[didSelectIndex].authorToken,
+                                                 goalDocument: self.dataSource.listItems[didSelectIndex].documentId),
+                              value: ["like_count": FieldValue.increment(1.0)])
+    }
+    
+    func didDeleteLikeRef() {
+        self.presenter.update(to: .goalUpdateRef(author_token: self.dataSource.listItems[didSelectIndex].authorToken,
+                                                 goalDocument: self.dataSource.listItems[didSelectIndex].documentId),
+                              value: ["like_count": FieldValue.increment(-1.0)])
+    }
 }
 
 extension CompleteViewController: CellTapDelegate {
     
     func tappedLikeBtn(index: Int) {
-        if dataSource.listItems[index].likeCount <= 0 {
-            presenter.update(to: .goalUpdateRef(author_token: dataSource.listItems[index].authorToken, goalDocument: dataSource.listItems[index].documentId),
-                             value: ["like_count": FieldValue.increment(1.0)])
-        } else {
-            presenter.update(to: .goalUpdateRef(author_token: dataSource.listItems[index].authorToken, goalDocument: dataSource.listItems[index].documentId),
-                             value: ["like_count": FieldValue.increment(-1.0)])
-        }
-    }   
+        presenter.get(documentRef: .likeUserRef(goalDocument: dataSource.listItems[index].documentId))
+        didSelectIndex = index
+    }
 }

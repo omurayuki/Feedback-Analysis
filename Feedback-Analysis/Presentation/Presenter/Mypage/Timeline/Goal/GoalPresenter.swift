@@ -12,6 +12,8 @@ protocol GoalPresenter {
     func get(documentRef: FirebaseDocumentRef)
     func create(documentRef: FirebaseDocumentRef, value: [String: Any])
     func delete(documentRef: FirebaseDocumentRef)
+    func setSelected(index: Int)
+    func getSelected(completion: @escaping (Int) -> Void)
 }
 
 protocol GoalPresenterView: class {
@@ -22,10 +24,10 @@ protocol GoalPresenterView: class {
                 routing: GoalRouting,
                 disposeBag: DisposeBag)
     func didFetchGoalData(timeline: [Timeline])
+    func didSelect(indexPath: IndexPath, tableView: UITableView)
     func didCheckIfYouLiked(_ bool: Bool)
     func didCreateLikeRef()
     func didDeleteLikeRef()
-    func didSelect(indexPath: IndexPath, tableView: UITableView)
     func showError(message: String)
     func updateLoading(_ isLoading: Bool)
 }

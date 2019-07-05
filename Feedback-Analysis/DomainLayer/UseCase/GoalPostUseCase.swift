@@ -9,6 +9,8 @@ protocol GoalPostUseCase {
     func get(documentRef: FirebaseDocumentRef) -> Single<Bool>
     func create(documentRef: FirebaseDocumentRef, value: [String: Any]) -> Single<()>
     func delete(documentRef: FirebaseDocumentRef) -> Single<()>
+    func setSelected(index: Int) -> Single<()>
+    func getSelected() -> Single<Int>
 }
 
 struct GoalPostUseCaseImpl: GoalPostUseCase {
@@ -45,5 +47,13 @@ struct GoalPostUseCaseImpl: GoalPostUseCase {
     
     func delete(documentRef: FirebaseDocumentRef) -> Single<()> {
         return repository.delete(documentRef: documentRef)
+    }
+    
+    func setSelected(index: Int) -> Single<()> {
+        return repository.setSelected(index: index)
+    }
+    
+    func getSelected() -> Single<Int> {
+        return repository.getSelected()
     }
 }

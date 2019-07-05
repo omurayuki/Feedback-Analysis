@@ -72,6 +72,30 @@ class GoalPresenterImpl: NSObject, GoalPresenter {
                 }
             }.disposed(by: view.disposeBag)
     }
+    
+    func setSelected(index: Int) {
+        useCase.setSelected(index: index)
+            .subscribe { result in
+                switch result {
+                case .success(_):
+                    return
+                case .error(_):
+                    return
+                }
+            }.disposed(by: view.disposeBag)
+    }
+    
+    func getSelected(completion: @escaping (Int) -> Void) {
+        useCase.getSelected()
+            .subscribe { result in
+                switch result {
+                case .success(let response):
+                    completion(response)
+                case .error(_):
+                    return
+                }
+            }.disposed(by: view.disposeBag)
+    }
 }
 
 extension GoalPresenterImpl: UITableViewDelegate {

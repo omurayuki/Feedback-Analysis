@@ -37,6 +37,15 @@ class AppUserDefaults {
     class func setGoalDocument(id: String) {
         putStringValue(id, keyName: "goalDocument")
     }
+    
+    // selectedIndex
+    class func getSelected() -> Int {
+        return getIntValue(keyName: "index")
+    }
+    
+    class func setSelected(index: Int) {
+        putIntValue(index, keyName: "index")
+    }
 }
 
 extension AppUserDefaults {
@@ -51,14 +60,9 @@ extension AppUserDefaults {
         userDefaults.synchronize()
     }
     
-    private class func getIntValue(keyName: String, defValue: Int = 0) -> Int {
+    private class func getIntValue(keyName: String) -> Int {
         let userDefaults: UserDefaults = UserDefaults.standard
-        let value = userDefaults.integer(forKey: keyName)
-        if (0 != value) {
-            return value
-        } else {
-            return defValue
-        }
+        return userDefaults.integer(forKey: keyName)
     }
     
     private class func putIntValue(_ value: Int, keyName: String) {

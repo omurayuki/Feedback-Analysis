@@ -36,6 +36,42 @@ class CompletePresenterImpl: NSObject, CompletePresenter {
                 }
             }.disposed(by: view.disposeBag)
     }
+    
+    func get(documentRef: FirebaseDocumentRef) {
+        useCase.get(documentRef: documentRef)
+            .subscribe { [unowned self] result in
+                switch result {
+                case .success(let response):
+                    self.view.didCheckIfYouLiked(response)
+                case .error(let error):
+                    self.view.showError(message: error.localizedDescription)
+                }
+            }.disposed(by: view.disposeBag)
+    }
+    
+    func create(documentRef: FirebaseDocumentRef, value: [String: Any]) {
+        useCase.create(documentRef: documentRef, value: value)
+            .subscribe { result in
+                switch result {
+                case .success(_):
+                    self.view.didCreateLikeRef()
+                case .error(let error):
+                    self.view.showError(message: error.localizedDescription)
+                }
+            }.disposed(by: view.disposeBag)
+    }
+    
+    func delete(documentRef: FirebaseDocumentRef) {
+        useCase.delete(documentRef: documentRef)
+            .subscribe { result in
+                switch result {
+                case .success(_):
+                    self.view.didDeleteLikeRef()
+                case .error(let error):
+                    self.view.showError(message: error.localizedDescription)
+                }
+            }.disposed(by: view.disposeBag)
+    }
 }
 
 extension CompletePresenterImpl: UITableViewDelegate {

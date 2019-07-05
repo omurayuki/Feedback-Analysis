@@ -9,6 +9,8 @@ protocol GoalRepository {
     func get(documentRef: FirebaseDocumentRef) -> Single<Bool>
     func create(documentRef: FirebaseDocumentRef, value: [String: Any]) -> Single<()>
     func delete(documentRef: FirebaseDocumentRef) -> Single<()>
+    func setSelected(index: Int) -> Single<()>
+    func getSelected() -> Single<Int>
 }
 
 struct GoalRepositoryImpl: GoalRepository {
@@ -43,5 +45,13 @@ struct GoalRepositoryImpl: GoalRepository {
     
     func delete(documentRef: FirebaseDocumentRef) -> Single<()> {
         return dataStore.delete(documentRef: documentRef)
+    }
+    
+    func setSelected(index: Int) -> Single<()> {
+        return dataStore.setSelected(index: index)
+    }
+    
+    func getSelected() -> Single<Int> {
+        return dataStore.getSelected()
     }
 }
