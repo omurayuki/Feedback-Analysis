@@ -8,6 +8,7 @@ protocol CompletePresenter {
     var isLoading: BehaviorRelay<Bool> { get }
     
     func fetch(from queryRef: FirebaseQueryRef, completion: (() -> Void)?)
+    func update(to documentRef: FirebaseDocumentRef, value: [String: Any])
 }
 
 protocol CompletePresenterView: class {

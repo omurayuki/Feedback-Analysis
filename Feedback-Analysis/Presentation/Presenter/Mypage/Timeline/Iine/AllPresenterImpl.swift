@@ -24,6 +24,18 @@ class AllPresenterImpl: NSObject, AllPresenter {
                 self.view.showError(message: error.localizedDescription)
             }).disposed(by: view.disposeBag)
     }
+    
+    func update(to documentRef: FirebaseDocumentRef, value: [String : Any]) {
+        useCase.update(to: documentRef, value: value)
+            .subscribe { result in
+                switch result {
+                case .success(_):
+                    break
+                case .error(let error):
+                    self.view.showError(message: error.localizedDescription)
+                }
+            }.disposed(by: view.disposeBag)
+    }
 }
 
 extension AllPresenterImpl: UITableViewDelegate {

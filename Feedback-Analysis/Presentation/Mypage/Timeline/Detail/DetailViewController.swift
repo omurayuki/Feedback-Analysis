@@ -9,19 +9,19 @@ class DetailViewController: UIViewController {
     typealias DetailDataSource = TableViewDataSource<TimelineCell, Timeline>
     typealias CommentDataStore = TableViewDataSource<CommentCell, Comment>
     
-    private(set) var detailDataSource: DetailDataSource = {
+    private(set) lazy var detailDataSource: DetailDataSource = {
         return DetailDataSource(cellReuseIdentifier: String(describing: TimelineCell.self),
                                 listItems: [],
                                 cellConfigurationHandler: { (cell, item, _) in
-                                    cell.content = item
+            cell.content = item
         })
     }()
     
-    private(set) var commentDataSource: CommentDataStore = {
+    private(set) lazy var commentDataSource: CommentDataStore = {
         return CommentDataStore(cellReuseIdentifier: String(describing: CommentCell.self),
                                 listItems: [],
                                 cellConfigurationHandler: { (cell, item, _) in
-                                    cell.content = item
+            cell.content = item
         })
     }()
     
@@ -138,13 +138,9 @@ extension DetailViewController: DetailPresenterView {
     }
     
     func didFetchUser(data: Account) {
-        let comment = CommentPost(authorToken: data.authToken,
-                              comment: ui.commentField.text,
-                              likeCount: 0, repliedCount: 0,
-                              createdAt: FieldValue.serverTimestamp(),
-                              updatedAt: FieldValue.serverTimestamp())
         presenter.getDocumentId(completion: { [unowned self] documentId in
-            self.presenter.post(to: .commentRef(goalDocument: documentId), comment: comment)
+            self.presenter.post(to: .commentRef(goalDocument: documentId),
+                                comment: self.createComment(token: data.authToken, comment: self.ui.commentField.text))
         })
     }
     
@@ -158,6 +154,15 @@ extension DetailViewController: DetailPresenterView {
     func didFetchComments(comments: [Comment]) {
         commentDataSource.listItems = []
         commentDataSource.listItems += comments
+        ui.updateCommentCount(commentDataSource.listItems.count)
         ui.commentTable.reloadData()
+    }
+    
+    func createComment(token: String, comment: String) -> CommentPost {
+         return CommentPost(authorToken: token,
+                            comment: comment,
+                            likeCount: 0, repliedCount: 0,
+                            createdAt: FieldValue.serverTimestamp(),
+                            updatedAt: FieldValue.serverTimestamp())
     }
 }

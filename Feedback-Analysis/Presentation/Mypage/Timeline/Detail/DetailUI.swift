@@ -15,6 +15,7 @@ protocol DetailUI: UI {
     func determineHeight(height: CGFloat)
     func isHiddenSubmitBtn(_ bool: Bool)
     func clearCommentField()
+    func updateCommentCount(_ count: Int)
 }
 
 final class DetailUIImpl: DetailUI {
@@ -46,6 +47,7 @@ final class DetailUIImpl: DetailUI {
     
     var commentTable: UITableView = {
         let table = UITableView()
+        table.backgroundColor = .appMainColor
         table.register(CommentCell.self, forCellReuseIdentifier: String(describing: CommentCell.self))
         return table
     }()
@@ -159,5 +161,11 @@ extension DetailUIImpl {
             .animations {
                 self.commentField.text = ""
             }.animate()
+    }
+    
+    func updateCommentCount(_ count: Int) {
+        let indexPath = NSIndexPath(row: 0, section: 0)
+        guard let cell = detail.cellForRow(at: indexPath as IndexPath) as? TimelineCell else { return }
+        cell.commentCount.text = "\(count)"
     }
 }

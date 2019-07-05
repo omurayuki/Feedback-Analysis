@@ -1,6 +1,18 @@
 import UIKit
+import RxSwift
+import RxCocoa
 
-class TimelineCell: UITableViewCell {
+protocol CellTapDelegate {
+    func tappedLikeBtn(index: Int)
+}
+
+final class TimelineCell: UITableViewCell {
+    
+    let disposeBag = DisposeBag()
+    
+    var delegate: CellTapDelegate?
+    
+    var identificationId = Int()
     
     private(set) var userPhoto: UIImageView = {
         let image = UIImageView()
@@ -187,7 +199,7 @@ extension TimelineCell {
     
     private func setup() {
         backgroundColor = .appMainColor
-        
+        bindUI()
         let lhsImageStack = UIStackView.setupStack(lhs: leftTopImage, rhs: rightTopImage, spacing: 5)
         let rhsImageStack = UIStackView.setupStack(lhs: leftBottomImage, rhs: rightBottomImage, spacing: 5)
         let imageStack = UIStackView.setupVerticalStack(lhs: lhsImageStack, rhs: rhsImageStack, spacing: 5)
@@ -296,5 +308,15 @@ extension TimelineCell {
     private func setupGenres(_ genre1: String, _ genre2: String) {
         self.genre1.text = genre1
         self.genre2.text = genre2
+    }
+}
+
+extension TimelineCell {
+    
+    func bindUI() {
+        likeBtn.rx.tap.asDriver()
+            .drive(onNext: { [unowned self] _ in
+                self.delegate?.tappedLikeBtn(index: self.identificationId)
+            }).disposed(by: disposeBag)
     }
 }

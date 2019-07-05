@@ -2,16 +2,18 @@ import Foundation
 import UIKit
 import RxSwift
 import RxCocoa
+import FirebaseFirestore
 
 class DraftViewController: UIViewController {
     
     typealias DataSource = TableViewDataSource<TimelineCell, Timeline>
     
-    private(set) var dataSource: DataSource = {
+    private(set) lazy var dataSource: DataSource = {
         return DataSource(cellReuseIdentifier: String(describing: TimelineCell.self),
                           listItems: [],
                           cellConfigurationHandler: { (cell, item, _) in
-                            cell.content = item
+            cell.delegate = self
+            cell.content = item
         })
     }()
     
@@ -71,3 +73,16 @@ extension DraftViewController: DraftPresenterView {
         routing.showDetail(with: dataSource.listItems[indexPath.row], height: height)
     }
 }
+
+extension DraftViewController: CellTapDelegate {
+    
+    func tappedLikeBtn(index: Int) {
+        if dataSource.listItems[index].likeCount <= 0 {
+            presenter.update(to: .goalUpdateRef(goalDocument: dataSource.listItems[index].documentId),
+                             value: ["like_count": FieldValue.increment(1.0)])
+        } else {
+            presenter.update(to: .goalUpdateRef(goalDocument: dataSource.listItems[index].documentId),
+                             value: ["like_count": FieldValue.increment(-1.0)])
+        }
+    }   }
+
