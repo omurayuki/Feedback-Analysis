@@ -1,7 +1,7 @@
 import Foundation
 import RxSwift
 
-protocol AccountDataStore {
+protocol AccountRemoteDataStore {
     func signup(email: String, pass: String) -> Single<AccountEntity>
     func login(email: String, pass: String) -> Single<AccountEntity>
     func reissuePassword(email: String) -> Single<()>
@@ -11,7 +11,7 @@ protocol AccountDataStore {
     func update(with email: String, oldPass: String, newPass: String) -> Single<()>
 }
 
-struct AccountDataStoreImpl: AccountDataStore {
+struct AccountRemoteDataStoreImpl: AccountRemoteDataStore {
     func signup(email: String, pass: String) -> Single<AccountEntity> {
         return Provider().signup(email: email, pass: pass)
     }
@@ -38,12 +38,5 @@ struct AccountDataStoreImpl: AccountDataStore {
     
     func update(with email: String, oldPass: String, newPass: String) -> Single<()> {
         return Provider().update(with: email, oldPass: oldPass, newPass: newPass)
-    }
-}
-
-struct AccountDataStoreFactory {
-    
-    static func createAccountDataStore() -> AccountDataStore {
-        return AccountDataStoreImpl()
     }
 }

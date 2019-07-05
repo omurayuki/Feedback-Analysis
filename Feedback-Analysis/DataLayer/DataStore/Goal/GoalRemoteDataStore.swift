@@ -1,7 +1,7 @@
 import Foundation
 import RxSwift
 
-protocol GoalDataStore {
+protocol GoalRemoteDataStore {
     func post(to documentRef: FirebaseDocumentRef, fields: GoalPost) -> Single<()>
     func update(to documentRef: FirebaseDocumentRef, fields: GoalPost) -> Single<()>
     func fetch(from queryRef: FirebaseQueryRef) -> Observable<[GoalEntity]>
@@ -9,11 +9,9 @@ protocol GoalDataStore {
     func get(documentRef: FirebaseDocumentRef) -> Single<Bool>
     func create(documentRef: FirebaseDocumentRef, value: [String: Any]) -> Single<()>
     func delete(documentRef: FirebaseDocumentRef) -> Single<()>
-    func setSelected(index: Int) -> Single<()>
-    func getSelected() -> Single<Int>
 }
 
-struct GoalDataStoreImpl: GoalDataStore {
+struct GoalRemoteDataStoreImpl: GoalRemoteDataStore {
     
     func post(to documentRef: FirebaseDocumentRef, fields: GoalPost) -> Single<()> {
         return Provider().setData(documentRef: documentRef, fields: fields.encode())
@@ -41,27 +39,5 @@ struct GoalDataStoreImpl: GoalDataStore {
     
     func delete(documentRef: FirebaseDocumentRef) -> Single<()> {
         return Provider().delete(documentRef: documentRef)
-    }
-    
-    func setSelected(index: Int) -> Single<()> {
-        return Single.create(subscribe: { single -> Disposable in
-            AppUserDefaults.setSelected(index: index)
-            single(.success(()))
-            return Disposables.create()
-        })
-    }
-    
-    func getSelected() -> Single<Int> {
-        return Single.create(subscribe: { single -> Disposable in
-            single(.success(AppUserDefaults.getSelected()))
-            return Disposables.create()
-        })
-    }
-}
-
-struct GoalDataStoreFactory {
-    
-    static func createGoalDataStore() -> GoalDataStore {
-        return GoalDataStoreImpl()
     }
 }

@@ -1,15 +1,13 @@
 import Foundation
 import RxSwift
 
-protocol DetailDataStore {
+protocol DetailRemoteDataStore {
     func fetch() -> Single<AccountEntity>
     func post(to documentRef: FirebaseDocumentRef, comment: CommentPost) -> Single<()>
     func get(from queryRef: FirebaseQueryRef) -> Observable<[CommentEntity]>
-    func set(document id: String) -> Single<()>
-    func getDocumentId() -> Single<String>
 }
 
-struct DetailDataStoreImpl: DetailDataStore {
+struct DetailRemoteDataStoreImpl: DetailRemoteDataStore {
     
     func fetch() -> Single<AccountEntity> {
         return Single.create(subscribe: { single -> Disposable in
@@ -24,27 +22,5 @@ struct DetailDataStoreImpl: DetailDataStore {
     
     func get(from queryRef: FirebaseQueryRef) -> Observable<[CommentEntity]> {
         return Provider().observeQuery(queryRef: queryRef)
-    }
-    
-    func set(document id: String) -> Single<()> {
-        return Single.create(subscribe: { single -> Disposable in
-            AppUserDefaults.setGoalDocument(id: id)
-            single(.success(()))
-            return Disposables.create()
-        })
-    }
-    
-    func getDocumentId() -> Single<String> {
-        return Single.create(subscribe: { single -> Disposable in
-            single(.success(AppUserDefaults.getGoalDocument()))
-            return Disposables.create()
-        })
-    }
-}
-
-struct DetailDataStoreFactory {
-    
-    static func createDetailDataStore() -> DetailDataStore {
-        return DetailDataStoreImpl()
     }
 }

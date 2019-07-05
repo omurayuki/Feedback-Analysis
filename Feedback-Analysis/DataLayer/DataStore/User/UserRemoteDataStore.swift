@@ -1,13 +1,13 @@
 import Foundation
 import RxSwift
 
-protocol UserDataStore {
+protocol UserRemoteDataStore {
     func fetch(to documentRef: FirebaseDocumentRef) -> Single<UserEntity>
     func update(to documentRef: FirebaseDocumentRef, user: Update) -> Single<()>
     func uploadImage(_ image: UIImage, at storageRef: FirebaseStorageRef) -> Single<URL>
 }
 
-struct UserDataStoreImpl: UserDataStore {
+struct UserRemoteDataStoreImpl: UserRemoteDataStore {
     
     func fetch(to documentRef: FirebaseDocumentRef) -> Single<UserEntity> {
         return Provider()
@@ -21,12 +21,5 @@ struct UserDataStoreImpl: UserDataStore {
     
     func uploadImage(_ image: UIImage, at storageRef: FirebaseStorageRef) -> Single<URL> {
         return Provider().uploadImage(image, at: storageRef)
-    }
-}
-
-struct UserDataStoreFactory {
-    
-    static func createUsserDataStore() -> UserDataStore {
-        return UserDataStoreImpl()
     }
 }
