@@ -49,7 +49,7 @@ class GoalViewController: UIViewController {
         self.routing = routing
         self.disposeBag = disposeBag
         
-        self.presenter.fetch(from: .sample, completion: nil)
+        self.presenter.fetch(from: .goalRef, completion: nil)
     }
     
     override func viewDidLoad() {
@@ -79,16 +79,23 @@ extension GoalViewController: GoalPresenterView {
     func didCheckIfYouLiked(_ bool: Bool) {
         switch bool {
         case false:
-            self.createLikedRef(documentRef: .likeUserRef(goalDocument: self.dataSource.listItems[didSelectIndex].documentId))
-            self.presenter.update(to: .goalUpdateRef(author_token: self.dataSource.listItems[didSelectIndex].authorToken,
-                                                     goalDocument: self.dataSource.listItems[didSelectIndex].documentId),
-                                                     value: ["like_count": FieldValue.increment(1.0)])
+            presenter.create(documentRef: .likeUserRef(goalDocument: self.dataSource.listItems[didSelectIndex].documentId),
+                             value: [:])
         case true:
-            self.deleteLikedRef(documentRef: .likeUserRef(goalDocument: self.dataSource.listItems[didSelectIndex].documentId))
-            self.presenter.update(to: .goalUpdateRef(author_token: self.dataSource.listItems[didSelectIndex].authorToken,
-                                                     goalDocument: self.dataSource.listItems[didSelectIndex].documentId),
-                                                     value: ["like_count": FieldValue.increment(-1.0)])
+            presenter.delete(documentRef: .likeUserRef(goalDocument: self.dataSource.listItems[didSelectIndex].documentId))
         }
+    }
+    
+    func didCreateLikeRef() {
+        self.presenter.update(to: .goalUpdateRef(author_token: self.dataSource.listItems[didSelectIndex].authorToken,
+                                                 goalDocument: self.dataSource.listItems[didSelectIndex].documentId),
+                                                 value: ["like_count": FieldValue.increment(1.0)])
+    }
+    
+    func didDeleteLikeRef() {
+        self.presenter.update(to: .goalUpdateRef(author_token: self.dataSource.listItems[didSelectIndex].authorToken,
+                                                 goalDocument: self.dataSource.listItems[didSelectIndex].documentId),
+                                                 value: ["like_count": FieldValue.increment(-1.0)])
     }
 }
 
@@ -97,13 +104,5 @@ extension GoalViewController: CellTapDelegate {
     func tappedLikeBtn(index: Int) {
         presenter.get(documentRef: .likeUserRef(goalDocument: dataSource.listItems[index].documentId))
         didSelectIndex = index
-    }
-    
-    func createLikedRef(documentRef: FirebaseDocumentRef) {
-        documentRef.destination.setData([:])
-    }
-    
-    func deleteLikedRef(documentRef: FirebaseDocumentRef) {
-        documentRef.destination.delete()
     }
 }

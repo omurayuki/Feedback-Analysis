@@ -163,6 +163,21 @@ struct Provider {
         })
     }
     
+    func delete(documentRef: FirebaseDocumentRef) -> Single<()> {
+        return Single.create(subscribe: { single -> Disposable in
+            documentRef
+                .destination
+                .delete(completion: { error in
+                    if let error = error {
+                        single(.error(FirebaseError.resultError(error)))
+                        return
+                    }
+                    single(.success(()))
+                })
+            return Disposables.create()
+        })
+    }
+    
     func get(documentRef: FirebaseDocumentRef) -> Single<[String: Any]> {
         return Single.create(subscribe: { single -> Disposable in
             documentRef

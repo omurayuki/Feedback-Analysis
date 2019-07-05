@@ -48,6 +48,30 @@ class GoalPresenterImpl: NSObject, GoalPresenter {
                 }
             }.disposed(by: view.disposeBag)
     }
+    
+    func create(documentRef: FirebaseDocumentRef, value: [String: Any]) {
+        useCase.create(documentRef: documentRef, value: value)
+            .subscribe { result in
+                switch result {
+                case .success(_):
+                    self.view.didCreateLikeRef()
+                case .error(let error):
+                    self.view.showError(message: error.localizedDescription)
+                }
+            }.disposed(by: view.disposeBag)
+    }
+    
+    func delete(documentRef: FirebaseDocumentRef) {
+        useCase.delete(documentRef: documentRef)
+            .subscribe { result in
+                switch result {
+                case .success(_):
+                    self.view.didDeleteLikeRef()
+                case .error(let error):
+                    self.view.showError(message: error.localizedDescription)
+                }
+            }.disposed(by: view.disposeBag)
+    }
 }
 
 extension GoalPresenterImpl: UITableViewDelegate {

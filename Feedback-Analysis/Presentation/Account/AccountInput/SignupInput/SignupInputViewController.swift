@@ -57,7 +57,7 @@ extension SignupInputViewController: SignupInputPresenterView {
     }
     
     func didSignupSuccess(account: Account) {
-        presenter.setData(documentRef: .userRef, fields: Initial.userData)
+        presenter.setData(documentRef: .userRef, fields: Initial.sharedInstance.userData)
     }
     
     func didSaveUserData() {

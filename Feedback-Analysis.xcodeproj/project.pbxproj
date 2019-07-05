@@ -114,6 +114,7 @@
 		C9B55D1222B1010200845381 /* RemindPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B55D1122B1010200845381 /* RemindPresenter.swift */; };
 		C9B55D1422B1010C00845381 /* RemindPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B55D1322B1010C00845381 /* RemindPresenterImpl.swift */; };
 		C9B55D1622B1062600845381 /* RemindUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B55D1522B1062600845381 /* RemindUseCase.swift */; };
+		C9C0DEF622CF535300BBA55B /* Initial.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C0DEF522CF535300BBA55B /* Initial.swift */; };
 		C9C2808422BBD6A3002E905E /* GoalPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C2808322BBD6A3002E905E /* GoalPost.swift */; };
 		C9C844B522AFADB000083280 /* LoginUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C844B422AFADB000083280 /* LoginUseCase.swift */; };
 		C9CC28E922ACD892006E69E5 /* LoginInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CC28E822ACD892006E69E5 /* LoginInputViewController.swift */; };
@@ -285,6 +286,7 @@
 		C9B55D1122B1010200845381 /* RemindPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindPresenter.swift; sourceTree = "<group>"; };
 		C9B55D1322B1010C00845381 /* RemindPresenterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindPresenterImpl.swift; sourceTree = "<group>"; };
 		C9B55D1522B1062600845381 /* RemindUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindUseCase.swift; sourceTree = "<group>"; };
+		C9C0DEF522CF535300BBA55B /* Initial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Initial.swift; sourceTree = "<group>"; };
 		C9C2808322BBD6A3002E905E /* GoalPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalPost.swift; sourceTree = "<group>"; };
 		C9C844B422AFADB000083280 /* LoginUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUseCase.swift; sourceTree = "<group>"; };
 		C9CC28E822ACD892006E69E5 /* LoginInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInputViewController.swift; sourceTree = "<group>"; };
@@ -721,6 +723,7 @@
 			children = (
 				C9A6066E22B2980700184E0F /* Firebase.swift */,
 				C9A6067022B2980D00184E0F /* Const.swift */,
+				C9C0DEF522CF535300BBA55B /* Initial.swift */,
 			);
 			path = Const;
 			sourceTree = "<group>";
@@ -1256,6 +1259,7 @@
 				C9B55D0F22B0FE2E00845381 /* RemingRouting.swift in Sources */,
 				C97901D622BA02B700C245B2 /* Animation+Extension.swift in Sources */,
 				C9CC28E922ACD892006E69E5 /* LoginInputViewController.swift in Sources */,
+				C9C0DEF622CF535300BBA55B /* Initial.swift in Sources */,
 				C97901D222B9DE1300C245B2 /* GenreButton.swift in Sources */,
 				C9D9011022AB4EE20040390E /* UIAlertAction+Extension.swift in Sources */,
 				C91FA66022B577BB006D9E6D /* Residence.swift in Sources */,
