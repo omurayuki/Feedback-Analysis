@@ -16,7 +16,7 @@ struct Timeline {
     let achievedFlag: Bool
     let draftFlag: Bool
     let commentedCount: Int
-    let likeCount: Int
+    var likeCount: Int
     let documentId: String
     
     init(entity: GoalEntity) {

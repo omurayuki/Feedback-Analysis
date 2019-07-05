@@ -149,7 +149,7 @@ final class TimelineCell: UITableViewCell {
     private(set) var commentBtn: UIButton = {
         let button = UIButton.Builder()
             .title("✎")
-            .component(.body_CoolGrey13)
+            .component(.body_CoolGrey16)
             .build()
         return button
     }()
@@ -163,7 +163,7 @@ final class TimelineCell: UITableViewCell {
     private(set) var likeBtn: UIButton = {
         let button = UIButton.Builder()
             .title("♡")
-            .component(.body_CoolGrey13)
+            .component(.body_CoolGrey16)
             .build()
         return button
     }()
@@ -182,6 +182,12 @@ final class TimelineCell: UITableViewCell {
             content.postImage?.count ?? 0 >= 1 ? adjustImagesSpace(images: content.postImage?.compactMap { UIImage(url:$0) }) : adjustImagesSpace(images: nil)
             commentCount.text = "\(content.commentedCount)"
             likeCount.text = "\(content.likeCount)"
+        }
+    }
+    
+    var state: Bool! {
+        didSet {
+            likeBtn.titleLabel?.textColor = state ? .red : .appCoolGrey
         }
     }
     
@@ -293,15 +299,15 @@ extension TimelineCell {
             .activate()
 
         commentStack.anchor()
-            .top(to: imageStack.bottomAnchor, constant: 5)
+            .top(to: imageStack.bottomAnchor, constant: 2)
             .left(to: userPhoto.rightAnchor, constant: 10)
-            .bottom(to: bottomAnchor)
+            .bottom(to: bottomAnchor, constant: -5)
             .activate()
 
         likeStack.anchor()
-            .top(to: imageStack.bottomAnchor, constant: 5)
+            .top(to: imageStack.bottomAnchor, constant: 2)
             .left(to: commentStack.rightAnchor, constant: 20)
-            .bottom(to: bottomAnchor)
+            .bottom(to: bottomAnchor, constant: -5)
             .activate()
     }
     

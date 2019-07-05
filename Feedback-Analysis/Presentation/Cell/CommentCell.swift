@@ -118,15 +118,15 @@ extension CommentCell {
             .activate()
         
         commentStack.anchor()
-            .top(to: comment.bottomAnchor, constant: 5)
+            .top(to: comment.bottomAnchor, constant: 2)
             .left(to: userPhoto.rightAnchor, constant: 10)
-            .bottom(to: bottomAnchor)
+            .bottom(to: bottomAnchor, constant: -5)
             .activate()
         
         likeStack.anchor()
-            .top(to: comment.bottomAnchor, constant: 5)
+            .top(to: comment.bottomAnchor, constant: 2)
             .left(to: commentStack.rightAnchor, constant: 20)
-            .bottom(to: bottomAnchor)
+            .bottom(to: bottomAnchor, constant: -5)
             .activate()
     }
 }

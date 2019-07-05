@@ -102,7 +102,6 @@ enum FirebaseQueryRef {
                 .whereField("achieved_flag", isEqualTo: false)
                 .whereField("draft_flag", isEqualTo: true)
                 .order(by: "updated_at", descending: true)
-                
         case .allRef:
             return Firestore.firestore()
                 .collection("Users")

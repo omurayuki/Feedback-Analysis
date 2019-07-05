@@ -78,10 +78,12 @@ extension GoalViewController: GoalPresenterView {
         switch bool {
         case false:
             presenter.getSelected { index in
+                self.updateLikeCount(index: index, count: 1)
                 self.presenter.create(documentRef: .likeUserRef(goalDocument: self.dataSource.listItems[index].documentId), value: [:])
             }
         case true:
             presenter.getSelected { index in
+                self.updateLikeCount(index: index, count: -1)
                 self.presenter.delete(documentRef: .likeUserRef(goalDocument: self.dataSource.listItems[index].documentId))
             }
         }
@@ -109,5 +111,13 @@ extension GoalViewController: CellTapDelegate {
     func tappedLikeBtn(index: Int) {
         presenter.get(documentRef: .likeUserRef(goalDocument: dataSource.listItems[index].documentId))
         presenter.setSelected(index: index)
+    }
+}
+
+extension GoalViewController {
+    
+    func updateLikeCount(index: Int, count: Int) {
+        dataSource.listItems[index].likeCount += count
+        ui.timeline.reloadData()
     }
 }

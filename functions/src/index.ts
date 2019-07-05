@@ -7,7 +7,7 @@ const firestore = admin.firestore();
 interface Post {
   readonly genre: [string];
   readonly new_things: string;
-  readonly goal: [{string: string}];
+  readonly goal: [{ string: string }];
   readonly deadline: string;
   readonly achived_flag: boolean;
   readonly draft_flag: boolean;
@@ -48,6 +48,16 @@ async function copyToRootWithUsersPostSnapshot(snapshot: FirebaseFirestore.Docum
 async function deleteToRootWithUsersPostSnapshot(snapshot: FirebaseFirestore.DocumentSnapshot) {
   const postId = snapshot.id;
   await firestore.collection('Goals').doc(postId).delete();
+  await firestore.collection('Goals').doc(postId).collection('Comments').get().then((shot) => {
+    shot.forEach(async ds => {
+      await ds.ref.delete();
+    });
+  });
+  await firestore.collection('Goals').doc(postId).collection('likeUsers').get().then((shot) => {
+    shot.forEach(async ds => {
+      await ds.ref.delete();
+    });
+  });
 }
 
 async function updateCommentdCountInGoal(context: functions.EventContext) {
