@@ -51,7 +51,7 @@ class CompletePresenterImpl: NSObject, CompletePresenter {
     
     func create(documentRef: FirebaseDocumentRef, value: [String: Any]) {
         useCase.create(documentRef: documentRef, value: value)
-            .subscribe { result in
+            .subscribe { [unowned self] result in
                 switch result {
                 case .success(_):
                     self.view.didCreateLikeRef()
@@ -63,12 +63,36 @@ class CompletePresenterImpl: NSObject, CompletePresenter {
     
     func delete(documentRef: FirebaseDocumentRef) {
         useCase.delete(documentRef: documentRef)
-            .subscribe { result in
+            .subscribe { [unowned self] result in
                 switch result {
                 case .success(_):
                     self.view.didDeleteLikeRef()
                 case .error(let error):
                     self.view.showError(message: error.localizedDescription)
+                }
+            }.disposed(by: view.disposeBag)
+    }
+    
+    func setSelected(index: Int) {
+        useCase.setSelected(index: index)
+            .subscribe { result in
+                switch result {
+                case .success(_):
+                    return
+                case .error(_):
+                    return
+                }
+            }.disposed(by: view.disposeBag)
+    }
+    
+    func getSelected(completion: @escaping (Int) -> Void) {
+        useCase.getSelected()
+            .subscribe { result in
+                switch result {
+                case .success(let response):
+                    completion(response)
+                case .error(_):
+                    return
                 }
             }.disposed(by: view.disposeBag)
     }

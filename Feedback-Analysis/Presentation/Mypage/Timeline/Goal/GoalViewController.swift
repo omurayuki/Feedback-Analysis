@@ -78,8 +78,7 @@ extension GoalViewController: GoalPresenterView {
         switch bool {
         case false:
             presenter.getSelected { index in
-                self.presenter.create(documentRef: .likeUserRef(goalDocument: self.dataSource.listItems[index].documentId),
-                                 value: [:])
+                self.presenter.create(documentRef: .likeUserRef(goalDocument: self.dataSource.listItems[index].documentId), value: [:])
             }
         case true:
             presenter.getSelected { index in

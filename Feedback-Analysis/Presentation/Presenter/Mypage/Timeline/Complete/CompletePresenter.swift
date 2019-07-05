@@ -12,6 +12,8 @@ protocol CompletePresenter {
     func get(documentRef: FirebaseDocumentRef)
     func create(documentRef: FirebaseDocumentRef, value: [String: Any])
     func delete(documentRef: FirebaseDocumentRef)
+    func setSelected(index: Int)
+    func getSelected(completion: @escaping (Int) -> Void)
 }
 
 protocol CompletePresenterView: class {

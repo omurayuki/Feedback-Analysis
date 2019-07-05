@@ -51,7 +51,7 @@ class GoalPresenterImpl: NSObject, GoalPresenter {
     
     func create(documentRef: FirebaseDocumentRef, value: [String: Any]) {
         useCase.create(documentRef: documentRef, value: value)
-            .subscribe { result in
+            .subscribe { [unowned self] result in
                 switch result {
                 case .success(_):
                     self.view.didCreateLikeRef()
@@ -63,7 +63,7 @@ class GoalPresenterImpl: NSObject, GoalPresenter {
     
     func delete(documentRef: FirebaseDocumentRef) {
         useCase.delete(documentRef: documentRef)
-            .subscribe { result in
+            .subscribe { [unowned self] result in
                 switch result {
                 case .success(_):
                     self.view.didDeleteLikeRef()
