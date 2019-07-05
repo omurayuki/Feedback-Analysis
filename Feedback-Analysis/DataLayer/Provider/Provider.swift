@@ -186,6 +186,24 @@ struct Provider {
         })
     }
     
+    func get(documentRef: FirebaseDocumentRef) -> Single<Bool> {
+        return Single.create(subscribe: { single -> Disposable in
+            documentRef.destination.getDocument { snapshot, error in
+                if let error = error {
+                    single(.error(FirebaseError.resultError(error)))
+                    return
+                }
+                guard let snapshot = snapshot?.exists else {
+                    single(.error(FirebaseError.unknown))
+                    return
+                }
+                
+                single(.success(snapshot))
+            }
+            return Disposables.create()
+        })
+    }
+    
     func observe(documentRef: DocumentReference) -> Observable<[String: Any]> {
         return Observable.create({ observer -> Disposable in
             documentRef.addSnapshotListener({ snapshot, error in
@@ -203,6 +221,7 @@ struct Provider {
         })
     }
     
+    //// マイページの場合これを使ってもいいが、タイムラインの場合これを使うと名前とイメージが全て同一人物になる
     func observeQuery(queryRef: FirebaseQueryRef) -> Observable<[GoalEntity]> {
         return Observable.create({ observer -> Disposable in
             queryRef

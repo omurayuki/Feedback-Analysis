@@ -6,6 +6,7 @@ protocol GoalRepository {
     func update(to documentRef: FirebaseDocumentRef, fields: GoalPost) -> Single<()>
     func fetch(from queryRef: FirebaseQueryRef) -> Observable<[GoalEntity]>
     func update(to documentRef: FirebaseDocumentRef, value: [String : Any]) -> Single<()>
+    func get(documentRef: FirebaseDocumentRef) -> Single<Bool>
 }
 
 struct GoalRepositoryImpl: GoalRepository {
@@ -28,5 +29,9 @@ struct GoalRepositoryImpl: GoalRepository {
     
     func update(to documentRef: FirebaseDocumentRef, value: [String : Any]) -> Single<()> {
         return dataStore.update(to: documentRef, value: value)
+    }
+    
+    func get(documentRef: FirebaseDocumentRef) -> Single<Bool> {
+        return dataStore.get(documentRef: documentRef)
     }
 }

@@ -6,6 +6,7 @@ protocol GoalPostUseCase {
     func update(to documentRef: FirebaseDocumentRef, fields: GoalPost) -> Single<()>
     func fetch(from queryRef: FirebaseQueryRef) -> Observable<[Timeline]>
     func update(to documentRef: FirebaseDocumentRef, value: [String : Any]) -> Single<()>
+    func get(documentRef: FirebaseDocumentRef) -> Single<Bool>
 }
 
 struct GoalPostUseCaseImpl: GoalPostUseCase {
@@ -30,5 +31,9 @@ struct GoalPostUseCaseImpl: GoalPostUseCase {
     
     func update(to documentRef: FirebaseDocumentRef, value: [String : Any]) -> Single<()> {
         return repository.update(to: documentRef, value: value)
+    }
+    
+    func get(documentRef: FirebaseDocumentRef) -> Single<Bool> {
+        return repository.get(documentRef: documentRef)
     }
 }

@@ -26,8 +26,7 @@ export const onUserPostCreate = functions.firestore.document('/Users/{userId}/Go
 });
 
 export const onUsersPostUpdate = functions.firestore.document('/Users/{userId}/Goals/{postId}').onUpdate(async (change, context) => {
-  // await copyToRootWithUsersPostSnapshot(change.after, context);
-  await createLikedCountTable(change.before, change.after, context);
+  await copyToRootWithUsersPostSnapshot(change.after, context);
 });
 
 export const onUserPostDelete = functions.firestore.document('/Users/{userId}/Goals/{postId}').onDelete(async (snapshot, _) => {
@@ -44,24 +43,6 @@ async function copyToRootWithUsersPostSnapshot(snapshot: FirebaseFirestore.Docum
   const post = snapshot.data() as RootPost;
   post.authorRef = firestore.collection('Users').doc(userId);
   await firestore.collection('Goals').doc(postId).set(post, { merge: true });
-}
-
-async function createLikedCountTable(snapshot_before: FirebaseFirestore.DocumentSnapshot, snapshot_after: FirebaseFirestore.DocumentSnapshot, context: functions.EventContext) {
-  const post_before = snapshot_before.data() as RootPost;
-  const post_after = snapshot_after.data() as RootPost;
-  const postId = snapshot_after.id;
-  const userId = context.params.userId;
-  post_after.authorRef = firestore.collection('LikedGoals').doc(postId).collection('LikeUsers').doc(userId);
-  if (post_before.like_count < post_after.like_count) {
-    console.log("作成")
-    await post_after.authorRef.set( {user_token: userId} );
-  } else if (post_before.like_count > post_after.like_count) {
-    console.log("削除")
-    await post_after.authorRef.delete();
-  } else {
-    console.log("それ以外")
-    return;
-  }
 }
 
 async function deleteToRootWithUsersPostSnapshot(snapshot: FirebaseFirestore.DocumentSnapshot) {

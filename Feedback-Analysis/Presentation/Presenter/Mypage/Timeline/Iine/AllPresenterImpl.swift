@@ -16,7 +16,7 @@ class AllPresenterImpl: NSObject, AllPresenter {
     func fetch(from queryRef: FirebaseQueryRef, completion: (() -> Void)?) {
         view.updateLoading(true)
         useCase.fetch(from: queryRef)
-            .subscribe(onNext: { result in
+            .subscribe(onNext: { [unowned self] result in
                 self.view.updateLoading(false)
                 self.view.didFetchGoalData(timeline: result)
             }, onError: { error in
@@ -27,7 +27,7 @@ class AllPresenterImpl: NSObject, AllPresenter {
     
     func update(to documentRef: FirebaseDocumentRef, value: [String : Any]) {
         useCase.update(to: documentRef, value: value)
-            .subscribe { result in
+            .subscribe { [unowned self] result in
                 switch result {
                 case .success(_):
                     break

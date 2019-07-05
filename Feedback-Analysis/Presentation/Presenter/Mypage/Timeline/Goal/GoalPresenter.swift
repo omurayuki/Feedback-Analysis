@@ -9,6 +9,7 @@ protocol GoalPresenter {
     
     func fetch(from queryRef: FirebaseQueryRef, completion: (() -> Void)?)
     func update(to documentRef: FirebaseDocumentRef, value: [String: Any])
+    func get(documentRef: FirebaseDocumentRef)
 }
 
 protocol GoalPresenterView: class {
@@ -19,6 +20,7 @@ protocol GoalPresenterView: class {
                 routing: GoalRouting,
                 disposeBag: DisposeBag)
     func didFetchGoalData(timeline: [Timeline])
+    func didCheckIfYouLiked(_ bool: Bool)
     func didSelect(indexPath: IndexPath, tableView: UITableView)
     func showError(message: String)
     func updateLoading(_ isLoading: Bool)

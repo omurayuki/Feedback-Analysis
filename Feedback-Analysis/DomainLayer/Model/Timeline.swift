@@ -1,6 +1,7 @@
 import Foundation
 
 struct Timeline {
+    let authorToken: String
     let userImage: String
     let name: String
     let genre1: String?
@@ -19,6 +20,7 @@ struct Timeline {
     let documentId: String
     
     init(entity: GoalEntity) {
+        self.authorToken = entity.authorToken
         self.userImage = entity.user.userImage
         self.name = entity.user.name
         self.genre1 = entity.genre["genre1"]

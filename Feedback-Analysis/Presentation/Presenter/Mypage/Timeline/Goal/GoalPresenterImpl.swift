@@ -16,7 +16,7 @@ class GoalPresenterImpl: NSObject, GoalPresenter {
     func fetch(from queryRef: FirebaseQueryRef, completion: (() -> Void)?) {
         view.updateLoading(true)
         useCase.fetch(from: queryRef)
-            .subscribe(onNext: { result in
+            .subscribe(onNext: { [unowned self] result in
                 self.view.updateLoading(false)
                 self.view.didFetchGoalData(timeline: result)
             }, onError: { error in
@@ -27,10 +27,22 @@ class GoalPresenterImpl: NSObject, GoalPresenter {
     
     func update(to documentRef: FirebaseDocumentRef, value: [String : Any]) {
         useCase.update(to: documentRef, value: value)
-            .subscribe { result in
+            .subscribe { [unowned self] result in
                 switch result {
                 case .success(_):
                     break
+                case .error(let error):
+                    self.view.showError(message: error.localizedDescription)
+                }
+            }.disposed(by: view.disposeBag)
+    }
+    
+    func get(documentRef: FirebaseDocumentRef) {
+        useCase.get(documentRef: documentRef)
+            .subscribe { [unowned self] result in
+                switch result {
+                case .success(let response):
+                    self.view.didCheckIfYouLiked(response)
                 case .error(let error):
                     self.view.showError(message: error.localizedDescription)
                 }

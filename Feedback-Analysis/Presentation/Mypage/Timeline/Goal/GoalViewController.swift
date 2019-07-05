@@ -6,6 +6,8 @@ import FirebaseFirestore
 
 class GoalViewController: UIViewController {
     
+    private var didSelectIndex = Int()
+    
     typealias DataSource = TableViewDataSource<TimelineCell, Timeline>
     
     private(set) lazy var dataSource: DataSource = {
@@ -47,7 +49,7 @@ class GoalViewController: UIViewController {
         self.routing = routing
         self.disposeBag = disposeBag
         
-        self.presenter.fetch(from: .goalRef, completion: nil)
+        self.presenter.fetch(from: .sample, completion: nil)
     }
     
     override func viewDidLoad() {
@@ -73,45 +75,35 @@ extension GoalViewController: GoalPresenterView {
         guard let height = tableView.cellForRow(at: indexPath)?.contentView.frame.height else { return }
         routing.showDetail(with: dataSource.listItems[indexPath.row], height: height)
     }
+    
+    func didCheckIfYouLiked(_ bool: Bool) {
+        switch bool {
+        case false:
+            self.createLikedRef(documentRef: .likeUserRef(goalDocument: self.dataSource.listItems[didSelectIndex].documentId))
+            self.presenter.update(to: .goalUpdateRef(author_token: self.dataSource.listItems[didSelectIndex].authorToken,
+                                                     goalDocument: self.dataSource.listItems[didSelectIndex].documentId),
+                                                     value: ["like_count": FieldValue.increment(1.0)])
+        case true:
+            self.deleteLikedRef(documentRef: .likeUserRef(goalDocument: self.dataSource.listItems[didSelectIndex].documentId))
+            self.presenter.update(to: .goalUpdateRef(author_token: self.dataSource.listItems[didSelectIndex].authorToken,
+                                                     goalDocument: self.dataSource.listItems[didSelectIndex].documentId),
+                                                     value: ["like_count": FieldValue.increment(-1.0)])
+        }
+    }
 }
 
 extension GoalViewController: CellTapDelegate {
     
     func tappedLikeBtn(index: Int) {
-        // いいねされているかの情報をいいねテーブルから探してその結果をboolでここまで持ってくる
-        // そしてfalseだったらサーバーにいいね情報がincrementして
-        // cloud functionにその目標のいいねしたという情報を書き込む
-        
-        // likeGoals(commentも別で作成) documentId(document) likedUser userId(document fieldに適当な値 trueとか)(最初にこのpassがなくてもexist確認できる)
-        // getDocumentで存在有無チェックはできる falseだったらtrueだったらはできる
-        // trueだったらfirestoreのfieldからdecrementする
-        // cloudfunctionではchange.before change.afterで書き込み前と後のデータを取ってこれた
-        // これで比較できた
-        // なので、likecountが増減した時に、cloudfunctionでbeforeとafterを比べて、likeGoalsから削除するか作成する
-        // comment and reply and goalsが最初に作られた時に、likeGoals(commentも別で作成) documentId(document)を作成する
-        
-        
-        // 手順
-        // いいね始めての場合
-        // ボタンタップ
-        // likeGoalsのlikeddUsers配下から自身のtokenがあるかチェック
-        // ↓ ないケース
-        // like_countをincrement
-        // cloudfunction発動
-        // 前回値と今回値を比較 (countが0の場合、誰も更新していないということになるので、change.beforeで0という値が取れるのか(できた！！この順番でいこ！))
-        // 今回値が前回値より多ければ、likeGoals/documentId/likedUser/ここにtokenをセット(適当な値をfieldにセット)
-        // 今回値が前回値よりすくなければ、likeGoals/documentId/likedUser/ここにtokenを削除
-        // 以降タップされれば上から繰り返す
-//
-//        if dataSource.listItems[index].likeCount <= 0 {
-//            presenter.update(to: .goalUpdateRef(goalDocument: dataSource.listItems[index].documentId),
-//                             value: ["like_count": FieldValue.increment(1.0)])
-//        } else {
-//            presenter.update(to: .goalUpdateRef(goalDocument: dataSource.listItems[index].documentId),
-//                             value: ["like_count": FieldValue.increment(-1.0)])
-//        }
-        
-        presenter.update(to: .goalUpdateRef(goalDocument: dataSource.listItems[index].documentId),
-                         value: ["like_count": FieldValue.increment(1.0)])
+        presenter.get(documentRef: .likeUserRef(goalDocument: dataSource.listItems[index].documentId))
+        didSelectIndex = index
+    }
+    
+    func createLikedRef(documentRef: FirebaseDocumentRef) {
+        documentRef.destination.setData([:])
+    }
+    
+    func deleteLikedRef(documentRef: FirebaseDocumentRef) {
+        documentRef.destination.delete()
     }
 }

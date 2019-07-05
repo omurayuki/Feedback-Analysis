@@ -3,6 +3,7 @@ import FirebaseFirestore
 
 ////    let postImage: [String]?
 struct GoalEntity: Entity {
+    let authorToken: String
     let user: UserEntity
     let genre: [String: String]
     let newThings: String
@@ -17,6 +18,7 @@ struct GoalEntity: Entity {
     
     init(user: UserEntity, document: [String: Any], documentId: String) {
         guard
+            let authorToken = document["author_token"] as? String,
             let genre = document["genre"] as? [String: String],
             let newThings = document["new_things"] as? String,
             let goal = document["goal"] as? [String: String],
@@ -27,6 +29,7 @@ struct GoalEntity: Entity {
             let commentedCount = document["commented_count"] as? Int,
             let createdAt = document["created_at"] as? Timestamp
         else {
+            self.authorToken = ""
             self.user = UserEntity(document: ["": ""])
             self.genre = ["": ""]
             self.newThings = ""
@@ -41,6 +44,7 @@ struct GoalEntity: Entity {
             return
         }
         
+        self.authorToken = authorToken
         self.user = user
         self.genre = genre
         self.newThings = newThings

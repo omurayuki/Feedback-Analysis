@@ -78,10 +78,10 @@ extension CompleteViewController: CellTapDelegate {
     
     func tappedLikeBtn(index: Int) {
         if dataSource.listItems[index].likeCount <= 0 {
-            presenter.update(to: .goalUpdateRef(goalDocument: dataSource.listItems[index].documentId),
+            presenter.update(to: .goalUpdateRef(author_token: dataSource.listItems[index].authorToken, goalDocument: dataSource.listItems[index].documentId),
                              value: ["like_count": FieldValue.increment(1.0)])
         } else {
-            presenter.update(to: .goalUpdateRef(goalDocument: dataSource.listItems[index].documentId),
+            presenter.update(to: .goalUpdateRef(author_token: dataSource.listItems[index].authorToken, goalDocument: dataSource.listItems[index].documentId),
                              value: ["like_count": FieldValue.increment(-1.0)])
         }
     }   
