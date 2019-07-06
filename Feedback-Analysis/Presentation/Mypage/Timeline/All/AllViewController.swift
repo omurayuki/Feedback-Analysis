@@ -70,7 +70,7 @@ extension AllViewController: AllPresenterView {
     func didSelect(indexPath: IndexPath, tableView: UITableView) {
         tableView.deselectRow(at: indexPath, animated: true)
         guard let height = tableView.cellForRow(at: indexPath)?.contentView.frame.height else { return }
-        routing.showDetail(with: dataSource.listItems[indexPath.row], height: height)
+        routing.showDetail(with: dataSource.listItems[indexPath.row], height: height + 2)
     }
     
     func didCheckIfYouLiked(_ bool: Bool) {

@@ -113,7 +113,7 @@ extension CommentCell {
         comment.anchor()
             .top(to: userName.bottomAnchor, constant: 5)
             .left(to: userPhoto.rightAnchor, constant: 10)
-            .right(to: rightAnchor, constant: -20)
+            .right(to: rightAnchor, constant: -10)
             .width(constant: frame.width / 1.1)
             .activate()
         

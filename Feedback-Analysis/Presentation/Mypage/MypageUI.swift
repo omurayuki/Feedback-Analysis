@@ -30,6 +30,8 @@ final class MypageUIImpl: MypageUI {
     
     private(set) var headerImage: UIImageView = {
         let image = UIImageView()
+        image.clipsToBounds = true
+        image.contentMode = UIView.ContentMode.scaleAspectFill
         return image
     }()
     

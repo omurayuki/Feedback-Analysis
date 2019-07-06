@@ -129,6 +129,7 @@ extension DetailViewController {
 }
 
 extension DetailViewController: DetailPresenterView {
+    
     func updateLoading(_ isLoading: Bool) {
         presenter.isLoading.accept(isLoading)
     }
