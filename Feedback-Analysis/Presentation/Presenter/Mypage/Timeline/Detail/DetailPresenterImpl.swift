@@ -28,6 +28,42 @@ class DetailPresenterImpl: NSObject, DetailPresenter {
             }.disposed(by: view.disposeBag)
     }
     
+    func update(to documentRef: FirebaseDocumentRef, value: [String : Any]) {
+        useCase.update(to: documentRef, value: value)
+            .subscribe { [unowned self] result in
+                switch result {
+                case .success(_):
+                    break
+                case .error(let error):
+                    self.view.showError(message: error.localizedDescription)
+                }
+            }.disposed(by: view.disposeBag)
+    }
+    
+    func create(documentRef: FirebaseDocumentRef, value: [String: Any]) {
+        useCase.create(documentRef: documentRef, value: value)
+            .subscribe { [unowned self] result in
+                switch result {
+                case .success(_):
+                    self.view.didCreateLikeRef()
+                case .error(let error):
+                    self.view.showError(message: error.localizedDescription)
+                }
+            }.disposed(by: view.disposeBag)
+    }
+    
+    func delete(documentRef: FirebaseDocumentRef) {
+        useCase.delete(documentRef: documentRef)
+            .subscribe { [unowned self] result in
+                switch result {
+                case .success(_):
+                    self.view.didDeleteLikeRef()
+                case .error(let error):
+                    self.view.showError(message: error.localizedDescription)
+                }
+            }.disposed(by: view.disposeBag)
+    }
+    
     func post(to documentRef: FirebaseDocumentRef, comment: CommentPost) {
         view.updateLoading(true)
         useCase.post(to: documentRef, comment: comment)
@@ -54,6 +90,18 @@ class DetailPresenterImpl: NSObject, DetailPresenter {
             }).disposed(by: view.disposeBag)
     }
     
+    func get(documentRef: FirebaseDocumentRef) {
+        useCase.get(documentRef: documentRef)
+            .subscribe { [unowned self] result in
+                switch result {
+                case .success(let response):
+                    self.view.didCheckIfYouLiked(response)
+                case .error(let error):
+                    self.view.showError(message: error.localizedDescription)
+                }
+            }.disposed(by: view.disposeBag)
+    }
+    
     func set(document id: String, completion: @escaping () -> Void) {
         useCase.set(document: id)
             .subscribe { result in
@@ -72,6 +120,30 @@ class DetailPresenterImpl: NSObject, DetailPresenter {
                 switch result {
                 case .success(let documentId):
                     completion(documentId)
+                case .error(_):
+                    return
+                }
+            }.disposed(by: view.disposeBag)
+    }
+    
+    func setSelected(index: Int) {
+        useCase.setSelected(index: index)
+            .subscribe { result in
+                switch result {
+                case .success(_):
+                    return
+                case .error(_):
+                    return
+                }
+            }.disposed(by: view.disposeBag)
+    }
+    
+    func getSelected(completion: @escaping (Int) -> Void) {
+        useCase.getSelected()
+            .subscribe { result in
+                switch result {
+                case .success(let response):
+                    completion(response)
                 case .error(_):
                     return
                 }

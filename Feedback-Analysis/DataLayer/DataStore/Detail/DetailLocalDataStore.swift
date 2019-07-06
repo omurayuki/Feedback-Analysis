@@ -6,6 +6,8 @@ protocol DetailLocalDataStore {
     func set(comment id: String) -> Single<()>
     func getDocumentId() -> Single<String>
     func getDocumentIds() -> Single<(documentId: String, commentId: String)>
+    func setSelected(index: Int) -> Single<()>
+    func getSelected() -> Single<Int>
 }
 
 struct DetailLocalDataStoreImpl: DetailLocalDataStore {
@@ -37,6 +39,21 @@ struct DetailLocalDataStoreImpl: DetailLocalDataStore {
         return Single.create(subscribe: { single -> Disposable in
             single(.success((documentId: AppUserDefaults.getGoalDocument(),
                             commentId: AppUserDefaults.getCommentDocument())))
+            return Disposables.create()
+        })
+    }
+    
+    func setSelected(index: Int) -> Single<()> {
+        return Single.create(subscribe: { single -> Disposable in
+            AppUserDefaults.setSelected(index: index)
+            single(.success(()))
+            return Disposables.create()
+        })
+    }
+    
+    func getSelected() -> Single<Int> {
+        return Single.create(subscribe: { single -> Disposable in
+            single(.success(AppUserDefaults.getSelected()))
             return Disposables.create()
         })
     }

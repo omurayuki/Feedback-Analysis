@@ -20,6 +20,7 @@ final class CompleteRoutingImpl: CompleteRouting {
         ui.viewController = vc
         ui.detail.dataSource = vc.detailDataSource
         ui.commentTable.dataSource = vc.commentDataSource
+        ui.commentTable.delegate = presenter
         ui.commentField.delegate = presenter
         routing.viewController = vc
         vc.inject(ui: ui, presenter: presenter, routing: routing, disposeBag: DisposeBag())

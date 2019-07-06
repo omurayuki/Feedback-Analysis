@@ -518,7 +518,7 @@
 			children = (
 				C941332A22C8BD300082A01C /* DetailPresenter.swift */,
 				C941332C22C8BD390082A01C /* DetailPresenterImpl.swift */,
-				C9C43B8522D0BCF3006CBC1B /* Detail */,
+				C9C43B8522D0BCF3006CBC1B /* Reply */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -889,13 +889,13 @@
 			path = AppNav;
 			sourceTree = "<group>";
 		};
-		C9C43B8522D0BCF3006CBC1B /* Detail */ = {
+		C9C43B8522D0BCF3006CBC1B /* Reply */ = {
 			isa = PBXGroup;
 			children = (
 				C9C43B8622D0BD03006CBC1B /* ReplyPresenter.swift */,
 				C9C43B8822D0BD0D006CBC1B /* ReplyPresenterImpl.swift */,
 			);
-			path = Detail;
+			path = Reply;
 			sourceTree = "<group>";
 		};
 		C9CC28E622ACD03A006E69E5 /* LoginInput */ = {

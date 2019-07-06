@@ -8,10 +8,16 @@ protocol DetailPresenter {
     var isLoading: BehaviorRelay<Bool> { get }
     
     func fetch()
+    func update(to documentRef: FirebaseDocumentRef, value: [String: Any])
+    func create(documentRef: FirebaseDocumentRef, value: [String: Any])
+    func delete(documentRef: FirebaseDocumentRef)
     func post(to documentRef: FirebaseDocumentRef, comment: CommentPost)
     func get(from queryRef: FirebaseQueryRef)
     func set(document id: String, completion: @escaping () -> Void)
     func getDocumentId(completion: @escaping (String) -> Void)
+    func get(documentRef: FirebaseDocumentRef)
+    func setSelected(index: Int)
+    func getSelected(completion: @escaping (Int) -> Void)
 }
 
 protocol DetailPresenterView: class {
@@ -24,6 +30,9 @@ protocol DetailPresenterView: class {
     func didChangeTextHeight()
     func didFetchUser(data: Account)
     func didPostSuccess()
+    func didCheckIfYouLiked(_ bool: Bool)
+    func didCreateLikeRef()
+    func didDeleteLikeRef()
     func didFetchComments(comments: [Comment])
     func didSelect(tableView: UITableView, indexPath: IndexPath)
     func showError(message: String)

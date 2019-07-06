@@ -41,7 +41,6 @@ final class DetailUIImpl: DetailUI {
         table.separatorInset = .zero
         table.estimatedRowHeight = 400
         table.rowHeight = UITableView.automaticDimension
-        table.isUserInteractionEnabled = false
         table.register(TimelineCell.self, forCellReuseIdentifier: String(describing: TimelineCell.self))
         return table
     }()
@@ -72,6 +71,7 @@ final class DetailUIImpl: DetailUI {
         textView.textColor = .appSubColor
         textView.backgroundColor = UIColor(white: 0.5, alpha: 0.2)
         textView.layer.cornerRadius = 5
+        
         textView.trimWhiteSpaceWhenEndEditing = true
         textView.placeholder = "コメントを記入"
         textView.placeholderColor = UIColor(white: 0.8, alpha: 1.0)

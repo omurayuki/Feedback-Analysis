@@ -12,7 +12,9 @@ class DetailViewController: UIViewController {
     private(set) lazy var detailDataSource: DetailDataSource = {
         return DetailDataSource(cellReuseIdentifier: String(describing: TimelineCell.self),
                                 listItems: [],
-                                cellConfigurationHandler: { (cell, item, _) in
+                                cellConfigurationHandler: { (cell, item, indexPath) in
+            cell.delegate = self
+            cell.identificationId = indexPath.row
             cell.content = item
         })
     }()
@@ -173,5 +175,52 @@ extension DetailViewController: DetailPresenterView {
         tableView.deselectRow(at: indexPath, animated: true)
         guard let height = tableView.cellForRow(at: indexPath)?.contentView.frame.height else { return }
         routing.showReplyPage(with: commentDataSource.listItems[indexPath.row], height: height + 2)
+    }
+    
+    func didCheckIfYouLiked(_ bool: Bool) {
+        switch bool {
+        case false:
+            presenter.getSelected { index in
+                self.updateLikeCount(index: index, count: 1)
+                self.presenter.create(documentRef: .likeUserRef(goalDocument: self.detailDataSource.listItems[index].documentId), value: [:])
+            }
+        case true:
+            presenter.getSelected { index in
+                self.updateLikeCount(index: index, count: -1)
+                self.presenter.delete(documentRef: .likeUserRef(goalDocument: self.detailDataSource.listItems[index].documentId))
+            }
+        }
+    }
+    
+    func didCreateLikeRef() {
+        presenter.getSelected { index in
+            self.presenter.update(to: .goalUpdateRef(author_token: self.detailDataSource.listItems[index].authorToken,
+                                                     goalDocument: self.detailDataSource.listItems[index].documentId),
+                                  value: ["like_count": FieldValue.increment(1.0)])
+        }
+    }
+    
+    func didDeleteLikeRef() {
+        presenter.getSelected { index in
+            self.presenter.update(to: .goalUpdateRef(author_token: self.detailDataSource.listItems[index].authorToken,
+                                                     goalDocument: self.detailDataSource.listItems[index].documentId),
+                                  value: ["like_count": FieldValue.increment(-1.0)])
+        }
+    }
+}
+
+extension DetailViewController {
+    
+    func updateLikeCount(index: Int, count: Int) {
+        detailDataSource.listItems[index].likeCount += count
+        ui.detail.reloadData()
+    }
+}
+
+extension DetailViewController: CellTapDelegate {
+    
+    func tappedLikeBtn(index: Int) {
+        presenter.get(documentRef: .likeUserRef(goalDocument: detailDataSource.listItems[index].documentId))
+        presenter.setSelected(index: index)
     }
 }
