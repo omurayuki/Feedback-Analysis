@@ -53,6 +53,9 @@
 		C941332622C8B2DC0082A01C /* DetailRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C941332522C8B2DC0082A01C /* DetailRouting.swift */; };
 		C941332B22C8BD300082A01C /* DetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C941332A22C8BD300082A01C /* DetailPresenter.swift */; };
 		C941332D22C8BD390082A01C /* DetailPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C941332C22C8BD390082A01C /* DetailPresenterImpl.swift */; };
+		C94EE04722D0631E00937CFA /* ReplyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94EE04622D0631E00937CFA /* ReplyViewController.swift */; };
+		C94EE04922D0632500937CFA /* ReplyUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94EE04822D0632500937CFA /* ReplyUI.swift */; };
+		C94EE04B22D0633100937CFA /* ReplyRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94EE04A22D0633100937CFA /* ReplyRouting.swift */; };
 		C94F080F22ABEBF800BF3534 /* UIVIew+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94F080E22ABEBF800BF3534 /* UIVIew+Extension.swift */; };
 		C958D9E122B5ACF800565EDE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C958D9E022B5ACF800565EDE /* Localizable.strings */; };
 		C958D9E722B62B9900565EDE /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C958D9E622B62B9900565EDE /* UIImage+Extension.swift */; };
@@ -229,6 +232,9 @@
 		C941332522C8B2DC0082A01C /* DetailRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRouting.swift; sourceTree = "<group>"; };
 		C941332A22C8BD300082A01C /* DetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPresenter.swift; sourceTree = "<group>"; };
 		C941332C22C8BD390082A01C /* DetailPresenterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPresenterImpl.swift; sourceTree = "<group>"; };
+		C94EE04622D0631E00937CFA /* ReplyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplyViewController.swift; sourceTree = "<group>"; };
+		C94EE04822D0632500937CFA /* ReplyUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplyUI.swift; sourceTree = "<group>"; };
+		C94EE04A22D0633100937CFA /* ReplyRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplyRouting.swift; sourceTree = "<group>"; };
 		C94F080E22ABEBF800BF3534 /* UIVIew+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIVIew+Extension.swift"; sourceTree = "<group>"; };
 		C958D9E022B5ACF800565EDE /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		C958D9E622B62B9900565EDE /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
@@ -477,6 +483,7 @@
 				C941332122C8B2CC0082A01C /* DetailViewController.swift */,
 				C941332322C8B2D20082A01C /* DetailUI.swift */,
 				C941332522C8B2DC0082A01C /* DetailRouting.swift */,
+				C94EE04522D0630600937CFA /* Reply */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -488,6 +495,16 @@
 				C941332C22C8BD390082A01C /* DetailPresenterImpl.swift */,
 			);
 			path = Detail;
+			sourceTree = "<group>";
+		};
+		C94EE04522D0630600937CFA /* Reply */ = {
+			isa = PBXGroup;
+			children = (
+				C94EE04622D0631E00937CFA /* ReplyViewController.swift */,
+				C94EE04822D0632500937CFA /* ReplyUI.swift */,
+				C94EE04A22D0633100937CFA /* ReplyRouting.swift */,
+			);
+			path = Reply;
 			sourceTree = "<group>";
 		};
 		C95E08A922B116EF000C41C7 /* MainTab */ = {
@@ -1327,6 +1344,7 @@
 				C9D9013D22AB5E870040390E /* TopUI.swift in Sources */,
 				C93271DC22CF6B7800AA9BA6 /* UserDataStoreFactory.swift in Sources */,
 				C9EA654622BBDAB4002BE1C8 /* GoalPostPresenterImpl.swift in Sources */,
+				C94EE04922D0632500937CFA /* ReplyUI.swift in Sources */,
 				C9D9013122AB55F40040390E /* LoginInputPresenter.swift in Sources */,
 				C9EA654A22BC194D002BE1C8 /* GoalRepository.swift in Sources */,
 				C99116B222B8A917007C67C7 /* PasswordEditingPresenterImpl.swift in Sources */,
@@ -1343,6 +1361,7 @@
 				C9D9012A22AB538E0040390E /* UI.swift in Sources */,
 				C9D77F8222C9C5B20007835B /* GoalPostEditViewController.swift in Sources */,
 				C97DDD9322AD85ED00A84219 /* Translator.swift in Sources */,
+				C94EE04722D0631E00937CFA /* ReplyViewController.swift in Sources */,
 				C9D9011722AB50D20040390E /* TextComponent.swift in Sources */,
 				C9D9011222AB4F130040390E /* UIBarButtonItem+Extension.swift in Sources */,
 				C9A6065922B1DF8700184E0F /* TimelineCell.swift in Sources */,
@@ -1404,6 +1423,7 @@
 				C9CC28F622AD3BF8006E69E5 /* SignupInputUI.swift in Sources */,
 				C9F2496B22B79383007E82A0 /* SettingsUseCase.swift in Sources */,
 				C9F2496722B78EAC007E82A0 /* SettingsPresenter.swift in Sources */,
+				C94EE04B22D0633100937CFA /* ReplyRouting.swift in Sources */,
 				C9B55D1622B1062600845381 /* RemindUseCase.swift in Sources */,
 				C9A6065B22B2633600184E0F /* UIStackView+Extension.swift in Sources */,
 				C9A6066F22B2980700184E0F /* Firebase.swift in Sources */,

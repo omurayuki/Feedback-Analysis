@@ -84,7 +84,7 @@ class DetailViewController: UIViewController {
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        self.navigationController?.popViewController(animated: true)
+        routing.popToViewController()
     }
     
     override func viewDidLoad() {

@@ -4,6 +4,7 @@ import RxSwift
 
 protocol DetailRouting: Routing {
     func moveGoalPostEditPage(with timeline: Timeline)
+    func popToViewController()
 }
 
 final class DetailRoutingImpl: DetailRouting {
@@ -30,5 +31,9 @@ final class DetailRoutingImpl: DetailRouting {
         vc.recieve(data: timeline)
         
         viewController?.present(vc, animated: true)
+    }
+    
+    func popToViewController() {
+        viewController?.navigationController?.popViewController(animated: true)
     }
 }
