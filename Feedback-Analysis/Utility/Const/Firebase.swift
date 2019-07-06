@@ -15,6 +15,7 @@ enum FirebaseDocumentRef {
     case goalPostRef
     case goalUpdateRef(author_token: String, goalDocument: String)
     case commentRef(goalDocument: String)
+    case replyRef(goalDocument: String, commentDocument: String)
     case likeUserRef(goalDocument: String)
     
     var destination: DocumentReference {
@@ -44,6 +45,14 @@ enum FirebaseDocumentRef {
                 .collection("Goals")
                 .document(documentId)
                 .collection("Comments")
+                .document()
+        case .replyRef(let goalDocumentId, let commentDocumentId):
+            return Firestore.firestore()
+                .collection("Goals")
+                .document(goalDocumentId)
+                .collection("Comments")
+                .document(commentDocumentId)
+                .collection("Replies")
                 .document()
         case .likeUserRef(let documentId):
             return Firestore.firestore()
@@ -75,6 +84,7 @@ enum FirebaseQueryRef {
     case draftRef
     case allRef
     case commentRef(goalDocument: String)
+    case replyRef(goalDocument: String, commentDocument: String)
     
     var destination: Query {
         switch self {
@@ -114,6 +124,14 @@ enum FirebaseQueryRef {
                 .document(documentId)
                 .collection("Comments")
                 .order(by: "updated_at", descending: true)
+            case .replyRef(let goalDocumentId, let commentDocumentId):
+                return Firestore.firestore()
+                    .collection("Goals")
+                    .document(goalDocumentId)
+                    .collection("Comments")
+                    .document(commentDocumentId)
+                    .collection("Replies")
+                    .order(by: "updated_at", descending: true)
         }
     }
 }

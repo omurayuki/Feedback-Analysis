@@ -14,23 +14,67 @@ class ReplyPresenterImpl: NSObject, ReplyPresenter {
     }
     
     func fetch() {
-        print("hoge")
+        useCase.fetch()
+            .subscribe { result in
+                switch result {
+                case .success(let response):
+                    self.view.updateLoading(false)
+                    self.view.didFetchUser(data: response)
+                case .error(let error):
+                    self.view.updateLoading(false)
+                    self.view.showError(message: error.localizedDescription)
+                }
+            }.disposed(by: view.disposeBag)
     }
     
     func post(to documentRef: FirebaseDocumentRef, reply: ReplyPost) {
-        print("hoge")
+        view.updateLoading(true)
+        useCase.post(to: documentRef, reply: reply)
+            .subscribe { [unowned self] result in
+                switch result {
+                case .success(_):
+                    self.view.didPostSuccess()
+                case .error(let error):
+                    self.view.updateLoading(false)
+                    self.view.showError(message: error.localizedDescription)
+                }
+            }.disposed(by: view.disposeBag)
     }
     
     func get(from queryRef: FirebaseQueryRef) {
-        print("hoge")
+        view.updateLoading(true)
+        useCase.get(replies: queryRef)
+            .subscribe(onNext: { [unowned self] result in
+                self.view.didFetchReplies(replies: result)
+                self.view.updateLoading(false)
+                }, onError: { error in
+                    self.view.updateLoading(false)
+                    self.view.showError(message: error.localizedDescription)
+            }).disposed(by: view.disposeBag)
     }
     
-    func set(document id: String, completion: @escaping () -> Void) {
-        print("hoge")
+    func set(comment id: String, completion: @escaping () -> Void) {
+        useCase.set(comment: id)
+            .subscribe { result in
+                switch result {
+                case .success(_):
+                    completion()
+                case .error(_):
+                    break
+                }
+            }.disposed(by: view.disposeBag)
     }
     
-    func getDocumentId(completion: @escaping (String) -> Void) {
-        print("hoge")
+    func getDocumentIds(completion: @escaping (_ documentId: String, _ commentId: String) -> Void) {
+        useCase.getDocumentIds()
+            .subscribe { result in
+                switch result {
+                case .success(let response):
+                    completion(response.documentId, response.commentId)
+                case .error(_):
+                    return
+                }
+            }.disposed(by: view.disposeBag)
     }
 }
 

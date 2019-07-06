@@ -29,13 +29,22 @@ class AppUserDefaults {
         putBoolValue(true, keyName: "FirstLaunch")
     }
     
+    // goalDocumentId
     class func getGoalDocument() -> String {
         return getStringValue(keyName: "goalDocument")
     }
     
-    // goalDocumentId
     class func setGoalDocument(id: String) {
         putStringValue(id, keyName: "goalDocument")
+    }
+    
+    // goalDocumentId
+    class func getCommentDocument() -> String {
+        return getStringValue(keyName: "commentDocument")
+    }
+    
+    class func setCommentDocument(id: String) {
+        putStringValue(id, keyName: "commentDocument")
     }
     
     // selectedIndex

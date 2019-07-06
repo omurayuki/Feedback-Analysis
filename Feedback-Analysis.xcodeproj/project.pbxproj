@@ -136,6 +136,7 @@
 		C9C43B8D22D0C686006CBC1B /* ReplyPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C43B8C22D0C686006CBC1B /* ReplyPost.swift */; };
 		C9C43B8F22D0C813006CBC1B /* Reply.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C43B8E22D0C813006CBC1B /* Reply.swift */; };
 		C9C43B9122D0C83C006CBC1B /* ReplyEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C43B9022D0C83C006CBC1B /* ReplyEntity.swift */; };
+		C9C43B9322D1078C006CBC1B /* ReplyTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C43B9222D1078C006CBC1B /* ReplyTranslator.swift */; };
 		C9C844B522AFADB000083280 /* LoginUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C844B422AFADB000083280 /* LoginUseCase.swift */; };
 		C9CC28E922ACD892006E69E5 /* LoginInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CC28E822ACD892006E69E5 /* LoginInputViewController.swift */; };
 		C9CC28EB22ACD89D006E69E5 /* LoginInputUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CC28EA22ACD89D006E69E5 /* LoginInputUI.swift */; };
@@ -328,6 +329,7 @@
 		C9C43B8C22D0C686006CBC1B /* ReplyPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplyPost.swift; sourceTree = "<group>"; };
 		C9C43B8E22D0C813006CBC1B /* Reply.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reply.swift; sourceTree = "<group>"; };
 		C9C43B9022D0C83C006CBC1B /* ReplyEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplyEntity.swift; sourceTree = "<group>"; };
+		C9C43B9222D1078C006CBC1B /* ReplyTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplyTranslator.swift; sourceTree = "<group>"; };
 		C9C844B422AFADB000083280 /* LoginUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUseCase.swift; sourceTree = "<group>"; };
 		C9CC28E822ACD892006E69E5 /* LoginInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInputViewController.swift; sourceTree = "<group>"; };
 		C9CC28EA22ACD89D006E69E5 /* LoginInputUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInputUI.swift; sourceTree = "<group>"; };
@@ -652,6 +654,7 @@
 				C9A6067622B2A88500184E0F /* UserTranslator.swift */,
 				C978FD2522C60B3A00859851 /* GoalTranslator.swift */,
 				C92E0BBE22CB02BC007A2F0C /* CommentTranslator.swift */,
+				C9C43B9222D1078C006CBC1B /* ReplyTranslator.swift */,
 			);
 			path = Translator;
 			sourceTree = "<group>";
@@ -1488,6 +1491,7 @@
 				C97DDD8B22AD755B00A84219 /* AccountEntity.swift in Sources */,
 				C9D77F8B22C9CB5E0007835B /* GoalPostEditPresenter.swift in Sources */,
 				C9D9011F22AB51C40040390E /* UITextField+Extension.swift in Sources */,
+				C9C43B9322D1078C006CBC1B /* ReplyTranslator.swift in Sources */,
 				C9328A9822C7193E0065027B /* CompletePresenter.swift in Sources */,
 				C97DDD7D22AD544E00A84219 /* SignupInputPresenterImpl.swift in Sources */,
 				C941332622C8B2DC0082A01C /* DetailRouting.swift in Sources */,

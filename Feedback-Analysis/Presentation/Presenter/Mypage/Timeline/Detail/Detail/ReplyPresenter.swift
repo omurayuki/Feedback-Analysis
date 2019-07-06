@@ -10,8 +10,8 @@ protocol ReplyPresenter {
     func fetch()
     func post(to documentRef: FirebaseDocumentRef, reply: ReplyPost)
     func get(from queryRef: FirebaseQueryRef)
-    func set(document id: String, completion: @escaping () -> Void)
-    func getDocumentId(completion: @escaping (String) -> Void)
+    func set(comment id: String, completion: @escaping () -> Void)
+    func getDocumentIds(completion: @escaping (_ documentId: String, _ commentId: String) -> Void)
 }
 
 protocol ReplyPresenterView: class {

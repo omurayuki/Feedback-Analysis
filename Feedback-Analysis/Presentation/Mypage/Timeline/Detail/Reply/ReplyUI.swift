@@ -30,8 +30,7 @@ final class ReplyUIImpl: ReplyUI {
     }()
     
     private(set) var expandBtn: UIBarButtonItem = {
-        let item = UIBarButtonItem()
-        item.title = "拡張"
+        let item = UIBarButtonItem(barButtonSystemItem: .compose, target: nil, action: nil)
         item.style = .done
         return item
     }()
@@ -107,6 +106,7 @@ extension ReplyUIImpl {
     
     func setup() {
         guard let vc = viewController else { return }
+        vc.navigationItem.title = "返信"
         vc.navigationItem.leftBarButtonItem = cancelBtn
         vc.navigationItem.rightBarButtonItem = expandBtn
         vc.view.backgroundColor = .appMainColor

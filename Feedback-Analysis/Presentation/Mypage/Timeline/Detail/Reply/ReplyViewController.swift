@@ -13,7 +13,7 @@ class ReplyViewController: UIViewController, HalfModalPresentable {
         return CommentDataSource(cellReuseIdentifier: String(describing: CommentCell.self),
                                 listItems: [],
                                 cellConfigurationHandler: { (cell, item, _) in
-                                    cell.content = item
+            cell.content = item
         })
     }()
     
@@ -21,7 +21,7 @@ class ReplyViewController: UIViewController, HalfModalPresentable {
         return ReplyDataStore(cellReuseIdentifier: String(describing: ReplyCell.self),
                                 listItems: [],
                                 cellConfigurationHandler: { (cell, item, _) in
-//                                    cell.content = item
+            cell.content = item
         })
     }()
     
@@ -40,15 +40,21 @@ class ReplyViewController: UIViewController, HalfModalPresentable {
             ui.expandBtn.rx.tap.asDriver()
                 .drive(onNext: { [unowned self] _ in
                     self.maximizeToFullScreen()
+                    self.ui.replyField.becomeFirstResponder()
                 }).disposed(by: disposeBag)
             
             ui.cancelBtn.rx.tap.asDriver()
-                .drive(onNext: { _ in
-                    if let delegate = self.navigationController?.transitioningDelegate as? HalfModalTransitioningDelegate {
-                        delegate.interactiveDismiss = false
-                    }
-                    self.dismiss(animated: true, completion: nil)
-                    // routing
+                .drive(onNext: { [unowned self] _ in
+                    guard let delegate
+                        = self.navigationController?.transitioningDelegate as? HalfModalTransitioningDelegate else { return }
+                    delegate.interactiveDismiss = false
+                    self.routing.dismiss()
+                }).disposed(by: disposeBag)
+            
+            ui.replyField.rx.didBeginEditing.asDriver()
+                .drive(onNext: { [unowned self] _ in
+                    self.maximizeToFullScreen()
+                    self.view.layoutIfNeeded()
                 }).disposed(by: disposeBag)
             
             ui.submitBtn.rx.tap.asDriver()
@@ -100,15 +106,12 @@ class ReplyViewController: UIViewController, HalfModalPresentable {
 extension ReplyViewController {
     
     func recieve(data comment: Comment, height: CGFloat) {
-        presenter.set(document: comment.documentId) {
+        presenter.set(comment: comment.documentId) {
             self.ui.determineHeight(height: height)
             self.commentDataSource.listItems.append(comment)
             self.ui.comment.reloadData()
-            self.ui.determineHeight(height: height)
-            self.commentDataSource.listItems.append(comment)
-            self.ui.comment.reloadData()
-            self.presenter.getDocumentId(completion: { [unowned self] documentId in
-                self.presenter.get(from: .commentRef(goalDocument: documentId))
+            self.presenter.getDocumentIds(completion: { [unowned self] documentId, commentId  in
+                self.presenter.get(from: .replyRef(goalDocument: documentId, commentDocument: commentId))
             })
         }
     }
@@ -143,16 +146,16 @@ extension ReplyViewController: ReplyPresenterView {
     }
     
     func didFetchUser(data: Account) {
-        presenter.getDocumentId(completion: { [unowned self] documentId in
-            self.presenter.post(to: .commentRef(goalDocument: documentId),
+        presenter.getDocumentIds(completion: { [unowned self] documentId, commentId in
+            self.presenter.post(to: .replyRef(goalDocument: documentId, commentDocument: commentId),
                                 reply: self.createReply(token: data.authToken, reply: self.ui.replyField.text))
         })
     }
     
     func didPostSuccess() {
         ui.clearReplyField()
-        presenter.getDocumentId(completion: { [unowned self] documentId in
-            self.presenter.get(from: .commentRef(goalDocument: documentId))
+        presenter.getDocumentIds(completion: { [unowned self] documentId, commentId in
+            self.presenter.get(from: .replyRef(goalDocument: documentId, commentDocument: commentId))
         })
     }
     
