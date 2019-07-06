@@ -2,50 +2,57 @@ import UIKit
 import GrowingTextView
 
 protocol ReplyUI: UI {
+    var cancelBtn: UIBarButtonItem { get }
+    var expandBtn: UIBarButtonItem { get }
     var textViewBottomConstraint: NSLayoutConstraint { get set }
-    var detail: UITableView { get set }
-    var commentTable: UITableView { get set }
-    var editBtn: UIBarButtonItem { get }
+    var comment: UITableView { get set }
+    var replyTable: UITableView { get set }
     var inputToolBar: UIView { get }
-    var commentField: GrowingTextView { get }
+    var replyField: GrowingTextView { get }
     var submitBtn: UIButton { get }
     var viewTapGesture: UITapGestureRecognizer { get }
     
     func setup()
     func determineHeight(height: CGFloat)
     func isHiddenSubmitBtn(_ bool: Bool)
-    func clearCommentField()
-    func updateCommentCount(_ count: Int)
+    func clearReplyField()
 }
 
 final class ReplyUIImpl: ReplyUI {
     
     var viewController: UIViewController?
     
+    private(set) var cancelBtn: UIBarButtonItem = {
+        let item = UIBarButtonItem()
+        item.title = "キャンセル"
+        item.style = .plain
+        return item
+    }()
+    
+    private(set) var expandBtn: UIBarButtonItem = {
+        let item = UIBarButtonItem()
+        item.title = "拡張"
+        item.style = .done
+        return item
+    }()
+    
     var textViewBottomConstraint: NSLayoutConstraint = {
         let constraint = NSLayoutConstraint()
         return constraint
     }()
     
-    private(set) var editBtn: UIBarButtonItem = {
-        let item = UIBarButtonItem()
-        item.title = "編集"
-        item.style = .plain
-        return item
-    }()
-    
-    var detail: UITableView = {
+    var comment: UITableView = {
         let table = UITableView()
         table.backgroundColor = .appMainColor
         table.separatorColor = .appCoolGrey
         table.separatorInset = .zero
         table.estimatedRowHeight = 400
         table.rowHeight = UITableView.automaticDimension
-        table.register(TimelineCell.self, forCellReuseIdentifier: String(describing: TimelineCell.self))
+        table.register(CommentCell.self, forCellReuseIdentifier: String(describing: CommentCell.self))
         return table
     }()
     
-    var commentTable: UITableView = {
+    var replyTable: UITableView = {
         let table = UITableView()
         table.backgroundView = UIImageView(image: #imageLiteral(resourceName: "logo"))
         table.backgroundView?.alpha = 0.1
@@ -54,7 +61,7 @@ final class ReplyUIImpl: ReplyUI {
         table.backgroundColor = .appMainColor
         table.separatorColor = .appCoolGrey
         table.tableFooterView = UIView()
-        table.register(CommentCell.self, forCellReuseIdentifier: String(describing: CommentCell.self))
+        table.register(ReplyCell.self, forCellReuseIdentifier: String(describing: ReplyCell.self))
         return table
     }()
     
@@ -65,7 +72,7 @@ final class ReplyUIImpl: ReplyUI {
         return view
     }()
     
-    var commentField: GrowingTextView = {
+    var replyField: GrowingTextView = {
         let textView = GrowingTextView()
         textView.font = UIFont.systemFont(ofSize: 16)
         textView.textColor = .appSubColor
@@ -100,25 +107,26 @@ extension ReplyUIImpl {
     
     func setup() {
         guard let vc = viewController else { return }
-        vc.navigationItem.rightBarButtonItem = editBtn
+        vc.navigationItem.leftBarButtonItem = cancelBtn
+        vc.navigationItem.rightBarButtonItem = expandBtn
         vc.view.backgroundColor = .appMainColor
-        [commentField, submitBtn].forEach { inputToolBar.addSubview($0) }
+        [replyField, submitBtn].forEach { inputToolBar.addSubview($0) }
         vc.view.addGestureRecognizer(viewTapGesture)
-        [detail, commentTable, inputToolBar].forEach { vc.view.addSubview($0) }
+        [comment, replyTable, inputToolBar].forEach { vc.view.addSubview($0) }
         
-        detail.anchor()
+        comment.anchor()
             .top(to: vc.view.safeAreaLayoutGuide.topAnchor)
             .left(to: vc.view.leftAnchor)
             .right(to: vc.view.rightAnchor)
             .activate()
         
-        commentTable.anchor()
-            .top(to: detail.bottomAnchor)
+        replyTable.anchor()
+            .top(to: comment.bottomAnchor)
             .width(to: vc.view.widthAnchor)
             .bottom(to: inputToolBar.topAnchor)
             .activate()
         
-        let topConstraint = commentField.topAnchor.constraint(equalTo: inputToolBar.topAnchor, constant: 8)
+        let topConstraint = replyField.topAnchor.constraint(equalTo: inputToolBar.topAnchor, constant: 8)
         topConstraint.priority = UILayoutPriority(999)
         NSLayoutConstraint.activate([
             inputToolBar.leadingAnchor.constraint(equalTo: vc.view.leadingAnchor),
@@ -128,29 +136,29 @@ extension ReplyUIImpl {
             ])
         
         if #available(iOS 11, *) {
-            textViewBottomConstraint = commentField.bottomAnchor.constraint(equalTo: inputToolBar.safeAreaLayoutGuide.bottomAnchor, constant: -8)
+            textViewBottomConstraint = replyField.bottomAnchor.constraint(equalTo: inputToolBar.safeAreaLayoutGuide.bottomAnchor, constant: -8)
             NSLayoutConstraint.activate([
-                commentField.leadingAnchor.constraint(equalTo: inputToolBar.safeAreaLayoutGuide.leadingAnchor, constant: 8),
-                commentField.trailingAnchor.constraint(equalTo: inputToolBar.safeAreaLayoutGuide.trailingAnchor, constant: -8),
+                replyField.leadingAnchor.constraint(equalTo: inputToolBar.safeAreaLayoutGuide.leadingAnchor, constant: 8),
+                replyField.trailingAnchor.constraint(equalTo: inputToolBar.safeAreaLayoutGuide.trailingAnchor, constant: -8),
                 textViewBottomConstraint
                 ])
         } else {
-            let textViewBottomConstraint = commentField.bottomAnchor.constraint(equalTo: inputToolBar.bottomAnchor, constant: -8)
+            let textViewBottomConstraint = replyField.bottomAnchor.constraint(equalTo: inputToolBar.bottomAnchor, constant: -8)
             NSLayoutConstraint.activate([
-                commentField.leadingAnchor.constraint(equalTo: inputToolBar.leadingAnchor, constant: 8),
-                commentField.trailingAnchor.constraint(equalTo: inputToolBar.trailingAnchor, constant: -8),
+                replyField.leadingAnchor.constraint(equalTo: inputToolBar.leadingAnchor, constant: 8),
+                replyField.trailingAnchor.constraint(equalTo: inputToolBar.trailingAnchor, constant: -8),
                 textViewBottomConstraint
                 ])
         }
         
         submitBtn.anchor()
-            .top(to: commentField.bottomAnchor, constant: 10)
-            .right(to: commentField.rightAnchor, constant: -2)
+            .top(to: replyField.bottomAnchor, constant: 10)
+            .right(to: replyField.rightAnchor, constant: -2)
             .activate()
     }
     
     func determineHeight(height: CGFloat) {
-        detail.anchor()
+        comment.anchor()
             .height(constant: height)
             .activate()
     }
@@ -162,16 +170,10 @@ extension ReplyUIImpl {
             }.animate()
     }
     
-    func clearCommentField() {
+    func clearReplyField() {
         UIView.Animator(duration: 2.0)
             .animations {
-                self.commentField.text = ""
+                self.replyField.text = ""
             }.animate()
-    }
-    
-    func updateCommentCount(_ count: Int) {
-        let indexPath = NSIndexPath(row: 0, section: 0)
-        guard let cell = detail.cellForRow(at: indexPath as IndexPath) as? TimelineCell else { return }
-        cell.commentCount.text = "\(count)"
     }
 }

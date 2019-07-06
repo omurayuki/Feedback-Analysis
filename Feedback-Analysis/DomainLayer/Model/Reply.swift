@@ -1,21 +1,17 @@
 import Foundation
 
-struct Comment {
+struct Reply {
     let userImage: String
     let name: String
     let authorToken: String
-    let comment: String
-    let likeCount: Int
-    let repliedCount: Int
+    let reply: String
     let documentId: String
     
-    init(entity: CommentEntity) {
+    init(entity: ReplyEntity) {
         self.userImage = entity.user.userImage
         self.name = entity.user.name
         self.authorToken = entity.authorToken
-        self.comment = entity.comment
-        self.likeCount = entity.likeCount
-        self.repliedCount = entity.repliedCount
+        self.reply = entity.reply
         self.documentId = entity.documentId
     }
 }

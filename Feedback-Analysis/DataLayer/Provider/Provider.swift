@@ -308,8 +308,7 @@ struct Provider {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
                         observer.on(.next(documents.enumerated().compactMap { index, data in
                             CommentEntity(user: UserEntity(document: userDocuments[index]),
-                                          document: data.data())
-                            
+                                          document: data.data(), documentId: data.documentID)
                         }))
                     })
                 })

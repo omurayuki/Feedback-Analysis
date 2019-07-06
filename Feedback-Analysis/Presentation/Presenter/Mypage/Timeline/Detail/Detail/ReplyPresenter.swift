@@ -3,29 +3,28 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-protocol DetailPresenter {
-    var view: DetailPresenterView! { get set }
+protocol ReplyPresenter {
+    var view: ReplyPresenterView! { get set }
     var isLoading: BehaviorRelay<Bool> { get }
     
     func fetch()
-    func post(to documentRef: FirebaseDocumentRef, comment: CommentPost)
+    func post(to documentRef: FirebaseDocumentRef, reply: ReplyPost)
     func get(from queryRef: FirebaseQueryRef)
     func set(document id: String, completion: @escaping () -> Void)
     func getDocumentId(completion: @escaping (String) -> Void)
 }
 
-protocol DetailPresenterView: class {
+protocol ReplyPresenterView: class {
     var disposeBag: DisposeBag! { get }
     
-    func inject(ui: DetailUI,
-                presenter: DetailPresenter,
-                routing: DetailRouting,
+    func inject(ui: ReplyUI,
+                presenter: ReplyPresenter,
+                routing: ReplyRouting,
                 disposeBag: DisposeBag)
     func didChangeTextHeight()
     func didFetchUser(data: Account)
     func didPostSuccess()
-    func didFetchComments(comments: [Comment])
-    func didSelect(tableView: UITableView, indexPath: IndexPath)
+    func didFetchReplies(replies: [Reply])
     func showError(message: String)
     func updateLoading(_ isLoading: Bool)
 }

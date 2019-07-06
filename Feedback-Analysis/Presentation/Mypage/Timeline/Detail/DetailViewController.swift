@@ -116,9 +116,11 @@ extension DetailViewController {
             var keyboardHeight = UIScreen.main.bounds.height - endFrame.origin.y
             if #available(iOS 11, *) {
                 if keyboardHeight > 0 {
+                    view.addGestureRecognizer(ui.viewTapGesture)
                     ui.isHiddenSubmitBtn(false)
                     keyboardHeight = keyboardHeight - view.safeAreaInsets.bottom + ui.submitBtn.frame.height + 8
                 } else {
+                    view.removeGestureRecognizer(ui.viewTapGesture)
                     ui.isHiddenSubmitBtn(true)
                 }
             }
@@ -165,5 +167,11 @@ extension DetailViewController: DetailPresenterView {
                             likeCount: 0, repliedCount: 0,
                             createdAt: FieldValue.serverTimestamp(),
                             updatedAt: FieldValue.serverTimestamp())
+    }
+    
+    func didSelect(tableView: UITableView, indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        guard let height = tableView.cellForRow(at: indexPath)?.contentView.frame.height else { return }
+        routing.showReplyPage(with: commentDataSource.listItems[indexPath.row], height: height + 2)
     }
 }

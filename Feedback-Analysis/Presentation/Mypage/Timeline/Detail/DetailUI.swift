@@ -41,6 +41,7 @@ final class DetailUIImpl: DetailUI {
         table.separatorInset = .zero
         table.estimatedRowHeight = 400
         table.rowHeight = UITableView.automaticDimension
+        table.isUserInteractionEnabled = false
         table.register(TimelineCell.self, forCellReuseIdentifier: String(describing: TimelineCell.self))
         return table
     }()
@@ -103,7 +104,6 @@ extension DetailUIImpl {
         vc.navigationItem.rightBarButtonItem = editBtn
         vc.view.backgroundColor = .appMainColor
         [commentField, submitBtn].forEach { inputToolBar.addSubview($0) }
-        vc.view.addGestureRecognizer(viewTapGesture)
         [detail, commentTable, inputToolBar].forEach { vc.view.addSubview($0) }
         
         detail.anchor()
