@@ -33,6 +33,7 @@ class EditPresenterImpl: EditPresenter {
             .subscribe { [unowned self] result in
                 switch result {
                 case .success(let url):
+                    self.view.updateLoading(false)
                     self.view.didUploadImage(userImage: url.absoluteString)
                 case .error(let error):
                     self.view.updateLoading(false)

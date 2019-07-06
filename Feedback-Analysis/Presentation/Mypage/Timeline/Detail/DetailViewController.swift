@@ -163,14 +163,6 @@ extension DetailViewController: DetailPresenterView {
         ui.commentTable.reloadData()
     }
     
-    func createComment(token: String, comment: String) -> CommentPost {
-         return CommentPost(authorToken: token,
-                            comment: comment,
-                            likeCount: 0, repliedCount: 0,
-                            createdAt: FieldValue.serverTimestamp(),
-                            updatedAt: FieldValue.serverTimestamp())
-    }
-    
     func didSelect(tableView: UITableView, indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         guard let height = tableView.cellForRow(at: indexPath)?.contentView.frame.height else { return }
@@ -214,6 +206,14 @@ extension DetailViewController {
     func updateLikeCount(index: Int, count: Int) {
         detailDataSource.listItems[index].likeCount += count
         ui.detail.reloadData()
+    }
+    
+    func createComment(token: String, comment: String) -> CommentPost {
+        return CommentPost(authorToken: token,
+                           comment: comment,
+                           likeCount: 0, repliedCount: 0,
+                           createdAt: FieldValue.serverTimestamp(),
+                           updatedAt: FieldValue.serverTimestamp())
     }
 }
 

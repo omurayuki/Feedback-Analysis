@@ -70,8 +70,6 @@ final class DetailUIImpl: DetailUI {
         textView.font = UIFont.systemFont(ofSize: 16)
         textView.textColor = .appSubColor
         textView.backgroundColor = UIColor(white: 0.5, alpha: 0.2)
-        textView.layer.cornerRadius = 5
-        
         textView.trimWhiteSpaceWhenEndEditing = true
         textView.placeholder = "コメントを記入"
         textView.placeholderColor = UIColor(white: 0.8, alpha: 1.0)
