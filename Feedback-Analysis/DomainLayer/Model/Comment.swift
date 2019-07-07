@@ -5,7 +5,7 @@ struct Comment {
     let name: String
     let authorToken: String
     let comment: String
-    let likeCount: Int
+    var likeCount: Int
     let repliedCount: Int
     let documentId: String
     

@@ -12,9 +12,7 @@ class DetailViewController: UIViewController {
     private(set) lazy var detailDataSource: DetailDataSource = {
         return DetailDataSource(cellReuseIdentifier: String(describing: TimelineCell.self),
                                 listItems: [],
-                                cellConfigurationHandler: { (cell, item, indexPath) in
-            cell.delegate = self
-            cell.identificationId = indexPath.row
+                                cellConfigurationHandler: { (cell, item, _) in
             cell.content = item
         })
     }()
@@ -22,7 +20,9 @@ class DetailViewController: UIViewController {
     private(set) lazy var commentDataSource: CommentDataStore = {
         return CommentDataStore(cellReuseIdentifier: String(describing: CommentCell.self),
                                 listItems: [],
-                                cellConfigurationHandler: { (cell, item, _) in
+                                cellConfigurationHandler: { (cell, item, indexPath) in
+            cell.delegate = self
+            cell.identificationId = indexPath.row
             cell.content = item
         })
     }()
@@ -174,28 +174,29 @@ extension DetailViewController: DetailPresenterView {
         case false:
             presenter.getSelected { index in
                 self.updateLikeCount(index: index, count: 1)
-                self.presenter.create(documentRef: .likeUserRef(goalDocument: self.detailDataSource.listItems[index].documentId), value: [:])
+                self.presenter.create(documentRef: .likeCommentRef(commentDocument: self.commentDataSource.listItems[index].documentId),
+                                      value: [:])
             }
         case true:
             presenter.getSelected { index in
                 self.updateLikeCount(index: index, count: -1)
-                self.presenter.delete(documentRef: .likeUserRef(goalDocument: self.detailDataSource.listItems[index].documentId))
+                self.presenter.delete(documentRef: .likeCommentRef(commentDocument: self.commentDataSource.listItems[index].documentId))
             }
         }
     }
     
     func didCreateLikeRef() {
         presenter.getSelected { index in
-            self.presenter.update(to: .goalUpdateRef(author_token: self.detailDataSource.listItems[index].authorToken,
-                                                     goalDocument: self.detailDataSource.listItems[index].documentId),
+            self.presenter.update(to: .commentUpdateRef(goalDocument: AppUserDefaults.getGoalDocument(),
+                                                     commentDocument: self.commentDataSource.listItems[index].documentId),
                                   value: ["like_count": FieldValue.increment(1.0)])
         }
     }
     
     func didDeleteLikeRef() {
         presenter.getSelected { index in
-            self.presenter.update(to: .goalUpdateRef(author_token: self.detailDataSource.listItems[index].authorToken,
-                                                     goalDocument: self.detailDataSource.listItems[index].documentId),
+            self.presenter.update(to: .commentUpdateRef(goalDocument: AppUserDefaults.getGoalDocument(),
+                                                        commentDocument: self.commentDataSource.listItems[index].documentId),
                                   value: ["like_count": FieldValue.increment(-1.0)])
         }
     }
@@ -204,8 +205,8 @@ extension DetailViewController: DetailPresenterView {
 extension DetailViewController {
     
     func updateLikeCount(index: Int, count: Int) {
-        detailDataSource.listItems[index].likeCount += count
-        ui.detail.reloadData()
+        commentDataSource.listItems[index].likeCount += count
+        ui.commentTable.reloadData()
     }
     
     func createComment(token: String, comment: String) -> CommentPost {
@@ -220,7 +221,7 @@ extension DetailViewController {
 extension DetailViewController: CellTapDelegate {
     
     func tappedLikeBtn(index: Int) {
-        presenter.get(documentRef: .likeUserRef(goalDocument: detailDataSource.listItems[index].documentId))
+        presenter.get(documentRef: .likeCommentRef(commentDocument: commentDataSource.listItems[index].documentId))
         presenter.setSelected(index: index)
     }
 }

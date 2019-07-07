@@ -1,6 +1,14 @@
 import UIKit
+import RxSwift
+import RxCocoa
 
 final class CommentCell: UITableViewCell {
+    
+    let disposeBag = DisposeBag()
+    
+    var delegate: CellTapDelegate?
+    
+    var identificationId = Int()
     
     private(set) var userPhoto: UIImageView = {
         let image = UIImageView()
@@ -86,7 +94,7 @@ final class CommentCell: UITableViewCell {
 extension CommentCell {
     private func setup() {
         backgroundColor = .appMainColor
-        
+        bindUI()
         let commentStack = UIStackView.setupStack(lhs: commentBtn, rhs: repliedCount, spacing: 5)
         let likeStack = UIStackView.setupStack(lhs: likeBtn, rhs: likeCount, spacing: 5)
         
@@ -128,5 +136,15 @@ extension CommentCell {
             .left(to: commentStack.rightAnchor, constant: 20)
             .bottom(to: bottomAnchor, constant: -5)
             .activate()
+    }
+}
+
+extension CommentCell {
+    
+    func bindUI() {
+        likeBtn.rx.tap.asDriver()
+            .drive(onNext: { [unowned self] _ in
+                self.delegate?.tappedLikeBtn(index: self.identificationId)
+            }).disposed(by: disposeBag)
     }
 }

@@ -40,6 +40,7 @@ final class DetailUIImpl: DetailUI {
         table.separatorColor = .appCoolGrey
         table.separatorInset = .zero
         table.estimatedRowHeight = 400
+        table.isUserInteractionEnabled = false
         table.rowHeight = UITableView.automaticDimension
         table.register(TimelineCell.self, forCellReuseIdentifier: String(describing: TimelineCell.self))
         return table

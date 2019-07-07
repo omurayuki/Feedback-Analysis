@@ -14,9 +14,11 @@ enum FirebaseDocumentRef {
     case authorRef(authorToken: String)
     case goalPostRef
     case goalUpdateRef(author_token: String, goalDocument: String)
+    case commentUpdateRef(goalDocument: String, commentDocument: String)
     case commentRef(goalDocument: String)
     case replyRef(commentDocument: String)
     case likeUserRef(goalDocument: String)
+    case likeCommentRef(commentDocument: String)
     
     var destination: DocumentReference {
         switch self {
@@ -40,6 +42,12 @@ enum FirebaseDocumentRef {
                 .document(token)
                 .collection("Goals")
                 .document(documentId)
+        case .commentUpdateRef(let documentId, let commentId):
+            return Firestore.firestore()
+                .collection("Goals")
+                .document(documentId)
+                .collection("Comments")
+                .document(commentId)
         case .commentRef(let documentId):
             return Firestore.firestore()
                 .collection("Goals")
@@ -56,6 +64,12 @@ enum FirebaseDocumentRef {
             return Firestore.firestore()
                 .collection("Goals")
                 .document(documentId)
+                .collection("likeUsers")
+                .document(AppUserDefaults.getAuthToken())
+        case .likeCommentRef(let commentId):
+            return Firestore.firestore()
+                .collection("Comments")
+                .document(commentId)
                 .collection("likeUsers")
                 .document(AppUserDefaults.getAuthToken())
         }
@@ -122,12 +136,12 @@ enum FirebaseQueryRef {
                 .document(documentId)
                 .collection("Comments")
                 .order(by: "updated_at", descending: true)
-            case .replyRef(let commentDocumentId):
-                return Firestore.firestore()
-                    .collection("Comments")
-                    .document(commentDocumentId)
-                    .collection("Replies")
-                    .order(by: "updated_at", descending: true)
+        case .replyRef(let commentDocumentId):
+            return Firestore.firestore()
+                .collection("Comments")
+                .document(commentDocumentId)
+                .collection("Replies")
+                .order(by: "updated_at", descending: true)
         }
     }
 }
