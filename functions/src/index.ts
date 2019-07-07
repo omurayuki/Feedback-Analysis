@@ -1,33 +1,12 @@
 import * as functions from 'firebase-functions';
 import * as admin from 'firebase-admin';
-import { FieldValue } from '@google-cloud/firestore';
+import goal = require('./goal');
+import comment = require('./comment');
 admin.initializeApp(functions.config().firebase);
 const firestore = admin.firestore();
 
-interface Post {
-  readonly genre: [string];
-  readonly new_things: string;
-  readonly goal: [{ string: string }];
-  readonly deadline: string;
-  readonly achived_flag: boolean;
-  readonly draft_flag: boolean;
-  readonly like_count: number;
-  readonly commented_count: number;
-  readonly created_at: FieldValue;
-  readonly updated_at: FieldValue;
-}
-
-interface RootPost extends Post {
+interface RootPost extends goal.Goal {
   authorRef?: FirebaseFirestore.DocumentReference;
-}
-
-interface Comment {
-  readonly goal_document_id?: string;
-  readonly comment: string;
-  readonly like_count: number;
-  readonly replied_count: number;
-  readonly created_at: FieldValue;
-  readonly updated_at: FieldValue;
 }
 
 export const onUserPostCreate = functions.firestore.document('/Users/{userId}/Goals/{postId}').onCreate(async (snapshot, context) => {
@@ -47,6 +26,10 @@ export const onUserCommentPosted = functions.firestore.document('/Goals/{postId}
   await copyToRootWithUsersCommentSnapshot(snapshot, context)
 });
 
+export const onUserCommentUpdate = functions.firestore.document('/Goals/{postId}/Comments/{commentId}').onUpdate(async (change, context) => {
+  await copyToRootWithUsersCommentSnapshot(change.after, context)
+})
+
 export const onUserReplyPosted = functions.firestore.document('/Comments/{commentId}/Replies/{replyId}').onCreate(async (_, context) => {
   await updateRepliedCount(context)
 });
@@ -61,7 +44,7 @@ async function copyToRootWithUsersPostSnapshot(snapshot: FirebaseFirestore.Docum
 
 async function copyToRootWithUsersCommentSnapshot(snapshot: FirebaseFirestore.DocumentSnapshot, context: functions.EventContext) {
   const commentId = snapshot.id;
-  const post = snapshot.data() as Comment;
+  const post = snapshot.data() as comment.Comment;
   await firestore.collection('Comments').doc(commentId).set(post, { merge: true });
 }
 
