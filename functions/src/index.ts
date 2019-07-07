@@ -22,15 +22,12 @@ interface RootPost extends Post {
 }
 
 interface Comment {
+  readonly goal_document_id?: string;
   readonly comment: string;
   readonly like_count: number;
   readonly replied_count: number;
   readonly created_at: FieldValue;
   readonly updated_at: FieldValue;
-}
-
-interface RootComment extends Comment {
-  goal_document_id?: string;
 }
 
 export const onUserPostCreate = functions.firestore.document('/Users/{userId}/Goals/{postId}').onCreate(async (snapshot, context) => {
@@ -64,9 +61,7 @@ async function copyToRootWithUsersPostSnapshot(snapshot: FirebaseFirestore.Docum
 
 async function copyToRootWithUsersCommentSnapshot(snapshot: FirebaseFirestore.DocumentSnapshot, context: functions.EventContext) {
   const commentId = snapshot.id;
-  const postId = context.params.postId;
-  const post = snapshot.data() as RootComment;
-  post.goal_document_id = postId;
+  const post = snapshot.data() as Comment;
   await firestore.collection('Comments').doc(commentId).set(post, { merge: true });
 }
 

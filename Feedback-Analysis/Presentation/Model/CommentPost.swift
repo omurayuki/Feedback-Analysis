@@ -3,6 +3,7 @@ import FirebaseFirestore
 
 struct CommentPost {
     let authorToken: String
+    let goalDocumentId: String
     let comment: String
     let likeCount: Int
     let repliedCount: Int
@@ -11,6 +12,7 @@ struct CommentPost {
     
     fileprivate enum Key {
         case authorToken
+        case goalDocumentId
         case comment
         case likeCount
         case repliedCount
@@ -20,6 +22,7 @@ struct CommentPost {
         var description: String {
             switch self {
             case .authorToken:    return "author_token"
+            case .goalDocumentId:   return "goal_document_id"
             case .comment:      return "comment"
             case .likeCount:    return "like_count"
             case .repliedCount: return "replied_count"
@@ -31,6 +34,7 @@ struct CommentPost {
     
     func encode() -> [String: Any] {
         return [Key.authorToken.description: authorToken,
+                Key.goalDocumentId.description: goalDocumentId,
                 Key.comment.description: comment,
                 Key.likeCount.description: likeCount,
                 Key.repliedCount.description: repliedCount,

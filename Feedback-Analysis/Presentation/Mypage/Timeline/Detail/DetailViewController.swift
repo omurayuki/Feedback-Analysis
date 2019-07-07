@@ -145,7 +145,9 @@ extension DetailViewController: DetailPresenterView {
     func didFetchUser(data: Account) {
         presenter.getDocumentId(completion: { [unowned self] documentId in
             self.presenter.post(to: .commentRef(goalDocument: documentId),
-                                comment: self.createComment(token: data.authToken, comment: self.ui.commentField.text))
+                                comment: self.createComment(token: data.authToken,
+                                                            goalDocumentId: documentId,
+                                                            comment: self.ui.commentField.text))
         })
     }
     
@@ -187,7 +189,7 @@ extension DetailViewController: DetailPresenterView {
     
     func didCreateLikeRef() {
         presenter.getSelected { index in
-            self.presenter.update(to: .commentUpdateRef(goalDocument: AppUserDefaults.getGoalDocument(),
+            self.presenter.update(to: .commentUpdateRef(goalDocument: self.commentDataSource.listItems[index].goalDocumentId,
                                                      commentDocument: self.commentDataSource.listItems[index].documentId),
                                   value: ["like_count": FieldValue.increment(1.0)])
         }
@@ -195,7 +197,7 @@ extension DetailViewController: DetailPresenterView {
     
     func didDeleteLikeRef() {
         presenter.getSelected { index in
-            self.presenter.update(to: .commentUpdateRef(goalDocument: AppUserDefaults.getGoalDocument(),
+            self.presenter.update(to: .commentUpdateRef(goalDocument: self.commentDataSource.listItems[index].goalDocumentId,
                                                         commentDocument: self.commentDataSource.listItems[index].documentId),
                                   value: ["like_count": FieldValue.increment(-1.0)])
         }
@@ -209,8 +211,9 @@ extension DetailViewController {
         ui.commentTable.reloadData()
     }
     
-    func createComment(token: String, comment: String) -> CommentPost {
+    func createComment(token: String, goalDocumentId: String, comment: String) -> CommentPost {
         return CommentPost(authorToken: token,
+                           goalDocumentId: goalDocumentId,
                            comment: comment,
                            likeCount: 0, repliedCount: 0,
                            createdAt: FieldValue.serverTimestamp(),

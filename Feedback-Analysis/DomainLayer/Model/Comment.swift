@@ -7,6 +7,7 @@ struct Comment {
     let comment: String
     var likeCount: Int
     let repliedCount: Int
+    let goalDocumentId: String
     let documentId: String
     
     init(entity: CommentEntity) {
@@ -16,6 +17,7 @@ struct Comment {
         self.comment = entity.comment
         self.likeCount = entity.likeCount
         self.repliedCount = entity.repliedCount
+        self.goalDocumentId = entity.goalDocumentId
         self.documentId = entity.documentId
     }
 }

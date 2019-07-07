@@ -5,6 +5,7 @@ struct CommentEntity: Entity {
     let documentId: String
     let user: UserEntity
     let authorToken: String
+    let goalDocumentId: String
     let comment: String
     let likeCount: Int
     let repliedCount: Int
@@ -14,6 +15,7 @@ struct CommentEntity: Entity {
     init(user: UserEntity, document: [String: Any], documentId: String) {
         guard
             let authorToken = document["author_token"] as? String,
+            let goalDocumentId = document["goal_document_id"] as? String,
             let comment = document["comment"] as? String,
             let likeCount = document["like_count"] as? Int,
             let repliedCount = document["replied_count"] as? Int,
@@ -23,6 +25,7 @@ struct CommentEntity: Entity {
             self.documentId = ""
             self.user = UserEntity(document: ["": ""])
             self.authorToken = ""
+            self.goalDocumentId = ""
             self.comment = ""
             self.likeCount = 0
             self.repliedCount = 0
@@ -33,6 +36,7 @@ struct CommentEntity: Entity {
         self.documentId = documentId
         self.user = user
         self.authorToken = authorToken
+        self.goalDocumentId = goalDocumentId
         self.comment = comment
         self.likeCount = likeCount
         self.repliedCount = repliedCount
