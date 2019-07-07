@@ -162,6 +162,7 @@ extension ReplyViewController: ReplyPresenterView {
     func didFetchReplies(replies: [Reply]) {
         replyDataSource.listItems = []
         replyDataSource.listItems += replies
+        ui.updateReplyCount(replyDataSource.listItems.count)
         ui.replyTable.reloadData()
     }
     

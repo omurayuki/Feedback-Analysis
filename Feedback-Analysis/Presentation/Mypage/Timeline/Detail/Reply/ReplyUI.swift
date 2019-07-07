@@ -16,6 +16,7 @@ protocol ReplyUI: UI {
     func determineHeight(height: CGFloat)
     func isHiddenSubmitBtn(_ bool: Bool)
     func clearReplyField()
+    func updateReplyCount(_ count: Int)
 }
 
 final class ReplyUIImpl: ReplyUI {
@@ -176,5 +177,11 @@ extension ReplyUIImpl {
             .animations {
                 self.replyField.text = ""
             }.animate()
+    }
+    
+    func updateReplyCount(_ count: Int) {
+        let indexPath = NSIndexPath(row: 0, section: 0)
+        guard let cell = comment.cellForRow(at: indexPath as IndexPath) as? CommentCell else { return }
+        cell.repliedCount.text = "\(count)"
     }
 }
