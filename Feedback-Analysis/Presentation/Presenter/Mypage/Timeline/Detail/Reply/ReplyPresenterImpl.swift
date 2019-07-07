@@ -87,3 +87,13 @@ extension ReplyPresenterImpl: GrowingTextViewDelegate {
             }.animate()
     }
 }
+extension ReplyPresenterImpl: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        view.didSelect(tableView: tableView, indexPath: indexPath)
+    }
+}

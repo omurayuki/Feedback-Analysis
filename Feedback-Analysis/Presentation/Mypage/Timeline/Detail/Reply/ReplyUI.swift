@@ -47,6 +47,7 @@ final class ReplyUIImpl: ReplyUI {
         table.separatorColor = .appCoolGrey
         table.separatorInset = .zero
         table.estimatedRowHeight = 400
+        table.isUserInteractionEnabled = false
         table.rowHeight = UITableView.automaticDimension
         table.register(CommentCell.self, forCellReuseIdentifier: String(describing: CommentCell.self))
         return table

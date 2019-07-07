@@ -25,6 +25,7 @@ protocol ReplyPresenterView: class {
     func didFetchUser(data: Account)
     func didPostSuccess()
     func didFetchReplies(replies: [Reply])
+    func didSelect(tableView: UITableView, indexPath: IndexPath)
     func showError(message: String)
     func updateLoading(_ isLoading: Bool)
 }

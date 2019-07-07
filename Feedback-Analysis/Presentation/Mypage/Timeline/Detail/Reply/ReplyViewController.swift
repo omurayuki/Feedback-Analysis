@@ -166,6 +166,10 @@ extension ReplyViewController: ReplyPresenterView {
         ui.replyTable.reloadData()
     }
     
+    func didSelect(tableView: UITableView, indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
     func createReply(token: String, reply: String) -> ReplyPost {
         return ReplyPost(authorToken: token,
                          reply: reply,
