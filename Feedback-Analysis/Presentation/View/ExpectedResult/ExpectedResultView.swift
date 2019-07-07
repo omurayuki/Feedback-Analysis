@@ -35,6 +35,12 @@ final class ExpectedResultView: UIView {
         return field
     }()
     
+    private(set) var expectedResult1TextCount: UILabel = {
+        let label = UILabel()
+        label.apply(.appMain10)
+        return label
+    }()
+    
     private(set) var expectedResultField2: PaddingTextField = {
         let field = PaddingTextField()
         field.apply(.h5_appSub, hint: "ex) ◯◯なスキルを高める")
@@ -44,6 +50,12 @@ final class ExpectedResultView: UIView {
         return field
     }()
     
+    private(set) var expectedResult2TextCount: UILabel = {
+        let label = UILabel()
+        label.apply(.appMain10)
+        return label
+    }()
+    
     private(set) var expectedResultField3: PaddingTextField = {
         let field = PaddingTextField()
         field.apply(.h5_appSub, hint: "ex) ◯◯を完了させる")
@@ -51,6 +63,12 @@ final class ExpectedResultView: UIView {
         field.backgroundColor = UIColor(white: 0.5, alpha: 0.2)
         field.layer.cornerRadius = 5
         return field
+    }()
+    
+    private(set) var expectedResult3TextCount: UILabel = {
+        let label = UILabel()
+        label.apply(.appMain10)
+        return label
     }()
     
     private(set) var deadlineLable: UILabel = {
@@ -92,8 +110,8 @@ extension ExpectedResultView {
         deadline.text = formatter.string(from: Date())
         deadline.inputView = datePicker
         
-        [expextedLabel, expectedResultField1, expectedResultField2,
-         expectedResultField3, deadlineLable, deadline].forEach { addSubview($0) }
+        [expextedLabel, expectedResultField1, expectedResult1TextCount, expectedResultField2, expectedResult2TextCount,
+         expectedResultField3, expectedResult3TextCount, deadlineLable, deadline].forEach { addSubview($0) }
         addGestureRecognizer(viewTapGesture)
         
         expextedLabel.anchor()
@@ -104,26 +122,44 @@ extension ExpectedResultView {
         expectedResultField1.anchor()
             .centerXToSuperview()
             .top(to: expextedLabel.bottomAnchor, constant: 20)
-            .width(to: widthAnchor, multiplier: 0.85)
+            .left(to: leftAnchor, constant: 20)
+            .right(to: rightAnchor, constant: -20)
             .height(constant: 35)
+            .activate()
+        
+        expectedResult1TextCount.anchor()
+            .top(to: expectedResultField1.bottomAnchor, constant: 5)
+            .right(to: rightAnchor, constant: -20)
             .activate()
         
         expectedResultField2.anchor()
             .centerXToSuperview()
-            .top(to: expectedResultField1.bottomAnchor, constant: 35)
-            .width(to: widthAnchor, multiplier: 0.85)
+            .top(to: expectedResult1TextCount.bottomAnchor, constant: 35)
+            .left(to: leftAnchor, constant: 20)
+            .right(to: rightAnchor, constant: -20)
             .height(constant: 35)
+            .activate()
+        
+        expectedResult2TextCount.anchor()
+            .top(to: expectedResultField2.bottomAnchor, constant: 5)
+            .right(to: rightAnchor, constant: -20)
             .activate()
         
         expectedResultField3.anchor()
             .centerXToSuperview()
-            .top(to: expectedResultField2.bottomAnchor, constant: 35)
-            .width(to: widthAnchor, multiplier: 0.85)
+            .top(to: expectedResult2TextCount.bottomAnchor, constant: 35)
+            .left(to: leftAnchor, constant: 20)
+            .right(to: rightAnchor, constant: -20)
             .height(constant: 35)
             .activate()
         
+        expectedResult3TextCount.anchor()
+            .top(to: expectedResultField3.bottomAnchor, constant: 5)
+            .right(to: rightAnchor, constant: -20)
+            .activate()
+        
         deadlineLable.anchor()
-            .top(to: expectedResultField3.bottomAnchor, constant: 35)
+            .top(to: expectedResult3TextCount.bottomAnchor, constant: 35)
             .width(to: widthAnchor)
             .activate()
         

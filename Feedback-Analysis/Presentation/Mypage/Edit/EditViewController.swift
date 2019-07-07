@@ -52,6 +52,13 @@ class EditViewController: UIViewController {
                     return $1
                 }.disposed(by: disposeBag)
             
+            ui.nameField.rx.text.asDriver()
+                .drive(onNext: { [unowned self] text in
+                    guard let text = text else { return }
+                    self.ui.nameTextCount.text = "15/\(String(describing: text.count))"
+                    self.ui.nameTextCount.textColor = text.count > 15 ? .red : .appSubColor
+                }).disposed(by: disposeBag)
+            
             ui.residencePickerView.rx.modelSelected(String.self).asDriver()
                 .drive(onNext: { [unowned self] str in
                     self.ui.residenceField.text = str.first
@@ -66,6 +73,13 @@ class EditViewController: UIViewController {
                 .bind { [unowned self] _ in
                     self.ui.birthField.text = self.ui.formatter.convertToMonthAndYears(self.ui.datePicker.date)
                 }.disposed(by: disposeBag)
+            
+            ui.contentField.rx.text.asDriver()
+                .drive(onNext: { [unowned self] text in
+                    guard let text = text else { return }
+                    self.ui.contentTextCount.text = "100/\(String(describing: text.count))"
+                    self.ui.contentTextCount.textColor = text.count > 100 ? .red : .appSubColor
+                }).disposed(by: disposeBag)
             
             ui.viewTapGesture.rx.event
                 .bind { [unowned self] _ in

@@ -10,14 +10,14 @@ enum AccountValidation {
     
     static func validateAccount(email: String, pass: String? = nil, rePass: String? = nil) -> AccountValidation {
         guard email.count > 1 else { return .mailNotEnough("メールアドレスを記入してください") }
-        guard email.count < 50 else { return .mailExceeded("メールアドレスが長すぎます") }
+        guard email.count < 50 else { return .mailExceeded("メールアドレスは50文字以内で記入してください") }
         if let pass = pass {
-            guard pass.count > 5 else { return .passNotEnough("パスワードが短すぎます") }
-            guard pass.count < 50 else { return .passExceeded("パスワードが長すぎます") }
+            guard pass.count > 5 else { return .passNotEnough("パスワードは5文字以上で記入してください") }
+            guard pass.count < 50 else { return .passExceeded("パスワードは50文字以内で記入してください") }
         }
         if let rePass = rePass {
-            guard rePass.count > 5 else { return .passNotEnough("パスワードが短すぎます") }
-            guard rePass.count < 50 else { return .passExceeded("パスワードが長すぎます") }
+            guard rePass.count > 5 else { return .passNotEnough("パスワードは5文字以上で記入してください") }
+            guard rePass.count < 50 else { return .passExceeded("パスワードは50文字以内で記入してください") }
         }
         guard NSPredicate(format: "SELF MATCHES %@", "^\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$")
             .evaluate(with: email) else { return .notAccurateChar("emailの形式が間違っています") }
@@ -34,8 +34,8 @@ enum UserValidation {
     static func validateUser(name: String, content: String,
                              residence: String, birth: String) -> UserValidation {
         guard name.count > 1 || content.count > 1 || residence.count > 1 || birth.count > 1 else { return .empty("空白を埋めてください") }
-        guard name.count < 15 else { return .nameExceeded("名前が長すぎます") }
-        guard content.count < 140 else { return .contentExceeded("自己紹介が長すぎます") }
+        guard name.count <= 15 else { return .nameExceeded("名前は15文字以内で記入してください") }
+        guard content.count < 100 else { return .contentExceeded("自己紹介は100字以内で記入してください") }
         return .ok(name, content, residence, birth)
     }
 }

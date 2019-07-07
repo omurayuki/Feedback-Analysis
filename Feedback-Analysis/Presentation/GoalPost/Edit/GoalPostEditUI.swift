@@ -89,9 +89,13 @@ final class GoalPostEditUIImpl: GoalPostEditUI {
                     ($0.currentState = .selected) : ($0.currentState = .normal)
             }
             newThingsView.newThingsField.text = mappingContent?.newThings
+            newThingsView.newThingsTextCount.text = "25/\(String(describing: mappingContent?.newThings.count ?? 0))"
             expectedResultView.expectedResultField1.text = mappingContent?.goal1
+            expectedResultView.expectedResult1TextCount.text = "25/\(String(describing: mappingContent?.goal1?.count ?? 0))"
             expectedResultView.expectedResultField2.text = mappingContent?.goal2
+            expectedResultView.expectedResult2TextCount.text = "25/\(String(describing: mappingContent?.goal2?.count ?? 0))"
             expectedResultView.expectedResultField3.text = mappingContent?.goal3
+            expectedResultView.expectedResult3TextCount.text = "25/\(String(describing: mappingContent?.goal3?.count ?? 0))"
             expectedResultView.deadline.text = mappingContent?.deadLine
         }
     }

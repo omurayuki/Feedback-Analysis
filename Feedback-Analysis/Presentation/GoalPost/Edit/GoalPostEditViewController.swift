@@ -79,6 +79,13 @@ class GoalPostEditViewController: UIViewController {
                     }).disposed(by: disposeBag)
             }
             
+            newThingsView.newThingsField.rx.text.asDriver()
+                .drive(onNext: { text in
+                    guard let text = text else { return }
+                    newThingsView.newThingsTextCount.text = "25/\(String(describing: text.count))"
+                    newThingsView.newThingsTextCount.textColor = text.count > 25 ? .red : .appSubColor
+                }).disposed(by: disposeBag)
+            
             newThingsView.viewTapGesture.rx.event
                 .bind { [unowned self] _ in
                     self.view.endEditing(true)
@@ -88,6 +95,27 @@ class GoalPostEditViewController: UIViewController {
                 .bind { _ in
                     expectedResultView.deadline.text = expectedResultView.formatter.convertToMonthAndYears(expectedResultView.datePicker.date)
                 }.disposed(by: disposeBag)
+            
+            expectedResultView.expectedResultField1.rx.text.asDriver()
+                .drive(onNext: { text in
+                    guard let text = text else { return }
+                    expectedResultView.expectedResult1TextCount.text = "25/\(String(describing: text.count))"
+                    expectedResultView.expectedResult1TextCount.textColor = text.count > 25 ? .red : .appSubColor
+                }).disposed(by: disposeBag)
+            
+            expectedResultView.expectedResultField2.rx.text.asDriver()
+                .drive(onNext: { text in
+                    guard let text = text else { return }
+                    expectedResultView.expectedResult2TextCount.text = "25/\(String(describing: text.count))"
+                    expectedResultView.expectedResult2TextCount.textColor = text.count > 25 ? .red : .appSubColor
+                }).disposed(by: disposeBag)
+            
+            expectedResultView.expectedResultField3.rx.text.asDriver()
+                .drive(onNext: { text in
+                    guard let text = text else { return }
+                    expectedResultView.expectedResult3TextCount.text = "25/\(String(describing: text.count))"
+                    expectedResultView.expectedResult3TextCount.textColor = text.count > 25 ? .red : .appSubColor
+                }).disposed(by: disposeBag)
             
             expectedResultView.viewTapGesture.rx.event
                 .bind { [unowned self] _ in

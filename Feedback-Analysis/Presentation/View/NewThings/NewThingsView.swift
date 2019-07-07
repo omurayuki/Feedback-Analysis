@@ -18,6 +18,13 @@ final class NewThingsView: UIView {
         return field
     }()
     
+    private(set) var newThingsTextCount: UILabel = {
+        let label = UILabel()
+        label.apply(.appMain10)
+        label.textAlignment = .right
+        return label
+    }()
+    
     private(set) var viewTapGesture: UITapGestureRecognizer = {
         let gesture = UITapGestureRecognizer()
         return gesture
@@ -37,7 +44,7 @@ extension NewThingsView {
     func setup() {
         backgroundColor = .appMainColor
         
-        [newThingsLabel, newThingsField].forEach { addSubview($0) }
+        [newThingsLabel, newThingsField, newThingsTextCount].forEach { addSubview($0) }
         addGestureRecognizer(viewTapGesture)
         
         newThingsLabel.anchor()
@@ -48,8 +55,14 @@ extension NewThingsView {
         newThingsField.anchor()
             .centerXToSuperview()
             .top(to: newThingsLabel.bottomAnchor, constant: 20)
-            .width(to: widthAnchor, multiplier: 0.85)
+            .left(to: leftAnchor, constant: 20)
+            .right(to: rightAnchor, constant: -20)
             .height(constant: 35)
+            .activate()
+        
+        newThingsTextCount.anchor()
+            .top(to: newThingsField.bottomAnchor, constant: 5)
+            .right(to: rightAnchor, constant: -20)
             .activate()
     }
 }

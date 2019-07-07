@@ -13,8 +13,10 @@ protocol EditUI: UI {
     var userImageEditBtn: UIButton { get }
     var name: UILabel { get }
     var nameField: PaddingTextField { get }
+    var nameTextCount: UILabel { get }
     var content: UILabel { get }
     var contentField: UITextView { get }
+    var contentTextCount: UILabel { get }
     var residence: UILabel { get }
     var residenceField: PaddingTextField { get }
     var residenceDoneBtn: UIBarButtonItem { get }
@@ -134,6 +136,12 @@ final class EditUIImpl: EditUI {
         return field
     }()
     
+    private(set) var nameTextCount: UILabel = {
+        let label = UILabel()
+        label.apply(.appMain10)
+        return label
+    }()
+    
     private(set) var content: UILabel = {
         let label = UILabel()
         label.apply(.h5_appSub_bold, title: "自己紹介")
@@ -147,6 +155,12 @@ final class EditUIImpl: EditUI {
         textView.backgroundColor = UIColor(white: 0.5, alpha: 0.2)
         textView.layer.cornerRadius = 5
         return textView
+    }()
+    
+    private(set) var contentTextCount: UILabel = {
+        let label = UILabel()
+        label.apply(.appMain10)
+        return label
     }()
     
     private(set) var residence: UILabel = {
@@ -242,8 +256,8 @@ extension EditUIImpl {
         let residenceStack = UIStackView.setupStack(lhs: residence, rhs: residenceField, spacing: 20)
         let birthStack = UIStackView.setupStack(lhs: birth, rhs: birthField, spacing: 20)
         
-        [navBar, headerImage, userImage, borderView, nameStack,
-         content, contentField, residenceStack, birthStack].forEach { vc.view.addSubview($0) }
+        [navBar, headerImage, userImage, borderView, nameStack, nameTextCount,
+         content, contentField, contentTextCount, residenceStack, birthStack].forEach { vc.view.addSubview($0) }
         headerImage.addSubview(headerImageEditView)
         headerImage.addSubview(headerImageEditBtn)
         headerImage.addGestureRecognizer(gesture)
@@ -325,8 +339,13 @@ extension EditUIImpl {
             .right(to: vc.view.rightAnchor, constant: -20)
             .activate()
         
+        nameTextCount.anchor()
+            .top(to: nameStack.bottomAnchor, constant: 5)
+            .right(to: vc.view.rightAnchor, constant: -20)
+            .activate()
+        
         residenceStack.anchor()
-            .top(to: nameStack.bottomAnchor, constant: 20)
+            .top(to: nameTextCount.bottomAnchor, constant: 15)
             .left(to: vc.view.leftAnchor, constant: 20)
             .right(to: vc.view.rightAnchor, constant: -20)
             .activate()
@@ -349,11 +368,17 @@ extension EditUIImpl {
             .right(to: vc.view.rightAnchor, constant: -20)
             .height(constant: 100)
             .activate()
+        
+        contentTextCount.anchor()
+            .top(to: contentField.bottomAnchor, constant: 5)
+            .right(to: vc.view.rightAnchor, constant: -20)
+            .activate()
         }
     
     func mapping(user: UpdatingItem) {
         userImage.image = user.userImage
         nameField.text = user.name
+        nameTextCount.text = "15/\(user.name.count)"
         contentField.text = user.content
         residenceField.text = user.residence
         birthField.text = user.birth
