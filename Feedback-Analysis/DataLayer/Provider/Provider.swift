@@ -102,7 +102,8 @@ struct Provider {
         })
     }
     
-    func uploadImage(_ image: UIImage, at storageRef: FirebaseStorageRef) -> Single<URL> {
+    func uploadImage(_ image: UIImage,
+                     at storageRef: FirebaseStorageRef) -> Single<URL> {
         return Single.create(subscribe: { single -> Disposable in
             guard let imageData = image.pngData() else {
                 return Disposables.create()

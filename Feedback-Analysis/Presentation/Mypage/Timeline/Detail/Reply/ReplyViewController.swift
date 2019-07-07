@@ -110,8 +110,8 @@ extension ReplyViewController {
             self.ui.determineHeight(height: height)
             self.commentDataSource.listItems.append(comment)
             self.ui.comment.reloadData()
-            self.presenter.getDocumentIds(completion: { [unowned self] documentId, commentId  in
-                self.presenter.get(from: .replyRef(goalDocument: documentId, commentDocument: commentId))
+            self.presenter.getDocumentIds(completion: { [unowned self] _, commentId  in
+                self.presenter.get(from: .replyRef(commentDocument: commentId))
             })
         }
     }
@@ -146,16 +146,16 @@ extension ReplyViewController: ReplyPresenterView {
     }
     
     func didFetchUser(data: Account) {
-        presenter.getDocumentIds(completion: { [unowned self] documentId, commentId in
-            self.presenter.post(to: .replyRef(goalDocument: documentId, commentDocument: commentId),
+        presenter.getDocumentIds(completion: { [unowned self] _, commentId in
+            self.presenter.post(to: .replyRef(commentDocument: commentId),
                                 reply: self.createReply(token: data.authToken, reply: self.ui.replyField.text))
         })
     }
     
     func didPostSuccess() {
         ui.clearReplyField()
-        presenter.getDocumentIds(completion: { [unowned self] documentId, commentId in
-            self.presenter.get(from: .replyRef(goalDocument: documentId, commentDocument: commentId))
+        presenter.getDocumentIds(completion: { [unowned self] _, commentId in
+            self.presenter.get(from: .replyRef(commentDocument: commentId))
         })
     }
     
