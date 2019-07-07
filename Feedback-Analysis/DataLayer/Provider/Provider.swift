@@ -9,6 +9,8 @@ import RxSwift
 
 struct Provider {
     
+    typealias EntityType = [String: Any]
+    
     func signup(email: String, pass: String) -> Single<AccountEntity> {
         return Single.create(subscribe: { single -> Disposable in
             Auth.auth().createUser(withEmail: email, password: pass, completion: { authResult, error in
@@ -133,7 +135,7 @@ struct Provider {
     }
     
     func setData(documentRef: FirebaseDocumentRef,
-                 fields: [String: Any]) -> Single<()> {
+                 fields: EntityType) -> Single<()> {
         return Single.create(subscribe: { single -> Disposable in
             documentRef
                 .destination
@@ -149,7 +151,7 @@ struct Provider {
     }
     
     func update(documentRef: FirebaseDocumentRef,
-                fields: [String: Any]) -> Single<()> {
+                fields: EntityType) -> Single<()> {
         return Single.create(subscribe: { single -> Disposable in
             documentRef
                 .destination
@@ -179,7 +181,7 @@ struct Provider {
         })
     }
     
-    func get(documentRef: FirebaseDocumentRef) -> Single<[String: Any]> {
+    func get(documentRef: FirebaseDocumentRef) -> Single<EntityType> {
         return Single.create(subscribe: { single -> Disposable in
             documentRef
                 .destination
@@ -220,7 +222,7 @@ struct Provider {
         })
     }
     
-    func observe(documentRef: DocumentReference) -> Observable<[String: Any]> {
+    func observe(documentRef: DocumentReference) -> Observable<EntityType> {
         return Observable.create({ observer -> Disposable in
             documentRef.addSnapshotListener({ snapshot, error in
                 if let error = error {
@@ -294,16 +296,16 @@ struct Provider {
                         FirebaseDocumentRef
                             .authorRef(authorToken: token)
                             .destination
-                            .addSnapshotListener({ userSnapshot, errorq in
+                            .addSnapshotListener({ snapshot, error in
                                 if let error = error {
                                     observer.on(.error(FirebaseError.resultError(error)))
                                     return
                                 }
-                                guard let userDocument = userSnapshot?.data() else {
+                                guard let Document = snapshot?.data() else {
                                     observer.on(.error(FirebaseError.unknown))
                                     return
                                 }
-                                userDocuments.append(userDocument)
+                                userDocuments.append(Document)
                             })
                     }
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
@@ -312,6 +314,28 @@ struct Provider {
                                           document: data.data(), documentId: data.documentID)
                         }))
                     })
+                })
+            return Disposables.create()
+        })
+    }
+    
+    func observeDocument(documentRef: FirebaseDocumentRef,
+                         completion: ((EntityType) -> Void)? = nil) -> Observable<EntityType>? {
+        return Observable.create({ observer -> Disposable in
+            documentRef
+                .destination
+                .addSnapshotListener({ snapshot, error in
+                    if let error = error {
+                        observer.on(.error(FirebaseError.resultError(error)))
+                        return
+                    }
+                    guard let document = snapshot?.data() else {
+                        observer.on(.error(FirebaseError.unknown))
+                        return
+                    }
+                    // documentsの回数分これを叩く設計にするからこのままでおけ
+                    completion?(document)
+                    observer.on(.next(document))
                 })
             return Disposables.create()
         })
