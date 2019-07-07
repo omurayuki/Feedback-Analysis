@@ -9,19 +9,21 @@ protocol ReplyUI: UI {
     var replyTable: UITableView { get set }
     var inputToolBar: UIView { get }
     var replyField: GrowingTextView { get }
+    var replyFieldTextCount: UILabel { get }
     var submitBtn: UIButton { get }
     var viewTapGesture: UITapGestureRecognizer { get }
     
     func setup()
     func determineHeight(height: CGFloat)
     func isHiddenSubmitBtn(_ bool: Bool)
+    func isHiddenTextCount(_ bool: Bool)
     func clearReplyField()
     func updateReplyCount(_ count: Int)
 }
 
 final class ReplyUIImpl: ReplyUI {
     
-    var viewController: UIViewController?
+    weak var viewController: UIViewController?
     
     private(set) var cancelBtn: UIBarButtonItem = {
         let item = UIBarButtonItem()
@@ -79,12 +81,18 @@ final class ReplyUIImpl: ReplyUI {
         textView.textColor = .appSubColor
         textView.backgroundColor = UIColor(white: 0.5, alpha: 0.2)
         textView.layer.cornerRadius = 5
-        textView.maxLength = 50
         textView.trimWhiteSpaceWhenEndEditing = true
         textView.placeholder = "リプライを記入"
         textView.placeholderColor = UIColor(white: 0.8, alpha: 1.0)
         textView.translatesAutoresizingMaskIntoConstraints = false
         return textView
+    }()
+    
+    var replyFieldTextCount: UILabel = {
+        let label = UILabel()
+        label.apply(.appMain10)
+        label.isHidden = true
+        return label
     }()
     
     private(set) var submitBtn: UIButton = {
@@ -115,7 +123,7 @@ extension ReplyUIImpl {
         vc.view.backgroundColor = .appMainColor
         [replyField, submitBtn].forEach { inputToolBar.addSubview($0) }
         vc.view.addGestureRecognizer(viewTapGesture)
-        [comment, replyTable, inputToolBar].forEach { vc.view.addSubview($0) }
+        [comment, replyTable, inputToolBar, replyFieldTextCount].forEach { vc.view.addSubview($0) }
         
         comment.anchor()
             .top(to: vc.view.safeAreaLayoutGuide.topAnchor)
@@ -136,7 +144,7 @@ extension ReplyUIImpl {
             inputToolBar.trailingAnchor.constraint(equalTo: vc.view.trailingAnchor),
             inputToolBar.bottomAnchor.constraint(equalTo: vc.view.bottomAnchor),
             topConstraint
-            ])
+        ])
         
         if #available(iOS 11, *) {
             textViewBottomConstraint = replyField.bottomAnchor.constraint(equalTo: inputToolBar.safeAreaLayoutGuide.bottomAnchor, constant: -8)
@@ -144,15 +152,20 @@ extension ReplyUIImpl {
                 replyField.leadingAnchor.constraint(equalTo: inputToolBar.safeAreaLayoutGuide.leadingAnchor, constant: 8),
                 replyField.trailingAnchor.constraint(equalTo: inputToolBar.safeAreaLayoutGuide.trailingAnchor, constant: -8),
                 textViewBottomConstraint
-                ])
+            ])
         } else {
             let textViewBottomConstraint = replyField.bottomAnchor.constraint(equalTo: inputToolBar.bottomAnchor, constant: -8)
             NSLayoutConstraint.activate([
                 replyField.leadingAnchor.constraint(equalTo: inputToolBar.leadingAnchor, constant: 8),
                 replyField.trailingAnchor.constraint(equalTo: inputToolBar.trailingAnchor, constant: -8),
                 textViewBottomConstraint
-                ])
+            ])
         }
+        
+        replyFieldTextCount.anchor()
+            .top(to: replyField.bottomAnchor, constant: 10)
+            .left(to: replyField.leftAnchor, constant: 2)
+            .activate()
         
         submitBtn.anchor()
             .top(to: replyField.bottomAnchor, constant: 10)
@@ -170,6 +183,13 @@ extension ReplyUIImpl {
         UIView.Animator(duration: 1.0)
             .animations {
                 self.submitBtn.isHidden = bool
+            }.animate()
+    }
+    
+    func isHiddenTextCount(_ bool: Bool) {
+        UIView.Animator(duration: 1.0)
+            .animations {
+                self.replyFieldTextCount.isHidden = bool
             }.animate()
     }
     

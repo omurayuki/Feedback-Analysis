@@ -10,7 +10,7 @@ protocol RemindUI: UI {
 
 final class RemindUIImpl: RemindUI {
     
-    var viewController: UIViewController?
+    weak var viewController: UIViewController?
     
     var mailTitle: UILabel = {
         let label = UILabel()

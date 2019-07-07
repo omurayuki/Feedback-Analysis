@@ -58,6 +58,7 @@ final class TimelineCell: UITableViewCell {
     private(set) var newThings: UILabel = {
         let label = UILabel()
         label.apply(.h5_appSub_bold)
+        label.numberOfLines = 0
         return label
     }()
     
@@ -69,19 +70,22 @@ final class TimelineCell: UITableViewCell {
     
     private(set) var goal1: UILabel = {
         let label = UILabel()
-        label.apply(.h5_appSub_bold)
+        label.apply(.h6_appSub_bold)
+        label.numberOfLines = 0
         return label
     }()
     
     private(set) var goal2: UILabel = {
         let label = UILabel()
-        label.apply(.h5_appSub_bold)
+        label.apply(.h6_appSub_bold)
+        label.numberOfLines = 0
         return label
     }()
     
     private(set) var goal3: UILabel = {
         let label = UILabel()
-        label.apply(.h5_appSub_bold)
+        label.apply(.h6_appSub_bold)
+        label.numberOfLines = 0
         return label
     }()
     
@@ -93,7 +97,7 @@ final class TimelineCell: UITableViewCell {
     
     private(set) var deadLine: UILabel = {
         let label = UILabel()
-        label.apply(.h5_appSub_bold)
+        label.apply(.h6_appSub_bold)
         return label
     }()
     
@@ -175,9 +179,9 @@ final class TimelineCell: UITableViewCell {
             postedTime.text = content.time
             setupGenres(content.genre1 ?? "", content.genre2 ?? "")
             newThings.text = content.newThings
-            goal1.text = content.goal1
-            goal2.text = content.goal2
-            goal3.text = content.goal3
+            goal1.text = "1. \(String(describing: content.goal1 ?? ""))"
+            goal2.text = "2. \(String(describing: content.goal2 ?? ""))"
+            goal3.text = "3. \(String(describing: content.goal3 ?? ""))"
             deadLine.text = content.deadLine
             content.postImage?.count ?? 0 >= 1 ? adjustImagesSpace(images: content.postImage?.compactMap { UIImage(url:$0) }) : adjustImagesSpace(images: nil)
             commentCount.text = "\(content.commentedCount)"
@@ -215,7 +219,7 @@ extension TimelineCell {
         let newThingsStack = VerticalStackView(arrangeSubViews: [
             newThingsTitle,
             newThings
-            ], spacing: 5)
+        ], spacing: 5)
         
         let goalsStack = VerticalStackView(arrangeSubViews: [
             goalsTitle,
@@ -241,6 +245,22 @@ extension TimelineCell {
                 .height(constant: 70)
                 .activate()
         }
+        
+        newThings.anchor()
+            .width(to: widthAnchor, multiplier: 0.65)
+            .activate()
+        
+        goal1.anchor()
+            .width(to: widthAnchor, multiplier: 0.65)
+            .activate()
+        
+        goal2.anchor()
+            .width(to: widthAnchor, multiplier: 0.65)
+            .activate()
+        
+        goal3.anchor()
+            .width(to: widthAnchor, multiplier: 0.65)
+            .activate()
         
         userPhoto.anchor()
             .top(to: topAnchor, constant: 5)

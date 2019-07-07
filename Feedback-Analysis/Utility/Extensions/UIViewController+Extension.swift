@@ -75,6 +75,15 @@ extension UIViewController {
         }
     }
     
+    func validatePostedField(postedValue: String,
+                             account execute: @escaping (_ postedValue: String) -> Void) {
+        switch PostFieldValidation.validate(postedValue: postedValue) {
+        case .empty(let str):            self.showError(message: str)
+        case .exceeded(let str):         self.showError(message: str)
+        case .ok(let value):             execute(value)
+        }
+    }
+    
     func setIndicator(show: Bool) {
         if show {
             MBProgressHUD.showAdded(to: view, animated: true)

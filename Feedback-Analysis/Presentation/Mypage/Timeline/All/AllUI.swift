@@ -7,7 +7,7 @@ protocol AllUI: UI {
 
 final class AllUIImpl: AllUI {
     
-    var viewController: UIViewController?
+    weak var viewController: UIViewController?
     
     var timeline: UITableView = {
         let table = UITableView()

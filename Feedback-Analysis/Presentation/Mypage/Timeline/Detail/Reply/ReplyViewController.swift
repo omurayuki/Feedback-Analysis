@@ -62,6 +62,13 @@ class ReplyViewController: UIViewController, HalfModalPresentable {
                     self.presenter.fetch()
                 }).disposed(by: disposeBag)
             
+            ui.replyField.rx.text.asDriver()
+                .drive(onNext: { [unowned self] text in
+                    guard let text = text else { return }
+                    self.ui.replyFieldTextCount.text = "70/\(String(describing: text.count))"
+                    self.ui.replyFieldTextCount.textColor = text.count > 70 ? .red : .appSubColor
+                }).disposed(by: disposeBag)
+            
             ui.viewTapGesture.rx.event
                 .bind { [unowned self] _ in
                     self.view.endEditing(true)
@@ -123,10 +130,12 @@ extension ReplyViewController {
                 if keyboardHeight > 0 {
                     view.addGestureRecognizer(ui.viewTapGesture)
                     ui.isHiddenSubmitBtn(false)
+                    ui.isHiddenTextCount(false)
                     keyboardHeight = keyboardHeight - view.safeAreaInsets.bottom + ui.submitBtn.frame.height + 8
                 } else {
                     view.removeGestureRecognizer(ui.viewTapGesture)
                     ui.isHiddenSubmitBtn(true)
+                    ui.isHiddenTextCount(true)
                 }
             }
             ui.textViewBottomConstraint.constant = -keyboardHeight - 8
@@ -147,8 +156,10 @@ extension ReplyViewController: ReplyPresenterView {
     
     func didFetchUser(data: Account) {
         presenter.getDocumentIds(completion: { [unowned self] _, commentId in
-            self.presenter.post(to: .replyRef(commentDocument: commentId),
-                                reply: self.createReply(token: data.authToken, reply: self.ui.replyField.text))
+            self.validatePostedField(postedValue: self.ui.replyField.text, account: { value in
+                self.presenter.post(to: .replyRef(commentDocument: commentId),
+                                    reply: self.createReply(token: data.authToken, reply: value))
+            })
         })
     }
     

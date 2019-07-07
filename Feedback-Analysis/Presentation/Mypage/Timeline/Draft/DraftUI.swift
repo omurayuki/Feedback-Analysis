@@ -7,7 +7,7 @@ protocol DraftUI: UI {
 
 final class DraftUIImpl: DraftUI {
     
-    var viewController: UIViewController?
+    weak var viewController: UIViewController?
     
     var timeline: UITableView = {
         let table = UITableView()

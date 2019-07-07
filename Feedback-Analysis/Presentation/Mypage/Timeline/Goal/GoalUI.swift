@@ -7,7 +7,7 @@ protocol GoalUI: UI {
 
 final class GoalUIImpl: GoalUI {
     
-    var viewController: UIViewController?
+    weak var viewController: UIViewController?
     
     var timeline: UITableView = {
         let table = UITableView()

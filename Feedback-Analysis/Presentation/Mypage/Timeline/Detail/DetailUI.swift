@@ -8,19 +8,21 @@ protocol DetailUI: UI {
     var editBtn: UIBarButtonItem { get }
     var inputToolBar: UIView { get }
     var commentField: GrowingTextView { get }
+    var commentFieldTextCount: UILabel { get }
     var submitBtn: UIButton { get }
     var viewTapGesture: UITapGestureRecognizer { get }
     
     func setup()
     func determineHeight(height: CGFloat)
     func isHiddenSubmitBtn(_ bool: Bool)
+    func isHiddenTextCount(_ bool: Bool)
     func clearCommentField()
     func updateCommentCount(_ count: Int)
 }
 
 final class DetailUIImpl: DetailUI {
     
-    var viewController: UIViewController?
+    weak var viewController: UIViewController?
     
     var textViewBottomConstraint: NSLayoutConstraint = {
         let constraint = NSLayoutConstraint()
@@ -78,6 +80,13 @@ final class DetailUIImpl: DetailUI {
         return textView
     }()
     
+    var commentFieldTextCount: UILabel = {
+        let label = UILabel()
+        label.apply(.appMain10)
+        label.isHidden = true
+        return label
+    }()
+    
     private(set) var submitBtn: UIButton = {
         let button = UIButton.Builder()
             .title("   返信   ")
@@ -103,7 +112,7 @@ extension DetailUIImpl {
         vc.navigationItem.rightBarButtonItem = editBtn
         vc.view.backgroundColor = .appMainColor
         [commentField, submitBtn].forEach { inputToolBar.addSubview($0) }
-        [detail, commentTable, inputToolBar].forEach { vc.view.addSubview($0) }
+        [detail, commentTable, inputToolBar, commentFieldTextCount].forEach { vc.view.addSubview($0) }
         
         detail.anchor()
             .top(to: vc.view.safeAreaLayoutGuide.topAnchor)
@@ -142,6 +151,11 @@ extension DetailUIImpl {
             ])
         }
         
+        commentFieldTextCount.anchor()
+            .top(to: commentField.bottomAnchor, constant: 10)
+            .left(to: commentField.leftAnchor, constant: 2)
+            .activate()
+        
         submitBtn.anchor()
             .top(to: commentField.bottomAnchor, constant: 10)
             .right(to: commentField.rightAnchor, constant: -2)
@@ -158,6 +172,13 @@ extension DetailUIImpl {
         UIView.Animator(duration: 1.0)
             .animations {
                 self.submitBtn.isHidden = bool
+            }.animate()
+    }
+    
+    func isHiddenTextCount(_ bool: Bool) {
+        UIView.Animator(duration: 1.0)
+            .animations {
+                self.commentFieldTextCount.isHidden = bool
             }.animate()
     }
     

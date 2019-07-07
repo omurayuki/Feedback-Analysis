@@ -49,6 +49,13 @@ class DetailViewController: UIViewController {
                     self.presenter.fetch()
                 }).disposed(by: disposeBag)
             
+            ui.commentField.rx.text.asDriver()
+                .drive(onNext: { [unowned self] text in
+                    guard let text = text else { return }
+                    self.ui.commentFieldTextCount.text = "70/\(String(describing: text.count))"
+                    self.ui.commentFieldTextCount.textColor = text.count > 70 ? .red : .appSubColor
+                }).disposed(by: disposeBag)
+            
             ui.viewTapGesture.rx.event
                 .bind { [unowned self] _ in
                     self.view.endEditing(true)
@@ -120,10 +127,12 @@ extension DetailViewController {
                 if keyboardHeight > 0 {
                     view.addGestureRecognizer(ui.viewTapGesture)
                     ui.isHiddenSubmitBtn(false)
+                    ui.isHiddenTextCount(false)
                     keyboardHeight = keyboardHeight - view.safeAreaInsets.bottom + ui.submitBtn.frame.height + 8
                 } else {
                     view.removeGestureRecognizer(ui.viewTapGesture)
                     ui.isHiddenSubmitBtn(true)
+                    ui.isHiddenTextCount(true)
                 }
             }
             ui.textViewBottomConstraint.constant = -keyboardHeight - 8
@@ -144,10 +153,12 @@ extension DetailViewController: DetailPresenterView {
     
     func didFetchUser(data: Account) {
         presenter.getDocumentId(completion: { [unowned self] documentId in
-            self.presenter.post(to: .commentRef(goalDocument: documentId),
-                                comment: self.createComment(token: data.authToken,
-                                                            goalDocumentId: documentId,
-                                                            comment: self.ui.commentField.text))
+            self.validatePostedField(postedValue: self.ui.commentField.text, account: { value in
+                self.presenter.post(to: .commentRef(goalDocument: documentId),
+                                    comment: self.createComment(token: data.authToken,
+                                                                goalDocumentId: documentId,
+                                                                comment: value))
+            })
         })
     }
     
