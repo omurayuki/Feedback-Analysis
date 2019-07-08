@@ -173,7 +173,10 @@ extension DetailViewController: DetailPresenterView {
         commentDataSource.listItems = []
         commentDataSource.listItems += comments
         ui.updateCommentCount(commentDataSource.listItems.count)
-        ui.commentTable.reloadData()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
+            self.presenter.view.updateLoading(false)
+            self.ui.commentTable.reloadData()
+        }
     }
     
     func didSelect(tableView: UITableView, indexPath: IndexPath) {

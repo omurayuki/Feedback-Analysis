@@ -222,9 +222,11 @@ struct Provider {
         })
     }
     
-    func observe(documentRef: DocumentReference) -> Observable<EntityType> {
+    func observe(documentRef: FirebaseDocumentRef) -> Observable<EntityType> {
         return Observable.create({ observer -> Disposable in
-            documentRef.addSnapshotListener({ snapshot, error in
+            documentRef
+                .destination
+                .addSnapshotListener({ snapshot, error in
                 if let error = error {
                     observer.on(.error(FirebaseError.resultError(error)))
                     return
@@ -234,6 +236,25 @@ struct Provider {
                     return
                 }
                 observer.on(.next(document))
+            })
+            return Disposables.create()
+        })
+    }
+    
+    func observe(queryRef: FirebaseQueryRef) -> Observable<[EntityType]> {
+        return Observable.create({ observer -> Disposable in
+            queryRef
+                .destination
+                .addSnapshotListener({ snapshot, error in
+                if let error = error {
+                    observer.on(.error(FirebaseError.resultError(error)))
+                    return
+                }
+                guard let documents = snapshot?.documents else {
+                    observer.on(.error(FirebaseError.unknown))
+                    return
+                }
+                observer.on(.next(documents.compactMap { $0.data() }))
             })
             return Disposables.create()
         })
@@ -308,7 +329,7 @@ struct Provider {
                                 userDocuments.append(Document)
                             })
                     }
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.7, execute: {
                         observer.on(.next(documents.enumerated().compactMap { index, data in
                             CommentEntity(user: UserEntity(document: userDocuments[index]),
                                           document: data.data(), documentId: data.documentID)
@@ -375,7 +396,7 @@ struct Provider {
                                 userDocuments.append(userDocument)
                             })
                     }
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.7, execute: {
                         observer.on(.next(documents.enumerated().compactMap { index, data in
                             ReplyEntity(user: UserEntity(document: userDocuments[index]),
                                           document: data.data(), documentId: data.documentID)

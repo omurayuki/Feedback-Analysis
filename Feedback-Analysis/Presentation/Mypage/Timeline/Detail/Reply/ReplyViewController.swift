@@ -174,7 +174,10 @@ extension ReplyViewController: ReplyPresenterView {
         replyDataSource.listItems = []
         replyDataSource.listItems += replies
         ui.updateReplyCount(replyDataSource.listItems.count)
-        ui.replyTable.reloadData()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
+            self.presenter.view.updateLoading(false)
+            self.ui.replyTable.reloadData()
+        }
     }
     
     func didSelect(tableView: UITableView, indexPath: IndexPath) {

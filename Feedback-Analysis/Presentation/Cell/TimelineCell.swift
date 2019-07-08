@@ -20,7 +20,6 @@ final class TimelineCell: UITableViewCell {
         image.layer.cornerRadius = 25
         image.layer.borderWidth = 2
         image.layer.borderColor = UIColor.white.cgColor
-        image.image = #imageLiteral(resourceName: "logo")
         image.clipsToBounds = true
         return image
     }()

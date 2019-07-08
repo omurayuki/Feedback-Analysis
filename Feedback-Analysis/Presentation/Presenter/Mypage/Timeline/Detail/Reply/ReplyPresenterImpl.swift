@@ -46,7 +46,6 @@ class ReplyPresenterImpl: NSObject, ReplyPresenter {
         useCase.get(replies: queryRef)
             .subscribe(onNext: { [unowned self] result in
                 self.view.didFetchReplies(replies: result)
-                self.view.updateLoading(false)
                 }, onError: { error in
                     self.view.updateLoading(false)
                     self.view.showError(message: error.localizedDescription)

@@ -8,14 +8,13 @@ final class ReplyCell: UITableViewCell {
         image.layer.cornerRadius = 25
         image.layer.borderWidth = 2
         image.layer.borderColor = UIColor.white.cgColor
-        image.image = #imageLiteral(resourceName: "logo")
         image.clipsToBounds = true
         return image
     }()
     
     private(set) var userName: UILabel = {
         let label = UILabel()
-        label.apply(.h4_Bold)
+        label.apply(.h4_Bold, title: ".....")
         return label
     }()
     
@@ -27,7 +26,7 @@ final class ReplyCell: UITableViewCell {
     
     private(set) var reply: UILabel = {
         let label = UILabel()
-        label.apply(.title)
+        label.apply(.title, title: ".....")
         label.numberOfLines = 0
         return label
     }()
@@ -36,6 +35,7 @@ final class ReplyCell: UITableViewCell {
         didSet {
             guard let url = content?.userImage else { return }
             self.userName.text = content?.name
+            self.postedTime.text = content?.time
             self.reply.text = content?.reply
             self.userPhoto.setImage(url: url)
         }

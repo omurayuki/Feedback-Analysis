@@ -83,7 +83,6 @@ class DetailPresenterImpl: NSObject, DetailPresenter {
         useCase.get(comments: queryRef)
             .subscribe(onNext: { [unowned self] result in
                 self.view.didFetchComments(comments: result)
-                self.view.updateLoading(false)
                 }, onError: { error in
                     self.view.updateLoading(false)
                     self.view.showError(message: error.localizedDescription)
