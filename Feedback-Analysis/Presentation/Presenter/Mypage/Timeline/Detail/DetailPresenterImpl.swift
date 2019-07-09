@@ -79,12 +79,10 @@ class DetailPresenterImpl: NSObject, DetailPresenter {
     }
     
     func get(from queryRef: FirebaseQueryRef) {
-        view.updateLoading(true)
         useCase.get(comments: queryRef)
             .subscribe(onNext: { [unowned self] result in
                 self.view.didFetchComments(comments: result)
                 }, onError: { error in
-                    self.view.updateLoading(false)
                     self.view.showError(message: error.localizedDescription)
             }).disposed(by: view.disposeBag)
     }

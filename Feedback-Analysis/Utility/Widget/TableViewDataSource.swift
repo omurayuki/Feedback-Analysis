@@ -9,12 +9,15 @@ class TableViewDataSource<CellType, EntityType>: NSObject, UITableViewDataSource
     
     private let cellReuseIdentifier: String
     
+    private let isSkelton: Bool
+    
     private let cellConfigurationHandler: (C, E, IndexPath) -> Void
     
     var listItems: [E]
     
-    init(cellReuseIdentifier: String, listItems: [E], cellConfigurationHandler: @escaping (C, E, IndexPath) -> Void) {
+    init(cellReuseIdentifier: String, listItems: [E], isSkelton: Bool, cellConfigurationHandler: @escaping (C, E, IndexPath) -> Void) {
         self.cellReuseIdentifier = cellReuseIdentifier
+        self.isSkelton = isSkelton
         self.cellConfigurationHandler = cellConfigurationHandler
         self.listItems = listItems
     }
@@ -24,16 +27,44 @@ class TableViewDataSource<CellType, EntityType>: NSObject, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return listItems.count
+        switch isSkelton {
+        case true:
+            switch listItems.count {
+            case 0:  return 5
+            default: return listItems.count
+            }
+        case false:
+            return listItems.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        switch isSkelton {
+        case true:
+            switch listItems.count {
+            case 0:
+                let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier, for: indexPath)
+                tableView.isUserInteractionEnabled = false
+                cell.isUserInteractionEnabled = false
+                return cell
+            default:
+                let cell = generateCell(tableView, items: listItems, indexPath: indexPath)
+                tableView.isUserInteractionEnabled = true
+                cell.isUserInteractionEnabled = true
+                return cell
+            }
+        case false:
+            return generateCell(tableView, items: listItems, indexPath: indexPath)
+        }
+    }
+}
+
+extension TableViewDataSource {
+    
+    private func generateCell(_ tableView: UITableView, items: [E], indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier, for: indexPath)
-        
-        let listItem = listItems[indexPath.row]
-        
+        let listItem = items[indexPath.row]
         cellConfigurationHandler(cell as! C, listItem, indexPath)
-        
         return cell
     }
 }

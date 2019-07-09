@@ -18,7 +18,7 @@ extension MainTabController {
         var resouces = [#imageLiteral(resourceName: "diary"), #imageLiteral(resourceName: "bell"), #imageLiteral(resourceName: "mail"), #imageLiteral(resourceName: "home")]
         var viewControllers: [UIViewController] = []
         
-        [initMypageVC(), initMypageVC(), initMypageVC(), initMypageVC()].enumerated().forEach { index, controller in
+        [UIViewController(), UIViewController(), UIViewController(), initMypageVC()].enumerated().forEach { index, controller in
             let navi = UINavigationController(rootViewController: controller)
             navi.tabBarItem = UITabBarItem(title: nil, image: resouces[index], tag: index)
             

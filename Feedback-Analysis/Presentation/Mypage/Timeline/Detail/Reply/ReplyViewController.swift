@@ -12,6 +12,7 @@ class ReplyViewController: UIViewController, HalfModalPresentable {
     private(set) lazy var commentDataSource: CommentDataSource = {
         return CommentDataSource(cellReuseIdentifier: String(describing: CommentCell.self),
                                 listItems: [],
+                                isSkelton: false,
                                 cellConfigurationHandler: { (cell, item, _) in
             cell.content = item
         })
@@ -20,6 +21,7 @@ class ReplyViewController: UIViewController, HalfModalPresentable {
     private(set) lazy var replyDataSource: ReplyDataStore = {
         return ReplyDataStore(cellReuseIdentifier: String(describing: ReplyCell.self),
                                 listItems: [],
+                                isSkelton: true,
                                 cellConfigurationHandler: { (cell, item, _) in
             cell.content = item
         })
@@ -54,7 +56,6 @@ class ReplyViewController: UIViewController, HalfModalPresentable {
             ui.replyField.rx.didBeginEditing.asDriver()
                 .drive(onNext: { [unowned self] _ in
                     self.maximizeToFullScreen()
-                    self.view.layoutIfNeeded()
                 }).disposed(by: disposeBag)
             
             ui.submitBtn.rx.tap.asDriver()
@@ -110,6 +111,54 @@ class ReplyViewController: UIViewController, HalfModalPresentable {
     }
 }
 
+extension ReplyViewController: ReplyPresenterView {
+    
+    func updateLoading(_ isLoading: Bool) {
+        presenter.isLoading.accept(isLoading)
+    }
+    
+    func didChangeTextHeight() {
+        view.layoutIfNeeded()
+    }
+    
+    func didFetchUser(data: Account) {
+        presenter.getDocumentIds(completion: { [unowned self] _, commentId in
+            self.validatePostedField(postedValue: self.ui.replyField.text, account: { value in
+                self.presenter.post(to: .replyRef(commentDocument: commentId),
+                                    reply: self.createReply(token: data.authToken, reply: value))
+            })
+        })
+    }
+    
+    func didPostSuccess() {
+        ui.clearReplyField()
+        presenter.getDocumentIds(completion: { [unowned self] _, commentId in
+            self.presenter.get(from: .replyRef(commentDocument: commentId))
+        })
+    }
+    
+    func didFetchReplies(replies: [Reply]) {
+        mappingDataToDataSource(replies: replies)
+        ui.updateReplyCount(replyDataSource.listItems.count)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
+            self.presenter.view.updateLoading(false)
+            self.ui.replyTable.reloadData()
+//            self.replyDataSource.listItems.isEmpty ? self.updateReplyCellIfEmpty() : self.ui.replyTable.reloadData()
+        }
+    }
+    
+    func didSelect(tableView: UITableView, indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func createReply(token: String, reply: String) -> ReplyPost {
+        return ReplyPost(authorToken: token,
+                         reply: reply,
+                         createdAt: FieldValue.serverTimestamp(),
+                         updatedAt: FieldValue.serverTimestamp())
+    }
+}
+
 extension ReplyViewController {
     
     func recieve(data comment: Comment, height: CGFloat) {
@@ -142,52 +191,18 @@ extension ReplyViewController {
             view.layoutIfNeeded()
         }
     }
-}
-
-extension ReplyViewController: ReplyPresenterView {
     
-    func updateLoading(_ isLoading: Bool) {
-        presenter.isLoading.accept(isLoading)
-    }
-    
-    func didChangeTextHeight() {
-        view.layoutIfNeeded()
-    }
-    
-    func didFetchUser(data: Account) {
-        presenter.getDocumentIds(completion: { [unowned self] _, commentId in
-            self.validatePostedField(postedValue: self.ui.replyField.text, account: { value in
-                self.presenter.post(to: .replyRef(commentDocument: commentId),
-                                    reply: self.createReply(token: data.authToken, reply: value))
-            })
-        })
-    }
-    
-    func didPostSuccess() {
-        ui.clearReplyField()
-        presenter.getDocumentIds(completion: { [unowned self] _, commentId in
-            self.presenter.get(from: .replyRef(commentDocument: commentId))
-        })
-    }
-    
-    func didFetchReplies(replies: [Reply]) {
+    func mappingDataToDataSource(replies: [Reply]) {
         replyDataSource.listItems = []
         replyDataSource.listItems += replies
-        ui.updateReplyCount(replyDataSource.listItems.count)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
-            self.presenter.view.updateLoading(false)
-            self.ui.replyTable.reloadData()
+    }
+    
+    func updateReplyCellIfEmpty() {
+        for i in 0 ..< 10 {
+            let indexPath = NSIndexPath(row: i, section: 0)
+            guard let cell = ui.replyTable.cellForRow(at: indexPath as IndexPath) as? ReplyCell else { return }
+            cell.hideSkelton(cell.userPhoto, cell.userName)
+            cell.removeFromSuperview()
         }
-    }
-    
-    func didSelect(tableView: UITableView, indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-    }
-    
-    func createReply(token: String, reply: String) -> ReplyPost {
-        return ReplyPost(authorToken: token,
-                         reply: reply,
-                         createdAt: FieldValue.serverTimestamp(),
-                         updatedAt: FieldValue.serverTimestamp())
     }
 }

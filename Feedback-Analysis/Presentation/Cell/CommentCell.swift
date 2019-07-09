@@ -12,7 +12,6 @@ final class CommentCell: UITableViewCell {
     
     private(set) var userPhoto: UIImageView = {
         let image = UIImageView()
-        image.backgroundColor = .blue
         image.layer.cornerRadius = 25
         image.layer.borderWidth = 2
         image.layer.borderColor = UIColor.white.cgColor
@@ -22,7 +21,7 @@ final class CommentCell: UITableViewCell {
     
     private(set) var userName: UILabel = {
         let label = UILabel()
-        label.apply(.h4_Bold, title: ".....")
+        label.apply(.h4_Bold)
         return label
     }()
     
@@ -34,7 +33,7 @@ final class CommentCell: UITableViewCell {
     
     private(set) var comment: UILabel = {
         let label = UILabel()
-        label.apply(.title, title: ".....")
+        label.apply(.title)
         label.numberOfLines = 0
         return label
     }()
@@ -78,12 +77,14 @@ final class CommentCell: UITableViewCell {
             self.userPhoto.setImage(url: url)
             self.repliedCount.text = "\(repliedCount)"
             self.likeCount.text = "\(likeCount)"
+            hideSkelton(userPhoto, userName)
         }
     }
-    
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setup()
+        showSkelton(userPhoto, userName)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -111,6 +112,8 @@ extension CommentCell {
         userName.anchor()
             .top(to: topAnchor, constant: 10)
             .left(to: userPhoto.rightAnchor, constant: 15)
+            .width(constant: frame.width / 1.8)
+            .height(constant: 18)
             .activate()
         
         postedTime.anchor()

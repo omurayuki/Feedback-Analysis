@@ -12,6 +12,7 @@ class DetailViewController: UIViewController {
     private(set) lazy var detailDataSource: DetailDataSource = {
         return DetailDataSource(cellReuseIdentifier: String(describing: TimelineCell.self),
                                 listItems: [],
+                                isSkelton: false,
                                 cellConfigurationHandler: { (cell, item, _) in
             cell.content = item
         })
@@ -20,6 +21,7 @@ class DetailViewController: UIViewController {
     private(set) lazy var commentDataSource: CommentDataStore = {
         return CommentDataStore(cellReuseIdentifier: String(describing: CommentCell.self),
                                 listItems: [],
+                                isSkelton: true,
                                 cellConfigurationHandler: { (cell, item, indexPath) in
             cell.delegate = self
             cell.identificationId = indexPath.row
@@ -102,45 +104,6 @@ class DetailViewController: UIViewController {
     }
 }
 
-extension DetailViewController {
-    
-    func recieve(data timeline: Timeline, height: CGFloat) {
-        presenter.set(document: timeline.documentId) {
-            self.isEnableEdit(timeline.achievedFlag)
-            self.ui.determineHeight(height: height)
-            self.detailDataSource.listItems.append(timeline)
-            self.ui.detail.reloadData()
-            self.presenter.getDocumentId(completion: { [unowned self] documentId in
-                self.presenter.get(from: .commentRef(goalDocument: documentId))
-            })
-        }
-    }
-    
-    func isEnableEdit(_ bool: Bool) {
-        ui.editBtn.isEnabled = !bool
-    }
-    
-    func keyboardWillChangeFrame(_ notification: Notification) {
-        if let endFrame = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            var keyboardHeight = UIScreen.main.bounds.height - endFrame.origin.y
-            if #available(iOS 11, *) {
-                if keyboardHeight > 0 {
-                    view.addGestureRecognizer(ui.viewTapGesture)
-                    ui.isHiddenSubmitBtn(false)
-                    ui.isHiddenTextCount(false)
-                    keyboardHeight = keyboardHeight - view.safeAreaInsets.bottom + ui.submitBtn.frame.height + 8
-                } else {
-                    view.removeGestureRecognizer(ui.viewTapGesture)
-                    ui.isHiddenSubmitBtn(true)
-                    ui.isHiddenTextCount(true)
-                }
-            }
-            ui.textViewBottomConstraint.constant = -keyboardHeight - 8
-            view.layoutIfNeeded()
-        }
-    }
-}
-
 extension DetailViewController: DetailPresenterView {
     
     func updateLoading(_ isLoading: Bool) {
@@ -170,12 +133,11 @@ extension DetailViewController: DetailPresenterView {
     }
     
     func didFetchComments(comments: [Comment]) {
-        commentDataSource.listItems = []
-        commentDataSource.listItems += comments
+        mappingDataToDataSource(comments: comments)
         ui.updateCommentCount(commentDataSource.listItems.count)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
             self.presenter.view.updateLoading(false)
-            self.ui.commentTable.reloadData()
+            self.commentDataSource.listItems.isEmpty ? self.updateCommentCellIfEmpty() : self.ui.commentTable.reloadData()
         }
     }
     
@@ -219,6 +181,56 @@ extension DetailViewController: DetailPresenterView {
 }
 
 extension DetailViewController {
+    
+    func recieve(data timeline: Timeline, height: CGFloat) {
+        presenter.set(document: timeline.documentId) {
+            self.isEnableEdit(timeline.achievedFlag)
+            self.ui.determineHeight(height: height)
+            self.detailDataSource.listItems.append(timeline)
+            self.ui.detail.reloadData()
+            self.presenter.getDocumentId(completion: { [unowned self] documentId in
+                self.presenter.get(from: .commentRef(goalDocument: documentId))
+            })
+        }
+    }
+    
+    func isEnableEdit(_ bool: Bool) {
+        ui.editBtn.isEnabled = !bool
+    }
+    
+    func keyboardWillChangeFrame(_ notification: Notification) {
+        if let endFrame = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            var keyboardHeight = UIScreen.main.bounds.height - endFrame.origin.y
+            if #available(iOS 11, *) {
+                if keyboardHeight > 0 {
+                    view.addGestureRecognizer(ui.viewTapGesture)
+                    ui.isHiddenSubmitBtn(false)
+                    ui.isHiddenTextCount(false)
+                    keyboardHeight = keyboardHeight - view.safeAreaInsets.bottom + ui.submitBtn.frame.height + 8
+                } else {
+                    view.removeGestureRecognizer(ui.viewTapGesture)
+                    ui.isHiddenSubmitBtn(true)
+                    ui.isHiddenTextCount(true)
+                }
+            }
+            ui.textViewBottomConstraint.constant = -keyboardHeight - 8
+            view.layoutIfNeeded()
+        }
+    }
+    
+    func mappingDataToDataSource(comments: [Comment]) {
+        commentDataSource.listItems = []
+        commentDataSource.listItems += comments
+    }
+    
+    func updateCommentCellIfEmpty() {
+        for i in 0 ..< 10 {
+            let indexPath = NSIndexPath(row: i, section: 0)
+            guard let cell = ui.commentTable.cellForRow(at: indexPath as IndexPath) as? CommentCell else { return }
+            cell.hideSkelton(cell.userPhoto, cell.userName)
+            cell.removeFromSuperview()
+        }
+    }
     
     func updateLikeCount(index: Int, count: Int) {
         commentDataSource.listItems[index].likeCount += count

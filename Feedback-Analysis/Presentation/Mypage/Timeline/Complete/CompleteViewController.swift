@@ -11,6 +11,7 @@ class CompleteViewController: UIViewController {
     private(set) lazy var dataSource: DataSource = {
         return DataSource(cellReuseIdentifier: String(describing: TimelineCell.self),
                           listItems: [],
+                          isSkelton: false,
                           cellConfigurationHandler: { (cell, item, _) in
             cell.delegate = self
             cell.content = item

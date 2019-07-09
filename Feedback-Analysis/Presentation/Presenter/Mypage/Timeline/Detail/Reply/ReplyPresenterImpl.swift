@@ -42,12 +42,10 @@ class ReplyPresenterImpl: NSObject, ReplyPresenter {
     }
     
     func get(from queryRef: FirebaseQueryRef) {
-        view.updateLoading(true)
         useCase.get(replies: queryRef)
             .subscribe(onNext: { [unowned self] result in
                 self.view.didFetchReplies(replies: result)
                 }, onError: { error in
-                    self.view.updateLoading(false)
                     self.view.showError(message: error.localizedDescription)
             }).disposed(by: view.disposeBag)
     }

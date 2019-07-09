@@ -242,7 +242,7 @@ extension MypageUIImpl {
         containerView.anchor()
             .top(to: timelineSegmented.bottomAnchor, constant: 2)
             .width(to: vc.view.widthAnchor)
-            .height(to: vc.view.heightAnchor, multiplier: 0.5)
+            .height(constant: vc.view.frame.height / 2)
             .activate()
         
         timelinePages.view.anchor()
