@@ -3,7 +3,7 @@ import UIKit
 import RxSwift
 
 protocol MypageRouting: Routing {
-    func moveEditPage(user: UpdatingItem)
+    func moveEditPage()
     func moveSettingsPage()
     func moveGoalPostPage()
 }
@@ -12,7 +12,7 @@ final class MypageRoutingImpl: MypageRouting {
     
     var viewController: UIViewController?
     
-    func moveEditPage(user: UpdatingItem) {
+    func moveEditPage() {
         let repository = MypageRepositoryImpl.shared
         let useCase = EditUseCaseImpl(repository: repository)
         let presenter = EditPresenterImpl(useCase: useCase)
@@ -29,7 +29,6 @@ final class MypageRoutingImpl: MypageRouting {
                   presenter: presenter,
                   routing: routing,
                   disposeBag: DisposeBag(),
-                  user: user,
                   imagePicker: imagePicker)
         
         viewController?.present(vc, animated: true)

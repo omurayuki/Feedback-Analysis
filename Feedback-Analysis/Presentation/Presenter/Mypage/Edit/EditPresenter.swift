@@ -9,6 +9,7 @@ protocol EditPresenter: Presenter {
     
     func update(to documentRef: FirebaseDocumentRef, user: Update)
     func uploadImage(_ image: UIImage, at storageRef: FirebaseStorageRef)
+    func getUser()
 }
 
 protocol EditPresenterView: class {
@@ -18,9 +19,9 @@ protocol EditPresenterView: class {
                 presenter: EditPresenter,
                 routing: EditRouting,
                 disposeBag: DisposeBag,
-                user: UpdatingItem,
                 imagePicker: ImagePicker)
     func showError(message: String)
+    func didGetUserData(user: User)
     func didUploadImage(userImage: String)
     func didEditUserData()
     func updateLoading(_ isLoading: Bool)

@@ -3,11 +3,6 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-struct UpdatingItem {
-    let userImage: UIImage
-    let name, content, residence, birth: String
-}
-
 protocol UpdatingDelegate: class {
     func updateMypage(completion: @escaping () -> Void)
 }
@@ -110,7 +105,6 @@ class EditViewController: UIViewController {
                 presenter: EditPresenter,
                 routing: EditRouting,
                 disposeBag: DisposeBag,
-                user: UpdatingItem,
                 imagePicker: ImagePicker) {
         self.ui = ui
         self.presenter = presenter
@@ -118,7 +112,7 @@ class EditViewController: UIViewController {
         self.disposeBag = disposeBag
         self.imagePicker = imagePicker
         
-        self.ui.mapping(user: user)
+        presenter.getUser()
     }
     
     override func viewDidLoad() {
@@ -151,6 +145,10 @@ extension EditViewController: EditPresenterView {
         delegate?.updateMypage(completion: {
             self.routing.dismiss()
         })
+    }
+    
+    func didGetUserData(user: User) {
+        ui.mapping(user: user)
     }
 }
 

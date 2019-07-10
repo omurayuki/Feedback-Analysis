@@ -30,6 +30,18 @@ class MypagePresenterImpl: NSObject, MypagePresenter {
             }.disposed(by: view.disposeBag)
     }
     
+    func set(user: [User]) {
+        useCase.set(user: user)
+            .subscribe { result in
+                switch result {
+                case .success(_):
+                    return
+                case .error(_):
+                    return
+                }
+            }.disposed(by: view.disposeBag)
+    }
+    
     func setup() {}
 }
 

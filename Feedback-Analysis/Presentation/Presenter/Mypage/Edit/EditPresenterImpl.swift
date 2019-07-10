@@ -42,5 +42,19 @@ class EditPresenterImpl: EditPresenter {
             }.disposed(by: view.disposeBag)
     }
     
+    func getUser() {
+        useCase.getUser()
+            .subscribe { [unowned self] result in
+                switch result {
+                case .success(let response):
+                    guard let user = response.first else { return }
+                    self.view.didGetUserData(user: user)
+                    return
+                case .error(let error):
+                    self.view.showError(message: error.localizedDescription)
+                }
+            }.disposed(by: view.disposeBag)
+    }
+    
     func setup() {}
 }

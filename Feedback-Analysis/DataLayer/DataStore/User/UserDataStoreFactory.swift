@@ -2,7 +2,11 @@ import Foundation
 
 struct UserDataStoreFactory {
     
-    static func createUsserRemoteDataStore() -> UserRemoteDataStore {
+    static func createUserRemoteDataStore() -> UserRemoteDataStore {
         return UserRemoteDataStoreImpl()
+    }
+    
+    static func createUserLocalDataStore() -> UserLocalDataStore {
+        return UserLocalDataStoreImpl()
     }
 }

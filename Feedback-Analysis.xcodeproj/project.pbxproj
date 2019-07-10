@@ -101,6 +101,7 @@
 		C97F25C122D5F8D600D61FF4 /* PublicGoalPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97F25C022D5F8D600D61FF4 /* PublicGoalPresenterImpl.swift */; };
 		C97F25C322D6033800D61FF4 /* UIPageViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97F25C222D6033800D61FF4 /* UIPageViewController+Extension.swift */; };
 		C97F25C522D6312A00D61FF4 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97F25C422D6312A00D61FF4 /* Entity.swift */; };
+		C97F25C722D63F1500D61FF4 /* UserLocalDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97F25C622D63F1500D61FF4 /* UserLocalDataStore.swift */; };
 		C97F9D0E22A6CCAA000779EF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C97F9D0D22A6CCAA000779EF /* GoogleService-Info.plist */; };
 		C988631322C5E0F200CABD62 /* PrivateGoalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C988631222C5E0F200CABD62 /* PrivateGoalViewController.swift */; };
 		C988631522C5E10600CABD62 /* PrivateGoalUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C988631422C5E10600CABD62 /* PrivateGoalUI.swift */; };
@@ -315,6 +316,7 @@
 		C97F25C022D5F8D600D61FF4 /* PublicGoalPresenterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicGoalPresenterImpl.swift; sourceTree = "<group>"; };
 		C97F25C222D6033800D61FF4 /* UIPageViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIPageViewController+Extension.swift"; sourceTree = "<group>"; };
 		C97F25C422D6312A00D61FF4 /* Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
+		C97F25C622D63F1500D61FF4 /* UserLocalDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocalDataStore.swift; sourceTree = "<group>"; };
 		C97F9D0D22A6CCAA000779EF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C988631222C5E0F200CABD62 /* PrivateGoalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateGoalViewController.swift; sourceTree = "<group>"; };
 		C988631422C5E10600CABD62 /* PrivateGoalUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateGoalUI.swift; sourceTree = "<group>"; };
@@ -516,6 +518,7 @@
 			isa = PBXGroup;
 			children = (
 				C9A6067822B2AAB600184E0F /* UserRemoteDataStore.swift */,
+				C97F25C622D63F1500D61FF4 /* UserLocalDataStore.swift */,
 				C93271DB22CF6B7800AA9BA6 /* UserDataStoreFactory.swift */,
 			);
 			path = User;
@@ -1600,6 +1603,7 @@
 				C978FD2A22C67D4700859851 /* GoalPostViewController+Extension.swift in Sources */,
 				C9A6067122B2980D00184E0F /* Const.swift in Sources */,
 				C978FD2622C60B3A00859851 /* GoalTranslator.swift in Sources */,
+				C97F25C722D63F1500D61FF4 /* UserLocalDataStore.swift in Sources */,
 				C91FA65B22B53F9C006D9E6D /* Update.swift in Sources */,
 				C972692C22BB4A1B00CDFD59 /* GoalEntity.swift in Sources */,
 				C926CDA022B3C41E008672AA /* EditUI.swift in Sources */,

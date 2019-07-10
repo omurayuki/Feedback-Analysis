@@ -28,7 +28,7 @@ protocol EditUI: UI {
     var viewTapGesture: UITapGestureRecognizer { get }
     
     func setup()
-    func mapping(user: UpdatingItem)
+    func mapping(user: User)
     func setImage(image: UIImage?)
     func adjustForKeyboard(notification: Notification)
 }
@@ -375,8 +375,8 @@ extension EditUIImpl {
             .activate()
         }
     
-    func mapping(user: UpdatingItem) {
-        userImage.image = user.userImage
+    func mapping(user: User) {
+        userImage.setImage(url: user.userImage)
         nameField.text = user.name
         nameTextCount.text = "15/\(user.name.count)"
         contentField.text = user.content

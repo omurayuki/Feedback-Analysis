@@ -32,11 +32,7 @@ class MypageViewController: UIViewController {
             
             ui.editBtn.rx.tap.asDriver()
                 .drive(onNext: { [unowned self] _ in
-                    self.routing.moveEditPage(user: UpdatingItem(userImage: self.ui.userImage.image ?? UIImage(),
-                                                                 name: self.ui.userName.text ?? "",
-                                                                 content: self.ui.contentField.text ?? "",
-                                                                 residence: self.ui.residenceField.text ?? "",
-                                                                 birth: self.ui.birthDayField.text ?? ""))
+                    self.routing.moveEditPage()
                 }).disposed(by: disposeBag)
             
             ui.goalPostBtn.rx.tap.asDriver()
@@ -74,6 +70,7 @@ extension MypageViewController: MypagePresenterView {
     }
     
     func didFetchUserData(user: User) {
+        presenter.set(user: [user])
         ui.updateUser(user: user)
     }
     

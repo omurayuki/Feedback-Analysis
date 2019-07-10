@@ -3,6 +3,7 @@ import RxSwift
 
 protocol MypageUseCase {
     func fetch(to: FirebaseDocumentRef) -> Single<User>
+    func set(user: [User]) -> Single<()>
 }
 
 struct MypageUseCaseImpl: MypageUseCase {
@@ -17,5 +18,9 @@ struct MypageUseCaseImpl: MypageUseCase {
         return repository
             .fetch(to: documentRef)
             .map { UserTranslator().translate($0) }
+    }
+    
+    func set(user: [User]) -> Single<()> {
+        return repository.set(user: user)
     }
 }

@@ -4,6 +4,7 @@ import RxSwift
 protocol EditUseCase {
     func update(to documentRef: FirebaseDocumentRef, user: Update) -> Single<()>
     func uploadImage(_ image: UIImage, at storageRef: FirebaseStorageRef) -> Single<URL>
+    func getUser() -> Single<[User]>
 }
 
 struct EditUseCaseImpl: EditUseCase {
@@ -16,5 +17,9 @@ struct EditUseCaseImpl: EditUseCase {
     
     func uploadImage(_ image: UIImage, at storageRef: FirebaseStorageRef) -> Single<URL> {
         return repository.uploadImage(image, at: storageRef)
+    }
+    
+    func getUser() -> Single<[User]> {
+        return repository.getUser().map { UsersTranslator().translate($0) }
     }
 }
