@@ -52,7 +52,9 @@ extension MainTabController: MainTabbarProtocol {
     }
     
     private func initTimelineVC() -> TimelineViewController {
-        let controllers = [UIViewController(), UIViewController(), UIViewController()]
+        let vc1 = UIViewController()
+        vc1.view.backgroundColor = .red
+        let controllers = [vc1, UIViewController(), UIViewController()]
         controllers.enumerated().forEach { index, controller in controller.view.tag = index }
         let repository = TimelineRepositoryImpl.shared
         let useCase = TimelineUseCaseImpl(repository: repository)

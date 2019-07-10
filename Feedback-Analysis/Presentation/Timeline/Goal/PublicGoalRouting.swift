@@ -1,9 +1,16 @@
-//
-//  PublicGoalRouting.swift
-//  Feedback-Analysis
-//
-//  Created by オムラユウキ on 2019/07/10.
-//  Copyright © 2019 Swifter. All rights reserved.
-//
-
 import Foundation
+import UIKit
+import RxSwift
+
+protocol PublicGoalRouting: Routing {
+    func showDetail(with timeline: Timeline, height: CGFloat)
+}
+
+final class PublicGoalRoutingImpl: PublicGoalRouting {
+    
+    var viewController: UIViewController?
+    
+    func showDetail(with timeline: Timeline, height: CGFloat) {
+        print("detail")
+    }
+}

@@ -6,15 +6,7 @@ final class PrivateGoalUIImpl: TimelineContentUI {
     
     var timeline: UITableView = {
         let table = UITableView()
-        table.backgroundView = UIImageView(image: #imageLiteral(resourceName: "logo"))
-        table.backgroundView?.alpha = 0.1
-        table.backgroundView?.clipsToBounds = true
-        table.backgroundView?.contentMode = UIView.ContentMode.scaleAspectFit
-        table.backgroundColor = .appMainColor
-        table.separatorColor = .appCoolGrey
-        table.tableFooterView = UIView()
-        table.estimatedRowHeight = 400
-        table.rowHeight = UITableView.automaticDimension
+        table.setupTimelineComponent()
         table.register(TimelineCell.self, forCellReuseIdentifier: String(describing: TimelineCell.self))
         return table
     }()

@@ -112,18 +112,14 @@ extension MypageViewController: UpdatingDelegate {
 extension MypageViewController: UIPageViewControllerDataSource {
     
     func pageViewController(_ pageViewController: UIPageViewController,
-                            viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        var index = viewController.view.tag
-        if index == viewControllers.count - 1 { return nil }
-        index = index + 1
-        return viewControllers[index]
+                            viewControllerBefore viewController: UIViewController) -> UIViewController? {
+        return UIPageViewController.generateViewController(viewControllerBefore: viewController,
+                                                           viewControllers: viewControllers)
     }
     
     func pageViewController(_ pageViewController: UIPageViewController,
-                            viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        var index = viewController.view.tag
-        index = index - 1
-        if index < 0 { return nil }
-        return viewControllers[index]
+                            viewControllerAfter viewController: UIViewController) -> UIViewController? {
+        return UIPageViewController.generateViewController(viewControllerAfter: viewController,
+                                                           viewControllers: viewControllers)
     }
 }

@@ -5,6 +5,12 @@ import RxCocoa
 
 final class TimelineViewController: UIViewController {
     
+    private var pendingIndex: Int?
+    
+    private var currentIndex: Int?
+    
+    private var previousIndex = 0
+    
     var ui: TimelineUI!
     
     var routing: TimelineRouting!
@@ -41,21 +47,32 @@ final class TimelineViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         ui.setup()
+        ui.timelinePages.setViewControllers([viewControllers.first!], direction: .forward, animated: true, completion: nil)
     }
 }
 
 extension TimelineViewController: TimelinePresenterView {
     
     func didSelectSegment(with index: Int) {
-        print("ok")
+        if previousIndex < index {
+            ui.timelinePages.setViewControllers([viewControllers[index]], direction: .forward, animated: true, completion: nil)
+        } else {
+            ui.timelinePages.setViewControllers([viewControllers[index]], direction: .reverse, animated: true, completion: nil)
+        }
+        previousIndex = index
     }
     
     func willTransitionTo(_ pageViewController: UIPageViewController, pendingViewControllers: [UIViewController]) {
-        print("ok")
+        pendingIndex = viewControllers.firstIndex(of: pendingViewControllers.first!)
     }
     
-    func didFinishAnimating(_ pageViewController: UIPageViewController, finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
-        print("ok")
+    func didFinishAnimating(_ pageViewController: UIPageViewController, finished: Bool,
+                            previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+        guard completed else { return }
+        currentIndex = pendingIndex
+        if let index = currentIndex {
+            ui.timelineSegmented.setIndex(index: index)
+        }
     }
 }
 
@@ -63,12 +80,14 @@ extension TimelineViewController: TimelinePresenterView {
 extension TimelineViewController: UIPageViewControllerDataSource {
     
     func pageViewController(_ pageViewController: UIPageViewController,
-                            viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        return UIViewController()
+                            viewControllerBefore viewController: UIViewController) -> UIViewController? {
+        return UIPageViewController.generateViewController(viewControllerBefore: viewController,
+                                                           viewControllers: viewControllers)
     }
     
     func pageViewController(_ pageViewController: UIPageViewController,
-                            viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        return UIViewController()
+                            viewControllerAfter viewController: UIViewController) -> UIViewController? {
+        return UIPageViewController.generateViewController(viewControllerAfter: viewController,
+                                                           viewControllers: viewControllers)
     }
 }
