@@ -51,10 +51,10 @@ extension GenreButton {
         setTitleColor(mainColor, for: .normal)
         backgroundColor = subColor
         layer.masksToBounds = true
-        layer.cornerRadius = 18
+        layer.cornerRadius = 14
         layer.borderColor = mainColor.cgColor
         layer.borderWidth = 1
-        titleLabel?.font = .boldSystemFont(ofSize: 13)
+        titleLabel?.font = .boldSystemFont(ofSize: 10)
         isUserInteractionEnabled = true
     }
 }

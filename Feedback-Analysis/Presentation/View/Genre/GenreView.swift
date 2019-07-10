@@ -37,18 +37,22 @@ extension GenreView {
                   UIStackView(arrangedSubviews: array[4...6].map { $0 }),
                   UIStackView(arrangedSubviews: array[7...10].map { $0 }),
                   UIStackView(arrangedSubviews: array[11...13].map { $0 }),
-                  UIStackView(arrangedSubviews: array[14...17].map { $0 })].map { $0 }
+                  UIStackView(arrangedSubviews: array[14...17].map { $0 }),
+                  UIStackView(arrangedSubviews: array[18...20].map { $0 }),
+                  UIStackView(arrangedSubviews: array[21...24].map { $0 }),
+                  UIStackView(arrangedSubviews: array[25...27].map { $0 }),
+                  UIStackView(arrangedSubviews: array[28...31].map { $0 })].map { $0 }
         
         addSubview(noticeLabel)
         stacks.forEach {
-            $0.spacing = 15
+            $0.spacing = 18
             addSubview($0)
         }
         
         array.forEach {
             $0.anchor()
-                .width(constant: 70)
-                .height(constant: 35)
+                .width(constant: 55)
+                .height(constant: 27)
                 .activate()
         }
         
@@ -60,27 +64,47 @@ extension GenreView {
         
         stacks[0].anchor()
             .centerXToSuperview()
-            .top(to: noticeLabel.bottomAnchor, constant: 20)
+            .top(to: noticeLabel.bottomAnchor, constant: 15)
             .activate()
         
         stacks[1].anchor()
             .centerXToSuperview()
-            .top(to: stacks[0].bottomAnchor, constant: 20)
+            .top(to: stacks[0].bottomAnchor, constant: 13)
             .activate()
         
         stacks[2].anchor()
             .centerXToSuperview()
-            .top(to: stacks[1].bottomAnchor, constant: 20)
+            .top(to: stacks[1].bottomAnchor, constant: 13)
             .activate()
         
         stacks[3].anchor()
             .centerXToSuperview()
-            .top(to: stacks[2].bottomAnchor, constant: 20)
+            .top(to: stacks[2].bottomAnchor, constant: 13)
             .activate()
         
         stacks[4].anchor()
             .centerXToSuperview()
-            .top(to: stacks[3].bottomAnchor, constant: 20)
+            .top(to: stacks[3].bottomAnchor, constant: 13)
+            .activate()
+        
+        stacks[5].anchor()
+            .centerXToSuperview()
+            .top(to: stacks[4].bottomAnchor, constant: 13)
+            .activate()
+        
+        stacks[6].anchor()
+            .centerXToSuperview()
+            .top(to: stacks[5].bottomAnchor, constant: 13)
+            .activate()
+        
+        stacks[7].anchor()
+            .centerXToSuperview()
+            .top(to: stacks[6].bottomAnchor, constant: 13)
+            .activate()
+        
+        stacks[8].anchor()
+            .centerXToSuperview()
+            .top(to: stacks[7].bottomAnchor, constant: 13)
             .activate()
 
     }
