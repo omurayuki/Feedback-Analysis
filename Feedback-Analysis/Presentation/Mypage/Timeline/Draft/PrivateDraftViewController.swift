@@ -4,7 +4,7 @@ import RxSwift
 import RxCocoa
 import FirebaseFirestore
 
-class CompleteViewController: UIViewController {
+class PrivateDraftViewController: UIViewController {
     
     typealias DataSource = TableViewDataSource<TimelineCell, Timeline>
     
@@ -18,11 +18,11 @@ class CompleteViewController: UIViewController {
         })
     }()
     
-    var ui: CompleteUI!
+    var ui: TimelineContentUI!
     
-    var routing: CompleteRouting!
+    var routing: PrivateDraftRouting!
     
-    var presenter: CompletePresenter! {
+    var presenter: PrivateDraftPresenter! {
         didSet {
             presenter.view = self
         }
@@ -38,16 +38,16 @@ class CompleteViewController: UIViewController {
         }
     }
     
-    func inject(ui: CompleteUI,
-                presenter: CompletePresenter,
-                routing: CompleteRouting,
+    func inject(ui: TimelineContentUI,
+                presenter: PrivateDraftPresenter,
+                routing: PrivateDraftRouting,
                 disposeBag: DisposeBag) {
         self.ui = ui
         self.presenter = presenter
         self.routing = routing
         self.disposeBag = disposeBag
         
-        self.presenter.fetch(from: .completeRef, completion: nil)
+        self.presenter.fetch(from: .draftRef, completion: nil)
     }
     
     override func viewDidLoad() {
@@ -56,7 +56,7 @@ class CompleteViewController: UIViewController {
     }
 }
 
-extension CompleteViewController: CompletePresenterView {
+extension PrivateDraftViewController: PrivateDraftPresenterView {
     
     func updateLoading(_ isLoading: Bool) {
         presenter.isLoading.accept(isLoading)
@@ -104,7 +104,7 @@ extension CompleteViewController: CompletePresenterView {
     }
 }
 
-extension CompleteViewController: CellTapDelegate {
+extension PrivateDraftViewController: CellTapDelegate {
     
     func tappedLikeBtn(index: Int) {
         presenter.get(documentRef: .likeUserRef(goalDocument: dataSource.listItems[index].documentId))

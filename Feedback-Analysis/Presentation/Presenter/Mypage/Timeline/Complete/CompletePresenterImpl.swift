@@ -2,8 +2,8 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-class CompletePresenterImpl: NSObject, CompletePresenter {
-    var view: CompletePresenterView!
+class PrivateCompletePresenterImpl: NSObject, PrivateCompletePresenter {
+    var view: PrivateCompletePresenterView!
     
     var isLoading: BehaviorRelay<Bool> = BehaviorRelay<Bool>(value: false)
     
@@ -98,7 +98,7 @@ class CompletePresenterImpl: NSObject, CompletePresenter {
     }
 }
 
-extension CompletePresenterImpl: UITableViewDelegate {
+extension PrivateCompletePresenterImpl: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         view.didSelect(indexPath: indexPath, tableView: tableView)

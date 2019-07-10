@@ -41,14 +41,14 @@
 		C93271E222CF6E6100AA9BA6 /* DetailLocalDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93271E122CF6E6100AA9BA6 /* DetailLocalDataStore.swift */; };
 		C9328A9822C7193E0065027B /* CompletePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9328A9722C7193E0065027B /* CompletePresenter.swift */; };
 		C9328A9A22C719480065027B /* CompletePresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9328A9922C719480065027B /* CompletePresenterImpl.swift */; };
-		C9328A9C22C72FA00065027B /* DraftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9328A9B22C72FA00065027B /* DraftViewController.swift */; };
-		C9328A9E22C72FBB0065027B /* DraftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9328A9D22C72FBA0065027B /* DraftUI.swift */; };
-		C9328AA022C72FDC0065027B /* DraftRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9328A9F22C72FDC0065027B /* DraftRouting.swift */; };
+		C9328A9C22C72FA00065027B /* PrivateDraftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9328A9B22C72FA00065027B /* PrivateDraftViewController.swift */; };
+		C9328A9E22C72FBB0065027B /* PrivateDraftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9328A9D22C72FBA0065027B /* PrivateDraftUI.swift */; };
+		C9328AA022C72FDC0065027B /* PrivateDraftRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9328A9F22C72FDC0065027B /* PrivateDraftRouting.swift */; };
 		C9328AA222C7300A0065027B /* DraftPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9328AA122C7300A0065027B /* DraftPresenter.swift */; };
 		C9328AA422C730100065027B /* DraftPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9328AA322C730100065027B /* DraftPresenterImpl.swift */; };
-		C9328AA622C732130065027B /* AllViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9328AA522C732130065027B /* AllViewController.swift */; };
-		C9328AA822C7321A0065027B /* AllUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9328AA722C7321A0065027B /* AllUI.swift */; };
-		C9328AAA22C732230065027B /* AllRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9328AA922C732230065027B /* AllRouting.swift */; };
+		C9328AA622C732130065027B /* PrivateAllViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9328AA522C732130065027B /* PrivateAllViewController.swift */; };
+		C9328AA822C7321A0065027B /* PrivateAllUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9328AA722C7321A0065027B /* PrivateAllUI.swift */; };
+		C9328AAA22C732230065027B /* PrivateAllRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9328AA922C732230065027B /* PrivateAllRouting.swift */; };
 		C9328AAC22C732A30065027B /* AllPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9328AAB22C732A30065027B /* AllPresenter.swift */; };
 		C9328AAE22C732A90065027B /* AllPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9328AAD22C732A90065027B /* AllPresenterImpl.swift */; };
 		C941332222C8B2CC0082A01C /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C941332122C8B2CC0082A01C /* DetailViewController.swift */; };
@@ -61,6 +61,15 @@
 		C94EE04922D0632500937CFA /* ReplyUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94EE04822D0632500937CFA /* ReplyUI.swift */; };
 		C94EE04B22D0633100937CFA /* ReplyRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94EE04A22D0633100937CFA /* ReplyRouting.swift */; };
 		C94F080F22ABEBF800BF3534 /* UIVIew+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94F080E22ABEBF800BF3534 /* UIVIew+Extension.swift */; };
+		C953152E22D5EA4100EEB3C0 /* PublicGoalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C953152D22D5EA4100EEB3C0 /* PublicGoalViewController.swift */; };
+		C953153022D5EA5000EEB3C0 /* PublicGoalUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C953152F22D5EA5000EEB3C0 /* PublicGoalUI.swift */; };
+		C953153222D5EA5700EEB3C0 /* PublicGoalRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C953153122D5EA5700EEB3C0 /* PublicGoalRouting.swift */; };
+		C953153422D5EA6600EEB3C0 /* PublicCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C953153322D5EA6600EEB3C0 /* PublicCompleteViewController.swift */; };
+		C953153622D5EA7100EEB3C0 /* PublicCompleteUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C953153522D5EA7100EEB3C0 /* PublicCompleteUI.swift */; };
+		C953153822D5EA8000EEB3C0 /* PublicCompleteRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C953153722D5EA8000EEB3C0 /* PublicCompleteRouting.swift */; };
+		C953153A22D5EA8F00EEB3C0 /* FollowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C953153922D5EA8F00EEB3C0 /* FollowViewController.swift */; };
+		C953153C22D5EA9800EEB3C0 /* FollowViewUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C953153B22D5EA9800EEB3C0 /* FollowViewUI.swift */; };
+		C953153E22D5EAA400EEB3C0 /* FollowRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C953153D22D5EAA400EEB3C0 /* FollowRouting.swift */; };
 		C958D9E122B5ACF800565EDE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C958D9E022B5ACF800565EDE /* Localizable.strings */; };
 		C958D9E722B62B9900565EDE /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C958D9E622B62B9900565EDE /* UIImage+Extension.swift */; };
 		C95ADED022AB141D00D851A0 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95ADECF22AB141D00D851A0 /* R.generated.swift */; };
@@ -88,9 +97,9 @@
 		C97DDD9322AD85ED00A84219 /* Translator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97DDD9222AD85ED00A84219 /* Translator.swift */; };
 		C97DDD9622AD879800A84219 /* AccountRemoteDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97DDD9522AD879800A84219 /* AccountRemoteDataStore.swift */; };
 		C97F9D0E22A6CCAA000779EF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C97F9D0D22A6CCAA000779EF /* GoogleService-Info.plist */; };
-		C988631322C5E0F200CABD62 /* GoalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C988631222C5E0F200CABD62 /* GoalViewController.swift */; };
-		C988631522C5E10600CABD62 /* GoalUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C988631422C5E10600CABD62 /* GoalUI.swift */; };
-		C988631722C5E10F00CABD62 /* GoalRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C988631622C5E10F00CABD62 /* GoalRouting.swift */; };
+		C988631322C5E0F200CABD62 /* PrivateGoalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C988631222C5E0F200CABD62 /* PrivateGoalViewController.swift */; };
+		C988631522C5E10600CABD62 /* PrivateGoalUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C988631422C5E10600CABD62 /* PrivateGoalUI.swift */; };
+		C988631722C5E10F00CABD62 /* PrivateGoalRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C988631622C5E10F00CABD62 /* PrivateGoalRouting.swift */; };
 		C988631922C5E6FF00CABD62 /* TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C988631822C5E6FF00CABD62 /* TableViewDataSource.swift */; };
 		C988631B22C5E92000CABD62 /* Timeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = C988631A22C5E92000CABD62 /* Timeline.swift */; };
 		C98E1BB622B7370100D132D5 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98E1BB522B7370100D132D5 /* UIImageView+Extension.swift */; };
@@ -116,9 +125,9 @@
 		C9A6067522B2A69D00184E0F /* UserEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A6067422B2A69D00184E0F /* UserEntity.swift */; };
 		C9A6067722B2A88500184E0F /* UserTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A6067622B2A88500184E0F /* UserTranslator.swift */; };
 		C9A6067922B2AAB600184E0F /* UserRemoteDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A6067822B2AAB600184E0F /* UserRemoteDataStore.swift */; };
-		C9A7F86D22C717EF005B4C44 /* CompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A7F86C22C717EF005B4C44 /* CompleteViewController.swift */; };
-		C9A7F86F22C717F6005B4C44 /* CompleteUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A7F86E22C717F6005B4C44 /* CompleteUI.swift */; };
-		C9A7F87122C71806005B4C44 /* CompleteRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A7F87022C71806005B4C44 /* CompleteRouting.swift */; };
+		C9A7F86D22C717EF005B4C44 /* PrivateCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A7F86C22C717EF005B4C44 /* PrivateCompleteViewController.swift */; };
+		C9A7F86F22C717F6005B4C44 /* PrivateCompleteUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A7F86E22C717F6005B4C44 /* PrivateCompleteUI.swift */; };
+		C9A7F87122C71806005B4C44 /* PrivateCompleteRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A7F87022C71806005B4C44 /* PrivateCompleteRouting.swift */; };
 		C9AED93C22B4CDD2002D37A0 /* UnderlinedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9AED93B22B4CDD2002D37A0 /* UnderlinedTextField.swift */; };
 		C9B55D0B22B0FE1B00845381 /* RemindViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B55D0A22B0FE1B00845381 /* RemindViewController.swift */; };
 		C9B55D0D22B0FE2200845381 /* RemindUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B55D0C22B0FE2200845381 /* RemindUI.swift */; };
@@ -153,6 +162,7 @@
 		C9CC391422D5CBB1001010F4 /* TimelinePresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CC391322D5CBB1001010F4 /* TimelinePresenterImpl.swift */; };
 		C9CC391622D5CD46001010F4 /* TimelineUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CC391522D5CD46001010F4 /* TimelineUseCase.swift */; };
 		C9CC391822D5CD87001010F4 /* TimelineRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CC391722D5CD87001010F4 /* TimelineRepository.swift */; };
+		C9CC391A22D5D682001010F4 /* MainTabController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CC391922D5D682001010F4 /* MainTabController+Extension.swift */; };
 		C9D77F8222C9C5B20007835B /* GoalPostEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D77F8122C9C5B20007835B /* GoalPostEditViewController.swift */; };
 		C9D77F8422C9C5C10007835B /* GoalPostEditUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D77F8322C9C5C10007835B /* GoalPostEditUI.swift */; };
 		C9D77F8622C9C5C80007835B /* GoalPostEditRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D77F8522C9C5C80007835B /* GoalPostEditRouting.swift */; };
@@ -240,14 +250,14 @@
 		C93271E122CF6E6100AA9BA6 /* DetailLocalDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailLocalDataStore.swift; sourceTree = "<group>"; };
 		C9328A9722C7193E0065027B /* CompletePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletePresenter.swift; sourceTree = "<group>"; };
 		C9328A9922C719480065027B /* CompletePresenterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletePresenterImpl.swift; sourceTree = "<group>"; };
-		C9328A9B22C72FA00065027B /* DraftViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraftViewController.swift; sourceTree = "<group>"; };
-		C9328A9D22C72FBA0065027B /* DraftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraftUI.swift; sourceTree = "<group>"; };
-		C9328A9F22C72FDC0065027B /* DraftRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraftRouting.swift; sourceTree = "<group>"; };
+		C9328A9B22C72FA00065027B /* PrivateDraftViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateDraftViewController.swift; sourceTree = "<group>"; };
+		C9328A9D22C72FBA0065027B /* PrivateDraftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateDraftUI.swift; sourceTree = "<group>"; };
+		C9328A9F22C72FDC0065027B /* PrivateDraftRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateDraftRouting.swift; sourceTree = "<group>"; };
 		C9328AA122C7300A0065027B /* DraftPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraftPresenter.swift; sourceTree = "<group>"; };
 		C9328AA322C730100065027B /* DraftPresenterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraftPresenterImpl.swift; sourceTree = "<group>"; };
-		C9328AA522C732130065027B /* AllViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllViewController.swift; sourceTree = "<group>"; };
-		C9328AA722C7321A0065027B /* AllUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllUI.swift; sourceTree = "<group>"; };
-		C9328AA922C732230065027B /* AllRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllRouting.swift; sourceTree = "<group>"; };
+		C9328AA522C732130065027B /* PrivateAllViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateAllViewController.swift; sourceTree = "<group>"; };
+		C9328AA722C7321A0065027B /* PrivateAllUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateAllUI.swift; sourceTree = "<group>"; };
+		C9328AA922C732230065027B /* PrivateAllRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateAllRouting.swift; sourceTree = "<group>"; };
 		C9328AAB22C732A30065027B /* AllPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllPresenter.swift; sourceTree = "<group>"; };
 		C9328AAD22C732A90065027B /* AllPresenterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllPresenterImpl.swift; sourceTree = "<group>"; };
 		C941332122C8B2CC0082A01C /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
@@ -260,6 +270,15 @@
 		C94EE04822D0632500937CFA /* ReplyUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplyUI.swift; sourceTree = "<group>"; };
 		C94EE04A22D0633100937CFA /* ReplyRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplyRouting.swift; sourceTree = "<group>"; };
 		C94F080E22ABEBF800BF3534 /* UIVIew+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIVIew+Extension.swift"; sourceTree = "<group>"; };
+		C953152D22D5EA4100EEB3C0 /* PublicGoalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicGoalViewController.swift; sourceTree = "<group>"; };
+		C953152F22D5EA5000EEB3C0 /* PublicGoalUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicGoalUI.swift; sourceTree = "<group>"; };
+		C953153122D5EA5700EEB3C0 /* PublicGoalRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicGoalRouting.swift; sourceTree = "<group>"; };
+		C953153322D5EA6600EEB3C0 /* PublicCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicCompleteViewController.swift; sourceTree = "<group>"; };
+		C953153522D5EA7100EEB3C0 /* PublicCompleteUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicCompleteUI.swift; sourceTree = "<group>"; };
+		C953153722D5EA8000EEB3C0 /* PublicCompleteRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicCompleteRouting.swift; sourceTree = "<group>"; };
+		C953153922D5EA8F00EEB3C0 /* FollowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowViewController.swift; sourceTree = "<group>"; };
+		C953153B22D5EA9800EEB3C0 /* FollowViewUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowViewUI.swift; sourceTree = "<group>"; };
+		C953153D22D5EAA400EEB3C0 /* FollowRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowRouting.swift; sourceTree = "<group>"; };
 		C958D9E022B5ACF800565EDE /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		C958D9E622B62B9900565EDE /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		C95ADECF22AB141D00D851A0 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
@@ -287,9 +306,9 @@
 		C97DDD9222AD85ED00A84219 /* Translator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Translator.swift; sourceTree = "<group>"; };
 		C97DDD9522AD879800A84219 /* AccountRemoteDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountRemoteDataStore.swift; sourceTree = "<group>"; };
 		C97F9D0D22A6CCAA000779EF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		C988631222C5E0F200CABD62 /* GoalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalViewController.swift; sourceTree = "<group>"; };
-		C988631422C5E10600CABD62 /* GoalUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalUI.swift; sourceTree = "<group>"; };
-		C988631622C5E10F00CABD62 /* GoalRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalRouting.swift; sourceTree = "<group>"; };
+		C988631222C5E0F200CABD62 /* PrivateGoalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateGoalViewController.swift; sourceTree = "<group>"; };
+		C988631422C5E10600CABD62 /* PrivateGoalUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateGoalUI.swift; sourceTree = "<group>"; };
+		C988631622C5E10F00CABD62 /* PrivateGoalRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateGoalRouting.swift; sourceTree = "<group>"; };
 		C988631822C5E6FF00CABD62 /* TableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDataSource.swift; sourceTree = "<group>"; };
 		C988631A22C5E92000CABD62 /* Timeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timeline.swift; sourceTree = "<group>"; };
 		C98E1BB522B7370100D132D5 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
@@ -317,9 +336,9 @@
 		C9A6067422B2A69D00184E0F /* UserEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEntity.swift; sourceTree = "<group>"; };
 		C9A6067622B2A88500184E0F /* UserTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTranslator.swift; sourceTree = "<group>"; };
 		C9A6067822B2AAB600184E0F /* UserRemoteDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRemoteDataStore.swift; sourceTree = "<group>"; };
-		C9A7F86C22C717EF005B4C44 /* CompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteViewController.swift; sourceTree = "<group>"; };
-		C9A7F86E22C717F6005B4C44 /* CompleteUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteUI.swift; sourceTree = "<group>"; };
-		C9A7F87022C71806005B4C44 /* CompleteRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteRouting.swift; sourceTree = "<group>"; };
+		C9A7F86C22C717EF005B4C44 /* PrivateCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateCompleteViewController.swift; sourceTree = "<group>"; };
+		C9A7F86E22C717F6005B4C44 /* PrivateCompleteUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateCompleteUI.swift; sourceTree = "<group>"; };
+		C9A7F87022C71806005B4C44 /* PrivateCompleteRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateCompleteRouting.swift; sourceTree = "<group>"; };
 		C9AED93B22B4CDD2002D37A0 /* UnderlinedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlinedTextField.swift; sourceTree = "<group>"; };
 		C9B55D0A22B0FE1B00845381 /* RemindViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindViewController.swift; sourceTree = "<group>"; };
 		C9B55D0C22B0FE2200845381 /* RemindUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindUI.swift; sourceTree = "<group>"; };
@@ -354,6 +373,7 @@
 		C9CC391322D5CBB1001010F4 /* TimelinePresenterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelinePresenterImpl.swift; sourceTree = "<group>"; };
 		C9CC391522D5CD46001010F4 /* TimelineUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineUseCase.swift; sourceTree = "<group>"; };
 		C9CC391722D5CD87001010F4 /* TimelineRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineRepository.swift; sourceTree = "<group>"; };
+		C9CC391922D5D682001010F4 /* MainTabController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainTabController+Extension.swift"; sourceTree = "<group>"; };
 		C9D77F8122C9C5B20007835B /* GoalPostEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalPostEditViewController.swift; sourceTree = "<group>"; };
 		C9D77F8322C9C5C10007835B /* GoalPostEditUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalPostEditUI.swift; sourceTree = "<group>"; };
 		C9D77F8522C9C5C80007835B /* GoalPostEditRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalPostEditRouting.swift; sourceTree = "<group>"; };
@@ -509,13 +529,13 @@
 			path = Draft;
 			sourceTree = "<group>";
 		};
-		C9328A9622C719010065027B /* Iine */ = {
+		C9328A9622C719010065027B /* All */ = {
 			isa = PBXGroup;
 			children = (
 				C9328AAB22C732A30065027B /* AllPresenter.swift */,
 				C9328AAD22C732A90065027B /* AllPresenterImpl.swift */,
 			);
-			path = Iine;
+			path = All;
 			sourceTree = "<group>";
 		};
 		C941332022C8B2BB0082A01C /* Detail */ = {
@@ -549,6 +569,36 @@
 			path = Reply;
 			sourceTree = "<group>";
 		};
+		C953152A22D5E33100EEB3C0 /* Goal */ = {
+			isa = PBXGroup;
+			children = (
+				C953152D22D5EA4100EEB3C0 /* PublicGoalViewController.swift */,
+				C953152F22D5EA5000EEB3C0 /* PublicGoalUI.swift */,
+				C953153122D5EA5700EEB3C0 /* PublicGoalRouting.swift */,
+			);
+			path = Goal;
+			sourceTree = "<group>";
+		};
+		C953152B22D5E6A800EEB3C0 /* Complete */ = {
+			isa = PBXGroup;
+			children = (
+				C953153322D5EA6600EEB3C0 /* PublicCompleteViewController.swift */,
+				C953153522D5EA7100EEB3C0 /* PublicCompleteUI.swift */,
+				C953153722D5EA8000EEB3C0 /* PublicCompleteRouting.swift */,
+			);
+			path = Complete;
+			sourceTree = "<group>";
+		};
+		C953152C22D5E6BC00EEB3C0 /* Follow */ = {
+			isa = PBXGroup;
+			children = (
+				C953153922D5EA8F00EEB3C0 /* FollowViewController.swift */,
+				C953153B22D5EA9800EEB3C0 /* FollowViewUI.swift */,
+				C953153D22D5EAA400EEB3C0 /* FollowRouting.swift */,
+			);
+			path = Follow;
+			sourceTree = "<group>";
+		};
 		C95E08A922B116EF000C41C7 /* MainTab */ = {
 			isa = PBXGroup;
 			children = (
@@ -571,7 +621,7 @@
 				C978FD2022C6070900859851 /* Goal */,
 				C9A7F87222C718DC005B4C44 /* Complete */,
 				C9328A9522C718FC0065027B /* Draft */,
-				C9328A9622C719010065027B /* Iine */,
+				C9328A9622C719010065027B /* All */,
 				C941332922C8BD220082A01C /* Detail */,
 			);
 			path = Timeline;
@@ -703,9 +753,9 @@
 		C988630E22C5E06F00CABD62 /* Goal */ = {
 			isa = PBXGroup;
 			children = (
-				C988631222C5E0F200CABD62 /* GoalViewController.swift */,
-				C988631422C5E10600CABD62 /* GoalUI.swift */,
-				C988631622C5E10F00CABD62 /* GoalRouting.swift */,
+				C988631222C5E0F200CABD62 /* PrivateGoalViewController.swift */,
+				C988631422C5E10600CABD62 /* PrivateGoalUI.swift */,
+				C988631622C5E10F00CABD62 /* PrivateGoalRouting.swift */,
 			);
 			path = Goal;
 			sourceTree = "<group>";
@@ -713,9 +763,9 @@
 		C988630F22C5E07600CABD62 /* All */ = {
 			isa = PBXGroup;
 			children = (
-				C9328AA522C732130065027B /* AllViewController.swift */,
-				C9328AA722C7321A0065027B /* AllUI.swift */,
-				C9328AA922C732230065027B /* AllRouting.swift */,
+				C9328AA522C732130065027B /* PrivateAllViewController.swift */,
+				C9328AA722C7321A0065027B /* PrivateAllUI.swift */,
+				C9328AA922C732230065027B /* PrivateAllRouting.swift */,
 			);
 			path = All;
 			sourceTree = "<group>";
@@ -723,9 +773,9 @@
 		C988631022C5E07D00CABD62 /* Draft */ = {
 			isa = PBXGroup;
 			children = (
-				C9328A9B22C72FA00065027B /* DraftViewController.swift */,
-				C9328A9D22C72FBA0065027B /* DraftUI.swift */,
-				C9328A9F22C72FDC0065027B /* DraftRouting.swift */,
+				C9328A9B22C72FA00065027B /* PrivateDraftViewController.swift */,
+				C9328A9D22C72FBA0065027B /* PrivateDraftUI.swift */,
+				C9328A9F22C72FDC0065027B /* PrivateDraftRouting.swift */,
 			);
 			path = Draft;
 			sourceTree = "<group>";
@@ -733,9 +783,9 @@
 		C988631122C5E08600CABD62 /* Complete */ = {
 			isa = PBXGroup;
 			children = (
-				C9A7F86C22C717EF005B4C44 /* CompleteViewController.swift */,
-				C9A7F86E22C717F6005B4C44 /* CompleteUI.swift */,
-				C9A7F87022C71806005B4C44 /* CompleteRouting.swift */,
+				C9A7F86C22C717EF005B4C44 /* PrivateCompleteViewController.swift */,
+				C9A7F86E22C717F6005B4C44 /* PrivateCompleteUI.swift */,
+				C9A7F87022C71806005B4C44 /* PrivateCompleteRouting.swift */,
 			);
 			path = Complete;
 			sourceTree = "<group>";
@@ -931,6 +981,9 @@
 				C90B6D1A22D4F6B2009871DE /* TimelineViewController.swift */,
 				C90B6D1C22D4F6C1009871DE /* TimelineUI.swift */,
 				C90B6D1E22D4F6CA009871DE /* TimelineRouting.swift */,
+				C953152A22D5E33100EEB3C0 /* Goal */,
+				C953152B22D5E6A800EEB3C0 /* Complete */,
+				C953152C22D5E6BC00EEB3C0 /* Follow */,
 			);
 			path = Timeline;
 			sourceTree = "<group>";
@@ -1093,6 +1146,7 @@
 				C979404822BF447A00929C2A /* Array+Extension.swift */,
 				C978FD2922C67D4700859851 /* GoalPostViewController+Extension.swift */,
 				C9D77F8722C9CACE0007835B /* GoalPostEditViewController+Extension.swift */,
+				C9CC391922D5D682001010F4 /* MainTabController+Extension.swift */,
 				C9CB2B4122D4CE320081C499 /* UITableViewCell.swift */,
 			);
 			path = Extensions;
@@ -1399,7 +1453,7 @@
 				C97DDD9622AD879800A84219 /* AccountRemoteDataStore.swift in Sources */,
 				C9D77F8F22CA41870007835B /* CommentCell.swift in Sources */,
 				C972692A22BB3BA300CDFD59 /* Genre.swift in Sources */,
-				C9328A9C22C72FA00065027B /* DraftViewController.swift in Sources */,
+				C9328A9C22C72FA00065027B /* PrivateDraftViewController.swift in Sources */,
 				C9D9013B22AB5E800040390E /* TopViewController.swift in Sources */,
 				C91FA65D22B5686B006D9E6D /* DateFormatter+ Extension.swift in Sources */,
 				C99116AA22B8A30C007C67C7 /* PasswordEditingViewController.swift in Sources */,
@@ -1409,29 +1463,30 @@
 				C9035CB222B7773D006DFAB9 /* SettingsRouting.swift in Sources */,
 				C91D8E4022CA63A6000379E3 /* DetailRepository.swift in Sources */,
 				C9D9010922AB44D80040390E /* AppUserDefault.swift in Sources */,
-				C9A7F87122C71806005B4C44 /* CompleteRouting.swift in Sources */,
+				C9A7F87122C71806005B4C44 /* PrivateCompleteRouting.swift in Sources */,
 				C97901CD22B9534B00C245B2 /* NewThingsView.swift in Sources */,
-				C988631522C5E10600CABD62 /* GoalUI.swift in Sources */,
+				C988631522C5E10600CABD62 /* PrivateGoalUI.swift in Sources */,
 				C9F2497122B79CEE007E82A0 /* EmailEditingUI.swift in Sources */,
 				C9D9010C22AB456D0040390E /* Date+Extension.swift in Sources */,
 				C9C43B8922D0BD0D006CBC1B /* ReplyPresenterImpl.swift in Sources */,
 				C92E7FE322B90D250031AE4F /* GoalPostViewController.swift in Sources */,
 				C98E1BB822B7456700D132D5 /* ImagePicker.swift in Sources */,
 				C9EA654822BBDD20002BE1C8 /* GoalPostUseCase.swift in Sources */,
+				C9CC391A22D5D682001010F4 /* MainTabController+Extension.swift in Sources */,
 				C9A6067522B2A69D00184E0F /* UserEntity.swift in Sources */,
 				C97DDD7B22AD543F00A84219 /* SignupInputPresenter.swift in Sources */,
 				C9A6066722B26CCB00184E0F /* MypagePresenterImpl.swift in Sources */,
 				C9A6066122B2676B00184E0F /* MypagePresenter.swift in Sources */,
-				C9328AA822C7321A0065027B /* AllUI.swift in Sources */,
+				C9328AA822C7321A0065027B /* PrivateAllUI.swift in Sources */,
 				C941332222C8B2CC0082A01C /* DetailViewController.swift in Sources */,
-				C9328AA022C72FDC0065027B /* DraftRouting.swift in Sources */,
+				C9328AA022C72FDC0065027B /* PrivateDraftRouting.swift in Sources */,
 				C9CC28F422AD3BEB006E69E5 /* SignupInputViewController.swift in Sources */,
 				C94704D322D390D200DF2F16 /* memo.swift in Sources */,
 				C9A6067922B2AAB600184E0F /* UserRemoteDataStore.swift in Sources */,
 				C94F080F22ABEBF800BF3534 /* UIVIew+Extension.swift in Sources */,
 				C941332422C8B2D20082A01C /* DetailUI.swift in Sources */,
 				C9ED720222B137D700BDB9A7 /* MypageRouting.swift in Sources */,
-				C9328AAA22C732230065027B /* AllRouting.swift in Sources */,
+				C9328AAA22C732230065027B /* PrivateAllRouting.swift in Sources */,
 				C95E08AB22B11750000C41C7 /* MainTabController.swift in Sources */,
 				C9B55D0F22B0FE2E00845381 /* RemingRouting.swift in Sources */,
 				C9C43B8B22D0C60B006CBC1B /* ReplyCell.swift in Sources */,
@@ -1445,13 +1500,16 @@
 				C9F2496F22B79CBF007E82A0 /* EmailEditingViewController.swift in Sources */,
 				C9CC391222D5CBAA001010F4 /* TimelinePresenter.swift in Sources */,
 				C979404922BF447A00929C2A /* Array+Extension.swift in Sources */,
+				C953153A22D5EA8F00EEB3C0 /* FollowViewController.swift in Sources */,
 				C9A6065D22B2643F00184E0F /* TimelineCell+Extension.swift in Sources */,
 				C99116AC22B8A318007C67C7 /* PasswordEditingUI.swift in Sources */,
 				C9035CAE22B7772A006DFAB9 /* SettingsViewController.swift in Sources */,
 				C9C43B9122D0C83C006CBC1B /* ReplyEntity.swift in Sources */,
 				C9CC28F822AD3C03006E69E5 /* SignupInputRouting.swift in Sources */,
-				C9A7F86F22C717F6005B4C44 /* CompleteUI.swift in Sources */,
+				C953153222D5EA5700EEB3C0 /* PublicGoalRouting.swift in Sources */,
+				C9A7F86F22C717F6005B4C44 /* PrivateCompleteUI.swift in Sources */,
 				C9CB2B4222D4CE320081C499 /* UITableViewCell.swift in Sources */,
+				C953153622D5EA7100EEB3C0 /* PublicCompleteUI.swift in Sources */,
 				C9D77F8D22C9CB650007835B /* GoalPostEditPresenterImpl.swift in Sources */,
 				C93271DA22CF6B5D00AA9BA6 /* GoalDataStoreFactory.swift in Sources */,
 				C9D77F8822C9CACE0007835B /* GoalPostEditViewController+Extension.swift in Sources */,
@@ -1461,6 +1519,7 @@
 				C94EE04922D0632500937CFA /* ReplyUI.swift in Sources */,
 				C9D9013122AB55F40040390E /* LoginInputPresenter.swift in Sources */,
 				C9EA654A22BC194D002BE1C8 /* GoalRepository.swift in Sources */,
+				C953153022D5EA5000EEB3C0 /* PublicGoalUI.swift in Sources */,
 				C99116B222B8A917007C67C7 /* PasswordEditingPresenterImpl.swift in Sources */,
 				C9328AAE22C732A90065027B /* AllPresenterImpl.swift in Sources */,
 				C926CD9E22B3C417008672AA /* EditViewController.swift in Sources */,
@@ -1472,7 +1531,7 @@
 				C9A6066A22B26DDB00184E0F /* MypageUseCase.swift in Sources */,
 				C978FD2422C6071900859851 /* GoalPresenterImpl.swift in Sources */,
 				C90B6D1F22D4F6CA009871DE /* TimelineRouting.swift in Sources */,
-				C9328A9E22C72FBB0065027B /* DraftUI.swift in Sources */,
+				C9328A9E22C72FBB0065027B /* PrivateDraftUI.swift in Sources */,
 				C9CC391822D5CD87001010F4 /* TimelineRepository.swift in Sources */,
 				C9D9012A22AB538E0040390E /* UI.swift in Sources */,
 				C9D77F8222C9C5B20007835B /* GoalPostEditViewController.swift in Sources */,
@@ -1489,6 +1548,7 @@
 				C9C43B8722D0BD03006CBC1B /* ReplyPresenter.swift in Sources */,
 				C91FA65422B4FF84006D9E6D /* EditPresenter.swift in Sources */,
 				C92E0BBF22CB02BC007A2F0C /* CommentTranslator.swift in Sources */,
+				C953153E22D5EAA400EEB3C0 /* FollowRouting.swift in Sources */,
 				C93271D822CF6B4500AA9BA6 /* DetailDataStoreFactory.swift in Sources */,
 				C91FA65822B50401006D9E6D /* EditUseCase.swift in Sources */,
 				C97901D022B95AA800C245B2 /* GenreView.swift in Sources */,
@@ -1506,12 +1566,13 @@
 				C9D77F8622C9C5C80007835B /* GoalPostEditRouting.swift in Sources */,
 				C9D77F9322CA63120007835B /* DetailUseCase.swift in Sources */,
 				C97DDD9122AD83CC00A84219 /* AccountTranslator.swift in Sources */,
+				C953153C22D5EA9800EEB3C0 /* FollowViewUI.swift in Sources */,
 				C9C43B7B22D09118006CBC1B /* HalfModalPresentationController.swift in Sources */,
 				C93271E222CF6E6100AA9BA6 /* DetailLocalDataStore.swift in Sources */,
-				C9328AA622C732130065027B /* AllViewController.swift in Sources */,
+				C9328AA622C732130065027B /* PrivateAllViewController.swift in Sources */,
 				C972692822BB2DD400CDFD59 /* ExpectedResultView.swift in Sources */,
 				C9D9011422AB502E0040390E /* UIButton+Extension.swift in Sources */,
-				C988631322C5E0F200CABD62 /* GoalViewController.swift in Sources */,
+				C988631322C5E0F200CABD62 /* PrivateGoalViewController.swift in Sources */,
 				C9CC28EB22ACD89D006E69E5 /* LoginInputUI.swift in Sources */,
 				C9D9011D22AB51830040390E /* UILabel+Extension.swift in Sources */,
 				C9C43B8122D09220006CBC1B /* HalfModalTransitionAnimator.swift in Sources */,
@@ -1526,7 +1587,7 @@
 				C9D77F9122CA59110007835B /* CommentPost.swift in Sources */,
 				C9A6067722B2A88500184E0F /* UserTranslator.swift in Sources */,
 				C99116AE22B8A323007C67C7 /* PasswordEditingRouting.swift in Sources */,
-				C988631722C5E10F00CABD62 /* GoalRouting.swift in Sources */,
+				C988631722C5E10F00CABD62 /* PrivateGoalRouting.swift in Sources */,
 				C9B55D0B22B0FE1B00845381 /* RemindViewController.swift in Sources */,
 				C9F2497B22B88E93007E82A0 /* PaddingTextField.swift in Sources */,
 				C978FD2222C6071200859851 /* GoalPresenter.swift in Sources */,
@@ -1540,7 +1601,9 @@
 				C9C43B9322D1078C006CBC1B /* ReplyTranslator.swift in Sources */,
 				C9328A9822C7193E0065027B /* CompletePresenter.swift in Sources */,
 				C97DDD7D22AD544E00A84219 /* SignupInputPresenterImpl.swift in Sources */,
+				C953152E22D5EA4100EEB3C0 /* PublicGoalViewController.swift in Sources */,
 				C941332622C8B2DC0082A01C /* DetailRouting.swift in Sources */,
+				C953153822D5EA8000EEB3C0 /* PublicCompleteRouting.swift in Sources */,
 				C9C2808422BBD6A3002E905E /* GoalPost.swift in Sources */,
 				C9C43B7F22D09207006CBC1B /* HalfModalInteractiveTransition.swift in Sources */,
 				C91D8E4222CA6495000379E3 /* DetailRemoteDataStore.swift in Sources */,
@@ -1557,7 +1620,7 @@
 				C9EA654422BBDAAA002BE1C8 /* GoalPostPresenter.swift in Sources */,
 				C90B6D1D22D4F6C1009871DE /* TimelineUI.swift in Sources */,
 				C9328AAC22C732A30065027B /* AllPresenter.swift in Sources */,
-				C9A7F86D22C717EF005B4C44 /* CompleteViewController.swift in Sources */,
+				C9A7F86D22C717EF005B4C44 /* PrivateCompleteViewController.swift in Sources */,
 				C9B55D1222B1010200845381 /* RemindPresenter.swift in Sources */,
 				C97DDD7F22AD550F00A84219 /* Presenter.swift in Sources */,
 				C9ED720422B16A7700BDB9A7 /* CustomSegmentedControl.swift in Sources */,
@@ -1571,6 +1634,7 @@
 				C9328A9A22C719480065027B /* CompletePresenterImpl.swift in Sources */,
 				C9D77F8422C9C5C10007835B /* GoalPostEditUI.swift in Sources */,
 				C92E7FE722B90D430031AE4F /* GoalPostRouting.swift in Sources */,
+				C953153422D5EA6600EEB3C0 /* PublicCompleteViewController.swift in Sources */,
 				C92E7FE522B90D350031AE4F /* GoalPostUI.swift in Sources */,
 				C97DDD8222AD71C100A84219 /* SignupUseCase.swift in Sources */,
 				C92E0BBD22CB0145007A2F0C /* Comment.swift in Sources */,

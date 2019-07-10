@@ -1,11 +1,6 @@
 import UIKit
 
-protocol DraftUI: UI {
-    var timeline: UITableView { get set }
-    func setup()
-}
-
-final class DraftUIImpl: DraftUI {
+final class PrivateDraftUIImpl: TimelineContentUI {
     
     weak var viewController: UIViewController?
     
@@ -25,7 +20,7 @@ final class DraftUIImpl: DraftUI {
     }()
 }
 
-extension DraftUIImpl {
+extension PrivateDraftUIImpl {
     
     func setup() {
         guard let vc = viewController else { return }

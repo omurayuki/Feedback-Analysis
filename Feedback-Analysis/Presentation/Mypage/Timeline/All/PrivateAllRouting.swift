@@ -2,11 +2,11 @@ import Foundation
 import UIKit
 import RxSwift
 
-protocol GoalRouting: Routing {
+protocol PrivateAllRouting: Routing {
     func showDetail(with timeline: Timeline, height: CGFloat)
 }
 
-final class GoalRoutingImpl: GoalRouting {
+final class PrivateAllRoutingImpl: PrivateAllRouting {
     
     var viewController: UIViewController?
     

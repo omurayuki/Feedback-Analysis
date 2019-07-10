@@ -2,8 +2,8 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-class DraftPresenterImpl: NSObject, DraftPresenter {
-    var view: DraftPresenterView!
+class PrivateDraftPresenterImpl: NSObject, PrivateDraftPresenter {
+    var view: PrivateDraftPresenterView!
     
     var isLoading: BehaviorRelay<Bool> = BehaviorRelay<Bool>(value: false)
     
@@ -98,7 +98,7 @@ class DraftPresenterImpl: NSObject, DraftPresenter {
     }
 }
 
-extension DraftPresenterImpl: UITableViewDelegate {
+extension PrivateDraftPresenterImpl: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         view.didSelect(indexPath: indexPath, tableView: tableView)

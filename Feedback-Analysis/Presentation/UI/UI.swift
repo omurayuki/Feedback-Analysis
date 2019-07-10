@@ -12,3 +12,8 @@ extension UI {
         return obj
     }
 }
+
+protocol TimelineContentUI: UI {
+    var timeline: UITableView { get set }
+    func setup()
+}

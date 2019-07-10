@@ -1,11 +1,6 @@
 import UIKit
 
-protocol AllUI: UI {
-    var timeline: UITableView { get set }
-    func setup()
-}
-
-final class AllUIImpl: AllUI {
+final class PrivateAllUIImpl: TimelineContentUI {
     
     weak var viewController: UIViewController?
     
@@ -25,7 +20,7 @@ final class AllUIImpl: AllUI {
     }()
 }
 
-extension AllUIImpl {
+extension PrivateAllUIImpl {
     
     func setup() {
         guard let vc = viewController else { return }

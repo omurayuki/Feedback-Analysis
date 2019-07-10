@@ -2,8 +2,8 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-class GoalPresenterImpl: NSObject, GoalPresenter {
-    var view: GoalPresenterView!
+class PrivateGoalPresenterImpl: NSObject, PrivateGoalPresenter {
+    var view: PrivateGoalPresenterView!
     
     var isLoading: BehaviorRelay<Bool> = BehaviorRelay<Bool>(value: false)
     
@@ -98,7 +98,7 @@ class GoalPresenterImpl: NSObject, GoalPresenter {
     }
 }
 
-extension GoalPresenterImpl: UITableViewDelegate {
+extension PrivateGoalPresenterImpl: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         view.didSelect(indexPath: indexPath, tableView: tableView)

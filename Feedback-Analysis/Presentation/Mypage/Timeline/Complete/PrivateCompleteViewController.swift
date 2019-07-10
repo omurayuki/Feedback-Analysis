@@ -4,7 +4,7 @@ import RxSwift
 import RxCocoa
 import FirebaseFirestore
 
-class GoalViewController: UIViewController {
+class PrivateCompleteViewController: UIViewController {
     
     typealias DataSource = TableViewDataSource<TimelineCell, Timeline>
     
@@ -12,18 +12,17 @@ class GoalViewController: UIViewController {
         return DataSource(cellReuseIdentifier: String(describing: TimelineCell.self),
                           listItems: [],
                           isSkelton: false,
-                          cellConfigurationHandler: { (cell, item, indexPath) in
+                          cellConfigurationHandler: { (cell, item, _) in
             cell.delegate = self
-            cell.identificationId = indexPath.row
             cell.content = item
         })
     }()
     
-    var ui: GoalUI!
+    var ui: TimelineContentUI!
     
-    var routing: GoalRouting!
+    var routing: PrivateCompleteRouting!
     
-    var presenter: GoalPresenter! {
+    var presenter: PrivateCompletePresenter! {
         didSet {
             presenter.view = self
         }
@@ -39,16 +38,16 @@ class GoalViewController: UIViewController {
         }
     }
     
-    func inject(ui: GoalUI,
-                presenter: GoalPresenter,
-                routing: GoalRouting,
+    func inject(ui: TimelineContentUI,
+                presenter: PrivateCompletePresenter,
+                routing: PrivateCompleteRouting,
                 disposeBag: DisposeBag) {
         self.ui = ui
         self.presenter = presenter
         self.routing = routing
         self.disposeBag = disposeBag
         
-        self.presenter.fetch(from: .goalRef, completion: nil)
+        self.presenter.fetch(from: .completeRef, completion: nil)
     }
     
     override func viewDidLoad() {
@@ -57,7 +56,7 @@ class GoalViewController: UIViewController {
     }
 }
 
-extension GoalViewController: GoalPresenterView {
+extension PrivateCompleteViewController: PrivateCompletePresenterView {
     
     func updateLoading(_ isLoading: Bool) {
         presenter.isLoading.accept(isLoading)
@@ -79,12 +78,10 @@ extension GoalViewController: GoalPresenterView {
         switch bool {
         case false:
             presenter.getSelected { index in
-                self.updateLikeCount(index: index, count: 1)
                 self.presenter.create(documentRef: .likeUserRef(goalDocument: self.dataSource.listItems[index].documentId), value: [:])
             }
         case true:
             presenter.getSelected { index in
-                self.updateLikeCount(index: index, count: -1)
                 self.presenter.delete(documentRef: .likeUserRef(goalDocument: self.dataSource.listItems[index].documentId))
             }
         }
@@ -107,15 +104,7 @@ extension GoalViewController: GoalPresenterView {
     }
 }
 
-extension GoalViewController {
-    
-    func updateLikeCount(index: Int, count: Int) {
-        dataSource.listItems[index].likeCount += count
-        ui.timeline.reloadData()
-    }
-}
-
-extension GoalViewController: CellTapDelegate {
+extension PrivateCompleteViewController: CellTapDelegate {
     
     func tappedLikeBtn(index: Int) {
         presenter.get(documentRef: .likeUserRef(goalDocument: dataSource.listItems[index].documentId))
