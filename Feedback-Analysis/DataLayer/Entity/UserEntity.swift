@@ -1,6 +1,6 @@
 import Foundation
 
-struct UserEntity: Entity {
+struct UserEntity: Entity, Codable {
     let headerImage: String
     let userImage: String
     let name: String

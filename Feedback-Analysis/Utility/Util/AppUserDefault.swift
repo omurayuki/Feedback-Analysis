@@ -55,9 +55,19 @@ class AppUserDefaults {
     class func setSelected(index: Int) {
         putIntValue(index, keyName: "index")
     }
+    
+    // structData
+    class func getUser() -> [UserEntity] {
+        return getStructValue(keyName: "user")
+    }
+    
+    class func setUser(user: [User]) {
+        putStructValue(user, keyName: "user")
+    }
 }
 
 extension AppUserDefaults {
+    
     private class func getStringValue(keyName: String) -> String {
         let userDefaults: UserDefaults = UserDefaults.standard
         return userDefaults.string(forKey: keyName) ?? ""
@@ -66,7 +76,6 @@ extension AppUserDefaults {
     private class func putStringValue(_ value: String, keyName: String) {
         let userDefaults: UserDefaults = UserDefaults.standard
         userDefaults.setValue(value, forKey: keyName)
-        userDefaults.synchronize()
     }
     
     private class func getIntValue(keyName: String) -> Int {
@@ -77,7 +86,6 @@ extension AppUserDefaults {
     private class func putIntValue(_ value: Int, keyName: String) {
         let userDefaults: UserDefaults = UserDefaults.standard
         userDefaults.set(value, forKey: keyName)
-        userDefaults.synchronize()
     }
     
     private class func getBoolValue(keyName: String) -> Bool {
@@ -88,6 +96,17 @@ extension AppUserDefaults {
     private class func putBoolValue(_ value: Bool, keyName: String) {
         let userDefaults: UserDefaults = UserDefaults.standard
         userDefaults.set(value, forKey: keyName)
-        userDefaults.synchronize()
+    }
+    
+    private class func getStructValue<T: Codable>(keyName: String) -> [T] {
+        let userDefaults: UserDefaults = UserDefaults.standard
+        guard let data = userDefaults.array(forKey: keyName) as? [Data] else { return [] }
+        return data.map { try! JSONDecoder().decode(T.self, from: $0) }
+    }
+    
+    private class func putStructValue<T: Codable>(_ value: [T], keyName: String) {
+        let userDefaults: UserDefaults = UserDefaults.standard
+        let data = value.map { try? JSONEncoder().encode($0) }
+        userDefaults.set(data, forKey: keyName)
     }
 }

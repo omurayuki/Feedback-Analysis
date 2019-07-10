@@ -1,6 +1,6 @@
 import Foundation
 
-struct User {
+struct User: Codable {
     let headerImage: String
     let userImage: String
     let name: String
