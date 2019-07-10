@@ -28,9 +28,7 @@ struct DetailUseCaseImpl: DetailUseCase {
     }
     
     func fetch() -> Single<Account> {
-        return repository
-            .fetch()
-            .map { AccountTranslator().translate($0) }
+        return repository.fetch().map { AccountTranslator().translate($0) }
     }
     
     func update(to documentRef: FirebaseDocumentRef, value: [String : Any]) -> Single<()> {

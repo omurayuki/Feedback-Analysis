@@ -13,6 +13,9 @@
 		C9035CB222B7773D006DFAB9 /* SettingsRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9035CB122B7773D006DFAB9 /* SettingsRouting.swift */; };
 		C9035CB422B77E10006DFAB9 /* SettingsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9035CB322B77E10006DFAB9 /* SettingsSection.swift */; };
 		C90535CB22AFBD55006B2E04 /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90535CA22AFBD55006B2E04 /* Provider.swift */; };
+		C90B6D1B22D4F6B2009871DE /* TimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90B6D1A22D4F6B2009871DE /* TimelineViewController.swift */; };
+		C90B6D1D22D4F6C1009871DE /* TimelineUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90B6D1C22D4F6C1009871DE /* TimelineUI.swift */; };
+		C90B6D1F22D4F6CA009871DE /* TimelineRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90B6D1E22D4F6CA009871DE /* TimelineRouting.swift */; };
 		C91D8E4022CA63A6000379E3 /* DetailRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91D8E3F22CA63A6000379E3 /* DetailRepository.swift */; };
 		C91D8E4222CA6495000379E3 /* DetailRemoteDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91D8E4122CA6495000379E3 /* DetailRemoteDataStore.swift */; };
 		C91FA65422B4FF84006D9E6D /* EditPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91FA65322B4FF84006D9E6D /* EditPresenter.swift */; };
@@ -146,6 +149,10 @@
 		C9CC28F622AD3BF8006E69E5 /* SignupInputUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CC28F522AD3BF8006E69E5 /* SignupInputUI.swift */; };
 		C9CC28F822AD3C03006E69E5 /* SignupInputRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CC28F722AD3C03006E69E5 /* SignupInputRouting.swift */; };
 		C9CC28FB22AD505A006E69E5 /* Validate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CC28FA22AD505A006E69E5 /* Validate.swift */; };
+		C9CC391222D5CBAA001010F4 /* TimelinePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CC391122D5CBAA001010F4 /* TimelinePresenter.swift */; };
+		C9CC391422D5CBB1001010F4 /* TimelinePresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CC391322D5CBB1001010F4 /* TimelinePresenterImpl.swift */; };
+		C9CC391622D5CD46001010F4 /* TimelineUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CC391522D5CD46001010F4 /* TimelineUseCase.swift */; };
+		C9CC391822D5CD87001010F4 /* TimelineRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CC391722D5CD87001010F4 /* TimelineRepository.swift */; };
 		C9D77F8222C9C5B20007835B /* GoalPostEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D77F8122C9C5B20007835B /* GoalPostEditViewController.swift */; };
 		C9D77F8422C9C5C10007835B /* GoalPostEditUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D77F8322C9C5C10007835B /* GoalPostEditUI.swift */; };
 		C9D77F8622C9C5C80007835B /* GoalPostEditRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D77F8522C9C5C80007835B /* GoalPostEditRouting.swift */; };
@@ -205,6 +212,9 @@
 		C9035CB122B7773D006DFAB9 /* SettingsRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRouting.swift; sourceTree = "<group>"; };
 		C9035CB322B77E10006DFAB9 /* SettingsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSection.swift; sourceTree = "<group>"; };
 		C90535CA22AFBD55006B2E04 /* Provider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Provider.swift; sourceTree = "<group>"; };
+		C90B6D1A22D4F6B2009871DE /* TimelineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineViewController.swift; sourceTree = "<group>"; };
+		C90B6D1C22D4F6C1009871DE /* TimelineUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineUI.swift; sourceTree = "<group>"; };
+		C90B6D1E22D4F6CA009871DE /* TimelineRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineRouting.swift; sourceTree = "<group>"; };
 		C91D8E3F22CA63A6000379E3 /* DetailRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRepository.swift; sourceTree = "<group>"; };
 		C91D8E4122CA6495000379E3 /* DetailRemoteDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRemoteDataStore.swift; sourceTree = "<group>"; };
 		C91FA65322B4FF84006D9E6D /* EditPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPresenter.swift; sourceTree = "<group>"; };
@@ -340,6 +350,10 @@
 		C9CC28F522AD3BF8006E69E5 /* SignupInputUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupInputUI.swift; sourceTree = "<group>"; };
 		C9CC28F722AD3C03006E69E5 /* SignupInputRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupInputRouting.swift; sourceTree = "<group>"; };
 		C9CC28FA22AD505A006E69E5 /* Validate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validate.swift; sourceTree = "<group>"; };
+		C9CC391122D5CBAA001010F4 /* TimelinePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelinePresenter.swift; sourceTree = "<group>"; };
+		C9CC391322D5CBB1001010F4 /* TimelinePresenterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelinePresenterImpl.swift; sourceTree = "<group>"; };
+		C9CC391522D5CD46001010F4 /* TimelineUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineUseCase.swift; sourceTree = "<group>"; };
+		C9CC391722D5CD87001010F4 /* TimelineRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineRepository.swift; sourceTree = "<group>"; };
 		C9D77F8122C9C5B20007835B /* GoalPostEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalPostEditViewController.swift; sourceTree = "<group>"; };
 		C9D77F8322C9C5C10007835B /* GoalPostEditUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalPostEditUI.swift; sourceTree = "<group>"; };
 		C9D77F8522C9C5C80007835B /* GoalPostEditRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalPostEditRouting.swift; sourceTree = "<group>"; };
@@ -609,6 +623,7 @@
 				C9F2496A22B79383007E82A0 /* SettingsUseCase.swift */,
 				C9EA654722BBDD20002BE1C8 /* GoalPostUseCase.swift */,
 				C9D77F9222CA63120007835B /* DetailUseCase.swift */,
+				C9CC391522D5CD46001010F4 /* TimelineUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -644,6 +659,7 @@
 				C9A6066B22B26E1F00184E0F /* MypageRepository.swift */,
 				C9EA654922BC194D002BE1C8 /* GoalRepository.swift */,
 				C91D8E3F22CA63A6000379E3 /* DetailRepository.swift */,
+				C9CC391722D5CD87001010F4 /* TimelineRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -827,6 +843,15 @@
 			path = Edit;
 			sourceTree = "<group>";
 		};
+		C9A610C722D5CB6500300837 /* Timeline */ = {
+			isa = PBXGroup;
+			children = (
+				C9CC391122D5CBAA001010F4 /* TimelinePresenter.swift */,
+				C9CC391322D5CBB1001010F4 /* TimelinePresenterImpl.swift */,
+			);
+			path = Timeline;
+			sourceTree = "<group>";
+		};
 		C9A7F87222C718DC005B4C44 /* Complete */ = {
 			isa = PBXGroup;
 			children = (
@@ -898,6 +923,16 @@
 				C9C43B8822D0BD0D006CBC1B /* ReplyPresenterImpl.swift */,
 			);
 			path = Reply;
+			sourceTree = "<group>";
+		};
+		C9CB2B4322D4F6350081C499 /* Timeline */ = {
+			isa = PBXGroup;
+			children = (
+				C90B6D1A22D4F6B2009871DE /* TimelineViewController.swift */,
+				C90B6D1C22D4F6C1009871DE /* TimelineUI.swift */,
+				C90B6D1E22D4F6CA009871DE /* TimelineRouting.swift */,
+			);
+			path = Timeline;
 			sourceTree = "<group>";
 		};
 		C9CC28E622ACD03A006E69E5 /* LoginInput */ = {
@@ -1019,6 +1054,7 @@
 				C9D9013922AB5E700040390E /* Top */,
 				C9D9012222AB532A0040390E /* Account */,
 				C95E08A922B116EF000C41C7 /* MainTab */,
+				C9CB2B4322D4F6350081C499 /* Timeline */,
 				C9ED71FC22B1375300BDB9A7 /* Mypage */,
 				C99116B322B8FC90007C67C7 /* GoalPost */,
 				C98E1BB922B776E900D132D5 /* Settings */,
@@ -1102,6 +1138,7 @@
 			children = (
 				C97DDD7E22AD550F00A84219 /* Presenter.swift */,
 				C9D9012F22AB55DE0040390E /* Account */,
+				C9A610C722D5CB6500300837 /* Timeline */,
 				C9A6066822B26D9800184E0F /* Mypage */,
 				C9F2496522B78E70007E82A0 /* Settings */,
 				C9C2808522BBDA69002E905E /* GoalPost */,
@@ -1406,6 +1443,7 @@
 				C91FA66022B577BB006D9E6D /* Residence.swift in Sources */,
 				C9EA654C22BC1A27002BE1C8 /* GoalRemoteDataStore.swift in Sources */,
 				C9F2496F22B79CBF007E82A0 /* EmailEditingViewController.swift in Sources */,
+				C9CC391222D5CBAA001010F4 /* TimelinePresenter.swift in Sources */,
 				C979404922BF447A00929C2A /* Array+Extension.swift in Sources */,
 				C9A6065D22B2643F00184E0F /* TimelineCell+Extension.swift in Sources */,
 				C99116AC22B8A318007C67C7 /* PasswordEditingUI.swift in Sources */,
@@ -1433,7 +1471,9 @@
 				C9D9012122AB52760040390E /* UIViewController+Extension.swift in Sources */,
 				C9A6066A22B26DDB00184E0F /* MypageUseCase.swift in Sources */,
 				C978FD2422C6071900859851 /* GoalPresenterImpl.swift in Sources */,
+				C90B6D1F22D4F6CA009871DE /* TimelineRouting.swift in Sources */,
 				C9328A9E22C72FBB0065027B /* DraftUI.swift in Sources */,
+				C9CC391822D5CD87001010F4 /* TimelineRepository.swift in Sources */,
 				C9D9012A22AB538E0040390E /* UI.swift in Sources */,
 				C9D77F8222C9C5B20007835B /* GoalPostEditViewController.swift in Sources */,
 				C97DDD9322AD85ED00A84219 /* Translator.swift in Sources */,
@@ -1462,6 +1502,7 @@
 				C91FA65B22B53F9C006D9E6D /* Update.swift in Sources */,
 				C972692C22BB4A1B00CDFD59 /* GoalEntity.swift in Sources */,
 				C926CDA022B3C41E008672AA /* EditUI.swift in Sources */,
+				C9CC391622D5CD46001010F4 /* TimelineUseCase.swift in Sources */,
 				C9D77F8622C9C5C80007835B /* GoalPostEditRouting.swift in Sources */,
 				C9D77F9322CA63120007835B /* DetailUseCase.swift in Sources */,
 				C97DDD9122AD83CC00A84219 /* AccountTranslator.swift in Sources */,
@@ -1475,6 +1516,7 @@
 				C9D9011D22AB51830040390E /* UILabel+Extension.swift in Sources */,
 				C9C43B8122D09220006CBC1B /* HalfModalTransitionAnimator.swift in Sources */,
 				C9C43B8F22D0C813006CBC1B /* Reply.swift in Sources */,
+				C9CC391422D5CBB1001010F4 /* TimelinePresenterImpl.swift in Sources */,
 				C9A1573522A6CA1F00D7D047 /* AppDelegate.swift in Sources */,
 				C9AED93C22B4CDD2002D37A0 /* UnderlinedTextField.swift in Sources */,
 				C9A6067322B2A60A00184E0F /* User.swift in Sources */,
@@ -1513,12 +1555,14 @@
 				C958D9E722B62B9900565EDE /* UIImage+Extension.swift in Sources */,
 				C93271E022CF6CAA00AA9BA6 /* GoalLocalDataStore.swift in Sources */,
 				C9EA654422BBDAAA002BE1C8 /* GoalPostPresenter.swift in Sources */,
+				C90B6D1D22D4F6C1009871DE /* TimelineUI.swift in Sources */,
 				C9328AAC22C732A30065027B /* AllPresenter.swift in Sources */,
 				C9A7F86D22C717EF005B4C44 /* CompleteViewController.swift in Sources */,
 				C9B55D1222B1010200845381 /* RemindPresenter.swift in Sources */,
 				C97DDD7F22AD550F00A84219 /* Presenter.swift in Sources */,
 				C9ED720422B16A7700BDB9A7 /* CustomSegmentedControl.swift in Sources */,
 				C9F2496922B78EB7007E82A0 /* SettingsPresenterImpl.swift in Sources */,
+				C90B6D1B22D4F6B2009871DE /* TimelineViewController.swift in Sources */,
 				C9D9012D22AB54220040390E /* Routing.swift in Sources */,
 				C9D9011922AB50FD0040390E /* UIFont+Extension.swift in Sources */,
 				C95ADED022AB141D00D851A0 /* R.generated.swift in Sources */,

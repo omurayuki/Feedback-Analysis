@@ -18,7 +18,7 @@ extension MainTabController {
         var resouces = [#imageLiteral(resourceName: "diary"), #imageLiteral(resourceName: "bell"), #imageLiteral(resourceName: "mail"), #imageLiteral(resourceName: "home")]
         var viewControllers: [UIViewController] = []
         
-        [UIViewController(), UIViewController(), UIViewController(), initMypageVC()].enumerated().forEach { index, controller in
+        [initTimelineVC(), UIViewController(), UIViewController(), initMypageVC()].enumerated().forEach { index, controller in
             let navi = UINavigationController(rootViewController: controller)
             navi.tabBarItem = UITabBarItem(title: nil, image: resouces[index], tag: index)
             
@@ -46,6 +46,30 @@ extension MainTabController {
         ui.timelinePages.dataSource = vc
         ui.timelinePages.delegate = presenter
         routing.viewController = vc
+        vc.inject(ui: ui,
+                  presenter: presenter,
+                  routing: routing,
+                  viewControllers: controllers,
+                  disposeBag: DisposeBag())
+        
+        return vc
+    }
+    
+    private func initTimelineVC() -> TimelineViewController {
+        let controllers = [UIViewController(), UIViewController(), UIViewController()]
+        controllers.enumerated().forEach { index, controller in controller.view.tag = index }
+        let repository = TimelineRepositoryImpl.shared
+        let useCase = TimelineUseCaseImpl(repository: repository)
+        let presenter = TimelinePresenterImpl(useCase: useCase)
+        let vc = TimelineViewController()
+        
+        let ui = TimelineUIImpl()
+        let routing = TimelineRoutingImpl()
+        ui.viewController = vc
+        routing.viewController = vc
+        ui.timelineSegmented.delegate = presenter
+        ui.timelinePages.dataSource = vc
+        ui.timelinePages.delegate = presenter
         vc.inject(ui: ui,
                   presenter: presenter,
                   routing: routing,

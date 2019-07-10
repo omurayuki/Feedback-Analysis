@@ -93,7 +93,12 @@ extension UIViewController {
     }
     
     func clearNavBar() {
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+    }
+    
+    func coloringAppMainNavBar() {
+        navigationController?.navigationBar.barTintColor = .appMainColor
         navigationController?.navigationBar.shadowImage = UIImage()
     }
     
