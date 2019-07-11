@@ -4,6 +4,10 @@ import RxCocoa
 
 class TimelinePresenterImpl: NSObject, TimelinePresenter {
     
+    var pendingIndex: Int?
+    var currentIndex: Int?
+    var previousIndex = 0
+    
     var view: TimelinePresenterView!
     
     var isLoading: BehaviorRelay<Bool> = BehaviorRelay<Bool>(value: false)

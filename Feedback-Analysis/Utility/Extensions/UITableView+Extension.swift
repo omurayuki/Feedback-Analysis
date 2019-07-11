@@ -7,14 +7,18 @@ extension UITableView {
         
         private var backgroundImage: UIImage?
         private var contentMode: ContentMode?
+        private var backGroundViewContentMode: ContentMode?
         private var estimatedRowHeight: CGFloat?
         
         private var clipToBounds: Bool = true
         private var backgroundColor: UIColor = .appMainColor
         private var separatorColor: UIColor = .appCoolGrey
+        private var separatorInsets: UIEdgeInsets = .zero
         private var rowHeight: CGFloat = UITableView.automaticDimension
         private var backgroundAlpha: CGFloat = 1
         private var tableFooterView = UIView()
+        private var isUserInteractionEnabled: Bool = true
+        private var backgroundViewClipsToBounds: Bool = true
         
         func backgroundImage(_ backgroundImage: UIImage) -> Builder {
             self.backgroundImage = backgroundImage
@@ -41,6 +45,11 @@ extension UITableView {
             return self
         }
         
+        func separatorInsets(_ separatorInsets: UIEdgeInsets) -> Builder {
+            self.separatorInsets = separatorInsets
+            return self
+        }
+        
         func estimatedRowHeight(_ estimatedRowHeight: CGFloat) -> Builder {
             self.estimatedRowHeight = estimatedRowHeight
             return self
@@ -61,6 +70,21 @@ extension UITableView {
             return self
         }
         
+        func isUserInteractionEnabled(_ isUserInteractionEnabled: Bool) -> Builder {
+            self.isUserInteractionEnabled = isUserInteractionEnabled
+            return self
+        }
+        
+        func backgroundViewClipsToBounds(_ backgroundViewClipsToBounds: Bool) -> Builder {
+            self.backgroundViewClipsToBounds = backgroundViewClipsToBounds
+            return self
+        }
+        
+        func backGroundViewContentMode(_ backGroundViewContentMode: ContentMode) -> Builder {
+            self.backGroundViewContentMode = backGroundViewContentMode
+            return self
+        }
+        
         func build() -> UITableView {
             let table = UITableView()
             table.backgroundView = UIImageView(image: backgroundImage)
@@ -69,9 +93,13 @@ extension UITableView {
             table.contentMode = contentMode ?? .scaleAspectFit
             table.backgroundColor = backgroundColor
             table.separatorColor = separatorColor
+            table.separatorInset = separatorInsets
             table.tableFooterView = tableFooterView
             table.estimatedRowHeight = estimatedRowHeight ?? 400
             table.rowHeight = rowHeight
+            table.isUserInteractionEnabled = isUserInteractionEnabled
+            table.backgroundView?.clipsToBounds = backgroundViewClipsToBounds
+            table.backgroundView?.contentMode = backGroundViewContentMode ?? .scaleAspectFit
             return table
         }
     }

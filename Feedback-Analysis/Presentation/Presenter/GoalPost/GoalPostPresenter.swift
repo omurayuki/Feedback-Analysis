@@ -4,6 +4,8 @@ import RxSwift
 import RxCocoa
 
 protocol GoalPostPresenter: Presenter {
+    var startPoint: CGPoint? { get set }
+    var genres: [String] { get set }
     var view: GoalPostPresenterView! { get set }
     var isLoading: BehaviorRelay<Bool> { get }
     

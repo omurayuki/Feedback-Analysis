@@ -4,6 +4,9 @@ import RxSwift
 import RxCocoa
 
 protocol TimelinePresenter: Presenter {
+    var pendingIndex: Int? { get set }
+    var currentIndex: Int? { get set }
+    var previousIndex: Int { get set }
     var view: TimelinePresenterView! { get set }
     var isLoading: BehaviorRelay<Bool> { get }
 }

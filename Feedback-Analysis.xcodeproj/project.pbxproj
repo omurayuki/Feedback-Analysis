@@ -204,6 +204,7 @@
 		C9EA654A22BC194D002BE1C8 /* GoalRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EA654922BC194D002BE1C8 /* GoalRepository.swift */; };
 		C9EA654C22BC1A27002BE1C8 /* GoalRemoteDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EA654B22BC1A27002BE1C8 /* GoalRemoteDataStore.swift */; };
 		C9EB3D4A22D7255B0063434A /* AccountLocalDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EB3D4922D7255B0063434A /* AccountLocalDataStore.swift */; };
+		C9EB3D4C22D78A2B0063434A /* GrowingTextView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EB3D4B22D78A2B0063434A /* GrowingTextView+Extension.swift */; };
 		C9ED71FE22B137C400BDB9A7 /* MypageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9ED71FD22B137C400BDB9A7 /* MypageViewController.swift */; };
 		C9ED720022B137CD00BDB9A7 /* MypageUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9ED71FF22B137CD00BDB9A7 /* MypageUI.swift */; };
 		C9ED720222B137D700BDB9A7 /* MypageRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9ED720122B137D700BDB9A7 /* MypageRouting.swift */; };
@@ -422,6 +423,7 @@
 		C9EA654922BC194D002BE1C8 /* GoalRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalRepository.swift; sourceTree = "<group>"; };
 		C9EA654B22BC1A27002BE1C8 /* GoalRemoteDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalRemoteDataStore.swift; sourceTree = "<group>"; };
 		C9EB3D4922D7255B0063434A /* AccountLocalDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountLocalDataStore.swift; sourceTree = "<group>"; };
+		C9EB3D4B22D78A2B0063434A /* GrowingTextView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GrowingTextView+Extension.swift"; sourceTree = "<group>"; };
 		C9ED71FD22B137C400BDB9A7 /* MypageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageViewController.swift; sourceTree = "<group>"; };
 		C9ED71FF22B137CD00BDB9A7 /* MypageUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageUI.swift; sourceTree = "<group>"; };
 		C9ED720122B137D700BDB9A7 /* MypageRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageRouting.swift; sourceTree = "<group>"; };
@@ -1193,6 +1195,7 @@
 				C9CB2B4122D4CE320081C499 /* UITableViewCell.swift */,
 				C953153F22D5F05300EEB3C0 /* UITableView+Extension.swift */,
 				C97F25C222D6033800D61FF4 /* UIPageViewController+Extension.swift */,
+				C9EB3D4B22D78A2B0063434A /* GrowingTextView+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1593,6 +1596,7 @@
 				C941332D22C8BD390082A01C /* DetailPresenterImpl.swift in Sources */,
 				C9CC28EF22AD1288006E69E5 /* LoginInputRouting.swift in Sources */,
 				C9EB3D4A22D7255B0063434A /* AccountLocalDataStore.swift in Sources */,
+				C9EB3D4C22D78A2B0063434A /* GrowingTextView+Extension.swift in Sources */,
 				C9C43B8722D0BD03006CBC1B /* ReplyPresenter.swift in Sources */,
 				C91FA65422B4FF84006D9E6D /* EditPresenter.swift in Sources */,
 				C92E0BBF22CB02BC007A2F0C /* CommentTranslator.swift in Sources */,

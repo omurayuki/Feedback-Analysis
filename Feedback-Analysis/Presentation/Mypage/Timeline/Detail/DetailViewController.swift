@@ -51,6 +51,11 @@ class DetailViewController: UIViewController {
                     self.presenter.fetch()
                 }).disposed(by: disposeBag)
             
+            ui.commentField.rx.didBeginEditing.asDriver()
+                .drive(onNext: { [unowned self] _ in
+                    self.view.layoutIfNeeded()
+                }).disposed(by: disposeBag)
+            
             ui.commentField.rx.text.asDriver()
                 .drive(onNext: { [unowned self] text in
                     guard let text = text else { return }

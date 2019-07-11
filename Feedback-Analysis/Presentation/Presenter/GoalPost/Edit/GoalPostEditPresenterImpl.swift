@@ -5,6 +5,9 @@ import RxCocoa
 
 class GoalPostEditPresenterImpl: NSObject, GoalPostEditPresenter {
     
+    var startPoint: CGPoint?
+    var genres = [String]()
+    
     var view: GoalPostEditPresenterView!
     
     var isLoading: BehaviorRelay<Bool> = BehaviorRelay<Bool>(value: false)

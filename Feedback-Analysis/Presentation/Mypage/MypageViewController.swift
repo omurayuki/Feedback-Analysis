@@ -5,12 +5,6 @@ import RxCocoa
 
 class MypageViewController: UIViewController {
     
-    private var pendingIndex: Int?
-    
-    private var currentIndex: Int?
-    
-    private var previousIndex = 0
-    
     var ui: MypageUI!
     
     var routing: MypageRouting!
@@ -76,23 +70,23 @@ extension MypageViewController: MypagePresenterView {
     }
     
     func didSelectSegment(with index: Int) {
-        if previousIndex < index {
+        if presenter.previousIndex < index {
             ui.timelinePages.setViewControllers([viewControllers[index]], direction: .forward, animated: true, completion: nil)
         } else {
             ui.timelinePages.setViewControllers([viewControllers[index]], direction: .reverse, animated: true, completion: nil)
         }
-        previousIndex = index
+        presenter.previousIndex = index
     }
     
     func willTransitionTo(_ pageViewController: UIPageViewController, pendingViewControllers: [UIViewController]) {
-        pendingIndex = viewControllers.firstIndex(of: pendingViewControllers.first!)
+        presenter.pendingIndex = viewControllers.firstIndex(of: pendingViewControllers.first!)
     }
     
     func didFinishAnimating(_ pageViewController: UIPageViewController, finished: Bool,
                             previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
         guard completed else { return }
-        currentIndex = pendingIndex
-        if let index = currentIndex {
+        presenter.currentIndex = presenter.pendingIndex
+        if let index = presenter.currentIndex {
             ui.timelineSegmented.setIndex(index: index)
         }
     }

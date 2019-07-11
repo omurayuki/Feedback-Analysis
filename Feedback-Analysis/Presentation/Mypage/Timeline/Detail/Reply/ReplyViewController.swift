@@ -55,6 +55,7 @@ class ReplyViewController: UIViewController, HalfModalPresentable {
             
             ui.replyField.rx.didBeginEditing.asDriver()
                 .drive(onNext: { [unowned self] _ in
+                    self.view.layoutIfNeeded()
                     self.maximizeToFullScreen()
                 }).disposed(by: disposeBag)
             

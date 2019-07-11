@@ -3,8 +3,8 @@ import GrowingTextView
 
 protocol DetailUI: UI {
     var textViewBottomConstraint: NSLayoutConstraint { get set }
-    var detail: UITableView { get set }
-    var commentTable: UITableView { get set }
+    var detail: UITableView { get }
+    var commentTable: UITableView { get }
     var editBtn: UIBarButtonItem { get }
     var inputToolBar: UIView { get }
     var commentField: GrowingTextView { get }
@@ -36,51 +36,41 @@ final class DetailUIImpl: DetailUI {
         return item
     }()
     
-    var detail: UITableView = {
-        let table = UITableView()
-        table.backgroundColor = .appMainColor
-        table.separatorColor = .appCoolGrey
-        table.separatorInset = .zero
-        table.estimatedRowHeight = 400
-        table.isUserInteractionEnabled = false
-        table.rowHeight = UITableView.automaticDimension
+    private(set) var detail: UITableView = {
+        let table = UITableView.Builder()
+            .estimatedRowHeight(400)
+            .isUserInteractionEnabled(false)
+            .build()
         table.register(TimelineCell.self, forCellReuseIdentifier: String(describing: TimelineCell.self))
         return table
     }()
     
-    var commentTable: UITableView = {
-        let table = UITableView()
-        table.backgroundView = UIImageView(image: #imageLiteral(resourceName: "logo"))
-        table.backgroundView?.alpha = 0.1
-        table.backgroundView?.clipsToBounds = true
-        table.backgroundView?.contentMode = UIView.ContentMode.scaleAspectFit
-        table.backgroundColor = .appMainColor
-        table.separatorColor = .appCoolGrey
-        table.tableFooterView = UIView()
+    private(set) var commentTable: UITableView = {
+        let table = UITableView.Builder()
+            .backgroundImage(#imageLiteral(resourceName: "logo"))
+            .backGroundViewContentMode(.scaleAspectFit)
+            .backgroundAlpha(0.1)
+            .build()
         table.register(CommentCell.self, forCellReuseIdentifier: String(describing: CommentCell.self))
         return table
     }()
     
-    var inputToolBar: UIView = {
+    private(set) var inputToolBar: UIView = {
         let view = UIView()
         view.backgroundColor = .tabbarColor
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    var commentField: GrowingTextView = {
-        let textView = GrowingTextView()
-        textView.font = UIFont.systemFont(ofSize: 16)
-        textView.textColor = .appSubColor
-        textView.backgroundColor = UIColor(white: 0.5, alpha: 0.2)
-        textView.trimWhiteSpaceWhenEndEditing = true
-        textView.placeholder = "コメントを記入"
-        textView.placeholderColor = UIColor(white: 0.8, alpha: 1.0)
+    private(set) var commentField: GrowingTextView = {
+        let textView = GrowingTextView.Builder()
+            .placeHolder("コメントを記入")
+            .build()
         textView.translatesAutoresizingMaskIntoConstraints = false
         return textView
     }()
     
-    var commentFieldTextCount: UILabel = {
+    private(set) var commentFieldTextCount: UILabel = {
         let label = UILabel()
         label.apply(.appMain10)
         label.isHidden = true

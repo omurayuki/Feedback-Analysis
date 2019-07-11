@@ -6,9 +6,6 @@ import FirebaseFirestore
 
 class GoalPostViewController: UIViewController {
     
-    private var startPoint: CGPoint?
-    private var genres = [String]()
-    
     var ui: GoalPostUI!
     
     var routing: GoalPostRouting!
@@ -27,7 +24,7 @@ class GoalPostViewController: UIViewController {
             
             ui.scrollView.rx.willBeginDragging
                 .bind { [unowned self] _ in
-                    self.startPoint = UIScrollView().contentOffset
+                    self.presenter.startPoint = UIScrollView().contentOffset
                 }.disposed(by: disposeBag)
             
             ui.scrollView.rx.didScroll
@@ -41,7 +38,7 @@ class GoalPostViewController: UIViewController {
             
             ui.scrollView.rx.didScroll
                 .bind { [unowned self] _ in
-                    guard let startPoint = self.startPoint else { return }
+                    guard let startPoint = self.presenter.startPoint else { return }
                     self.ui.scrollView.contentOffset.y = startPoint.y
                 }.disposed(by: disposeBag)
             
@@ -54,7 +51,7 @@ class GoalPostViewController: UIViewController {
             
             ui.draftBtn.rx.tap.asDriver()
                 .drive(onNext: { [unowned self] _ in
-                    self.validateGoalPost(genre: self.genres,
+                    self.validateGoalPost(genre: self.presenter.genres,
                                           newThings: newThingsView.newThingsField.text ?? "",
                                           expectedResult1: expectedResultView.expectedResultField1.text ?? "",
                                           expectedResult2: expectedResultView.expectedResultField2.text ?? "",
@@ -75,7 +72,7 @@ class GoalPostViewController: UIViewController {
             
             ui.saveBtn.rx.tap.asDriver()
                 .drive(onNext: { [unowned self] _ in
-                    self.validateGoalPost(genre: self.genres,
+                    self.validateGoalPost(genre: self.presenter.genres,
                                           newThings: newThingsView.newThingsField.text ?? "",
                                           expectedResult1: expectedResultView.expectedResultField1.text ?? "",
                                           expectedResult2: expectedResultView.expectedResultField2.text ?? "",
@@ -97,8 +94,10 @@ class GoalPostViewController: UIViewController {
             genreView.array.forEach { button in
                 button.rx.tap.asDriver()
                     .drive(onNext: { [unowned self] _ in
-                        button.currentState == .selected ? (button.currentState = .normal) : (button.currentState = .selected)
-                        button.currentState == .selected ? self.genres.append(button.description) : self.genres.remove(value: button.description)
+                        button.currentState == .selected ? (button.currentState = .normal) :
+                                                           (button.currentState = .selected)
+                        button.currentState == .selected ? self.presenter.genres.append(button.description) :
+                                                           self.presenter.genres.remove(value: button.description)
                     }).disposed(by: disposeBag)
             }
             
