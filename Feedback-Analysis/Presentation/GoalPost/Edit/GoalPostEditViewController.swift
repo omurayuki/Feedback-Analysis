@@ -67,7 +67,10 @@ class GoalPostEditViewController: UIViewController {
                                                            expectedResultField2: _expectedResultField2,
                                                            expectedResultField3: _expectedResultField3,
                                                            deadline: expectedResultView.deadline.text ?? "", draft: false)
-                            self.presenter.update(to: .goalUpdateRef(author_token: AppUserDefaults.getAuthToken(), goalDocument: self.documentId), fields: goalPost)
+                        self.presenter.getAuthorToken(completion: { [unowned self] token in
+                            self.presenter.update(to: .goalUpdateRef(author_token: token, goalDocument: self.documentId),
+                                                  fields: goalPost)
+                        })
                     })
                 }).disposed(by: disposeBag)
             

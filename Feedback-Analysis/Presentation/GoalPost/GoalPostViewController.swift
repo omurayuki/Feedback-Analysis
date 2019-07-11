@@ -59,14 +59,17 @@ class GoalPostViewController: UIViewController {
                                           expectedResult1: expectedResultView.expectedResultField1.text ?? "",
                                           expectedResult2: expectedResultView.expectedResultField2.text ?? "",
                                           expectedResult3: expectedResultView.expectedResultField3.text ?? "",
-                                          execute: { _genres, _newThings, _expectedResultField1, _expectedResultField2, _expectedResultField3 in
+                                          execute: { [unowned self] _genres, _newThings, _expectedResultField1,
+                                            _expectedResultField2, _expectedResultField3 in
                         let goalPost = self.createGoalPost(genre: _genres,
                                                            newThings: _newThings,
                                                            expectedResultField1: _expectedResultField1,
                                                            expectedResultField2: _expectedResultField2,
                                                            expectedResultField3: _expectedResultField3,
                                                            deadline: expectedResultView.deadline.text ?? "", draft: true)
-                        self.presenter.post(to: .goalPostRef, fields: goalPost)
+                        self.presenter.getAuthorToken(completion: { [unowned self] token in
+                            self.presenter.post(to: .goalPostRef(authorToken: token), fields: goalPost)
+                        })
                     })
                 }).disposed(by: disposeBag)
             
@@ -77,14 +80,17 @@ class GoalPostViewController: UIViewController {
                                           expectedResult1: expectedResultView.expectedResultField1.text ?? "",
                                           expectedResult2: expectedResultView.expectedResultField2.text ?? "",
                                           expectedResult3: expectedResultView.expectedResultField3.text ?? "",
-                                          execute: { _genres, _newThings, _expectedResultField1, _expectedResultField2, _expectedResultField3 in
+                                          execute: { [unowned self] _genres, _newThings, _expectedResultField1,
+                                            _expectedResultField2, _expectedResultField3 in
                         let goalPost = self.createGoalPost(genre: _genres,
                                                            newThings: _newThings,
                                                            expectedResultField1: _expectedResultField1,
                                                            expectedResultField2: _expectedResultField2,
                                                            expectedResultField3: _expectedResultField3,
                                                            deadline: expectedResultView.deadline.text ?? "", draft: false)
-                        self.presenter.post(to: .goalPostRef, fields: goalPost)
+                        self.presenter.getAuthorToken(completion: { [unowned self] token in
+                            self.presenter.post(to: .goalPostRef(authorToken: token), fields: goalPost)
+                        })
                     })
                 }).disposed(by: disposeBag)
        

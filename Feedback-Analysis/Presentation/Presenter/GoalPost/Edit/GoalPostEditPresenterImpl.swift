@@ -30,6 +30,18 @@ class GoalPostEditPresenterImpl: NSObject, GoalPostEditPresenter {
             }.disposed(by: view.disposeBag)
     }
     
+    func getAuthorToken(completion: @escaping (String) -> Void) {
+        useCase.getAuthorToken()
+            .subscribe { [unowned self]  result in
+                switch result {
+                case .success(let response):
+                    completion(response)
+                case .error(let error):
+                    self.view.showError(message: error.localizedDescription)
+                }
+            }.disposed(by: view.disposeBag)
+    }
+    
     func setup() {}
 }
 

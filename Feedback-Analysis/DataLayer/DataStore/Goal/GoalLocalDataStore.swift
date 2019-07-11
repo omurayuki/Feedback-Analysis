@@ -4,6 +4,7 @@ import RxSwift
 protocol GoalLocalDataStore {
     func setSelected(index: Int) -> Single<()>
     func getSelected() -> Single<Int>
+    func getAuthorToken() -> Single<String>
 }
 
 struct GoalLocalDataStoreImpl: GoalLocalDataStore {
@@ -19,6 +20,13 @@ struct GoalLocalDataStoreImpl: GoalLocalDataStore {
     func getSelected() -> Single<Int> {
         return Single.create(subscribe: { single -> Disposable in
             single(.success(AppUserDefaults.getSelected()))
+            return Disposables.create()
+        })
+    }
+    
+    func getAuthorToken() -> Single<String> {
+        return Single.create(subscribe: { single -> Disposable in
+            single(.success(AppUserDefaults.getAuthToken()))
             return Disposables.create()
         })
     }

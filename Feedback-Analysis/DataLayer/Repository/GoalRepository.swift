@@ -11,6 +11,7 @@ protocol GoalRepository {
     func delete(documentRef: FirebaseDocumentRef) -> Single<()>
     func setSelected(index: Int) -> Single<()>
     func getSelected() -> Single<Int>
+    func getAuthorToken() -> Single<String>
 }
 
 struct GoalRepositoryImpl: GoalRepository {
@@ -60,5 +61,10 @@ struct GoalRepositoryImpl: GoalRepository {
     func getSelected() -> Single<Int> {
         let dataStore = GoalDataStoreFactory.createGoalLocalDataStore()
         return dataStore.getSelected()
+    }
+    
+    func getAuthorToken() -> Single<String> {
+        let dataStore = GoalDataStoreFactory.createGoalLocalDataStore()
+        return dataStore.getAuthorToken()
     }
 }

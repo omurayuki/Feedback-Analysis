@@ -17,6 +17,7 @@ protocol DetailRepository {
     func getDocumentIds() -> Single<(documentId: String, commentId: String)>
     func setSelected(index: Int) -> Single<()>
     func getSelected() -> Single<Int>
+    func getAuthorToken() -> Single<String>
 }
 
 struct DetailRepositoryImpl: DetailRepository {
@@ -96,5 +97,10 @@ struct DetailRepositoryImpl: DetailRepository {
     func getSelected() -> Single<Int> {
         let dataStore = GoalDataStoreFactory.createGoalLocalDataStore()
         return dataStore.getSelected()
+    }
+    
+    func getAuthorToken() -> Single<String> {
+        let dataStore = GoalDataStoreFactory.createGoalLocalDataStore()
+        return dataStore.getAuthorToken()
     }
 }

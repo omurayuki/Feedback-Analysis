@@ -34,7 +34,9 @@ class EditViewController: UIViewController {
             
             ui.saveBtn.rx.tap.asDriver()
                 .drive(onNext: { [unowned self] _ in
-                    self.presenter.uploadImage(self.ui.userImage.image ?? R.image.logo()!, at: .userImageRef)
+                    self.presenter.getAuthorToken(completion: { [unowned self] token in
+                        self.presenter.uploadImage(self.ui.userImage.image ?? R.image.logo()!, at: .userImageRef(authorToken: token))
+                    })
                 }).disposed(by: disposeBag)
             
             ui.userImageEditBtn.rx.tap.asDriver()
@@ -132,12 +134,14 @@ extension EditViewController: EditPresenterView {
                           content: self.ui.contentField.text ?? "",
                           residence: self.ui.residenceField.text ?? "",
                           birth: self.ui.birthField.text ?? "",
-                          account: { _name, _content, _residence, _birth in
-            self.presenter.update(to: .userRef, user: Update(userImage: userImage,
-                                                             name: _name,
-                                                             content: _content,
-                                                             residence: _residence,
-                                                             birth: _birth))
+                          account: { [unowned self] _name, _content, _residence, _birth in
+            self.presenter.getAuthorToken(completion: { [unowned self] token in
+                self.presenter.update(to: .userRef(authorToken: token), user: Update(userImage: userImage,
+                                                                 name: _name,
+                                                                 content: _content,
+                                                                 residence: _residence,
+                                                                 birth: _birth))
+            })
         })
     }
     

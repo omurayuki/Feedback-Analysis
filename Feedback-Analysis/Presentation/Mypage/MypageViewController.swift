@@ -52,8 +52,9 @@ class MypageViewController: UIViewController {
         self.routing = routing
         self.viewControllers = viewControllers
         self.disposeBag = disposeBag
-        
-        self.presenter.fetch(to: .userRef, completion: nil)
+        self.presenter.getAuthorToken { [unowned self] token in
+            self.presenter.fetch(to: .userRef(authorToken: token), completion: nil)
+        }
     }
     
     override func viewDidLoad() {
@@ -100,8 +101,10 @@ extension MypageViewController: MypagePresenterView {
 extension MypageViewController: UpdatingDelegate {
     
     func updateMypage(completion: @escaping () -> Void) {
-        presenter.fetch(to: .userRef) {
-            completion()
+        presenter.getAuthorToken { [unowned self] token in
+            self.presenter.fetch(to: .userRef(authorToken: token)) {
+                completion()
+            }
         }
     }
 }

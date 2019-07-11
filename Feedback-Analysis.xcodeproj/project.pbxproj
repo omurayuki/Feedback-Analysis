@@ -203,6 +203,7 @@
 		C9EA654822BBDD20002BE1C8 /* GoalPostUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EA654722BBDD20002BE1C8 /* GoalPostUseCase.swift */; };
 		C9EA654A22BC194D002BE1C8 /* GoalRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EA654922BC194D002BE1C8 /* GoalRepository.swift */; };
 		C9EA654C22BC1A27002BE1C8 /* GoalRemoteDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EA654B22BC1A27002BE1C8 /* GoalRemoteDataStore.swift */; };
+		C9EB3D4A22D7255B0063434A /* AccountLocalDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EB3D4922D7255B0063434A /* AccountLocalDataStore.swift */; };
 		C9ED71FE22B137C400BDB9A7 /* MypageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9ED71FD22B137C400BDB9A7 /* MypageViewController.swift */; };
 		C9ED720022B137CD00BDB9A7 /* MypageUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9ED71FF22B137CD00BDB9A7 /* MypageUI.swift */; };
 		C9ED720222B137D700BDB9A7 /* MypageRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9ED720122B137D700BDB9A7 /* MypageRouting.swift */; };
@@ -420,6 +421,7 @@
 		C9EA654722BBDD20002BE1C8 /* GoalPostUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalPostUseCase.swift; sourceTree = "<group>"; };
 		C9EA654922BC194D002BE1C8 /* GoalRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalRepository.swift; sourceTree = "<group>"; };
 		C9EA654B22BC1A27002BE1C8 /* GoalRemoteDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalRemoteDataStore.swift; sourceTree = "<group>"; };
+		C9EB3D4922D7255B0063434A /* AccountLocalDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountLocalDataStore.swift; sourceTree = "<group>"; };
 		C9ED71FD22B137C400BDB9A7 /* MypageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageViewController.swift; sourceTree = "<group>"; };
 		C9ED71FF22B137CD00BDB9A7 /* MypageUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageUI.swift; sourceTree = "<group>"; };
 		C9ED720122B137D700BDB9A7 /* MypageRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageRouting.swift; sourceTree = "<group>"; };
@@ -528,6 +530,7 @@
 			isa = PBXGroup;
 			children = (
 				C97DDD9522AD879800A84219 /* AccountRemoteDataStore.swift */,
+				C9EB3D4922D7255B0063434A /* AccountLocalDataStore.swift */,
 				C93271DD22CF6B9000AA9BA6 /* AccountDataStoreFactory.swift */,
 			);
 			path = Account;
@@ -1589,6 +1592,7 @@
 				C9F2497322B79D1F007E82A0 /* EmailEditingRouting.swift in Sources */,
 				C941332D22C8BD390082A01C /* DetailPresenterImpl.swift in Sources */,
 				C9CC28EF22AD1288006E69E5 /* LoginInputRouting.swift in Sources */,
+				C9EB3D4A22D7255B0063434A /* AccountLocalDataStore.swift in Sources */,
 				C9C43B8722D0BD03006CBC1B /* ReplyPresenter.swift in Sources */,
 				C91FA65422B4FF84006D9E6D /* EditPresenter.swift in Sources */,
 				C92E0BBF22CB02BC007A2F0C /* CommentTranslator.swift in Sources */,

@@ -9,6 +9,8 @@ protocol AccountRepository {
     func logout() -> Single<()>
     func update(with email: String) -> Single<()>
     func update(with email: String, oldPass: String, newPass: String) -> Single<()>
+    func getAuthorToken() -> Single<String>
+    func getEmail() -> Single<String>
 }
 
 struct AccountRepositoryImpl: AccountRepository {
@@ -56,5 +58,15 @@ struct AccountRepositoryImpl: AccountRepository {
     func update(with email: String, oldPass: String, newPass: String) -> Single<()> {
         let dataStore = AccountDataStoreFactory.createAccountRemoteDataStore()
         return dataStore.update(with: email, oldPass: oldPass, newPass: newPass)
+    }
+    
+    func getAuthorToken() -> Single<String> {
+        let dataStore = AccountDataStoreFactory.createAccountLocalDataStore()
+        return dataStore.getAuthorToken()
+    }
+    
+    func getEmail() -> Single<String> {
+        let dataStore = AccountDataStoreFactory.createAccountLocalDataStore()
+        return dataStore.getEmail()
     }
 }

@@ -11,6 +11,7 @@ protocol GoalPostUseCase {
     func delete(documentRef: FirebaseDocumentRef) -> Single<()>
     func setSelected(index: Int) -> Single<()>
     func getSelected() -> Single<Int>
+    func getAuthorToken() -> Single<String>
 }
 
 struct GoalPostUseCaseImpl: GoalPostUseCase {
@@ -55,5 +56,9 @@ struct GoalPostUseCaseImpl: GoalPostUseCase {
     
     func getSelected() -> Single<Int> {
         return repository.getSelected()
+    }
+    
+    func getAuthorToken() -> Single<String> {
+        return repository.getAuthorToken()
     }
 }

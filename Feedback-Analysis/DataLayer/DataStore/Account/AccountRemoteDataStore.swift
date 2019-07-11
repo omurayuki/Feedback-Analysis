@@ -12,6 +12,7 @@ protocol AccountRemoteDataStore {
 }
 
 struct AccountRemoteDataStoreImpl: AccountRemoteDataStore {
+    
     func signup(email: String, pass: String) -> Single<AccountEntity> {
         return Provider().signup(email: email, pass: pass)
     }

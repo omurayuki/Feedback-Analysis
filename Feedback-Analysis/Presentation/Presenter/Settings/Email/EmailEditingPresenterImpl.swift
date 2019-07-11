@@ -29,5 +29,17 @@ class EmailEditingPresenterImpl: EmailEditingPresenter {
             }.disposed(by: view.disposeBag)
     }
     
+    func getEmail() {
+        useCase.getEmail()
+            .subscribe { [unowned self] result in
+                switch result {
+                case .success(let response):
+                    self.view.didGet(with: response)
+                case .error(let error):
+                    self.view.showError(message: error.localizedDescription)
+                }
+            }.disposed(by: view.disposeBag)
+    }
+    
     func setup() {}
 }

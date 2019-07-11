@@ -17,6 +17,7 @@ protocol DetailUseCase {
     func getDocumentIds() -> Single<(documentId: String, commentId: String)>
     func setSelected(index: Int) -> Single<()>
     func getSelected() -> Single<Int>
+    func getAuthorToken() -> Single<String>
 }
 
 struct DetailUseCaseImpl: DetailUseCase {
@@ -85,5 +86,9 @@ struct DetailUseCaseImpl: DetailUseCase {
     
     func getSelected() -> Single<Int> {
         return repository.getSelected()
+    }
+    
+    func getAuthorToken() -> Single<String> {
+        return repository.getAuthorToken()
     }
 }

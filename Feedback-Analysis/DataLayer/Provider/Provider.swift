@@ -271,7 +271,7 @@ struct Provider {
                         return
                     }
                     FirebaseDocumentRef
-                        .userRef
+                        .userRef(authorToken: AppUserDefaults.getAuthToken())
                         .destination
                         .addSnapshotListener({ userSnapshot, error in
                             if let error = error {

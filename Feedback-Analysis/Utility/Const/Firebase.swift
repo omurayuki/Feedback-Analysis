@@ -10,30 +10,30 @@ enum FirebaseError: Error {
 }
 
 enum FirebaseDocumentRef {
-    case userRef
+    case userRef(authorToken: String)
     case authorRef(authorToken: String)
-    case goalPostRef
+    case goalPostRef(authorToken: String)
     case goalUpdateRef(author_token: String, goalDocument: String)
     case commentUpdateRef(goalDocument: String, commentDocument: String)
     case commentRef(goalDocument: String)
     case replyRef(commentDocument: String)
-    case likeUserRef(goalDocument: String)
-    case likeCommentRef(commentDocument: String)
+    case likeUserRef(goalDocument: String, authorToken: String)
+    case likeCommentRef(commentDocument: String, authorToken: String)
     
     var destination: DocumentReference {
         switch self {
-        case .userRef:
+        case .userRef(let token):
             return Firestore.firestore()
                 .collection("Users")
-                .document(AppUserDefaults.getAuthToken())
+                .document(token)
         case .authorRef(let token):
             return Firestore.firestore()
                 .collection("Users")
                 .document(token)
-        case .goalPostRef:
+        case .goalPostRef(let token):
             return Firestore.firestore()
                 .collection("Users")
-                .document(AppUserDefaults.getAuthToken())
+                .document(token)
                 .collection("Goals")
                 .document()
         case .goalUpdateRef(let token, let documentId):
@@ -60,74 +60,74 @@ enum FirebaseDocumentRef {
                 .document(commentDocumentId)
                 .collection("Replies")
                 .document()
-        case .likeUserRef(let documentId):
+        case .likeUserRef(let documentId, let token):
             return Firestore.firestore()
                 .collection("Goals")
                 .document(documentId)
                 .collection("likeUsers")
-                .document(AppUserDefaults.getAuthToken())
-        case .likeCommentRef(let commentId):
+                .document(token)
+        case .likeCommentRef(let commentId, let token):
             return Firestore.firestore()
                 .collection("Comments")
                 .document(commentId)
                 .collection("likeUsers")
-                .document(AppUserDefaults.getAuthToken())
+                .document(token)
         }
     }
 }
 
 enum FirebaseCollectionRef {
-    case goalsRef
+    case goalsRef(authorToken: String)
     
     var destination: CollectionReference {
         switch self {
-        case .goalsRef:
+        case .goalsRef(let token):
             return Firestore.firestore()
                 .collection("Users")
-                .document(AppUserDefaults.getAuthToken())
+                .document(token)
                 .collection("Goals")
         }
     }
 }
 
 enum FirebaseQueryRef {
-    case goalRef
-    case completeRef
-    case draftRef
-    case allRef
+    case goalRef(authorToken: String)
+    case completeRef(authorToken: String)
+    case draftRef(authorToken: String)
+    case allRef(authorToken: String)
     case commentRef(goalDocument: String)
     case replyRef(commentDocument: String)
     
     var destination: Query {
         switch self {
-        case .goalRef:
+        case .goalRef(let token):
             return Firestore.firestore()
                 .collection("Users")
-                .document(AppUserDefaults.getAuthToken())
+                .document(token)
                 .collection("Goals")
                 .whereField("achieved_flag", isEqualTo: false)
                 .whereField("draft_flag", isEqualTo: false)
                 .order(by: "updated_at", descending: true)
-        case .completeRef:
+        case .completeRef(let token):
             return Firestore.firestore()
                 .collection("Users")
-                .document(AppUserDefaults.getAuthToken())
+                .document(token)
                 .collection("Goals")
                 .whereField("achieved_flag", isEqualTo: true)
                 .whereField("draft_flag", isEqualTo: false)
                 .order(by: "updated_at", descending: true)
-        case .draftRef:
+        case .draftRef(let token):
             return Firestore.firestore()
                 .collection("Users")
-                .document(AppUserDefaults.getAuthToken())
+                .document(token)
                 .collection("Goals")
                 .whereField("achieved_flag", isEqualTo: false)
                 .whereField("draft_flag", isEqualTo: true)
                 .order(by: "updated_at", descending: true)
-        case .allRef:
+        case .allRef(let token):
             return Firestore.firestore()
                 .collection("Users")
-                .document(AppUserDefaults.getAuthToken())
+                .document(token)
                 .collection("Goals")
                 .order(by: "updated_at", descending: true)
         case .commentRef(let documentId):
@@ -147,15 +147,15 @@ enum FirebaseQueryRef {
 }
 
 enum FirebaseStorageRef {
-    case userImageRef
+    case userImageRef(authorToken: String)
     
     var destination: StorageReference {
         switch self {
-        case .userImageRef:
+        case .userImageRef(let token):
             return Storage.storage()
                 .reference()
                 .child("icon")
-                .child(AppUserDefaults.getAuthToken())
+                .child(token)
         }
     }
 }

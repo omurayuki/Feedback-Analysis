@@ -9,6 +9,7 @@ protocol EmailEditingPresenter: Presenter {
     var isLoading: BehaviorRelay<Bool> { get }
     
     func update(with email: String)
+    func getEmail()
 }
 
 protocol EmailEditingPresenterView: class {
@@ -18,6 +19,7 @@ protocol EmailEditingPresenterView: class {
                 routing: EmailEditingRouting,
                 presenter: EmailEditingPresenter,
                 disposeBag: DisposeBag)
+    func didGet(with email: String)
     func showError(message: String)
     func showSuccess(message: String)
     func updateLoading(_ isLoading: Bool)

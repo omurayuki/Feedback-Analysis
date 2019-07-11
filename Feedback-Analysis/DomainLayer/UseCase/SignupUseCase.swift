@@ -4,6 +4,7 @@ import RxSwift
 protocol SignupUseCase {
     func signup(email: String, pass: String) -> Single<Account>
     func setData(documentRef: FirebaseDocumentRef, fields: [String : Any]) -> Single<()>
+    func getAuthorToken() -> Single<String>
 }
 
 struct SignupUseCaseImpl: SignupUseCase {
@@ -22,5 +23,9 @@ struct SignupUseCaseImpl: SignupUseCase {
     
     func setData(documentRef: FirebaseDocumentRef, fields: [String : Any]) -> Single<()> {
         return repository.setData(documentRef: documentRef, fields: fields)
+    }
+    
+    func getAuthorToken() -> Single<String> {
+        return repository.getAuthorToken()
     }
 }

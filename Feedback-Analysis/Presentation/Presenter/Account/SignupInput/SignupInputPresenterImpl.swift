@@ -16,7 +16,7 @@ class SignupInputPresenterImpl: SignupInputPresenter {
     func signup(email mail: String, pass: String) {
         view.updateLoading(true)
         useCase.signup(email: mail, pass: pass)
-            .subscribe { result in
+            .subscribe { [unowned self]  result in
                 switch result {
                 case .success(let account):
                     self.view.didSignupSuccess(account: account)
@@ -36,6 +36,18 @@ class SignupInputPresenterImpl: SignupInputPresenter {
                     self.view.didSaveUserData()
                 case .error(let error):
                     self.view.updateLoading(false)
+                    self.view.showError(message: error.localizedDescription)
+                }
+            }.disposed(by: view.disposeBag)
+    }
+    
+    func getAuthorToken(completion: @escaping (String) -> Void) {
+        useCase.getAuthorToken()
+            .subscribe { [unowned self]  result in
+                switch result {
+                case .success(let response):
+                    completion(response)
+                case .error(let error):
                     self.view.showError(message: error.localizedDescription)
                 }
             }.disposed(by: view.disposeBag)

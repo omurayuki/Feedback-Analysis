@@ -14,6 +14,7 @@ protocol PrivateDraftPresenter {
     func delete(documentRef: FirebaseDocumentRef)
     func setSelected(index: Int)
     func getSelected(completion: @escaping (Int) -> Void)
+    func getAuthorToken(completion: @escaping (String) -> Void)
 }
 
 protocol PrivateDraftPresenterView: class {

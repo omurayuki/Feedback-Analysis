@@ -150,21 +150,26 @@ extension DetailViewController: DetailPresenterView {
     func didCheckIfYouLiked(_ bool: Bool) {
         switch bool {
         case false:
-            presenter.getSelected { index in
+            presenter.getSelected { [unowned self] index in
                 self.updateLikeCount(index: index, count: 1)
-                self.presenter.create(documentRef: .likeCommentRef(commentDocument: self.commentDataSource.listItems[index].documentId),
-                                      value: [:])
+                self.presenter.getAuthorToken(completion: { [unowned self] token in
+                    self.presenter.create(documentRef: .likeCommentRef(commentDocument: self.commentDataSource.listItems[index].documentId,
+                                                                       authorToken: token), value: [:])
+                })
             }
         case true:
-            presenter.getSelected { index in
+            presenter.getSelected { [unowned self] index in
                 self.updateLikeCount(index: index, count: -1)
-                self.presenter.delete(documentRef: .likeCommentRef(commentDocument: self.commentDataSource.listItems[index].documentId))
+                self.presenter.getAuthorToken(completion: { [unowned self] token in
+                    self.presenter.delete(documentRef: .likeCommentRef(commentDocument: self.commentDataSource.listItems[index].documentId,
+                                                                       authorToken: token))
+                })
             }
         }
     }
     
     func didCreateLikeRef() {
-        presenter.getSelected { index in
+        presenter.getSelected { [unowned self] index in
             self.presenter.update(to: .commentUpdateRef(goalDocument: self.commentDataSource.listItems[index].goalDocumentId,
                                                      commentDocument: self.commentDataSource.listItems[index].documentId),
                                   value: ["like_count": FieldValue.increment(1.0)])
@@ -172,7 +177,7 @@ extension DetailViewController: DetailPresenterView {
     }
     
     func didDeleteLikeRef() {
-        presenter.getSelected { index in
+        presenter.getSelected { [unowned self] index in
             self.presenter.update(to: .commentUpdateRef(goalDocument: self.commentDataSource.listItems[index].goalDocumentId,
                                                         commentDocument: self.commentDataSource.listItems[index].documentId),
                                   value: ["like_count": FieldValue.increment(-1.0)])
@@ -250,7 +255,10 @@ extension DetailViewController {
 extension DetailViewController: CellTapDelegate {
     
     func tappedLikeBtn(index: Int) {
-        presenter.get(documentRef: .likeCommentRef(commentDocument: commentDataSource.listItems[index].documentId))
-        presenter.setSelected(index: index)
+        self.presenter.getAuthorToken(completion: { [unowned self] token in
+            self.presenter.get(documentRef: .likeCommentRef(commentDocument: self.commentDataSource.listItems[index].documentId,
+                                                            authorToken: token))
+            self.presenter.setSelected(index: index)
+        })
     }
 }

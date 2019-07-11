@@ -48,7 +48,9 @@ class PublicGoalViewController: UIViewController {
         self.routing = routing
         self.disposeBag = disposeBag
         
-        self.presenter.fetch(from: .goalRef, completion: nil)
+        self.presenter.getAuthorToken(completion: { [unowned self] token in
+            self.presenter.fetch(from: .goalRef(authorToken: token), completion: nil)
+        })
     }
     
     override func viewDidLoad() {
@@ -78,20 +80,26 @@ extension PublicGoalViewController: PublicGoalPresenterView {
     func didCheckIfYouLiked(_ bool: Bool) {
         switch bool {
         case false:
-            presenter.getSelected { index in
+            presenter.getSelected { [unowned self] index in
                 self.updateLikeCount(index: index, count: 1)
-                self.presenter.create(documentRef: .likeUserRef(goalDocument: self.dataSource.listItems[index].documentId), value: [:])
+                self.presenter.getAuthorToken(completion: { [unowned self] token in
+                    self.presenter.create(documentRef: .likeUserRef(goalDocument: self.dataSource.listItems[index].documentId,
+                                                                    authorToken: token), value: [:])
+                })
             }
         case true:
-            presenter.getSelected { index in
+            presenter.getSelected { [unowned self] index in
                 self.updateLikeCount(index: index, count: -1)
-                self.presenter.delete(documentRef: .likeUserRef(goalDocument: self.dataSource.listItems[index].documentId))
+                self.presenter.getAuthorToken(completion: { [unowned self] token in
+                    self.presenter.delete(documentRef: .likeUserRef(goalDocument: self.dataSource.listItems[index].documentId,
+                                                                    authorToken: token))
+                })
             }
         }
     }
     
     func didCreateLikeRef() {
-        presenter.getSelected { index in
+        presenter.getSelected { [unowned self] index in
             self.presenter.update(to: .goalUpdateRef(author_token: self.dataSource.listItems[index].authorToken,
                                                      goalDocument: self.dataSource.listItems[index].documentId),
                                   value: ["like_count": FieldValue.increment(1.0)])
@@ -99,7 +107,7 @@ extension PublicGoalViewController: PublicGoalPresenterView {
     }
     
     func didDeleteLikeRef() {
-        presenter.getSelected { index in
+        presenter.getSelected { [unowned self] index in
             self.presenter.update(to: .goalUpdateRef(author_token: self.dataSource.listItems[index].authorToken,
                                                      goalDocument: self.dataSource.listItems[index].documentId),
                                   value: ["like_count": FieldValue.increment(-1.0)])
@@ -118,7 +126,10 @@ extension PublicGoalViewController {
 extension PublicGoalViewController: CellTapDelegate {
     
     func tappedLikeBtn(index: Int) {
-        presenter.get(documentRef: .likeUserRef(goalDocument: dataSource.listItems[index].documentId))
-        presenter.setSelected(index: index)
+        self.presenter.getAuthorToken(completion: { [unowned self] token in
+            self.presenter.get(documentRef: .likeUserRef(goalDocument: self.dataSource.listItems[index].documentId,
+                                                    authorToken: token))
+            self.presenter.setSelected(index: index)
+        })
     }
 }

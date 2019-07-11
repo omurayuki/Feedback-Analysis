@@ -14,6 +14,7 @@ protocol PrivateAllPresenter {
     func delete(documentRef: FirebaseDocumentRef)
     func setSelected(index: Int)
     func getSelected(completion: @escaping (Int) -> Void)
+    func getAuthorToken(completion: @escaping (String) -> Void)
 }
 
 protocol PrivateAllPresenterView: class {

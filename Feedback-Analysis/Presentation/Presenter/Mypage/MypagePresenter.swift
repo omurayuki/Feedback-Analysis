@@ -9,6 +9,7 @@ protocol MypagePresenter: Presenter {
     
     func fetch(to documentRef: FirebaseDocumentRef, completion: (() -> Void)?)
     func set(user: [User])
+    func getAuthorToken(completion: @escaping (String) -> Void)
 }
 
 protocol MypagePresenterView: class {

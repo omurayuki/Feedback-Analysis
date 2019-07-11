@@ -45,8 +45,7 @@ class EmailEditingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        ui.setup(with: AppUserDefaults.getAccountEmail())
-        // ここで渡すべきでない？
+        presenter.getEmail()
     }
 }
 
@@ -54,5 +53,9 @@ extension EmailEditingViewController: EmailEditingPresenterView {
     
     func updateLoading(_ isLoading: Bool) {
         presenter.isLoading.accept(isLoading)
+    }
+    
+    func didGet(with email: String) {
+        ui.setup(with: email)
     }
 }

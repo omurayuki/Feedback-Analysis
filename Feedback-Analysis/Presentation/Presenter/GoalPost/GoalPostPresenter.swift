@@ -8,6 +8,7 @@ protocol GoalPostPresenter: Presenter {
     var isLoading: BehaviorRelay<Bool> { get }
     
     func post(to documentRef: FirebaseDocumentRef, fields: GoalPost)
+    func getAuthorToken(completion: @escaping (String) -> Void)
 }
 
 protocol GoalPostPresenterView: class {

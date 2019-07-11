@@ -7,6 +7,7 @@ protocol MypageRepository {
     func uploadImage(_ image: UIImage, at storageRef: FirebaseStorageRef) -> Single<URL>
     func set(user: [User]) -> Single<()>
     func getUser() -> Single<[UserEntity]>
+    func getAuthorToken() -> Single<String>
 }
 
 struct MypageRepositoryImpl: MypageRepository {
@@ -36,5 +37,10 @@ struct MypageRepositoryImpl: MypageRepository {
     func getUser() -> Single<[UserEntity]> {
         let dataStore = UserDataStoreFactory.createUserLocalDataStore()
         return dataStore.getUser()
+    }
+    
+    func getAuthorToken() -> Single<String> {
+        let dataStore = UserDataStoreFactory.createUserLocalDataStore()
+        return dataStore.getAuthorToken()
     }
 }

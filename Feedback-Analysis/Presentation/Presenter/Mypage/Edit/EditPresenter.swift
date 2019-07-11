@@ -10,6 +10,7 @@ protocol EditPresenter: Presenter {
     func update(to documentRef: FirebaseDocumentRef, user: Update)
     func uploadImage(_ image: UIImage, at storageRef: FirebaseStorageRef)
     func getUser()
+    func getAuthorToken(completion: @escaping (String) -> Void)
 }
 
 protocol EditPresenterView: class {

@@ -40,6 +40,10 @@ class PublicGoalPresenterImpl: NSObject, PublicGoalPresenter {
     func getSelected(completion: @escaping (Int) -> Void) {
         print("ok")
     }
+    
+    func getAuthorToken(completion: @escaping (String) -> Void) {
+        print("ok")
+    }
 }
 
 extension PublicGoalPresenterImpl: UITableViewDelegate {
