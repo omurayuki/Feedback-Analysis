@@ -5,8 +5,12 @@ final class PrivateAllUIImpl: TimelineContentUI {
     weak var viewController: UIViewController?
     
     var timeline: UITableView = {
-        let table = UITableView()
-        table.setupTimelineComponent()
+        let table = UITableView.Builder()
+            .backgroundImage(#imageLiteral(resourceName: "logo"))
+            .backgroundAlpha(0.1)
+            .contentMode(.scaleAspectFit)
+            .estimatedRowHeight(400)
+            .build()
         table.register(TimelineCell.self, forCellReuseIdentifier: String(describing: TimelineCell.self))
         return table
     }()
