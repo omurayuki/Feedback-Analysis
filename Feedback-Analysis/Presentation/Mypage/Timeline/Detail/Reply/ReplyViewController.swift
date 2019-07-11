@@ -21,7 +21,7 @@ class ReplyViewController: UIViewController, HalfModalPresentable {
     private(set) lazy var replyDataSource: ReplyDataStore = {
         return ReplyDataStore(cellReuseIdentifier: String(describing: ReplyCell.self),
                                 listItems: [],
-                                isSkelton: true,
+                                isSkelton: false,
                                 cellConfigurationHandler: { (cell, item, _) in
             cell.content = item
         })
@@ -143,7 +143,6 @@ extension ReplyViewController: ReplyPresenterView {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
             self.presenter.view.updateLoading(false)
             self.ui.replyTable.reloadData()
-//            self.replyDataSource.listItems.isEmpty ? self.updateReplyCellIfEmpty() : self.ui.replyTable.reloadData()
         }
     }
     
@@ -195,14 +194,5 @@ extension ReplyViewController {
     func mappingDataToDataSource(replies: [Reply]) {
         replyDataSource.listItems = []
         replyDataSource.listItems += replies
-    }
-    
-    func updateReplyCellIfEmpty() {
-        for i in 0 ..< 10 {
-            let indexPath = NSIndexPath(row: i, section: 0)
-            guard let cell = ui.replyTable.cellForRow(at: indexPath as IndexPath) as? ReplyCell else { return }
-            cell.hideSkelton(cell.userPhoto, cell.userName)
-            cell.removeFromSuperview()
-        }
     }
 }
