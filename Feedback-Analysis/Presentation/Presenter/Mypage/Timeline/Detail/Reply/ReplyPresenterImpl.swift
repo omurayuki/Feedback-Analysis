@@ -6,11 +6,14 @@ import GrowingTextView
 class ReplyPresenterImpl: NSObject, ReplyPresenter {
     var view: ReplyPresenterView!
     var isLoading: BehaviorRelay<Bool> = BehaviorRelay<Bool>(value: false)
+    var keyboardNotifier: KeyboardNotifier! = KeyboardNotifier()
     
     private var useCase: DetailUseCase
     
     init(useCase: DetailUseCase) {
         self.useCase = useCase
+        super.init()
+        listenKeyboard(keyboardNotifier: keyboardNotifier)
     }
     
     func fetch() {
@@ -95,5 +98,16 @@ extension ReplyPresenterImpl: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         view.didSelect(tableView: tableView, indexPath: indexPath)
+    }
+}
+
+extension ReplyPresenterImpl: KeyboardListener {
+    
+    func keyboardPresent(_ height: CGFloat) {
+        view.keyboardPresent(height)
+    }
+    
+    func keyboardDismiss(_ height: CGFloat) {
+        view.keyboardDismiss(height)
     }
 }

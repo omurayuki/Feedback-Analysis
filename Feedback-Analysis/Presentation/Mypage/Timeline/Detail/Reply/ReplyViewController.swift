@@ -4,7 +4,7 @@ import RxSwift
 import RxCocoa
 import FirebaseFirestore
 
-class ReplyViewController: UIViewController, HalfModalPresentable {
+class ReplyViewController: UIViewController {
     
     typealias CommentDataSource = TableViewDataSource<CommentCell, Comment>
     typealias ReplyDataStore = TableViewDataSource<ReplyCell, Reply>
@@ -76,18 +76,6 @@ class ReplyViewController: UIViewController, HalfModalPresentable {
                     self.view.endEditing(true)
                 }.disposed(by: disposeBag)
             
-            NotificationCenter.default.rx
-                .notification(UIResponder.keyboardWillShowNotification, object: nil)
-                .subscribe(onNext: { [unowned self] notification in
-                    self.keyboardWillChangeFrame(notification)
-                }).disposed(by: disposeBag)
-            
-            NotificationCenter.default.rx
-                .notification(UIResponder.keyboardWillHideNotification, object: nil)
-                .subscribe(onNext: { [unowned self] notification in
-                    self.keyboardWillChangeFrame(notification)
-                }).disposed(by: disposeBag)
-            
             presenter.isLoading
                 .subscribe(onNext: { [unowned self] isLoading in
                     self.view.endEditing(true)
@@ -157,6 +145,14 @@ extension ReplyViewController: ReplyPresenterView {
                          createdAt: FieldValue.serverTimestamp(),
                          updatedAt: FieldValue.serverTimestamp())
     }
+    
+    func keyboardPresent(_ height: CGFloat) {
+        ui.changeViewWithKeyboardY(false, height: height - view.safeAreaInsets.bottom + ui.submitBtn.frame.height + 8)
+    }
+    
+    func keyboardDismiss(_ height: CGFloat) {
+        ui.changeViewWithKeyboardY(true, height: height)
+    }
 }
 
 extension ReplyViewController {
@@ -172,28 +168,10 @@ extension ReplyViewController {
         }
     }
     
-    func keyboardWillChangeFrame(_ notification: Notification) {
-        if let endFrame = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            var keyboardHeight = UIScreen.main.bounds.height - endFrame.origin.y
-            if #available(iOS 11, *) {
-                if keyboardHeight > 0 {
-                    view.addGestureRecognizer(ui.viewTapGesture)
-                    ui.isHiddenSubmitBtn(false)
-                    ui.isHiddenTextCount(false)
-                    keyboardHeight = keyboardHeight - view.safeAreaInsets.bottom + ui.submitBtn.frame.height + 8
-                } else {
-                    view.removeGestureRecognizer(ui.viewTapGesture)
-                    ui.isHiddenSubmitBtn(true)
-                    ui.isHiddenTextCount(true)
-                }
-            }
-            ui.textViewBottomConstraint.constant = -keyboardHeight - 8
-            view.layoutIfNeeded()
-        }
-    }
-    
     func mappingDataToDataSource(replies: [Reply]) {
         replyDataSource.listItems = []
         replyDataSource.listItems += replies
     }
 }
+
+extension ReplyViewController: HalfModalPresentable {}

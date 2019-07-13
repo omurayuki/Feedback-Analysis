@@ -18,6 +18,7 @@ protocol DetailUI: UI {
     func isHiddenTextCount(_ bool: Bool)
     func clearCommentField()
     func updateCommentCount(_ count: Int)
+    func changeViewWithKeyboardY(_ bool: Bool, height: CGFloat)
 }
 
 final class DetailUIImpl: DetailUI {
@@ -183,5 +184,14 @@ extension DetailUIImpl {
         let indexPath = NSIndexPath(row: 0, section: 0)
         guard let cell = detail.cellForRow(at: indexPath as IndexPath) as? TimelineCell else { return }
         cell.commentCount.text = "\(count)"
+    }
+    
+    func changeViewWithKeyboardY(_ bool: Bool, height: CGFloat) {
+        guard let vc = viewController else { return }
+        vc.view.addGestureRecognizer(viewTapGesture)
+        isHiddenSubmitBtn(bool)
+        isHiddenTextCount(bool)
+        textViewBottomConstraint.constant = -(height) - 8
+        vc.view.layoutIfNeeded()
     }
 }

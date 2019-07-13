@@ -108,6 +108,7 @@
 		C988631722C5E10F00CABD62 /* PrivateGoalRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C988631622C5E10F00CABD62 /* PrivateGoalRouting.swift */; };
 		C988631922C5E6FF00CABD62 /* TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C988631822C5E6FF00CABD62 /* TableViewDataSource.swift */; };
 		C988631B22C5E92000CABD62 /* Timeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = C988631A22C5E92000CABD62 /* Timeline.swift */; };
+		C98C7A4622D8A73100EF9B8F /* KeyboardNotifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98C7A4522D8A73100EF9B8F /* KeyboardNotifier.swift */; };
 		C98E1BB622B7370100D132D5 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98E1BB522B7370100D132D5 /* UIImageView+Extension.swift */; };
 		C98E1BB822B7456700D132D5 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98E1BB722B7456700D132D5 /* ImagePicker.swift */; };
 		C99116AA22B8A30C007C67C7 /* PasswordEditingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99116A922B8A30C007C67C7 /* PasswordEditingViewController.swift */; };
@@ -325,6 +326,7 @@
 		C988631622C5E10F00CABD62 /* PrivateGoalRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateGoalRouting.swift; sourceTree = "<group>"; };
 		C988631822C5E6FF00CABD62 /* TableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDataSource.swift; sourceTree = "<group>"; };
 		C988631A22C5E92000CABD62 /* Timeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timeline.swift; sourceTree = "<group>"; };
+		C98C7A4522D8A73100EF9B8F /* KeyboardNotifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardNotifier.swift; sourceTree = "<group>"; };
 		C98E1BB522B7370100D132D5 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 		C98E1BB722B7456700D132D5 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		C99116A922B8A30C007C67C7 /* PasswordEditingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordEditingViewController.swift; sourceTree = "<group>"; };
@@ -1164,6 +1166,7 @@
 			isa = PBXGroup;
 			children = (
 				C9D9010822AB44D80040390E /* AppUserDefault.swift */,
+				C98C7A4522D8A73100EF9B8F /* KeyboardNotifier.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -1596,6 +1599,7 @@
 				C941332D22C8BD390082A01C /* DetailPresenterImpl.swift in Sources */,
 				C9CC28EF22AD1288006E69E5 /* LoginInputRouting.swift in Sources */,
 				C9EB3D4A22D7255B0063434A /* AccountLocalDataStore.swift in Sources */,
+				C98C7A4622D8A73100EF9B8F /* KeyboardNotifier.swift in Sources */,
 				C9EB3D4C22D78A2B0063434A /* GrowingTextView+Extension.swift in Sources */,
 				C9C43B8722D0BD03006CBC1B /* ReplyPresenter.swift in Sources */,
 				C91FA65422B4FF84006D9E6D /* EditPresenter.swift in Sources */,

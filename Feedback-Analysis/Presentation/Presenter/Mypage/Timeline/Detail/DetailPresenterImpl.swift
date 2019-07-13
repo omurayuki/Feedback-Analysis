@@ -6,11 +6,14 @@ import GrowingTextView
 class DetailPresenterImpl: NSObject, DetailPresenter {
     var view: DetailPresenterView!
     var isLoading: BehaviorRelay<Bool> = BehaviorRelay<Bool>(value: false)
+    var keyboardNotifier: KeyboardNotifier! = KeyboardNotifier()
     
     private var useCase: DetailUseCase
     
     init(useCase: DetailUseCase) {
         self.useCase = useCase
+        super.init()
+        listenKeyboard(keyboardNotifier: keyboardNotifier)
     }
     
     func fetch() {
@@ -178,5 +181,16 @@ extension DetailPresenterImpl: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         view.didSelect(tableView: tableView, indexPath: indexPath)
+    }
+}
+
+extension DetailPresenterImpl: KeyboardListener {
+    
+    func keyboardPresent(_ height: CGFloat) {
+        view.keyboardPresent(height)
+    }
+    
+    func keyboardDismiss(_ height: CGFloat) {
+        view.keyboardDismiss(height)
     }
 }

@@ -6,6 +6,7 @@ import RxCocoa
 protocol DetailPresenter {
     var view: DetailPresenterView! { get set }
     var isLoading: BehaviorRelay<Bool> { get }
+    var keyboardNotifier: KeyboardNotifier! { get }
     
     func fetch()
     func update(to documentRef: FirebaseDocumentRef, value: [String: Any])
@@ -36,6 +37,8 @@ protocol DetailPresenterView: class {
     func didDeleteLikeRef()
     func didFetchComments(comments: [Comment])
     func didSelect(tableView: UITableView, indexPath: IndexPath)
+    func keyboardPresent(_ height: CGFloat)
+    func keyboardDismiss(_ height: CGFloat)
     func showError(message: String)
     func updateLoading(_ isLoading: Bool)
 }

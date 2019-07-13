@@ -6,6 +6,7 @@ import RxCocoa
 protocol ReplyPresenter {
     var view: ReplyPresenterView! { get set }
     var isLoading: BehaviorRelay<Bool> { get }
+    var keyboardNotifier: KeyboardNotifier! { get }
     
     func fetch()
     func post(to documentRef: FirebaseDocumentRef, reply: ReplyPost)
@@ -26,6 +27,8 @@ protocol ReplyPresenterView: class {
     func didPostSuccess()
     func didFetchReplies(replies: [Reply])
     func didSelect(tableView: UITableView, indexPath: IndexPath)
+    func keyboardPresent(_ height: CGFloat)
+    func keyboardDismiss(_ height: CGFloat)
     func showError(message: String)
     func updateLoading(_ isLoading: Bool)
 }

@@ -19,6 +19,7 @@ protocol ReplyUI: UI {
     func isHiddenTextCount(_ bool: Bool)
     func clearReplyField()
     func updateReplyCount(_ count: Int)
+    func changeViewWithKeyboardY(_ bool: Bool, height: CGFloat)
 }
 
 final class ReplyUIImpl: ReplyUI {
@@ -193,5 +194,14 @@ extension ReplyUIImpl {
         let indexPath = NSIndexPath(row: 0, section: 0)
         guard let cell = comment.cellForRow(at: indexPath as IndexPath) as? CommentCell else { return }
         cell.repliedCount.text = "\(count)"
+    }
+    
+    func changeViewWithKeyboardY(_ bool: Bool, height: CGFloat) {
+        guard let vc = viewController else { return }
+        vc.view.addGestureRecognizer(viewTapGesture)
+        isHiddenSubmitBtn(bool)
+        isHiddenTextCount(bool)
+        textViewBottomConstraint.constant = -(height) - 8
+        vc.view.layoutIfNeeded()
     }
 }
