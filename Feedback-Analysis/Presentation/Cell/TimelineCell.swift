@@ -15,12 +15,10 @@ final class TimelineCell: UITableViewCell {
     var identificationId = Int()
     
     private(set) var userPhoto: UIImageView = {
-        let image = UIImageView()
-        image.backgroundColor = .blue
-        image.layer.cornerRadius = 25
-        image.layer.borderWidth = 2
-        image.layer.borderColor = UIColor.white.cgColor
-        image.clipsToBounds = true
+        let image = UIImageView.Builder()
+            .cornerRadius(25)
+            .isUserInteractionEnabled(false)
+            .build()
         return image
     }()
     
@@ -108,37 +106,37 @@ final class TimelineCell: UITableViewCell {
     }()
     
     private(set) var leftTopImage: UIImageView = {
-        let image = UIImageView()
-        image.clipsToBounds = true
-        image.contentMode = .scaleAspectFill
-        image.layer.cornerRadius = 10
+        let image = UIImageView.Builder()
+            .cornerRadius(10)
+            .isUserInteractionEnabled(false)
+            .build()
         image.layer.maskedCorners = [.layerMinXMinYCorner]
         return image
     }()
     
     private(set) var rightTopImage: UIImageView = {
-        let image = UIImageView()
-        image.clipsToBounds = true
-        image.contentMode = .scaleAspectFill
-        image.layer.cornerRadius = 10
+        let image = UIImageView.Builder()
+            .cornerRadius(10)
+            .isUserInteractionEnabled(false)
+            .build()
         image.layer.maskedCorners = [.layerMaxXMinYCorner]
         return image
     }()
     
     private(set) var leftBottomImage: UIImageView = {
-        let image = UIImageView()
-        image.clipsToBounds = true
-        image.contentMode = .scaleAspectFill
-        image.layer.cornerRadius = 10
+        let image = UIImageView.Builder()
+            .cornerRadius(10)
+            .isUserInteractionEnabled(false)
+            .build()
         image.layer.maskedCorners = [.layerMinXMaxYCorner]
         return image
     }()
     
     private(set) var rightBottomImage: UIImageView = {
-        let image = UIImageView()
-        image.clipsToBounds = true
-        image.contentMode = .scaleAspectFill
-        image.layer.cornerRadius = 10
+        let image = UIImageView.Builder()
+            .cornerRadius(10)
+            .isUserInteractionEnabled(false)
+            .build()
         image.layer.maskedCorners = [.layerMaxXMaxYCorner]
         return image
     }()

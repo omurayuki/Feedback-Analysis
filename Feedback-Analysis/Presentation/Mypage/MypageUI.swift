@@ -36,12 +36,11 @@ final class MypageUIImpl: MypageUI {
     }()
     
     private(set) var userImage: UIImageView = {
-        let image = UIImageView()
-        image.layer.cornerRadius = 30
-        image.layer.borderWidth = 2
-        image.layer.borderColor = UIColor.white.cgColor
-        image.backgroundColor = .white
-        image.clipsToBounds = true
+        let image = UIImageView.Builder()
+            .cornerRadius(30)
+            .borderWidth(2)
+            .isUserInteractionEnabled(false)
+            .build()
         return image
     }()
     

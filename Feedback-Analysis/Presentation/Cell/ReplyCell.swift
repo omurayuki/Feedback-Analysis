@@ -3,11 +3,10 @@ import UIKit
 final class ReplyCell: UITableViewCell {
     
     private(set) var userPhoto: UIImageView = {
-        let image = UIImageView()
-        image.layer.cornerRadius = 25
-        image.layer.borderWidth = 2
-        image.layer.borderColor = UIColor.white.cgColor
-        image.clipsToBounds = true
+        let image = UIImageView.Builder()
+            .cornerRadius(25)
+            .isUserInteractionEnabled(false)
+            .build()
         return image
     }()
     

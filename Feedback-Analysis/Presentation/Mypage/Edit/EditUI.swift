@@ -97,13 +97,10 @@ final class EditUIImpl: EditUI {
     }()
     
     private(set) var userImage: UIImageView = {
-        let image = UIImageView()
-        image.backgroundColor = .white
-        image.layer.cornerRadius = 30
-        image.layer.borderWidth = 2
-        image.layer.borderColor = UIColor.white.cgColor
-        image.isUserInteractionEnabled = true
-        image.clipsToBounds = true
+        let image = UIImageView.Builder()
+            .cornerRadius(30)
+            .borderWidth(2)
+            .build()
         return image
     }()
     
