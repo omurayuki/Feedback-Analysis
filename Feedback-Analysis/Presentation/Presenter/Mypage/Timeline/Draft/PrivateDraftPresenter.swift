@@ -20,7 +20,7 @@ protocol PrivateDraftPresenter {
 protocol PrivateDraftPresenterView: class {
     var disposeBag: DisposeBag! { get }
     
-    func inject(ui: TimelineContentUI,
+    func inject(ui: PrivateTimelineContentUI,
                 presenter: PrivateDraftPresenter,
                 routing: PrivateDraftRouting,
                 disposeBag: DisposeBag)

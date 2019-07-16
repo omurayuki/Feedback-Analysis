@@ -1,6 +1,6 @@
 import UIKit
 
-final class PublicGoalUIImpl: TimelineContentUI {
+final class PublicGoalUIImpl: PublicTimelineContentUI {
     
     weak var viewController: UIViewController?
     
@@ -15,6 +15,7 @@ final class PublicGoalUIImpl: TimelineContentUI {
             .backgroundAlpha(0.1)
             .contentMode(.scaleAspectFit)
             .estimatedRowHeight(400)
+            .isUserInteractionEnabled(true)
             .build()
         table.register(TimelineCell.self, forCellReuseIdentifier: String(describing: TimelineCell.self))
         return table

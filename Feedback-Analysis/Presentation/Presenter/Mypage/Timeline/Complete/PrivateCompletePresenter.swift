@@ -20,7 +20,7 @@ protocol PrivateCompletePresenter {
 protocol PrivateCompletePresenterView: class {
     var disposeBag: DisposeBag! { get }
     
-    func inject(ui: TimelineContentUI,
+    func inject(ui: PrivateTimelineContentUI,
                 presenter: PrivateCompletePresenter,
                 routing: PrivateCompleteRouting,
                 disposeBag: DisposeBag)

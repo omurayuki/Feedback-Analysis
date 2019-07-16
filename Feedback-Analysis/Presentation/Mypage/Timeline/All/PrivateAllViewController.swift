@@ -18,7 +18,7 @@ class PrivateAllViewController: UIViewController {
         })
     }()
     
-    var ui: TimelineContentUI!
+    var ui: PrivateTimelineContentUI!
     
     var routing: PrivateAllRouting!
     
@@ -38,7 +38,7 @@ class PrivateAllViewController: UIViewController {
         }
     }
     
-    func inject(ui: TimelineContentUI,
+    func inject(ui: PrivateTimelineContentUI,
                 presenter: PrivateAllPresenter,
                 routing: PrivateAllRouting,
                 disposeBag: DisposeBag) {

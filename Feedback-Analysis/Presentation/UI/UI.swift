@@ -13,8 +13,13 @@ extension UI {
     }
 }
 
-protocol TimelineContentUI: UI {
-    var timeline: UITableView { get set }
+protocol PublicTimelineContentUI: UI {
     var refControl: UIRefreshControl { get }
+    var timeline: UITableView { get set }
+    func setup()
+}
+
+protocol PrivateTimelineContentUI: UI {
+    var timeline: UITableView { get set }
     func setup()
 }

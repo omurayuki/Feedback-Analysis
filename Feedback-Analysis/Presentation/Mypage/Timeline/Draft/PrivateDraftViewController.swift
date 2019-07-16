@@ -18,7 +18,7 @@ class PrivateDraftViewController: UIViewController {
         })
     }()
     
-    var ui: TimelineContentUI!
+    var ui: PrivateTimelineContentUI!
     
     var routing: PrivateDraftRouting!
     
@@ -38,7 +38,7 @@ class PrivateDraftViewController: UIViewController {
         }
     }
     
-    func inject(ui: TimelineContentUI,
+    func inject(ui: PrivateTimelineContentUI,
                 presenter: PrivateDraftPresenter,
                 routing: PrivateDraftRouting,
                 disposeBag: DisposeBag) {

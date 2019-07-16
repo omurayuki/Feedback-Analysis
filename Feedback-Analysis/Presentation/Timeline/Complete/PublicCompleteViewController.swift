@@ -19,7 +19,7 @@ class PublicCompleteViewController: UIViewController {
         })
     }()
     
-    var ui: TimelineContentUI!
+    var ui: PublicTimelineContentUI!
     
     var routing: PublicCompleteRouting!
     
@@ -33,7 +33,7 @@ class PublicCompleteViewController: UIViewController {
         didSet {
             ui.refControl.rx.controlEvent(.valueChanged)
                 .subscribe(onNext: { _ in
-                    self.presenter.fetch(from: .publicGoalRef, completion: nil)
+                    self.presenter.fetch(from: .publicGoalRef, loading: false, completion: nil)
                 }).disposed(by: disposeBag)
             
             presenter.isLoading
@@ -44,7 +44,7 @@ class PublicCompleteViewController: UIViewController {
         }
     }
     
-    func inject(ui: TimelineContentUI,
+    func inject(ui: PublicTimelineContentUI,
                 presenter: PublicCompletePresenter,
                 routing: PublicCompleteRouting,
                 disposeBag: DisposeBag) {
@@ -53,7 +53,7 @@ class PublicCompleteViewController: UIViewController {
         self.routing = routing
         self.disposeBag = disposeBag
         
-        self.presenter.fetch(from: .publicComplete, completion: nil)
+        self.presenter.fetch(from: .publicComplete, loading: true, completion: nil)
     }
     
     override func viewDidLoad() {
@@ -72,13 +72,14 @@ extension PublicCompleteViewController: PublicCompletePresenterView {
         dataSource.listItems = []
         dataSource.listItems += timeline
         ui.timeline.reloadData()
+        ui.refControl.endRefreshing()
     }
     
     func didSelect(indexPath: IndexPath, tableView: UITableView) {
         tableView.deselectRow(at: indexPath, animated: true)
         guard let height = tableView.cellForRow(at: indexPath)?.contentView.frame.height else { return }
         routing.showDetail(with: dataSource.listItems[indexPath.row], height: height + 2)
-        presenter.fetch(from: .publicGoalRef, completion: nil)
+        presenter.fetch(from: .publicGoalRef, loading: false, completion: nil)
     }
     
     func didCheckIfYouLiked(_ bool: Bool) {

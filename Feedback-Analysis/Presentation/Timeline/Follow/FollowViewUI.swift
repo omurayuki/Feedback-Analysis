@@ -1,6 +1,6 @@
 import UIKit
 
-final class FollowViewUIImpl: TimelineContentUI {
+final class FollowViewUIImpl: PublicTimelineContentUI {
     
     weak var viewController: UIViewController?
     
@@ -15,6 +15,7 @@ final class FollowViewUIImpl: TimelineContentUI {
             .backgroundAlpha(0.1)
             .contentMode(.scaleAspectFit)
             .estimatedRowHeight(400)
+            .isUserInteractionEnabled(true)
             .build()
         table.register(TimelineCell.self, forCellReuseIdentifier: String(describing: TimelineCell.self))
         return table
@@ -29,6 +30,7 @@ extension FollowViewUIImpl {
         vc.clearNavBar()
         
         vc.view.addSubview(timeline)
+        timeline.addSubview(refControl)
         
         timeline.anchor()
             .edgesToSuperview()

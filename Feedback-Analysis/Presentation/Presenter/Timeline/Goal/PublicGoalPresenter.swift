@@ -7,7 +7,7 @@ protocol PublicGoalPresenter {
     var view: PublicGoalPresenterView! { get set }
     var isLoading: BehaviorRelay<Bool> { get }
     
-    func fetch(from queryRef: FirebaseQueryRef, completion: (() -> Void)?)
+    func fetch(from queryRef: FirebaseQueryRef, loading: Bool, completion: (() -> Void)?)
     func update(to documentRef: FirebaseDocumentRef, value: [String: Any])
     func get(documentRef: FirebaseDocumentRef)
     func create(documentRef: FirebaseDocumentRef, value: [String: Any])
@@ -20,7 +20,7 @@ protocol PublicGoalPresenter {
 protocol PublicGoalPresenterView: class {
     var disposeBag: DisposeBag! { get }
     
-    func inject(ui: TimelineContentUI,
+    func inject(ui: PublicTimelineContentUI,
                 presenter: PublicGoalPresenter,
                 routing: PublicGoalRouting,
                 disposeBag: DisposeBag)

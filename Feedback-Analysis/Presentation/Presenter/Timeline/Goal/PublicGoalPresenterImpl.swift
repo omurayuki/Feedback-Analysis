@@ -13,8 +13,8 @@ class PublicGoalPresenterImpl: NSObject, PublicGoalPresenter {
         self.useCase = useCase
     }
     
-    func fetch(from queryRef: FirebaseQueryRef, completion: (() -> Void)?) {
-        view.updateLoading(true)
+    func fetch(from queryRef: FirebaseQueryRef, loading: Bool, completion: (() -> Void)?) {
+        view.updateLoading(loading)
         useCase.fetch(from: queryRef)
             .subscribe(onNext: { [unowned self] result in
                 self.view.updateLoading(false)

@@ -19,7 +19,7 @@ class PrivateGoalViewController: UIViewController {
         })
     }()
     
-    var ui: TimelineContentUI!
+    var ui: PrivateTimelineContentUI!
     
     var routing: PrivateGoalRouting!
     
@@ -39,7 +39,7 @@ class PrivateGoalViewController: UIViewController {
         }
     }
     
-    func inject(ui: TimelineContentUI,
+    func inject(ui: PrivateTimelineContentUI,
                 presenter: PrivateGoalPresenter,
                 routing: PrivateGoalRouting,
                 disposeBag: DisposeBag) {

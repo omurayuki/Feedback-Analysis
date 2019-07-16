@@ -19,7 +19,7 @@ class PublicGoalViewController: UIViewController {
         })
     }()
     
-    var ui: TimelineContentUI!
+    var ui: PublicTimelineContentUI!
     
     var routing: PublicGoalRouting!
     
@@ -33,7 +33,7 @@ class PublicGoalViewController: UIViewController {
         didSet {
             ui.refControl.rx.controlEvent(.valueChanged)
                 .subscribe(onNext: { _ in
-                    self.presenter.fetch(from: .publicGoalRef, completion: nil)
+                    self.presenter.fetch(from: .publicGoalRef, loading: false, completion: nil)
                 }).disposed(by: disposeBag)
             
             presenter.isLoading
@@ -44,7 +44,7 @@ class PublicGoalViewController: UIViewController {
         }
     }
     
-    func inject(ui: TimelineContentUI,
+    func inject(ui: PublicTimelineContentUI,
                 presenter: PublicGoalPresenter,
                 routing: PublicGoalRouting,
                 disposeBag: DisposeBag) {
@@ -53,7 +53,7 @@ class PublicGoalViewController: UIViewController {
         self.routing = routing
         self.disposeBag = disposeBag
         
-        self.presenter.fetch(from: .publicGoalRef, completion: nil)
+        self.presenter.fetch(from: .publicGoalRef, loading: true, completion: nil)
     }
     
     override func viewDidLoad() {
@@ -76,10 +76,10 @@ extension PublicGoalViewController: PublicGoalPresenterView {
     }
     
     func didSelect(indexPath: IndexPath, tableView: UITableView) {
-        self.presenter.fetch(from: .publicGoalRef, completion: nil)
         tableView.deselectRow(at: indexPath, animated: true)
         guard let height = tableView.cellForRow(at: indexPath)?.contentView.frame.height else { return }
         routing.showDetail(with: dataSource.listItems[indexPath.row], height: height + 2)
+        self.presenter.fetch(from: .publicGoalRef, loading: false, completion: nil)
     }
     
     func didCheckIfYouLiked(_ bool: Bool) {

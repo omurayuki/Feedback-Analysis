@@ -1,13 +1,8 @@
 import UIKit
 
-final class PrivateAllUIImpl: TimelineContentUI {
+final class PrivateAllUIImpl: PrivateTimelineContentUI {
     
     weak var viewController: UIViewController?
-    
-    var refControl: UIRefreshControl = {
-        let refControl = UIRefreshControl()
-        return refControl
-    }()
     
     var timeline: UITableView = {
         let table = UITableView.Builder()
