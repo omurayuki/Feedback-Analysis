@@ -219,6 +219,8 @@
 		C9F2497722B7B345007E82A0 /* EmailEditingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F2497622B7B345007E82A0 /* EmailEditingPresenter.swift */; };
 		C9F2497922B7B34E007E82A0 /* EmailEditingPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F2497822B7B34E007E82A0 /* EmailEditingPresenterImpl.swift */; };
 		C9F2497B22B88E93007E82A0 /* PaddingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F2497A22B88E93007E82A0 /* PaddingTextField.swift */; };
+		C9FE4BC722DDC1A200DBF543 /* PublicCompletePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FE4BC622DDC1A200DBF543 /* PublicCompletePresenter.swift */; };
+		C9FE4BCB22DDC1BC00DBF543 /* PublicCompletePresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FE4BCA22DDC1BC00DBF543 /* PublicCompletePresenterImpl.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -439,6 +441,8 @@
 		C9F2497622B7B345007E82A0 /* EmailEditingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailEditingPresenter.swift; sourceTree = "<group>"; };
 		C9F2497822B7B34E007E82A0 /* EmailEditingPresenterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailEditingPresenterImpl.swift; sourceTree = "<group>"; };
 		C9F2497A22B88E93007E82A0 /* PaddingTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingTextField.swift; sourceTree = "<group>"; };
+		C9FE4BC622DDC1A200DBF543 /* PublicCompletePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicCompletePresenter.swift; sourceTree = "<group>"; };
+		C9FE4BCA22DDC1BC00DBF543 /* PublicCompletePresenterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicCompletePresenterImpl.swift; sourceTree = "<group>"; };
 		DF2047041B81E420DAE3BDD1 /* Pods-Feedback-Analysis.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Feedback-Analysis.release.xcconfig"; path = "Target Support Files/Pods-Feedback-Analysis/Pods-Feedback-Analysis.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -769,6 +773,8 @@
 		C97F25BB22D5F8AB00D61FF4 /* Complete */ = {
 			isa = PBXGroup;
 			children = (
+				C9FE4BC622DDC1A200DBF543 /* PublicCompletePresenter.swift */,
+				C9FE4BCA22DDC1BC00DBF543 /* PublicCompletePresenterImpl.swift */,
 			);
 			path = Complete;
 			sourceTree = "<group>";
@@ -1552,11 +1558,13 @@
 				C9EA654C22BC1A27002BE1C8 /* GoalRemoteDataStore.swift in Sources */,
 				C9F2496F22B79CBF007E82A0 /* EmailEditingViewController.swift in Sources */,
 				C9CC391222D5CBAA001010F4 /* TimelinePresenter.swift in Sources */,
+				C9FE4BC722DDC1A200DBF543 /* PublicCompletePresenter.swift in Sources */,
 				C979404922BF447A00929C2A /* Array+Extension.swift in Sources */,
 				C953153A22D5EA8F00EEB3C0 /* FollowViewController.swift in Sources */,
 				C9A6065D22B2643F00184E0F /* TimelineCell+Extension.swift in Sources */,
 				C99116AC22B8A318007C67C7 /* PasswordEditingUI.swift in Sources */,
 				C9035CAE22B7772A006DFAB9 /* SettingsViewController.swift in Sources */,
+				C9FE4BCB22DDC1BC00DBF543 /* PublicCompletePresenterImpl.swift in Sources */,
 				C9C43B9122D0C83C006CBC1B /* ReplyEntity.swift in Sources */,
 				C9CC28F822AD3C03006E69E5 /* SignupInputRouting.swift in Sources */,
 				C953153222D5EA5700EEB3C0 /* PublicGoalRouting.swift in Sources */,

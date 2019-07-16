@@ -15,5 +15,6 @@ extension UI {
 
 protocol TimelineContentUI: UI {
     var timeline: UITableView { get set }
+    var refControl: UIRefreshControl { get }
     func setup()
 }

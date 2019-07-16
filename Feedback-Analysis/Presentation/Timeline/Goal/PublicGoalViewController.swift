@@ -31,6 +31,11 @@ class PublicGoalViewController: UIViewController {
     
     var disposeBag: DisposeBag! {
         didSet {
+            ui.refControl.rx.controlEvent(.valueChanged)
+                .subscribe(onNext: { _ in
+                    self.presenter.fetch(from: .publicGoalRef, completion: nil)
+                }).disposed(by: disposeBag)
+            
             presenter.isLoading
                 .subscribe(onNext: { [unowned self] isLoading in
                     self.view.endEditing(true)
@@ -67,9 +72,11 @@ extension PublicGoalViewController: PublicGoalPresenterView {
         dataSource.listItems = []
         dataSource.listItems += timeline
         ui.timeline.reloadData()
+        ui.refControl.endRefreshing()
     }
     
     func didSelect(indexPath: IndexPath, tableView: UITableView) {
+        self.presenter.fetch(from: .publicGoalRef, completion: nil)
         tableView.deselectRow(at: indexPath, animated: true)
         guard let height = tableView.cellForRow(at: indexPath)?.contentView.frame.height else { return }
         routing.showDetail(with: dataSource.listItems[indexPath.row], height: height + 2)

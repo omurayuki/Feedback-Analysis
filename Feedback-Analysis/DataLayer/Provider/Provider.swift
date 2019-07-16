@@ -412,7 +412,7 @@ struct Provider {
         return Observable.create({ observer -> Disposable in
             queryRef
                 .destination
-                .addSnapshotListener({ commentSnapshot, error in
+                .getDocuments(completion: { commentSnapshot, error in
                     if let error = error {
                         observer.on(.error(FirebaseError.resultError(error)))
                         return
@@ -429,7 +429,7 @@ struct Provider {
                         FirebaseDocumentRef
                             .authorRef(authorToken: token)
                             .destination
-                            .addSnapshotListener({ userSnapshot, errorq in
+                            .getDocument(completion: { userSnapshot, errorq in
                                 if let error = error {
                                     observer.on(.error(FirebaseError.resultError(error)))
                                     return

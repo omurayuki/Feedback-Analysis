@@ -4,6 +4,11 @@ final class PublicCompleteUIImpl: TimelineContentUI {
     
     weak var viewController: UIViewController?
     
+    var refControl: UIRefreshControl = {
+        let refControl = UIRefreshControl()
+        return refControl
+    }()
+    
     var timeline: UITableView = {
         let table = UITableView.Builder()
             .backgroundImage(#imageLiteral(resourceName: "logo"))

@@ -5,6 +5,7 @@ protocol GoalRemoteDataStore {
     func post(to documentRef: FirebaseDocumentRef, fields: GoalPost) -> Single<()>
     func update(to documentRef: FirebaseDocumentRef, fields: GoalPost) -> Single<()>
     func fetch(from queryRef: FirebaseQueryRef) -> Observable<[GoalEntity]>
+    func fetch(timeline queryRef: FirebaseQueryRef) -> Observable<[GoalEntity]>
     func update(to documentRef: FirebaseDocumentRef, value: [String : Any]) -> Single<()>
     func get(documentRef: FirebaseDocumentRef) -> Single<Bool>
     func create(documentRef: FirebaseDocumentRef, value: [String: Any]) -> Single<()>
@@ -22,6 +23,10 @@ struct GoalRemoteDataStoreImpl: GoalRemoteDataStore {
     }
     
     func fetch(from queryRef: FirebaseQueryRef) -> Observable<[GoalEntity]> {
+        return Provider().observeQuery(queryRef: queryRef)
+    }
+    
+    func fetch(timeline queryRef: FirebaseQueryRef) -> Observable<[GoalEntity]> {
         return Provider().observeTimeline(queryRef: queryRef)
     }
     

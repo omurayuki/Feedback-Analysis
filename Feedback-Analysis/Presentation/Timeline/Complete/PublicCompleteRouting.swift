@@ -1,9 +1,30 @@
-//
-//  PublicCompleteRouting.swift
-//  Feedback-Analysis
-//
-//  Created by オムラユウキ on 2019/07/10.
-//  Copyright © 2019 Swifter. All rights reserved.
-//
-
 import Foundation
+import UIKit
+import RxSwift
+
+protocol PublicCompleteRouting: Routing {
+    func showDetail(with timeline: Timeline, height: CGFloat)
+}
+
+final class PublicCompleteRoutingImpl: PublicCompleteRouting {
+    
+    var viewController: UIViewController?
+    
+    func showDetail(with timeline: Timeline, height: CGFloat) {
+        let repository = DetailRepositoryImpl.shared
+        let useCase = DetailUseCaseImpl(repository: repository)
+        let presenter = DetailPresenterImpl(useCase: useCase)
+        let vc = DetailViewController()
+        let ui = DetailUIImpl()
+        let routing = DetailRoutingImpl()
+        ui.viewController = vc
+        ui.detail.dataSource = vc.detailDataSource
+        ui.commentTable.dataSource = vc.commentDataSource
+        ui.commentTable.delegate = presenter
+        ui.commentField.delegate = presenter
+        routing.viewController = vc
+        vc.inject(ui: ui, presenter: presenter, routing: routing, disposeBag: DisposeBag())
+        vc.recieve(data: timeline, height: height)
+        viewController?.navigationController?.pushViewController(vc, animated: true)
+    }
+}

@@ -4,6 +4,11 @@ final class PublicGoalUIImpl: TimelineContentUI {
     
     weak var viewController: UIViewController?
     
+    var refControl: UIRefreshControl = {
+        let refControl = UIRefreshControl()
+        return refControl
+    }()
+    
     var timeline: UITableView = {
         let table = UITableView.Builder()
             .backgroundImage(#imageLiteral(resourceName: "logo"))
@@ -24,6 +29,7 @@ extension PublicGoalUIImpl {
         vc.clearNavBar()
         
         vc.view.addSubview(timeline)
+        timeline.addSubview(refControl)
         
         timeline.anchor()
             .edgesToSuperview()

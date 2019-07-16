@@ -18,7 +18,7 @@ struct TimelineRepositoryImpl: TimelineRepository {
     
     func fetch(from queryRef: FirebaseQueryRef) -> Observable<[GoalEntity]> {
         let dataStore = GoalDataStoreFactory.createGoalRemoteDataStore()
-        return dataStore.fetch(from: queryRef)
+        return dataStore.fetch(timeline: queryRef)
     }
     
     func update(to documentRef: FirebaseDocumentRef, value: [String : Any]) -> Single<()> {
