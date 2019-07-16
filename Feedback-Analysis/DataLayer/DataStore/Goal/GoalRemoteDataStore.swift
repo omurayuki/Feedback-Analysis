@@ -22,7 +22,7 @@ struct GoalRemoteDataStoreImpl: GoalRemoteDataStore {
     }
     
     func fetch(from queryRef: FirebaseQueryRef) -> Observable<[GoalEntity]> {
-        return Provider().observeQuery(queryRef: queryRef)
+        return Provider().observeTimeline(queryRef: queryRef)
     }
     
     func update(to documentRef: FirebaseDocumentRef, value: [String : Any]) -> Single<()> {

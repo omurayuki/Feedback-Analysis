@@ -48,9 +48,7 @@ class PublicGoalViewController: UIViewController {
         self.routing = routing
         self.disposeBag = disposeBag
         
-        self.presenter.getAuthorToken(completion: { [unowned self] token in
-            self.presenter.fetch(from: .goalRef(authorToken: token), completion: nil)
-        })
+        self.presenter.fetch(from: .publicGoalRef, completion: nil)
     }
     
     override func viewDidLoad() {

@@ -52,9 +52,7 @@ extension MainTabController: MainTabbarProtocol {
     }
     
     private func initTimelineVC() -> TimelineViewController {
-        let vc1 = UIViewController()
-        vc1.view.backgroundColor = .red
-        let controllers = [vc1, UIViewController(), UIViewController()]
+        let controllers = [cretePublicGoalController(), UIViewController(), UIViewController()]
         controllers.enumerated().forEach { index, controller in controller.view.tag = index }
         let repository = TimelineRepositoryImpl.shared
         let useCase = TimelineUseCaseImpl(repository: repository)
@@ -136,6 +134,25 @@ extension MainTabController {
         
         let ui = PrivateAllUIImpl()
         let routing = PrivateAllRoutingImpl()
+        ui.viewController = vc
+        ui.timeline.dataSource = vc.dataSource
+        ui.timeline.delegate = presenter
+        routing.viewController = vc
+        vc.inject(ui: ui, presenter: presenter, routing: routing, disposeBag: DisposeBag())
+        return vc
+    }
+}
+
+extension MainTabController {
+    
+    private func cretePublicGoalController() -> UIViewController {
+        let repository = TimelineRepositoryImpl.shared
+        let useCase = TimelineUseCaseImpl(repository: repository)
+        let presenter = PublicGoalPresenterImpl(useCase: useCase)
+        let vc = PublicGoalViewController()
+        
+        let ui = PublicGoalUIImpl()
+        let routing = PublicGoalRoutingImpl()
         ui.viewController = vc
         ui.timeline.dataSource = vc.dataSource
         ui.timeline.delegate = presenter

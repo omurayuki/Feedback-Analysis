@@ -4,7 +4,7 @@ import FirebaseFirestore
 ////    let postImage: [String]?
 struct GoalEntity: Entity {
     let authorToken: String
-    let user: UserEntity
+    let user: UserEntity?
     let genre: [String: String]
     let newThings: String
     let goal: [String: String]
@@ -16,7 +16,7 @@ struct GoalEntity: Entity {
     let createdAt: Timestamp
     let documentId: String
     
-    init(user: UserEntity, document: [String: Any], documentId: String) {
+    init(user: UserEntity?, document: [String: Any], documentId: String) {
         guard
             let authorToken = document["author_token"] as? String,
             let genre = document["genre"] as? [String: String],

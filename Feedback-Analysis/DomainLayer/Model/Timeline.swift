@@ -21,8 +21,8 @@ struct Timeline {
     
     init(entity: GoalEntity) {
         self.authorToken = entity.authorToken
-        self.userImage = entity.user.userImage
-        self.name = entity.user.name
+        self.userImage = entity.user?.userImage ?? ""
+        self.name = entity.user?.name ?? ""
         self.genre1 = entity.genre["genre1"]
         self.genre2 = entity.genre["genre2"]
         self.time = "5時間前"

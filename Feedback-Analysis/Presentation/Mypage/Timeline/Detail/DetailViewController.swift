@@ -210,7 +210,7 @@ extension DetailViewController {
     }
     
     func updateCommentCellIfEmpty() {
-        for i in 0 ..< 10 {
+        for i in 0 ..< detailDataSource.defaultCount {
             let indexPath = NSIndexPath(row: i, section: 0)
             guard let cell = ui.commentTable.cellForRow(at: indexPath as IndexPath) as? CommentCell else { return }
             cell.hideSkelton(cell.userPhoto, cell.userName)

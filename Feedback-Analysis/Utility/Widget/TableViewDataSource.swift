@@ -15,6 +15,8 @@ class TableViewDataSource<CellType, EntityType>: NSObject, UITableViewDataSource
     
     var listItems: [E]
     
+    var defaultCount = 5
+    
     init(cellReuseIdentifier: String, listItems: [E], isSkelton: Bool, cellConfigurationHandler: @escaping (C, E, IndexPath) -> Void) {
         self.cellReuseIdentifier = cellReuseIdentifier
         self.isSkelton = isSkelton
@@ -30,7 +32,7 @@ class TableViewDataSource<CellType, EntityType>: NSObject, UITableViewDataSource
         switch isSkelton {
         case true:
             switch listItems.count {
-            case 0:  return 5
+            case 0:  return defaultCount
             default: return listItems.count
             }
         case false:

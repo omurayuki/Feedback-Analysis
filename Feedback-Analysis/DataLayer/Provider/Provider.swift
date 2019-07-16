@@ -7,9 +7,9 @@ import FirebaseAuth
 import FirebaseStorage
 import RxSwift
 
+typealias EntityType = [String: Any]
+
 struct Provider {
-    
-    typealias EntityType = [String: Any]
     
     func signup(email: String, pass: String) -> Single<AccountEntity> {
         return Single.create(subscribe: { single -> Disposable in
@@ -400,6 +400,51 @@ struct Provider {
                         observer.on(.next(documents.enumerated().compactMap { index, data in
                             ReplyEntity(user: UserEntity(document: userDocuments[index]),
                                           document: data.data(), documentId: data.documentID)
+                        }))
+                    })
+                })
+            return Disposables.create()
+        })
+    }
+    
+    func observeTimeline(queryRef: FirebaseQueryRef) -> Observable<[GoalEntity]> {
+        var userDocuments = [[String: Any]]()
+        return Observable.create({ observer -> Disposable in
+            queryRef
+                .destination
+                .addSnapshotListener({ commentSnapshot, error in
+                    if let error = error {
+                        observer.on(.error(FirebaseError.resultError(error)))
+                        return
+                    }
+                    guard let documents = commentSnapshot?.documents else {
+                        observer.on(.error(FirebaseError.unknown))
+                        return
+                    }
+                    documents.forEach {
+                        guard let token = $0.data()["author_token"] as? String else {
+                            observer.on(.error(FirebaseError.unknown))
+                            return
+                        }
+                        FirebaseDocumentRef
+                            .authorRef(authorToken: token)
+                            .destination
+                            .addSnapshotListener({ userSnapshot, errorq in
+                                if let error = error {
+                                    observer.on(.error(FirebaseError.resultError(error)))
+                                    return
+                                }
+                                guard let userDocument = userSnapshot?.data() else {
+                                    observer.on(.error(FirebaseError.unknown))
+                                    return
+                                }
+                                userDocuments.append(userDocument)
+                            })
+                    }
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.7, execute: {
+                        observer.on(.next(documents.enumerated().compactMap { index, data in
+                            GoalEntity(user: UserEntity(document: userDocuments[index]),
+                                        document: data.data(), documentId: data.documentID)
                         }))
                     })
                 })

@@ -91,6 +91,7 @@ enum FirebaseCollectionRef {
 }
 
 enum FirebaseQueryRef {
+    case publicGoalRef
     case goalRef(authorToken: String)
     case completeRef(authorToken: String)
     case draftRef(authorToken: String)
@@ -100,6 +101,12 @@ enum FirebaseQueryRef {
     
     var destination: Query {
         switch self {
+        case .publicGoalRef:
+            return Firestore.firestore()
+                .collection("Goals")
+                .whereField("achieved_flag", isEqualTo: false)
+                .whereField("draft_flag", isEqualTo: false)
+                .order(by: "updated_at", descending: true)
         case .goalRef(let token):
             return Firestore.firestore()
                 .collection("Users")

@@ -14,35 +14,99 @@ class PublicGoalPresenterImpl: NSObject, PublicGoalPresenter {
     }
     
     func fetch(from queryRef: FirebaseQueryRef, completion: (() -> Void)?) {
-        print("ok")
+        view.updateLoading(true)
+        useCase.fetch(from: queryRef)
+            .subscribe(onNext: { [unowned self] result in
+                self.view.updateLoading(false)
+                self.view.didFetchGoalData(timeline: result)
+                }, onError: { error in
+                    self.view.updateLoading(false)
+                    self.view.showError(message: error.localizedDescription)
+            }).disposed(by: view.disposeBag)
     }
     
     func update(to documentRef: FirebaseDocumentRef, value: [String : Any]) {
-        print("ok")
+        useCase.update(to: documentRef, value: value)
+            .subscribe { [unowned self] result in
+                switch result {
+                case .success(_):
+                    break
+                case .error(let error):
+                    self.view.showError(message: error.localizedDescription)
+                }
+            }.disposed(by: view.disposeBag)
     }
     
     func get(documentRef: FirebaseDocumentRef) {
-        print("ok")
+        useCase.get(documentRef: documentRef)
+            .subscribe { [unowned self] result in
+                switch result {
+                case .success(let response):
+                    self.view.didCheckIfYouLiked(response)
+                case .error(let error):
+                    self.view.showError(message: error.localizedDescription)
+                }
+            }.disposed(by: view.disposeBag)
     }
     
     func create(documentRef: FirebaseDocumentRef, value: [String: Any]) {
-        print("ok")
+        useCase.create(documentRef: documentRef, value: value)
+            .subscribe { [unowned self] result in
+                switch result {
+                case .success(_):
+                    self.view.didCreateLikeRef()
+                case .error(let error):
+                    self.view.showError(message: error.localizedDescription)
+                }
+            }.disposed(by: view.disposeBag)
     }
     
     func delete(documentRef: FirebaseDocumentRef) {
-        print("ok")
+        useCase.delete(documentRef: documentRef)
+            .subscribe { [unowned self] result in
+                switch result {
+                case .success(_):
+                    self.view.didDeleteLikeRef()
+                case .error(let error):
+                    self.view.showError(message: error.localizedDescription)
+                }
+            }.disposed(by: view.disposeBag)
     }
     
     func setSelected(index: Int) {
-        print("ok")
+        useCase.setSelected(index: index)
+            .subscribe { result in
+                switch result {
+                case .success(_):
+                    return
+                case .error(_):
+                    return
+                }
+            }.disposed(by: view.disposeBag)
     }
     
     func getSelected(completion: @escaping (Int) -> Void) {
-        print("ok")
+        useCase.getSelected()
+            .subscribe { result in
+                switch result {
+                case .success(let response):
+                    completion(response)
+                case .error(_):
+                    return
+                }
+            }.disposed(by: view.disposeBag)
     }
     
     func getAuthorToken(completion: @escaping (String) -> Void) {
-        print("ok")
+        useCase.getAuthorToken()
+            .subscribe { [unowned self] result in
+                switch result {
+                case .success(let response):
+                    completion(response)
+                case .error(let error):
+                    self.view.showError(message: error.localizedDescription)
+                }
+            }.disposed(by: view.disposeBag)
     }
 }
 
