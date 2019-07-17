@@ -12,7 +12,7 @@ struct Reply {
         self.userImage = entity.user.userImage
         self.name = entity.user.name
         self.authorToken = entity.authorToken
-        self.time = "5時間前"
+        self.time = entity.createdAt.dateValue().offsetFrom()
         self.reply = entity.reply
         self.documentId = entity.documentId
     }

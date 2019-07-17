@@ -15,7 +15,7 @@ struct Comment {
         self.userImage = entity.user.userImage
         self.name = entity.user.name
         self.authorToken = entity.authorToken
-        self.time = "5時間前"
+        self.time = entity.createdAt.dateValue().offsetFrom()
         self.comment = entity.comment
         self.likeCount = entity.likeCount
         self.repliedCount = entity.repliedCount

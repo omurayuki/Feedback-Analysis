@@ -51,7 +51,7 @@ extension Date {
         if hoursFrom()   > 0 { return "\(hoursFrom())時間前"   }
         if minutesFrom() > 0 { return "\(minutesFrom())分前" }
         if secondsFrom() > 0 { return "\(secondsFrom())秒前" }
-        return ""
+        return "現在"
     }
     
     func yearsFrom() -> Int {
