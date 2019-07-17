@@ -33,7 +33,7 @@ class PublicCompleteViewController: UIViewController {
         didSet {
             ui.refControl.rx.controlEvent(.valueChanged)
                 .subscribe(onNext: { _ in
-                    self.presenter.fetch(from: .publicGoalRef, loading: false, completion: nil)
+                    self.presenter.fetch(from: .publicCompleteRef, loading: false, completion: nil)
                 }).disposed(by: disposeBag)
             
             presenter.isLoading
@@ -53,7 +53,7 @@ class PublicCompleteViewController: UIViewController {
         self.routing = routing
         self.disposeBag = disposeBag
         
-        self.presenter.fetch(from: .publicComplete, loading: true, completion: nil)
+        self.presenter.fetch(from: .publicCompleteRef, loading: true, completion: nil)
     }
     
     override func viewDidLoad() {
@@ -79,7 +79,7 @@ extension PublicCompleteViewController: PublicCompletePresenterView {
         tableView.deselectRow(at: indexPath, animated: true)
         guard let height = tableView.cellForRow(at: indexPath)?.contentView.frame.height else { return }
         routing.showDetail(with: dataSource.listItems[indexPath.row], height: height + 2)
-        presenter.fetch(from: .publicGoalRef, loading: false, completion: nil)
+        presenter.fetch(from: .publicCompleteRef, loading: false, completion: nil)
     }
     
     func didCheckIfYouLiked(_ bool: Bool) {

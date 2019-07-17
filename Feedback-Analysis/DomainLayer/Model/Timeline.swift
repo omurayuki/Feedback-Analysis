@@ -25,7 +25,7 @@ struct Timeline {
         self.name = entity.user?.name ?? ""
         self.genre1 = entity.genre["genre1"]
         self.genre2 = entity.genre["genre2"]
-        self.time = "5時間前"
+        self.time = entity.createdAt.dateValue().offsetFrom()
         self.newThings = entity.newThings
         self.goal1 = entity.goal["goal1"]
         self.goal2 = entity.goal["goal2"]
