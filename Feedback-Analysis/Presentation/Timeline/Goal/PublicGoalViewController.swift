@@ -144,8 +144,8 @@ extension PublicGoalViewController: CellTapDelegate {
 extension PublicGoalViewController: UserPhotoTapDelegate {
     
     func tappedUserPhoto(index: Int) {
-        presenter.getAuthorToken(index) { token in
-            print(token)
+        presenter.getAuthorToken(index) { [unowned self] token in
+            self.routing.showOnotherPeoplePage(with: token)
             // 時画面に遷移するときに、初期化タイミングでデータをfetch
             // 時画面でskeltonさせて表示
             // UI作成

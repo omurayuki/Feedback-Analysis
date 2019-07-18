@@ -27,7 +27,7 @@ class LoginInputViewController: UIViewController {
                 }).disposed(by: disposeBag)
             
             ui.passRemindBtn.rx.tap.asDriver()
-                .drive(onNext: { _ in
+                .drive(onNext: { [unowned self] _ in
                     self.routing.moveRemindPage()
                 }).disposed(by: disposeBag)
             

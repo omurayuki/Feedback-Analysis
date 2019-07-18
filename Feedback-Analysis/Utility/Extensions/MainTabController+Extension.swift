@@ -14,7 +14,7 @@ extension MainTabController: MainTabbarProtocol {
         var resouces = [#imageLiteral(resourceName: "diary"), #imageLiteral(resourceName: "bell"), #imageLiteral(resourceName: "mail"), #imageLiteral(resourceName: "home")]
         var viewControllers: [UIViewController] = []
         
-        [initTimelineVC(), UIViewController(), UIViewController(), initMypageVC()].enumerated().forEach { index, controller in
+        [initTimelineVC(), UIViewController(), UIViewController(), initMypageVC(with: AppUserDefaults.getAuthToken())].enumerated().forEach { index, controller in
             let navi = UINavigationController(rootViewController: controller)
             navi.tabBarItem = UITabBarItem(title: nil, image: resouces[index], tag: index)
             
@@ -25,9 +25,10 @@ extension MainTabController: MainTabbarProtocol {
         selectedIndex = 0
     }
     
-    private func initMypageVC() -> MypageViewController {
-        let controllers = [createGoalController(), createCompleteController(),
-                           createDraftController(), createAllController()]
+    private func initMypageVC(with token: String) -> MypageViewController {
+        let createVC = CreateControllers(token: token)
+        let controllers = [createVC.createGoalController(), createVC.createCompleteController(),
+                           createVC.createDraftController(), createVC.createAllController()]
         controllers.enumerated().forEach { index, controller in controller.view.tag = index }
         
         let repository = MypageRepositoryImpl.shared
@@ -52,7 +53,9 @@ extension MainTabController: MainTabbarProtocol {
     }
     
     private func initTimelineVC() -> TimelineViewController {
-        let controllers = [cretePublicGoalController(), cretePublicCompleteController(), UIViewController()]
+        let controllers = [cretePublicGoalController(),
+                           cretePublicCompleteController(),
+                           UIViewController()]
         controllers.enumerated().forEach { index, controller in controller.view.tag = index }
         let repository = TimelineRepositoryImpl.shared
         let useCase = TimelineUseCaseImpl(repository: repository)
@@ -78,74 +81,7 @@ extension MainTabController: MainTabbarProtocol {
 
 extension MainTabController {
     
-    private func createGoalController() -> UIViewController {
-        let repository = GoalRepositoryImpl.shared
-        let useCase = GoalPostUseCaseImpl(repository: repository)
-        let presenter = PrivateGoalPresenterImpl(useCase: useCase)
-        let vc = PrivateGoalViewController()
-        
-        let ui = PrivateGoalUIImpl()
-        let routing = PrivateGoalRoutingImpl()
-        ui.viewController = vc
-        ui.timeline.dataSource = vc.dataSource
-        ui.timeline.delegate = presenter
-        routing.viewController = vc
-        vc.inject(ui: ui, presenter: presenter, routing: routing, disposeBag: DisposeBag())
-        return vc
-    }
-    
-    private func createCompleteController() -> UIViewController {
-        let repository = GoalRepositoryImpl.shared
-        let useCase = GoalPostUseCaseImpl(repository: repository)
-        let presenter = PrivateCompletePresenterImpl(useCase: useCase)
-        let vc = PrivateCompleteViewController()
-        
-        let ui = PrivateCompleteUIImpl()
-        let routing = PrivateCompleteRoutingImpl()
-        ui.viewController = vc
-        ui.timeline.dataSource = vc.dataSource
-        ui.timeline.delegate = presenter
-        routing.viewController = vc
-        vc.inject(ui: ui, presenter: presenter, routing: routing, disposeBag: DisposeBag())
-        return vc
-    }
-    
-    private func createDraftController() -> UIViewController {
-        let repository = GoalRepositoryImpl.shared
-        let useCase = GoalPostUseCaseImpl(repository: repository)
-        let presenter = PrivateDraftPresenterImpl(useCase: useCase)
-        let vc = PrivateDraftViewController()
-        
-        let ui = PrivateDraftUIImpl()
-        let routing = PrivateDraftRoutingImpl()
-        ui.viewController = vc
-        ui.timeline.dataSource = vc.dataSource
-        ui.timeline.delegate = presenter
-        routing.viewController = vc
-        vc.inject(ui: ui, presenter: presenter, routing: routing, disposeBag: DisposeBag())
-        return vc
-    }
-    
-    private func createAllController() -> UIViewController {
-        let repository = GoalRepositoryImpl.shared
-        let useCase = GoalPostUseCaseImpl(repository: repository)
-        let presenter = PrivateAllPresenterImpl(useCase: useCase)
-        let vc = PrivateAllViewController()
-        
-        let ui = PrivateAllUIImpl()
-        let routing = PrivateAllRoutingImpl()
-        ui.viewController = vc
-        ui.timeline.dataSource = vc.dataSource
-        ui.timeline.delegate = presenter
-        routing.viewController = vc
-        vc.inject(ui: ui, presenter: presenter, routing: routing, disposeBag: DisposeBag())
-        return vc
-    }
-}
-
-extension MainTabController {
-    
-    private func cretePublicGoalController() -> UIViewController {
+    func cretePublicGoalController() -> UIViewController {
         let repository = TimelineRepositoryImpl.shared
         let useCase = TimelineUseCaseImpl(repository: repository)
         let presenter = PublicGoalPresenterImpl(useCase: useCase)
@@ -161,7 +97,7 @@ extension MainTabController {
         return vc
     }
     
-    private func cretePublicCompleteController() -> UIViewController {
+    func cretePublicCompleteController() -> UIViewController {
         let repository = TimelineRepositoryImpl.shared
         let useCase = TimelineUseCaseImpl(repository: repository)
         let presenter = PublicCompletePresenterImpl(useCase: useCase)
@@ -174,6 +110,83 @@ extension MainTabController {
         ui.timeline.delegate = presenter
         routing.viewController = vc
         vc.inject(ui: ui, presenter: presenter, routing: routing, disposeBag: DisposeBag())
+        return vc
+    }
+}
+
+class CreateControllers: NSObject {
+    
+    var token: String
+    
+    init(token: String) {
+        self.token = token
+    }
+    
+    func createGoalController() -> UIViewController {
+        let repository = GoalRepositoryImpl.shared
+        let useCase = GoalPostUseCaseImpl(repository: repository)
+        let presenter = PrivateGoalPresenterImpl(useCase: useCase)
+        let vc = PrivateGoalViewController()
+        
+        let ui = PrivateGoalUIImpl()
+        let routing = PrivateGoalRoutingImpl()
+        ui.viewController = vc
+        ui.timeline.dataSource = vc.dataSource
+        ui.timeline.delegate = presenter
+        routing.viewController = vc
+        vc.inject(ui: ui, presenter: presenter, routing: routing, disposeBag: DisposeBag())
+        vc.recieve(with: token)
+        return vc
+    }
+    
+    func createCompleteController() -> UIViewController {
+        let repository = GoalRepositoryImpl.shared
+        let useCase = GoalPostUseCaseImpl(repository: repository)
+        let presenter = PrivateCompletePresenterImpl(useCase: useCase)
+        let vc = PrivateCompleteViewController()
+        
+        let ui = PrivateCompleteUIImpl()
+        let routing = PrivateCompleteRoutingImpl()
+        ui.viewController = vc
+        ui.timeline.dataSource = vc.dataSource
+        ui.timeline.delegate = presenter
+        routing.viewController = vc
+        vc.inject(ui: ui, presenter: presenter, routing: routing, disposeBag: DisposeBag())
+        vc.recieve(with: token)
+        return vc
+    }
+    
+    func createDraftController() -> UIViewController {
+        let repository = GoalRepositoryImpl.shared
+        let useCase = GoalPostUseCaseImpl(repository: repository)
+        let presenter = PrivateDraftPresenterImpl(useCase: useCase)
+        let vc = PrivateDraftViewController()
+        
+        let ui = PrivateDraftUIImpl()
+        let routing = PrivateDraftRoutingImpl()
+        ui.viewController = vc
+        ui.timeline.dataSource = vc.dataSource
+        ui.timeline.delegate = presenter
+        routing.viewController = vc
+        vc.inject(ui: ui, presenter: presenter, routing: routing, disposeBag: DisposeBag())
+        vc.recieve(with: token)
+        return vc
+    }
+    
+    func createAllController() -> UIViewController {
+        let repository = GoalRepositoryImpl.shared
+        let useCase = GoalPostUseCaseImpl(repository: repository)
+        let presenter = PrivateAllPresenterImpl(useCase: useCase)
+        let vc = PrivateAllViewController()
+        
+        let ui = PrivateAllUIImpl()
+        let routing = PrivateAllRoutingImpl()
+        ui.viewController = vc
+        ui.timeline.dataSource = vc.dataSource
+        ui.timeline.delegate = presenter
+        routing.viewController = vc
+        vc.inject(ui: ui, presenter: presenter, routing: routing, disposeBag: DisposeBag())
+        vc.recieve(with: token)
         return vc
     }
 }

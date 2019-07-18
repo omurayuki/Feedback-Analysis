@@ -1,9 +1,11 @@
-//
-//  OnotherPeopleRouting.swift
-//  Feedback-Analysis
-//
-//  Created by オムラユウキ on 2019/07/18.
-//  Copyright © 2019 Swifter. All rights reserved.
-//
-
 import Foundation
+import UIKit
+import RxSwift
+
+protocol OnotherPeopleRouting: Routing {
+}
+
+final class OnotherPeopleRoutingImpl: OnotherPeopleRouting {
+    
+    var viewController: UIViewController?
+}

@@ -7,7 +7,7 @@ protocol PrivateDraftPresenter {
     var view: PrivateDraftPresenterView! { get set }
     var isLoading: BehaviorRelay<Bool> { get }
     
-    func fetch(from queryRef: FirebaseQueryRef, completion: (() -> Void)?)
+    func fetch(from queryRef: FirebaseQueryRef, authorToken: String, completion: (() -> Void)?)
     func update(to documentRef: FirebaseDocumentRef, value: [String: Any])
     func get(documentRef: FirebaseDocumentRef)
     func create(documentRef: FirebaseDocumentRef, value: [String: Any])

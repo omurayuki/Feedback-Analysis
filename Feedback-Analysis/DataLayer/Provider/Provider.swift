@@ -261,7 +261,7 @@ struct Provider {
     }
     
     //// マイページの場合これを使ってもいいが、タイムラインの場合これを使うと名前とイメージが全て同一人物になる
-    func observeQuery(queryRef: FirebaseQueryRef) -> Observable<[GoalEntity]> {
+    func observeQuery(queryRef: FirebaseQueryRef, authorToken: String) -> Observable<[GoalEntity]> {
         return Observable.create({ observer -> Disposable in
             queryRef
                 .destination
@@ -271,7 +271,7 @@ struct Provider {
                         return
                     }
                     FirebaseDocumentRef
-                        .userRef(authorToken: AppUserDefaults.getAuthToken())
+                        .userRef(authorToken: authorToken)
                         .destination
                         .addSnapshotListener({ userSnapshot, error in
                             if let error = error {

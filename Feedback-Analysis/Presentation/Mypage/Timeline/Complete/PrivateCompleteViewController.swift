@@ -47,10 +47,6 @@ class PrivateCompleteViewController: UIViewController {
         self.presenter = presenter
         self.routing = routing
         self.disposeBag = disposeBag
-        
-        self.presenter.getAuthorToken(completion: { [unowned self] token in
-            self.presenter.fetch(from: .completeRef(authorToken: token), completion: nil)
-        })
     }
     
     override func viewDidLoad() {
@@ -110,6 +106,13 @@ extension PrivateCompleteViewController: PrivateCompletePresenterView {
                                                      goalDocument: self.dataSource.listItems[index].documentId),
                                   value: ["like_count": FieldValue.increment(-1.0)])
         }
+    }
+}
+
+extension PrivateCompleteViewController {
+    
+    func recieve(with token: String) {
+        presenter.fetch(from: .completeRef(authorToken: token), authorToken: token, completion: nil)
     }
 }
 

@@ -13,9 +13,9 @@ class PrivateGoalPresenterImpl: NSObject, PrivateGoalPresenter {
         self.useCase = useCase
     }
     
-    func fetch(from queryRef: FirebaseQueryRef, completion: (() -> Void)?) {
+    func fetch(from queryRef: FirebaseQueryRef, authorToken: String, completion: (() -> Void)?) {
         view.updateLoading(true)
-        useCase.fetch(from: queryRef)
+        useCase.fetch(from: queryRef, authorToken: authorToken)
             .subscribe(onNext: { [unowned self] result in
                 self.view.updateLoading(false)
                 self.view.didFetchGoalData(timeline: result)

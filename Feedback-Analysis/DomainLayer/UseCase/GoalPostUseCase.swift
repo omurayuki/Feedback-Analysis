@@ -4,7 +4,7 @@ import RxSwift
 protocol GoalPostUseCase {
     func post(to documentRef: FirebaseDocumentRef, fields: GoalPost) -> Single<()>
     func update(to documentRef: FirebaseDocumentRef, fields: GoalPost) -> Single<()>
-    func fetch(from queryRef: FirebaseQueryRef) -> Observable<[Timeline]>
+    func fetch(from queryRef: FirebaseQueryRef, authorToken: String) -> Observable<[Timeline]>
     func update(to documentRef: FirebaseDocumentRef, value: [String : Any]) -> Single<()>
     func get(documentRef: FirebaseDocumentRef) -> Single<Bool>
     func create(documentRef: FirebaseDocumentRef, value: [String: Any]) -> Single<()>
@@ -30,8 +30,8 @@ struct GoalPostUseCaseImpl: GoalPostUseCase {
         return repository.update(to: documentRef, fields: fields)
     }
     
-    func fetch(from queryRef: FirebaseQueryRef) -> Observable<[Timeline]> {
-        return repository.fetch(from: queryRef).map { GoalsTranslator().translate($0) }
+    func fetch(from queryRef: FirebaseQueryRef, authorToken: String) -> Observable<[Timeline]> {
+        return repository.fetch(from: queryRef, authorToken: authorToken).map { GoalsTranslator().translate($0) }
     }
     
     func update(to documentRef: FirebaseDocumentRef, value: [String : Any]) -> Single<()> {

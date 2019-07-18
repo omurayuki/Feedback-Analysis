@@ -47,10 +47,6 @@ class PrivateGoalViewController: UIViewController {
         self.presenter = presenter
         self.routing = routing
         self.disposeBag = disposeBag
-        
-        self.presenter.getAuthorToken(completion: { [unowned self] token in
-            self.presenter.fetch(from: .goalRef(authorToken: token), completion: nil)
-        })
     }
     
     override func viewDidLoad() {
@@ -116,6 +112,10 @@ extension PrivateGoalViewController: PrivateGoalPresenterView {
 }
 
 extension PrivateGoalViewController {
+    
+    func recieve(with token: String) {
+        presenter.fetch(from: .goalRef(authorToken: token), authorToken: token, completion: nil)
+    }
     
     func updateLikeCount(index: Int, count: Int) {
         dataSource.listItems[index].likeCount += count
