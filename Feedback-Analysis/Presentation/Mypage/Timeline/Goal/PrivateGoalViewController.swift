@@ -13,7 +13,7 @@ class PrivateGoalViewController: UIViewController {
                           listItems: [],
                           isSkelton: false,
                           cellConfigurationHandler: { (cell, item, indexPath) in
-            cell.delegate = self
+            cell.cellTapDelegate = self
             cell.identificationId = indexPath.row
             cell.content = item
         })

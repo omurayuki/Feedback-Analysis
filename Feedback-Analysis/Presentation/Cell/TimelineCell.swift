@@ -6,20 +6,30 @@ protocol CellTapDelegate {
     func tappedLikeBtn(index: Int)
 }
 
+protocol UserPhotoTapDelegate {
+    func tappedUserPhoto(index: Int)
+}
+
 final class TimelineCell: UITableViewCell {
     
     let disposeBag = DisposeBag()
     
-    var delegate: CellTapDelegate?
+    var cellTapDelegate: CellTapDelegate?
+    
+    var userPhotoTapDelegate: UserPhotoTapDelegate?
     
     var identificationId = Int()
     
     private(set) var userPhoto: UIImageView = {
         let image = UIImageView.Builder()
             .cornerRadius(25)
-            .isUserInteractionEnabled(false)
             .build()
         return image
+    }()
+    
+    private(set) var userPhotoGesture: UITapGestureRecognizer = {
+        let gesture = UITapGestureRecognizer()
+        return gesture
     }()
     
     private(set) var userName: UILabel = {
@@ -236,6 +246,8 @@ extension TimelineCell {
          newThingsStack, goalsStack, deadLineStack,
          postContent, imageStack, commentStack, likeStack].forEach { addSubview($0) }
         
+        userPhoto.addGestureRecognizer(userPhotoGesture)
+        
         [leftTopImage, rightTopImage, leftBottomImage, rightBottomImage].forEach {
             $0.anchor()
                 .width(constant: (frame.width / 1.1) / 2.0 - 5.0)
@@ -333,7 +345,12 @@ extension TimelineCell {
     func bindUI() {
         likeBtn.rx.tap.asDriver()
             .drive(onNext: { [unowned self] _ in
-                self.delegate?.tappedLikeBtn(index: self.identificationId)
+                self.cellTapDelegate?.tappedLikeBtn(index: self.identificationId)
+            }).disposed(by: disposeBag)
+        
+        userPhotoGesture.rx.event.asDriver()
+            .drive(onNext: { [unowned self] _ in
+                self.userPhotoTapDelegate?.tappedUserPhoto(index: self.identificationId)
             }).disposed(by: disposeBag)
     }
 }

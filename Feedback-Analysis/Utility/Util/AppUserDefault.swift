@@ -64,6 +64,19 @@ class AppUserDefaults {
     class func setUser(user: [User]) {
         putStructValue(user, keyName: "user")
     }
+    
+    // arrayValue(authorTokens)
+    class func getStringArray() -> [String] {
+        return getArrayValue(keyName: "authorTokens")
+    }
+    
+    class func setStringArray(authorTokens: [String]) {
+        setArrayValue(authorTokens, keyName: "authorTokens")
+    }
+    
+    class func clearStringArray() {
+        clearArrayValue(keyName: "authorTokens")
+    }
 }
 
 extension AppUserDefaults {
@@ -108,5 +121,21 @@ extension AppUserDefaults {
         let userDefaults: UserDefaults = UserDefaults.standard
         let data = value.map { try? JSONEncoder().encode($0) }
         userDefaults.set(data, forKey: keyName)
+    }
+    
+    private class func getArrayValue<T: Sequence>(keyName: String) -> [T] {
+        let userDefaults: UserDefaults = UserDefaults.standard
+        guard let data = userDefaults.array(forKey: keyName) as? [T] else { return [] }
+        return data
+    }
+    
+    private class func setArrayValue<T: Sequence>(_ value: [T], keyName: String) {
+        let userDefaults: UserDefaults = UserDefaults.standard
+        userDefaults.set(value, forKey: keyName)
+    }
+    
+    private class func clearArrayValue(keyName: String) {
+        let userDefaults: UserDefaults = UserDefaults.standard
+        userDefaults.removeObject(forKey: keyName)
     }
 }

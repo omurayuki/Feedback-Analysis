@@ -429,7 +429,7 @@ struct Provider {
                         FirebaseDocumentRef
                             .authorRef(authorToken: token)
                             .destination
-                            .getDocument(completion: { userSnapshot, errorq in
+                            .getDocument(completion: { userSnapshot, error in
                                 if let error = error {
                                     observer.on(.error(FirebaseError.resultError(error)))
                                     return

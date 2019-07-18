@@ -108,6 +108,30 @@ class PublicGoalPresenterImpl: NSObject, PublicGoalPresenter {
                 }
             }.disposed(by: view.disposeBag)
     }
+    
+    func setAuthorTokens(_ values: [String]) {
+        useCase.setAuthorTokens(values)
+            .subscribe { result in
+                switch result {
+                case .success(_):
+                    return
+                case .error(_):
+                    return
+                }
+            }.disposed(by: view.disposeBag)
+    }
+    
+    func getAuthorToken(_ index: Int, completion: @escaping (String) -> Void) {
+        useCase.getAuthorToken(index)
+            .subscribe { result in
+                switch result {
+                case .success(let response):
+                    completion(response)
+                case .error(_):
+                    return
+                }
+            }.disposed(by: view.disposeBag)
+    }
 }
 
 extension PublicGoalPresenterImpl: UITableViewDelegate {

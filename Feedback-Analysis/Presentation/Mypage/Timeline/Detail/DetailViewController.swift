@@ -109,7 +109,7 @@ extension DetailViewController: DetailPresenterView {
     
     func didFetchUser(data: Account) {
         presenter.getDocumentId(completion: { [unowned self] documentId in
-            self.validatePostedField(postedValue: self.ui.commentField.text, account: { value in
+            self.validatePostedField(postedValue: self.ui.commentField.text, account: { [unowned self] value in
                 self.presenter.post(to: .commentRef(goalDocument: documentId),
                                     comment: self.createComment(token: data.authToken,
                                                                 goalDocumentId: documentId,

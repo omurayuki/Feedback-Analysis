@@ -51,6 +51,9 @@
 		C9328AAA22C732230065027B /* PrivateAllRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9328AA922C732230065027B /* PrivateAllRouting.swift */; };
 		C9328AAC22C732A30065027B /* PrivateAllPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9328AAB22C732A30065027B /* PrivateAllPresenter.swift */; };
 		C9328AAE22C732A90065027B /* PrivateAllPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9328AAD22C732A90065027B /* PrivateAllPresenterImpl.swift */; };
+		C9391A1822E01813006E3A14 /* OnotherPeopleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9391A1722E01813006E3A14 /* OnotherPeopleViewController.swift */; };
+		C9391A1A22E01821006E3A14 /* OnotherPeopleUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9391A1922E01821006E3A14 /* OnotherPeopleUI.swift */; };
+		C9391A1C22E0189C006E3A14 /* OnotherPeopleRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9391A1B22E0189C006E3A14 /* OnotherPeopleRouting.swift */; };
 		C941332222C8B2CC0082A01C /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C941332122C8B2CC0082A01C /* DetailViewController.swift */; };
 		C941332422C8B2D20082A01C /* DetailUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C941332322C8B2D20082A01C /* DetailUI.swift */; };
 		C941332622C8B2DC0082A01C /* DetailRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C941332522C8B2DC0082A01C /* DetailRouting.swift */; };
@@ -108,6 +111,7 @@
 		C988631722C5E10F00CABD62 /* PrivateGoalRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C988631622C5E10F00CABD62 /* PrivateGoalRouting.swift */; };
 		C988631922C5E6FF00CABD62 /* TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C988631822C5E6FF00CABD62 /* TableViewDataSource.swift */; };
 		C988631B22C5E92000CABD62 /* Timeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = C988631A22C5E92000CABD62 /* Timeline.swift */; };
+		C98AE9AB22DFA4840021DD73 /* AuthorTokensTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98AE9AA22DFA4840021DD73 /* AuthorTokensTranslator.swift */; };
 		C98C7A4622D8A73100EF9B8F /* KeyboardNotifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98C7A4522D8A73100EF9B8F /* KeyboardNotifier.swift */; };
 		C98E1BB622B7370100D132D5 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98E1BB522B7370100D132D5 /* UIImageView+Extension.swift */; };
 		C98E1BB822B7456700D132D5 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98E1BB722B7456700D132D5 /* ImagePicker.swift */; };
@@ -271,6 +275,9 @@
 		C9328AA922C732230065027B /* PrivateAllRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateAllRouting.swift; sourceTree = "<group>"; };
 		C9328AAB22C732A30065027B /* PrivateAllPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateAllPresenter.swift; sourceTree = "<group>"; };
 		C9328AAD22C732A90065027B /* PrivateAllPresenterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateAllPresenterImpl.swift; sourceTree = "<group>"; };
+		C9391A1722E01813006E3A14 /* OnotherPeopleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnotherPeopleViewController.swift; sourceTree = "<group>"; };
+		C9391A1922E01821006E3A14 /* OnotherPeopleUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnotherPeopleUI.swift; sourceTree = "<group>"; };
+		C9391A1B22E0189C006E3A14 /* OnotherPeopleRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnotherPeopleRouting.swift; sourceTree = "<group>"; };
 		C941332122C8B2CC0082A01C /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		C941332322C8B2D20082A01C /* DetailUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailUI.swift; sourceTree = "<group>"; };
 		C941332522C8B2DC0082A01C /* DetailRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRouting.swift; sourceTree = "<group>"; };
@@ -328,6 +335,7 @@
 		C988631622C5E10F00CABD62 /* PrivateGoalRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateGoalRouting.swift; sourceTree = "<group>"; };
 		C988631822C5E6FF00CABD62 /* TableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDataSource.swift; sourceTree = "<group>"; };
 		C988631A22C5E92000CABD62 /* Timeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timeline.swift; sourceTree = "<group>"; };
+		C98AE9AA22DFA4840021DD73 /* AuthorTokensTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorTokensTranslator.swift; sourceTree = "<group>"; };
 		C98C7A4522D8A73100EF9B8F /* KeyboardNotifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardNotifier.swift; sourceTree = "<group>"; };
 		C98E1BB522B7370100D132D5 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 		C98E1BB722B7456700D132D5 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
@@ -562,6 +570,16 @@
 			path = All;
 			sourceTree = "<group>";
 		};
+		C9391A1622E017FD006E3A14 /* OnotherPeople */ = {
+			isa = PBXGroup;
+			children = (
+				C9391A1722E01813006E3A14 /* OnotherPeopleViewController.swift */,
+				C9391A1922E01821006E3A14 /* OnotherPeopleUI.swift */,
+				C9391A1B22E0189C006E3A14 /* OnotherPeopleRouting.swift */,
+			);
+			path = OnotherPeople;
+			sourceTree = "<group>";
+		};
 		C941332022C8B2BB0082A01C /* Detail */ = {
 			isa = PBXGroup;
 			children = (
@@ -748,6 +766,7 @@
 				C978FD2522C60B3A00859851 /* GoalTranslator.swift */,
 				C92E0BBE22CB02BC007A2F0C /* CommentTranslator.swift */,
 				C9C43B9222D1078C006CBC1B /* ReplyTranslator.swift */,
+				C98AE9AA22DFA4840021DD73 /* AuthorTokensTranslator.swift */,
 			);
 			path = Translator;
 			sourceTree = "<group>";
@@ -1160,6 +1179,7 @@
 				C9D9013922AB5E700040390E /* Top */,
 				C9D9012222AB532A0040390E /* Account */,
 				C95E08A922B116EF000C41C7 /* MainTab */,
+				C9391A1622E017FD006E3A14 /* OnotherPeople */,
 				C9CB2B4322D4F6350081C499 /* Timeline */,
 				C9ED71FC22B1375300BDB9A7 /* Mypage */,
 				C99116B322B8FC90007C67C7 /* GoalPost */,
@@ -1560,6 +1580,8 @@
 				C9CC391222D5CBAA001010F4 /* TimelinePresenter.swift in Sources */,
 				C9FE4BC722DDC1A200DBF543 /* PublicCompletePresenter.swift in Sources */,
 				C979404922BF447A00929C2A /* Array+Extension.swift in Sources */,
+				C9391A1A22E01821006E3A14 /* OnotherPeopleUI.swift in Sources */,
+				C98AE9AB22DFA4840021DD73 /* AuthorTokensTranslator.swift in Sources */,
 				C953153A22D5EA8F00EEB3C0 /* FollowViewController.swift in Sources */,
 				C9A6065D22B2643F00184E0F /* TimelineCell+Extension.swift in Sources */,
 				C99116AC22B8A318007C67C7 /* PasswordEditingUI.swift in Sources */,
@@ -1637,6 +1659,7 @@
 				C93271E222CF6E6100AA9BA6 /* DetailLocalDataStore.swift in Sources */,
 				C9328AA622C732130065027B /* PrivateAllViewController.swift in Sources */,
 				C972692822BB2DD400CDFD59 /* ExpectedResultView.swift in Sources */,
+				C9391A1822E01813006E3A14 /* OnotherPeopleViewController.swift in Sources */,
 				C9D9011422AB502E0040390E /* UIButton+Extension.swift in Sources */,
 				C988631322C5E0F200CABD62 /* PrivateGoalViewController.swift in Sources */,
 				C9CC28EB22ACD89D006E69E5 /* LoginInputUI.swift in Sources */,
@@ -1666,6 +1689,7 @@
 				C9D77F8B22C9CB5E0007835B /* GoalPostEditPresenter.swift in Sources */,
 				C953154022D5F05300EEB3C0 /* UITableView+Extension.swift in Sources */,
 				C9D9011F22AB51C40040390E /* UITextField+Extension.swift in Sources */,
+				C9391A1C22E0189C006E3A14 /* OnotherPeopleRouting.swift in Sources */,
 				C9C43B9322D1078C006CBC1B /* ReplyTranslator.swift in Sources */,
 				C9328A9822C7193E0065027B /* PrivateCompletePresenter.swift in Sources */,
 				C97DDD7D22AD544E00A84219 /* SignupInputPresenterImpl.swift in Sources */,

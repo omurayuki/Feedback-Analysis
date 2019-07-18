@@ -15,6 +15,8 @@ protocol PublicGoalPresenter {
     func setSelected(index: Int)
     func getSelected(completion: @escaping (Int) -> Void)
     func getAuthorToken(completion: @escaping (String) -> Void)
+    func setAuthorTokens(_ values: [String])
+    func getAuthorToken(_ index: Int, completion: @escaping (String) -> Void)
 }
 
 protocol PublicGoalPresenterView: class {

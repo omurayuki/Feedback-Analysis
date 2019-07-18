@@ -13,9 +13,10 @@ class PublicGoalViewController: UIViewController {
                           listItems: [],
                           isSkelton: false,
                           cellConfigurationHandler: { (cell, item, indexPath) in
-                            cell.delegate = self
-                            cell.identificationId = indexPath.row
-                            cell.content = item
+            cell.cellTapDelegate = self
+            cell.userPhotoTapDelegate = self
+            cell.identificationId = indexPath.row
+            cell.content = item
         })
     }()
     
@@ -71,6 +72,7 @@ extension PublicGoalViewController: PublicGoalPresenterView {
     func didFetchGoalData(timeline: [Timeline]) {
         dataSource.listItems = []
         dataSource.listItems += timeline
+        presenter.setAuthorTokens(timeline.compactMap { $0.authorToken })
         ui.timeline.reloadData()
         ui.refControl.endRefreshing()
     }
@@ -136,5 +138,21 @@ extension PublicGoalViewController: CellTapDelegate {
                                                     authorToken: token))
             self.presenter.setSelected(index: index)
         })
+    }
+}
+
+extension PublicGoalViewController: UserPhotoTapDelegate {
+    
+    func tappedUserPhoto(index: Int) {
+        presenter.getAuthorToken(index) { token in
+            print(token)
+            // 時画面に遷移するときに、初期化タイミングでデータをfetch
+            // 時画面でskeltonさせて表示
+            // UI作成
+            // detailからも遷移できるようにUI調整
+            // フォロー機能作成
+            // フォロワー機能作成
+            // フォローしている人の目標閲覧作成
+        }
     }
 }

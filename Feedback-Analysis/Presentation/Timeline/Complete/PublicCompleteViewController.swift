@@ -13,9 +13,9 @@ class PublicCompleteViewController: UIViewController {
                           listItems: [],
                           isSkelton: false,
                           cellConfigurationHandler: { (cell, item, indexPath) in
-                            cell.delegate = self
-                            cell.identificationId = indexPath.row
-                            cell.content = item
+            cell.cellTapDelegate = self
+            cell.identificationId = indexPath.row
+            cell.content = item
         })
     }()
     

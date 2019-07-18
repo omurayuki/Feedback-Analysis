@@ -10,6 +10,8 @@ protocol TimelineUseCase {
     func setSelected(index: Int) -> Single<()>
     func getSelected() -> Single<Int>
     func getAuthorToken() -> Single<String>
+    func setAuthorTokens(_ values: [String]) -> Single<()>
+    func getAuthorToken(_ index: Int) -> Single<String>
 }
 
 struct TimelineUseCaseImpl: TimelineUseCase {
@@ -50,5 +52,13 @@ struct TimelineUseCaseImpl: TimelineUseCase {
     
     func getAuthorToken() -> Single<String> {
         return repository.getAuthorToken()
+    }
+    
+    func setAuthorTokens(_ values: [String]) -> Single<()> {
+        return repository.setAuthorTokens(values)
+    }
+    
+    func getAuthorToken(_ index: Int) -> Single<String> {
+        return repository.getAuthorToken().map { AuthorTokensTranslator().translate($0, index) }
     }
 }

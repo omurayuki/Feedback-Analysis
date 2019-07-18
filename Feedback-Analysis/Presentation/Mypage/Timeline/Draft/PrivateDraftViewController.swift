@@ -12,8 +12,9 @@ class PrivateDraftViewController: UIViewController {
         return DataSource(cellReuseIdentifier: String(describing: TimelineCell.self),
                           listItems: [],
                           isSkelton: false,
-                          cellConfigurationHandler: { (cell, item, _) in
-            cell.delegate = self
+                          cellConfigurationHandler: { (cell, item, indexPath) in
+            cell.cellTapDelegate = self
+            cell.identificationId = indexPath.row
             cell.content = item
         })
     }()
