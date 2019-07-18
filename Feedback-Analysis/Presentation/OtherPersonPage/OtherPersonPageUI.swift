@@ -1,6 +1,6 @@
 import UIKit
 
-protocol OnotherPeopleUI: UI {
+protocol OtherPersonPageUI: UI {
     var headerImage: UIImageView { get }
     var userImage: UIImageView { get }
     var userName: UILabel { get }
@@ -21,7 +21,7 @@ protocol OnotherPeopleUI: UI {
     func updateUser(user: User)
 }
 
-final class OnotherPeopleUIImpl: OnotherPeopleUI {
+final class OtherPersonPageUIImpl: OtherPersonPageUI {
     
     weak var viewController: UIViewController?
     
@@ -123,7 +123,7 @@ final class OnotherPeopleUIImpl: OnotherPeopleUI {
     }()
 }
 
-extension OnotherPeopleUIImpl {
+extension OtherPersonPageUIImpl {
     func setup() {
         guard let vc = viewController else { return }
         vc.view.backgroundColor = .appMainColor

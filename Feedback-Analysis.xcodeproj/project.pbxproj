@@ -51,13 +51,13 @@
 		C9328AAA22C732230065027B /* PrivateAllRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9328AA922C732230065027B /* PrivateAllRouting.swift */; };
 		C9328AAC22C732A30065027B /* PrivateAllPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9328AAB22C732A30065027B /* PrivateAllPresenter.swift */; };
 		C9328AAE22C732A90065027B /* PrivateAllPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9328AAD22C732A90065027B /* PrivateAllPresenterImpl.swift */; };
-		C9391A1822E01813006E3A14 /* OnotherPeopleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9391A1722E01813006E3A14 /* OnotherPeopleViewController.swift */; };
-		C9391A1A22E01821006E3A14 /* OnotherPeopleUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9391A1922E01821006E3A14 /* OnotherPeopleUI.swift */; };
-		C9391A1C22E0189C006E3A14 /* OnotherPeopleRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9391A1B22E0189C006E3A14 /* OnotherPeopleRouting.swift */; };
-		C9391A2022E01C72006E3A14 /* OnotherPeoplePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9391A1F22E01C72006E3A14 /* OnotherPeoplePresenter.swift */; };
-		C9391A2222E01C89006E3A14 /* OnotherPeoplePresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9391A2122E01C89006E3A14 /* OnotherPeoplePresenterImpl.swift */; };
-		C9391A2422E01E35006E3A14 /* OnotherPeopleUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9391A2322E01E35006E3A14 /* OnotherPeopleUseCase.swift */; };
-		C9391A2622E01E93006E3A14 /* OnotherPeopleRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9391A2522E01E93006E3A14 /* OnotherPeopleRepository.swift */; };
+		C9391A1822E01813006E3A14 /* OtherPersonPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9391A1722E01813006E3A14 /* OtherPersonPageViewController.swift */; };
+		C9391A1A22E01821006E3A14 /* OtherPersonPageUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9391A1922E01821006E3A14 /* OtherPersonPageUI.swift */; };
+		C9391A1C22E0189C006E3A14 /* OtherPersonPageRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9391A1B22E0189C006E3A14 /* OtherPersonPageRouting.swift */; };
+		C9391A2022E01C72006E3A14 /* OtherPersonPagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9391A1F22E01C72006E3A14 /* OtherPersonPagePresenter.swift */; };
+		C9391A2222E01C89006E3A14 /* OtherPersonPagePresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9391A2122E01C89006E3A14 /* OtherPersonPagePresenterImpl.swift */; };
+		C9391A2422E01E35006E3A14 /* OtherPersonPageUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9391A2322E01E35006E3A14 /* OtherPersonPageUseCase.swift */; };
+		C9391A2622E01E93006E3A14 /* OtherPersonPageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9391A2522E01E93006E3A14 /* OtherPersonPageRepository.swift */; };
 		C941332222C8B2CC0082A01C /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C941332122C8B2CC0082A01C /* DetailViewController.swift */; };
 		C941332422C8B2D20082A01C /* DetailUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C941332322C8B2D20082A01C /* DetailUI.swift */; };
 		C941332622C8B2DC0082A01C /* DetailRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C941332522C8B2DC0082A01C /* DetailRouting.swift */; };
@@ -279,13 +279,13 @@
 		C9328AA922C732230065027B /* PrivateAllRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateAllRouting.swift; sourceTree = "<group>"; };
 		C9328AAB22C732A30065027B /* PrivateAllPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateAllPresenter.swift; sourceTree = "<group>"; };
 		C9328AAD22C732A90065027B /* PrivateAllPresenterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateAllPresenterImpl.swift; sourceTree = "<group>"; };
-		C9391A1722E01813006E3A14 /* OnotherPeopleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnotherPeopleViewController.swift; sourceTree = "<group>"; };
-		C9391A1922E01821006E3A14 /* OnotherPeopleUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnotherPeopleUI.swift; sourceTree = "<group>"; };
-		C9391A1B22E0189C006E3A14 /* OnotherPeopleRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnotherPeopleRouting.swift; sourceTree = "<group>"; };
-		C9391A1F22E01C72006E3A14 /* OnotherPeoplePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnotherPeoplePresenter.swift; sourceTree = "<group>"; };
-		C9391A2122E01C89006E3A14 /* OnotherPeoplePresenterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnotherPeoplePresenterImpl.swift; sourceTree = "<group>"; };
-		C9391A2322E01E35006E3A14 /* OnotherPeopleUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnotherPeopleUseCase.swift; sourceTree = "<group>"; };
-		C9391A2522E01E93006E3A14 /* OnotherPeopleRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnotherPeopleRepository.swift; sourceTree = "<group>"; };
+		C9391A1722E01813006E3A14 /* OtherPersonPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherPersonPageViewController.swift; sourceTree = "<group>"; };
+		C9391A1922E01821006E3A14 /* OtherPersonPageUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherPersonPageUI.swift; sourceTree = "<group>"; };
+		C9391A1B22E0189C006E3A14 /* OtherPersonPageRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherPersonPageRouting.swift; sourceTree = "<group>"; };
+		C9391A1F22E01C72006E3A14 /* OtherPersonPagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherPersonPagePresenter.swift; sourceTree = "<group>"; };
+		C9391A2122E01C89006E3A14 /* OtherPersonPagePresenterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherPersonPagePresenterImpl.swift; sourceTree = "<group>"; };
+		C9391A2322E01E35006E3A14 /* OtherPersonPageUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherPersonPageUseCase.swift; sourceTree = "<group>"; };
+		C9391A2522E01E93006E3A14 /* OtherPersonPageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherPersonPageRepository.swift; sourceTree = "<group>"; };
 		C941332122C8B2CC0082A01C /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		C941332322C8B2D20082A01C /* DetailUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailUI.swift; sourceTree = "<group>"; };
 		C941332522C8B2DC0082A01C /* DetailRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRouting.swift; sourceTree = "<group>"; };
@@ -578,23 +578,23 @@
 			path = All;
 			sourceTree = "<group>";
 		};
-		C9391A1622E017FD006E3A14 /* OnotherPeople */ = {
+		C9391A1622E017FD006E3A14 /* OtherPersonPage */ = {
 			isa = PBXGroup;
 			children = (
-				C9391A1722E01813006E3A14 /* OnotherPeopleViewController.swift */,
-				C9391A1922E01821006E3A14 /* OnotherPeopleUI.swift */,
-				C9391A1B22E0189C006E3A14 /* OnotherPeopleRouting.swift */,
+				C9391A1722E01813006E3A14 /* OtherPersonPageViewController.swift */,
+				C9391A1922E01821006E3A14 /* OtherPersonPageUI.swift */,
+				C9391A1B22E0189C006E3A14 /* OtherPersonPageRouting.swift */,
 			);
-			path = OnotherPeople;
+			path = OtherPersonPage;
 			sourceTree = "<group>";
 		};
-		C9391A1E22E01C57006E3A14 /* OnotherPeople */ = {
+		C9391A1E22E01C57006E3A14 /* OtherPersonPage */ = {
 			isa = PBXGroup;
 			children = (
-				C9391A1F22E01C72006E3A14 /* OnotherPeoplePresenter.swift */,
-				C9391A2122E01C89006E3A14 /* OnotherPeoplePresenterImpl.swift */,
+				C9391A1F22E01C72006E3A14 /* OtherPersonPagePresenter.swift */,
+				C9391A2122E01C89006E3A14 /* OtherPersonPagePresenterImpl.swift */,
 			);
-			path = OnotherPeople;
+			path = OtherPersonPage;
 			sourceTree = "<group>";
 		};
 		C941332022C8B2BB0082A01C /* Detail */ = {
@@ -733,7 +733,7 @@
 				C9EA654722BBDD20002BE1C8 /* GoalPostUseCase.swift */,
 				C9D77F9222CA63120007835B /* DetailUseCase.swift */,
 				C9CC391522D5CD46001010F4 /* TimelineUseCase.swift */,
-				C9391A2322E01E35006E3A14 /* OnotherPeopleUseCase.swift */,
+				C9391A2322E01E35006E3A14 /* OtherPersonPageUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -771,7 +771,7 @@
 				C9EA654922BC194D002BE1C8 /* GoalRepository.swift */,
 				C91D8E3F22CA63A6000379E3 /* DetailRepository.swift */,
 				C9CC391722D5CD87001010F4 /* TimelineRepository.swift */,
-				C9391A2522E01E93006E3A14 /* OnotherPeopleRepository.swift */,
+				C9391A2522E01E93006E3A14 /* OtherPersonPageRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -1198,8 +1198,8 @@
 				C9D9013922AB5E700040390E /* Top */,
 				C9D9012222AB532A0040390E /* Account */,
 				C95E08A922B116EF000C41C7 /* MainTab */,
-				C9391A1622E017FD006E3A14 /* OnotherPeople */,
 				C9CB2B4322D4F6350081C499 /* Timeline */,
+				C9391A1622E017FD006E3A14 /* OtherPersonPage */,
 				C9ED71FC22B1375300BDB9A7 /* Mypage */,
 				C99116B322B8FC90007C67C7 /* GoalPost */,
 				C98E1BB922B776E900D132D5 /* Settings */,
@@ -1288,8 +1288,8 @@
 			children = (
 				C97DDD7E22AD550F00A84219 /* Presenter.swift */,
 				C9D9012F22AB55DE0040390E /* Account */,
-				C9391A1E22E01C57006E3A14 /* OnotherPeople */,
 				C9A610C722D5CB6500300837 /* Timeline */,
+				C9391A1E22E01C57006E3A14 /* OtherPersonPage */,
 				C9A6066822B26D9800184E0F /* Mypage */,
 				C9F2496522B78E70007E82A0 /* Settings */,
 				C9C2808522BBDA69002E905E /* GoalPost */,
@@ -1596,12 +1596,12 @@
 				C9D9011022AB4EE20040390E /* UIAlertAction+Extension.swift in Sources */,
 				C91FA66022B577BB006D9E6D /* Residence.swift in Sources */,
 				C9EA654C22BC1A27002BE1C8 /* GoalRemoteDataStore.swift in Sources */,
-				C9391A2222E01C89006E3A14 /* OnotherPeoplePresenterImpl.swift in Sources */,
+				C9391A2222E01C89006E3A14 /* OtherPersonPagePresenterImpl.swift in Sources */,
 				C9F2496F22B79CBF007E82A0 /* EmailEditingViewController.swift in Sources */,
 				C9CC391222D5CBAA001010F4 /* TimelinePresenter.swift in Sources */,
 				C9FE4BC722DDC1A200DBF543 /* PublicCompletePresenter.swift in Sources */,
 				C979404922BF447A00929C2A /* Array+Extension.swift in Sources */,
-				C9391A1A22E01821006E3A14 /* OnotherPeopleUI.swift in Sources */,
+				C9391A1A22E01821006E3A14 /* OtherPersonPageUI.swift in Sources */,
 				C98AE9AB22DFA4840021DD73 /* AuthorTokensTranslator.swift in Sources */,
 				C953153A22D5EA8F00EEB3C0 /* FollowViewController.swift in Sources */,
 				C9A6065D22B2643F00184E0F /* TimelineCell+Extension.swift in Sources */,
@@ -1680,7 +1680,7 @@
 				C93271E222CF6E6100AA9BA6 /* DetailLocalDataStore.swift in Sources */,
 				C9328AA622C732130065027B /* PrivateAllViewController.swift in Sources */,
 				C972692822BB2DD400CDFD59 /* ExpectedResultView.swift in Sources */,
-				C9391A1822E01813006E3A14 /* OnotherPeopleViewController.swift in Sources */,
+				C9391A1822E01813006E3A14 /* OtherPersonPageViewController.swift in Sources */,
 				C9D9011422AB502E0040390E /* UIButton+Extension.swift in Sources */,
 				C988631322C5E0F200CABD62 /* PrivateGoalViewController.swift in Sources */,
 				C9CC28EB22ACD89D006E69E5 /* LoginInputUI.swift in Sources */,
@@ -1710,7 +1710,7 @@
 				C9D77F8B22C9CB5E0007835B /* GoalPostEditPresenter.swift in Sources */,
 				C953154022D5F05300EEB3C0 /* UITableView+Extension.swift in Sources */,
 				C9D9011F22AB51C40040390E /* UITextField+Extension.swift in Sources */,
-				C9391A1C22E0189C006E3A14 /* OnotherPeopleRouting.swift in Sources */,
+				C9391A1C22E0189C006E3A14 /* OtherPersonPageRouting.swift in Sources */,
 				C9C43B9322D1078C006CBC1B /* ReplyTranslator.swift in Sources */,
 				C9328A9822C7193E0065027B /* PrivateCompletePresenter.swift in Sources */,
 				C97DDD7D22AD544E00A84219 /* SignupInputPresenterImpl.swift in Sources */,
@@ -1722,7 +1722,7 @@
 				C91D8E4222CA6495000379E3 /* DetailRemoteDataStore.swift in Sources */,
 				C90535CB22AFBD55006B2E04 /* Provider.swift in Sources */,
 				C9CC28F622AD3BF8006E69E5 /* SignupInputUI.swift in Sources */,
-				C9391A2022E01C72006E3A14 /* OnotherPeoplePresenter.swift in Sources */,
+				C9391A2022E01C72006E3A14 /* OtherPersonPagePresenter.swift in Sources */,
 				C9F2496B22B79383007E82A0 /* SettingsUseCase.swift in Sources */,
 				C9F2496722B78EAC007E82A0 /* SettingsPresenter.swift in Sources */,
 				C94EE04B22D0633100937CFA /* ReplyRouting.swift in Sources */,
@@ -1746,14 +1746,14 @@
 				C9ED720022B137CD00BDB9A7 /* MypageUI.swift in Sources */,
 				C9035CB422B77E10006DFAB9 /* SettingsSection.swift in Sources */,
 				C9328A9A22C719480065027B /* PrivateCompletePresenterImpl.swift in Sources */,
-				C9391A2622E01E93006E3A14 /* OnotherPeopleRepository.swift in Sources */,
+				C9391A2622E01E93006E3A14 /* OtherPersonPageRepository.swift in Sources */,
 				C9D77F8422C9C5C10007835B /* GoalPostEditUI.swift in Sources */,
 				C92E7FE722B90D430031AE4F /* GoalPostRouting.swift in Sources */,
 				C953153422D5EA6600EEB3C0 /* PublicCompleteViewController.swift in Sources */,
 				C92E7FE522B90D350031AE4F /* GoalPostUI.swift in Sources */,
 				C97DDD8222AD71C100A84219 /* SignupUseCase.swift in Sources */,
 				C92E0BBD22CB0145007A2F0C /* Comment.swift in Sources */,
-				C9391A2422E01E35006E3A14 /* OnotherPeopleUseCase.swift in Sources */,
+				C9391A2422E01E35006E3A14 /* OtherPersonPageUseCase.swift in Sources */,
 				C97DDD8522AD74C900A84219 /* Account.swift in Sources */,
 				C9C43B8D22D0C686006CBC1B /* ReplyPost.swift in Sources */,
 				C97DDD8E22AD82AC00A84219 /* AccountRepository.swift in Sources */,

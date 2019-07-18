@@ -2,19 +2,19 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-class OnotherPeoplePresenterImpl: NSObject, OnotherPeoplePresenter {
+class OtherPersonPagePresenterImpl: NSObject, OtherPersonPagePresenter {
     
     var pendingIndex: Int?
     var currentIndex: Int?
     var previousIndex = 0
     
-    var view: OnotherPeoplePresenterView!
+    var view: OtherPersonPagePresenterView!
     
     var isLoading: BehaviorRelay<Bool> = BehaviorRelay<Bool>(value: false)
     
-    private var useCase: OnotherPeopleUseCase
+    private var useCase: OtherPersonPageUseCase
     
-    init(useCase: OnotherPeopleUseCase) {
+    init(useCase: OtherPersonPageUseCase) {
         self.useCase = useCase
     }
     
@@ -49,14 +49,14 @@ class OnotherPeoplePresenterImpl: NSObject, OnotherPeoplePresenter {
     func setup() {}
 }
 
-extension OnotherPeoplePresenterImpl: CustomSegmentedControlDelegate {
+extension OtherPersonPagePresenterImpl: CustomSegmentedControlDelegate {
     
     func changeToIndex(index: Int) {
         view.didSelectSegment(with: index)
     }
 }
 
-extension OnotherPeoplePresenterImpl: UIPageViewControllerDelegate {
+extension OtherPersonPagePresenterImpl: UIPageViewControllerDelegate {
     
     func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
         view.willTransitionTo(pageViewController, pendingViewControllers: pendingViewControllers)

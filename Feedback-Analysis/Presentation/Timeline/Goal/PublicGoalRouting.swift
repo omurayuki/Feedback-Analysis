@@ -4,7 +4,7 @@ import RxSwift
 
 protocol PublicGoalRouting: Routing {
     func showDetail(with timeline: Timeline, height: CGFloat)
-    func showOnotherPeoplePage(with token: String)
+    func showOtherPersonPage(with token: String)
 }
 
 final class PublicGoalRoutingImpl: PublicGoalRouting {
@@ -29,19 +29,19 @@ final class PublicGoalRoutingImpl: PublicGoalRouting {
         viewController?.navigationController?.pushViewController(vc, animated: true)
     }
     
-    func showOnotherPeoplePage(with token: String) {
+    func showOtherPersonPage(with token: String) {
         let createVC = CreateControllers(token: token)
         let controllers = [createVC.createGoalController(),
                            createVC.createCompleteController(),
                            createVC.createAllController()]
         controllers.enumerated().forEach { index, controller in controller.view.tag = index }
         
-        let repository = OnotherPeopleRepositoryImpl.shared
-        let useCase = OnotherPeopleUseCaseImpl(repository: repository)
-        let presenter = OnotherPeoplePresenterImpl(useCase: useCase)
-        let vc = OnotherPeopleViewController()
-        let ui = OnotherPeopleUIImpl()
-        let routing = OnotherPeopleRoutingImpl()
+        let repository = OtherPersonPageRepositoryImpl.shared
+        let useCase = OtherPersonPageUseCaseImpl(repository: repository)
+        let presenter = OtherPersonPagePresenterImpl(useCase: useCase)
+        let vc = OtherPersonPageViewController()
+        let ui = OtherPersonPageUIImpl()
+        let routing = OtherPersonPageRoutingImpl()
         ui.viewController = vc
         ui.timelineSegmented.delegate = presenter
         ui.timelinePages.dataSource = vc

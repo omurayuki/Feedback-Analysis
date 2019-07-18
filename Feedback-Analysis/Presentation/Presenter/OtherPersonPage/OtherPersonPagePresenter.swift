@@ -3,23 +3,23 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-protocol OnotherPeoplePresenter: Presenter {
+protocol OtherPersonPagePresenter: Presenter {
     var pendingIndex: Int? { get set }
     var currentIndex: Int? { get set }
     var previousIndex: Int { get set }
-    var view: OnotherPeoplePresenterView! { get set }
+    var view: OtherPersonPagePresenterView! { get set }
     var isLoading: BehaviorRelay<Bool> { get }
     
     func fetch(to documentRef: FirebaseDocumentRef, completion: (() -> Void)?)
     func getAuthorToken(completion: @escaping (String) -> Void)
 }
 
-protocol OnotherPeoplePresenterView: class {
+protocol OtherPersonPagePresenterView: class {
     var disposeBag: DisposeBag! { get }
     
-    func inject(ui: OnotherPeopleUI,
-                presenter: OnotherPeoplePresenter,
-                routing: OnotherPeopleRouting,
+    func inject(ui: OtherPersonPageUI,
+                presenter: OtherPersonPagePresenter,
+                routing: OtherPersonPageRouting,
                 viewControllers: [UIViewController],
                 disposeBag: DisposeBag)
     func didFetchUserData(user: User)

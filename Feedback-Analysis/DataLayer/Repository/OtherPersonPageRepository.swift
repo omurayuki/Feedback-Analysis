@@ -1,14 +1,14 @@
 import Foundation
 import RxSwift
 
-protocol OnotherPeopleRepository {
+protocol OtherPersonPageRepository {
     func fetch(to documentRef: FirebaseDocumentRef) -> Single<UserEntity>
     func getAuthorToken() -> Single<String>
 }
 
-struct OnotherPeopleRepositoryImpl: OnotherPeopleRepository {
+struct OtherPersonPageRepositoryImpl: OtherPersonPageRepository {
     
-    static let shared = OnotherPeopleRepositoryImpl()
+    static let shared = OtherPersonPageRepositoryImpl()
     
     func fetch(to documentRef: FirebaseDocumentRef) -> Single<UserEntity> {
         let dataStore = UserDataStoreFactory.createUserRemoteDataStore()

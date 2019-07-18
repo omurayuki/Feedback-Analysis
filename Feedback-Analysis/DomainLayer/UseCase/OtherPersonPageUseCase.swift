@@ -1,16 +1,16 @@
 import Foundation
 import RxSwift
 
-protocol OnotherPeopleUseCase {
+protocol OtherPersonPageUseCase {
     func fetch(to: FirebaseDocumentRef) -> Single<User>
     func getAuthorToken() -> Single<String>
 }
 
-struct OnotherPeopleUseCaseImpl: OnotherPeopleUseCase {
+struct OtherPersonPageUseCaseImpl: OtherPersonPageUseCase {
     
-    private(set) var repository: OnotherPeopleRepository
+    private(set) var repository: OtherPersonPageRepository
     
-    init(repository: OnotherPeopleRepository) {
+    init(repository: OtherPersonPageRepository) {
         self.repository = repository
     }
     

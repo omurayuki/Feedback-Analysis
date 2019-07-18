@@ -3,15 +3,15 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class OnotherPeopleViewController: UIViewController {
+class OtherPersonPageViewController: UIViewController {
     
-    var ui: OnotherPeopleUI!
+    var ui: OtherPersonPageUI!
     
-    var routing: OnotherPeopleRouting!
+    var routing: OtherPersonPageRouting!
     
     var viewControllers: [UIViewController]!
     
-    var presenter: OnotherPeoplePresenter! {
+    var presenter: OtherPersonPagePresenter! {
         didSet {
             presenter.view = self
         }
@@ -22,9 +22,9 @@ class OnotherPeopleViewController: UIViewController {
         }
     }
     
-    func inject(ui: OnotherPeopleUI,
-                presenter: OnotherPeoplePresenter,
-                routing: OnotherPeopleRouting,
+    func inject(ui: OtherPersonPageUI,
+                presenter: OtherPersonPagePresenter,
+                routing: OtherPersonPageRouting,
                 viewControllers: [UIViewController],
                 disposeBag: DisposeBag) {
         self.ui = ui
@@ -41,7 +41,7 @@ class OnotherPeopleViewController: UIViewController {
     }
 }
 
-extension OnotherPeopleViewController: OnotherPeoplePresenterView {
+extension OtherPersonPageViewController: OtherPersonPagePresenterView {
     
     func updateLoading(_ isLoading: Bool) {
         presenter.isLoading.accept(isLoading)
@@ -74,14 +74,14 @@ extension OnotherPeopleViewController: OnotherPeoplePresenterView {
     }
 }
 
-extension OnotherPeopleViewController {
+extension OtherPersonPageViewController {
     
     func recieve(with token: String) {
         presenter.fetch(to: .userRef(authorToken: token), completion: nil)
     }
 }
 
-extension OnotherPeopleViewController: UIPageViewControllerDataSource {
+extension OtherPersonPageViewController: UIPageViewControllerDataSource {
     
     func pageViewController(_ pageViewController: UIPageViewController,
                             viewControllerBefore viewController: UIViewController) -> UIViewController? {
