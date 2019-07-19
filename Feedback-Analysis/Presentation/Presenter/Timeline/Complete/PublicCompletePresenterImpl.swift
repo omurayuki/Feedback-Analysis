@@ -7,6 +7,8 @@ class PublicCompletePresenterImpl: NSObject, PublicCompletePresenter {
     
     var isLoading: BehaviorRelay<Bool> = BehaviorRelay<Bool>(value: false)
     
+    var isFiestLoading: Bool = true
+    
     private var useCase: TimelineUseCase
     
     init(useCase: TimelineUseCase) {
@@ -19,6 +21,7 @@ class PublicCompletePresenterImpl: NSObject, PublicCompletePresenter {
             .subscribe(onNext: { [unowned self] result in
                 self.view.updateLoading(false)
                 self.view.didFetchGoalData(timeline: result)
+                completion?()
                 }, onError: { error in
                     self.view.updateLoading(false)
                     self.view.showError(message: error.localizedDescription)

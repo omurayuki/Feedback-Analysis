@@ -6,6 +6,7 @@ import RxCocoa
 protocol PublicCompletePresenter {
     var view: PublicCompletePresenterView! { get set }
     var isLoading: BehaviorRelay<Bool> { get }
+    var isFiestLoading: Bool { get set }
     
     func fetch(from queryRef: FirebaseQueryRef, loading: Bool, completion: (() -> Void)?)
     func update(to documentRef: FirebaseDocumentRef, value: [String: Any])

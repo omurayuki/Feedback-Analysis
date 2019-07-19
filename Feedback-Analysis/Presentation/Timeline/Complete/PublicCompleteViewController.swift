@@ -57,6 +57,14 @@ class PublicCompleteViewController: UIViewController {
         self.presenter.fetch(from: .publicCompleteRef, loading: true, completion: nil)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        //// DetailVCから戻ってきた際にもう一度タイムライン情報をfetchしてこなければ、authorTokenを配列でuserDefaultsに保存できない
+        presenter.fetch(from: .publicCompleteRef, loading: presenter.isFiestLoading) {
+            self.presenter.isFiestLoading = false
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         ui.setup()

@@ -114,7 +114,7 @@ class PublicGoalPresenterImpl: NSObject, PublicGoalPresenter {
     
     func setAuthorTokens(_ values: [String]) {
         useCase.setAuthorTokens(values)
-            .subscribe { [unowned self] result in
+            .subscribe { result in
                 switch result {
                 case .success(_):
                     return
