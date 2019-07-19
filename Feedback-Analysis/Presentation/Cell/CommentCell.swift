@@ -6,7 +6,9 @@ final class CommentCell: UITableViewCell {
     
     let disposeBag = DisposeBag()
     
-    var delegate: CellTapDelegate?
+    var cellTapDelegate: CellTapDelegate?
+    
+    var userPhotoTapDelegate: UserPhotoTapDelegate?
     
     var identificationId = Int()
     
@@ -16,6 +18,11 @@ final class CommentCell: UITableViewCell {
             .isUserInteractionEnabled(false)
             .build()
         return image
+    }()
+    
+    private(set) var userPhotoGesture: UITapGestureRecognizer = {
+        let gesture = UITapGestureRecognizer()
+        return gesture
     }()
     
     private(set) var userName: UILabel = {
@@ -101,6 +108,8 @@ extension CommentCell {
         [userPhoto, userName, postedTime,
          comment, commentStack, likeStack].forEach { addSubview($0) }
         
+        userPhoto.addGestureRecognizer(userPhotoGesture)
+        
         userPhoto.anchor()
             .top(to: topAnchor, constant: 5)
             .left(to: leftAnchor, constant: 20)
@@ -146,7 +155,12 @@ extension CommentCell {
     func bindUI() {
         likeBtn.rx.tap.asDriver()
             .drive(onNext: { [unowned self] _ in
-                self.delegate?.tappedLikeBtn(index: self.identificationId)
+                self.cellTapDelegate?.tappedLikeBtn(index: self.identificationId)
+            }).disposed(by: disposeBag)
+        
+        userPhotoGesture.rx.event.asDriver()
+            .drive(onNext: { [unowned self] _ in
+                self.userPhotoTapDelegate?.tappedUserPhoto(index: self.identificationId)
             }).disposed(by: disposeBag)
     }
 }

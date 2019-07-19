@@ -23,7 +23,8 @@ class DetailViewController: UIViewController {
                                 listItems: [],
                                 isSkelton: true,
                                 cellConfigurationHandler: { (cell, item, indexPath) in
-            cell.delegate = self
+            cell.cellTapDelegate = self
+            cell.userPhotoTapDelegate = self
             cell.identificationId = indexPath.row
             cell.content = item
         })
@@ -84,11 +85,6 @@ class DetailViewController: UIViewController {
         self.presenter = presenter
         self.routing = routing
         self.disposeBag = disposeBag
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        routing.popToViewController()
     }
     
     override func viewDidLoad() {
@@ -207,6 +203,7 @@ extension DetailViewController {
     func mappingDataToDataSource(comments: [Comment]) {
         commentDataSource.listItems = []
         commentDataSource.listItems += comments
+        presenter.setAuthorTokens(comments.compactMap { $0.authorToken })
     }
     
     func updateCommentCellIfEmpty() {
@@ -241,5 +238,15 @@ extension DetailViewController: CellTapDelegate {
                                                             authorToken: token))
             self.presenter.setSelected(index: index)
         })
+    }
+}
+
+extension DetailViewController: UserPhotoTapDelegate {
+    
+    func tappedUserPhoto(index: Int) {
+        print(AppUserDefaults.getStringArray())
+        presenter.getAuthorToken(index) { [unowned self] token in
+            self.routing.showOtherPersonPage(with: token)
+        }
     }
 }

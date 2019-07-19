@@ -18,6 +18,8 @@ protocol DetailRepository {
     func setSelected(index: Int) -> Single<()>
     func getSelected() -> Single<Int>
     func getAuthorToken() -> Single<String>
+    func setAuthorTokens(_ values: [String]) -> Single<()>
+    func getAuthorToken() -> Single<[String]>
 }
 
 struct DetailRepositoryImpl: DetailRepository {
@@ -100,6 +102,16 @@ struct DetailRepositoryImpl: DetailRepository {
     }
     
     func getAuthorToken() -> Single<String> {
+        let dataStore = GoalDataStoreFactory.createGoalLocalDataStore()
+        return dataStore.getAuthorToken()
+    }
+    
+    func setAuthorTokens(_ values: [String]) -> Single<()> {
+        let dataStore = GoalDataStoreFactory.createGoalLocalDataStore()
+        return dataStore.setAuthorTokens(values)
+    }
+    
+    func getAuthorToken() -> Single<[String]> {
         let dataStore = GoalDataStoreFactory.createGoalLocalDataStore()
         return dataStore.getAuthorToken()
     }

@@ -6,6 +6,7 @@ protocol DetailRouting: Routing {
     func moveGoalPostEditPage(with timeline: Timeline)
     func popToViewController()
     func showReplyPage(with timeline: Comment, height: CGFloat)
+    func showOtherPersonPage(with token: String)
 }
 
 final class DetailRoutingImpl: DetailRouting {
@@ -62,5 +63,32 @@ final class DetailRoutingImpl: DetailRouting {
         navVC.modalPresentationStyle = .custom
         navVC.transitioningDelegate = halfModalTransitioningDelegate
         `self`.present(navVC, animated: true)
+    }
+    
+    func showOtherPersonPage(with token: String) {
+        let createVC = CreateControllers(token: token)
+        let controllers = [createVC.createGoalController(),
+                           createVC.createCompleteController(),
+                           createVC.createAllController()]
+        controllers.enumerated().forEach { index, controller in controller.view.tag = index }
+        
+        let repository = OtherPersonPageRepositoryImpl.shared
+        let useCase = OtherPersonPageUseCaseImpl(repository: repository)
+        let presenter = OtherPersonPagePresenterImpl(useCase: useCase)
+        let vc = OtherPersonPageViewController()
+        let ui = OtherPersonPageUIImpl()
+        let routing = OtherPersonPageRoutingImpl()
+        ui.viewController = vc
+        ui.timelineSegmented.delegate = presenter
+        ui.timelinePages.dataSource = vc
+        ui.timelinePages.delegate = presenter
+        routing.viewController = vc
+        vc.inject(ui: ui,
+                  presenter: presenter,
+                  routing: routing,
+                  viewControllers: controllers,
+                  disposeBag: DisposeBag())
+        vc.recieve(with: token)
+        viewController?.navigationController?.pushViewController(vc, animated: true)
     }
 }

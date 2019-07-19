@@ -14,6 +14,7 @@ class PublicCompleteViewController: UIViewController {
                           isSkelton: false,
                           cellConfigurationHandler: { (cell, item, indexPath) in
             cell.cellTapDelegate = self
+            cell.userPhotoTapDelegate = self
             cell.identificationId = indexPath.row
             cell.content = item
         })
@@ -71,6 +72,7 @@ extension PublicCompleteViewController: PublicCompletePresenterView {
     func didFetchGoalData(timeline: [Timeline]) {
         dataSource.listItems = []
         dataSource.listItems += timeline
+        presenter.setAuthorTokens(timeline.compactMap { $0.authorToken })
         ui.timeline.reloadData()
         ui.refControl.endRefreshing()
     }
@@ -136,5 +138,14 @@ extension PublicCompleteViewController: CellTapDelegate {
                                                          authorToken: token))
             self.presenter.setSelected(index: index)
         })
+    }
+}
+
+extension PublicCompleteViewController: UserPhotoTapDelegate {
+    
+    func tappedUserPhoto(index: Int) {
+        presenter.getAuthorToken(index) { [unowned self] token in
+            self.routing.showOtherPersonPage(with: token)
+        }
     }
 }

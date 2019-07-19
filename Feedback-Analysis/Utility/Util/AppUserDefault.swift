@@ -123,13 +123,13 @@ extension AppUserDefaults {
         userDefaults.set(data, forKey: keyName)
     }
     
-    private class func getArrayValue<T: Sequence>(keyName: String) -> [T] {
+    private class func getArrayValue<T>(keyName: String) -> [T] {
         let userDefaults: UserDefaults = UserDefaults.standard
         guard let data = userDefaults.array(forKey: keyName) as? [T] else { return [] }
         return data
     }
     
-    private class func setArrayValue<T: Sequence>(_ value: [T], keyName: String) {
+    private class func setArrayValue<T>(_ value: [T], keyName: String) {
         let userDefaults: UserDefaults = UserDefaults.standard
         userDefaults.set(value, forKey: keyName)
     }

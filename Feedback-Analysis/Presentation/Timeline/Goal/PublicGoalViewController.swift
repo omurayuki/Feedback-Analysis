@@ -57,6 +57,14 @@ class PublicGoalViewController: UIViewController {
         self.presenter.fetch(from: .publicGoalRef, loading: true, completion: nil)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        //// DetailVCから戻ってきた際にもう一度タイムライン情報をfetchしてこなければ、authorTokenを配列でuserDefaultsに保存できない
+        presenter.fetch(from: .publicGoalRef, loading: presenter.isFiestLoading) {
+            self.presenter.isFiestLoading = false
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         ui.setup()
@@ -70,9 +78,11 @@ extension PublicGoalViewController: PublicGoalPresenterView {
     }
     
     func didFetchGoalData(timeline: [Timeline]) {
+        AppUserDefaults.clearStringArray()
         dataSource.listItems = []
         dataSource.listItems += timeline
         presenter.setAuthorTokens(timeline.compactMap { $0.authorToken })
+        print(timeline.compactMap { $0.authorToken })
         ui.timeline.reloadData()
         ui.refControl.endRefreshing()
     }
@@ -81,7 +91,6 @@ extension PublicGoalViewController: PublicGoalPresenterView {
         tableView.deselectRow(at: indexPath, animated: true)
         guard let height = tableView.cellForRow(at: indexPath)?.contentView.frame.height else { return }
         routing.showDetail(with: dataSource.listItems[indexPath.row], height: height + 2)
-        self.presenter.fetch(from: .publicGoalRef, loading: false, completion: nil)
     }
     
     func didCheckIfYouLiked(_ bool: Bool) {
@@ -146,13 +155,6 @@ extension PublicGoalViewController: UserPhotoTapDelegate {
     func tappedUserPhoto(index: Int) {
         presenter.getAuthorToken(index) { [unowned self] token in
             self.routing.showOtherPersonPage(with: token)
-            // 時画面に遷移するときに、初期化タイミングでデータをfetch
-            // 時画面でskeltonさせて表示
-            // UI作成
-            // detailからも遷移できるようにUI調整
-            // フォロー機能作成
-            // フォロワー機能作成
-            // フォローしている人の目標閲覧作成
         }
     }
 }
