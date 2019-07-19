@@ -1,6 +1,19 @@
 import UIKit
+import RxSwift
+import RxCocoa
 
 final class ReplyCell: UITableViewCell {
+    
+    let disposeBag = DisposeBag()
+    
+    var userPhotoTapDelegate: UserPhotoTapDelegate?
+    
+    var identificationId = Int()
+    
+    private(set) var userPhotoGesture: UITapGestureRecognizer = {
+        let gesture = UITapGestureRecognizer()
+        return gesture
+    }()
     
     private(set) var userPhoto: UIImageView = {
         let image = UIImageView.Builder()
@@ -68,11 +81,14 @@ final class ReplyCell: UITableViewCell {
 extension ReplyCell {
     
     private func setup() {
+        bindUI()
         backgroundColor = .appMainColor
         let likeStack = UIStackView.setupStack(lhs: likeBtn, rhs: likeCount, spacing: 5)
         
         [userPhoto, userName,
          postedTime, reply, likeStack].forEach { addSubview($0) }
+        
+        userPhoto.addGestureRecognizer(userPhotoGesture)
         
         userPhoto.anchor()
             .top(to: topAnchor, constant: 5)
@@ -105,5 +121,15 @@ extension ReplyCell {
             .left(to: userPhoto.rightAnchor, constant: 10)
             .bottom(to: bottomAnchor, constant: -5)
             .activate()
+    }
+}
+
+extension ReplyCell {
+    
+    func bindUI() {
+        userPhotoGesture.rx.event.asDriver()
+            .drive(onNext: { [unowned self] _ in
+                self.userPhotoTapDelegate?.tappedUserPhoto(index: self.identificationId)
+            }).disposed(by: disposeBag)
     }
 }

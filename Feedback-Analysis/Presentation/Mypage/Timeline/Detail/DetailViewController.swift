@@ -244,7 +244,6 @@ extension DetailViewController: CellTapDelegate {
 extension DetailViewController: UserPhotoTapDelegate {
     
     func tappedUserPhoto(index: Int) {
-        print(AppUserDefaults.getStringArray())
         presenter.getAuthorToken(index) { [unowned self] token in
             self.routing.showOtherPersonPage(with: token)
         }

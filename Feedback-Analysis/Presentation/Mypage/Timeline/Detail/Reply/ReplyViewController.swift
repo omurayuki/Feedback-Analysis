@@ -22,7 +22,9 @@ class ReplyViewController: UIViewController {
         return ReplyDataStore(cellReuseIdentifier: String(describing: ReplyCell.self),
                                 listItems: [],
                                 isSkelton: false,
-                                cellConfigurationHandler: { (cell, item, _) in
+                                cellConfigurationHandler: { (cell, item, indexPath) in
+            cell.userPhotoTapDelegate = self
+            cell.identificationId = indexPath.row
             cell.content = item
         })
     }()
@@ -171,6 +173,17 @@ extension ReplyViewController {
     func mappingDataToDataSource(replies: [Reply]) {
         replyDataSource.listItems = []
         replyDataSource.listItems += replies
+        presenter.setAuthorTokens(replies.compactMap { $0.authorToken })
+    }
+}
+
+extension ReplyViewController: UserPhotoTapDelegate {
+    
+    func tappedUserPhoto(index: Int) {
+        presenter.getAuthorToken(index) { [unowned self] token in
+            self.routing.showOtherPersonPage(with: token)
+            self.maximizeToFullScreen()
+        }
     }
 }
 
