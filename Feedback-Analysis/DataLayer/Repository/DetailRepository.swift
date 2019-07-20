@@ -11,7 +11,11 @@ protocol DetailRepository {
     func get(from queryRef: FirebaseQueryRef) -> Observable<[CommentEntity]>
     func get(from queryRef: FirebaseQueryRef) -> Observable<[ReplyEntity]>
     func get(documentRef: FirebaseDocumentRef) -> Single<Bool>
+    func getOtherPersonAuthorFromTimelineToken() -> Single<String>
+    func getOtherPersonAuthorFromCommentToken() -> Single<String>
     func set(document id: String) -> Single<()>
+    func set(otherPersonAuthorTokenFromTimeline token: String) -> Single<()>
+    func set(otherPersonAuthorTokenFromComment token: String) -> Single<()>
     func set(comment id: String) -> Single<()>
     func getDocumentId() -> Single<String>
     func getDocumentIds() -> Single<(documentId: String, commentId: String)>
@@ -71,9 +75,29 @@ struct DetailRepositoryImpl: DetailRepository {
         return dataStore.get(documentRef: documentRef)
     }
     
+    func getOtherPersonAuthorFromTimelineToken() -> Single<String> {
+        let dataStore = DetailDataStoreFactory.createDetailLocalDataStore()
+        return dataStore.getOtherPersonAuthorFromTimelineToken()
+    }
+    
+    func getOtherPersonAuthorFromCommentToken() -> Single<String> {
+        let dataStore = DetailDataStoreFactory.createDetailLocalDataStore()
+        return dataStore.getOtherPersonAuthorFromCommentToken()
+    }
+    
     func set(document id: String) -> Single<()> {
         let dataStore = DetailDataStoreFactory.createDetailLocalDataStore()
         return dataStore.set(document: id)
+    }
+    
+    func set(otherPersonAuthorTokenFromTimeline token: String) -> Single<()> {
+        let dataStore = DetailDataStoreFactory.createDetailLocalDataStore()
+        return dataStore.set(otherPersonAuthorFromTimelineToken: token)
+    }
+    
+    func set(otherPersonAuthorTokenFromComment token: String) -> Single<()> {
+        let dataStore = DetailDataStoreFactory.createDetailLocalDataStore()
+        return dataStore.set(otherPersonAuthorFromCommentToken: token)
     }
     
     func set(comment id: String) -> Single<()> {

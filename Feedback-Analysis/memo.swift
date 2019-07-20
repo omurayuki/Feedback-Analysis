@@ -29,6 +29,7 @@
  //  UIのコンポーネント化
  // goalDocumentIdをdocumentIdと書いているから修正
  // decodable
+ // cellの共通インターフェース作成
  
  //////////必須
  // providerのobserveTimelineで目標データとそれに紐づくユーザーデータの整合性が合わない

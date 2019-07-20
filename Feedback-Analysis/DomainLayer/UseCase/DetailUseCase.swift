@@ -11,7 +11,11 @@ protocol DetailUseCase {
     func get(comments queryRef: FirebaseQueryRef) -> Observable<[Comment]>
     func get(replies queryRef: FirebaseQueryRef) -> Observable<[Reply]>
     func get(documentRef: FirebaseDocumentRef) -> Single<Bool>
+    func getOtherPersonAuthorFromTimelineToken() -> Single<String>
+    func getOtherPersonAuthorFromCommentToken() -> Single<String>
     func set(document id: String) -> Single<()>
+    func set(otherPersonAuthorTokenFromTimeline token: String) -> Single<()>
+    func set(otherPersonAuthorTokenFromComment token: String) -> Single<()>
     func set(comment id: String) -> Single<()>
     func getDocumentId() -> Single<String>
     func getDocumentIds() -> Single<(documentId: String, commentId: String)>
@@ -66,8 +70,24 @@ struct DetailUseCaseImpl: DetailUseCase {
         return repository.get(documentRef: documentRef)
     }
     
+    func getOtherPersonAuthorFromTimelineToken() -> Single<String> {
+        return repository.getOtherPersonAuthorFromTimelineToken()
+    }
+    
+    func getOtherPersonAuthorFromCommentToken() -> Single<String> {
+        return repository.getOtherPersonAuthorFromCommentToken()
+    }
+    
     func set(document id: String) -> Single<()> {
         return repository.set(document: id)
+    }
+    
+    func set(otherPersonAuthorTokenFromTimeline token: String) -> Single<()> {
+        return repository.set(otherPersonAuthorTokenFromTimeline: token)
+    }
+    
+    func set(otherPersonAuthorTokenFromComment token: String) -> Single<()> {
+        return repository.set(otherPersonAuthorTokenFromComment: token)
     }
     
     func set(comment id: String) -> Single<()> {

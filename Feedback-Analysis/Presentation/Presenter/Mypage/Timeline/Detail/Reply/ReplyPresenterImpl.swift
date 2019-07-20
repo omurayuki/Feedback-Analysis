@@ -68,6 +68,18 @@ class ReplyPresenterImpl: NSObject, ReplyPresenter {
             }.disposed(by: view.disposeBag)
     }
     
+    func set(otherPersonAuthorToken token: String) {
+        useCase.set(otherPersonAuthorTokenFromComment: token)
+            .subscribe { result in
+                switch result {
+                case .success(_):
+                    return
+                case .error(_):
+                    break
+                }
+            }.disposed(by: view.disposeBag)
+    }
+    
     func getDocumentIds(completion: @escaping (_ documentId: String, _ commentId: String) -> Void) {
         useCase.getDocumentIds()
             .subscribe { result in
@@ -76,6 +88,18 @@ class ReplyPresenterImpl: NSObject, ReplyPresenter {
                     completion(response.documentId, response.commentId)
                 case .error(_):
                     return
+                }
+            }.disposed(by: view.disposeBag)
+    }
+    
+    func getOtherPersonAuthorToken(completion: @escaping (String) -> Void) {
+        useCase.getOtherPersonAuthorFromCommentToken()
+            .subscribe { [unowned self] result in
+                switch result {
+                case .success(let response):
+                    completion(response)
+                case .error(let error):
+                    self.view.showError(message: error.localizedDescription)
                 }
             }.disposed(by: view.disposeBag)
     }

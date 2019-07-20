@@ -41,6 +41,14 @@ class ReplyViewController: UIViewController {
     
     var disposeBag: DisposeBag! {
         didSet {
+            ui.replyUserPhotoGesture.rx.event.asDriver()
+                .drive(onNext: { [unowned self] _ in
+                    self.presenter.getOtherPersonAuthorToken(completion: { [unowned self] token in
+                        self.routing.showOtherPersonPage(with: token)
+                        self.maximizeToFullScreen()
+                    })
+                }).disposed(by: disposeBag)
+            
             ui.expandBtn.rx.tap.asDriver()
                 .drive(onNext: { [unowned self] _ in
                     self.maximizeToFullScreen()
@@ -160,6 +168,7 @@ extension ReplyViewController: ReplyPresenterView {
 extension ReplyViewController {
     
     func recieve(data comment: Comment, height: CGFloat) {
+        presenter.set(otherPersonAuthorToken: comment.authorToken)
         presenter.set(comment: comment.documentId) {
             self.ui.determineHeight(height: height)
             self.commentDataSource.listItems.append(comment)

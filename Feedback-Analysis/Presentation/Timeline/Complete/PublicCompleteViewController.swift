@@ -89,7 +89,6 @@ extension PublicCompleteViewController: PublicCompletePresenterView {
         tableView.deselectRow(at: indexPath, animated: true)
         guard let height = tableView.cellForRow(at: indexPath)?.contentView.frame.height else { return }
         routing.showDetail(with: dataSource.listItems[indexPath.row], height: height + 2)
-        presenter.fetch(from: .publicCompleteRef, loading: false, completion: nil)
     }
     
     func didCheckIfYouLiked(_ bool: Bool) {

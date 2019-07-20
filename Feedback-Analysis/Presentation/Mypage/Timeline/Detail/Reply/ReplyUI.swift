@@ -2,6 +2,8 @@ import UIKit
 import GrowingTextView
 
 protocol ReplyUI: UI {
+    var replyUserPhotoGesture: UITapGestureRecognizer { get }
+    var replyUserPhotoGestureView: UIView { get }
     var cancelBtn: UIBarButtonItem { get }
     var expandBtn: UIBarButtonItem { get }
     var textViewBottomConstraint: NSLayoutConstraint { get set }
@@ -25,6 +27,17 @@ protocol ReplyUI: UI {
 final class ReplyUIImpl: ReplyUI {
     
     weak var viewController: UIViewController?
+    
+    private(set) var replyUserPhotoGesture: UITapGestureRecognizer = {
+        let gesture = UITapGestureRecognizer()
+        return gesture
+    }()
+    
+    private(set) var replyUserPhotoGestureView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .clear
+        return view
+    }()
     
     private(set) var cancelBtn: UIBarButtonItem = {
         let item = UIBarButtonItem()
@@ -113,7 +126,15 @@ extension ReplyUIImpl {
         vc.view.backgroundColor = .appMainColor
         [replyField, submitBtn].forEach { inputToolBar.addSubview($0) }
         vc.view.addGestureRecognizer(viewTapGesture)
-        [comment, replyTable, inputToolBar, replyFieldTextCount].forEach { vc.view.addSubview($0) }
+        [replyUserPhotoGestureView, comment, replyTable, inputToolBar, replyFieldTextCount].forEach { vc.view.addSubview($0) }
+        replyUserPhotoGestureView.addGestureRecognizer(replyUserPhotoGesture)
+        
+        replyUserPhotoGestureView.anchor()
+            .top(to: vc.view.safeAreaLayoutGuide.topAnchor, constant: 5)
+            .left(to: vc.view.leftAnchor, constant: 20)
+            .width(constant: 50)
+            .height(constant: 50)
+            .activate()
         
         comment.anchor()
             .top(to: vc.view.safeAreaLayoutGuide.topAnchor)

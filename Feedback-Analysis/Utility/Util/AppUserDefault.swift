@@ -20,6 +20,24 @@ class AppUserDefaults {
         putStringValue(token, keyName: "AuthToken")
     }
     
+    // OtherPersonAuthFromTimelineToken
+    class func getOtherPersonAuthFromTimelineToken() -> String {
+        return getStringValue(keyName: "OtherPersonAuthFromTimelineToken")
+    }
+    
+    class func setOtherPersonAuthFromTimelineToken(token: String) {
+        putStringValue(token, keyName: "OtherPersonAuthFromTimelineToken")
+    }
+    
+    // OtherPersonAuthFromCommentToken
+    class func getOtherPersonAuthFromCommentToken() -> String {
+        return getStringValue(keyName: "OtherPersonAuthFromCommentToken")
+    }
+    
+    class func setOtherPersonAuthFromCommentToken(token: String) {
+        putStringValue(token, keyName: "OtherPersonAuthFromCommentToken")
+    }
+    
     // 初回起動フラグ
     class func getFirstLaunchFrag() -> Bool {
         return getBoolValue(keyName: "FirstLaunch")

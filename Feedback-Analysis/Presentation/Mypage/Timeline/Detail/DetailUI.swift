@@ -3,6 +3,8 @@ import GrowingTextView
 
 protocol DetailUI: UI {
     var textViewBottomConstraint: NSLayoutConstraint { get set }
+    var detailUserPhotoGesture: UITapGestureRecognizer { get }
+    var detailUserPhotoGestureView: UIView { get }
     var detail: UITableView { get }
     var commentTable: UITableView { get }
     var editBtn: UIBarButtonItem { get }
@@ -28,6 +30,17 @@ final class DetailUIImpl: DetailUI {
     var textViewBottomConstraint: NSLayoutConstraint = {
         let constraint = NSLayoutConstraint()
         return constraint
+    }()
+    
+    private(set) var detailUserPhotoGesture: UITapGestureRecognizer = {
+        let gesture = UITapGestureRecognizer()
+        return gesture
+    }()
+    
+    private(set) var detailUserPhotoGestureView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .clear
+        return view
     }()
     
     private(set) var editBtn: UIBarButtonItem = {
@@ -103,7 +116,15 @@ extension DetailUIImpl {
         vc.navigationItem.rightBarButtonItem = editBtn
         vc.view.backgroundColor = .appMainColor
         [commentField, submitBtn].forEach { inputToolBar.addSubview($0) }
-        [detail, commentTable, inputToolBar, commentFieldTextCount].forEach { vc.view.addSubview($0) }
+        [detailUserPhotoGestureView, detail, commentTable, inputToolBar, commentFieldTextCount].forEach { vc.view.addSubview($0) }
+        detailUserPhotoGestureView.addGestureRecognizer(detailUserPhotoGesture)
+        
+        detailUserPhotoGestureView.anchor()
+            .top(to: vc.view.safeAreaLayoutGuide.topAnchor, constant: 5)
+            .left(to: vc.view.leftAnchor, constant: 20)
+            .width(constant: 50)
+            .height(constant: 50)
+            .activate()
         
         detail.anchor()
             .top(to: vc.view.safeAreaLayoutGuide.topAnchor)

@@ -78,11 +78,9 @@ extension PublicGoalViewController: PublicGoalPresenterView {
     }
     
     func didFetchGoalData(timeline: [Timeline]) {
-        AppUserDefaults.clearStringArray()
         dataSource.listItems = []
         dataSource.listItems += timeline
         presenter.setAuthorTokens(timeline.compactMap { $0.authorToken })
-        print(timeline.compactMap { $0.authorToken })
         ui.timeline.reloadData()
         ui.refControl.endRefreshing()
     }

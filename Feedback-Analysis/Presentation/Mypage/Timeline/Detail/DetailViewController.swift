@@ -42,6 +42,13 @@ class DetailViewController: UIViewController {
     
     var disposeBag: DisposeBag! {
         didSet {
+            ui.detailUserPhotoGesture.rx.event.asDriver()
+                .drive(onNext: { [unowned self] _ in
+                    self.presenter.getOtherPersonAuthorToken(completion: { [unowned self] token in
+                        self.routing.showOtherPersonPage(with: token)
+                    })
+                }).disposed(by: disposeBag)
+            
             ui.editBtn.rx.tap.asDriver()
                 .drive(onNext: { [unowned self] _ in
                     self.routing.moveGoalPostEditPage(with: self.detailDataSource.listItems[0])
@@ -85,6 +92,13 @@ class DetailViewController: UIViewController {
         self.presenter = presenter
         self.routing = routing
         self.disposeBag = disposeBag
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        presenter.getDocumentId(completion: { [unowned self] documentId in
+            self.presenter.get(from: .commentRef(goalDocument: documentId))
+        })
     }
     
     override func viewDidLoad() {
@@ -185,6 +199,7 @@ extension DetailViewController: DetailPresenterView {
 extension DetailViewController {
     
     func recieve(data timeline: Timeline, height: CGFloat) {
+        presenter.set(otherPersonAuthorToken: timeline.authorToken)
         presenter.set(document: timeline.documentId) {
             self.isEnableEdit(timeline.achievedFlag)
             self.ui.determineHeight(height: height)
@@ -216,6 +231,7 @@ extension DetailViewController {
     }
     
     func updateLikeCount(index: Int, count: Int) {
+        print(AppUserDefaults.getStringArray())
         commentDataSource.listItems[index].likeCount += count
         ui.commentTable.reloadData()
     }
@@ -244,6 +260,7 @@ extension DetailViewController: CellTapDelegate {
 extension DetailViewController: UserPhotoTapDelegate {
     
     func tappedUserPhoto(index: Int) {
+        print(AppUserDefaults.getStringArray())
         presenter.getAuthorToken(index) { [unowned self] token in
             self.routing.showOtherPersonPage(with: token)
         }

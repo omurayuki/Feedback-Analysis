@@ -12,7 +12,9 @@ protocol ReplyPresenter {
     func post(to documentRef: FirebaseDocumentRef, reply: ReplyPost)
     func get(from queryRef: FirebaseQueryRef)
     func set(comment id: String, completion: @escaping () -> Void)
+    func set(otherPersonAuthorToken token: String)
     func getDocumentIds(completion: @escaping (_ documentId: String, _ commentId: String) -> Void)
+    func getOtherPersonAuthorToken(completion: @escaping (String) -> Void)
     func setAuthorTokens(_ values: [String])
     func getAuthorToken(_ index: Int, completion: @escaping (String) -> Void)
 }

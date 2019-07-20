@@ -102,12 +102,36 @@ class DetailPresenterImpl: NSObject, DetailPresenter {
             }.disposed(by: view.disposeBag)
     }
     
+    func getOtherPersonAuthorToken(completion: @escaping (String) -> Void) {
+        useCase.getOtherPersonAuthorFromTimelineToken()
+            .subscribe { [unowned self] result in
+                switch result {
+                case .success(let response):
+                    completion(response)
+                case .error(let error):
+                    self.view.showError(message: error.localizedDescription)
+                }
+            }.disposed(by: view.disposeBag)
+    }
+    
     func set(document id: String, completion: @escaping () -> Void) {
         useCase.set(document: id)
             .subscribe { result in
                 switch result {
                 case .success(_):
                     completion()
+                case .error(_):
+                    break
+                }
+            }.disposed(by: view.disposeBag)
+    }
+    
+    func set(otherPersonAuthorToken token: String) {
+        useCase.set(otherPersonAuthorTokenFromTimeline: token)
+            .subscribe { result in
+                switch result {
+                case .success(_):
+                    return
                 case .error(_):
                     break
                 }
