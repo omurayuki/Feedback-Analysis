@@ -195,6 +195,7 @@ extension DetailUIImpl {
     }
     
     func clearCommentField() {
+        viewController?.view.endEditing(true)
         UIView.Animator(duration: 2.0)
             .animations {
                 self.commentField.text = ""

@@ -7,6 +7,7 @@ protocol MainTabbarProtocol where Self: MainTabController {
 }
 
 extension MainTabController: MainTabbarProtocol {
+    
     func setup() {
         tabBar.barStyle = .default
         tabBar.clipsToBounds = true
@@ -23,6 +24,32 @@ extension MainTabController: MainTabbarProtocol {
         
         setViewControllers(viewControllers, animated: false)
         selectedIndex = 0
+    }
+    
+    private func initTimelineVC() -> TimelineViewController {
+        let controllers = [cretePublicGoalController(),
+                           cretePublicCompleteController(),
+                           UIViewController()]
+        controllers.enumerated().forEach { index, controller in controller.view.tag = index }
+        let repository = TimelineRepositoryImpl.shared
+        let useCase = TimelineUseCaseImpl(repository: repository)
+        let presenter = TimelinePresenterImpl(useCase: useCase)
+        let vc = TimelineViewController()
+        
+        let ui = TimelineUIImpl()
+        let routing = TimelineRoutingImpl()
+        ui.viewController = vc
+        routing.viewController = vc
+        ui.timelineSegmented.delegate = presenter
+        ui.timelinePages.dataSource = vc
+        ui.timelinePages.delegate = presenter
+        vc.inject(ui: ui,
+                  presenter: presenter,
+                  routing: routing,
+                  viewControllers: controllers,
+                  disposeBag: DisposeBag())
+        
+        return vc
     }
     
     private func initMypageVC(with token: String) -> MypageViewController {
@@ -43,32 +70,6 @@ extension MainTabController: MainTabbarProtocol {
         ui.timelinePages.dataSource = vc
         ui.timelinePages.delegate = presenter
         routing.viewController = vc
-        vc.inject(ui: ui,
-                  presenter: presenter,
-                  routing: routing,
-                  viewControllers: controllers,
-                  disposeBag: DisposeBag())
-        
-        return vc
-    }
-    
-    private func initTimelineVC() -> TimelineViewController {
-        let controllers = [cretePublicGoalController(),
-                           cretePublicCompleteController(),
-                           UIViewController()]
-        controllers.enumerated().forEach { index, controller in controller.view.tag = index }
-        let repository = TimelineRepositoryImpl.shared
-        let useCase = TimelineUseCaseImpl(repository: repository)
-        let presenter = TimelinePresenterImpl(useCase: useCase)
-        let vc = TimelineViewController()
-        
-        let ui = TimelineUIImpl()
-        let routing = TimelineRoutingImpl()
-        ui.viewController = vc
-        routing.viewController = vc
-        ui.timelineSegmented.delegate = presenter
-        ui.timelinePages.dataSource = vc
-        ui.timelinePages.delegate = presenter
         vc.inject(ui: ui,
                   presenter: presenter,
                   routing: routing,

@@ -78,7 +78,6 @@ class DetailViewController: UIViewController {
             
             presenter.isLoading
                 .subscribe(onNext: { [unowned self] isLoading in
-                    self.view.endEditing(true)
                     self.setIndicator(show: isLoading)
                 }).disposed(by: disposeBag)
         }
@@ -231,7 +230,6 @@ extension DetailViewController {
     }
     
     func updateLikeCount(index: Int, count: Int) {
-        print(AppUserDefaults.getStringArray())
         commentDataSource.listItems[index].likeCount += count
         ui.commentTable.reloadData()
     }
@@ -260,7 +258,6 @@ extension DetailViewController: CellTapDelegate {
 extension DetailViewController: UserPhotoTapDelegate {
     
     func tappedUserPhoto(index: Int) {
-        print(AppUserDefaults.getStringArray())
         presenter.getAuthorToken(index) { [unowned self] token in
             self.routing.showOtherPersonPage(with: token)
         }

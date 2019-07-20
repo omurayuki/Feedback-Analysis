@@ -7,6 +7,7 @@ protocol CustomSegmentedControlDelegate: class {
 class CustomSegmentedControl: UIView {
     private var buttonTitles: [String]!
     private var buttons: [UIButton]!
+    private var firstIndex: Int!
     private var selectorView: UIView!
     
     var textColor:UIColor = .appSubColor
@@ -17,9 +18,10 @@ class CustomSegmentedControl: UIView {
     
     public var selectedIndex : Int = 0
     
-    convenience init(frame: CGRect, buttonTitle: [String]) {
+    convenience init(frame: CGRect, buttonTitle: [String], firstIndex: Int = 0) {
         self.init(frame: frame)
         self.buttonTitles = buttonTitle
+        self.firstIndex = firstIndex
     }
     
     override func draw(_ rect: CGRect) {
@@ -66,6 +68,7 @@ extension CustomSegmentedControl {
         createButton()
         configSelectorView()
         configStackView()
+        setIndex(index: firstIndex)
     }
     
     private func configStackView() {

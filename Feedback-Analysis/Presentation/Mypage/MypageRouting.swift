@@ -6,6 +6,7 @@ protocol MypageRouting: Routing {
     func moveEditPage()
     func moveSettingsPage()
     func moveGoalPostPage()
+    func showFollowListPage()
 }
 
 final class MypageRoutingImpl: MypageRouting {
@@ -74,5 +75,33 @@ final class MypageRoutingImpl: MypageRouting {
                   disposeBag: DisposeBag())
         
         viewController?.present(vc, animated: true)
+    }
+    
+    func showFollowListPage() {
+        let vc1 = UIViewController()
+        let vc2 = UIViewController()
+        vc1.view.backgroundColor = .red
+        vc2.view.backgroundColor = .blue
+        let controllers = [vc1, vc2]
+        controllers.enumerated().forEach { index, controller in controller.view.tag = index }
+        let repository = FollowRepositoryImpl.shared
+        let useCase = FollowUseCaseImpl(repository: repository)
+        let presenter = FollowListManagingPresenterImpl(useCase: useCase)
+        let vc = FollowListManagingViewController()
+        
+        let ui = FollowListManagingUIImpl()
+        let routing = FollowListManagingRoutingImpl()
+        ui.viewController = vc
+        routing.viewController = vc
+        ui.followSegment.delegate = presenter
+        ui.followPages.dataSource = vc
+        ui.followPages.delegate = presenter
+        vc.inject(ui: ui,
+                  presenter: presenter,
+                  routing: routing,
+                  viewControllers: controllers,
+                  disposeBag: DisposeBag())
+        
+        viewController?.navigationController?.pushViewController(vc, animated: true)
     }
 }

@@ -33,6 +33,7 @@
 		C92E7FE322B90D250031AE4F /* GoalPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E7FE222B90D250031AE4F /* GoalPostViewController.swift */; };
 		C92E7FE522B90D350031AE4F /* GoalPostUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E7FE422B90D350031AE4F /* GoalPostUI.swift */; };
 		C92E7FE722B90D430031AE4F /* GoalPostRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E7FE622B90D430031AE4F /* GoalPostRouting.swift */; };
+		C92FAA7822E35AA700459A08 /* FollowListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92FAA7722E35AA700459A08 /* FollowListCell.swift */; };
 		C93271D822CF6B4500AA9BA6 /* DetailDataStoreFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93271D722CF6B4500AA9BA6 /* DetailDataStoreFactory.swift */; };
 		C93271DA22CF6B5D00AA9BA6 /* GoalDataStoreFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93271D922CF6B5D00AA9BA6 /* GoalDataStoreFactory.swift */; };
 		C93271DC22CF6B7800AA9BA6 /* UserDataStoreFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93271DB22CF6B7800AA9BA6 /* UserDataStoreFactory.swift */; };
@@ -83,6 +84,7 @@
 		C958D9E722B62B9900565EDE /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C958D9E622B62B9900565EDE /* UIImage+Extension.swift */; };
 		C95ADED022AB141D00D851A0 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95ADECF22AB141D00D851A0 /* R.generated.swift */; };
 		C95E08AB22B11750000C41C7 /* MainTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95E08AA22B11750000C41C7 /* MainTabController.swift */; };
+		C968989F22E34D0900881054 /* FollowListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C968989E22E34D0800881054 /* FollowListViewController.swift */; };
 		C972692822BB2DD400CDFD59 /* ExpectedResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C972692722BB2DD400CDFD59 /* ExpectedResultView.swift */; };
 		C972692A22BB3BA300CDFD59 /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = C972692922BB3BA300CDFD59 /* Genre.swift */; };
 		C972692C22BB4A1B00CDFD59 /* GoalEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C972692B22BB4A1A00CDFD59 /* GoalEntity.swift */; };
@@ -118,6 +120,8 @@
 		C988631B22C5E92000CABD62 /* Timeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = C988631A22C5E92000CABD62 /* Timeline.swift */; };
 		C98AE9AB22DFA4840021DD73 /* AuthorTokensTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98AE9AA22DFA4840021DD73 /* AuthorTokensTranslator.swift */; };
 		C98C7A4622D8A73100EF9B8F /* KeyboardNotifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98C7A4522D8A73100EF9B8F /* KeyboardNotifier.swift */; };
+		C98E1A5A22E34DAD00CC60BA /* FollowListUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98E1A5922E34DAD00CC60BA /* FollowListUI.swift */; };
+		C98E1A5C22E34DB900CC60BA /* FollowListRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98E1A5B22E34DB900CC60BA /* FollowListRouting.swift */; };
 		C98E1BB622B7370100D132D5 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98E1BB522B7370100D132D5 /* UIImageView+Extension.swift */; };
 		C98E1BB822B7456700D132D5 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98E1BB722B7456700D132D5 /* ImagePicker.swift */; };
 		C99116AA22B8A30C007C67C7 /* PasswordEditingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99116A922B8A30C007C67C7 /* PasswordEditingViewController.swift */; };
@@ -208,6 +212,9 @@
 		C9D9013D22AB5E870040390E /* TopUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D9013C22AB5E870040390E /* TopUI.swift */; };
 		C9D9014122AB77B40040390E /* VerticalStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D9014022AB77B40040390E /* VerticalStackView.swift */; };
 		C9D9014922AB85890040390E /* TopRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D9014822AB85890040390E /* TopRouting.swift */; };
+		C9E6EAE722E31AB2008D0809 /* FollowListManagingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E6EAE622E31AB2008D0809 /* FollowListManagingViewController.swift */; };
+		C9E6EAE922E31AB8008D0809 /* FollowListManagingUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E6EAE822E31AB8008D0809 /* FollowListManagingUI.swift */; };
+		C9E6EAEB22E31AC0008D0809 /* FollowListManagingRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E6EAEA22E31AC0008D0809 /* FollowListManagingRouting.swift */; };
 		C9EA654422BBDAAA002BE1C8 /* GoalPostPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EA654322BBDAAA002BE1C8 /* GoalPostPresenter.swift */; };
 		C9EA654622BBDAB4002BE1C8 /* GoalPostPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EA654522BBDAB4002BE1C8 /* GoalPostPresenterImpl.swift */; };
 		C9EA654822BBDD20002BE1C8 /* GoalPostUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EA654722BBDD20002BE1C8 /* GoalPostUseCase.swift */; };
@@ -228,6 +235,13 @@
 		C9F2497722B7B345007E82A0 /* EmailEditingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F2497622B7B345007E82A0 /* EmailEditingPresenter.swift */; };
 		C9F2497922B7B34E007E82A0 /* EmailEditingPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F2497822B7B34E007E82A0 /* EmailEditingPresenterImpl.swift */; };
 		C9F2497B22B88E93007E82A0 /* PaddingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F2497A22B88E93007E82A0 /* PaddingTextField.swift */; };
+		C9F37E9322E36039003D503A /* FollowListManagingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F37E9222E36039003D503A /* FollowListManagingPresenter.swift */; };
+		C9F37E9522E36041003D503A /* FollowListManagingPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F37E9422E36041003D503A /* FollowListManagingPresenterImpl.swift */; };
+		C9F37E9722E36712003D503A /* FollowUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F37E9622E36712003D503A /* FollowUseCase.swift */; };
+		C9F37E9922E36740003D503A /* FollowRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F37E9822E36740003D503A /* FollowRepository.swift */; };
+		C9F37E9C22E36799003D503A /* FollowRemoteDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F37E9B22E36799003D503A /* FollowRemoteDataStore.swift */; };
+		C9F37E9E22E367A3003D503A /* FollowLocalDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F37E9D22E367A3003D503A /* FollowLocalDataStore.swift */; };
+		C9F37EA022E367B1003D503A /* FollowDataStoreFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F37E9F22E367B1003D503A /* FollowDataStoreFactory.swift */; };
 		C9FE4BC722DDC1A200DBF543 /* PublicCompletePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FE4BC622DDC1A200DBF543 /* PublicCompletePresenter.swift */; };
 		C9FE4BCB22DDC1BC00DBF543 /* PublicCompletePresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FE4BCA22DDC1BC00DBF543 /* PublicCompletePresenterImpl.swift */; };
 /* End PBXBuildFile section */
@@ -262,6 +276,7 @@
 		C92E7FE222B90D250031AE4F /* GoalPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalPostViewController.swift; sourceTree = "<group>"; };
 		C92E7FE422B90D350031AE4F /* GoalPostUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalPostUI.swift; sourceTree = "<group>"; };
 		C92E7FE622B90D430031AE4F /* GoalPostRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalPostRouting.swift; sourceTree = "<group>"; };
+		C92FAA7722E35AA700459A08 /* FollowListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowListCell.swift; sourceTree = "<group>"; };
 		C93271D722CF6B4500AA9BA6 /* DetailDataStoreFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailDataStoreFactory.swift; sourceTree = "<group>"; };
 		C93271D922CF6B5D00AA9BA6 /* GoalDataStoreFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalDataStoreFactory.swift; sourceTree = "<group>"; };
 		C93271DB22CF6B7800AA9BA6 /* UserDataStoreFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataStoreFactory.swift; sourceTree = "<group>"; };
@@ -312,6 +327,7 @@
 		C958D9E622B62B9900565EDE /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		C95ADECF22AB141D00D851A0 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
 		C95E08AA22B11750000C41C7 /* MainTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabController.swift; sourceTree = "<group>"; };
+		C968989E22E34D0800881054 /* FollowListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowListViewController.swift; sourceTree = "<group>"; };
 		C972692722BB2DD400CDFD59 /* ExpectedResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpectedResultView.swift; sourceTree = "<group>"; };
 		C972692922BB3BA300CDFD59 /* Genre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
 		C972692B22BB4A1A00CDFD59 /* GoalEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalEntity.swift; sourceTree = "<group>"; };
@@ -347,6 +363,8 @@
 		C988631A22C5E92000CABD62 /* Timeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timeline.swift; sourceTree = "<group>"; };
 		C98AE9AA22DFA4840021DD73 /* AuthorTokensTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorTokensTranslator.swift; sourceTree = "<group>"; };
 		C98C7A4522D8A73100EF9B8F /* KeyboardNotifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardNotifier.swift; sourceTree = "<group>"; };
+		C98E1A5922E34DAD00CC60BA /* FollowListUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowListUI.swift; sourceTree = "<group>"; };
+		C98E1A5B22E34DB900CC60BA /* FollowListRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowListRouting.swift; sourceTree = "<group>"; };
 		C98E1BB522B7370100D132D5 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 		C98E1BB722B7456700D132D5 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		C99116A922B8A30C007C67C7 /* PasswordEditingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordEditingViewController.swift; sourceTree = "<group>"; };
@@ -439,6 +457,9 @@
 		C9D9013C22AB5E870040390E /* TopUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopUI.swift; sourceTree = "<group>"; };
 		C9D9014022AB77B40040390E /* VerticalStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalStackView.swift; sourceTree = "<group>"; };
 		C9D9014822AB85890040390E /* TopRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopRouting.swift; sourceTree = "<group>"; };
+		C9E6EAE622E31AB2008D0809 /* FollowListManagingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowListManagingViewController.swift; sourceTree = "<group>"; };
+		C9E6EAE822E31AB8008D0809 /* FollowListManagingUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowListManagingUI.swift; sourceTree = "<group>"; };
+		C9E6EAEA22E31AC0008D0809 /* FollowListManagingRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowListManagingRouting.swift; sourceTree = "<group>"; };
 		C9EA654322BBDAAA002BE1C8 /* GoalPostPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalPostPresenter.swift; sourceTree = "<group>"; };
 		C9EA654522BBDAB4002BE1C8 /* GoalPostPresenterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalPostPresenterImpl.swift; sourceTree = "<group>"; };
 		C9EA654722BBDD20002BE1C8 /* GoalPostUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalPostUseCase.swift; sourceTree = "<group>"; };
@@ -459,6 +480,13 @@
 		C9F2497622B7B345007E82A0 /* EmailEditingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailEditingPresenter.swift; sourceTree = "<group>"; };
 		C9F2497822B7B34E007E82A0 /* EmailEditingPresenterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailEditingPresenterImpl.swift; sourceTree = "<group>"; };
 		C9F2497A22B88E93007E82A0 /* PaddingTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingTextField.swift; sourceTree = "<group>"; };
+		C9F37E9222E36039003D503A /* FollowListManagingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowListManagingPresenter.swift; sourceTree = "<group>"; };
+		C9F37E9422E36041003D503A /* FollowListManagingPresenterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowListManagingPresenterImpl.swift; sourceTree = "<group>"; };
+		C9F37E9622E36712003D503A /* FollowUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowUseCase.swift; sourceTree = "<group>"; };
+		C9F37E9822E36740003D503A /* FollowRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowRepository.swift; sourceTree = "<group>"; };
+		C9F37E9B22E36799003D503A /* FollowRemoteDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowRemoteDataStore.swift; sourceTree = "<group>"; };
+		C9F37E9D22E367A3003D503A /* FollowLocalDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowLocalDataStore.swift; sourceTree = "<group>"; };
+		C9F37E9F22E367B1003D503A /* FollowDataStoreFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowDataStoreFactory.swift; sourceTree = "<group>"; };
 		C9FE4BC622DDC1A200DBF543 /* PublicCompletePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicCompletePresenter.swift; sourceTree = "<group>"; };
 		C9FE4BCA22DDC1BC00DBF543 /* PublicCompletePresenterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicCompletePresenterImpl.swift; sourceTree = "<group>"; };
 		DF2047041B81E420DAE3BDD1 /* Pods-Feedback-Analysis.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Feedback-Analysis.release.xcconfig"; path = "Target Support Files/Pods-Feedback-Analysis/Pods-Feedback-Analysis.release.xcconfig"; sourceTree = "<group>"; };
@@ -530,6 +558,15 @@
 				C97901CC22B9534B00C245B2 /* NewThingsView.swift */,
 			);
 			path = NewThings;
+			sourceTree = "<group>";
+		};
+		C92FAA7922E3600000459A08 /* FollowListManaging */ = {
+			isa = PBXGroup;
+			children = (
+				C9F37E9222E36039003D503A /* FollowListManagingPresenter.swift */,
+				C9F37E9422E36041003D503A /* FollowListManagingPresenterImpl.swift */,
+			);
+			path = FollowListManaging;
 			sourceTree = "<group>";
 		};
 		C93271D422CF69D000AA9BA6 /* Goal */ = {
@@ -620,6 +657,17 @@
 			path = Detail;
 			sourceTree = "<group>";
 		};
+		C947E72A22E31A45001F176F /* FollowListManaging */ = {
+			isa = PBXGroup;
+			children = (
+				C9E6EAE622E31AB2008D0809 /* FollowListManagingViewController.swift */,
+				C9E6EAE822E31AB8008D0809 /* FollowListManagingUI.swift */,
+				C9E6EAEA22E31AC0008D0809 /* FollowListManagingRouting.swift */,
+				C968989D22E34CEE00881054 /* FollowList */,
+			);
+			path = FollowListManaging;
+			sourceTree = "<group>";
+		};
 		C94EE04522D0630600937CFA /* Reply */ = {
 			isa = PBXGroup;
 			children = (
@@ -666,6 +714,16 @@
 				C95E08AA22B11750000C41C7 /* MainTabController.swift */,
 			);
 			path = MainTab;
+			sourceTree = "<group>";
+		};
+		C968989D22E34CEE00881054 /* FollowList */ = {
+			isa = PBXGroup;
+			children = (
+				C968989E22E34D0800881054 /* FollowListViewController.swift */,
+				C98E1A5922E34DAD00CC60BA /* FollowListUI.swift */,
+				C98E1A5B22E34DB900CC60BA /* FollowListRouting.swift */,
+			);
+			path = FollowList;
 			sourceTree = "<group>";
 		};
 		C96DD4CE22BB2D68007B2EA3 /* ExpectedResult */ = {
@@ -736,6 +794,7 @@
 				C9D77F9222CA63120007835B /* DetailUseCase.swift */,
 				C9CC391522D5CD46001010F4 /* TimelineUseCase.swift */,
 				C9391A2322E01E35006E3A14 /* OtherPersonPageUseCase.swift */,
+				C9F37E9622E36712003D503A /* FollowUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -774,6 +833,7 @@
 				C91D8E3F22CA63A6000379E3 /* DetailRepository.swift */,
 				C9CC391722D5CD87001010F4 /* TimelineRepository.swift */,
 				C9391A2522E01E93006E3A14 /* OtherPersonPageRepository.swift */,
+				C9F37E9822E36740003D503A /* FollowRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -799,6 +859,7 @@
 				C93271D522CF69EC00AA9BA6 /* User */,
 				C93271D422CF69D000AA9BA6 /* Goal */,
 				C9D5413422CF69A8008BDCC3 /* Detail */,
+				C9F37E9A22E3675D003D503A /* Follow */,
 			);
 			path = DataStore;
 			sourceTree = "<group>";
@@ -948,6 +1009,7 @@
 				C9A6065822B1DF8700184E0F /* TimelineCell.swift */,
 				C9D77F8E22CA41870007835B /* CommentCell.swift */,
 				C9C43B8A22D0C60B006CBC1B /* ReplyCell.swift */,
+				C92FAA7722E35AA700459A08 /* FollowListCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1201,6 +1263,7 @@
 				C9D9012222AB532A0040390E /* Account */,
 				C95E08A922B116EF000C41C7 /* MainTab */,
 				C9CB2B4322D4F6350081C499 /* Timeline */,
+				C947E72A22E31A45001F176F /* FollowListManaging */,
 				C9391A1622E017FD006E3A14 /* OtherPersonPage */,
 				C9ED71FC22B1375300BDB9A7 /* Mypage */,
 				C99116B322B8FC90007C67C7 /* GoalPost */,
@@ -1291,6 +1354,7 @@
 				C97DDD7E22AD550F00A84219 /* Presenter.swift */,
 				C9D9012F22AB55DE0040390E /* Account */,
 				C9A610C722D5CB6500300837 /* Timeline */,
+				C92FAA7922E3600000459A08 /* FollowListManaging */,
 				C9391A1E22E01C57006E3A14 /* OtherPersonPage */,
 				C9A6066822B26D9800184E0F /* Mypage */,
 				C9F2496522B78E70007E82A0 /* Settings */,
@@ -1399,6 +1463,16 @@
 				C9F2497822B7B34E007E82A0 /* EmailEditingPresenterImpl.swift */,
 			);
 			path = Email;
+			sourceTree = "<group>";
+		};
+		C9F37E9A22E3675D003D503A /* Follow */ = {
+			isa = PBXGroup;
+			children = (
+				C9F37E9B22E36799003D503A /* FollowRemoteDataStore.swift */,
+				C9F37E9D22E367A3003D503A /* FollowLocalDataStore.swift */,
+				C9F37E9F22E367B1003D503A /* FollowDataStoreFactory.swift */,
+			);
+			path = Follow;
 			sourceTree = "<group>";
 		};
 		CAAD1932AE5B4EA8D832F051 /* Frameworks */ = {
@@ -1547,6 +1621,7 @@
 			files = (
 				C9035CB022B77734006DFAB9 /* SettingsUI.swift in Sources */,
 				C97F25C322D6033800D61FF4 /* UIPageViewController+Extension.swift in Sources */,
+				C9F37E9722E36712003D503A /* FollowUseCase.swift in Sources */,
 				C9A6066C22B26E1F00184E0F /* MypageRepository.swift in Sources */,
 				C9D9013822AB5E480040390E /* LoginInputPresenterImpl.swift in Sources */,
 				C9D9014922AB85890040390E /* TopRouting.swift in Sources */,
@@ -1556,6 +1631,7 @@
 				C972692A22BB3BA300CDFD59 /* Genre.swift in Sources */,
 				C9328A9C22C72FA00065027B /* PrivateDraftViewController.swift in Sources */,
 				C9D9013B22AB5E800040390E /* TopViewController.swift in Sources */,
+				C9F37E9922E36740003D503A /* FollowRepository.swift in Sources */,
 				C91FA65D22B5686B006D9E6D /* DateFormatter+ Extension.swift in Sources */,
 				C99116AA22B8A30C007C67C7 /* PasswordEditingViewController.swift in Sources */,
 				C99116B022B8A912007C67C7 /* PasswordEditingPresenter.swift in Sources */,
@@ -1578,6 +1654,7 @@
 				C97F25C522D6312A00D61FF4 /* Entity.swift in Sources */,
 				C97DDD7B22AD543F00A84219 /* SignupInputPresenter.swift in Sources */,
 				C9A6066722B26CCB00184E0F /* MypagePresenterImpl.swift in Sources */,
+				C968989F22E34D0900881054 /* FollowListViewController.swift in Sources */,
 				C9A6066122B2676B00184E0F /* MypagePresenter.swift in Sources */,
 				C9328AA822C7321A0065027B /* PrivateAllUI.swift in Sources */,
 				C941332222C8B2CC0082A01C /* DetailViewController.swift in Sources */,
@@ -1618,20 +1695,24 @@
 				C9CB2B4222D4CE320081C499 /* UITableViewCell.swift in Sources */,
 				C953153622D5EA7100EEB3C0 /* PublicCompleteUI.swift in Sources */,
 				C9D77F8D22C9CB650007835B /* GoalPostEditPresenterImpl.swift in Sources */,
+				C9F37E9C22E36799003D503A /* FollowRemoteDataStore.swift in Sources */,
 				C93271DA22CF6B5D00AA9BA6 /* GoalDataStoreFactory.swift in Sources */,
 				C9D77F8822C9CACE0007835B /* GoalPostEditViewController+Extension.swift in Sources */,
 				C9D9013D22AB5E870040390E /* TopUI.swift in Sources */,
 				C93271DC22CF6B7800AA9BA6 /* UserDataStoreFactory.swift in Sources */,
 				C9EA654622BBDAB4002BE1C8 /* GoalPostPresenterImpl.swift in Sources */,
+				C9E6EAE922E31AB8008D0809 /* FollowListManagingUI.swift in Sources */,
 				C94EE04922D0632500937CFA /* ReplyUI.swift in Sources */,
 				C9D9013122AB55F40040390E /* LoginInputPresenter.swift in Sources */,
 				C9EA654A22BC194D002BE1C8 /* GoalRepository.swift in Sources */,
 				C953153022D5EA5000EEB3C0 /* PublicGoalUI.swift in Sources */,
 				C99116B222B8A917007C67C7 /* PasswordEditingPresenterImpl.swift in Sources */,
 				C9328AAE22C732A90065027B /* PrivateAllPresenterImpl.swift in Sources */,
+				C9E6EAEB22E31AC0008D0809 /* FollowListManagingRouting.swift in Sources */,
 				C926CD9E22B3C417008672AA /* EditViewController.swift in Sources */,
 				C988631B22C5E92000CABD62 /* Timeline.swift in Sources */,
 				C9B55D0D22B0FE2200845381 /* RemindUI.swift in Sources */,
+				C9E6EAE722E31AB2008D0809 /* FollowListManagingViewController.swift in Sources */,
 				C9D9011B22AB513B0040390E /* UIColor+Extension.swift in Sources */,
 				C93271DE22CF6B9000AA9BA6 /* AccountDataStoreFactory.swift in Sources */,
 				C9D9012122AB52760040390E /* UIViewController+Extension.swift in Sources */,
@@ -1642,6 +1723,8 @@
 				C9328A9E22C72FBB0065027B /* PrivateDraftUI.swift in Sources */,
 				C9CC391822D5CD87001010F4 /* TimelineRepository.swift in Sources */,
 				C9D9012A22AB538E0040390E /* UI.swift in Sources */,
+				C9F37E9E22E367A3003D503A /* FollowLocalDataStore.swift in Sources */,
+				C9F37EA022E367B1003D503A /* FollowDataStoreFactory.swift in Sources */,
 				C9D77F8222C9C5B20007835B /* GoalPostEditViewController.swift in Sources */,
 				C97DDD9322AD85ED00A84219 /* Translator.swift in Sources */,
 				C94EE04722D0631E00937CFA /* ReplyViewController.swift in Sources */,
@@ -1674,6 +1757,7 @@
 				C91FA65B22B53F9C006D9E6D /* Update.swift in Sources */,
 				C972692C22BB4A1B00CDFD59 /* GoalEntity.swift in Sources */,
 				C926CDA022B3C41E008672AA /* EditUI.swift in Sources */,
+				C9F37E9322E36039003D503A /* FollowListManagingPresenter.swift in Sources */,
 				C9CC391622D5CD46001010F4 /* TimelineUseCase.swift in Sources */,
 				C9D77F8622C9C5C80007835B /* GoalPostEditRouting.swift in Sources */,
 				C97F25C122D5F8D600D61FF4 /* PublicGoalPresenterImpl.swift in Sources */,
@@ -1710,9 +1794,11 @@
 				C92E0BBB22CAFEF8007A2F0C /* CommentEntity.swift in Sources */,
 				C988631922C5E6FF00CABD62 /* TableViewDataSource.swift in Sources */,
 				C9F2497722B7B345007E82A0 /* EmailEditingPresenter.swift in Sources */,
+				C98E1A5C22E34DB900CC60BA /* FollowListRouting.swift in Sources */,
 				C97DDD8B22AD755B00A84219 /* AccountEntity.swift in Sources */,
 				C9D77F8B22C9CB5E0007835B /* GoalPostEditPresenter.swift in Sources */,
 				C953154022D5F05300EEB3C0 /* UITableView+Extension.swift in Sources */,
+				C92FAA7822E35AA700459A08 /* FollowListCell.swift in Sources */,
 				C9D9011F22AB51C40040390E /* UITextField+Extension.swift in Sources */,
 				C9391A1C22E0189C006E3A14 /* OtherPersonPageRouting.swift in Sources */,
 				C9C43B9322D1078C006CBC1B /* ReplyTranslator.swift in Sources */,
@@ -1760,7 +1846,9 @@
 				C9391A2422E01E35006E3A14 /* OtherPersonPageUseCase.swift in Sources */,
 				C97DDD8522AD74C900A84219 /* Account.swift in Sources */,
 				C9C43B8D22D0C686006CBC1B /* ReplyPost.swift in Sources */,
+				C9F37E9522E36041003D503A /* FollowListManagingPresenterImpl.swift in Sources */,
 				C97DDD8E22AD82AC00A84219 /* AccountRepository.swift in Sources */,
+				C98E1A5A22E34DAD00CC60BA /* FollowListUI.swift in Sources */,
 				C926CDA222B3C425008672AA /* EditRouting.swift in Sources */,
 				C9C844B522AFADB000083280 /* LoginUseCase.swift in Sources */,
 			);

@@ -12,9 +12,9 @@ protocol MypageUI: UI {
     var birthDay: UILabel { get }
     var birthDayField: UILabel { get }
     var followCount: UILabel { get }
-    var follow: UILabel { get }
+    var follow: UIButton { get }
     var followerCount: UILabel { get }
-    var follower: UILabel { get }
+    var follower: UIButton { get }
     var timelineSegmented: CustomSegmentedControl { get }
     var containerView: UIView { get }
     var timelinePages: UIPageViewController { get set }
@@ -109,10 +109,10 @@ final class MypageUIImpl: MypageUI {
         return label
     }()
     
-    private(set) var follow: UILabel = {
-        let label = UILabel()
-        label.apply(.body_CoolGrey, title: "フォロー中")
-        return label
+    private(set) var follow: UIButton = {
+        let button = UIButton()
+        button.apply(.body_CoolGrey, title: "フォロー中")
+        return button
     }()
     
     private(set) var followerCount: UILabel = {
@@ -121,10 +121,10 @@ final class MypageUIImpl: MypageUI {
         return label
     }()
     
-    private(set) var follower: UILabel = {
-        let label = UILabel()
-        label.apply(.body_CoolGrey, title: "フォロワー")
-        return label
+    private(set) var follower: UIButton = {
+        let button = UIButton()
+        button.apply(.body_CoolGrey, title: "フォロワー")
+        return button
     }()
     
     private(set) var timelineSegmented: CustomSegmentedControl = {

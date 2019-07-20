@@ -24,6 +24,16 @@ class MypageViewController: UIViewController {
                     self.routing.moveSettingsPage()
                 }).disposed(by: disposeBag)
             
+            ui.follow.rx.tap.asDriver()
+                .drive(onNext: { [unowned self] _ in
+                    self.routing.showFollowListPage()
+                }).disposed(by: disposeBag)
+            
+            ui.follower.rx.tap.asDriver()
+                .drive(onNext: { [unowned self] _ in
+                    self.routing.showFollowListPage()
+                }).disposed(by: disposeBag)
+            
             ui.editBtn.rx.tap.asDriver()
                 .drive(onNext: { [unowned self] _ in
                     self.routing.moveEditPage()

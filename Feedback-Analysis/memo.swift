@@ -1,11 +1,4 @@
  //// 直近やること
- // 現状起きているクリティカルな問題点洗い出し
-   // publicgoalからgetAuthorTokenするとから配列が取れる
- 
- // それを踏まえてデータベースの設計もう一度やり直し
-   // できるだけ想定できるだけのentityを洗い出して設計
-   // 読み取り優先思考
-   // 並列化を意識
  // また、クリティカルな部分のUI設計
    // interface(骨格部分)の見直し
    // notification(子 -> 複数の親), delegate(子 <-> 親), closure(親 -> 複数の子)を使って表現
@@ -18,6 +11,7 @@
  // GoalPostEditViewControllerのグローバル変数documentId
  //  cellに仕事をさせすぎている問題
  // MainTabControllerでappuserdefaultを直接読んでる
+ // PublicCompleteViewControllerとPublicGoalViewControllerでuser情報fetch中にisUserEnable = false にしている問題(userのphotoをタップさせたくないだけ)
  
   //////////ゆくゆく修正点
  // reply画面から戻ってきたときに、cellが押せないときがある
@@ -30,15 +24,15 @@
  // goalDocumentIdをdocumentIdと書いているから修正
  // decodable
  // cellの共通インターフェース作成
+ // providerリファクタ
+ // pageViewControllerのdataSourceを切り分け
  
  //////////必須
- // providerのobserveTimelineで目標データとそれに紐づくユーザーデータの整合性が合わない
- // providerリファクタ
  // push通知設定
  // follow機能
-   // フォローユーザー一覧に行ける導線(フォロータップ, 目標など一覧からのアイコンタップ、detailでのアイコンタップ)
-   // 他の人のページに行ける タップしたユーザーのuidを取得する　そして遷移
-   // フォローボタンがあってフォローができる
+   // mypageのフォローラベルをbuttonに変更
+   // follow一覧ページ作成
+   // 自分のページにはいけないように
    // フォローした場合、外した場合、自分のページのフォロー数が増えるandフォローされたらフォロワー数が増える
    // フォローすれば、データベースにフォローした人の情報を記載して、そこから目標を全て取得できる
  // comment, replyをぐるぐるfetch

@@ -3,15 +3,15 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-final class TimelineViewController: UIViewController {
+final class FollowListManagingViewController: UIViewController {
     
-    var ui: TimelineUI!
+    var ui: FollowListManagingUI!
     
-    var routing: TimelineRouting!
+    var routing: FollowListManagingRouting!
     
     var viewControllers: [UIViewController]!
     
-    var presenter: TimelinePresenter! {
+    var presenter: FollowListManagingPresenter! {
         didSet {
             presenter.view = self
         }
@@ -19,16 +19,12 @@ final class TimelineViewController: UIViewController {
     
     var disposeBag: DisposeBag! {
         didSet {
-            ui.searchBtn.rx.tap.asDriver()
-                .drive(onNext: { [unowned self] _ in
-                    self.routing.showSearchPage()
-                }).disposed(by: disposeBag)
         }
     }
     
-    func inject(ui: TimelineUI,
-                presenter: TimelinePresenter,
-                routing: TimelineRouting,
+    func inject(ui: FollowListManagingUI,
+                presenter: FollowListManagingPresenter,
+                routing: FollowListManagingRouting,
                 viewControllers: [UIViewController],
                 disposeBag: DisposeBag) {
         self.ui = ui
@@ -41,17 +37,17 @@ final class TimelineViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         ui.setup()
-        ui.timelinePages.setViewControllers([viewControllers.first!], direction: .forward, animated: true, completion: nil)
+        ui.followPages.setViewControllers([viewControllers.first!], direction: .forward, animated: true, completion: nil)
     }
 }
 
-extension TimelineViewController: TimelinePresenterView {
+extension FollowListManagingViewController: FollowListManagingPresenterView {
     
     func didSelectSegment(with index: Int) {
         if presenter.previousIndex < index {
-            ui.timelinePages.setViewControllers([viewControllers[index]], direction: .forward, animated: true, completion: nil)
+            ui.followPages.setViewControllers([viewControllers[index]], direction: .forward, animated: true, completion: nil)
         } else {
-            ui.timelinePages.setViewControllers([viewControllers[index]], direction: .reverse, animated: true, completion: nil)
+            ui.followPages.setViewControllers([viewControllers[index]], direction: .reverse, animated: true, completion: nil)
         }
         presenter.previousIndex = index
     }
@@ -65,12 +61,12 @@ extension TimelineViewController: TimelinePresenterView {
         guard completed else { return }
         presenter.currentIndex = presenter.pendingIndex
         if let index = presenter.currentIndex {
-            ui.timelineSegmented.setIndex(index: index)
+            ui.followSegment.setIndex(index: index)
         }
     }
 }
 
-extension TimelineViewController: UIPageViewControllerDataSource {
+extension FollowListManagingViewController: UIPageViewControllerDataSource {
     
     func pageViewController(_ pageViewController: UIPageViewController,
                             viewControllerBefore viewController: UIViewController) -> UIViewController? {

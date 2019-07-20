@@ -1,6 +1,6 @@
 import UIKit
 
-internal enum FollowState {
+public enum FollowState {
     case following
     case nonFollowing
 }

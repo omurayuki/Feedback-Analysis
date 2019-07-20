@@ -60,6 +60,7 @@ class PublicGoalViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         //// DetailVCから戻ってきた際にもう一度タイムライン情報をfetchしてこなければ、authorTokenを配列でuserDefaultsに保存できない
+        ui.timeline.isUserInteractionEnabled = false
         presenter.fetch(from: .publicGoalRef, loading: presenter.isFiestLoading) {
             self.presenter.isFiestLoading = false
         }
@@ -81,6 +82,7 @@ extension PublicGoalViewController: PublicGoalPresenterView {
         dataSource.listItems = []
         dataSource.listItems += timeline
         presenter.setAuthorTokens(timeline.compactMap { $0.authorToken })
+        ui.timeline.isUserInteractionEnabled = true
         ui.timeline.reloadData()
         ui.refControl.endRefreshing()
     }

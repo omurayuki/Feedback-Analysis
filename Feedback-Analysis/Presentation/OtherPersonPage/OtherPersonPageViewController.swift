@@ -23,6 +23,16 @@ class OtherPersonPageViewController: UIViewController {
                 .drive(onNext: { [unowned self] _ in
                     self.ui.followBtn.currentState == .following ? (self.ui.followBtn.currentState = .nonFollowing) : (self.ui.followBtn.currentState = .following)
                 }).disposed(by: disposeBag)
+            
+            ui.follow.rx.tap.asDriver()
+                .drive(onNext: { [unowned self] _ in
+                    self.routing.showFollowListPage()
+                }).disposed(by: disposeBag)
+            
+            ui.follower.rx.tap.asDriver()
+                .drive(onNext: { [unowned self] _ in
+                    self.routing.showFollowListPage()
+                }).disposed(by: disposeBag)
         }
     }
     
