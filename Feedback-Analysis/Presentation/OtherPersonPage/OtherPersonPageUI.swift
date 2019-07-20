@@ -4,6 +4,7 @@ protocol OtherPersonPageUI: UI {
     var headerImage: UIImageView { get }
     var userImage: UIImageView { get }
     var userName: UILabel { get }
+    var followBtn: FollowButton { get }
     var contentField: UILabel { get }
     var residence: UILabel { get }
     var residenceField: UILabel { get }
@@ -45,6 +46,11 @@ final class OtherPersonPageUIImpl: OtherPersonPageUI {
         let label = UILabel()
         label.apply(.h2_Bold)
         return label
+    }()
+    
+    private(set) var followBtn: FollowButton = {
+        let button = FollowButton()
+        return button
     }()
     
     private(set) var contentField: UILabel = {
@@ -135,7 +141,7 @@ extension OtherPersonPageUIImpl {
         let followerStack = UIStackView.setupStack(lhs: followerCount, rhs: follower, spacing: 5)
         
         vc.addChild(timelinePages)
-        [headerImage, userImage, userName,
+        [headerImage, userImage, userName, followBtn,
         contentField, residenceStack,
          birthStack, followStack, followerStack,
          timelineSegmented, containerView].forEach { vc.view.addSubview($0) }
@@ -158,6 +164,11 @@ extension OtherPersonPageUIImpl {
         userName.anchor()
             .top(to: userImage.bottomAnchor, constant: 10)
             .left(to: vc.view.leftAnchor, constant: 20)
+            .activate()
+        
+        followBtn.anchor()
+            .top(to: headerImage.bottomAnchor, constant: 10)
+            .right(to: vc.view.rightAnchor, constant: -20)
             .activate()
         
         contentField.anchor()

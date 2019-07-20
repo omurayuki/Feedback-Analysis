@@ -19,6 +19,10 @@ class OtherPersonPageViewController: UIViewController {
     
     var disposeBag: DisposeBag! {
         didSet {
+            ui.followBtn.rx.tap.asDriver()
+                .drive(onNext: { [unowned self] _ in
+                    self.ui.followBtn.currentState == .following ? (self.ui.followBtn.currentState = .nonFollowing) : (self.ui.followBtn.currentState = .following)
+                }).disposed(by: disposeBag)
         }
     }
     

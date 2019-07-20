@@ -64,6 +64,7 @@
 		C941332B22C8BD300082A01C /* DetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C941332A22C8BD300082A01C /* DetailPresenter.swift */; };
 		C941332D22C8BD390082A01C /* DetailPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C941332C22C8BD390082A01C /* DetailPresenterImpl.swift */; };
 		C94704D322D390D200DF2F16 /* memo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94704D222D390D200DF2F16 /* memo.swift */; };
+		C947E72922E30873001F176F /* FollowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C947E72822E30873001F176F /* FollowButton.swift */; };
 		C94EE04722D0631E00937CFA /* ReplyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94EE04622D0631E00937CFA /* ReplyViewController.swift */; };
 		C94EE04922D0632500937CFA /* ReplyUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94EE04822D0632500937CFA /* ReplyUI.swift */; };
 		C94EE04B22D0633100937CFA /* ReplyRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94EE04A22D0633100937CFA /* ReplyRouting.swift */; };
@@ -292,6 +293,7 @@
 		C941332A22C8BD300082A01C /* DetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPresenter.swift; sourceTree = "<group>"; };
 		C941332C22C8BD390082A01C /* DetailPresenterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPresenterImpl.swift; sourceTree = "<group>"; };
 		C94704D222D390D200DF2F16 /* memo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = memo.swift; sourceTree = "<group>"; };
+		C947E72822E30873001F176F /* FollowButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowButton.swift; sourceTree = "<group>"; };
 		C94EE04622D0631E00937CFA /* ReplyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplyViewController.swift; sourceTree = "<group>"; };
 		C94EE04822D0632500937CFA /* ReplyUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplyUI.swift; sourceTree = "<group>"; };
 		C94EE04A22D0633100937CFA /* ReplyRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplyRouting.swift; sourceTree = "<group>"; };
@@ -1333,6 +1335,7 @@
 				C9F2497A22B88E93007E82A0 /* PaddingTextField.swift */,
 				C98E1BB722B7456700D132D5 /* ImagePicker.swift */,
 				C97901D122B9DE1300C245B2 /* GenreButton.swift */,
+				C947E72822E30873001F176F /* FollowButton.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -1632,6 +1635,7 @@
 				C9D9011B22AB513B0040390E /* UIColor+Extension.swift in Sources */,
 				C93271DE22CF6B9000AA9BA6 /* AccountDataStoreFactory.swift in Sources */,
 				C9D9012122AB52760040390E /* UIViewController+Extension.swift in Sources */,
+				C947E72922E30873001F176F /* FollowButton.swift in Sources */,
 				C9A6066A22B26DDB00184E0F /* MypageUseCase.swift in Sources */,
 				C978FD2422C6071900859851 /* PrivateGoalPresenterImpl.swift in Sources */,
 				C90B6D1F22D4F6CA009871DE /* TimelineRouting.swift in Sources */,
