@@ -52,6 +52,8 @@
 		C9328AAA22C732230065027B /* PrivateAllRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9328AA922C732230065027B /* PrivateAllRouting.swift */; };
 		C9328AAC22C732A30065027B /* PrivateAllPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9328AAB22C732A30065027B /* PrivateAllPresenter.swift */; };
 		C9328AAE22C732A90065027B /* PrivateAllPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9328AAD22C732A90065027B /* PrivateAllPresenterImpl.swift */; };
+		C935C0AE22E48C5B0016682C /* FollowListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C935C0AD22E48C5B0016682C /* FollowListPresenter.swift */; };
+		C935C0B022E48C640016682C /* FollowListPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C935C0AF22E48C640016682C /* FollowListPresenterImpl.swift */; };
 		C9391A1822E01813006E3A14 /* OtherPersonPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9391A1722E01813006E3A14 /* OtherPersonPageViewController.swift */; };
 		C9391A1A22E01821006E3A14 /* OtherPersonPageUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9391A1922E01821006E3A14 /* OtherPersonPageUI.swift */; };
 		C9391A1C22E0189C006E3A14 /* OtherPersonPageRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9391A1B22E0189C006E3A14 /* OtherPersonPageRouting.swift */; };
@@ -295,6 +297,8 @@
 		C9328AA922C732230065027B /* PrivateAllRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateAllRouting.swift; sourceTree = "<group>"; };
 		C9328AAB22C732A30065027B /* PrivateAllPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateAllPresenter.swift; sourceTree = "<group>"; };
 		C9328AAD22C732A90065027B /* PrivateAllPresenterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateAllPresenterImpl.swift; sourceTree = "<group>"; };
+		C935C0AD22E48C5B0016682C /* FollowListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowListPresenter.swift; sourceTree = "<group>"; };
+		C935C0AF22E48C640016682C /* FollowListPresenterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowListPresenterImpl.swift; sourceTree = "<group>"; };
 		C9391A1722E01813006E3A14 /* OtherPersonPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherPersonPageViewController.swift; sourceTree = "<group>"; };
 		C9391A1922E01821006E3A14 /* OtherPersonPageUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherPersonPageUI.swift; sourceTree = "<group>"; };
 		C9391A1B22E0189C006E3A14 /* OtherPersonPageRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherPersonPageRouting.swift; sourceTree = "<group>"; };
@@ -565,6 +569,7 @@
 			children = (
 				C9F37E9222E36039003D503A /* FollowListManagingPresenter.swift */,
 				C9F37E9422E36041003D503A /* FollowListManagingPresenterImpl.swift */,
+				C935C0AC22E48C330016682C /* FollowList */,
 			);
 			path = FollowListManaging;
 			sourceTree = "<group>";
@@ -615,6 +620,15 @@
 				C9328AAD22C732A90065027B /* PrivateAllPresenterImpl.swift */,
 			);
 			path = All;
+			sourceTree = "<group>";
+		};
+		C935C0AC22E48C330016682C /* FollowList */ = {
+			isa = PBXGroup;
+			children = (
+				C935C0AD22E48C5B0016682C /* FollowListPresenter.swift */,
+				C935C0AF22E48C640016682C /* FollowListPresenterImpl.swift */,
+			);
+			path = FollowList;
 			sourceTree = "<group>";
 		};
 		C9391A1622E017FD006E3A14 /* OtherPersonPage */ = {
@@ -1756,6 +1770,7 @@
 				C97F25C722D63F1500D61FF4 /* UserLocalDataStore.swift in Sources */,
 				C91FA65B22B53F9C006D9E6D /* Update.swift in Sources */,
 				C972692C22BB4A1B00CDFD59 /* GoalEntity.swift in Sources */,
+				C935C0B022E48C640016682C /* FollowListPresenterImpl.swift in Sources */,
 				C926CDA022B3C41E008672AA /* EditUI.swift in Sources */,
 				C9F37E9322E36039003D503A /* FollowListManagingPresenter.swift in Sources */,
 				C9CC391622D5CD46001010F4 /* TimelineUseCase.swift in Sources */,
@@ -1835,6 +1850,7 @@
 				C95ADED022AB141D00D851A0 /* R.generated.swift in Sources */,
 				C9ED720022B137CD00BDB9A7 /* MypageUI.swift in Sources */,
 				C9035CB422B77E10006DFAB9 /* SettingsSection.swift in Sources */,
+				C935C0AE22E48C5B0016682C /* FollowListPresenter.swift in Sources */,
 				C9328A9A22C719480065027B /* PrivateCompletePresenterImpl.swift in Sources */,
 				C9391A2622E01E93006E3A14 /* OtherPersonPageRepository.swift in Sources */,
 				C9D77F8422C9C5C10007835B /* GoalPostEditUI.swift in Sources */,

@@ -1,6 +1,7 @@
 import Foundation
 
 struct User: Codable {
+    let authorToken: String?
     let headerImage: String
     let userImage: String
     let name: String
@@ -10,7 +11,8 @@ struct User: Codable {
     let follow: Int
     let follower: Int
     
-    init(entity: UserEntity) {
+    init(entity: UserEntity, authorToken: String?) {
+        self.authorToken = authorToken
         self.headerImage = entity.headerImage
         self.userImage = entity.userImage
         self.name = entity.name

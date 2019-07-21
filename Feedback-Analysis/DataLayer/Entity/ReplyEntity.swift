@@ -17,7 +17,7 @@ struct ReplyEntity: Entity {
             let updatedAt = document["updated_at"] as? Timestamp
             else {
                 self.documentId = ""
-                self.user = UserEntity(document: ["": ""])
+                self.user = UserEntity(document: ["": ""], authorToken: "")
                 self.authorToken = ""
                 self.reply = ""
                 self.createdAt = Timestamp()

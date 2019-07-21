@@ -6,7 +6,7 @@ struct FollowDataStoreFactory {
         return FollowRemoteDataStoreImpl()
     }
     
-    static func createFollowRemoteDataStore() -> FollowLocalDataStore {
+    static func createFollowLocalDataStore() -> FollowLocalDataStore {
         return FollowLocalDataStoreImpl()
     }
 }
