@@ -25,6 +25,7 @@
  // providerリファクタ
  // pageViewControllerのdataSourceを切り分け
  // firebaseのgoalsのデータを削除したときにcommentテーブルのデータも削除されない
+ // MypageRoutingImplとotherのcreate~~はmodule化？
  
  //////////必須
  // push通知設定

@@ -11,10 +11,8 @@ final class OtherPersonPageRoutingImpl: OtherPersonPageRouting {
     var viewController: UIViewController?
     
     func showFollowListPage() {
-        let vc1 = UIViewController()
-        let vc2 = UIViewController()
-        vc1.view.backgroundColor = .red
-        vc2.view.backgroundColor = .blue
+        let vc1 = createFollowListViewController()
+        let vc2 = createFollowerListViewController()
         let controllers = [vc1, vc2]
         controllers.enumerated().forEach { index, controller in controller.view.tag = index }
         let repository = FollowRepositoryImpl.shared
@@ -36,5 +34,40 @@ final class OtherPersonPageRoutingImpl: OtherPersonPageRouting {
                   disposeBag: DisposeBag())
         
         viewController?.navigationController?.pushViewController(vc, animated: true)
+    }
+}
+
+extension OtherPersonPageRoutingImpl {
+    
+    func createFollowListViewController() -> FollowListViewController {
+        let repository = FollowRepositoryImpl.shared
+        let useCase = FollowUseCaseImpl(repository: repository)
+        let presenter = FollowListPresenterImpl(useCase: useCase)
+        let vc = FollowListViewController(followQueryRef: .allRef(authorToken: ""))
+        
+        let ui = FollowListUIImpl()
+        let routing = FollowListRoutingImpl()
+        ui.viewController = vc
+        ui.followList.dataSource = vc.dataSource
+        ui.followList.delegate = presenter
+        routing.viewController = vc
+        vc.inject(ui: ui, presenter: presenter, routing: routing, disposeBag: DisposeBag())
+        return vc
+    }
+    
+    func createFollowerListViewController() -> FollowListViewController {
+        let repository = FollowRepositoryImpl.shared
+        let useCase = FollowUseCaseImpl(repository: repository)
+        let presenter = FollowListPresenterImpl(useCase: useCase)
+        let vc = FollowListViewController(followQueryRef: .allRef(authorToken: ""))
+        
+        let ui = FollowListUIImpl()
+        let routing = FollowListRoutingImpl()
+        ui.viewController = vc
+        ui.followList.dataSource = vc.dataSource
+        ui.followList.delegate = presenter
+        routing.viewController = vc
+        vc.inject(ui: ui, presenter: presenter, routing: routing, disposeBag: DisposeBag())
+        return vc
     }
 }
