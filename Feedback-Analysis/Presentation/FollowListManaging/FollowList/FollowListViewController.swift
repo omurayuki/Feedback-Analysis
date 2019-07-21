@@ -76,7 +76,6 @@ extension FollowListViewController: FollowListPresenterView {
         dataSource.listItems += users
         presenter.setAuthorTokens(users.compactMap { $0.userToken })
         ui.followList.reloadData()
-        ui.refControl.endRefreshing()
     }
     
     func didSelect(indexPath: IndexPath, tableView: UITableView) {

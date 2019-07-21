@@ -5,6 +5,7 @@ final class FollowListCell: UITableViewCell {
     private(set) var userPhoto: UIImageView = {
         let image = UIImageView.Builder()
             .cornerRadius(25)
+            .backgroundColor(.green)
             .isUserInteractionEnabled(false)
             .build()
         return image
@@ -56,14 +57,16 @@ extension FollowListCell {
             .activate()
         
         userName.anchor()
-            .top(to: topAnchor, constant: 10)
+            .centerY(to: userPhoto.centerYAnchor)
             .left(to: userPhoto.rightAnchor, constant: 25)
             .activate()
         
         contentField.anchor()
-            .top(to: userName.bottomAnchor, constant: 10)
+            .top(to: userPhoto.bottomAnchor, constant: 5)
             .left(to: leftAnchor, constant: 20)
             .right(to: rightAnchor, constant: -20)
+            .width(constant: frame.width / 1.1)
+            .bottom(to: bottomAnchor, constant: -5)
             .activate()
     }
 }

@@ -1,6 +1,8 @@
  //// 直近やること
- // ダミーデータを流してfollow一覧が表示されるかチェック
  // followデータベース構造を考える
+   // Follows(coll) userId(document 自身の) Following(coll) userId(document 他人の ここのfieldに”自身のuserId”を記載(collection groupでfollowerを横断的に探してあった時に、その自分をfollowしているuserのuidを取得してユーザー達の情報を取得してfollower一覧に表示するため))
+   // messageを作る時に、仮にfollow関係にある人間同士のメッセージをやりとりしたいなら、followしたタイミングでmessageテーブルをcloud functionで作成
+ // follow機能実装
  // fetch
 
  //////////クリティカル修正点

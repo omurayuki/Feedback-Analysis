@@ -1,7 +1,6 @@
 import UIKit
 
 protocol FollowListUI: UI {
-    var refControl: UIRefreshControl { get }
     var followList: UITableView { get set }
     func setup()
 }
@@ -9,11 +8,6 @@ protocol FollowListUI: UI {
 final class FollowListUIImpl: FollowListUI {
     
     weak var viewController: UIViewController?
-    
-    var refControl: UIRefreshControl = {
-        let refControl = UIRefreshControl()
-        return refControl
-    }()
     
     var followList: UITableView = {
         let table = UITableView.Builder()
@@ -36,7 +30,6 @@ extension FollowListUI {
         vc.clearNavBar()
         
         vc.view.addSubview(followList)
-        followList.addSubview(refControl)
         
         followList.anchor()
             .edgesToSuperview()
