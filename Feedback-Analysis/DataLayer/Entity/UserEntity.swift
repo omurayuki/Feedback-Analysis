@@ -1,7 +1,7 @@
 import Foundation
 
 struct UserEntity: Entity, Codable {
-    let authorToken: String?
+    let userToken: String
     let headerImage: String
     let userImage: String
     let name: String
@@ -11,9 +11,9 @@ struct UserEntity: Entity, Codable {
     let follow: Int
     let follower: Int
     
-    init(document: [String: Any], authorToken: String?) {
+    init(document: [String: Any]) {
         guard
-            let authorToken = authorToken,
+            let userToken = document["user_token"] as? String,
             let headerImage = document["header_image"] as? String,
             let userImage = document["user_image"] as? String,
             let name = document["name"] as? String,
@@ -23,7 +23,7 @@ struct UserEntity: Entity, Codable {
             let follow = document["follow"] as? Int,
             let follower = document["follower"] as? Int
         else {
-            self.authorToken = ""
+            self.userToken = ""
             self.headerImage = ""
             self.userImage = ""
             self.name = ""
@@ -34,7 +34,7 @@ struct UserEntity: Entity, Codable {
             self.follower = 0
             return
         }
-        self.authorToken = authorToken
+        self.userToken = userToken
         self.headerImage = headerImage
         self.userImage = userImage
         self.name = name

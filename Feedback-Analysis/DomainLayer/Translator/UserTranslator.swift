@@ -9,6 +9,6 @@ struct UsersTranslator: Translator {
 struct UserTranslator {
     
     func translate(_ entity: UserEntity) -> User {
-        return User(entity: entity, authorToken: entity.authorToken)
+        return User(entity: entity)
     }
 }

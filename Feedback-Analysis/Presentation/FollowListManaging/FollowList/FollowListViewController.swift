@@ -74,7 +74,7 @@ extension FollowListViewController: FollowListPresenterView {
     func didFetchUsersData(users: [User]) {
         dataSource.listItems = []
         dataSource.listItems += users
-        presenter.setAuthorTokens(users.compactMap { $0.authorToken })
+        presenter.setAuthorTokens(users.compactMap { $0.userToken })
         ui.followList.reloadData()
         ui.refControl.endRefreshing()
     }

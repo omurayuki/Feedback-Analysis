@@ -286,8 +286,7 @@ struct Provider {
                                 observer.on(.error(FirebaseError.unknown))
                                 return
                             }
-                            observer.on(.next(documents.compactMap { GoalEntity(user: UserEntity(document: userDocument,
-                                                                                                 authorToken: userSnapshot?.documentID),
+                            observer.on(.next(documents.compactMap { GoalEntity(user: UserEntity(document: userDocument),
                                                                                 document: $0.data(),
                                                                                 documentId: $0.documentID) }))
                         })
@@ -332,7 +331,7 @@ struct Provider {
                     }
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.7, execute: {
                         observer.on(.next(documents.enumerated().compactMap { index, data in
-                            CommentEntity(user: UserEntity(document: userDocuments[index], authorToken: ""),
+                            CommentEntity(user: UserEntity(document: userDocuments[index]),
                                           document: data.data(), documentId: data.documentID)
                         }))
                     })
@@ -399,7 +398,7 @@ struct Provider {
                     }
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.7, execute: {
                         observer.on(.next(documents.enumerated().compactMap { index, data in
-                            ReplyEntity(user: UserEntity(document: userDocuments[index], authorToken: ""),
+                            ReplyEntity(user: UserEntity(document: userDocuments[index]),
                                           document: data.data(), documentId: data.documentID)
                         }))
                     })
@@ -444,7 +443,7 @@ struct Provider {
                     }
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.7, execute: {
                         observer.on(.next(documents.enumerated().compactMap { index, data in
-                            GoalEntity(user: UserEntity(document: userDocuments[index], authorToken: ""),
+                            GoalEntity(user: UserEntity(document: userDocuments[index]),
                                         document: data.data(), documentId: data.documentID)
                         }))
                     })

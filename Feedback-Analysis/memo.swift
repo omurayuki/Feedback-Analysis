@@ -1,6 +1,4 @@
  //// 直近やること
- // userのfieldにuserTokenを記述
- // documentIdでuserTokenを取得してる(userEntityやuser)箇所を修正
  // ダミーデータを流してfollow一覧が表示されるかチェック
  // followデータベース構造を考える
  // fetch
@@ -11,6 +9,7 @@
  //  cellに仕事をさせすぎている問題
  // MainTabControllerでappuserdefaultを直接読んでる
  // PublicCompleteViewControllerとPublicGoalViewControllerでuser情報fetch中にisUserEnable = false にしている問題(userのphotoをタップさせたくないだけ)
+ // 最初のタイムラインで、なぜかstringArrayが一つだけ問題
  
   //////////ゆくゆく修正点
  // reply画面から戻ってきたときに、cellが押せないときがある
@@ -25,6 +24,7 @@
  // cellの共通インターフェース作成
  // providerリファクタ
  // pageViewControllerのdataSourceを切り分け
+ // firebaseのgoalsのデータを削除したときにcommentテーブルのデータも削除されない
  
  //////////必須
  // push通知設定

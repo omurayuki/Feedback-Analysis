@@ -12,7 +12,7 @@ struct UserRemoteDataStoreImpl: UserRemoteDataStore {
     func fetch(to documentRef: FirebaseDocumentRef) -> Single<UserEntity> {
         return Provider()
             .get(documentRef: documentRef)
-            .map { UserEntity(document: $0, authorToken: "") }
+            .map { UserEntity(document: $0) }
     }
     
     func update(to documentRef: FirebaseDocumentRef, user: Update) -> Single<()> {

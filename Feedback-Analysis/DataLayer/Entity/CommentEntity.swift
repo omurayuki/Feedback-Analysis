@@ -23,7 +23,7 @@ struct CommentEntity: Entity {
             let updatedAt = document["updated_at"] as? Timestamp
         else {
             self.documentId = ""
-            self.user = UserEntity(document: ["": ""], authorToken: "")
+            self.user = UserEntity(document: ["": ""])
             self.authorToken = ""
             self.goalDocumentId = ""
             self.comment = ""

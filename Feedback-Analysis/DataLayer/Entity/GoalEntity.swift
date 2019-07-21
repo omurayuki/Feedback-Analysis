@@ -30,7 +30,7 @@ struct GoalEntity: Entity {
             let createdAt = document["created_at"] as? Timestamp
         else {
             self.authorToken = ""
-            self.user = UserEntity(document: ["": ""], authorToken: "")
+            self.user = UserEntity(document: ["": ""])
             self.genre = ["": ""]
             self.newThings = ""
             self.goal = ["": ""]
