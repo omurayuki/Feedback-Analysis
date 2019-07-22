@@ -23,24 +23,26 @@ export const onUserPostDelete = functions.firestore.document('/Users/{userId}/Go
 });
 
 export const onUserCommentPosted = functions.firestore.document('/Goals/{postId}/Comments/{commentId}').onCreate(async (snapshot, context) => {
-  await updateCommentdCount(context)
-  await copyToRootWithUsersCommentSnapshot(snapshot, context)
+  await updateCommentdCount(context);
+  await copyToRootWithUsersCommentSnapshot(snapshot, context);
 });
 
 export const onUserCommentUpdate = functions.firestore.document('/Goals/{postId}/Comments/{commentId}').onUpdate(async (change, context) => {
-  await copyToRootWithUsersCommentSnapshot(change.after, context)
+  await copyToRootWithUsersCommentSnapshot(change.after, context);
 })
 
 export const onUserReplyPosted = functions.firestore.document('/Comments/{commentId}/Replies/{replyId}').onCreate(async (_, context) => {
-  await updateRepliedCount(context)
+  await updateRepliedCount(context);
 });
 
 export const onUserFollowCreated = functions.firestore.document('/Follows/{subjectUserId}/Following/{objectUserId}').onCreate(async (snapshot, context) => {
-  await createFollowerSnapshot(snapshot, context)
+  await createFollowerSnapshot(snapshot, context);
+  await updateFollowCount(context);
+  await updateFollowerCount(context);
 });
 
 export const onUserFollowDeleted = functions.firestore.document('/Follows/{subjectUserId}/Following/{objectUserId}').onDelete(async (snapshot, context) => {
-  await deleteFollowerSnapshot(snapshot, context)
+  await deleteFollowerSnapshot(snapshot, context);
 });
 
 async function copyToRootWithUsersPostSnapshot(snapshot: FirebaseFirestore.DocumentSnapshot, context: functions.EventContext) {
@@ -135,4 +137,32 @@ async function deleteFollowerSnapshot(snapshot: FirebaseFirestore.DocumentSnapsh
   const subjectUserId = snapshot.id;
   const followerId = context.params.subjectUserId;
   await firestore.collection('Follows').doc(subjectUserId).collection('Follower').doc(followerId).delete();
+}
+
+async function updateFollowCount(context: functions.EventContext) {
+  const subjectUserId = context.params.subjectUserId;
+  let index = 0;
+  await firestore.collection('Follows').doc(subjectUserId).collection('Following').get()
+    .then(async snapshot => {
+      snapshot.forEach(doc => {
+        index++;
+      });
+    }).catch(err => {
+      console.log(err.log);
+    });
+  await firestore.collection('Users').doc(subjectUserId).set({ follow: index }, { merge: true });
+}
+
+async function updateFollowerCount(context: functions.EventContext) {
+  const objectUserId = context.params.objectUserId;
+  let index = 0;
+  await firestore.collection('Follows').doc(objectUserId).collection('Follower').get()
+    .then(async snapshot => {
+      snapshot.forEach(doc => {
+        index++;
+      });
+    }).catch(err => {
+      console.log(err.log);
+    });
+  await firestore.collection('Users').doc(objectUserId).set({ follower: index }, { merge: true });
 }
