@@ -56,9 +56,13 @@ class MypageViewController: UIViewController {
         self.routing = routing
         self.viewControllers = viewControllers
         self.disposeBag = disposeBag
-        self.presenter.getAuthorToken { [unowned self] token in
-            self.presenter.fetch(to: .userRef(authorToken: token), completion: nil)
-        }
+        
+        fetchMypage()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        fetchMypage()
     }
     
     override func viewDidLoad() {
@@ -98,6 +102,15 @@ extension MypageViewController: MypagePresenterView {
         presenter.currentIndex = presenter.pendingIndex
         if let index = presenter.currentIndex {
             ui.timelineSegmented.setIndex(index: index)
+        }
+    }
+}
+
+extension MypageViewController {
+    
+    func fetchMypage() {
+        self.presenter.getAuthorToken { [unowned self] token in
+            self.presenter.fetch(to: .userRef(authorToken: token), completion: nil)
         }
     }
 }
