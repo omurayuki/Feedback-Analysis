@@ -3,6 +3,7 @@ import UIKit
 final class PrivateDraftUIImpl: PrivateTimelineContentUI {
     
     weak var viewController: UIViewController?
+    
     var timeline: UITableView = {
         let table = UITableView.Builder()
             .backgroundImage(#imageLiteral(resourceName: "logo"))

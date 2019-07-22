@@ -43,6 +43,8 @@ export const onUserFollowCreated = functions.firestore.document('/Follows/{subje
 
 export const onUserFollowDeleted = functions.firestore.document('/Follows/{subjectUserId}/Following/{objectUserId}').onDelete(async (snapshot, context) => {
   await deleteFollowerSnapshot(snapshot, context);
+  await updateFollowCount(context);
+  await updateFollowerCount(context);
 });
 
 async function copyToRootWithUsersPostSnapshot(snapshot: FirebaseFirestore.DocumentSnapshot, context: functions.EventContext) {

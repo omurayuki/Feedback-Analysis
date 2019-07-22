@@ -153,8 +153,10 @@ extension PublicGoalViewController: CellTapDelegate {
 extension PublicGoalViewController: UserPhotoTapDelegate {
     
     func tappedUserPhoto(index: Int) {
-        presenter.getAuthorToken(index) { [unowned self] token in
-            self.routing.showOtherPersonPage(with: token)
+        presenter.getAuthorToken { [unowned self] subjectToken in
+            self.presenter.getAuthorToken(index) { [unowned self] objectToken in
+                objectToken == subjectToken ? () : (self.routing.showOtherPersonPage(with: objectToken))
+            }
         }
     }
 }
