@@ -1,4 +1,5 @@
 import * as functions from 'firebase-functions';
+import { FieldValue } from '@google-cloud/firestore';
 import * as admin from 'firebase-admin';
 import goal = require('./goal');
 import comment = require('./comment');
@@ -32,6 +33,14 @@ export const onUserCommentUpdate = functions.firestore.document('/Goals/{postId}
 
 export const onUserReplyPosted = functions.firestore.document('/Comments/{commentId}/Replies/{replyId}').onCreate(async (_, context) => {
   await updateRepliedCount(context)
+});
+
+export const onUserFollowCreated = functions.firestore.document('/Follows/{subjectUserId}/Following/{objectUserId}').onCreate(async (snapshot, context) => {
+  await createFollowerSnapshot(snapshot, context)
+});
+
+export const onUserFollowDeleted = functions.firestore.document('/Follows/{subjectUserId}/Following/{objectUserId}').onDelete(async (snapshot, context) => {
+  await deleteFollowerSnapshot(snapshot, context)
 });
 
 async function copyToRootWithUsersPostSnapshot(snapshot: FirebaseFirestore.DocumentSnapshot, context: functions.EventContext) {
@@ -111,4 +120,19 @@ async function updateRepliedCount(context: functions.EventContext) {
     });
   await firestore.collection('Comments').doc(commentId).set({ replied_count: index }, { merge: true });
   await firestore.collection('Goals').doc(goal_document_id).collection('Comments').doc(commentId).set({ replied_count: index }, { merge: true });
+}
+
+async function createFollowerSnapshot(snapshot: FirebaseFirestore.DocumentSnapshot, context: functions.EventContext) {
+  const subjectUserId = snapshot.id;
+  const followerId = context.params.subjectUserId;
+  await firestore.collection('Follows').doc(subjectUserId).collection('Follower').doc(followerId).set({
+    following_user_token: followerId,
+    created_at: FieldValue.serverTimestamp()
+  }, { merge: true });
+}
+
+async function deleteFollowerSnapshot(snapshot: FirebaseFirestore.DocumentSnapshot, context: functions.EventContext) {
+  const subjectUserId = snapshot.id;
+  const followerId = context.params.subjectUserId;
+  await firestore.collection('Follows').doc(subjectUserId).collection('Follower').doc(followerId).delete();
 }
