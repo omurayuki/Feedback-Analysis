@@ -1,5 +1,6 @@
 import Foundation
 import RxSwift
+import FirebaseFirestore
 
 protocol UserRemoteDataStore {
     func fetch(to documentRef: FirebaseDocumentRef) -> Single<UserEntity>
@@ -27,8 +28,9 @@ struct UserRemoteDataStoreImpl: UserRemoteDataStore {
     }
     
     func follow(documentRef: FirebaseDocumentRef) -> Single<()> {
-        return Provider().setData(documentRef: documentRef,
-                                  fields: ["following_user_token": AppUserDefaults.getAuthToken()])
+        return Provider().setData(documentRef: documentRef, fields: ["following_user_token": AppUserDefaults.getAuthToken(),
+                                                                     "follower_user_token": AppUserDefaults.getObjectToken(),
+                                                                     "created_at": FieldValue.serverTimestamp()])
     }
     
     func unFollow(documentRef: FirebaseDocumentRef) -> Single<()> {

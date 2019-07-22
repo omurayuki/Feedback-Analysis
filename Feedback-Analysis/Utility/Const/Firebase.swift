@@ -107,6 +107,8 @@ enum FirebaseQueryRef {
     case allRef(authorToken: String)
     case commentRef(goalDocument: String)
     case replyRef(commentDocument: String)
+    case followerRefFromOtherPerson
+    case followerRefFromMe
     
     var destination: Query {
         switch self {
@@ -164,6 +166,14 @@ enum FirebaseQueryRef {
                 .document(commentDocumentId)
                 .collection("Replies")
                 .order(by: "updated_at", descending: true)
+        case .followerRefFromOtherPerson:
+            return Firestore.firestore()
+                .collectionGroup("Following")
+                .whereField("follower_user_token", isEqualTo: AppUserDefaults.getObjectToken())
+        case .followerRefFromMe:
+            return Firestore.firestore()
+                .collectionGroup("Following")
+                .whereField("follower_user_token", isEqualTo: AppUserDefaults.getAuthToken())
         }
     }
 }

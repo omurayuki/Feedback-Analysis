@@ -12,8 +12,9 @@ struct FollowRepositoryImpl: FollowRepository {
     static let shared = FollowRepositoryImpl()
     
     func fetch(from queryRef: FirebaseQueryRef) -> Observable<[UserEntity]> {
+        // ここで各userの[authToken]を取得して、もう一度dataStoreにリクエストしてuserEntityを返す
         let dataStore = FollowDataStoreFactory.createFollowRemoteDataStore()
-        return dataStore.fetch(from: queryRef)
+        return dataStore.dummy(from: queryRef)
     }
     
     func setAuthorTokens(_ values: [String]) -> Single<()> {

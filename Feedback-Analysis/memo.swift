@@ -27,7 +27,6 @@
  // providerリファクタ
  // pageViewControllerのdataSourceを切り分け
  // firebaseのgoalsのデータを削除したときにcommentテーブルのデータも削除されない
- // MypageRoutingImplとotherのcreate~~はmodule化？
  // firebaseRefをpresenterで普通に記述しているけど、今思ったらこのデータはpresenterが意識すべきではないと思う(というのも、エンドポイントがsqlデータベースに変わった時に、presenter層も影響を受けるから)
  
  //////////必須
