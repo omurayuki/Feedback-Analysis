@@ -46,6 +46,67 @@ class OtherPersonPagePresenterImpl: NSObject, OtherPersonPagePresenter {
             }.disposed(by: view.disposeBag)
     }
     
+    func follow(documentRef: FirebaseDocumentRef, completion: @escaping () -> Void) {
+        useCase.follow(documentRef: documentRef)
+            .subscribe { result in
+                switch result {
+                case .success(_):
+                    completion()
+                case .error(let error):
+                    self.view.showError(message: error.localizedDescription)
+                }
+            }.disposed(by: view.disposeBag)
+    }
+    
+    func unFollow(documentRef: FirebaseDocumentRef, completion: @escaping () -> Void) {
+        useCase.unFollow(documentRef: documentRef)
+            .subscribe { result in
+                switch result {
+                case .success(_):
+                    completion()
+                case .error(let error):
+                    self.view.showError(message: error.localizedDescription)
+                }
+            }.disposed(by: view.disposeBag)
+    }
+    
+    func checkFollowing(documentRef: FirebaseDocumentRef, completion: @escaping (Bool) -> Void) {
+        useCase.checkFollowing(documentRef: documentRef)
+            .subscribe { result in
+                switch result {
+                case .success(let response):
+                    completion(response)
+                case .error(let error):
+                    self.view.showError(message: error.localizedDescription)
+                }
+            }.disposed(by: view.disposeBag)
+    }
+    
+    func setObjectToken(_ token: String) {
+        useCase.setObjectToken(token)
+            .subscribe { result in
+                switch result {
+                case .success(_):
+                    return
+                case .error(let error):
+                    self.view.showError(message: error.localizedDescription)
+                }
+            }.disposed(by: view.disposeBag)
+    }
+    
+    //// subjectToken, objectTokenの両方を一気に取得するとcallback地獄になりにくいと思った
+    func getBothToken(completion: @escaping (String, String) -> Void) {
+        useCase.getBothToken()
+            .subscribe { result in
+                switch result {
+                case .success(let response):
+                    completion(response.0, response.1)
+                case .error(let error):
+                    self.view.showError(message: error.localizedDescription)
+                }
+            }.disposed(by: view.disposeBag)
+    }
+    
     func setup() {}
 }
 

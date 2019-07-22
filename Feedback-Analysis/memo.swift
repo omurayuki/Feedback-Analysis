@@ -2,8 +2,8 @@
  // followデータベース構造を考える
    // Follows(coll) userId(document 自身の) Following(coll) userId(document 他人の ここのfieldに”自身のuserId”を記載(collection groupでfollowerを横断的に探してあった時に、その自分をfollowしているuserのuidを取得してユーザー達の情報を取得してfollower一覧に表示するため))
    // messageを作る時に、仮にfollow関係にある人間同士のメッセージをやりとりしたいなら、followしたタイミングでmessageテーブルをcloud functionで作成
- // follow機能実装
- // fetch
+ // collectionGroupでfollower絞り込み
+ // followカウント
 
  //////////クリティカル修正点
  // limit タイムラインのみ　マイページはそこまでデータが大きくならないという(アプリの性質的に更新頻度が多くないと予想)前提でぐるぐるは一旦実装しない
@@ -11,11 +11,11 @@
  //  cellに仕事をさせすぎている問題
  // MainTabControllerでappuserdefaultを直接読んでる
  // PublicCompleteViewControllerとPublicGoalViewControllerでuser情報fetch中にisUserEnable = false にしている問題(userのphotoをタップさせたくないだけ)
- // 最初のタイムラインで、なぜかstringArrayが一つだけ問題
+ // タイムラインから自分のphotoを選んだ場合は、otherPersonVCに行くのではなく、mypageに行くかそもそも飛ばせない
+ // detailPresenterImplでgetGoalsAuthorTokensを使ってcommentのauthorTokenを操作しているが、getCommentAuthorTokensにするべき(replyPresenterImplも)
  
   //////////ゆくゆく修正点
  // reply画面から戻ってきたときに、cellが押せないときがある
- // タイムラインを読み込んだときに、最初のユーザーphotoをタップすると別の人のページに行く
  // いくつかのcontrollerで同じような記述をしている
  // 変数名を正しく
  // PaddingTextFieldとtextfieldをbuilderで作成(いろんなところで作ってるから)
@@ -28,6 +28,7 @@
  // pageViewControllerのdataSourceを切り分け
  // firebaseのgoalsのデータを削除したときにcommentテーブルのデータも削除されない
  // MypageRoutingImplとotherのcreate~~はmodule化？
+ // firebaseRefをpresenterで普通に記述しているけど、今思ったらこのデータはpresenterが意識すべきではないと思う(というのも、エンドポイントがsqlデータベースに変わった時に、presenter層も影響を受けるから)
  
  //////////必須
  // push通知設定

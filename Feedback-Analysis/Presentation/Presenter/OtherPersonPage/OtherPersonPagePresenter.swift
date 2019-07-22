@@ -12,6 +12,11 @@ protocol OtherPersonPagePresenter: Presenter {
     
     func fetch(to documentRef: FirebaseDocumentRef, completion: (() -> Void)?)
     func getAuthorToken(completion: @escaping (String) -> Void)
+    func follow(documentRef: FirebaseDocumentRef, completion: @escaping () -> Void)
+    func unFollow(documentRef: FirebaseDocumentRef, completion: @escaping () -> Void)
+    func checkFollowing(documentRef: FirebaseDocumentRef, completion: @escaping (Bool) -> Void)
+    func setObjectToken(_ token: String)
+    func getBothToken(completion: @escaping (String, String) -> Void)
 }
 
 protocol OtherPersonPagePresenterView: class {

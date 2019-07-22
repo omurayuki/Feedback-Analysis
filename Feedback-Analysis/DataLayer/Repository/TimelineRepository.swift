@@ -10,8 +10,12 @@ protocol TimelineRepository {
     func setSelected(index: Int) -> Single<()>
     func getSelected() -> Single<Int>
     func getAuthorToken() -> Single<String>
-    func setAuthorTokens(_ values: [String]) -> Single<()>
-    func getAuthorToken() -> Single<[String]>
+    func setGoalsAuthorTokens(_ values: [String]) -> Single<()>
+    func getGoalsAuthorTokens() -> Single<[String]>
+    func setCompleteAuthorTokens(_ values: [String]) -> Single<()>
+    func getCompleteAuthorTokens() -> Single<[String]>
+    func setFollowAuthorTokens(_ values: [String]) -> Single<()>
+    func getFollowAuthorTokens() -> Single<[String]>
 }
 
 struct TimelineRepositoryImpl: TimelineRepository {
@@ -58,13 +62,33 @@ struct TimelineRepositoryImpl: TimelineRepository {
         return dataStore.getAuthorToken()
     }
     
-    func setAuthorTokens(_ values: [String]) -> Single<()> {
+    func setGoalsAuthorTokens(_ values: [String]) -> Single<()> {
         let dataStore = GoalDataStoreFactory.createGoalLocalDataStore()
-        return dataStore.setAuthorTokens(values)
+        return dataStore.setGoalsAuthorTokens(values)
     }
     
-    func getAuthorToken() -> Single<[String]> {
+    func getGoalsAuthorTokens() -> Single<[String]> {
         let dataStore = GoalDataStoreFactory.createGoalLocalDataStore()
-        return dataStore.getAuthorToken()
+        return dataStore.getGoalsAuthorTokens()
+    }
+    
+    func setCompleteAuthorTokens(_ values: [String]) -> Single<()> {
+        let dataStore = GoalDataStoreFactory.createGoalLocalDataStore()
+        return dataStore.setCompleteAuthorTokens(values)
+    }
+    
+    func getCompleteAuthorTokens() -> Single<[String]> {
+        let dataStore = GoalDataStoreFactory.createGoalLocalDataStore()
+        return dataStore.getCompleteAuthorTokens()
+    }
+    
+    func setFollowAuthorTokens(_ values: [String]) -> Single<()> {
+        let dataStore = GoalDataStoreFactory.createGoalLocalDataStore()
+        return dataStore.setFollowAuthorTokens(values)
+    }
+    
+    func getFollowAuthorTokens() -> Single<[String]> {
+        let dataStore = GoalDataStoreFactory.createGoalLocalDataStore()
+        return dataStore.getFollowAuthorTokens()
     }
 }

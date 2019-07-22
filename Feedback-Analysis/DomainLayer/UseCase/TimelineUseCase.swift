@@ -10,8 +10,12 @@ protocol TimelineUseCase {
     func setSelected(index: Int) -> Single<()>
     func getSelected() -> Single<Int>
     func getAuthorToken() -> Single<String>
-    func setAuthorTokens(_ values: [String]) -> Single<()>
-    func getAuthorToken(_ index: Int) -> Single<String>
+    func setGoalsAuthorTokens(_ values: [String]) -> Single<()>
+    func getGoalsAuthorTokens(_ index: Int) -> Single<String>
+    func setCompleteAuthorTokens(_ values: [String]) -> Single<()>
+    func getCompleteAuthorTokens(_ index: Int) -> Single<String>
+    func setFollowAuthorTokens(_ values: [String]) -> Single<()>
+    func getFollowAuthorTokens(_ index: Int) -> Single<String>
 }
 
 struct TimelineUseCaseImpl: TimelineUseCase {
@@ -54,11 +58,27 @@ struct TimelineUseCaseImpl: TimelineUseCase {
         return repository.getAuthorToken()
     }
     
-    func setAuthorTokens(_ values: [String]) -> Single<()> {
-        return repository.setAuthorTokens(values)
+    func setGoalsAuthorTokens(_ values: [String]) -> Single<()> {
+        return repository.setGoalsAuthorTokens(values)
     }
     
-    func getAuthorToken(_ index: Int) -> Single<String> {
-        return repository.getAuthorToken().map { AuthorTokensTranslator().translate($0, index) }
+    func getGoalsAuthorTokens(_ index: Int) -> Single<String> {
+        return repository.getGoalsAuthorTokens().map { AuthorTokensTranslator().translate($0, index) }
+    }
+    
+    func setCompleteAuthorTokens(_ values: [String]) -> Single<()> {
+        return repository.setCompleteAuthorTokens(values)
+    }
+    
+    func getCompleteAuthorTokens(_ index: Int) -> Single<String> {
+        return repository.getCompleteAuthorTokens().map { AuthorTokensTranslator().translate($0, index) }
+    }
+    
+    func setFollowAuthorTokens(_ values: [String]) -> Single<()> {
+        return repository.setFollowAuthorTokens(values)
+    }
+    
+    func getFollowAuthorTokens(_ index: Int) -> Single<String> {
+        return repository.getFollowAuthorTokens().map { AuthorTokensTranslator().translate($0, index) }
     }
 }

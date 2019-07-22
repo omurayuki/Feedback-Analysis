@@ -5,6 +5,8 @@ protocol UserLocalDataStore {
     func set(user: [User]) -> Single<()>
     func getUser() -> Single<[UserEntity]>
     func getAuthorToken() -> Single<String>
+    func setObjectToken(_ token: String) -> Single<()>
+    func getBothToken() -> Single<(String, String)>
 }
 
 struct UserLocalDataStoreImpl: UserLocalDataStore {
@@ -27,6 +29,21 @@ struct UserLocalDataStoreImpl: UserLocalDataStore {
     func getAuthorToken() -> Single<String> {
         return Single.create(subscribe: { single -> Disposable in
             single(.success(AppUserDefaults.getAuthToken()))
+            return Disposables.create()
+        })
+    }
+    
+    func setObjectToken(_ token: String) -> Single<()> {
+        return Single.create(subscribe: { single -> Disposable in
+            AppUserDefaults.setObjectToken(token: token)
+            single(.success(()))
+            return Disposables.create()
+        })
+    }
+    
+    func getBothToken() -> Single<(String, String)> {
+        return Single.create(subscribe: { single -> Disposable in
+            single(.success((AppUserDefaults.getAuthToken(), AppUserDefaults.getObjectToken())))
             return Disposables.create()
         })
     }

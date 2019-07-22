@@ -5,8 +5,12 @@ protocol GoalLocalDataStore {
     func setSelected(index: Int) -> Single<()>
     func getSelected() -> Single<Int>
     func getAuthorToken() -> Single<String>
-    func setAuthorTokens(_ values: [String]) -> Single<()>
-    func getAuthorToken() -> Single<[String]>
+    func setGoalsAuthorTokens(_ values: [String]) -> Single<()>
+    func getGoalsAuthorTokens() -> Single<[String]>
+    func setCompleteAuthorTokens(_ values: [String]) -> Single<()>
+    func getCompleteAuthorTokens() -> Single<[String]>
+    func setFollowAuthorTokens(_ values: [String]) -> Single<()>
+    func getFollowAuthorTokens() -> Single<[String]>
 }
 
 struct GoalLocalDataStoreImpl: GoalLocalDataStore {
@@ -33,16 +37,44 @@ struct GoalLocalDataStoreImpl: GoalLocalDataStore {
         })
     }
     
-    func setAuthorTokens(_ values: [String]) -> Single<()> {
+    func setGoalsAuthorTokens(_ values: [String]) -> Single<()> {
         return Single.create(subscribe: { single -> Disposable in
-            single(.success(AppUserDefaults.setStringArray(authorTokens: values)))
+            single(.success(AppUserDefaults.setGoalsAuthorTokens(authorTokens: values)))
             return Disposables.create()
         })
     }
     
-    func getAuthorToken() -> Single<[String]> {
+    func getGoalsAuthorTokens() -> Single<[String]> {
         return Single.create(subscribe: { single -> Disposable in
-            single(.success(AppUserDefaults.getStringArray()))
+            single(.success(AppUserDefaults.getGoalsAuthorTokens()))
+            return Disposables.create()
+        })
+    }
+    
+    func setCompleteAuthorTokens(_ values: [String]) -> Single<()> {
+        return Single.create(subscribe: { single -> Disposable in
+            single(.success(AppUserDefaults.setCompleteAuthorTokens(authorTokens: values)))
+            return Disposables.create()
+        })
+    }
+    
+    func getCompleteAuthorTokens() -> Single<[String]> {
+        return Single.create(subscribe: { single -> Disposable in
+            single(.success(AppUserDefaults.getCompleteAuthorTokens()))
+            return Disposables.create()
+        })
+    }
+    
+    func setFollowAuthorTokens(_ values: [String]) -> Single<()> {
+        return Single.create(subscribe: { single -> Disposable in
+            single(.success(AppUserDefaults.setFollowsAuthorTokens(authorTokens: values)))
+            return Disposables.create()
+        })
+    }
+    
+    func getFollowAuthorTokens() -> Single<[String]> {
+        return Single.create(subscribe: { single -> Disposable in
+            single(.success(AppUserDefaults.getFollowAuthorTokens()))
             return Disposables.create()
         })
     }

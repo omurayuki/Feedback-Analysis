@@ -113,7 +113,7 @@ class PublicGoalPresenterImpl: NSObject, PublicGoalPresenter {
     }
     
     func setAuthorTokens(_ values: [String]) {
-        useCase.setAuthorTokens(values)
+        useCase.setGoalsAuthorTokens(values)
             .subscribe { result in
                 switch result {
                 case .success(_):
@@ -125,7 +125,7 @@ class PublicGoalPresenterImpl: NSObject, PublicGoalPresenter {
     }
     
     func getAuthorToken(_ index: Int, completion: @escaping (String) -> Void) {
-        useCase.getAuthorToken(index)
+        useCase.getGoalsAuthorTokens(index)
             .subscribe { result in
                 switch result {
                 case .success(let response):

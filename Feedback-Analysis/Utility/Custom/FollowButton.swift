@@ -2,7 +2,7 @@ import UIKit
 
 public enum FollowState {
     case following
-    case nonFollowing
+    case unFollowing
 }
 
 class FollowButton: UIButton {
@@ -10,7 +10,7 @@ class FollowButton: UIButton {
     private var follow = "   フォローする   "
     private var duringFollow = "     フォロー中     "
     
-    var currentState: FollowState = .nonFollowing {
+    var currentState: FollowState = .unFollowing {
         didSet {
             UIView.Animator(duration: 0.3, delay: 0, options: .curveEaseInOut)
                 .animations { self.setup() }
@@ -37,7 +37,7 @@ extension FollowButton {
     
     private func setup() {
         switch currentState {
-        case .nonFollowing:   layoutBtn(name: follow, mainColor: .appSubColor, subColor: .appMainColor)
+        case .unFollowing:    layoutBtn(name: follow, mainColor: .appSubColor, subColor: .appMainColor)
         case .following:      layoutBtn(name: duringFollow, mainColor: .appMainColor, subColor: .appSubColor)
         }
     }

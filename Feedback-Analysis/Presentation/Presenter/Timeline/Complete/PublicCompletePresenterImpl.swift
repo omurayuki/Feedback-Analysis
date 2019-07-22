@@ -113,7 +113,7 @@ class PublicCompletePresenterImpl: NSObject, PublicCompletePresenter {
     }
     
     func setAuthorTokens(_ values: [String]) {
-        useCase.setAuthorTokens(values)
+        useCase.setCompleteAuthorTokens(values)
             .subscribe { result in
                 switch result {
                 case .success(_):
@@ -125,7 +125,7 @@ class PublicCompletePresenterImpl: NSObject, PublicCompletePresenter {
     }
     
     func getAuthorToken(_ index: Int, completion: @escaping (String) -> Void) {
-        useCase.getAuthorToken(index)
+        useCase.getCompleteAuthorTokens(index)
             .subscribe { result in
                 switch result {
                 case .success(let response):

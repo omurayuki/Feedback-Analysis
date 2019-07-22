@@ -20,6 +20,15 @@ class AppUserDefaults {
         putStringValue(token, keyName: "AuthToken")
     }
     
+    // AuthObjectToken (他人のページに訪れた時)
+    class func getObjectToken() -> String {
+        return getStringValue(keyName: "AuthObjectToken")
+    }
+    
+    class func setObjectToken(token: String) {
+        putStringValue(token, keyName: "AuthObjectToken")
+    }
+    
     // OtherPersonAuthFromTimelineToken
     class func getOtherPersonAuthFromTimelineToken() -> String {
         return getStringValue(keyName: "OtherPersonAuthFromTimelineToken")
@@ -83,13 +92,31 @@ class AppUserDefaults {
         putStructValue(user, keyName: "user")
     }
     
-    // arrayValue(authorTokens)
-    class func getStringArray() -> [String] {
-        return getArrayValue(keyName: "authorTokens")
+    // arrayValue(Goals: authorTokens)
+    class func getGoalsAuthorTokens() -> [String] {
+        return getArrayValue(keyName: "GoalsAuthorTokens")
     }
     
-    class func setStringArray(authorTokens: [String]) {
-        setArrayValue(authorTokens, keyName: "authorTokens")
+    class func setGoalsAuthorTokens(authorTokens: [String]) {
+        setArrayValue(authorTokens, keyName: "GoalsAuthorTokens")
+    }
+    
+    // arrayValue(Complete: authorTokens)
+    class func getCompleteAuthorTokens() -> [String] {
+        return getArrayValue(keyName: "CompleteAuthorTokens")
+    }
+    
+    class func setCompleteAuthorTokens(authorTokens: [String]) {
+        setArrayValue(authorTokens, keyName: "CompleteAuthorTokens")
+    }
+    
+    // arrayValue(Follow: authorTokens)
+    class func getFollowAuthorTokens() -> [String] {
+        return getArrayValue(keyName: "FollowAuthorTokens")
+    }
+    
+    class func setFollowsAuthorTokens(authorTokens: [String]) {
+        setArrayValue(authorTokens, keyName: "FollowAuthorTokens")
     }
     
     class func clearStringArray() {

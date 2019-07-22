@@ -21,7 +21,10 @@ class OtherPersonPageViewController: UIViewController {
         didSet {
             ui.followBtn.rx.tap.asDriver()
                 .drive(onNext: { [unowned self] _ in
-                    self.ui.followBtn.currentState == .following ? (self.ui.followBtn.currentState = .nonFollowing) : (self.ui.followBtn.currentState = .following)
+                    self.presenter.getBothToken(completion: { [unowned self] subjectToken, objectToken in
+                        let ref: FirebaseDocumentRef = .followRef(subject: subjectToken, object: objectToken)
+                        self.ui.followBtn.currentState == .following ? self.unFollow(documentRef: ref) : self.follow(documentRef: ref)
+                    })
                 }).disposed(by: disposeBag)
             
             ui.follow.rx.tap.asDriver()
@@ -91,7 +94,29 @@ extension OtherPersonPageViewController: OtherPersonPagePresenterView {
 extension OtherPersonPageViewController {
     
     func recieve(with token: String) {
+        presenter.setObjectToken(token)
+        checkFollowing(objectToken: token)
         presenter.fetch(to: .userRef(authorToken: token), completion: nil)
+    }
+    
+    func follow(documentRef: FirebaseDocumentRef) {
+        presenter.follow(documentRef: documentRef) {
+            self.ui.followBtn.currentState = .following
+        }
+    }
+    
+    func unFollow(documentRef: FirebaseDocumentRef) {
+        presenter.unFollow(documentRef: documentRef) {
+            self.ui.followBtn.currentState = .unFollowing
+        }
+    }
+    
+    func checkFollowing(objectToken: String) {
+        presenter.getAuthorToken { [unowned self] subjectToken in
+            self.presenter.checkFollowing(documentRef: .followRef(subject: subjectToken, object: objectToken)) { bool in
+                bool ? (self.ui.followBtn.currentState = .following) : (self.ui.followBtn.currentState = .unFollowing)
+            }
+        }
     }
 }
 

@@ -19,6 +19,8 @@ enum FirebaseDocumentRef {
     case replyRef(commentDocument: String)
     case likeUserRef(goalDocument: String, authorToken: String)
     case likeCommentRef(commentDocument: String, authorToken: String)
+    //// subject = 主体, object = 客体
+    case followRef(subject: String, object: String)
     
     var destination: DocumentReference {
         switch self {
@@ -72,6 +74,12 @@ enum FirebaseDocumentRef {
                 .document(commentId)
                 .collection("likeUsers")
                 .document(token)
+        case .followRef(let subjectToken, let objectToken):
+            return Firestore.firestore()
+                .collection("Follows")
+                .document(subjectToken)
+                .collection("Following")
+                .document(objectToken)
         }
     }
 }
