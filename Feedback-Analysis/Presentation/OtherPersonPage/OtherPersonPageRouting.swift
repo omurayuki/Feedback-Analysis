@@ -11,7 +11,7 @@ final class OtherPersonPageRoutingImpl: OtherPersonPageRouting {
     var viewController: UIViewController?
     
     func showFollowListPage() {
-        let vc1 = createFollowListViewController()
+        let vc1 = createFollowListViewController(queryRef: .followeeRefFromOtherPerson)
         let vc2 = createFollowerListViewController(queryRef: .followerRefFromOtherPerson)
         let controllers = [vc1, vc2]
         controllers.enumerated().forEach { index, controller in controller.view.tag = index }

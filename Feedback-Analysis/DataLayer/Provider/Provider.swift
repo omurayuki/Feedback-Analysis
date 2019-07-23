@@ -23,7 +23,6 @@ struct Provider {
                     return
                 }
                 single(.success(AccountEntity(email: email, authToken: uid)))
-
             })
             return Disposables.create()
         })
@@ -215,11 +214,94 @@ struct Provider {
                     single(.error(FirebaseError.unknown))
                     return
                 }
-                
                 single(.success(snapshot))
             }
             return Disposables.create()
         })
+    }
+    
+    func getUserFollowerEntities(queryRef: FirebaseQueryRef) -> Single<[UserEntity]> {
+        return Single.create { single -> Disposable in
+            var userEntities = [UserEntity]()
+            queryRef
+                .destination
+                .getDocuments(completion: { snapshot, error in
+                    if let error = error {
+                        single(.error(FirebaseError.resultError(error)))
+                        return
+                    }
+                    guard let snapshots = snapshot?.documents else {
+                        return
+                    }
+                    snapshots
+                        .compactMap { $0.data()["following_user_token"] as? String }
+                        .forEach {
+                            FirebaseDocumentRef
+                                .userRef(authorToken: $0)
+                                .destination
+                                .getDocument(completion: { snapshot, error in
+                                    if let error = error {
+                                        single(.error(FirebaseError.resultError(error)))
+                                    }
+                                    guard let snapshot = snapshot, snapshot.exists else {
+                                        single(.error(FirebaseError.unknown))
+                                        return
+                                    }
+                                    guard let documentData = snapshot.data() else {
+                                        single(.error(FirebaseError.unknown))
+                                        return
+                                    }
+                                    userEntities.append(UserEntity(document: documentData))
+                                })
+                        }
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+                        single(.success(userEntities))
+                    })
+                })
+            return Disposables.create()
+        }
+    }
+    
+    func getUserFolloweeEntities(queryRef: FirebaseQueryRef) -> Single<[UserEntity]> {
+        return Single.create { single -> Disposable in
+            var userEntities = [UserEntity]()
+            queryRef
+                .destination
+                .getDocuments(completion: { snapshot, error in
+                    if let error = error {
+                        single(.error(FirebaseError.resultError(error)))
+                        return
+                    }
+                    guard let snapshots = snapshot?.documents else {
+                        return
+                    }
+                    snapshots
+                        .compactMap { $0.data()["follower_user_token"] as? String }
+                        .forEach {
+                            FirebaseDocumentRef
+                                .userRef(authorToken: $0)
+                                .destination
+                                .getDocument(completion: { snapshot, error in
+                                    if let error = error {
+                                        single(.error(FirebaseError.resultError(error)))
+                                    }
+                                    guard let snapshot = snapshot, snapshot.exists else {
+                                        single(.error(FirebaseError.unknown))
+                                        return
+                                    }
+                                    guard let documentData = snapshot.data() else {
+                                        single(.error(FirebaseError.unknown))
+                                        return
+                                    }
+                                    userEntities.append(UserEntity(document: documentData))
+                                })
+                    }
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+                        single(.success(userEntities))
+                    })
+                })
+            return Disposables.create()
+        }
     }
     
     func observe(documentRef: FirebaseDocumentRef) -> Observable<EntityType> {
@@ -227,15 +309,15 @@ struct Provider {
             documentRef
                 .destination
                 .addSnapshotListener({ snapshot, error in
-                if let error = error {
-                    observer.on(.error(FirebaseError.resultError(error)))
-                    return
-                }
-                guard let document = snapshot?.data() else {
-                    observer.on(.error(FirebaseError.unknown))
-                    return
-                }
-                observer.on(.next(document))
+                    if let error = error {
+                        observer.on(.error(FirebaseError.resultError(error)))
+                        return
+                    }
+                    guard let document = snapshot?.data() else {
+                        observer.on(.error(FirebaseError.unknown))
+                        return
+                    }
+                    observer.on(.next(document))
             })
             return Disposables.create()
         })
@@ -246,15 +328,15 @@ struct Provider {
             queryRef
                 .destination
                 .addSnapshotListener({ snapshot, error in
-                if let error = error {
-                    observer.on(.error(FirebaseError.resultError(error)))
-                    return
-                }
-                guard let documents = snapshot?.documents else {
-                    observer.on(.error(FirebaseError.unknown))
-                    return
-                }
-                observer.on(.next(documents.compactMap { $0.data() }))
+                    if let error = error {
+                        observer.on(.error(FirebaseError.resultError(error)))
+                        return
+                    }
+                    guard let documents = snapshot?.documents else {
+                        observer.on(.error(FirebaseError.unknown))
+                        return
+                    }
+                    observer.on(.next(documents.compactMap { $0.data() }))
             })
             return Disposables.create()
         })

@@ -54,6 +54,7 @@
 		C9328AAE22C732A90065027B /* PrivateAllPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9328AAD22C732A90065027B /* PrivateAllPresenterImpl.swift */; };
 		C935C0AE22E48C5B0016682C /* FollowListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C935C0AD22E48C5B0016682C /* FollowListPresenter.swift */; };
 		C935C0B022E48C640016682C /* FollowListPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C935C0AF22E48C640016682C /* FollowListPresenterImpl.swift */; };
+		C935C0B222E6380B0016682C /* UIDevice+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C935C0B122E6380B0016682C /* UIDevice+Extension.swift */; };
 		C9391A1822E01813006E3A14 /* OtherPersonPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9391A1722E01813006E3A14 /* OtherPersonPageViewController.swift */; };
 		C9391A1A22E01821006E3A14 /* OtherPersonPageUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9391A1922E01821006E3A14 /* OtherPersonPageUI.swift */; };
 		C9391A1C22E0189C006E3A14 /* OtherPersonPageRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9391A1B22E0189C006E3A14 /* OtherPersonPageRouting.swift */; };
@@ -299,6 +300,7 @@
 		C9328AAD22C732A90065027B /* PrivateAllPresenterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateAllPresenterImpl.swift; sourceTree = "<group>"; };
 		C935C0AD22E48C5B0016682C /* FollowListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowListPresenter.swift; sourceTree = "<group>"; };
 		C935C0AF22E48C640016682C /* FollowListPresenterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowListPresenterImpl.swift; sourceTree = "<group>"; };
+		C935C0B122E6380B0016682C /* UIDevice+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Extension.swift"; sourceTree = "<group>"; };
 		C9391A1722E01813006E3A14 /* OtherPersonPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherPersonPageViewController.swift; sourceTree = "<group>"; };
 		C9391A1922E01821006E3A14 /* OtherPersonPageUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherPersonPageUI.swift; sourceTree = "<group>"; };
 		C9391A1B22E0189C006E3A14 /* OtherPersonPageRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherPersonPageRouting.swift; sourceTree = "<group>"; };
@@ -1323,6 +1325,7 @@
 				C953153F22D5F05300EEB3C0 /* UITableView+Extension.swift */,
 				C97F25C222D6033800D61FF4 /* UIPageViewController+Extension.swift */,
 				C9EB3D4B22D78A2B0063434A /* GrowingTextView+Extension.swift */,
+				C935C0B122E6380B0016682C /* UIDevice+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1851,6 +1854,7 @@
 				C9ED720022B137CD00BDB9A7 /* MypageUI.swift in Sources */,
 				C9035CB422B77E10006DFAB9 /* SettingsSection.swift in Sources */,
 				C935C0AE22E48C5B0016682C /* FollowListPresenter.swift in Sources */,
+				C935C0B222E6380B0016682C /* UIDevice+Extension.swift in Sources */,
 				C9328A9A22C719480065027B /* PrivateCompletePresenterImpl.swift in Sources */,
 				C9391A2622E01E93006E3A14 /* OtherPersonPageRepository.swift in Sources */,
 				C9D77F8422C9C5C10007835B /* GoalPostEditUI.swift in Sources */,

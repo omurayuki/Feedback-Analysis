@@ -155,7 +155,7 @@ extension PublicGoalViewController: UserPhotoTapDelegate {
     func tappedUserPhoto(index: Int) {
         presenter.getAuthorToken { [unowned self] subjectToken in
             self.presenter.getAuthorToken(index) { [unowned self] objectToken in
-                objectToken == subjectToken ? () : (self.routing.showOtherPersonPage(with: objectToken))
+                objectToken == subjectToken ? (UIDevice.vibrate()) : (self.routing.showOtherPersonPage(with: objectToken))
             }
         }
     }

@@ -2,7 +2,8 @@ import Foundation
 import RxSwift
 
 protocol FollowUseCase {
-    func fetch(from queryRef: FirebaseQueryRef) -> Observable<[User]>
+    func fetchFollower(from queryRef: FirebaseQueryRef) -> Single<[User]>
+    func fetchFollowee(from queryRef: FirebaseQueryRef) -> Single<[User]>
     func setAuthorTokens(_ values: [String]) -> Single<()>
     func getAuthorToken(_ index: Int) -> Single<String>
 }
@@ -15,9 +16,15 @@ struct FollowUseCaseImpl: FollowUseCase {
         self.repository = repository
     }
     
-    func fetch(from queryRef: FirebaseQueryRef) -> Observable<[User]> {
+    func fetchFollower(from queryRef: FirebaseQueryRef) -> Single<[User]> {
         return repository
-            .fetch(from: queryRef)
+            .fetchFollower(from: queryRef)
+            .map { UsersTranslator().translate($0) }
+    }
+    
+    func fetchFollowee(from queryRef: FirebaseQueryRef) -> Single<[User]> {
+        return repository
+            .fetchFollowee(from: queryRef)
             .map { UsersTranslator().translate($0) }
     }
     

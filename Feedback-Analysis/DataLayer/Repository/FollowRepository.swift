@@ -2,7 +2,8 @@ import Foundation
 import RxSwift
 
 protocol FollowRepository {
-    func fetch(from queryRef: FirebaseQueryRef) -> Observable<[UserEntity]>
+    func fetchFollower(from queryRef: FirebaseQueryRef) -> Single<[UserEntity]>
+    func fetchFollowee(from queryRef: FirebaseQueryRef) -> Single<[UserEntity]>
     func setAuthorTokens(_ values: [String]) -> Single<()>
     func getAuthorToken(_ index: Int) -> Single<String>
 }
@@ -11,10 +12,14 @@ struct FollowRepositoryImpl: FollowRepository {
     
     static let shared = FollowRepositoryImpl()
     
-    func fetch(from queryRef: FirebaseQueryRef) -> Observable<[UserEntity]> {
-        // ここで各userの[authToken]を取得して、もう一度dataStoreにリクエストしてuserEntityを返す
+    func fetchFollower(from queryRef: FirebaseQueryRef) -> Single<[UserEntity]> {
         let dataStore = FollowDataStoreFactory.createFollowRemoteDataStore()
-        return dataStore.dummy(from: queryRef)
+        return dataStore.fetchFollower(from: queryRef)
+    }
+    
+    func fetchFollowee(from queryRef: FirebaseQueryRef) -> Single<[UserEntity]> {
+        let dataStore = FollowDataStoreFactory.createFollowRemoteDataStore()
+        return dataStore.fetchFollowee(from: queryRef)
     }
     
     func setAuthorTokens(_ values: [String]) -> Single<()> {

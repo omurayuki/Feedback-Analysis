@@ -78,8 +78,8 @@ final class MypageRoutingImpl: MypageRouting {
     }
     
     func showFollowListPage() {
-        let vc1 = createFollowListViewController()
-        let vc2 = createFollowerListViewController(queryRef: .allRef(authorToken: ""))
+        let vc1 = createFollowListViewController(queryRef: .followeeRefFromMypage)
+        let vc2 = createFollowerListViewController(queryRef: .followerRefFromMypage)
         let controllers = [vc1, vc2]
         controllers.enumerated().forEach { index, controller in controller.view.tag = index }
         let repository = FollowRepositoryImpl.shared

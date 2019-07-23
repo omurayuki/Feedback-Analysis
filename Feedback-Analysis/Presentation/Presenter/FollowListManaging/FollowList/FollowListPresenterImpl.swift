@@ -17,16 +17,36 @@ class FollowListPresenterImpl: NSObject, FollowListPresenter {
     }
     
     func fetch(from queryRef: FirebaseQueryRef, loading: Bool, completion: (() -> Void)?) {
-        view.updateLoading(loading)
-        useCase.fetch(from: queryRef)
-            .subscribe(onNext: { [unowned self] result in
-                self.view.updateLoading(false)
-                self.view.didFetchUsersData(users: result)
-                completion?()
-                }, onError: { error in
-                    self.view.updateLoading(false)
-                    self.view.showError(message: error.localizedDescription)
-            }).disposed(by: view.disposeBag)
+        switch queryRef.isFollow {
+        //// true = followee
+        case true:
+            view.updateLoading(loading)
+            useCase.fetchFollowee(from: queryRef)
+                .subscribe { result in
+                    switch result {
+                    case .success(let response):
+                        self.view.updateLoading(false)
+                        self.view.didFetchUsersData(users: response)
+                    case .error(let error):
+                        self.view.updateLoading(false)
+                        self.view.showError(message: error.localizedDescription)
+                    }
+                }.disposed(by: view.disposeBag)
+        //// false = follower
+        case false:
+            view.updateLoading(loading)
+            useCase.fetchFollower(from: queryRef)
+                .subscribe { result in
+                    switch result {
+                    case .success(let response):
+                        self.view.updateLoading(false)
+                        self.view.didFetchUsersData(users: response)
+                    case .error(let error):
+                        self.view.updateLoading(false)
+                        self.view.showError(message: error.localizedDescription)
+                    }
+                }.disposed(by: view.disposeBag)
+        }
     }
     
     func setAuthorTokens(_ values: [String]) {

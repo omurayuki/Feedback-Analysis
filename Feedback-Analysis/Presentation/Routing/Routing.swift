@@ -5,17 +5,17 @@ import RxSwift
 protocol Routing {
     var viewController: UIViewController? { get set }
     
-    func createFollowListViewController() -> FollowListViewController
+    func createFollowListViewController(queryRef: FirebaseQueryRef) -> FollowListViewController
     func createFollowerListViewController(queryRef: FirebaseQueryRef) -> FollowListViewController
 }
 
 extension Routing {
     
-    func createFollowListViewController() -> FollowListViewController {
+    func createFollowListViewController(queryRef: FirebaseQueryRef) -> FollowListViewController {
         let repository = FollowRepositoryImpl.shared
         let useCase = FollowUseCaseImpl(repository: repository)
         let presenter = FollowListPresenterImpl(useCase: useCase)
-        let vc = FollowListViewController(followQueryRef: .allRef(authorToken: ""))
+        let vc = FollowListViewController(followQueryRef: queryRef)
         
         let ui = FollowListUIImpl()
         let routing = FollowListRoutingImpl()

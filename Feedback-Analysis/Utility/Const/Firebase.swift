@@ -107,8 +107,10 @@ enum FirebaseQueryRef {
     case allRef(authorToken: String)
     case commentRef(goalDocument: String)
     case replyRef(commentDocument: String)
+    case followeeRefFromOtherPerson
     case followerRefFromOtherPerson
-    case followerRefFromMe
+    case followeeRefFromMypage
+    case followerRefFromMypage
     
     var destination: Query {
         switch self {
@@ -166,14 +168,40 @@ enum FirebaseQueryRef {
                 .document(commentDocumentId)
                 .collection("Replies")
                 .order(by: "updated_at", descending: true)
+        case .followeeRefFromOtherPerson:
+            return Firestore.firestore()
+                .collection("Follows")
+                .document(AppUserDefaults.getObjectToken())
+                .collection("Following")
+                .order(by: "created_at", descending: true)
         case .followerRefFromOtherPerson:
             return Firestore.firestore()
-                .collectionGroup("Following")
-                .whereField("follower_user_token", isEqualTo: AppUserDefaults.getObjectToken())
-        case .followerRefFromMe:
+                .collection("Follows")
+                .document(AppUserDefaults.getObjectToken())
+                .collection("Follower")
+                .order(by: "created_at", descending: true)
+        case .followeeRefFromMypage:
             return Firestore.firestore()
-                .collectionGroup("Following")
-                .whereField("follower_user_token", isEqualTo: AppUserDefaults.getAuthToken())
+                .collection("Follows")
+                .document(AppUserDefaults.getAuthToken())
+                .collection("Following")
+                .order(by: "created_at", descending: true)
+        case .followerRefFromMypage:
+            return Firestore.firestore()
+                .collection("Follows")
+                .document(AppUserDefaults.getAuthToken())
+                .collection("Follower")
+                .order(by: "created_at", descending: true)
+        }
+    }
+    
+    var isFollow: Bool {
+        switch self {
+        case .followeeRefFromOtherPerson: return true
+        case .followeeRefFromMypage:      return true
+        case .followerRefFromOtherPerson: return false
+        case .followerRefFromMypage:      return false
+        default:                          return false
         }
     }
 }
