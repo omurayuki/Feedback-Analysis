@@ -99,6 +99,30 @@ class FollowListPresenterImpl: NSObject, FollowListPresenter {
             }.disposed(by: view.disposeBag)
     }
     
+    func setObjectToken(_ value: String) {
+        useCase.setObjectToken(value)
+            .subscribe { result in
+                switch result {
+                case .success(_):
+                    return
+                case .error(_):
+                    return
+                }
+            }.disposed(by: view.disposeBag)
+    }
+    
+    func getObjectToken(completion: @escaping (String) -> Void) {
+        useCase.getObjectToken()
+            .subscribe { result in
+                switch result {
+                case .success(let response):
+                    completion(response)
+                case .error(_):
+                    return
+                }
+            }.disposed(by: view.disposeBag)
+    }
+    
     func setup() {}
 }
 

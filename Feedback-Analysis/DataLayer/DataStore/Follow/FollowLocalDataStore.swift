@@ -6,6 +6,8 @@ protocol FollowLocalDataStore {
     func setFollowerTokens(_ values: [String]) -> Single<()>
     func getFolloweeToken() -> Single<[String]>
     func getFollowerToken() -> Single<[String]>
+    func setObjectToken(_ value: String) -> Single<()>
+    func getObjectToken() -> Single<String>
 }
 
 struct FollowLocalDataStoreImpl: FollowLocalDataStore {
@@ -34,6 +36,21 @@ struct FollowLocalDataStoreImpl: FollowLocalDataStore {
     func getFollowerToken() -> Single<[String]> {
         return Single.create(subscribe: { single -> Disposable in
             single(.success(AppUserDefaults.getFollowerListAuthorTokens()))
+            return Disposables.create()
+        })
+    }
+    
+    func setObjectToken(_ value: String) -> Single<()> {
+        return Single.create(subscribe: { single -> Disposable in
+            AppUserDefaults.setObjectToken(token: value)
+            single(.success(()))
+            return Disposables.create()
+        })
+    }
+    
+    func getObjectToken() -> Single<String> {
+        return Single.create(subscribe: { single -> Disposable in
+            single(.success(AppUserDefaults.getObjectToken()))
             return Disposables.create()
         })
     }

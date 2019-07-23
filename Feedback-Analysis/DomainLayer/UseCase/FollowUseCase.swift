@@ -8,6 +8,8 @@ protocol FollowUseCase {
     func setFollowerTokens(_ values: [String]) -> Single<()>
     func getFolloweeToken(_ index: Int) -> Single<String>
     func getFollowerToken(_ index: Int) -> Single<String>
+    func setObjectToken(_ value: String) -> Single<()>
+    func getObjectToken() -> Single<String>
 }
 
 struct FollowUseCaseImpl: FollowUseCase {
@@ -46,5 +48,13 @@ struct FollowUseCaseImpl: FollowUseCase {
     func getFollowerToken(_ index: Int) -> Single<String> {
         return repository.getFollowerToken()
             .map { AuthorTokensTranslator().translate($0, index) }
+    }
+    
+    func setObjectToken(_ value: String) -> Single<()> {
+        return repository.setObjectToken(value)
+    }
+    
+    func getObjectToken() -> Single<String> {
+        return repository.getObjectToken()
     }
 }

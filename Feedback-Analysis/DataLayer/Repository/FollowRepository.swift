@@ -8,6 +8,8 @@ protocol FollowRepository {
     func setFollowerTokens(_ values: [String]) -> Single<()>
     func getFolloweeToken() -> Single<[String]>
     func getFollowerToken() -> Single<[String]>
+    func setObjectToken(_ value: String) -> Single<()>
+    func getObjectToken() -> Single<String>
 }
 
 struct FollowRepositoryImpl: FollowRepository {
@@ -42,5 +44,15 @@ struct FollowRepositoryImpl: FollowRepository {
     func getFollowerToken() -> Single<[String]> {
         let dataStore = FollowDataStoreFactory.createFollowLocalDataStore()
         return dataStore.getFollowerToken()
+    }
+    
+    func setObjectToken(_ value: String) -> Single<()> {
+        let dataStore = FollowDataStoreFactory.createFollowLocalDataStore()
+        return dataStore.setObjectToken(value)
+    }
+    
+    func getObjectToken() -> Single<String> {
+        let dataStore = FollowDataStoreFactory.createFollowLocalDataStore()
+        return dataStore.getObjectToken()
     }
 }

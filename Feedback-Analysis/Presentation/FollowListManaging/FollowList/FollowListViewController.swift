@@ -65,7 +65,7 @@ class FollowListViewController: UIViewController {
         super.viewWillAppear(animated)
         //// otherPageに行く際, setObjectTokenに新しいuserのtokenがsetさせて戻ってくる際にそのuserのfollowListが表示される
         //// それを回避するためにtmpObjectTokenという一時的な変数に現在のuserのTokenを保存して、otherPageから戻ってくる際にその変数をsetObjectTokenに渡して回避
-        followQueryRef.isMypage ? () : AppUserDefaults.setObjectToken(token: tmpObjectToken)
+        followQueryRef.isMypage ? () : presenter.setObjectToken(tmpObjectToken)
         //// otherPersonPageの先に別のuserのfollowListを参照すればuserdefaultsが書き換えられるので戻ってきた際にもう一度fetchしてuserdefaultsに保存
         ui.followList.isUserInteractionEnabled = false
         presenter.fetch(from: followQueryRef, loading: presenter.isFirstLoading) {
@@ -96,13 +96,23 @@ extension FollowListViewController: FollowListPresenterView {
     }
     
     func didSelect(indexPath: IndexPath, tableView: UITableView) {
+        tableView.deselectRow(at: indexPath, animated: true)
         followQueryRef.isFollow
             ? (presenter.getFolloweeToken(indexPath.row))
             : (presenter.getFollowerToken(indexPath.row))
     }
     
     func didRecieveUserToken(token: String) {
-        followQueryRef.isMypage ? () : (tmpObjectToken = AppUserDefaults.getObjectToken())
+        followQueryRef.isMypage ? () : setObjectTokenInTmpVariable()
         routing.showOtherPersonPage(with: token)
+    }
+}
+
+extension FollowListViewController {
+    
+    private func setObjectTokenInTmpVariable() {
+        presenter.getObjectToken { [unowned self] atThePresentTimeObjectToken in
+            self.tmpObjectToken = atThePresentTimeObjectToken
+        }
     }
 }

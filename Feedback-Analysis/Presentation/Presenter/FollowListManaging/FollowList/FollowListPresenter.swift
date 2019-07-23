@@ -13,6 +13,8 @@ protocol FollowListPresenter: Presenter {
     func setFollowerTokens(_ values: [String])
     func getFolloweeToken(_ index: Int)
     func getFollowerToken(_ index: Int)
+    func setObjectToken(_ value: String)
+    func getObjectToken(completion: @escaping (String) -> Void)
 }
 
 protocol FollowListPresenterView: class {
