@@ -3,6 +3,7 @@ import RxSwift
 import RxCocoa
 
 class PublicCompletePresenterImpl: NSObject, PublicCompletePresenter {
+    
     var view: PublicCompletePresenterView!
     
     var isLoading: BehaviorRelay<Bool> = BehaviorRelay<Bool>(value: false)

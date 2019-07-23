@@ -6,11 +6,13 @@ import RxCocoa
 protocol FollowListPresenter: Presenter {
     var view: FollowListPresenterView! { get set }
     var isLoading: BehaviorRelay<Bool> { get }
-    var isFiestLoading: Bool { get set }
+    var isFirstLoading: Bool { get set }
     
     func fetch(from queryRef: FirebaseQueryRef, loading: Bool, completion: (() -> Void)?)
-    func setAuthorTokens(_ values: [String])
-    func getAuthorToken(_ index: Int, completion: @escaping (String) -> Void)
+    func setFolloweeTokens(_ values: [String])
+    func setFollowerTokens(_ values: [String])
+    func getFolloweeToken(_ index: Int)
+    func getFollowerToken(_ index: Int)
 }
 
 protocol FollowListPresenterView: class {
@@ -22,6 +24,7 @@ protocol FollowListPresenterView: class {
                 disposeBag: DisposeBag)
     func didFetchUsersData(users: [User])
     func didSelect(indexPath: IndexPath, tableView: UITableView)
+    func didRecieveUserToken(token: String)
     func showError(message: String)
     func updateLoading(_ isLoading: Bool)
 }

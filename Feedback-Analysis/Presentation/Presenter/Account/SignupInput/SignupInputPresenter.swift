@@ -8,6 +8,7 @@ protocol SignupInputPresenter: Presenter {
     
     func signup(email: String, pass: String)
     func setData(documentRef: FirebaseDocumentRef, fields: [String: Any])
+    func addData(documentRef: FirebaseDocumentRef, fields: [String: Any])
     func getAuthorToken(completion: @escaping (String) -> Void)
 }
 

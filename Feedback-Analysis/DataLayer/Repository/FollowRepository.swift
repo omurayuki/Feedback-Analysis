@@ -4,8 +4,10 @@ import RxSwift
 protocol FollowRepository {
     func fetchFollower(from queryRef: FirebaseQueryRef) -> Single<[UserEntity]>
     func fetchFollowee(from queryRef: FirebaseQueryRef) -> Single<[UserEntity]>
-    func setAuthorTokens(_ values: [String]) -> Single<()>
-    func getAuthorToken(_ index: Int) -> Single<String>
+    func setFolloweeTokens(_ values: [String]) -> Single<()>
+    func setFollowerTokens(_ values: [String]) -> Single<()>
+    func getFolloweeToken() -> Single<[String]>
+    func getFollowerToken() -> Single<[String]>
 }
 
 struct FollowRepositoryImpl: FollowRepository {
@@ -22,13 +24,23 @@ struct FollowRepositoryImpl: FollowRepository {
         return dataStore.fetchFollowee(from: queryRef)
     }
     
-    func setAuthorTokens(_ values: [String]) -> Single<()> {
+    func setFolloweeTokens(_ values: [String]) -> Single<()> {
         let dataStore = FollowDataStoreFactory.createFollowLocalDataStore()
-        return dataStore.setAuthorTokens(values)
+        return dataStore.setFolloweeTokens(values)
     }
     
-    func getAuthorToken(_ index: Int) -> Single<String> {
+    func setFollowerTokens(_ values: [String]) -> Single<()> {
         let dataStore = FollowDataStoreFactory.createFollowLocalDataStore()
-        return dataStore.getAuthorToken(index)
+        return dataStore.setFollowerTokens(values)
+    }
+    
+    func getFolloweeToken() -> Single<[String]> {
+        let dataStore = FollowDataStoreFactory.createFollowLocalDataStore()
+        return dataStore.getFolloweeToken()
+    }
+    
+    func getFollowerToken() -> Single<[String]> {
+        let dataStore = FollowDataStoreFactory.createFollowLocalDataStore()
+        return dataStore.getFollowerToken()
     }
 }

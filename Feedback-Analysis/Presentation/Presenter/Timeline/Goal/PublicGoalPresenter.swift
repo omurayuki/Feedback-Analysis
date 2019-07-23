@@ -6,7 +6,7 @@ import RxCocoa
 protocol PublicGoalPresenter {
     var view: PublicGoalPresenterView! { get set }
     var isLoading: BehaviorRelay<Bool> { get }
-    var isFiestLoading: Bool { get set }
+    var isFirstLoading: Bool { get set }
     
     func fetch(from queryRef: FirebaseQueryRef, loading: Bool, completion: (() -> Void)?)
     func update(to documentRef: FirebaseDocumentRef, value: [String: Any])

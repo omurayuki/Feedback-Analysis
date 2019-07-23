@@ -119,6 +119,24 @@ class AppUserDefaults {
         setArrayValue(authorTokens, keyName: "FollowAuthorTokens")
     }
     
+    // arrayValue(followeeList: authorTokens)
+    class func getFolloweeListAuthorTokens() -> [String] {
+        return getArrayValue(keyName: "FolloweeListAuthorToken")
+    }
+    
+    class func setFolloweeListAuthorTokens(authorTokens: [String]) {
+        setArrayValue(authorTokens, keyName: "FolloweeListAuthorToken")
+    }
+    
+    // arrayValue(followerList: authorTokens)
+    class func getFollowerListAuthorTokens() -> [String] {
+        return getArrayValue(keyName: "FollowerListAuthorToken")
+    }
+    
+    class func setFollowerListAuthorTokens(authorTokens: [String]) {
+        setArrayValue(authorTokens, keyName: "FollowerListAuthorToken")
+    }
+    
     class func clearStringArray() {
         clearArrayValue(keyName: "authorTokens")
     }

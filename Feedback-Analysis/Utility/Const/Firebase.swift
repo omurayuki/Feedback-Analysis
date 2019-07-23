@@ -204,6 +204,16 @@ enum FirebaseQueryRef {
         default:                          return false
         }
     }
+    
+    var isMypage: Bool {
+        switch self {
+        case .followeeRefFromOtherPerson: return false
+        case .followerRefFromOtherPerson: return false
+        case .followeeRefFromMypage:      return true
+        case .followerRefFromMypage:      return true
+        default:                          return false
+        }
+    }
 }
 
 enum FirebaseStorageRef {

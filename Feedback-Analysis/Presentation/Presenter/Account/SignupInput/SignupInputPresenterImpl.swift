@@ -41,6 +41,19 @@ class SignupInputPresenterImpl: SignupInputPresenter {
             }.disposed(by: view.disposeBag)
     }
     
+    func addData(documentRef: FirebaseDocumentRef, fields: [String: Any]) {
+        useCase.addData(documentRef: documentRef, fields: fields)
+            .subscribe { [unowned self] result in
+                switch result {
+                case .success(_):
+                    self.view.updateLoading(false)
+                case .error(let error):
+                    self.view.updateLoading(false)
+                    self.view.showError(message: error.localizedDescription)
+                }
+            }.disposed(by: view.disposeBag)
+    }
+    
     func getAuthorToken(completion: @escaping (String) -> Void) {
         useCase.getAuthorToken()
             .subscribe { [unowned self]  result in

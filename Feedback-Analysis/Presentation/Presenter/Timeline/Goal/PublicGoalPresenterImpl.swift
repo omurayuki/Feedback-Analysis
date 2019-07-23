@@ -3,11 +3,12 @@ import RxSwift
 import RxCocoa
 
 class PublicGoalPresenterImpl: NSObject, PublicGoalPresenter {
+    
     var view: PublicGoalPresenterView!
     
     var isLoading: BehaviorRelay<Bool> = BehaviorRelay<Bool>(value: false)
     
-    var isFiestLoading: Bool = true
+    var isFirstLoading: Bool = true
     
     private var useCase: TimelineUseCase
     

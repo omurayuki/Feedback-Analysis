@@ -61,8 +61,8 @@ class PublicGoalViewController: UIViewController {
         super.viewWillAppear(animated)
         //// DetailVCから戻ってきた際にもう一度タイムライン情報をfetchしてこなければ、authorTokenを配列でuserDefaultsに保存できない
         ui.timeline.isUserInteractionEnabled = false
-        presenter.fetch(from: .publicGoalRef, loading: presenter.isFiestLoading) {
-            self.presenter.isFiestLoading = false
+        presenter.fetch(from: .publicGoalRef, loading: presenter.isFirstLoading) {
+            self.presenter.isFirstLoading = false
         }
     }
     

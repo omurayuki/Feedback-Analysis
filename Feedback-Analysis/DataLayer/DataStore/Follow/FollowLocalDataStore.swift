@@ -2,20 +2,38 @@ import Foundation
 import RxSwift
 
 protocol FollowLocalDataStore {
-    func setAuthorTokens(_ values: [String]) -> Single<()>
-    func getAuthorToken(_ index: Int) -> Single<String>
+    func setFolloweeTokens(_ values: [String]) -> Single<()>
+    func setFollowerTokens(_ values: [String]) -> Single<()>
+    func getFolloweeToken() -> Single<[String]>
+    func getFollowerToken() -> Single<[String]>
 }
 
 struct FollowLocalDataStoreImpl: FollowLocalDataStore {
     
-    func setAuthorTokens(_ values: [String]) -> Single<()> {
+    func setFolloweeTokens(_ values: [String]) -> Single<()> {
         return Single.create(subscribe: { single -> Disposable in
+            single(.success(AppUserDefaults.setFolloweeListAuthorTokens(authorTokens: values)))
             return Disposables.create()
         })
     }
     
-    func getAuthorToken(_ index: Int) -> Single<String> {
+    func setFollowerTokens(_ values: [String]) -> Single<()> {
         return Single.create(subscribe: { single -> Disposable in
+            single(.success(AppUserDefaults.setFollowerListAuthorTokens(authorTokens: values)))
+            return Disposables.create()
+        })
+    }
+    
+    func getFolloweeToken() -> Single<[String]> {
+        return Single.create(subscribe: { single -> Disposable in
+            single(.success(AppUserDefaults.getFolloweeListAuthorTokens()))
+            return Disposables.create()
+        })
+    }
+    
+    func getFollowerToken() -> Single<[String]> {
+        return Single.create(subscribe: { single -> Disposable in
+            single(.success(AppUserDefaults.getFollowerListAuthorTokens()))
             return Disposables.create()
         })
     }
