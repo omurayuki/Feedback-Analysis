@@ -28,8 +28,7 @@ extension MainTabController: MainTabbarProtocol {
     
     private func initTimelineVC() -> TimelineViewController {
         let controllers = [cretePublicGoalController(),
-                           cretePublicCompleteController(),
-                           UIViewController()]
+                           cretePublicCompleteController()]
         controllers.enumerated().forEach { index, controller in controller.view.tag = index }
         let repository = TimelineRepositoryImpl.shared
         let useCase = TimelineUseCaseImpl(repository: repository)

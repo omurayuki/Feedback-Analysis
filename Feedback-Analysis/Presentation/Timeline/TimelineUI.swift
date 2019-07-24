@@ -20,7 +20,7 @@ final class TimelineUIImpl: TimelineUI {
     }()
     
     private(set) var timelineSegmented: CustomSegmentedControl = {
-        let segment = CustomSegmentedControl(frame: CGRect(), buttonTitle: ["目標", "達成", "フォロー"])
+        let segment = CustomSegmentedControl(frame: CGRect(), buttonTitle: ["目標", "達成"])
         segment.backgroundColor = .clear
         return segment
     }()

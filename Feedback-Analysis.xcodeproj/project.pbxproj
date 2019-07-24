@@ -80,9 +80,6 @@
 		C953153422D5EA6600EEB3C0 /* PublicCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C953153322D5EA6600EEB3C0 /* PublicCompleteViewController.swift */; };
 		C953153622D5EA7100EEB3C0 /* PublicCompleteUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C953153522D5EA7100EEB3C0 /* PublicCompleteUI.swift */; };
 		C953153822D5EA8000EEB3C0 /* PublicCompleteRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C953153722D5EA8000EEB3C0 /* PublicCompleteRouting.swift */; };
-		C953153A22D5EA8F00EEB3C0 /* FollowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C953153922D5EA8F00EEB3C0 /* FollowViewController.swift */; };
-		C953153C22D5EA9800EEB3C0 /* FollowViewUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C953153B22D5EA9800EEB3C0 /* FollowViewUI.swift */; };
-		C953153E22D5EAA400EEB3C0 /* FollowRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C953153D22D5EAA400EEB3C0 /* FollowRouting.swift */; };
 		C953154022D5F05300EEB3C0 /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C953153F22D5F05300EEB3C0 /* UITableView+Extension.swift */; };
 		C958D9E122B5ACF800565EDE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C958D9E022B5ACF800565EDE /* Localizable.strings */; };
 		C958D9E722B62B9900565EDE /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C958D9E622B62B9900565EDE /* UIImage+Extension.swift */; };
@@ -327,9 +324,6 @@
 		C953153322D5EA6600EEB3C0 /* PublicCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicCompleteViewController.swift; sourceTree = "<group>"; };
 		C953153522D5EA7100EEB3C0 /* PublicCompleteUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicCompleteUI.swift; sourceTree = "<group>"; };
 		C953153722D5EA8000EEB3C0 /* PublicCompleteRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicCompleteRouting.swift; sourceTree = "<group>"; };
-		C953153922D5EA8F00EEB3C0 /* FollowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowViewController.swift; sourceTree = "<group>"; };
-		C953153B22D5EA9800EEB3C0 /* FollowViewUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowViewUI.swift; sourceTree = "<group>"; };
-		C953153D22D5EAA400EEB3C0 /* FollowRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowRouting.swift; sourceTree = "<group>"; };
 		C953153F22D5F05300EEB3C0 /* UITableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
 		C958D9E022B5ACF800565EDE /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		C958D9E622B62B9900565EDE /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
@@ -716,16 +710,6 @@
 			path = Complete;
 			sourceTree = "<group>";
 		};
-		C953152C22D5E6BC00EEB3C0 /* Follow */ = {
-			isa = PBXGroup;
-			children = (
-				C953153922D5EA8F00EEB3C0 /* FollowViewController.swift */,
-				C953153B22D5EA9800EEB3C0 /* FollowViewUI.swift */,
-				C953153D22D5EAA400EEB3C0 /* FollowRouting.swift */,
-			);
-			path = Follow;
-			sourceTree = "<group>";
-		};
 		C95E08A922B116EF000C41C7 /* MainTab */ = {
 			isa = PBXGroup;
 			children = (
@@ -880,13 +864,6 @@
 				C9F37E9A22E3675D003D503A /* Follow */,
 			);
 			path = DataStore;
-			sourceTree = "<group>";
-		};
-		C97F25BA22D5F8A700D61FF4 /* Follow */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Follow;
 			sourceTree = "<group>";
 		};
 		C97F25BB22D5F8AB00D61FF4 /* Complete */ = {
@@ -1071,7 +1048,6 @@
 				C9CC391322D5CBB1001010F4 /* TimelinePresenterImpl.swift */,
 				C97F25BC22D5F8B000D61FF4 /* Goal */,
 				C97F25BB22D5F8AB00D61FF4 /* Complete */,
-				C97F25BA22D5F8A700D61FF4 /* Follow */,
 			);
 			path = Timeline;
 			sourceTree = "<group>";
@@ -1157,7 +1133,6 @@
 				C90B6D1E22D4F6CA009871DE /* TimelineRouting.swift */,
 				C953152A22D5E33100EEB3C0 /* Goal */,
 				C953152B22D5E6A800EEB3C0 /* Complete */,
-				C953152C22D5E6BC00EEB3C0 /* Follow */,
 			);
 			path = Timeline;
 			sourceTree = "<group>";
@@ -1703,7 +1678,6 @@
 				C979404922BF447A00929C2A /* Array+Extension.swift in Sources */,
 				C9391A1A22E01821006E3A14 /* OtherPersonPageUI.swift in Sources */,
 				C98AE9AB22DFA4840021DD73 /* AuthorTokensTranslator.swift in Sources */,
-				C953153A22D5EA8F00EEB3C0 /* FollowViewController.swift in Sources */,
 				C9A6065D22B2643F00184E0F /* TimelineCell+Extension.swift in Sources */,
 				C99116AC22B8A318007C67C7 /* PasswordEditingUI.swift in Sources */,
 				C9035CAE22B7772A006DFAB9 /* SettingsViewController.swift in Sources */,
@@ -1762,7 +1736,6 @@
 				C9C43B8722D0BD03006CBC1B /* ReplyPresenter.swift in Sources */,
 				C91FA65422B4FF84006D9E6D /* EditPresenter.swift in Sources */,
 				C92E0BBF22CB02BC007A2F0C /* CommentTranslator.swift in Sources */,
-				C953153E22D5EAA400EEB3C0 /* FollowRouting.swift in Sources */,
 				C93271D822CF6B4500AA9BA6 /* DetailDataStoreFactory.swift in Sources */,
 				C91FA65822B50401006D9E6D /* EditUseCase.swift in Sources */,
 				C97901D022B95AA800C245B2 /* GenreView.swift in Sources */,
@@ -1784,7 +1757,6 @@
 				C97F25C122D5F8D600D61FF4 /* PublicGoalPresenterImpl.swift in Sources */,
 				C9D77F9322CA63120007835B /* DetailUseCase.swift in Sources */,
 				C97DDD9122AD83CC00A84219 /* AccountTranslator.swift in Sources */,
-				C953153C22D5EA9800EEB3C0 /* FollowViewUI.swift in Sources */,
 				C9C43B7B22D09118006CBC1B /* HalfModalPresentationController.swift in Sources */,
 				C93271E222CF6E6100AA9BA6 /* DetailLocalDataStore.swift in Sources */,
 				C9328AA622C732130065027B /* PrivateAllViewController.swift in Sources */,
