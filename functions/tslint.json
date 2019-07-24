@@ -54,7 +54,7 @@
 
     // Do not allow any imports for modules that are not in package.json. These will almost certainly fail when
     // deployed.
-    "no-implicit-dependencies": false,
+    "no-implicit-dependencies": true,
 
     // The 'this' keyword can only be used inside of classes.
     "no-invalid-this": true,
@@ -70,6 +70,7 @@
 
     // Disallow duplicate imports in the same file.
     "no-duplicate-imports": true,
+
 
     // -- Strong Warnings --
     // These rules should almost never be needed, but may be included due to legacy code.

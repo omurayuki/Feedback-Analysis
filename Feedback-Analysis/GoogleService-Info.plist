@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>1007339045594-0u64mavcb9j59l35i8b34h5q06esgvis.apps.googleusercontent.com</string>
+	<string>463542419736-6vutebbfkb30rnihedif6rk7ivgdjhfk.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.1007339045594-0u64mavcb9j59l35i8b34h5q06esgvis</string>
+	<string>com.googleusercontent.apps.463542419736-6vutebbfkb30rnihedif6rk7ivgdjhfk</string>
 	<key>API_KEY</key>
-	<string>AIzaSyARYCyfHbKylvsFNLav7CRHNvOTa0fpRmQ</string>
+	<string>AIzaSyDFIiUBrAPFGneb17gKO89Rg8kQzTt2shA</string>
 	<key>GCM_SENDER_ID</key>
-	<string>1007339045594</string>
+	<string>463542419736</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.icloud.g1221438.Feedback-Analysis</string>
+	<string>com.g1221438.FeedbackAnalysis</string>
 	<key>PROJECT_ID</key>
-	<string>feedback-analysis-459a6</string>
+	<string>project-feedback-analysis</string>
 	<key>STORAGE_BUCKET</key>
-	<string>feedback-analysis-459a6.appspot.com</string>
+	<string>project-feedback-analysis.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,8 +29,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:1007339045594:ios:2302bf4d57304b5e</string>
+	<string>1:463542419736:ios:2c65faf13bca1303</string>
 	<key>DATABASE_URL</key>
-	<string>https://feedback-analysis-459a6.firebaseio.com</string>
+	<string>https://project-feedback-analysis.firebaseio.com</string>
 </dict>
 </plist>

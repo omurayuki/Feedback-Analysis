@@ -1,9 +1,4 @@
  //// 直近やること
- // followデータベース構造を考える
-   // Follows(coll) userId(document 自身の) Following(coll) userId(document 他人の ここのfieldに”自身のuserId”を記載(collection groupでfollowerを横断的に探してあった時に、その自分をfollowしているuserのuidを取得してユーザー達の情報を取得してfollower一覧に表示するため))
-   // messageを作る時に、仮にfollow関係にある人間同士のメッセージをやりとりしたいなら、followしたタイミングでmessageテーブルをcloud functionで作成
- // collectionGroupでfollower絞り込み
- // followカウント
 
  //////////クリティカル修正点
  // limit タイムラインのみ　マイページはそこまでデータが大きくならないという(アプリの性質的に更新頻度が多くないと予想)前提でぐるぐるは一旦実装しない
@@ -11,8 +6,8 @@
  //  cellに仕事をさせすぎている問題
  // MainTabControllerでappuserdefaultを直接読んでる
  // PublicCompleteViewControllerとPublicGoalViewControllerでuser情報fetch中にisUserEnable = false にしている問題(userのphotoをタップさせたくないだけ)
- // タイムラインから自分のphotoを選んだ場合は、otherPersonVCに行くのではなく、mypageに行くかそもそも飛ばせない
  // detailPresenterImplでgetGoalsAuthorTokensを使ってcommentのauthorTokenを操作しているが、getCommentAuthorTokensにするべき(replyPresenterImplも)
+ // bundleIdをappleに登録できないので、project+firebaseのbundleIdを変更(firebaseは新しくプロジェクトを作り直す必要あり)
  
   //////////ゆくゆく修正点
  // reply画面から戻ってきたときに、cellが押せないときがある
@@ -32,14 +27,7 @@
  
  //////////必須
  // push通知設定
- // follow機能
-   // mypageのフォローラベルをbuttonに変更
-   // follow一覧ページ作成
-   // 自分のページにはいけないように
-   // フォローした場合、外した場合、自分のページのフォロー数が増えるandフォローされたらフォロワー数が増える
-   // フォローすれば、データベースにフォローした人の情報を記載して、そこから目標を全て取得できる
  // comment, replyをぐるぐるfetch
- // followしている人のタイムライン画面
  // チャット機能実装
  // 強み分析機能実装
  
