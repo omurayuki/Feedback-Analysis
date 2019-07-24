@@ -82,6 +82,7 @@ fastlane/test_output
 # https://github.com/johnno1962/injectionforxcode
 
 iOSInjectionProject/
+GoogleService-Info.plist
 
 .idea
 **/node_modules/*

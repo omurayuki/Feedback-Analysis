@@ -12,6 +12,7 @@ target 'Feedback-Analysis' do
     pod 'RxCocoa', '~> 5'
     pod 'Kingfisher', '~> 5.0'
     pod 'ReachabilitySwift'
+    pod 'Firebase/Analytics'
     pod 'Firebase/Core'
     pod 'Firebase/Auth'
     pod 'Firebase/Storage'
