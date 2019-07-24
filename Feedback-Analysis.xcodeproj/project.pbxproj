@@ -16,6 +16,7 @@
 		C90B6D1B22D4F6B2009871DE /* TimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90B6D1A22D4F6B2009871DE /* TimelineViewController.swift */; };
 		C90B6D1D22D4F6C1009871DE /* TimelineUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90B6D1C22D4F6C1009871DE /* TimelineUI.swift */; };
 		C90B6D1F22D4F6CA009871DE /* TimelineRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90B6D1E22D4F6CA009871DE /* TimelineRouting.swift */; };
+		C90F1E7222E832E500CCBA3F /* TmpObjectUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90F1E7122E832E500CCBA3F /* TmpObjectUser.swift */; };
 		C91D8E4022CA63A6000379E3 /* DetailRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91D8E3F22CA63A6000379E3 /* DetailRepository.swift */; };
 		C91D8E4222CA6495000379E3 /* DetailRemoteDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91D8E4122CA6495000379E3 /* DetailRemoteDataStore.swift */; };
 		C91FA65422B4FF84006D9E6D /* EditPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91FA65322B4FF84006D9E6D /* EditPresenter.swift */; };
@@ -262,6 +263,7 @@
 		C90B6D1A22D4F6B2009871DE /* TimelineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineViewController.swift; sourceTree = "<group>"; };
 		C90B6D1C22D4F6C1009871DE /* TimelineUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineUI.swift; sourceTree = "<group>"; };
 		C90B6D1E22D4F6CA009871DE /* TimelineRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineRouting.swift; sourceTree = "<group>"; };
+		C90F1E7122E832E500CCBA3F /* TmpObjectUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TmpObjectUser.swift; sourceTree = "<group>"; };
 		C91D8E3F22CA63A6000379E3 /* DetailRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRepository.swift; sourceTree = "<group>"; };
 		C91D8E4122CA6495000379E3 /* DetailRemoteDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRemoteDataStore.swift; sourceTree = "<group>"; };
 		C91FA65322B4FF84006D9E6D /* EditPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPresenter.swift; sourceTree = "<group>"; };
@@ -538,7 +540,7 @@
 			path = Edit;
 			sourceTree = "<group>";
 		};
-		C91FA65922B53F67006D9E6D /* Model */ = {
+		C91FA65922B53F67006D9E6D /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
 				C91FA65A22B53F9C006D9E6D /* Update.swift */,
@@ -546,7 +548,7 @@
 				C9D77F9022CA59110007835B /* CommentPost.swift */,
 				C9C43B8C22D0C686006CBC1B /* ReplyPost.swift */,
 			);
-			path = Model;
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		C91FA65E22B5778E006D9E6D /* Const */ = {
@@ -1047,6 +1049,7 @@
 				C9A6066E22B2980700184E0F /* Firebase.swift */,
 				C9A6067022B2980D00184E0F /* Const.swift */,
 				C9C0DEF522CF535300BBA55B /* Initial.swift */,
+				C90F1E7122E832E500CCBA3F /* TmpObjectUser.swift */,
 			);
 			path = Const;
 			sourceTree = "<group>";
@@ -1269,7 +1272,7 @@
 		C9D9010622AB44400040390E /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				C91FA65922B53F67006D9E6D /* Model */,
+				C91FA65922B53F67006D9E6D /* ViewModel */,
 				C9D77F7F22C9C4ED0007835B /* View */,
 				C9A6065722B1DF6000184E0F /* Cell */,
 				C9D9012822AB53800040390E /* UI */,
@@ -1849,6 +1852,7 @@
 				C9F2496922B78EB7007E82A0 /* SettingsPresenterImpl.swift in Sources */,
 				C90B6D1B22D4F6B2009871DE /* TimelineViewController.swift in Sources */,
 				C9D9012D22AB54220040390E /* Routing.swift in Sources */,
+				C90F1E7222E832E500CCBA3F /* TmpObjectUser.swift in Sources */,
 				C9D9011922AB50FD0040390E /* UIFont+Extension.swift in Sources */,
 				C95ADED022AB141D00D851A0 /* R.generated.swift in Sources */,
 				C9ED720022B137CD00BDB9A7 /* MypageUI.swift in Sources */,

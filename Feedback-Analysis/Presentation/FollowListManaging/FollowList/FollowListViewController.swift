@@ -38,8 +38,6 @@ class FollowListViewController: UIViewController {
         }
     }
     
-    private var tmpObjectToken = String()
-    
     init(followQueryRef: FirebaseQueryRef) {
         self.followQueryRef = followQueryRef
         super.init(nibName: nil, bundle: nil)
@@ -65,7 +63,7 @@ class FollowListViewController: UIViewController {
         super.viewWillAppear(animated)
         //// otherPageに行く際, setObjectTokenに新しいuserのtokenがsetさせて戻ってくる際にそのuserのfollowListが表示される
         //// それを回避するためにtmpObjectTokenという一時的な変数に現在のuserのTokenを保存して、otherPageから戻ってくる際にその変数をsetObjectTokenに渡して回避
-        followQueryRef.isMypage ? () : presenter.setObjectToken(tmpObjectToken)
+        presenter.isFirstLoading ? () : (followQueryRef.isMypage ? () : presenter.setObjectToken(TmpObjectUser.token))
         //// otherPersonPageの先に別のuserのfollowListを参照すればuserdefaultsが書き換えられるので戻ってきた際にもう一度fetchしてuserdefaultsに保存
         ui.followList.isUserInteractionEnabled = false
         presenter.fetch(from: followQueryRef, loading: presenter.isFirstLoading) {
@@ -76,6 +74,8 @@ class FollowListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         ui.setup()
+        //// 初回時にtmpObjectTokenにobjectUserTokenをセットしないとfollower->followにスライドした際にTmpObjectUser.tokenがnilなので落ちる
+        setObjectTokenInTmpVariable()
     }
 }
 
@@ -111,8 +111,8 @@ extension FollowListViewController: FollowListPresenterView {
 extension FollowListViewController {
     
     private func setObjectTokenInTmpVariable() {
-        presenter.getObjectToken { [unowned self] atThePresentTimeObjectToken in
-            self.tmpObjectToken = atThePresentTimeObjectToken
+        presenter.getObjectToken { atThePresentTimeObjectToken in
+            TmpObjectUser.token = atThePresentTimeObjectToken
         }
     }
 }
