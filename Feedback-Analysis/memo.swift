@@ -8,7 +8,7 @@
  // detailPresenterImplでgetGoalsAuthorTokensを使ってcommentのauthorTokenを操作しているが、getCommentAuthorTokensにするべき(replyPresenterImplも)
  
   //////////ゆくゆく修正点
- // reply画面から戻ってきたときに、cellが押せないときがある
+ // reply画面から戻ってきたときに、cellが押せないときがある (textfield出現が何かをしている)
  // いくつかのcontrollerで同じような記述をしている
  // 変数名を正しく
  // PaddingTextFieldとtextfieldをbuilderで作成(いろんなところで作ってるから)

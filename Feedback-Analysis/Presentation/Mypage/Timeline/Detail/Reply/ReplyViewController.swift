@@ -65,8 +65,8 @@ class ReplyViewController: UIViewController {
             
             ui.replyField.rx.didBeginEditing.asDriver()
                 .drive(onNext: { [unowned self] _ in
-                    self.view.layoutIfNeeded()
                     self.maximizeToFullScreen()
+                    self.view.layoutIfNeeded()
                 }).disposed(by: disposeBag)
             
             ui.submitBtn.rx.tap.asDriver()

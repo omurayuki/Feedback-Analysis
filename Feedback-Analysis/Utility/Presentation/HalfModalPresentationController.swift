@@ -155,7 +155,7 @@ class HalfModalPresentationController: UIPresentationController {
     }
 }
 
-protocol HalfModalPresentable { }
+protocol HalfModalPresentable {}
 
 extension HalfModalPresentable where Self: UIViewController {
     func maximizeToFullScreen() -> Void {
