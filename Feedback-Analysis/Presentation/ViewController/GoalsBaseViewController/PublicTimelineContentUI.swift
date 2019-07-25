@@ -1,6 +1,6 @@
 import UIKit
 
-final class PublicGoalUIImpl: PublicTimelineContentUI {
+final class PublicTimelineContentUIImpl: PublicTimelineContentUI {
     
     weak var viewController: UIViewController?
     
@@ -22,7 +22,7 @@ final class PublicGoalUIImpl: PublicTimelineContentUI {
     }()
 }
 
-extension PublicGoalUIImpl {
+extension PublicTimelineContentUIImpl {
     
     func setup() {
         guard let vc = viewController else { return }

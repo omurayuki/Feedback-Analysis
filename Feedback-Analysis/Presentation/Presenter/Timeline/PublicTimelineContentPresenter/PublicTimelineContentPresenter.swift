@@ -3,10 +3,10 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-protocol PublicCompletePresenter {
-    var view: PublicCompletePresenterView! { get set }
+protocol PublicTimelineContentPresenter {
+    var view: PublicTimelineContentPresenterView! { get set }
     var isLoading: BehaviorRelay<Bool> { get }
-    var isFiestLoading: Bool { get set }
+    var isFirstLoading: Bool { get set }
     
     func fetch(from queryRef: FirebaseQueryRef, loading: Bool, completion: (() -> Void)?)
     func update(to documentRef: FirebaseDocumentRef, value: [String: Any])
@@ -20,12 +20,12 @@ protocol PublicCompletePresenter {
     func getAuthorToken(_ index: Int, completion: @escaping (String) -> Void)
 }
 
-protocol PublicCompletePresenterView: class {
+protocol PublicTimelineContentPresenterView: class {
     var disposeBag: DisposeBag! { get }
     
     func inject(ui: PublicTimelineContentUI,
-                presenter: PublicCompletePresenter,
-                routing: PublicCompleteRouting,
+                presenter: PublicTimelineContentPresenter,
+                routing: PublicTimelineContentRouting,
                 disposeBag: DisposeBag)
     func didFetchGoalData(timeline: [Timeline])
     func didSelect(indexPath: IndexPath, tableView: UITableView)

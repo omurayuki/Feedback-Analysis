@@ -11,6 +11,8 @@ protocol GoalLocalDataStore {
     func getCompleteAuthorTokens() -> Single<[String]>
     func setFollowAuthorTokens(_ values: [String]) -> Single<()>
     func getFollowAuthorTokens() -> Single<[String]>
+    func getGoalDocumentId() -> Single<String>
+    func setGoalDocumentId(_ value: String) -> Single<()>
 }
 
 struct GoalLocalDataStoreImpl: GoalLocalDataStore {
@@ -75,6 +77,21 @@ struct GoalLocalDataStoreImpl: GoalLocalDataStore {
     func getFollowAuthorTokens() -> Single<[String]> {
         return Single.create(subscribe: { single -> Disposable in
             single(.success(AppUserDefaults.getFollowAuthorTokens()))
+            return Disposables.create()
+        })
+    }
+    
+    func getGoalDocumentId() -> Single<String> {
+        return Single.create(subscribe: { single -> Disposable in
+            single(.success(AppUserDefaults.getGoalDocument()))
+            return Disposables.create()
+        })
+    }
+    
+    func setGoalDocumentId(_ value: String) -> Single<()> {
+        return Single.create(subscribe: { single -> Disposable in
+            AppUserDefaults.setGoalDocument(id: value)
+            single(.success(()))
             return Disposables.create()
         })
     }

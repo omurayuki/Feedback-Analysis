@@ -6,8 +6,6 @@ import FirebaseFirestore
 
 class GoalPostEditViewController: UIViewController {
     
-    private var documentId = ""
-    
     var ui: GoalPostEditUI!
     
     var routing: GoalPostEditRouting!
@@ -65,10 +63,7 @@ class GoalPostEditViewController: UIViewController {
                                                            expectedResultField2: _expectedResultField2,
                                                            expectedResultField3: _expectedResultField3,
                                                            deadline: expectedResultView.deadline.text ?? "", draft: false)
-                        self.presenter.getAuthorToken(completion: { [unowned self] token in
-                            self.presenter.update(to: .goalUpdateRef(author_token: token, goalDocument: self.documentId),
-                                                  fields: goalPost)
-                        })
+                            self.updateGoalField(field: goalPost)
                     })
                 }).disposed(by: disposeBag)
             
@@ -155,7 +150,7 @@ extension GoalPostEditViewController {
     func recieve(data timeline: Timeline) {
         appendGenreValue(genres: [timeline.genre1 ?? "",
                                   timeline.genre2 ?? ""])
-        documentId = timeline.documentId
+        presenter.setGoalDocumentId(timeline.documentId)
         ui.mappingContent = timeline
     }
     
@@ -163,6 +158,15 @@ extension GoalPostEditViewController {
         genres.forEach {
             self.presenter.genres.append($0)
         }
+    }
+    
+    func updateGoalField(field: GoalPost) {
+        presenter.getAuthorToken(completion: { [unowned self] token in
+            self.presenter.getGoalDocumentId(completion: { [unowned self] documentId in
+                self.presenter.update(to: .goalUpdateRef(author_token: token, goalDocument: documentId),
+                                      fields: field)
+            })
+        })
     }
 }
 

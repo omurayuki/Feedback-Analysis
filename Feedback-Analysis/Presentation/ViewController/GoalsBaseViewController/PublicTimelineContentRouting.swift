@@ -2,12 +2,12 @@ import Foundation
 import UIKit
 import RxSwift
 
-protocol PublicGoalRouting: Routing {
+protocol PublicTimelineContentRouting: Routing {
     func showDetail(with timeline: Timeline, height: CGFloat)
     func showOtherPersonPage(with token: String)
 }
 
-final class PublicGoalRoutingImpl: PublicGoalRouting {
+final class PublicTimelineContentRoutingImpl: PublicTimelineContentRouting {
     
     var viewController: UIViewController?
     

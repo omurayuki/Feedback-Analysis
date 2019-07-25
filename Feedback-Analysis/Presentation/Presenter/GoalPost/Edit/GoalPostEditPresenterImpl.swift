@@ -35,12 +35,36 @@ class GoalPostEditPresenterImpl: NSObject, GoalPostEditPresenter {
     
     func getAuthorToken(completion: @escaping (String) -> Void) {
         useCase.getAuthorToken()
-            .subscribe { [unowned self]  result in
+            .subscribe { [unowned self] result in
                 switch result {
                 case .success(let response):
                     completion(response)
                 case .error(let error):
                     self.view.showError(message: error.localizedDescription)
+                }
+            }.disposed(by: view.disposeBag)
+    }
+    
+    func getGoalDocumentId(completion: @escaping (String) -> Void) {
+        useCase.getGoalDocumentId()
+            .subscribe { [unowned self] result in
+                switch result {
+                case .success(let response):
+                    completion(response)
+                case .error(let error):
+                    self.view.showError(message: error.localizedDescription)
+                }
+            }.disposed(by: view.disposeBag)
+    }
+    
+    func setGoalDocumentId(_ value: String) {
+        useCase.setGoalDocumentId(value)
+            .subscribe {result in
+                switch result {
+                case .success(_):
+                    return
+                case .error(_):
+                    return
                 }
             }.disposed(by: view.disposeBag)
     }

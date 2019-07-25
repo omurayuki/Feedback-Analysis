@@ -2,12 +2,10 @@
 
  //////////クリティカル修正点
  // limit タイムラインのみ　マイページはそこまでデータが大きくならないという(アプリの性質的に更新頻度が多くないと予想)前提でぐるぐるは一旦実装しない
- // GoalPostEditViewControllerのグローバル変数documentId
  //  cellに仕事をさせすぎている問題
  // MainTabControllerでappuserdefaultを直接読んでる
  // PublicCompleteViewControllerとPublicGoalViewControllerでuser情報fetch中にisUserEnable = false にしている問題(userのphotoをタップさせたくないだけ)
  // detailPresenterImplでgetGoalsAuthorTokensを使ってcommentのauthorTokenを操作しているが、getCommentAuthorTokensにするべき(replyPresenterImplも)
- // bundleIdをappleに登録できないので、project+firebaseのbundleIdを変更(firebaseは新しくプロジェクトを作り直す必要あり)
  
   //////////ゆくゆく修正点
  // reply画面から戻ってきたときに、cellが押せないときがある

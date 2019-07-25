@@ -65,7 +65,7 @@ class AppUserDefaults {
         putStringValue(id, keyName: "goalDocument")
     }
     
-    // goalDocumentId
+    // commentDocumentId
     class func getCommentDocument() -> String {
         return getStringValue(keyName: "commentDocument")
     }

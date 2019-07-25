@@ -12,6 +12,8 @@ protocol GoalPostUseCase {
     func setSelected(index: Int) -> Single<()>
     func getSelected() -> Single<Int>
     func getAuthorToken() -> Single<String>
+    func getGoalDocumentId() -> Single<String>
+    func setGoalDocumentId(_ value: String) -> Single<()>
 }
 
 struct GoalPostUseCaseImpl: GoalPostUseCase {
@@ -60,5 +62,13 @@ struct GoalPostUseCaseImpl: GoalPostUseCase {
     
     func getAuthorToken() -> Single<String> {
         return repository.getAuthorToken()
+    }
+    
+    func getGoalDocumentId() -> Single<String> {
+        return repository.getGoalDocumentId()
+    }
+    
+    func setGoalDocumentId(_ value: String) -> Single<()> {
+        return repository.setGoalDocumentId(value)
     }
 }

@@ -2,13 +2,13 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-class PublicCompletePresenterImpl: NSObject, PublicCompletePresenter {
+class PublicTimelineContentPresenterImpl: NSObject, PublicTimelineContentPresenter {
     
-    var view: PublicCompletePresenterView!
+    var view: PublicTimelineContentPresenterView!
     
     var isLoading: BehaviorRelay<Bool> = BehaviorRelay<Bool>(value: false)
     
-    var isFiestLoading: Bool = true
+    var isFirstLoading: Bool = true
     
     private var useCase: TimelineUseCase
     
@@ -114,7 +114,7 @@ class PublicCompletePresenterImpl: NSObject, PublicCompletePresenter {
     }
     
     func setAuthorTokens(_ values: [String]) {
-        useCase.setCompleteAuthorTokens(values)
+        useCase.setGoalsAuthorTokens(values)
             .subscribe { result in
                 switch result {
                 case .success(_):
@@ -126,7 +126,7 @@ class PublicCompletePresenterImpl: NSObject, PublicCompletePresenter {
     }
     
     func getAuthorToken(_ index: Int, completion: @escaping (String) -> Void) {
-        useCase.getCompleteAuthorTokens(index)
+        useCase.getGoalsAuthorTokens(index)
             .subscribe { result in
                 switch result {
                 case .success(let response):
@@ -138,7 +138,7 @@ class PublicCompletePresenterImpl: NSObject, PublicCompletePresenter {
     }
 }
 
-extension PublicCompletePresenterImpl: UITableViewDelegate {
+extension PublicTimelineContentPresenterImpl: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         view.didSelect(indexPath: indexPath, tableView: tableView)

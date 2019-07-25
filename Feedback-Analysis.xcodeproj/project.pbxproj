@@ -76,11 +76,7 @@
 		C94EE04B22D0633100937CFA /* ReplyRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94EE04A22D0633100937CFA /* ReplyRouting.swift */; };
 		C94F080F22ABEBF800BF3534 /* UIVIew+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94F080E22ABEBF800BF3534 /* UIVIew+Extension.swift */; };
 		C953152E22D5EA4100EEB3C0 /* PublicGoalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C953152D22D5EA4100EEB3C0 /* PublicGoalViewController.swift */; };
-		C953153022D5EA5000EEB3C0 /* PublicGoalUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C953152F22D5EA5000EEB3C0 /* PublicGoalUI.swift */; };
-		C953153222D5EA5700EEB3C0 /* PublicGoalRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C953153122D5EA5700EEB3C0 /* PublicGoalRouting.swift */; };
 		C953153422D5EA6600EEB3C0 /* PublicCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C953153322D5EA6600EEB3C0 /* PublicCompleteViewController.swift */; };
-		C953153622D5EA7100EEB3C0 /* PublicCompleteUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C953153522D5EA7100EEB3C0 /* PublicCompleteUI.swift */; };
-		C953153822D5EA8000EEB3C0 /* PublicCompleteRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C953153722D5EA8000EEB3C0 /* PublicCompleteRouting.swift */; };
 		C953154022D5F05300EEB3C0 /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C953153F22D5F05300EEB3C0 /* UITableView+Extension.swift */; };
 		C958D9E122B5ACF800565EDE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C958D9E022B5ACF800565EDE /* Localizable.strings */; };
 		C958D9E722B62B9900565EDE /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C958D9E622B62B9900565EDE /* UIImage+Extension.swift */; };
@@ -109,8 +105,6 @@
 		C97DDD9122AD83CC00A84219 /* AccountTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97DDD9022AD83CC00A84219 /* AccountTranslator.swift */; };
 		C97DDD9322AD85ED00A84219 /* Translator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97DDD9222AD85ED00A84219 /* Translator.swift */; };
 		C97DDD9622AD879800A84219 /* AccountRemoteDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97DDD9522AD879800A84219 /* AccountRemoteDataStore.swift */; };
-		C97F25BE22D5F8C800D61FF4 /* PublicGoalPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97F25BD22D5F8C800D61FF4 /* PublicGoalPresenter.swift */; };
-		C97F25C122D5F8D600D61FF4 /* PublicGoalPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97F25C022D5F8D600D61FF4 /* PublicGoalPresenterImpl.swift */; };
 		C97F25C322D6033800D61FF4 /* UIPageViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97F25C222D6033800D61FF4 /* UIPageViewController+Extension.swift */; };
 		C97F25C522D6312A00D61FF4 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97F25C422D6312A00D61FF4 /* Entity.swift */; };
 		C97F25C722D63F1500D61FF4 /* UserLocalDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97F25C622D63F1500D61FF4 /* UserLocalDataStore.swift */; };
@@ -213,6 +207,11 @@
 		C9D9013D22AB5E870040390E /* TopUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D9013C22AB5E870040390E /* TopUI.swift */; };
 		C9D9014122AB77B40040390E /* VerticalStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D9014022AB77B40040390E /* VerticalStackView.swift */; };
 		C9D9014922AB85890040390E /* TopRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D9014822AB85890040390E /* TopRouting.swift */; };
+		C9E5911A22E962E90083E5F5 /* GoalsBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E5911922E962E90083E5F5 /* GoalsBaseViewController.swift */; };
+		C9E5911C22E9630D0083E5F5 /* PublicTimelineContentUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E5911B22E9630D0083E5F5 /* PublicTimelineContentUI.swift */; };
+		C9E5911E22E9633E0083E5F5 /* PublicTimelineContentRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E5911D22E9633E0083E5F5 /* PublicTimelineContentRouting.swift */; };
+		C9E5912122E963980083E5F5 /* PublicTimelineContentPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E5912022E963980083E5F5 /* PublicTimelineContentPresenter.swift */; };
+		C9E5912322E963BB0083E5F5 /* PublicTimelineContentPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E5912222E963BB0083E5F5 /* PublicTimelineContentPresenterImpl.swift */; };
 		C9E6EAE722E31AB2008D0809 /* FollowListManagingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E6EAE622E31AB2008D0809 /* FollowListManagingViewController.swift */; };
 		C9E6EAE922E31AB8008D0809 /* FollowListManagingUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E6EAE822E31AB8008D0809 /* FollowListManagingUI.swift */; };
 		C9E6EAEB22E31AC0008D0809 /* FollowListManagingRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E6EAEA22E31AC0008D0809 /* FollowListManagingRouting.swift */; };
@@ -243,8 +242,6 @@
 		C9F37E9C22E36799003D503A /* FollowRemoteDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F37E9B22E36799003D503A /* FollowRemoteDataStore.swift */; };
 		C9F37E9E22E367A3003D503A /* FollowLocalDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F37E9D22E367A3003D503A /* FollowLocalDataStore.swift */; };
 		C9F37EA022E367B1003D503A /* FollowDataStoreFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F37E9F22E367B1003D503A /* FollowDataStoreFactory.swift */; };
-		C9FE4BC722DDC1A200DBF543 /* PublicCompletePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FE4BC622DDC1A200DBF543 /* PublicCompletePresenter.swift */; };
-		C9FE4BCB22DDC1BC00DBF543 /* PublicCompletePresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FE4BCA22DDC1BC00DBF543 /* PublicCompletePresenterImpl.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -320,11 +317,7 @@
 		C94EE04A22D0633100937CFA /* ReplyRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplyRouting.swift; sourceTree = "<group>"; };
 		C94F080E22ABEBF800BF3534 /* UIVIew+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIVIew+Extension.swift"; sourceTree = "<group>"; };
 		C953152D22D5EA4100EEB3C0 /* PublicGoalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicGoalViewController.swift; sourceTree = "<group>"; };
-		C953152F22D5EA5000EEB3C0 /* PublicGoalUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicGoalUI.swift; sourceTree = "<group>"; };
-		C953153122D5EA5700EEB3C0 /* PublicGoalRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicGoalRouting.swift; sourceTree = "<group>"; };
 		C953153322D5EA6600EEB3C0 /* PublicCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicCompleteViewController.swift; sourceTree = "<group>"; };
-		C953153522D5EA7100EEB3C0 /* PublicCompleteUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicCompleteUI.swift; sourceTree = "<group>"; };
-		C953153722D5EA8000EEB3C0 /* PublicCompleteRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicCompleteRouting.swift; sourceTree = "<group>"; };
 		C953153F22D5F05300EEB3C0 /* UITableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
 		C958D9E022B5ACF800565EDE /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		C958D9E622B62B9900565EDE /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
@@ -353,8 +346,6 @@
 		C97DDD9022AD83CC00A84219 /* AccountTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTranslator.swift; sourceTree = "<group>"; };
 		C97DDD9222AD85ED00A84219 /* Translator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Translator.swift; sourceTree = "<group>"; };
 		C97DDD9522AD879800A84219 /* AccountRemoteDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountRemoteDataStore.swift; sourceTree = "<group>"; };
-		C97F25BD22D5F8C800D61FF4 /* PublicGoalPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicGoalPresenter.swift; sourceTree = "<group>"; };
-		C97F25C022D5F8D600D61FF4 /* PublicGoalPresenterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicGoalPresenterImpl.swift; sourceTree = "<group>"; };
 		C97F25C222D6033800D61FF4 /* UIPageViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIPageViewController+Extension.swift"; sourceTree = "<group>"; };
 		C97F25C422D6312A00D61FF4 /* Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
 		C97F25C622D63F1500D61FF4 /* UserLocalDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocalDataStore.swift; sourceTree = "<group>"; };
@@ -459,6 +450,11 @@
 		C9D9013C22AB5E870040390E /* TopUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopUI.swift; sourceTree = "<group>"; };
 		C9D9014022AB77B40040390E /* VerticalStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalStackView.swift; sourceTree = "<group>"; };
 		C9D9014822AB85890040390E /* TopRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopRouting.swift; sourceTree = "<group>"; };
+		C9E5911922E962E90083E5F5 /* GoalsBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsBaseViewController.swift; sourceTree = "<group>"; };
+		C9E5911B22E9630D0083E5F5 /* PublicTimelineContentUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicTimelineContentUI.swift; sourceTree = "<group>"; };
+		C9E5911D22E9633E0083E5F5 /* PublicTimelineContentRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicTimelineContentRouting.swift; sourceTree = "<group>"; };
+		C9E5912022E963980083E5F5 /* PublicTimelineContentPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicTimelineContentPresenter.swift; sourceTree = "<group>"; };
+		C9E5912222E963BB0083E5F5 /* PublicTimelineContentPresenterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicTimelineContentPresenterImpl.swift; sourceTree = "<group>"; };
 		C9E6EAE622E31AB2008D0809 /* FollowListManagingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowListManagingViewController.swift; sourceTree = "<group>"; };
 		C9E6EAE822E31AB8008D0809 /* FollowListManagingUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowListManagingUI.swift; sourceTree = "<group>"; };
 		C9E6EAEA22E31AC0008D0809 /* FollowListManagingRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowListManagingRouting.swift; sourceTree = "<group>"; };
@@ -489,8 +485,6 @@
 		C9F37E9B22E36799003D503A /* FollowRemoteDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowRemoteDataStore.swift; sourceTree = "<group>"; };
 		C9F37E9D22E367A3003D503A /* FollowLocalDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowLocalDataStore.swift; sourceTree = "<group>"; };
 		C9F37E9F22E367B1003D503A /* FollowDataStoreFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowDataStoreFactory.swift; sourceTree = "<group>"; };
-		C9FE4BC622DDC1A200DBF543 /* PublicCompletePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicCompletePresenter.swift; sourceTree = "<group>"; };
-		C9FE4BCA22DDC1BC00DBF543 /* PublicCompletePresenterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicCompletePresenterImpl.swift; sourceTree = "<group>"; };
 		DF2047041B81E420DAE3BDD1 /* Pods-Feedback-Analysis.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Feedback-Analysis.release.xcconfig"; path = "Target Support Files/Pods-Feedback-Analysis/Pods-Feedback-Analysis.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -694,8 +688,6 @@
 			isa = PBXGroup;
 			children = (
 				C953152D22D5EA4100EEB3C0 /* PublicGoalViewController.swift */,
-				C953152F22D5EA5000EEB3C0 /* PublicGoalUI.swift */,
-				C953153122D5EA5700EEB3C0 /* PublicGoalRouting.swift */,
 			);
 			path = Goal;
 			sourceTree = "<group>";
@@ -704,8 +696,6 @@
 			isa = PBXGroup;
 			children = (
 				C953153322D5EA6600EEB3C0 /* PublicCompleteViewController.swift */,
-				C953153522D5EA7100EEB3C0 /* PublicCompleteUI.swift */,
-				C953153722D5EA8000EEB3C0 /* PublicCompleteRouting.swift */,
 			);
 			path = Complete;
 			sourceTree = "<group>";
@@ -864,24 +854,6 @@
 				C9F37E9A22E3675D003D503A /* Follow */,
 			);
 			path = DataStore;
-			sourceTree = "<group>";
-		};
-		C97F25BB22D5F8AB00D61FF4 /* Complete */ = {
-			isa = PBXGroup;
-			children = (
-				C9FE4BC622DDC1A200DBF543 /* PublicCompletePresenter.swift */,
-				C9FE4BCA22DDC1BC00DBF543 /* PublicCompletePresenterImpl.swift */,
-			);
-			path = Complete;
-			sourceTree = "<group>";
-		};
-		C97F25BC22D5F8B000D61FF4 /* Goal */ = {
-			isa = PBXGroup;
-			children = (
-				C97F25BD22D5F8C800D61FF4 /* PublicGoalPresenter.swift */,
-				C97F25C022D5F8D600D61FF4 /* PublicGoalPresenterImpl.swift */,
-			);
-			path = Goal;
 			sourceTree = "<group>";
 		};
 		C988630D22C5DFF600CABD62 /* Timeline */ = {
@@ -1046,8 +1018,7 @@
 			children = (
 				C9CC391122D5CBAA001010F4 /* TimelinePresenter.swift */,
 				C9CC391322D5CBB1001010F4 /* TimelinePresenterImpl.swift */,
-				C97F25BC22D5F8B000D61FF4 /* Goal */,
-				C97F25BB22D5F8AB00D61FF4 /* Complete */,
+				C9E5911F22E963800083E5F5 /* PublicTimelineContentPresenter */,
 			);
 			path = Timeline;
 			sourceTree = "<group>";
@@ -1247,6 +1218,7 @@
 		C9D9010622AB44400040390E /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				C9E6C09E22E961BD001D5706 /* ViewController */,
 				C91FA65922B53F67006D9E6D /* ViewModel */,
 				C9D77F7F22C9C4ED0007835B /* View */,
 				C9A6065722B1DF6000184E0F /* Cell */,
@@ -1397,6 +1369,33 @@
 				C947E72822E30873001F176F /* FollowButton.swift */,
 			);
 			path = Custom;
+			sourceTree = "<group>";
+		};
+		C9E5911822E962BB0083E5F5 /* GoalsBaseViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C9E5911922E962E90083E5F5 /* GoalsBaseViewController.swift */,
+				C9E5911B22E9630D0083E5F5 /* PublicTimelineContentUI.swift */,
+				C9E5911D22E9633E0083E5F5 /* PublicTimelineContentRouting.swift */,
+			);
+			path = GoalsBaseViewController;
+			sourceTree = "<group>";
+		};
+		C9E5911F22E963800083E5F5 /* PublicTimelineContentPresenter */ = {
+			isa = PBXGroup;
+			children = (
+				C9E5912022E963980083E5F5 /* PublicTimelineContentPresenter.swift */,
+				C9E5912222E963BB0083E5F5 /* PublicTimelineContentPresenterImpl.swift */,
+			);
+			path = PublicTimelineContentPresenter;
+			sourceTree = "<group>";
+		};
+		C9E6C09E22E961BD001D5706 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C9E5911822E962BB0083E5F5 /* GoalsBaseViewController */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 		C9ED71FC22B1375300BDB9A7 /* Mypage */ = {
@@ -1668,26 +1667,24 @@
 				C9CC28E922ACD892006E69E5 /* LoginInputViewController.swift in Sources */,
 				C9C0DEF622CF535300BBA55B /* Initial.swift in Sources */,
 				C97901D222B9DE1300C245B2 /* GenreButton.swift in Sources */,
+				C9E5912122E963980083E5F5 /* PublicTimelineContentPresenter.swift in Sources */,
 				C9D9011022AB4EE20040390E /* UIAlertAction+Extension.swift in Sources */,
 				C91FA66022B577BB006D9E6D /* Residence.swift in Sources */,
 				C9EA654C22BC1A27002BE1C8 /* GoalRemoteDataStore.swift in Sources */,
 				C9391A2222E01C89006E3A14 /* OtherPersonPagePresenterImpl.swift in Sources */,
 				C9F2496F22B79CBF007E82A0 /* EmailEditingViewController.swift in Sources */,
 				C9CC391222D5CBAA001010F4 /* TimelinePresenter.swift in Sources */,
-				C9FE4BC722DDC1A200DBF543 /* PublicCompletePresenter.swift in Sources */,
 				C979404922BF447A00929C2A /* Array+Extension.swift in Sources */,
+				C9E5911E22E9633E0083E5F5 /* PublicTimelineContentRouting.swift in Sources */,
 				C9391A1A22E01821006E3A14 /* OtherPersonPageUI.swift in Sources */,
 				C98AE9AB22DFA4840021DD73 /* AuthorTokensTranslator.swift in Sources */,
 				C9A6065D22B2643F00184E0F /* TimelineCell+Extension.swift in Sources */,
 				C99116AC22B8A318007C67C7 /* PasswordEditingUI.swift in Sources */,
 				C9035CAE22B7772A006DFAB9 /* SettingsViewController.swift in Sources */,
-				C9FE4BCB22DDC1BC00DBF543 /* PublicCompletePresenterImpl.swift in Sources */,
 				C9C43B9122D0C83C006CBC1B /* ReplyEntity.swift in Sources */,
 				C9CC28F822AD3C03006E69E5 /* SignupInputRouting.swift in Sources */,
-				C953153222D5EA5700EEB3C0 /* PublicGoalRouting.swift in Sources */,
 				C9A7F86F22C717F6005B4C44 /* PrivateCompleteUI.swift in Sources */,
 				C9CB2B4222D4CE320081C499 /* UITableViewCell.swift in Sources */,
-				C953153622D5EA7100EEB3C0 /* PublicCompleteUI.swift in Sources */,
 				C9D77F8D22C9CB650007835B /* GoalPostEditPresenterImpl.swift in Sources */,
 				C9F37E9C22E36799003D503A /* FollowRemoteDataStore.swift in Sources */,
 				C93271DA22CF6B5D00AA9BA6 /* GoalDataStoreFactory.swift in Sources */,
@@ -1699,7 +1696,6 @@
 				C94EE04922D0632500937CFA /* ReplyUI.swift in Sources */,
 				C9D9013122AB55F40040390E /* LoginInputPresenter.swift in Sources */,
 				C9EA654A22BC194D002BE1C8 /* GoalRepository.swift in Sources */,
-				C953153022D5EA5000EEB3C0 /* PublicGoalUI.swift in Sources */,
 				C99116B222B8A917007C67C7 /* PasswordEditingPresenterImpl.swift in Sources */,
 				C9328AAE22C732A90065027B /* PrivateAllPresenterImpl.swift in Sources */,
 				C9E6EAEB22E31AC0008D0809 /* FollowListManagingRouting.swift in Sources */,
@@ -1731,6 +1727,7 @@
 				C941332D22C8BD390082A01C /* DetailPresenterImpl.swift in Sources */,
 				C9CC28EF22AD1288006E69E5 /* LoginInputRouting.swift in Sources */,
 				C9EB3D4A22D7255B0063434A /* AccountLocalDataStore.swift in Sources */,
+				C9E5911C22E9630D0083E5F5 /* PublicTimelineContentUI.swift in Sources */,
 				C98C7A4622D8A73100EF9B8F /* KeyboardNotifier.swift in Sources */,
 				C9EB3D4C22D78A2B0063434A /* GrowingTextView+Extension.swift in Sources */,
 				C9C43B8722D0BD03006CBC1B /* ReplyPresenter.swift in Sources */,
@@ -1754,7 +1751,6 @@
 				C9F37E9322E36039003D503A /* FollowListManagingPresenter.swift in Sources */,
 				C9CC391622D5CD46001010F4 /* TimelineUseCase.swift in Sources */,
 				C9D77F8622C9C5C80007835B /* GoalPostEditRouting.swift in Sources */,
-				C97F25C122D5F8D600D61FF4 /* PublicGoalPresenterImpl.swift in Sources */,
 				C9D77F9322CA63120007835B /* DetailUseCase.swift in Sources */,
 				C97DDD9122AD83CC00A84219 /* AccountTranslator.swift in Sources */,
 				C9C43B7B22D09118006CBC1B /* HalfModalPresentationController.swift in Sources */,
@@ -1765,7 +1761,6 @@
 				C9D9011422AB502E0040390E /* UIButton+Extension.swift in Sources */,
 				C988631322C5E0F200CABD62 /* PrivateGoalViewController.swift in Sources */,
 				C9CC28EB22ACD89D006E69E5 /* LoginInputUI.swift in Sources */,
-				C97F25BE22D5F8C800D61FF4 /* PublicGoalPresenter.swift in Sources */,
 				C9D9011D22AB51830040390E /* UILabel+Extension.swift in Sources */,
 				C9C43B8122D09220006CBC1B /* HalfModalTransitionAnimator.swift in Sources */,
 				C9C43B8F22D0C813006CBC1B /* Reply.swift in Sources */,
@@ -1789,6 +1784,7 @@
 				C9F2497722B7B345007E82A0 /* EmailEditingPresenter.swift in Sources */,
 				C98E1A5C22E34DB900CC60BA /* FollowListRouting.swift in Sources */,
 				C97DDD8B22AD755B00A84219 /* AccountEntity.swift in Sources */,
+				C9E5912322E963BB0083E5F5 /* PublicTimelineContentPresenterImpl.swift in Sources */,
 				C9D77F8B22C9CB5E0007835B /* GoalPostEditPresenter.swift in Sources */,
 				C953154022D5F05300EEB3C0 /* UITableView+Extension.swift in Sources */,
 				C92FAA7822E35AA700459A08 /* FollowListCell.swift in Sources */,
@@ -1799,9 +1795,9 @@
 				C97DDD7D22AD544E00A84219 /* SignupInputPresenterImpl.swift in Sources */,
 				C953152E22D5EA4100EEB3C0 /* PublicGoalViewController.swift in Sources */,
 				C941332622C8B2DC0082A01C /* DetailRouting.swift in Sources */,
-				C953153822D5EA8000EEB3C0 /* PublicCompleteRouting.swift in Sources */,
 				C9C2808422BBD6A3002E905E /* GoalPost.swift in Sources */,
 				C9C43B7F22D09207006CBC1B /* HalfModalInteractiveTransition.swift in Sources */,
+				C9E5911A22E962E90083E5F5 /* GoalsBaseViewController.swift in Sources */,
 				C91D8E4222CA6495000379E3 /* DetailRemoteDataStore.swift in Sources */,
 				C90535CB22AFBD55006B2E04 /* Provider.swift in Sources */,
 				C9CC28F622AD3BF8006E69E5 /* SignupInputUI.swift in Sources */,

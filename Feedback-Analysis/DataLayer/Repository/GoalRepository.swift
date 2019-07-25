@@ -12,6 +12,8 @@ protocol GoalRepository {
     func setSelected(index: Int) -> Single<()>
     func getSelected() -> Single<Int>
     func getAuthorToken() -> Single<String>
+    func getGoalDocumentId() -> Single<String>
+    func setGoalDocumentId(_ value: String) -> Single<()>
 }
 
 struct GoalRepositoryImpl: GoalRepository {
@@ -66,5 +68,15 @@ struct GoalRepositoryImpl: GoalRepository {
     func getAuthorToken() -> Single<String> {
         let dataStore = GoalDataStoreFactory.createGoalLocalDataStore()
         return dataStore.getAuthorToken()
+    }
+    
+    func getGoalDocumentId() -> Single<String> {
+        let dataStore = GoalDataStoreFactory.createGoalLocalDataStore()
+        return dataStore.getGoalDocumentId()
+    }
+    
+    func setGoalDocumentId(_ value: String) -> Single<()> {
+        let dataStore = GoalDataStoreFactory.createGoalLocalDataStore()
+        return dataStore.setGoalDocumentId(value)
     }
 }

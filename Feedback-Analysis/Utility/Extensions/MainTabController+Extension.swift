@@ -84,11 +84,11 @@ extension MainTabController {
     func cretePublicGoalController() -> UIViewController {
         let repository = TimelineRepositoryImpl.shared
         let useCase = TimelineUseCaseImpl(repository: repository)
-        let presenter = PublicGoalPresenterImpl(useCase: useCase)
+        let presenter = PublicTimelineContentPresenterImpl(useCase: useCase)
         let vc = PublicGoalViewController()
         
-        let ui = PublicGoalUIImpl()
-        let routing = PublicGoalRoutingImpl()
+        let ui = PublicTimelineContentUIImpl()
+        let routing = PublicTimelineContentRoutingImpl()
         ui.viewController = vc
         ui.timeline.dataSource = vc.dataSource
         ui.timeline.delegate = presenter
@@ -100,11 +100,11 @@ extension MainTabController {
     func cretePublicCompleteController() -> UIViewController {
         let repository = TimelineRepositoryImpl.shared
         let useCase = TimelineUseCaseImpl(repository: repository)
-        let presenter = PublicCompletePresenterImpl(useCase: useCase)
+        let presenter = PublicTimelineContentPresenterImpl(useCase: useCase)
         let vc = PublicCompleteViewController()
         
-        let ui = PublicCompleteUIImpl()
-        let routing = PublicCompleteRoutingImpl()
+        let ui = PublicTimelineContentUIImpl()
+        let routing = PublicTimelineContentRoutingImpl()
         ui.viewController = vc
         ui.timeline.dataSource = vc.dataSource
         ui.timeline.delegate = presenter

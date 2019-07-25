@@ -11,6 +11,8 @@ protocol GoalPostEditPresenter: Presenter {
     
     func update(to documentRef: FirebaseDocumentRef, fields: GoalPost)
     func getAuthorToken(completion: @escaping (String) -> Void)
+    func getGoalDocumentId(completion: @escaping (String) -> Void)
+    func setGoalDocumentId(_ value: String)
 }
 
 protocol GoalPostEditPresenterView: class {
