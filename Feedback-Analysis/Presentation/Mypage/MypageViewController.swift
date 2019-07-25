@@ -5,6 +5,12 @@ import RxCocoa
 
 class MypageViewController: UIViewController {
     
+    typealias DataSource = PageViewDataSource<UIViewController>
+    
+    private(set) lazy var dataSource: DataSource = {
+        return DataSource(controllers: self.viewControllers)
+    }()
+    
     var ui: MypageUI!
     
     var routing: MypageRouting!
@@ -123,20 +129,5 @@ extension MypageViewController: UpdatingDelegate {
                 completion()
             }
         }
-    }
-}
-
-extension MypageViewController: UIPageViewControllerDataSource {
-    
-    func pageViewController(_ pageViewController: UIPageViewController,
-                            viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        return UIPageViewController.generateViewController(viewControllerBefore: viewController,
-                                                           viewControllers: viewControllers)
-    }
-    
-    func pageViewController(_ pageViewController: UIPageViewController,
-                            viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        return UIPageViewController.generateViewController(viewControllerAfter: viewController,
-                                                           viewControllers: viewControllers)
     }
 }

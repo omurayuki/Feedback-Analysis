@@ -5,6 +5,12 @@ import RxCocoa
 
 final class FollowListManagingViewController: UIViewController {
     
+    typealias DataSource = PageViewDataSource<UIViewController>
+    
+    private(set) lazy var dataSource: DataSource = {
+        return DataSource(controllers: self.viewControllers)
+    }()
+    
     var ui: FollowListManagingUI!
     
     var routing: FollowListManagingRouting!
@@ -18,8 +24,7 @@ final class FollowListManagingViewController: UIViewController {
     }
     
     var disposeBag: DisposeBag! {
-        didSet {
-        }
+        didSet {}
     }
     
     func inject(ui: FollowListManagingUI,
@@ -63,20 +68,5 @@ extension FollowListManagingViewController: FollowListManagingPresenterView {
         if let index = presenter.currentIndex {
             ui.followSegment.setIndex(index: index)
         }
-    }
-}
-
-extension FollowListManagingViewController: UIPageViewControllerDataSource {
-    
-    func pageViewController(_ pageViewController: UIPageViewController,
-                            viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        return UIPageViewController.generateViewController(viewControllerBefore: viewController,
-                                                           viewControllers: viewControllers)
-    }
-    
-    func pageViewController(_ pageViewController: UIPageViewController,
-                            viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        return UIPageViewController.generateViewController(viewControllerAfter: viewController,
-                                                           viewControllers: viewControllers)
     }
 }

@@ -40,13 +40,14 @@ extension MainTabController: MainTabbarProtocol {
         ui.viewController = vc
         routing.viewController = vc
         ui.timelineSegmented.delegate = presenter
-        ui.timelinePages.dataSource = vc
         ui.timelinePages.delegate = presenter
         vc.inject(ui: ui,
                   presenter: presenter,
                   routing: routing,
                   viewControllers: controllers,
                   disposeBag: DisposeBag())
+        
+        ui.timelinePages.dataSource = vc.dataSource
         
         return vc
     }
@@ -66,7 +67,6 @@ extension MainTabController: MainTabbarProtocol {
         let routing = MypageRoutingImpl()
         ui.viewController = vc
         ui.timelineSegmented.delegate = presenter
-        ui.timelinePages.dataSource = vc
         ui.timelinePages.delegate = presenter
         routing.viewController = vc
         vc.inject(ui: ui,
@@ -74,6 +74,8 @@ extension MainTabController: MainTabbarProtocol {
                   routing: routing,
                   viewControllers: controllers,
                   disposeBag: DisposeBag())
+        //// injectでcontrollersをセットしてからじゃないと、dataSourceの初期化内のcontrollersがnilになって落ちる
+        ui.timelinePages.dataSource = vc.dataSource
         
         return vc
     }

@@ -5,6 +5,12 @@ import RxCocoa
 
 class OtherPersonPageViewController: UIViewController {
     
+    typealias DataSource = PageViewDataSource<UIViewController>
+    
+    private(set) lazy var dataSource: DataSource = {
+        return DataSource(controllers: self.viewControllers)
+    }()
+    
     var ui: OtherPersonPageUI!
     
     var routing: OtherPersonPageRouting!
@@ -117,20 +123,5 @@ extension OtherPersonPageViewController {
                 bool ? (self.ui.followBtn.currentState = .following) : (self.ui.followBtn.currentState = .unFollowing)
             }
         }
-    }
-}
-
-extension OtherPersonPageViewController: UIPageViewControllerDataSource {
-    
-    func pageViewController(_ pageViewController: UIPageViewController,
-                            viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        return UIPageViewController.generateViewController(viewControllerBefore: viewController,
-                                                           viewControllers: viewControllers)
-    }
-    
-    func pageViewController(_ pageViewController: UIPageViewController,
-                            viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        return UIPageViewController.generateViewController(viewControllerAfter: viewController,
-                                                           viewControllers: viewControllers)
     }
 }

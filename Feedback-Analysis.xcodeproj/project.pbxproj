@@ -212,6 +212,7 @@
 		C9E5911E22E9633E0083E5F5 /* PublicTimelineContentRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E5911D22E9633E0083E5F5 /* PublicTimelineContentRouting.swift */; };
 		C9E5912122E963980083E5F5 /* PublicTimelineContentPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E5912022E963980083E5F5 /* PublicTimelineContentPresenter.swift */; };
 		C9E5912322E963BB0083E5F5 /* PublicTimelineContentPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E5912222E963BB0083E5F5 /* PublicTimelineContentPresenterImpl.swift */; };
+		C9E5912522E96D610083E5F5 /* PageViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E5912422E96D610083E5F5 /* PageViewDataSource.swift */; };
 		C9E6EAE722E31AB2008D0809 /* FollowListManagingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E6EAE622E31AB2008D0809 /* FollowListManagingViewController.swift */; };
 		C9E6EAE922E31AB8008D0809 /* FollowListManagingUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E6EAE822E31AB8008D0809 /* FollowListManagingUI.swift */; };
 		C9E6EAEB22E31AC0008D0809 /* FollowListManagingRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E6EAEA22E31AC0008D0809 /* FollowListManagingRouting.swift */; };
@@ -455,6 +456,7 @@
 		C9E5911D22E9633E0083E5F5 /* PublicTimelineContentRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicTimelineContentRouting.swift; sourceTree = "<group>"; };
 		C9E5912022E963980083E5F5 /* PublicTimelineContentPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicTimelineContentPresenter.swift; sourceTree = "<group>"; };
 		C9E5912222E963BB0083E5F5 /* PublicTimelineContentPresenterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicTimelineContentPresenterImpl.swift; sourceTree = "<group>"; };
+		C9E5912422E96D610083E5F5 /* PageViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewDataSource.swift; sourceTree = "<group>"; };
 		C9E6EAE622E31AB2008D0809 /* FollowListManagingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowListManagingViewController.swift; sourceTree = "<group>"; };
 		C9E6EAE822E31AB8008D0809 /* FollowListManagingUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowListManagingUI.swift; sourceTree = "<group>"; };
 		C9E6EAEA22E31AC0008D0809 /* FollowListManagingRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowListManagingRouting.swift; sourceTree = "<group>"; };
@@ -1285,6 +1287,7 @@
 			children = (
 				C9D9011622AB50D20040390E /* TextComponent.swift */,
 				C988631822C5E6FF00CABD62 /* TableViewDataSource.swift */,
+				C9E5912422E96D610083E5F5 /* PageViewDataSource.swift */,
 			);
 			path = Widget;
 			sourceTree = "<group>";
@@ -1619,6 +1622,7 @@
 				C9A6066C22B26E1F00184E0F /* MypageRepository.swift in Sources */,
 				C9D9013822AB5E480040390E /* LoginInputPresenterImpl.swift in Sources */,
 				C9D9014922AB85890040390E /* TopRouting.swift in Sources */,
+				C9E5912522E96D610083E5F5 /* PageViewDataSource.swift in Sources */,
 				C9C43B7D22D091DA006CBC1B /* HalfModalTransitioningDelegate.swift in Sources */,
 				C97DDD9622AD879800A84219 /* AccountRemoteDataStore.swift in Sources */,
 				C9D77F8F22CA41870007835B /* CommentCell.swift in Sources */,

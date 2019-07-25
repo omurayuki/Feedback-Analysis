@@ -25,7 +25,6 @@ final class FollowListRoutingImpl: FollowListRouting {
         let routing = OtherPersonPageRoutingImpl()
         ui.viewController = vc
         ui.timelineSegmented.delegate = presenter
-        ui.timelinePages.dataSource = vc
         ui.timelinePages.delegate = presenter
         routing.viewController = vc
         vc.inject(ui: ui,
@@ -33,7 +32,9 @@ final class FollowListRoutingImpl: FollowListRouting {
                   routing: routing,
                   viewControllers: controllers,
                   disposeBag: DisposeBag())
+        
         vc.recieve(with: token)
+        ui.timelinePages.dataSource = vc.dataSource
         
         viewController?.navigationController?.pushViewController(vc, animated: true)
     }

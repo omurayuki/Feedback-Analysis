@@ -2,7 +2,7 @@
 
  //////////クリティカル修正点
  // limit タイムラインのみ　マイページはそこまでデータが大きくならないという(アプリの性質的に更新頻度が多くないと予想)前提でぐるぐるは一旦実装しない
- //  cellに仕事をさせすぎている問題
+ // cellに仕事をさせすぎている問題
  // MainTabControllerでappuserdefaultを直接読んでる
  // PublicCompleteViewControllerとPublicGoalViewControllerでuser情報fetch中にisUserEnable = false にしている問題(userのphotoをタップさせたくないだけ)
  // detailPresenterImplでgetGoalsAuthorTokensを使ってcommentのauthorTokenを操作しているが、getCommentAuthorTokensにするべき(replyPresenterImplも)
@@ -18,7 +18,6 @@
  // decodable
  // cellの共通インターフェース作成
  // providerリファクタ
- // pageViewControllerのdataSourceを切り分け
  // firebaseのgoalsのデータを削除したときにcommentテーブルのデータも削除されない
  // firebaseRefをpresenterで普通に記述しているけど、今思ったらこのデータはpresenterが意識すべきではないと思う(というのも、エンドポイントがsqlデータベースに変わった時に、presenter層も影響を受けるから)
  // mypageやotherpageのprofileはaddsnapshotlistener

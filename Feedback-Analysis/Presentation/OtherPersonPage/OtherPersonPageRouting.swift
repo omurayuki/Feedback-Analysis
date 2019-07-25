@@ -25,13 +25,14 @@ final class OtherPersonPageRoutingImpl: OtherPersonPageRouting {
         ui.viewController = vc
         routing.viewController = vc
         ui.followSegment.delegate = presenter
-        ui.followPages.dataSource = vc
         ui.followPages.delegate = presenter
         vc.inject(ui: ui,
                   presenter: presenter,
                   routing: routing,
                   viewControllers: controllers,
                   disposeBag: DisposeBag())
+        
+        ui.followPages.dataSource = vc.dataSource
         
         viewController?.navigationController?.pushViewController(vc, animated: true)
     }

@@ -5,6 +5,12 @@ import RxCocoa
 
 final class TimelineViewController: UIViewController {
     
+    typealias DataSource = PageViewDataSource<UIViewController>
+    
+    private(set) lazy var dataSource: DataSource = {
+        return DataSource(controllers: self.viewControllers)
+    }()
+    
     var ui: TimelineUI!
     
     var routing: TimelineRouting!
@@ -67,20 +73,5 @@ extension TimelineViewController: TimelinePresenterView {
         if let index = presenter.currentIndex {
             ui.timelineSegmented.setIndex(index: index)
         }
-    }
-}
-
-extension TimelineViewController: UIPageViewControllerDataSource {
-    
-    func pageViewController(_ pageViewController: UIPageViewController,
-                            viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        return UIPageViewController.generateViewController(viewControllerBefore: viewController,
-                                                           viewControllers: viewControllers)
-    }
-    
-    func pageViewController(_ pageViewController: UIPageViewController,
-                            viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        return UIPageViewController.generateViewController(viewControllerAfter: viewController,
-                                                           viewControllers: viewControllers)
     }
 }
