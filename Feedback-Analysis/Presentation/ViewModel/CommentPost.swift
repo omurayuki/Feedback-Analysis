@@ -42,3 +42,15 @@ struct CommentPost {
                 Key.updatedAt.description: updatedAt]
     }
 }
+
+extension CommentPost {
+    
+    static func createComment(token: String, goalDocumentId: String, comment: String) -> CommentPost {
+        return CommentPost(authorToken: token,
+                           goalDocumentId: goalDocumentId,
+                           comment: comment,
+                           likeCount: 0, repliedCount: 0,
+                           createdAt: FieldValue.serverTimestamp(),
+                           updatedAt: FieldValue.serverTimestamp())
+    }
+}

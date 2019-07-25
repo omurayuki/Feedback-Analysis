@@ -30,3 +30,13 @@ struct ReplyPost {
                 Key.updatedAt.description: updatedAt]
     }
 }
+
+extension ReplyPost {
+    
+    static func createReply(token: String, reply: String) -> ReplyPost {
+        return ReplyPost(authorToken: token,
+                         reply: reply,
+                         createdAt: FieldValue.serverTimestamp(),
+                         updatedAt: FieldValue.serverTimestamp())
+    }
+}

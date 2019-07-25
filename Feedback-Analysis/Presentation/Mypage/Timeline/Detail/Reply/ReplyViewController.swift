@@ -124,7 +124,7 @@ extension ReplyViewController: ReplyPresenterView {
         presenter.getDocumentIds(completion: { [unowned self] _, commentId in
             self.validatePostedField(postedValue: self.ui.replyField.text, account: { value in
                 self.presenter.post(to: .replyRef(commentDocument: commentId),
-                                    reply: self.createReply(token: data.authToken, reply: value))
+                                    reply: ReplyPost.createReply(token: data.authToken, reply: value))
             })
         })
     }
@@ -141,19 +141,11 @@ extension ReplyViewController: ReplyPresenterView {
         ui.updateReplyCount(replyDataSource.listItems.count)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
             self.presenter.view.updateLoading(false)
-            self.ui.replyTable.reloadData()
         }
     }
     
     func didSelect(tableView: UITableView, indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-    }
-    
-    func createReply(token: String, reply: String) -> ReplyPost {
-        return ReplyPost(authorToken: token,
-                         reply: reply,
-                         createdAt: FieldValue.serverTimestamp(),
-                         updatedAt: FieldValue.serverTimestamp())
     }
     
     func keyboardPresent(_ height: CGFloat) {

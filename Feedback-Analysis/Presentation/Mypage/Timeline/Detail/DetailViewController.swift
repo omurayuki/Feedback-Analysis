@@ -120,7 +120,7 @@ extension DetailViewController: DetailPresenterView {
         presenter.getDocumentId(completion: { [unowned self] documentId in
             self.validatePostedField(postedValue: self.ui.commentField.text, account: { [unowned self] value in
                 self.presenter.post(to: .commentRef(goalDocument: documentId),
-                                    comment: self.createComment(token: data.authToken,
+                                    comment: CommentPost.createComment(token: data.authToken,
                                                                 goalDocumentId: documentId,
                                                                 comment: value))
             })
@@ -232,15 +232,6 @@ extension DetailViewController {
     func updateLikeCount(index: Int, count: Int) {
         commentDataSource.listItems[index].likeCount += count
         ui.commentTable.reloadData()
-    }
-    
-    func createComment(token: String, goalDocumentId: String, comment: String) -> CommentPost {
-        return CommentPost(authorToken: token,
-                           goalDocumentId: goalDocumentId,
-                           comment: comment,
-                           likeCount: 0, repliedCount: 0,
-                           createdAt: FieldValue.serverTimestamp(),
-                           updatedAt: FieldValue.serverTimestamp())
     }
 }
 
