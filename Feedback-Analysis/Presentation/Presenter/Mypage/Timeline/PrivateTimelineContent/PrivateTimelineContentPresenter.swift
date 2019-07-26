@@ -3,8 +3,8 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-protocol PrivateCompletePresenter {
-    var view: PrivateCompletePresenterView! { get set }
+protocol PrivateTimelineContentPresenter {
+    var view: PrivateTimelineContentPresenterView! { get set }
     var isLoading: BehaviorRelay<Bool> { get }
     
     func fetch(from queryRef: FirebaseQueryRef, authorToken: String, completion: (() -> Void)?)
@@ -17,12 +17,12 @@ protocol PrivateCompletePresenter {
     func getAuthorToken(completion: @escaping (String) -> Void)
 }
 
-protocol PrivateCompletePresenterView: class {
+protocol PrivateTimelineContentPresenterView: class {
     var disposeBag: DisposeBag! { get }
     
     func inject(ui: PrivateTimelineContentUI,
-                presenter: PrivateCompletePresenter,
-                routing: PrivateCompleteRouting,
+                presenter: PrivateTimelineContentPresenter,
+                routing: PrivateTimelineContentRouting,
                 disposeBag: DisposeBag)
     func didFetchGoalData(timeline: [Timeline])
     func didSelect(indexPath: IndexPath, tableView: UITableView)

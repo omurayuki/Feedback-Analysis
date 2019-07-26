@@ -4,7 +4,7 @@ import RxSwift
 import RxCocoa
 import FirebaseFirestore
 
-class GoalsBaseViewController: UIViewController {
+class PublicTimelineContentViewController: UIViewController {
     
     typealias DataSource = TableViewDataSource<TimelineCell, Timeline>
     
@@ -13,10 +13,10 @@ class GoalsBaseViewController: UIViewController {
                           listItems: [],
                           isSkelton: false,
                           cellConfigurationHandler: { (cell, item, indexPath) in
-                            cell.cellTapDelegate = self
-                            cell.userPhotoTapDelegate = self
-                            cell.identificationId = indexPath.row
-                            cell.content = item
+            cell.cellTapDelegate = self
+            cell.userPhotoTapDelegate = self
+            cell.identificationId = indexPath.row
+            cell.content = item
         })
     }()
     
@@ -75,7 +75,7 @@ class GoalsBaseViewController: UIViewController {
     }
 }
 
-extension GoalsBaseViewController: PublicTimelineContentPresenterView {
+extension PublicTimelineContentViewController: PublicTimelineContentPresenterView {
     
     func updateLoading(_ isLoading: Bool) {
         presenter.isLoading.accept(isLoading)
@@ -134,7 +134,7 @@ extension GoalsBaseViewController: PublicTimelineContentPresenterView {
     }
 }
 
-extension GoalsBaseViewController {
+extension PublicTimelineContentViewController {
     
     func updateLikeCount(index: Int, count: Int) {
         dataSource.listItems[index].likeCount += count
@@ -142,7 +142,7 @@ extension GoalsBaseViewController {
     }
 }
 
-extension GoalsBaseViewController: CellTapDelegate {
+extension PublicTimelineContentViewController: CellTapDelegate {
     
     func tappedLikeBtn(index: Int) {
         self.presenter.getAuthorToken(completion: { [unowned self] token in
@@ -153,7 +153,7 @@ extension GoalsBaseViewController: CellTapDelegate {
     }
 }
 
-extension GoalsBaseViewController: UserPhotoTapDelegate {
+extension PublicTimelineContentViewController: UserPhotoTapDelegate {
     
     func tappedUserPhoto(index: Int) {
         presenter.getAuthorToken { [unowned self] subjectToken in

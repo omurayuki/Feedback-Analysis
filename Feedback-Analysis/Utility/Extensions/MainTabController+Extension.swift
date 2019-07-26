@@ -87,7 +87,7 @@ extension MainTabController {
         let repository = TimelineRepositoryImpl.shared
         let useCase = TimelineUseCaseImpl(repository: repository)
         let presenter = PublicTimelineContentPresenterImpl(useCase: useCase)
-        let vc = PublicGoalViewController()
+        let vc = PublicTimelineContentViewController()
         
         let ui = PublicTimelineContentUIImpl()
         let routing = PublicTimelineContentRoutingImpl()
@@ -103,7 +103,7 @@ extension MainTabController {
         let repository = TimelineRepositoryImpl.shared
         let useCase = TimelineUseCaseImpl(repository: repository)
         let presenter = PublicTimelineContentPresenterImpl(useCase: useCase)
-        let vc = PublicCompleteViewController()
+        let vc = PublicTimelineContentViewController()
         
         let ui = PublicTimelineContentUIImpl()
         let routing = PublicTimelineContentRoutingImpl()
@@ -127,11 +127,11 @@ class CreateControllers: NSObject {
     func createGoalController() -> UIViewController {
         let repository = GoalRepositoryImpl.shared
         let useCase = GoalPostUseCaseImpl(repository: repository)
-        let presenter = PrivateGoalPresenterImpl(useCase: useCase)
+        let presenter = PrivateTimelineContentPresenterImpl(useCase: useCase)
         let vc = PrivateGoalViewController()
         
-        let ui = PrivateGoalUIImpl()
-        let routing = PrivateGoalRoutingImpl()
+        let ui = PrivateTimelineContentUIImpl()
+        let routing = PrivateTimelineContentRoutingImpl()
         ui.viewController = vc
         ui.timeline.dataSource = vc.dataSource
         ui.timeline.delegate = presenter
@@ -144,11 +144,11 @@ class CreateControllers: NSObject {
     func createCompleteController() -> UIViewController {
         let repository = GoalRepositoryImpl.shared
         let useCase = GoalPostUseCaseImpl(repository: repository)
-        let presenter = PrivateCompletePresenterImpl(useCase: useCase)
+        let presenter = PrivateTimelineContentPresenterImpl(useCase: useCase)
         let vc = PrivateCompleteViewController()
         
-        let ui = PrivateCompleteUIImpl()
-        let routing = PrivateCompleteRoutingImpl()
+        let ui = PrivateTimelineContentUIImpl()
+        let routing = PrivateTimelineContentRoutingImpl()
         ui.viewController = vc
         ui.timeline.dataSource = vc.dataSource
         ui.timeline.delegate = presenter
@@ -161,11 +161,11 @@ class CreateControllers: NSObject {
     func createDraftController() -> UIViewController {
         let repository = GoalRepositoryImpl.shared
         let useCase = GoalPostUseCaseImpl(repository: repository)
-        let presenter = PrivateDraftPresenterImpl(useCase: useCase)
+        let presenter = PrivateTimelineContentPresenterImpl(useCase: useCase)
         let vc = PrivateDraftViewController()
         
-        let ui = PrivateDraftUIImpl()
-        let routing = PrivateDraftRoutingImpl()
+        let ui = PrivateTimelineContentUIImpl()
+        let routing = PrivateTimelineContentRoutingImpl()
         ui.viewController = vc
         ui.timeline.dataSource = vc.dataSource
         ui.timeline.delegate = presenter
@@ -178,11 +178,11 @@ class CreateControllers: NSObject {
     func createAllController() -> UIViewController {
         let repository = GoalRepositoryImpl.shared
         let useCase = GoalPostUseCaseImpl(repository: repository)
-        let presenter = PrivateAllPresenterImpl(useCase: useCase)
+        let presenter = PrivateTimelineContentPresenterImpl(useCase: useCase)
         let vc = PrivateAllViewController()
         
-        let ui = PrivateAllUIImpl()
-        let routing = PrivateAllRoutingImpl()
+        let ui = PrivateTimelineContentUIImpl()
+        let routing = PrivateTimelineContentRoutingImpl()
         ui.viewController = vc
         ui.timeline.dataSource = vc.dataSource
         ui.timeline.delegate = presenter

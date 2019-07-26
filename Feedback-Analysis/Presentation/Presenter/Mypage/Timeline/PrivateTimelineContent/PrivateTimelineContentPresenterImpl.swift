@@ -2,8 +2,9 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-class PrivateCompletePresenterImpl: NSObject, PrivateCompletePresenter {
-    var view: PrivateCompletePresenterView!
+class PrivateTimelineContentPresenterImpl: NSObject, PrivateTimelineContentPresenter {
+    
+    var view: PrivateTimelineContentPresenterView!
     
     var isLoading: BehaviorRelay<Bool> = BehaviorRelay<Bool>(value: false)
     
@@ -19,9 +20,9 @@ class PrivateCompletePresenterImpl: NSObject, PrivateCompletePresenter {
             .subscribe(onNext: { [unowned self] result in
                 self.view.updateLoading(false)
                 self.view.didFetchGoalData(timeline: result)
-            }, onError: { error in
-                self.view.updateLoading(false)
-                self.view.showError(message: error.localizedDescription)
+            }, onError: { [unowned self] error in
+                    self.view.updateLoading(false)
+                    self.view.showError(message: error.localizedDescription)
             }).disposed(by: view.disposeBag)
     }
     
@@ -110,7 +111,7 @@ class PrivateCompletePresenterImpl: NSObject, PrivateCompletePresenter {
     }
 }
 
-extension PrivateCompletePresenterImpl: UITableViewDelegate {
+extension PrivateTimelineContentPresenterImpl: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         view.didSelect(indexPath: indexPath, tableView: tableView)

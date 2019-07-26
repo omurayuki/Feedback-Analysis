@@ -1,10 +1,7 @@
 import Foundation
 import UIKit
-import RxSwift
-import RxCocoa
-import FirebaseFirestore
 
-class PublicGoalViewController: GoalsBaseViewController {
+class PublicGoalViewController: PublicTimelineContentViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()

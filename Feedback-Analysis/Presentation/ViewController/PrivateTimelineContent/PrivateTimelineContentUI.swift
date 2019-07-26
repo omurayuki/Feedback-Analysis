@@ -1,6 +1,6 @@
 import UIKit
 
-final class PrivateAllUIImpl: PrivateTimelineContentUI {
+final class PrivateTimelineContentUIImpl: PrivateTimelineContentUI {
     
     weak var viewController: UIViewController?
     
@@ -16,7 +16,7 @@ final class PrivateAllUIImpl: PrivateTimelineContentUI {
     }()
 }
 
-extension PrivateAllUIImpl {
+extension PrivateTimelineContentUIImpl {
     
     func setup() {
         guard let vc = viewController else { return }
