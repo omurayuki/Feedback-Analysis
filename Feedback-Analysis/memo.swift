@@ -17,7 +17,6 @@
  // goalDocumentIdをdocumentIdと書いているから修正
  // decodable
  // cellの共通インターフェース作成
- // providerリファクタ
  // firebaseのgoalsのデータを削除したときにcommentテーブルのデータも削除されない
  // firebaseRefをpresenterで普通に記述しているけど、今思ったらこのデータはpresenterが意識すべきではないと思う(というのも、エンドポイントがsqlデータベースに変わった時に、presenter層も影響を受けるから)
  // mypageやotherpageのprofileはaddsnapshotlistener

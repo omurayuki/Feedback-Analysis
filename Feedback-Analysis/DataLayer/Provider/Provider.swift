@@ -59,17 +59,17 @@ struct Provider {
     
     func get(documentRef: FirebaseDocumentRef,
              completion: @escaping (_ response: FirestoreResponse<DocumentSnapshot>) -> Void) {
-            documentRef.destination.getDocument { snapshot, error in
-                if let error = error {
-                    completion(.failure(error))
-                    return
-                }
-                guard let snapshot = snapshot, snapshot.exists else {
-                    completion(.unknown)
-                    return
-                }
-                completion(.success(snapshot))
+        documentRef.destination.getDocument { snapshot, error in
+            if let error = error {
+                completion(.failure(error))
+                return
             }
+            guard let snapshot = snapshot, snapshot.exists else {
+                completion(.unknown)
+                return
+            }
+            completion(.success(snapshot))
+        }
     }
     
     func gets(queryRef: FirebaseQueryRef,
@@ -114,40 +114,5 @@ struct Provider {
             }
             completion(.success(documents))
         }
-    }
-    
-    //// マイページの場合これを使ってもいいが、タイムラインの場合これを使うと名前とイメージが全て同一人物になる
-    func observeQuery(queryRef: FirebaseQueryRef, authorToken: String) -> Observable<[GoalEntity]> {
-        return Observable.create({ observer -> Disposable in
-            queryRef
-                .destination
-                .addSnapshotListener({ goalsSnapshot, error in
-                    if let error = error {
-                        observer.on(.error(FirebaseError.resultError(error)))
-                        return
-                    }
-                    FirebaseDocumentRef
-                        .userRef(authorToken: authorToken)
-                        .destination
-                        .addSnapshotListener({ userSnapshot, error in
-                            if let error = error {
-                                observer.on(.error(FirebaseError.resultError(error)))
-                                return
-                            }
-                            guard let userDocument = userSnapshot?.data() else {
-                                observer.on(.error(FirebaseError.unknown))
-                                return
-                            }
-                            guard let documents = goalsSnapshot?.documents else {
-                                observer.on(.error(FirebaseError.unknown))
-                                return
-                            }
-                            observer.on(.next(documents.compactMap { GoalEntity(user: UserEntity(document: userDocument),
-                                                                                document: $0.data(),
-                                                                                documentId: $0.documentID) }))
-                        })
-                })
-            return Disposables.create()
-        })
     }
 }

@@ -48,7 +48,19 @@ struct GoalRemoteDataStoreImpl: GoalRemoteDataStore {
     }
     
     func fetch(from queryRef: FirebaseQueryRef, authorToken: String) -> Observable<[GoalEntity]> {
-        return Provider().observeQuery(queryRef: queryRef, authorToken: authorToken)
+        return Observable.create({ observer -> Disposable in
+            GoalEntityManager().fetchMypageEntities(queryRef: queryRef, authorToken: authorToken) { response in
+                switch response {
+                case .success(let entities):
+                    observer.on(.next(entities))
+                case .failure(let error):
+                    observer.on(.error(FirebaseError.resultError(error)))
+                case .unknown:
+                    observer.on(.error(FirebaseError.unknown))
+                }
+            }
+            return Disposables.create()
+        })
     }
     
     func fetch(timeline queryRef: FirebaseQueryRef) -> Observable<[GoalEntity]> {

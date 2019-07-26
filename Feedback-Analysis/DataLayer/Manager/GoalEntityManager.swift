@@ -5,19 +5,18 @@ struct GoalEntityManager {
     
     func fetchMypageEntities(queryRef: FirebaseQueryRef, authorToken: String,
                              completion: @escaping (_ response: FirestoreResponse<[GoalEntity]>) -> Void) {
-            var results = [GoalEntity]()
             Provider().observe(queryRef: queryRef, completion: { response in
                 switch response {
-                case .success(let entities):
-                    entities.forEach { goal in
+                case .success(let goalEntities):
+                    goalEntities.forEach { goal in
                         Provider().observe(documentRef: FirebaseDocumentRef.userRef(authorToken: authorToken),
                                            completion: { response in
                             switch response {
-                            case .success(let response):
-                                guard let userData = response.data() else { return }
-                                results.append(GoalEntity(user: UserEntity(document: userData),
-                                                          document: goal.data(),
-                                                          documentId: goal.documentID))
+                            case .success(let userEntity):
+                                guard let userEntity = userEntity.data() else { return }
+                                completion(.success(goalEntities.compactMap { GoalEntity(user: UserEntity(document: userEntity),
+                                                                                         document: $0.data(),
+                                                                                         documentId: $0.documentID) }))
                             case .failure(let error):
                                 completion(.failure(error))
                             case .unknown:
@@ -25,9 +24,6 @@ struct GoalEntityManager {
                             }
                         })
                     }
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.7, execute: {
-                        completion(.success(results))
-                    })
                 case .failure(let error):
                    completion(.failure(error))
                 case .unknown:
