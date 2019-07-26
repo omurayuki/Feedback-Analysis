@@ -9,6 +9,12 @@ enum FirebaseError: Error {
     case unknown
 }
 
+enum FirestoreResponse<T> {
+    case success(T)
+    case failure(Error)
+    case unknown
+}
+
 enum FirebaseDocumentRef {
     case userRef(authorToken: String)
     case authorRef(authorToken: String)

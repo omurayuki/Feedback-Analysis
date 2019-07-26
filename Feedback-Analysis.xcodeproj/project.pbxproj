@@ -119,6 +119,12 @@
 		C98E1A5C22E34DB900CC60BA /* FollowListRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98E1A5B22E34DB900CC60BA /* FollowListRouting.swift */; };
 		C98E1BB622B7370100D132D5 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98E1BB522B7370100D132D5 /* UIImageView+Extension.swift */; };
 		C98E1BB822B7456700D132D5 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98E1BB722B7456700D132D5 /* ImagePicker.swift */; };
+		C990788B22EAD0C9009076FA /* GoalEntityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C990788A22EAD0C9009076FA /* GoalEntityManager.swift */; };
+		C990788E22EAD43C009076FA /* AccountEntityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C990788D22EAD43C009076FA /* AccountEntityManager.swift */; };
+		C990789022EAD689009076FA /* CommentEntityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C990788F22EAD689009076FA /* CommentEntityManager.swift */; };
+		C990789222EAD694009076FA /* ReplyEntityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C990789122EAD694009076FA /* ReplyEntityManager.swift */; };
+		C990789422EAD6B7009076FA /* UserEntityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C990789322EAD6B7009076FA /* UserEntityManager.swift */; };
+		C990789622EAFE10009076FA /* JustToBeSure.swift in Sources */ = {isa = PBXBuildFile; fileRef = C990789522EAFE10009076FA /* JustToBeSure.swift */; };
 		C99116AA22B8A30C007C67C7 /* PasswordEditingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99116A922B8A30C007C67C7 /* PasswordEditingViewController.swift */; };
 		C99116AC22B8A318007C67C7 /* PasswordEditingUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99116AB22B8A318007C67C7 /* PasswordEditingUI.swift */; };
 		C99116AE22B8A323007C67C7 /* PasswordEditingRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99116AD22B8A323007C67C7 /* PasswordEditingRouting.swift */; };
@@ -361,6 +367,12 @@
 		C98E1A5B22E34DB900CC60BA /* FollowListRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowListRouting.swift; sourceTree = "<group>"; };
 		C98E1BB522B7370100D132D5 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 		C98E1BB722B7456700D132D5 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		C990788A22EAD0C9009076FA /* GoalEntityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalEntityManager.swift; sourceTree = "<group>"; };
+		C990788D22EAD43C009076FA /* AccountEntityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountEntityManager.swift; sourceTree = "<group>"; };
+		C990788F22EAD689009076FA /* CommentEntityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentEntityManager.swift; sourceTree = "<group>"; };
+		C990789122EAD694009076FA /* ReplyEntityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplyEntityManager.swift; sourceTree = "<group>"; };
+		C990789322EAD6B7009076FA /* UserEntityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEntityManager.swift; sourceTree = "<group>"; };
+		C990789522EAFE10009076FA /* JustToBeSure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JustToBeSure.swift; sourceTree = "<group>"; };
 		C99116A922B8A30C007C67C7 /* PasswordEditingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordEditingViewController.swift; sourceTree = "<group>"; };
 		C99116AB22B8A318007C67C7 /* PasswordEditingUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordEditingUI.swift; sourceTree = "<group>"; };
 		C99116AD22B8A323007C67C7 /* PasswordEditingRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordEditingRouting.swift; sourceTree = "<group>"; };
@@ -958,6 +970,7 @@
 				C9A1573422A6CA1F00D7D047 /* AppDelegate.swift */,
 				C958D9E022B5ACF800565EDE /* Localizable.strings */,
 				C95ADECF22AB141D00D851A0 /* R.generated.swift */,
+				C990789522EAFE10009076FA /* JustToBeSure.swift */,
 				C94704D222D390D200DF2F16 /* memo.swift */,
 				C9D9010322AB44150040390E /* Utility */,
 				C9D9010422AB44270040390E /* DataLayer */,
@@ -1200,6 +1213,7 @@
 			isa = PBXGroup;
 			children = (
 				C90535C922AFBD33006B2E04 /* Provider */,
+				C9F8321F22EACF7F00656207 /* Manager */,
 				C97DDD9422AD878900A84219 /* DataStore */,
 				C97DDD8C22AD829B00A84219 /* Repository */,
 				C97DDD8922AD755500A84219 /* Entity */,
@@ -1472,6 +1486,18 @@
 			path = Follow;
 			sourceTree = "<group>";
 		};
+		C9F8321F22EACF7F00656207 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				C990788D22EAD43C009076FA /* AccountEntityManager.swift */,
+				C990789322EAD6B7009076FA /* UserEntityManager.swift */,
+				C990788A22EAD0C9009076FA /* GoalEntityManager.swift */,
+				C990788F22EAD689009076FA /* CommentEntityManager.swift */,
+				C990789122EAD694009076FA /* ReplyEntityManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
 		CAAD1932AE5B4EA8D832F051 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -1622,10 +1648,12 @@
 				C9A6066C22B26E1F00184E0F /* MypageRepository.swift in Sources */,
 				C9D9013822AB5E480040390E /* LoginInputPresenterImpl.swift in Sources */,
 				C9D9014922AB85890040390E /* TopRouting.swift in Sources */,
+				C990788E22EAD43C009076FA /* AccountEntityManager.swift in Sources */,
 				C9E5912522E96D610083E5F5 /* PageViewDataSource.swift in Sources */,
 				C9C43B7D22D091DA006CBC1B /* HalfModalTransitioningDelegate.swift in Sources */,
 				C97DDD9622AD879800A84219 /* AccountRemoteDataStore.swift in Sources */,
 				C9D77F8F22CA41870007835B /* CommentCell.swift in Sources */,
+				C990789622EAFE10009076FA /* JustToBeSure.swift in Sources */,
 				C972692A22BB3BA300CDFD59 /* Genre.swift in Sources */,
 				C9328A9C22C72FA00065027B /* PrivateDraftViewController.swift in Sources */,
 				C9D9013B22AB5E800040390E /* TopViewController.swift in Sources */,
@@ -1649,6 +1677,7 @@
 				C9EA654822BBDD20002BE1C8 /* GoalPostUseCase.swift in Sources */,
 				C9CC391A22D5D682001010F4 /* MainTabController+Extension.swift in Sources */,
 				C9A6067522B2A69D00184E0F /* UserEntity.swift in Sources */,
+				C990789022EAD689009076FA /* CommentEntityManager.swift in Sources */,
 				C97F25C522D6312A00D61FF4 /* Entity.swift in Sources */,
 				C97DDD7B22AD543F00A84219 /* SignupInputPresenter.swift in Sources */,
 				C9A6066722B26CCB00184E0F /* MypagePresenterImpl.swift in Sources */,
@@ -1725,6 +1754,7 @@
 				C9D9011722AB50D20040390E /* TextComponent.swift in Sources */,
 				C9D9011222AB4F130040390E /* UIBarButtonItem+Extension.swift in Sources */,
 				C9A6065922B1DF8700184E0F /* TimelineCell.swift in Sources */,
+				C990788B22EAD0C9009076FA /* GoalEntityManager.swift in Sources */,
 				C9B55D1422B1010C00845381 /* RemindPresenterImpl.swift in Sources */,
 				C91FA65622B4FF8B006D9E6D /* EditPresenterImpl.swift in Sources */,
 				C9F2497322B79D1F007E82A0 /* EmailEditingRouting.swift in Sources */,
@@ -1757,6 +1787,8 @@
 				C9D77F8622C9C5C80007835B /* GoalPostEditRouting.swift in Sources */,
 				C9D77F9322CA63120007835B /* DetailUseCase.swift in Sources */,
 				C97DDD9122AD83CC00A84219 /* AccountTranslator.swift in Sources */,
+				C990789222EAD694009076FA /* ReplyEntityManager.swift in Sources */,
+				C990789422EAD6B7009076FA /* UserEntityManager.swift in Sources */,
 				C9C43B7B22D09118006CBC1B /* HalfModalPresentationController.swift in Sources */,
 				C93271E222CF6E6100AA9BA6 /* DetailLocalDataStore.swift in Sources */,
 				C9328AA622C732130065027B /* PrivateAllViewController.swift in Sources */,

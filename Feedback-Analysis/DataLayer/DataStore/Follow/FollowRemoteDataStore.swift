@@ -8,13 +8,35 @@ protocol FollowRemoteDataStore {
 
 struct FollowRemoteDataStoreImpl: FollowRemoteDataStore {
     
-    let disposeBag = DisposeBag()
-    
     func fetchFollower(from queryRef: FirebaseQueryRef) -> Single<[UserEntity]> {
-        return Provider().getUserFollowerEntities(queryRef: queryRef)
+        return Single.create(subscribe: { single -> Disposable in
+            UserEntityManager().fetchUserFollowerEntities(queryRef: queryRef, completion: { response in
+                switch response {
+                case .success(let entities):
+                    single(.success(entities))
+                case .failure(let error):
+                    single(.error(FirebaseError.resultError(error)))
+                case .unknown:
+                    single(.error(FirebaseError.unknown))
+                }
+            })
+            return Disposables.create()
+        })
     }
     
     func fetchFollowee(from queryRef: FirebaseQueryRef) -> Single<[UserEntity]> {
-        return Provider().getUserFolloweeEntities(queryRef: queryRef)
+        return Single.create(subscribe: { single -> Disposable in
+            UserEntityManager().fetchUserFolloweeEntities(queryRef: queryRef, completion: { response in
+                switch response {
+                case .success(let entities):
+                    single(.success(entities))
+                case .failure(let error):
+                    single(.error(FirebaseError.resultError(error)))
+                case .unknown:
+                    single(.error(FirebaseError.unknown))
+                }
+            })
+            return Disposables.create()
+        })
     }
 }

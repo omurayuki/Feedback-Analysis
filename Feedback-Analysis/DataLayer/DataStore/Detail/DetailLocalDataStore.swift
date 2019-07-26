@@ -2,6 +2,7 @@ import Foundation
 import RxSwift
 
 protocol DetailLocalDataStore {
+    func fetch() -> Single<AccountEntity>
     func set(document id: String) -> Single<()>
     func set(otherPersonAuthorFromTimelineToken token: String) -> Single<()>
     func set(otherPersonAuthorFromCommentToken token: String) -> Single<()>
@@ -15,6 +16,13 @@ protocol DetailLocalDataStore {
 }
 
 struct DetailLocalDataStoreImpl: DetailLocalDataStore {
+    
+    func fetch() -> Single<AccountEntity> {
+        return Single.create(subscribe: { single -> Disposable in
+            single(.success(AccountEntity(email: AppUserDefaults.getAccountEmail(), authToken: AppUserDefaults.getAuthToken())))
+            return Disposables.create()
+        })
+    }
     
     func set(document id: String) -> Single<()> {
         return Single.create(subscribe: { single -> Disposable in

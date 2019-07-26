@@ -35,7 +35,7 @@ struct DetailRepositoryImpl: DetailRepository {
     static let shared = DetailRepositoryImpl()
 
     func fetch() -> Single<AccountEntity> {
-        let dataStore = DetailDataStoreFactory.createDetailRemoteDataStore()
+        let dataStore = DetailDataStoreFactory.createDetailLocalDataStore()
         return dataStore.fetch()
     }
     

@@ -1,9 +1,7 @@
 import Foundation
-import FirebaseAuth
 import Firebase
 import FirebaseFirestore
 import FirebaseCore
-import FirebaseAuth
 import FirebaseStorage
 import RxSwift
 
@@ -11,335 +9,111 @@ typealias EntityType = [String: Any]
 
 struct Provider {
     
-    func signup(email: String, pass: String) -> Single<AccountEntity> {
-        return Single.create(subscribe: { single -> Disposable in
-            Auth.auth().createUser(withEmail: email, password: pass, completion: { authResult, error in
-                if let error = error {
-                    single(.error(FirebaseError.resultError(error)))
-                    return
-                }
-                guard let email = authResult?.user.email, let uid = authResult?.user.uid else {
-                    single(.error(FirebaseError.unknown))
-                    return
-                }
-                single(.success(AccountEntity(email: email, authToken: uid)))
-            })
-            return Disposables.create()
-        })
-    }
-    
-    func login(email: String, pass: String) -> Single<AccountEntity> {
-        return Single.create(subscribe: { single -> Disposable in
-            Auth.auth().signIn(withEmail: email, password: pass, completion: { authResult, error in
-                if let error = error {
-                    single(.error(FirebaseError.resultError(error)))
-                    return
-                }
-                guard let email = authResult?.user.email, let uid = authResult?.user.uid else {
-                    single(.error(FirebaseError.unknown))
-                    return
-                }
-                single(.success(AccountEntity(email: email, authToken: uid)))
-            })
-            return Disposables.create()
-        })
-    }
-    
-    func logout() -> Single<()> {
-        return Single.create(subscribe: { single -> Disposable in
-            do {
-                try Auth.auth().signOut()
-                single(.success(()))
-            } catch let error {
-                single(.error(FirebaseError.resultError(error)))
+    func setData(documentRef: FirebaseDocumentRef, fields: EntityType,
+                 completion: @escaping (_ response: FirestoreResponse<()>) -> Void) {
+        documentRef.destination.setData(fields, completion: { error in
+            if let error = error {
+                completion(.failure(error))
+                return
             }
-            return Disposables.create()
+            completion(.success(()))
         })
     }
     
-    func update(with email: String) -> Single<()> {
-        return Single.create(subscribe: { single -> Disposable in
-            Auth.auth().currentUser?.updateEmail(to: email, completion: { error in
-                if let error = error {
-                    single(.error(FirebaseError.resultError(error)))
-                    return
-                }
-                single(.success(()))
-            })
-            return Disposables.create()
-        })
-    }
-    
-    func update(with email: String, oldPass: String, newPass: String) -> Single<()> {
-        return Single.create(subscribe: { single -> Disposable in
-            let credential = EmailAuthProvider.credential(withEmail: email, password: oldPass)
-            Auth.auth().currentUser?.reauthenticate(with: credential, completion: { authResult, error in
-                if let error = error {
-                    single(.error(FirebaseError.resultError(error)))
-                    return
-                }
-                authResult?.user.updatePassword(to: newPass, completion: { error in
-                    if let error = error {
-                        single(.error(FirebaseError.resultError(error)))
-                        return
-                    }
-                    single(.success(()))
-                })
-            })
-            return Disposables.create()
-        })
-    }
-    
-    func reissuePassword(email: String) -> Single<()> {
-        return Single.create(subscribe: { single -> Disposable in
-            Auth.auth().languageCode = "ja"
-            Auth.auth().sendPasswordReset(withEmail: email, completion: { error in
-                if let error = error {
-                    single(.error(FirebaseError.resultError(error)))
-                }
-                single(.success(()))
-            })
-            return Disposables.create()
-        })
-    }
-    
-    func uploadImage(_ image: UIImage,
-                     at storageRef: FirebaseStorageRef) -> Single<URL> {
-        return Single.create(subscribe: { single -> Disposable in
-            guard let imageData = image.pngData() else {
-                return Disposables.create()
+    func update(documentRef: FirebaseDocumentRef, fields: EntityType,
+                completion: @escaping (_ response: FirestoreResponse<()>) -> Void) {
+        documentRef.destination.updateData(fields, completion: { error in
+            if let error = error {
+                completion(.failure(error))
+                return
             }
-            storageRef
-                .destination
-                .putData(imageData, metadata: nil, completion: { (metadata, error) in
-                if let error = error {
-                    single(.error(FirebaseError.resultError(error)))
-                    return
-                }
-                storageRef
-                    .destination
-                    .downloadURL(completion: { (url, error) in
-                    if let error = error {
-                        single(.error(FirebaseError.resultError(error)))
-                    }
-                    guard let url = url else {
-                        single(.error(FirebaseError.unknown))
-                        return
-                    }
-                    single(.success(url))
-                })
-            })
-            return Disposables.create()
+            completion(.success(()))
         })
     }
     
-    func setData(documentRef: FirebaseDocumentRef,
-                 fields: EntityType) -> Single<()> {
-        return Single.create(subscribe: { single -> Disposable in
-            documentRef
-                .destination
-                .setData(fields, completion: { error in
-                    if let error = error {
-                        single(.error(FirebaseError.resultError(error)))
-                        return
-                    }
-                    single(.success(()))
-            })
-            return Disposables.create()
+    func delete(documentRef: FirebaseDocumentRef,
+                completion: @escaping (_ response: FirestoreResponse<()>) -> Void) {
+        documentRef.destination.delete(completion: { error in
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+            completion(.success(()))
         })
     }
     
-    func update(documentRef: FirebaseDocumentRef,
-                fields: EntityType) -> Single<()> {
-        return Single.create(subscribe: { single -> Disposable in
-            documentRef
-                .destination
-                .updateData(fields, completion: { error in
-                    if let error = error {
-                        single(.error(FirebaseError.resultError(error)))
-                        return
-                    }
-                    single(.success(()))
-            })
-            return Disposables.create()
-        })
+    func isExists(documentRef: FirebaseDocumentRef,
+                  completion: @escaping (_ response: FirestoreResponse<Bool>) -> Void) {
+        documentRef.destination.getDocument { snapshot, error in
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+            guard let bool = snapshot?.exists else {
+                completion(.unknown)
+                return
+            }
+            completion(.success(bool))
+        }
     }
     
-    func delete(documentRef: FirebaseDocumentRef) -> Single<()> {
-        return Single.create(subscribe: { single -> Disposable in
-            documentRef
-                .destination
-                .delete(completion: { error in
-                    if let error = error {
-                        single(.error(FirebaseError.resultError(error)))
-                        return
-                    }
-                    single(.success(()))
-                })
-            return Disposables.create()
-        })
-    }
-    
-    func get(documentRef: FirebaseDocumentRef) -> Single<EntityType> {
-        return Single.create(subscribe: { single -> Disposable in
-            documentRef
-                .destination
-                .getDocument(completion: { snapshot, error in
-                    if let error = error {
-                        single(.error(FirebaseError.resultError(error)))
-                        return
-                    }
-                    guard let snapshot = snapshot, snapshot.exists else {
-                        single(.error(FirebaseError.unknown))
-                        return
-                    }
-                    guard let documentData = snapshot.data() else {
-                        single(.error(FirebaseError.unknown))
-                        return
-                    }
-                    single(.success(documentData))
-            })
-            return Disposables.create()
-        })
-    }
-    
-    func get(documentRef: FirebaseDocumentRef) -> Single<Bool> {
-        return Single.create(subscribe: { single -> Disposable in
+    func get(documentRef: FirebaseDocumentRef,
+             completion: @escaping (_ response: FirestoreResponse<DocumentSnapshot>) -> Void) {
             documentRef.destination.getDocument { snapshot, error in
                 if let error = error {
-                    single(.error(FirebaseError.resultError(error)))
+                    completion(.failure(error))
                     return
                 }
-                guard let snapshot = snapshot?.exists else {
-                    single(.error(FirebaseError.unknown))
+                guard let snapshot = snapshot, snapshot.exists else {
+                    completion(.unknown)
                     return
                 }
-                single(.success(snapshot))
+                completion(.success(snapshot))
             }
-            return Disposables.create()
-        })
     }
     
-    func getUserFollowerEntities(queryRef: FirebaseQueryRef) -> Single<[UserEntity]> {
-        return Single.create { single -> Disposable in
-            var userEntities = [UserEntity]()
-            queryRef
-                .destination
-                .getDocuments(completion: { snapshot, error in
-                    if let error = error {
-                        single(.error(FirebaseError.resultError(error)))
-                        return
-                    }
-                    guard let snapshots = snapshot?.documents else {
-                        return
-                    }
-                    snapshots
-                        .compactMap { $0.data()["following_user_token"] as? String }
-                        .forEach {
-                            FirebaseDocumentRef
-                                .userRef(authorToken: $0)
-                                .destination
-                                .getDocument(completion: { snapshot, error in
-                                    if let error = error {
-                                        single(.error(FirebaseError.resultError(error)))
-                                    }
-                                    guard let snapshot = snapshot, snapshot.exists else {
-                                        single(.error(FirebaseError.unknown))
-                                        return
-                                    }
-                                    guard let documentData = snapshot.data() else {
-                                        single(.error(FirebaseError.unknown))
-                                        return
-                                    }
-                                    userEntities.append(UserEntity(document: documentData))
-                                })
-                        }
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
-                        single(.success(userEntities))
-                    })
-                })
-            return Disposables.create()
+    func gets(queryRef: FirebaseQueryRef,
+              completion: @escaping (_ response: FirestoreResponse<[QueryDocumentSnapshot]>) -> Void) {
+        queryRef.destination.getDocuments { snapshot, error in
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+            guard let documents = snapshot?.documents else {
+                return
+            }
+            completion(.success(documents))
         }
     }
     
-    func getUserFolloweeEntities(queryRef: FirebaseQueryRef) -> Single<[UserEntity]> {
-        return Single.create { single -> Disposable in
-            var userEntities = [UserEntity]()
-            queryRef
-                .destination
-                .getDocuments(completion: { snapshot, error in
-                    if let error = error {
-                        single(.error(FirebaseError.resultError(error)))
-                        return
-                    }
-                    guard let snapshots = snapshot?.documents else {
-                        return
-                    }
-                    snapshots
-                        .compactMap { $0.data()["follower_user_token"] as? String }
-                        .forEach {
-                            FirebaseDocumentRef
-                                .userRef(authorToken: $0)
-                                .destination
-                                .getDocument(completion: { snapshot, error in
-                                    if let error = error {
-                                        single(.error(FirebaseError.resultError(error)))
-                                    }
-                                    guard let snapshot = snapshot, snapshot.exists else {
-                                        single(.error(FirebaseError.unknown))
-                                        return
-                                    }
-                                    guard let documentData = snapshot.data() else {
-                                        single(.error(FirebaseError.unknown))
-                                        return
-                                    }
-                                    userEntities.append(UserEntity(document: documentData))
-                                })
-                    }
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
-                        single(.success(userEntities))
-                    })
-                })
-            return Disposables.create()
+    func observe(queryRef: FirebaseQueryRef,
+                 completion: @escaping (_ response: FirestoreResponse<[QueryDocumentSnapshot]>) -> Void) {
+        queryRef.destination.addSnapshotListener { snapshot, error in
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+            guard let documents = snapshot?.documents else {
+                completion(.unknown)
+                return
+            }
+            completion(.success(documents))
         }
     }
     
-    func observe(documentRef: FirebaseDocumentRef) -> Observable<EntityType> {
-        return Observable.create({ observer -> Disposable in
-            documentRef
-                .destination
-                .addSnapshotListener({ snapshot, error in
-                    if let error = error {
-                        observer.on(.error(FirebaseError.resultError(error)))
-                        return
-                    }
-                    guard let document = snapshot?.data() else {
-                        observer.on(.error(FirebaseError.unknown))
-                        return
-                    }
-                    observer.on(.next(document))
-            })
-            return Disposables.create()
-        })
-    }
-    
-    func observe(queryRef: FirebaseQueryRef) -> Observable<[EntityType]> {
-        return Observable.create({ observer -> Disposable in
-            queryRef
-                .destination
-                .addSnapshotListener({ snapshot, error in
-                    if let error = error {
-                        observer.on(.error(FirebaseError.resultError(error)))
-                        return
-                    }
-                    guard let documents = snapshot?.documents else {
-                        observer.on(.error(FirebaseError.unknown))
-                        return
-                    }
-                    observer.on(.next(documents.compactMap { $0.data() }))
-            })
-            return Disposables.create()
-        })
+    func observe(documentRef: FirebaseDocumentRef,
+                 completion: @escaping (_ response: FirestoreResponse<DocumentSnapshot>) -> Void) {
+        documentRef.destination.addSnapshotListener { snapshot, error in
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+            guard let documents = snapshot else {
+                completion(.unknown)
+                return
+            }
+            completion(.success(documents))
+        }
     }
     
     //// マイページの場合これを使ってもいいが、タイムラインの場合これを使うと名前とイメージが全て同一人物になる
@@ -372,163 +146,6 @@ struct Provider {
                                                                                 document: $0.data(),
                                                                                 documentId: $0.documentID) }))
                         })
-                })
-            return Disposables.create()
-        })
-    }
-    
-    func observeQuery(queryRef: FirebaseQueryRef) -> Observable<[CommentEntity]> {
-        var userDocuments = [[String: Any]]()
-        return Observable.create({ observer -> Disposable in
-            queryRef
-                .destination
-                .addSnapshotListener({ commentSnapshot, error in
-                    if let error = error {
-                        observer.on(.error(FirebaseError.resultError(error)))
-                        return
-                    }
-                    guard let documents = commentSnapshot?.documents else {
-                        observer.on(.error(FirebaseError.unknown))
-                        return
-                    }
-                    documents.forEach {
-                        guard let token = $0.data()["author_token"] as? String else {
-                            observer.on(.error(FirebaseError.unknown))
-                            return
-                        }
-                        FirebaseDocumentRef
-                            .authorRef(authorToken: token)
-                            .destination
-                            .addSnapshotListener({ snapshot, error in
-                                if let error = error {
-                                    observer.on(.error(FirebaseError.resultError(error)))
-                                    return
-                                }
-                                guard let Document = snapshot?.data() else {
-                                    observer.on(.error(FirebaseError.unknown))
-                                    return
-                                }
-                                userDocuments.append(Document)
-                            })
-                    }
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.7, execute: {
-                        observer.on(.next(documents.enumerated().compactMap { index, data in
-                            CommentEntity(user: UserEntity(document: userDocuments[index]),
-                                          document: data.data(), documentId: data.documentID)
-                        }))
-                    })
-                })
-            return Disposables.create()
-        })
-    }
-    
-    func observeDocument(documentRef: FirebaseDocumentRef,
-                         completion: ((EntityType) -> Void)? = nil) -> Observable<EntityType>? {
-        return Observable.create({ observer -> Disposable in
-            documentRef
-                .destination
-                .addSnapshotListener({ snapshot, error in
-                    if let error = error {
-                        observer.on(.error(FirebaseError.resultError(error)))
-                        return
-                    }
-                    guard let document = snapshot?.data() else {
-                        observer.on(.error(FirebaseError.unknown))
-                        return
-                    }
-                    // documentsの回数分これを叩く設計にするからこのままでおけ
-                    completion?(document)
-                    observer.on(.next(document))
-                })
-            return Disposables.create()
-        })
-    }
-    
-    func observeQuery(queryRef: FirebaseQueryRef) -> Observable<[ReplyEntity]> {
-        var userDocuments = [[String: Any]]()
-        return Observable.create({ observer -> Disposable in
-            queryRef
-                .destination
-                .addSnapshotListener({ commentSnapshot, error in
-                    if let error = error {
-                        observer.on(.error(FirebaseError.resultError(error)))
-                        return
-                    }
-                    guard let documents = commentSnapshot?.documents else {
-                        observer.on(.error(FirebaseError.unknown))
-                        return
-                    }
-                    documents.forEach {
-                        guard let token = $0.data()["author_token"] as? String else {
-                            observer.on(.error(FirebaseError.unknown))
-                            return
-                        }
-                        FirebaseDocumentRef
-                            .authorRef(authorToken: token)
-                            .destination
-                            .addSnapshotListener({ userSnapshot, errorq in
-                                if let error = error {
-                                    observer.on(.error(FirebaseError.resultError(error)))
-                                    return
-                                }
-                                guard let userDocument = userSnapshot?.data() else {
-                                    observer.on(.error(FirebaseError.unknown))
-                                    return
-                                }
-                                userDocuments.append(userDocument)
-                            })
-                    }
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.7, execute: {
-                        observer.on(.next(documents.enumerated().compactMap { index, data in
-                            ReplyEntity(user: UserEntity(document: userDocuments[index]),
-                                          document: data.data(), documentId: data.documentID)
-                        }))
-                    })
-                })
-            return Disposables.create()
-        })
-    }
-    
-    func observeTimeline(queryRef: FirebaseQueryRef) -> Observable<[GoalEntity]> {
-        var userDocuments = [[String: Any]]()
-        return Observable.create({ observer -> Disposable in
-            queryRef
-                .destination
-                .getDocuments(completion: { commentSnapshot, error in
-                    if let error = error {
-                        observer.on(.error(FirebaseError.resultError(error)))
-                        return
-                    }
-                    guard let documents = commentSnapshot?.documents else {
-                        observer.on(.error(FirebaseError.unknown))
-                        return
-                    }
-                    documents.forEach {
-                        guard let token = $0.data()["author_token"] as? String else {
-                            observer.on(.error(FirebaseError.unknown))
-                            return
-                        }
-                        FirebaseDocumentRef
-                            .authorRef(authorToken: token)
-                            .destination
-                            .addSnapshotListener({ userSnapshot, error in
-                                if let error = error {
-                                    observer.on(.error(FirebaseError.resultError(error)))
-                                    return
-                                }
-                                guard let userDocument = userSnapshot?.data() else {
-                                    observer.on(.error(FirebaseError.unknown))
-                                    return
-                                }
-                                userDocuments.append(userDocument)
-                            })
-                    }
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.7, execute: {
-                        observer.on(.next(documents.enumerated().compactMap { index, data in
-                            GoalEntity(user: UserEntity(document: userDocuments[index]),
-                                        document: data.data(), documentId: data.documentID)
-                        }))
-                    })
                 })
             return Disposables.create()
         })

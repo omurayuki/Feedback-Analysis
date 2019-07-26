@@ -141,6 +141,7 @@ extension ReplyViewController: ReplyPresenterView {
         ui.updateReplyCount(replyDataSource.listItems.count)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
             self.presenter.view.updateLoading(false)
+            self.replyDataSource.listItems.isEmpty ? () : self.ui.replyTable.reloadData()
         }
     }
     
