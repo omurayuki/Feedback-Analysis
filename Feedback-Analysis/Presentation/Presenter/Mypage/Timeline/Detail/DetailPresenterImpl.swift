@@ -68,24 +68,24 @@ class DetailPresenterImpl: NSObject, DetailPresenter {
     }
     
     func post(to documentRef: FirebaseDocumentRef, comment: CommentPost) {
-        view.updateLoading(true)
         useCase.post(to: documentRef, comment: comment)
             .subscribe { [unowned self] result in
                 switch result {
                 case .success(_):
                     self.view.didPostSuccess()
                 case .error(let error):
-                    self.view.updateLoading(false)
                     self.view.showError(message: error.localizedDescription)
                 }
             }.disposed(by: view.disposeBag)
     }
     
-    func get(from queryRef: FirebaseQueryRef) {
+    func get(from queryRef: FirebaseQueryRef, isLoading: Bool) {
+        view.updateLoading(isLoading)
         useCase.get(comments: queryRef)
             .subscribe(onNext: { [unowned self] result in
                 self.view.didFetchComments(comments: result)
                 }, onError: { error in
+                    self.view.updateLoading(false)
                     self.view.showError(message: error.localizedDescription)
             }).disposed(by: view.disposeBag)
     }

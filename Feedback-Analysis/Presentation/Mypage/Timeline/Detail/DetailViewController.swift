@@ -21,7 +21,7 @@ class DetailViewController: UIViewController {
     private(set) lazy var commentDataSource: CommentDataStore = {
         return CommentDataStore(cellReuseIdentifier: String(describing: CommentCell.self),
                                 listItems: [],
-                                isSkelton: true,
+                                isSkelton: false,
                                 cellConfigurationHandler: { (cell, item, indexPath) in
             cell.cellTapDelegate = self
             cell.userPhotoTapDelegate = self
@@ -42,6 +42,11 @@ class DetailViewController: UIViewController {
     
     var disposeBag: DisposeBag! {
         didSet {
+            ui.refControl.rx.controlEvent(.valueChanged)
+                .subscribe(onNext: { [unowned self] _ in
+                    self.getComments(isLoading: false)
+                }).disposed(by: disposeBag)
+            
             ui.detailUserPhotoGesture.rx.event.asDriver()
                 .drive(onNext: { [unowned self] _ in
                     self.presenter.getOtherPersonAuthorToken(completion: { [unowned self] token in
@@ -92,14 +97,7 @@ class DetailViewController: UIViewController {
         self.routing = routing
         self.disposeBag = disposeBag
     }
-    
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-        presenter.getDocumentId(completion: { [unowned self] documentId in
-            self.presenter.get(from: .commentRef(goalDocument: documentId))
-        })
-    }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         ui.setup()
@@ -119,6 +117,7 @@ extension DetailViewController: DetailPresenterView {
     func didFetchUser(data: Account) {
         presenter.getDocumentId(completion: { [unowned self] documentId in
             self.validatePostedField(postedValue: self.ui.commentField.text, account: { [unowned self] value in
+                #warning("後々UX向上のためpostは裏側で行い表では普通にuser情報をマッピング")
                 self.presenter.post(to: .commentRef(goalDocument: documentId),
                                     comment: CommentPost.createComment(token: data.authToken,
                                                                 goalDocumentId: documentId,
@@ -129,9 +128,7 @@ extension DetailViewController: DetailPresenterView {
     
     func didPostSuccess() {
         ui.clearCommentField()
-        presenter.getDocumentId(completion: { [unowned self] documentId in
-            self.presenter.get(from: .commentRef(goalDocument: documentId))
-        })
+        getComments(isLoading: true)
     }
     
     func didFetchComments(comments: [Comment]) {
@@ -139,7 +136,8 @@ extension DetailViewController: DetailPresenterView {
         ui.updateCommentCount(commentDataSource.listItems.count)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
             self.presenter.view.updateLoading(false)
-            self.commentDataSource.listItems.isEmpty ? self.updateCommentCellIfEmpty() : self.ui.commentTable.reloadData()
+            self.commentDataSource.listItems.isEmpty ? () : self.ui.commentTable.reloadData()
+            self.ui.refControl.endRefreshing()
         }
     }
     
@@ -204,9 +202,7 @@ extension DetailViewController {
             self.ui.determineHeight(height: height)
             self.detailDataSource.listItems.append(timeline)
             self.ui.detail.reloadData()
-            self.presenter.getDocumentId(completion: { [unowned self] documentId in
-                self.presenter.get(from: .commentRef(goalDocument: documentId))
-            })
+            self.getComments(isLoading: true)
         }
     }
     
@@ -220,18 +216,15 @@ extension DetailViewController {
         presenter.setAuthorTokens(comments.compactMap { $0.authorToken })
     }
     
-    func updateCommentCellIfEmpty() {
-        for i in 0 ..< detailDataSource.defaultCount {
-            let indexPath = NSIndexPath(row: i, section: 0)
-            guard let cell = ui.commentTable.cellForRow(at: indexPath as IndexPath) as? CommentCell else { return }
-            cell.hideSkelton(cell.userPhoto, cell.userName)
-            cell.removeFromSuperview()
-        }
-    }
-    
     func updateLikeCount(index: Int, count: Int) {
         commentDataSource.listItems[index].likeCount += count
         ui.commentTable.reloadData()
+    }
+    
+    func getComments(isLoading: Bool) {
+        presenter.getDocumentId(completion: { [unowned self] documentId in
+            self.presenter.get(from: .commentRef(goalDocument: documentId), isLoading: isLoading)
+        })
     }
 }
 
@@ -249,8 +242,10 @@ extension DetailViewController: CellTapDelegate {
 extension DetailViewController: UserPhotoTapDelegate {
     
     func tappedUserPhoto(index: Int) {
-        presenter.getAuthorToken(index) { [unowned self] token in
-            self.routing.showOtherPersonPage(with: token)
+        presenter.getAuthorToken { [unowned self] subjectToken in
+            self.presenter.getAuthorToken(index) { [unowned self] objectToken in
+                subjectToken == objectToken ? (UIDevice.vibrate()) : (self.routing.showOtherPersonPage(with: objectToken))
+            }
         }
     }
 }

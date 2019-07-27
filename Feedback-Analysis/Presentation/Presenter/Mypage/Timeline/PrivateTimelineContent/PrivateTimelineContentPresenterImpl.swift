@@ -15,13 +15,10 @@ class PrivateTimelineContentPresenterImpl: NSObject, PrivateTimelineContentPrese
     }
     
     func fetch(from queryRef: FirebaseQueryRef, authorToken: String, completion: (() -> Void)?) {
-        view.updateLoading(true)
         useCase.fetch(from: queryRef, authorToken: authorToken)
             .subscribe(onNext: { [unowned self] result in
-                self.view.updateLoading(false)
                 self.view.didFetchGoalData(timeline: result)
             }, onError: { [unowned self] error in
-                    self.view.updateLoading(false)
                     self.view.showError(message: error.localizedDescription)
             }).disposed(by: view.disposeBag)
     }

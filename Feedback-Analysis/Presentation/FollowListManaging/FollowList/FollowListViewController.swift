@@ -16,6 +16,8 @@ class FollowListViewController: UIViewController {
         })
     }()
     
+    var TmpObjectUserToken: String?
+    
     var followQueryRef: FirebaseQueryRef!
     
     var ui: FollowListUI!
@@ -59,11 +61,17 @@ class FollowListViewController: UIViewController {
         self.presenter.fetch(from: followQueryRef, loading: true, completion: nil)
     }
     
+    override func loadView() {
+        super.loadView()
+        //// 初回時にtmpObjectTokenにobjectUserTokenをセットしないとfollower->followにスライドした際にTmpObjectUser.tokenがnilなので落ちる
+        setObjectTokenInTmpVariable()
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         //// otherPageに行く際, setObjectTokenに新しいuserのtokenがsetさせて戻ってくる際にそのuserのfollowListが表示される
         //// それを回避するためにtmpObjectTokenという一時的な変数に現在のuserのTokenを保存して、otherPageから戻ってくる際にその変数をsetObjectTokenに渡して回避
-        presenter.isFirstLoading ? () : (followQueryRef.isMypage ? () : presenter.setObjectToken(TmpObjectUser.token))
+        presenter.isFirstLoading ? () : (followQueryRef.isMypage ? () : presenter.setObjectToken(TmpObjectUserToken ?? ""))
         //// otherPersonPageの先に別のuserのfollowListを参照すればuserdefaultsが書き換えられるので戻ってきた際にもう一度fetchしてuserdefaultsに保存
         ui.followList.isUserInteractionEnabled = false
         presenter.fetch(from: followQueryRef, loading: presenter.isFirstLoading) {
@@ -74,8 +82,6 @@ class FollowListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         ui.setup()
-        //// 初回時にtmpObjectTokenにobjectUserTokenをセットしないとfollower->followにスライドした際にTmpObjectUser.tokenがnilなので落ちる
-        setObjectTokenInTmpVariable()
     }
 }
 
@@ -103,8 +109,18 @@ extension FollowListViewController: FollowListPresenterView {
     }
     
     func didRecieveUserToken(token: String) {
-        followQueryRef.isMypage ? () : setObjectTokenInTmpVariable()
-        routing.showOtherPersonPage(with: token)
+        checkMyself(with: token)
+    }
+    
+    func checkMyself(with token: String) {
+        presenter.getAuthorToken { [unowned self] subjectToken in
+            if subjectToken == token {
+                 UIDevice.vibrate()
+            } else {
+                self.followQueryRef.isMypage ? () : self.setObjectTokenInTmpVariable()
+                self.routing.showOtherPersonPage(with: token)
+            }
+        }
     }
 }
 
@@ -112,7 +128,7 @@ extension FollowListViewController {
     
     private func setObjectTokenInTmpVariable() {
         presenter.getObjectToken { atThePresentTimeObjectToken in
-            TmpObjectUser.token = atThePresentTimeObjectToken
+            self.TmpObjectUserToken = atThePresentTimeObjectToken
         }
     }
 }

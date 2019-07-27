@@ -51,6 +51,18 @@ class FollowListPresenterImpl: NSObject, FollowListPresenter {
         }
     }
     
+    func getAuthorToken(completion: @escaping (String) -> Void) {
+        useCase.getAuthorToken()
+            .subscribe { result in
+                switch result {
+                case .success(let response):
+                    completion(response)
+                case .error(_):
+                    return
+                }
+            }.disposed(by: view.disposeBag)
+    }
+    
     func setFolloweeTokens(_ values: [String]) {
         useCase.setFolloweeTokens(values)
             .subscribe { result in

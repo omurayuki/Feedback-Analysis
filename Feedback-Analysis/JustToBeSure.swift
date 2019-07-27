@@ -4,6 +4,14 @@ import RxSwift
 
 class JustToBeSure {
     
+    //// detailVC
+//    override func viewWillLayoutSubviews() {
+//        super.viewWillLayoutSubviews()
+//        presenter.getDocumentId(completion: { [unowned self] documentId in
+//            self.presenter.get(from: .commentRef(goalDocument: documentId))
+//        })
+//    }
+    
     func setData(documentRef: FirebaseDocumentRef,
                  fields: EntityType) -> Single<()> {
         return Single.create(subscribe: { single -> Disposable in

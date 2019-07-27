@@ -15,8 +15,6 @@ class TableViewDataSource<CellType, EntityType>: NSObject, UITableViewDataSource
     
     var listItems: [E]
     
-    var defaultCount = 5
-    
     init(cellReuseIdentifier: String, listItems: [E], isSkelton: Bool, cellConfigurationHandler: @escaping (C, E, IndexPath) -> Void) {
         self.cellReuseIdentifier = cellReuseIdentifier
         self.isSkelton = isSkelton
@@ -32,7 +30,7 @@ class TableViewDataSource<CellType, EntityType>: NSObject, UITableViewDataSource
         switch isSkelton {
         case true:
             switch listItems.count {
-            case 0:  return defaultCount
+            case 0:  return 0
             default: return listItems.count
             }
         case false:
@@ -46,8 +44,8 @@ class TableViewDataSource<CellType, EntityType>: NSObject, UITableViewDataSource
             switch listItems.count {
             case 0:
                 let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier, for: indexPath)
-                tableView.isUserInteractionEnabled = false
-                cell.isUserInteractionEnabled = false
+                tableView.isUserInteractionEnabled = true
+                cell.isUserInteractionEnabled = true
                 return cell
             default:
                 let cell = generateCell(tableView, items: listItems, indexPath: indexPath)

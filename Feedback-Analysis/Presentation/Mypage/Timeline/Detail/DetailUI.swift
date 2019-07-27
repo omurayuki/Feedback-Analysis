@@ -6,6 +6,7 @@ protocol DetailUI: UI {
     var detailUserPhotoGesture: UITapGestureRecognizer { get }
     var detailUserPhotoGestureView: UIView { get }
     var detail: UITableView { get }
+    var refControl: UIRefreshControl { get }
     var commentTable: UITableView { get }
     var editBtn: UIBarButtonItem { get }
     var inputToolBar: UIView { get }
@@ -57,6 +58,11 @@ final class DetailUIImpl: DetailUI {
             .build()
         table.register(TimelineCell.self, forCellReuseIdentifier: String(describing: TimelineCell.self))
         return table
+    }()
+    
+    var refControl: UIRefreshControl = {
+        let refControl = UIRefreshControl()
+        return refControl
     }()
     
     private(set) var commentTable: UITableView = {
@@ -118,6 +124,7 @@ extension DetailUIImpl {
         [commentField, submitBtn].forEach { inputToolBar.addSubview($0) }
         [detailUserPhotoGestureView, detail, commentTable, inputToolBar, commentFieldTextCount].forEach { vc.view.addSubview($0) }
         detailUserPhotoGestureView.addGestureRecognizer(detailUserPhotoGesture)
+        commentTable.addSubview(refControl)
         
         detailUserPhotoGestureView.anchor()
             .top(to: vc.view.safeAreaLayoutGuide.topAnchor, constant: 5)

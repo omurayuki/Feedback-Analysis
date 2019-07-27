@@ -4,6 +4,7 @@ import RxSwift
 protocol FollowUseCase {
     func fetchFollower(from queryRef: FirebaseQueryRef) -> Single<[User]>
     func fetchFollowee(from queryRef: FirebaseQueryRef) -> Single<[User]>
+    func getAuthorToken() -> Single<String>
     func setFolloweeTokens(_ values: [String]) -> Single<()>
     func setFollowerTokens(_ values: [String]) -> Single<()>
     func getFolloweeToken(_ index: Int) -> Single<String>
@@ -30,6 +31,10 @@ struct FollowUseCaseImpl: FollowUseCase {
         return repository
             .fetchFollowee(from: queryRef)
             .map { UsersTranslator().translate($0) }
+    }
+    
+    func getAuthorToken() -> Single<String> {
+        return repository.getAuthorToken()
     }
     
     func setFolloweeTokens(_ values: [String]) -> Single<()> {

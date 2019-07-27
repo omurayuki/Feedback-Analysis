@@ -13,7 +13,7 @@ protocol DetailPresenter {
     func create(documentRef: FirebaseDocumentRef, value: [String: Any])
     func delete(documentRef: FirebaseDocumentRef)
     func post(to documentRef: FirebaseDocumentRef, comment: CommentPost)
-    func get(from queryRef: FirebaseQueryRef)
+    func get(from queryRef: FirebaseQueryRef, isLoading: Bool)
     func set(document id: String, completion: @escaping () -> Void)
     func set(otherPersonAuthorToken token: String)
     func getDocumentId(completion: @escaping (String) -> Void)

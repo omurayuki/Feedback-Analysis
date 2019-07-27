@@ -41,6 +41,11 @@ class ReplyViewController: UIViewController {
     
     var disposeBag: DisposeBag! {
         didSet {
+            ui.refControl.rx.controlEvent(.valueChanged)
+                .subscribe(onNext: { [unowned self] _ in
+                    self.getReplies(isLoading: false)
+                }).disposed(by: disposeBag)
+            
             ui.replyUserPhotoGesture.rx.event.asDriver()
                 .drive(onNext: { [unowned self] _ in
                     self.presenter.getOtherPersonAuthorToken(completion: { [unowned self] token in
@@ -131,9 +136,7 @@ extension ReplyViewController: ReplyPresenterView {
     
     func didPostSuccess() {
         ui.clearReplyField()
-        presenter.getDocumentIds(completion: { [unowned self] _, commentId in
-            self.presenter.get(from: .replyRef(commentDocument: commentId))
-        })
+        self.getReplies(isLoading: true)
     }
     
     func didFetchReplies(replies: [Reply]) {
@@ -142,6 +145,7 @@ extension ReplyViewController: ReplyPresenterView {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
             self.presenter.view.updateLoading(false)
             self.replyDataSource.listItems.isEmpty ? () : self.ui.replyTable.reloadData()
+            self.ui.refControl.endRefreshing()
         }
     }
     
@@ -166,9 +170,7 @@ extension ReplyViewController {
             self.ui.determineHeight(height: height)
             self.commentDataSource.listItems.append(comment)
             self.ui.comment.reloadData()
-            self.presenter.getDocumentIds(completion: { [unowned self] _, commentId  in
-                self.presenter.get(from: .replyRef(commentDocument: commentId))
-            })
+            self.getReplies(isLoading: true)
         }
     }
     
@@ -177,14 +179,26 @@ extension ReplyViewController {
         replyDataSource.listItems += replies
         presenter.setAuthorTokens(replies.compactMap { $0.authorToken })
     }
+    
+    func getReplies(isLoading: Bool) {
+        presenter.getDocumentIds(completion: { [unowned self] _, documentId in
+            self.presenter.get(from: .replyRef(commentDocument: documentId), isLoading: isLoading)
+        })
+    }
 }
 
 extension ReplyViewController: UserPhotoTapDelegate {
     
     func tappedUserPhoto(index: Int) {
-        presenter.getAuthorToken(index) { [unowned self] token in
-            self.routing.showOtherPersonPage(with: token)
-            self.maximizeToFullScreen()
+        presenter.getAuthorToken { [unowned self] subjectToken in
+            self.presenter.getAuthorToken(index) { [unowned self] objectToken in
+                if subjectToken == objectToken {
+                    UIDevice.vibrate()
+                } else {
+                    self.routing.showOtherPersonPage(with: objectToken)
+                    self.maximizeToFullScreen()
+                }
+            }
         }
     }
 }

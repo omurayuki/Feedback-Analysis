@@ -9,6 +9,7 @@ protocol FollowListPresenter: Presenter {
     var isFirstLoading: Bool { get set }
     
     func fetch(from queryRef: FirebaseQueryRef, loading: Bool, completion: (() -> Void)?)
+    func getAuthorToken(completion: @escaping (String) -> Void)
     func setFolloweeTokens(_ values: [String])
     func setFollowerTokens(_ values: [String])
     func getFolloweeToken(_ index: Int)

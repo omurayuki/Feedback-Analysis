@@ -87,7 +87,7 @@ extension MainTabController {
         let repository = TimelineRepositoryImpl.shared
         let useCase = TimelineUseCaseImpl(repository: repository)
         let presenter = PublicTimelineContentPresenterImpl(useCase: useCase)
-        let vc = PublicTimelineContentViewController()
+        let vc = PublicGoalViewController()
         
         let ui = PublicTimelineContentUIImpl()
         let routing = PublicTimelineContentRoutingImpl()
@@ -103,7 +103,7 @@ extension MainTabController {
         let repository = TimelineRepositoryImpl.shared
         let useCase = TimelineUseCaseImpl(repository: repository)
         let presenter = PublicTimelineContentPresenterImpl(useCase: useCase)
-        let vc = PublicTimelineContentViewController()
+        let vc = PublicCompleteViewController()
         
         let ui = PublicTimelineContentUIImpl()
         let routing = PublicTimelineContentRoutingImpl()

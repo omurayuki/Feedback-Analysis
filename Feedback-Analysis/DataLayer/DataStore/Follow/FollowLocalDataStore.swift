@@ -2,6 +2,7 @@ import Foundation
 import RxSwift
 
 protocol FollowLocalDataStore {
+    func getAuthorToken() -> Single<String>
     func setFolloweeTokens(_ values: [String]) -> Single<()>
     func setFollowerTokens(_ values: [String]) -> Single<()>
     func getFolloweeToken() -> Single<[String]>
@@ -11,6 +12,13 @@ protocol FollowLocalDataStore {
 }
 
 struct FollowLocalDataStoreImpl: FollowLocalDataStore {
+    
+    func getAuthorToken() -> Single<String> {
+        return Single.create(subscribe: { single -> Disposable in
+            single(.success(AppUserDefaults.getAuthToken()))
+            return Disposables.create()
+        })
+    }
     
     func setFolloweeTokens(_ values: [String]) -> Single<()> {
         return Single.create(subscribe: { single -> Disposable in

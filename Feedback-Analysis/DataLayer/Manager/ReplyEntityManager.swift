@@ -7,7 +7,7 @@ struct ReplyEntityManager {
     func fetchReplyEntities(queryRef: FirebaseQueryRef,
                               completion: @escaping (_ response: FirestoreResponse<[ReplyEntity]>) -> Void) {
         var userDocuments = [EntityType]()
-        Provider().observe(queryRef: queryRef) { response in
+        Provider().gets(queryRef: queryRef) { response in
             switch response {
             case .success(let entities):
                 entities.forEach {

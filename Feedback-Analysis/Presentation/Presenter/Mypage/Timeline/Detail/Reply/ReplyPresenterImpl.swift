@@ -32,21 +32,19 @@ class ReplyPresenterImpl: NSObject, ReplyPresenter {
     }
     
     func post(to documentRef: FirebaseDocumentRef, reply: ReplyPost) {
-        view.updateLoading(true)
         useCase.post(to: documentRef, reply: reply)
             .subscribe { [unowned self] result in
                 switch result {
                 case .success(_):
                     self.view.didPostSuccess()
                 case .error(let error):
-                    self.view.updateLoading(false)
                     self.view.showError(message: error.localizedDescription)
                 }
             }.disposed(by: view.disposeBag)
     }
     
-    func get(from queryRef: FirebaseQueryRef) {
-        view.updateLoading(true)
+    func get(from queryRef: FirebaseQueryRef, isLoading: Bool) {
+        view.updateLoading(isLoading)
         useCase.get(replies: queryRef)
             .subscribe(onNext: { [unowned self] result in
                 self.view.didFetchReplies(replies: result)
@@ -110,6 +108,18 @@ class ReplyPresenterImpl: NSObject, ReplyPresenter {
                 switch result {
                 case .success(_):
                     return
+                case .error(_):
+                    return
+                }
+            }.disposed(by: view.disposeBag)
+    }
+    
+    func getAuthorToken(completion: @escaping (String) -> Void) {
+        useCase.getAuthorToken()
+            .subscribe { result in
+                switch result {
+                case .success(let response):
+                    completion(response)
                 case .error(_):
                     return
                 }

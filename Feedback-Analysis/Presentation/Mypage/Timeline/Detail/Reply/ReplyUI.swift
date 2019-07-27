@@ -8,6 +8,7 @@ protocol ReplyUI: UI {
     var expandBtn: UIBarButtonItem { get }
     var textViewBottomConstraint: NSLayoutConstraint { get set }
     var comment: UITableView { get }
+    var refControl: UIRefreshControl { get }
     var replyTable: UITableView { get }
     var inputToolBar: UIView { get }
     var replyField: GrowingTextView { get }
@@ -64,6 +65,11 @@ final class ReplyUIImpl: ReplyUI {
             .build()
         table.register(CommentCell.self, forCellReuseIdentifier: String(describing: CommentCell.self))
         return table
+    }()
+    
+    var refControl: UIRefreshControl = {
+        let refControl = UIRefreshControl()
+        return refControl
     }()
     
     private(set) var replyTable: UITableView = {
@@ -128,6 +134,7 @@ extension ReplyUIImpl {
         vc.view.addGestureRecognizer(viewTapGesture)
         [replyUserPhotoGestureView, comment, replyTable, inputToolBar, replyFieldTextCount].forEach { vc.view.addSubview($0) }
         replyUserPhotoGestureView.addGestureRecognizer(replyUserPhotoGesture)
+        replyTable.addSubview(refControl)
         
         replyUserPhotoGestureView.anchor()
             .top(to: vc.view.safeAreaLayoutGuide.topAnchor, constant: 5)

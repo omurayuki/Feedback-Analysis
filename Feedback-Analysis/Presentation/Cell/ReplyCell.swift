@@ -18,7 +18,6 @@ final class ReplyCell: UITableViewCell {
     private(set) var userPhoto: UIImageView = {
         let image = UIImageView.Builder()
             .cornerRadius(25)
-            .isUserInteractionEnabled(false)
             .build()
         return image
     }()
@@ -63,14 +62,12 @@ final class ReplyCell: UITableViewCell {
             self.postedTime.text = content?.time
             self.reply.text = content?.reply
             self.userPhoto.setImage(url: url)
-            hideSkelton(userPhoto, userName)
         }
     }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setup()
-        showSkelton(userPhoto, userName)
     }
     
     required init?(coder aDecoder: NSCoder) {
