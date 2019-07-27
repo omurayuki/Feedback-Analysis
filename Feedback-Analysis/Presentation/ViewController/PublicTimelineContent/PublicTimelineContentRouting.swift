@@ -26,6 +26,7 @@ final class PublicTimelineContentRoutingImpl: PublicTimelineContentRouting {
         routing.viewController = vc
         vc.inject(ui: ui, presenter: presenter, routing: routing, disposeBag: DisposeBag())
         vc.recieve(data: timeline, height: height)
+        vc.navigationItem.rightBarButtonItem = nil
         viewController?.navigationController?.pushViewController(vc, animated: true)
     }
     
