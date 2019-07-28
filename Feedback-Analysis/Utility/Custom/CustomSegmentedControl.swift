@@ -16,7 +16,7 @@ class CustomSegmentedControl: UIView {
     
     weak var delegate: CustomSegmentedControlDelegate?
     
-    public var selectedIndex : Int = 0
+    public var selectedIndex: Int?
     
     convenience init(frame: CGRect, buttonTitle: [String], firstIndex: Int = 0) {
         self.init(frame: frame)
@@ -52,7 +52,7 @@ class CustomSegmentedControl: UIView {
             if btn == sender {
                 let selectorPosition = frame.width / CGFloat(buttonTitles.count) * CGFloat(buttonIndex)
                 selectedIndex = buttonIndex
-                delegate?.changeToIndex(index: selectedIndex)
+                delegate?.changeToIndex(index: selectedIndex ?? 0)
                 UIView.animate(withDuration: 0.3) {
                     self.selectorView.frame.origin.x = selectorPosition
                 }

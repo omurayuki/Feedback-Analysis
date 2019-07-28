@@ -10,21 +10,17 @@
  //////////ゆくゆく修正点
  // reply画面から戻ってきたときに、cellが押せないときがある (textfield出現が何かをしている)
  // 変数名を正しく
- // comment, replyをぐるぐるfetch
  // goalDocumentIdをdocumentIdと書いているから修正
  // decodable
  // cellの共通インターフェース作成
  // firebaseのgoalsのデータを削除したときにcommentテーブルのデータも削除されない
  // firebaseRefをpresenterで普通に記述しているけど、今思ったらこのデータはpresenterが意識すべきではないと思う(というのも、エンドポイントがsqlデータベースに変わった時に、presenter層も影響を受けるから)
  // mypageやotherpageのprofileはaddsnapshotlistener
- // 他の人のフォロー、フォロワーから自分のページに行けないように
- // フォロー、フォロワーからページに行って、またフォロー、フォロワーに行くと上書きされて戻ってきたときにその前の人のフォロー、フォロワーがおかしくなる
  // 櫻井さんに教えてもらった方法でクライアントサイドジョイン解消
  // mypage detailをaddsnapshot(編集から戻ってきたときやコメント書き込みされたあとなどの理由から)
  
  //////////必須
  // push通知設定
- // comment, replyをぐるぐるfetch
  // チャット機能実装
  // 強み分析機能実装
  

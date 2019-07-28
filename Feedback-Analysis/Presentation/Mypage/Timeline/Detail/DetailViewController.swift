@@ -78,7 +78,7 @@ class DetailViewController: UIViewController {
             
             ui.viewTapGesture.rx.event
                 .bind { [unowned self] _ in
-                    self.view.endEditing(true)
+                    self.ui.commentField.resignFirstResponder()
                 }.disposed(by: disposeBag)
             
             presenter.isLoading
