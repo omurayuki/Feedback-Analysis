@@ -1,6 +1,6 @@
 import UIKit
 
-class MessagesViewController: UIViewController { //}, KeyboardHandler {
+class MessagesViewController: UIViewController, KeyboardHandler {
     
     @IBOutlet weak var messageTableView: UITableView!
     @IBOutlet weak var messageInputTextField: UITextField!
@@ -9,41 +9,33 @@ class MessagesViewController: UIViewController { //}, KeyboardHandler {
     @IBOutlet weak var messageStackViewWidthConstraint: NSLayoutConstraint!
     @IBOutlet var messageActionButtons: [UIButton]!
     
-    //MARK: IBOutlets
-//    @IBOutlet weak var tableView: UITableView!
-//    @IBOutlet weak var inputTextField: UITextField!
-//    @IBOutlet weak var expandButton: UIButton!
-//    @IBOutlet weak var barBottomConstraint: NSLayoutConstraint!
-//    @IBOutlet weak var stackViewWidthConstraint: NSLayoutConstraint!
-//    @IBOutlet var actionButtons: [UIButton]!
-    
-    //MARK: Private properties
 //    private let manager = MessageManager()
-//    private let imageService = ImagePickerService()
-//    private let locationService = LocationService()
-//    private var messages = [ObjectMessage]()
+    private let imageService = ImagePickerService()
+    private var messages: [Message]?
     
-    //MARK: Public properties
-//    var conversation = ObjectConversation()
+    var conversation: Conversation?
     var bottomInset: CGFloat {
         return view.safeAreaInsets.bottom + 50
     }
     
-    //MARK: Lifecycle
+    func inject(conversation: Conversation) {
+        self.conversation = conversation
+        //// conversationsをinjectして、その中身のidなどをみてmessageがあるかどうかをdbから判断
+        //// messageはsendで使うからuserdefaultsなどで一時的に保存するべき
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-//        addKeyboardObservers() {[weak self] state in
-//            guard state else { return }
-//            self?.tableView.scroll(to: .bottom, animated: true)
-//        }
-        fetchMessages()
-        fetchUserName()
+        addKeyboardObservers() {[weak self] state in
+            guard state else { return }
+            self?.messageTableView.scroll(to: .bottom, animated: true)
+        }
     }
 }
 
-//MARK: Private methods
 extension MessagesViewController {
     
+    //// 前画面からのrecieveでfetchMessagesを走らす(conversationを引数にとって)
     private func fetchMessages() {
 //        manager.messages(for: conversation) {[weak self] messages in
 //            self?.messages = messages.sorted(by: {$0.timestamp < $1.timestamp})
@@ -52,8 +44,7 @@ extension MessagesViewController {
 //        }
     }
     
-    //// String == ObjectMessage
-    private func send(_ message: String) {
+    private func send(_ message: Message) {
 //        manager.create(message, conversation: conversation) {[weak self] response in
 //            guard let weakSelf = self else { return }
 //            if response == .failure {
@@ -74,6 +65,7 @@ extension MessagesViewController {
 //        }
     }
     
+    //// revieveでfetchUserNameする
     private func fetchUserName() {
 //        guard let currentUserID = UserManager().currentUserID() else { return }
 //        guard let userID = conversation.userIDs.filter({$0 != currentUserID}).first else { return }
@@ -89,7 +81,7 @@ extension MessagesViewController {
             UIView.animate(withDuration: 0.3) {
                 self.messageExpandButton.isHidden = true
                 self.messageExpandButton.alpha = 0
-                self.messageActionButtons.forEach({$0.isHidden = false})
+                self.messageActionButtons.forEach( {$0.isHidden = false} )
                 self.view.layoutIfNeeded()
             }
             return
@@ -99,13 +91,12 @@ extension MessagesViewController {
         UIView.animate(withDuration: 0.3) {
             self.messageExpandButton.isHidden = false
             self.messageExpandButton.alpha = 1
-            self.messageActionButtons.forEach({$0.isHidden = true})
+            self.messageActionButtons.forEach( {$0.isHidden = true} )
             self.view.layoutIfNeeded()
         }
     }
 }
 
-//MARK: IBActions
 extension MessagesViewController {
     
     @IBAction func sendMessagePressed(_ sender: Any) {
@@ -130,48 +121,28 @@ extension MessagesViewController {
 //        }
     }
     
-    @IBAction func sendLocationPressed(_ sender: UIButton) {
-//        locationService.getLocation {[weak self] response in
-//            switch response {
-//            case .denied:
-//                self?.showAlert(title: "Error", message: "Please enable locattion services")
-//            case .location(let location):
-//                let message = ObjectMessage()
-//                message.ownerID = UserManager().currentUserID()
-//                message.content = location.string
-//                message.contentType = .location
-//                self?.send(message)
-//                self?.inputTextField.text = nil
-//                self?.showActionButtons(false)
-//            }
-//        }
-    }
-    
     @IBAction func expandItemsPressed(_ sender: UIButton) {
         showActionButtons(true)
     }
 }
 
-//MARK: UITableView Delegate & DataSource
 extension MessagesViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return messages.count
-        return 1
+        return messages?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let message = messages[indexPath.row]
-//        if message.contentType == .none {
-//            let cell = tableView.dequeueReusableCell(withIdentifier: message.ownerID == UserManager().currentUserID() ? "MessageTableViewCell" : "UserMessageTableViewCell") as! MessageTableViewCell
-//            cell.set(message)
-//            return cell
-//        }
-//        let cell = tableView.dequeueReusableCell(withIdentifier: message.ownerID == UserManager().currentUserID() ? "MessageAttachmentTableViewCell" : "UserMessageAttachmentTableViewCell") as! MessageAttachmentTableViewCell
-//        cell.delegate = self
-//        cell.set(message)
-//        return cell
-        return UITableViewCell()
+        guard let message = messages?[indexPath.row] else { return UITableViewCell() }
+        if message.contentType == .none {
+            let cell = tableView.dequeueReusableCell(withIdentifier: message.ownerID == AppUserDefaults.getAuthToken() ? "MessageTableViewCell" : "UserMessageTableViewCell") as! MessageTableViewCell
+            cell.set(message)
+            return cell
+        }
+        let cell = tableView.dequeueReusableCell(withIdentifier: message.ownerID == AppUserDefaults.getAuthToken() ? "MessageAttachmentTableViewCell" : "UserMessageAttachmentTableViewCell") as! MessageAttachmentTableViewCell
+        cell.delegate = self
+        cell.set(message)
+        return cell
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -183,22 +154,18 @@ extension MessagesViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let message = messages[indexPath.row]
-//        switch message.contentType {
-//        case .location:
-//            let vc: MapPreviewController = UIStoryboard.controller(storyboard: .previews)
-//            vc.locationString = message.content
-//            navigationController?.present(vc, animated: true)
-//        case .photo:
+        guard let message = messages?[indexPath.row] else { return }
+        switch message.contentType {
+        case .photo?:
+            break
 //            let vc: ImagePreviewController = UIStoryboard.controller(storyboard: .previews)
 //            vc.imageURLString = message.profilePicLink
 //            navigationController?.present(vc, animated: true)
-//        default: break
-//        }
+        default: break
+        }
     }
 }
 
-//MARK: UItextField Delegate
 extension MessagesViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         return textField.resignFirstResponder()
@@ -210,7 +177,6 @@ extension MessagesViewController: UITextFieldDelegate {
     }
 }
 
-//MARK: MessageTableViewCellDelegate Delegate
 extension MessagesViewController: MessageTableViewCellDelegate {
     
     func messageTableViewCellUpdate() {

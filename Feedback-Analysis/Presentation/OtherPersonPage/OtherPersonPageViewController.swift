@@ -3,6 +3,8 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+//// 
+
 class OtherPersonPageViewController: UIViewController {
     
     typealias DataSource = PageViewDataSource<UIViewController>

@@ -5,6 +5,7 @@ protocol OtherPersonPageUI: UI {
     var userImage: UIImageView { get }
     var userName: UILabel { get }
     var followBtn: FollowButton { get }
+    var messageBtn: UIButton { get }
     var contentField: UILabel { get }
     var residence: UILabel { get }
     var residenceField: UILabel { get }
@@ -50,6 +51,17 @@ final class OtherPersonPageUIImpl: OtherPersonPageUI {
     
     private(set) var followBtn: FollowButton = {
         let button = FollowButton()
+        return button
+    }()
+    
+    private(set) var messageBtn: UIButton = {
+        let button = UIButton.Builder()
+            .title("    メッセージ    ")
+            .border(width: 1, color: UIColor.appSubColor.cgColor)
+            .cornerRadius(15)
+            .backgroundColor(.clear)
+            .component(.appMain)
+            .build()
         return button
     }()
     
@@ -142,7 +154,7 @@ extension OtherPersonPageUIImpl {
         
         vc.addChild(timelinePages)
         [headerImage, userImage, userName, followBtn,
-        contentField, residenceStack,
+         messageBtn, contentField, residenceStack,
          birthStack, followStack, followerStack,
          timelineSegmented, containerView].forEach { vc.view.addSubview($0) }
         containerView.addSubview(timelinePages.view)
@@ -169,6 +181,11 @@ extension OtherPersonPageUIImpl {
         followBtn.anchor()
             .top(to: headerImage.bottomAnchor, constant: 10)
             .right(to: vc.view.rightAnchor, constant: -20)
+            .activate()
+        
+        messageBtn.anchor()
+            .top(to: headerImage.bottomAnchor, constant: 10)
+            .right(to: followBtn.leftAnchor, constant: -10)
             .activate()
         
         contentField.anchor()

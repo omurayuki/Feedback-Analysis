@@ -15,6 +15,12 @@ enum FirestoreResponse<T> {
     case unknown
 }
 
+enum ContentType: Int {
+    case none
+    case photo
+    case unknown
+}
+
 enum FirebaseDocumentRef {
     case userRef(authorToken: String)
     case authorRef(authorToken: String)
