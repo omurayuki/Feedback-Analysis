@@ -10,3 +10,4 @@ class PrivateGoalViewController: PrivateTimelineContentViewController {
         }
     }
 }
+
