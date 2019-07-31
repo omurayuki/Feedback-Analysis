@@ -9,6 +9,7 @@ protocol UserRemoteDataStore {
     func follow(documentRef: FirebaseDocumentRef) -> Single<()>
     func unFollow(documentRef: FirebaseDocumentRef) -> Single<()>
     func checkFollowing(documentRef: FirebaseDocumentRef) -> Single<Bool>
+    func getConversations(queryRef: FirebaseQueryRef) -> Single<[ConversationEntity]>
 }
 
 struct UserRemoteDataStoreImpl: UserRemoteDataStore {
@@ -109,6 +110,12 @@ struct UserRemoteDataStoreImpl: UserRemoteDataStore {
                     single(.error(FirebaseError.unknown))
                 }
             })
+            return Disposables.create()
+        })
+    }
+    
+    func getConversations(queryRef: FirebaseQueryRef) -> Single<[ConversationEntity]> {
+        return Single.create(subscribe: { single -> Disposable in
             return Disposables.create()
         })
     }

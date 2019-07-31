@@ -143,6 +143,7 @@
 		C9A6067722B2A88500184E0F /* UserTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A6067622B2A88500184E0F /* UserTranslator.swift */; };
 		C9A6067922B2AAB600184E0F /* UserRemoteDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A6067822B2AAB600184E0F /* UserRemoteDataStore.swift */; };
 		C9A7F86D22C717EF005B4C44 /* PrivateCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A7F86C22C717EF005B4C44 /* PrivateCompleteViewController.swift */; };
+		C9AB906D22F11E0F004559C3 /* ConversationTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9AB906C22F11E0F004559C3 /* ConversationTranslator.swift */; };
 		C9AED93C22B4CDD2002D37A0 /* UnderlinedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9AED93B22B4CDD2002D37A0 /* UnderlinedTextField.swift */; };
 		C9B55D0B22B0FE1B00845381 /* RemindViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B55D0A22B0FE1B00845381 /* RemindViewController.swift */; };
 		C9B55D0D22B0FE2200845381 /* RemindUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B55D0C22B0FE2200845381 /* RemindUI.swift */; };
@@ -391,6 +392,7 @@
 		C9A6067622B2A88500184E0F /* UserTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTranslator.swift; sourceTree = "<group>"; };
 		C9A6067822B2AAB600184E0F /* UserRemoteDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRemoteDataStore.swift; sourceTree = "<group>"; };
 		C9A7F86C22C717EF005B4C44 /* PrivateCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateCompleteViewController.swift; sourceTree = "<group>"; };
+		C9AB906C22F11E0F004559C3 /* ConversationTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationTranslator.swift; sourceTree = "<group>"; };
 		C9AED93B22B4CDD2002D37A0 /* UnderlinedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlinedTextField.swift; sourceTree = "<group>"; };
 		C9B55D0A22B0FE1B00845381 /* RemindViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindViewController.swift; sourceTree = "<group>"; };
 		C9B55D0C22B0FE2200845381 /* RemindUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindUI.swift; sourceTree = "<group>"; };
@@ -850,6 +852,7 @@
 				C92E0BBE22CB02BC007A2F0C /* CommentTranslator.swift */,
 				C9C43B9222D1078C006CBC1B /* ReplyTranslator.swift */,
 				C98AE9AA22DFA4840021DD73 /* AuthorTokensTranslator.swift */,
+				C9AB906C22F11E0F004559C3 /* ConversationTranslator.swift */,
 			);
 			path = Translator;
 			sourceTree = "<group>";
@@ -1668,6 +1671,7 @@
 				C941332B22C8BD300082A01C /* DetailPresenter.swift in Sources */,
 				C9F2497922B7B34E007E82A0 /* EmailEditingPresenterImpl.swift in Sources */,
 				C9035CB222B7773D006DFAB9 /* SettingsRouting.swift in Sources */,
+				C9AB906D22F11E0F004559C3 /* ConversationTranslator.swift in Sources */,
 				C91D8E4022CA63A6000379E3 /* DetailRepository.swift in Sources */,
 				C9D9010922AB44D80040390E /* AppUserDefault.swift in Sources */,
 				C97901CD22B9534B00C245B2 /* NewThingsView.swift in Sources */,

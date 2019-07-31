@@ -12,8 +12,5 @@ final class TimelineRoutingImpl: TimelineRouting {
     
     func showSearchPage() {
         print("search")
-//        let sb = UIStoryboard(name: "Messages", bundle: nil)
-//        let vc = sb.instantiateViewController(withIdentifier: "MessagesViewController")
-//        viewController?.navigationController?.pushViewController(vc, animated: true)
     }
 }

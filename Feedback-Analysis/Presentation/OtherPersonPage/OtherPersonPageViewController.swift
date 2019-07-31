@@ -3,8 +3,6 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-//// 
-
 class OtherPersonPageViewController: UIViewController {
     
     typealias DataSource = PageViewDataSource<UIViewController>
@@ -27,6 +25,13 @@ class OtherPersonPageViewController: UIViewController {
     
     var disposeBag: DisposeBag! {
         didSet {
+            ui.messageBtn.rx.tap.asDriver()
+                .drive(onNext: { [unowned self] _ in
+                    self.presenter.getConversation(completion: { [unowned self] conversation in
+                        self.routing.showChatPage(conversation: conversation)
+                    })
+                }).disposed(by: disposeBag)
+            
             ui.followBtn.rx.tap.asDriver()
                 .drive(onNext: { [unowned self] _ in
                     self.presenter.getBothToken(completion: { [unowned self] subjectToken, objectToken in
@@ -105,6 +110,7 @@ extension OtherPersonPageViewController {
         presenter.setObjectToken(token)
         checkFollowing(objectToken: token)
         presenter.fetch(to: .userRef(authorToken: token), completion: nil)
+        setConversationInObjectUser()
     }
     
     func follow(documentRef: FirebaseDocumentRef) {
@@ -123,6 +129,20 @@ extension OtherPersonPageViewController {
         presenter.getAuthorToken { [unowned self] subjectToken in
             self.presenter.checkFollowing(documentRef: .followRef(subject: subjectToken, object: objectToken)) { bool in
                 bool ? (self.ui.followBtn.currentState = .following) : (self.ui.followBtn.currentState = .unFollowing)
+            }
+        }
+    }
+    
+    func setConversationInObjectUser() {
+        //// queryRef変更
+        presenter.getConversations(queryRef: FirebaseQueryRef.followeeRefFromMypage) { [unowned self] conversations in
+            self.presenter.getBothToken { subjectToken, objectToken in
+                if let conversation = conversations.filter({ $0.userIDs.contains(objectToken) }).first {
+                    self.presenter.setConversation(conversation)
+                }
+                let conversation = Conversation(userIds: [subjectToken, objectToken],
+                                                isRead: [subjectToken: true, objectToken: true])
+                self.presenter.setConversation(conversation)
             }
         }
     }

@@ -14,4 +14,12 @@ struct Conversation {
         self.lastMessage = entity.lastMessage
         self.isRead = entity.isRead
     }
+    
+    init(userIds: [String], isRead: [String: Bool]) {
+        self.id = ""
+        self.userIDs = userIds
+        self.time = ""
+        self.lastMessage = ""
+        self.isRead = isRead
+    }
 }

@@ -15,8 +15,8 @@ struct ReplyPost {
         
         var description: String {
             switch self {
-            case .authorToken:    return "author_token"
-            case .reply:      return "reply"
+            case .authorToken:  return "author_token"
+            case .reply:        return "reply"
             case .createdAt:    return "created_at"
             case .updatedAt:    return "updated_at"
             }
