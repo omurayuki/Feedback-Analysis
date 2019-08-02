@@ -18,8 +18,9 @@ struct ConversationManager {
     }
     
     func create(documentRef: FirebaseDocumentRef, conversation: Conversation,
-                completion: @escaping (_ response: FirestoreResponse<()>) -> Void) {
-        Provider().setData(documentRef: documentRef, fields: ["id": conversation.id, "isRead": conversation.isRead, "lastMessage": conversation.lastMessage, "timestamp": conversation.time, "userIDs": conversation.userIDs]) { response in
+                completion: ((_ response: FirestoreResponse<()>) -> Void)? = nil) {
+        Provider().setData(documentRef: documentRef, fields: ["id": conversation.id, "isRead": conversation.isRead, "lastMessage": conversation.lastMessage ?? "", "timestamp": conversation.timestamp, "userIDs": conversation.userIDs]) { response in
+            guard let completion = completion else { return }
             switch response {
             case .success(_):
                 completion(.success(()))

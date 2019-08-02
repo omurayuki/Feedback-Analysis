@@ -136,8 +136,10 @@ extension OtherPersonPageViewController {
     func setConversationInObjectUser() {
         presenter.getConversations(queryRef: .conversationsRef) { [unowned self] conversations in
             self.presenter.getBothToken { subjectToken, objectToken in
+                print(conversations)
                 if let conversation = conversations.filter({ $0.userIDs.contains(objectToken) }).first {
                     self.presenter.setConversation(conversation)
+                    return
                 }
                 let conversation = Conversation(userIds: [subjectToken, objectToken],
                                                 isRead: [subjectToken: true, objectToken: true])

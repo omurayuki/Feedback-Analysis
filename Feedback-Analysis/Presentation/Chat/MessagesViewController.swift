@@ -62,7 +62,7 @@ extension MessagesViewController {
         manager.create(documentRef: .messageRef(conversationID: conversation.id, messageID: message.id), message: message, conversation: conversation) { response in
             switch response {
             case .success(_):
-                conversation.time = Date(timeIntervalSince1970: Date().timeIntervalSince1970)
+                conversation.timestamp = Date(timeIntervalSince1970: Date().timeIntervalSince1970)
                 switch message.contentType {
                 case .none: conversation.lastMessage = message.message
                 case .photo: conversation.lastMessage = "Attachment"

@@ -4,7 +4,7 @@ import FirebaseFirestore
 struct ConversationEntity: Entity {
     var id: String
     var userIDs: [String]
-    var updatedAt: Date
+    var timestamp: Timestamp
     var lastMessage: String?
     var isRead: [String: Bool]
     
@@ -12,20 +12,20 @@ struct ConversationEntity: Entity {
         guard
             let id = document["id"] as? String,
             let userIDs = document["userIDs"] as? [String],
-            let updatedAt = document["updated_at"] as? Date,
-            let lastMessage = document["last_message"] as? String,
-            let isRead = document["is_read"] as? [String: Bool]
+            let timestamp = document["timestamp"] as? Timestamp,
+            let lastMessage = document["lastMessage"] as? String,
+            let isRead = document["isRead"] as? [String: Bool]
         else {
             self.id = ""
             self.userIDs = [String]()
-            self.updatedAt = Date()
+            self.timestamp = Timestamp()
             self.lastMessage = ""
             self.isRead = [String: Bool]()
             return
         }
         self.id = id
         self.userIDs = userIDs
-        self.updatedAt = updatedAt
+        self.timestamp = timestamp
         self.lastMessage = lastMessage
         self.isRead = isRead
     }

@@ -228,7 +228,7 @@ enum FirebaseQueryRef {
             return Firestore.firestore()
                 .collection("Conversations")
                 .whereField("userIDs", arrayContains: AppUserDefaults.getAuthToken())
-                .order(by: "updated_at", descending: true)
+                .order(by: "timestamp", descending: true)
         case .messagesRef(let conversationId):
             return Firestore.firestore()
                 .collection("Conversations")

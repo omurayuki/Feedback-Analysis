@@ -29,16 +29,18 @@ struct MessageManager {
             switch response {
             case .success(let uploadedMessage):
                 let data = ["id": uploadedMessage.id , "message": uploadedMessage.message ?? "", "content": uploadedMessage.content ?? "",
-                            "contentType": uploadedMessage.contentType.rawValue ?? 0, "created_at": uploadedMessage.time , "ownerID": uploadedMessage.ownerID ?? "",
+                            "contentType": uploadedMessage.contentType.rawValue, "created_at": uploadedMessage.time , "ownerID": uploadedMessage.ownerID ?? "",
                             "profilePickLink": uploadedMessage.profilePicLink ?? ""] as [String : Any]
                 Provider().setData(documentRef: documentRef, fields: data, completion: { response in
                     switch response {
                     case .success(let response):
                         completion(.success(response))
+                        var conversation = conversation
                         if let id = conversation.isRead.filter({ $0.key != AppUserDefaults.getAuthToken() }).first {
-//                            conversation.isRead[id.key] = false
+                            conversation.isRead[id.key] = false
                         }
-//                        ConversationManager().create(conversation)
+                        ConversationManager().create(documentRef: .conversationRef(conversationID: conversation.id),
+                                                     conversation: conversation, completion: nil)
                     case .failure(let error):
                         completion(.failure(error))
                     case .unknown:
