@@ -10,6 +10,8 @@ protocol OtherPersonPageUseCase {
     func setObjectToken(_ token: String) -> Single<()>
     func getBothToken() -> Single<(String, String)>
     func getConversations(queryRef: FirebaseQueryRef) -> Single<[Conversation]>
+    func setConversation(_ conversation: Conversation) -> Single<()>
+    func getConversation() -> Single<Conversation>
 }
 
 struct OtherPersonPageUseCaseImpl: OtherPersonPageUseCase {
@@ -52,5 +54,13 @@ struct OtherPersonPageUseCaseImpl: OtherPersonPageUseCase {
     
     func getConversations(queryRef: FirebaseQueryRef) -> Single<[Conversation]> {
         return repository.getConversations(queryRef: queryRef).map { ConversationsTranslator().translate($0) }
+    }
+    
+    func setConversation(_ conversation: Conversation) -> Single<()> {
+        return repository.setConversation(conversation)
+    }
+    
+    func getConversation() -> Single<Conversation> {
+        return repository.getConversation()
     }
 }

@@ -7,6 +7,8 @@ protocol UserLocalDataStore {
     func getAuthorToken() -> Single<String>
     func setObjectToken(_ token: String) -> Single<()>
     func getBothToken() -> Single<(String, String)>
+    func setConversation(_ conversation: Conversation) -> Single<()>
+    func getConversation() -> Single<Conversation>
 }
 
 struct UserLocalDataStoreImpl: UserLocalDataStore {
@@ -44,6 +46,23 @@ struct UserLocalDataStoreImpl: UserLocalDataStore {
     func getBothToken() -> Single<(String, String)> {
         return Single.create(subscribe: { single -> Disposable in
             single(.success((AppUserDefaults.getAuthToken(), AppUserDefaults.getObjectToken())))
+            return Disposables.create()
+        })
+    }
+    
+    func setConversation(_ conversation: Conversation) -> Single<()> {
+        return Single.create(subscribe: { single -> Disposable in
+            AppUserDefaults.setConversationInOnotherPerson(conversation: [conversation])
+            single(.success(()))
+            return Disposables.create()
+        })
+    }
+    
+    func getConversation() -> Single<Conversation> {
+        return Single.create(subscribe: { single -> Disposable in
+            if let conversation = AppUserDefaults.getConversationInOnotherPerson().first {
+                single(.success(conversation))
+            }
             return Disposables.create()
         })
     }

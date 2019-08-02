@@ -18,7 +18,7 @@ struct MessageEntity: Entity {
             let contentType = document["contentType"] as? Int,
             let createdAt = document["created_at"] as? Timestamp,
             let ownerID = document["ownerID"] as? String,
-            let profilePicLink = document["profile_pic_link"] as? String
+            let profilePicLink = document["profilePickLink"] as? String
         else {
                 self.id = ""
                 self.message = ""

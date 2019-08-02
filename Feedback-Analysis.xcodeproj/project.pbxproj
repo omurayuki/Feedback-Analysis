@@ -126,6 +126,8 @@
 		C99116AE22B8A323007C67C7 /* PasswordEditingRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99116AD22B8A323007C67C7 /* PasswordEditingRouting.swift */; };
 		C99116B022B8A912007C67C7 /* PasswordEditingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99116AF22B8A912007C67C7 /* PasswordEditingPresenter.swift */; };
 		C99116B222B8A917007C67C7 /* PasswordEditingPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99116B122B8A917007C67C7 /* PasswordEditingPresenterImpl.swift */; };
+		C99EB6FD22F1E2FF00675E55 /* ConversationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99EB6FC22F1E2FF00675E55 /* ConversationManager.swift */; };
+		C99EB6FF22F1E91200675E55 /* MessageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99EB6FE22F1E91200675E55 /* MessageManager.swift */; };
 		C9A1573522A6CA1F00D7D047 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A1573422A6CA1F00D7D047 /* AppDelegate.swift */; };
 		C9A1573C22A6CA2000D7D047 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9A1573B22A6CA2000D7D047 /* Assets.xcassets */; };
 		C9A1573F22A6CA2000D7D047 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9A1573D22A6CA2000D7D047 /* LaunchScreen.storyboard */; };
@@ -151,6 +153,8 @@
 		C9B55D1222B1010200845381 /* RemindPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B55D1122B1010200845381 /* RemindPresenter.swift */; };
 		C9B55D1422B1010C00845381 /* RemindPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B55D1322B1010C00845381 /* RemindPresenterImpl.swift */; };
 		C9B55D1622B1062600845381 /* RemindUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B55D1522B1062600845381 /* RemindUseCase.swift */; };
+		C9BF74CF22F2F250006337F0 /* UploadImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BF74CE22F2F250006337F0 /* UploadImageManager.swift */; };
+		C9BF74D122F2F511006337F0 /* FireCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BF74D022F2F511006337F0 /* FireCodable.swift */; };
 		C9C0DEF622CF535300BBA55B /* Initial.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C0DEF522CF535300BBA55B /* Initial.swift */; };
 		C9C2808422BBD6A3002E905E /* GoalPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C2808322BBD6A3002E905E /* GoalPost.swift */; };
 		C9C43B7B22D09118006CBC1B /* HalfModalPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C43B7A22D09118006CBC1B /* HalfModalPresentationController.swift */; };
@@ -373,6 +377,8 @@
 		C99116AD22B8A323007C67C7 /* PasswordEditingRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordEditingRouting.swift; sourceTree = "<group>"; };
 		C99116AF22B8A912007C67C7 /* PasswordEditingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordEditingPresenter.swift; sourceTree = "<group>"; };
 		C99116B122B8A917007C67C7 /* PasswordEditingPresenterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordEditingPresenterImpl.swift; sourceTree = "<group>"; };
+		C99EB6FC22F1E2FF00675E55 /* ConversationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationManager.swift; sourceTree = "<group>"; };
+		C99EB6FE22F1E91200675E55 /* MessageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageManager.swift; sourceTree = "<group>"; };
 		C9A1573122A6CA1F00D7D047 /* Feedback-Analysis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Feedback-Analysis.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9A1573422A6CA1F00D7D047 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C9A1573B22A6CA2000D7D047 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -400,6 +406,8 @@
 		C9B55D1122B1010200845381 /* RemindPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindPresenter.swift; sourceTree = "<group>"; };
 		C9B55D1322B1010C00845381 /* RemindPresenterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindPresenterImpl.swift; sourceTree = "<group>"; };
 		C9B55D1522B1062600845381 /* RemindUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindUseCase.swift; sourceTree = "<group>"; };
+		C9BF74CE22F2F250006337F0 /* UploadImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadImageManager.swift; sourceTree = "<group>"; };
+		C9BF74D022F2F511006337F0 /* FireCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireCodable.swift; sourceTree = "<group>"; };
 		C9C0DEF522CF535300BBA55B /* Initial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Initial.swift; sourceTree = "<group>"; };
 		C9C2808322BBD6A3002E905E /* GoalPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalPost.swift; sourceTree = "<group>"; };
 		C9C43B7A22D09118006CBC1B /* HalfModalPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalfModalPresentationController.swift; sourceTree = "<group>"; };
@@ -1013,6 +1021,7 @@
 			isa = PBXGroup;
 			children = (
 				C9A6066E22B2980700184E0F /* Firebase.swift */,
+				C9BF74D022F2F511006337F0 /* FireCodable.swift */,
 				C9A6067022B2980D00184E0F /* Const.swift */,
 				C9C0DEF522CF535300BBA55B /* Initial.swift */,
 			);
@@ -1486,10 +1495,13 @@
 			isa = PBXGroup;
 			children = (
 				C990788D22EAD43C009076FA /* AccountEntityManager.swift */,
+				C9BF74CE22F2F250006337F0 /* UploadImageManager.swift */,
 				C990789322EAD6B7009076FA /* UserEntityManager.swift */,
 				C990788A22EAD0C9009076FA /* GoalEntityManager.swift */,
 				C990788F22EAD689009076FA /* CommentEntityManager.swift */,
 				C990789122EAD694009076FA /* ReplyEntityManager.swift */,
+				C99EB6FC22F1E2FF00675E55 /* ConversationManager.swift */,
+				C99EB6FE22F1E91200675E55 /* MessageManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -1700,6 +1712,7 @@
 				C941332422C8B2D20082A01C /* DetailUI.swift in Sources */,
 				C9ED720222B137D700BDB9A7 /* MypageRouting.swift in Sources */,
 				C95E08AB22B11750000C41C7 /* MainTabController.swift in Sources */,
+				C99EB6FD22F1E2FF00675E55 /* ConversationManager.swift in Sources */,
 				C9B55D0F22B0FE2E00845381 /* RemingRouting.swift in Sources */,
 				C9C43B8B22D0C60B006CBC1B /* ReplyCell.swift in Sources */,
 				C97901D622BA02B700C245B2 /* Animation+Extension.swift in Sources */,
@@ -1838,6 +1851,7 @@
 				C941332622C8B2DC0082A01C /* DetailRouting.swift in Sources */,
 				C9C2808422BBD6A3002E905E /* GoalPost.swift in Sources */,
 				C9C43B7F22D09207006CBC1B /* HalfModalInteractiveTransition.swift in Sources */,
+				C9BF74D122F2F511006337F0 /* FireCodable.swift in Sources */,
 				C9E5911A22E962E90083E5F5 /* PublicTimelineContentViewController.swift in Sources */,
 				C91D8E4222CA6495000379E3 /* DetailRemoteDataStore.swift in Sources */,
 				C90535CB22AFBD55006B2E04 /* Provider.swift in Sources */,
@@ -1881,6 +1895,8 @@
 				C98E1A5A22E34DAD00CC60BA /* FollowListUI.swift in Sources */,
 				C926CDA222B3C425008672AA /* EditRouting.swift in Sources */,
 				C9C844B522AFADB000083280 /* LoginUseCase.swift in Sources */,
+				C99EB6FF22F1E91200675E55 /* MessageManager.swift in Sources */,
+				C9BF74CF22F2F250006337F0 /* UploadImageManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -134,8 +134,7 @@ extension OtherPersonPageViewController {
     }
     
     func setConversationInObjectUser() {
-        //// queryRef変更
-        presenter.getConversations(queryRef: FirebaseQueryRef.followeeRefFromMypage) { [unowned self] conversations in
+        presenter.getConversations(queryRef: .conversationsRef) { [unowned self] conversations in
             self.presenter.getBothToken { subjectToken, objectToken in
                 if let conversation = conversations.filter({ $0.userIDs.contains(objectToken) }).first {
                     self.presenter.setConversation(conversation)

@@ -140,6 +140,15 @@ class AppUserDefaults {
     class func clearStringArray() {
         clearArrayValue(keyName: "authorTokens")
     }
+    
+    // conversationInOnotherPerson
+    class func getConversationInOnotherPerson() -> [Conversation] {
+        return getStructValue(keyName: "conversationInOnotherPerson")
+    }
+    
+    class func setConversationInOnotherPerson(conversation: [Conversation]) {
+        putStructValue(conversation, keyName: "conversationInOnotherPerson")
+    }
 }
 
 extension AppUserDefaults {

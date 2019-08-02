@@ -121,11 +121,27 @@ class OtherPersonPagePresenterImpl: NSObject, OtherPersonPagePresenter {
     }
     
     func setConversation(_ conversation: Conversation) {
-        
+        useCase.setConversation(conversation)
+            .subscribe { result in
+                switch result {
+                case .success(_):
+                    return
+                case .error(_):
+                    return
+                }
+            }.disposed(by: view.disposeBag)
     }
     
     func getConversation(completion: @escaping (Conversation) -> Void) {
-        
+        useCase.getConversation()
+            .subscribe { result in
+                switch result {
+                case .success(let response):
+                    completion(response)
+                case .error(_):
+                    return
+                }
+            }.disposed(by: view.disposeBag)
     }
     
     func setup() {}

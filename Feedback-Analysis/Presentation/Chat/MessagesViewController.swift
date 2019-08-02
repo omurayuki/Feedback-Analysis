@@ -9,7 +9,7 @@ class MessagesViewController: UIViewController, KeyboardHandler {
     @IBOutlet weak var messageStackViewWidthConstraint: NSLayoutConstraint!
     @IBOutlet var messageActionButtons: [UIButton]!
     
-//    private let manager = MessageManager()
+    private let manager = MessageManager()
     private let imageService = ImagePickerService()
     private var messages: [Message]?
     
@@ -30,6 +30,11 @@ class MessagesViewController: UIViewController, KeyboardHandler {
             guard state else { return }
             self?.messageTableView.scroll(to: .bottom, animated: true)
         }
+        messageTableView.delegate = self
+        messageTableView.dataSource = self
+        
+        fetchMessages()
+        fetchUserName()
     }
 }
 
@@ -37,42 +42,65 @@ extension MessagesViewController {
     
     //// 前画面からのrecieveでfetchMessagesを走らす(conversationを引数にとって)
     private func fetchMessages() {
-//        manager.messages(for: conversation) {[weak self] messages in
-//            self?.messages = messages.sorted(by: {$0.timestamp < $1.timestamp})
-//            self?.tableView.reloadData()
-//            self?.tableView.scroll(to: .bottom, animated: true)
-//        }
+        manager.fetchMessageEntities(queryRef: .messagesRef(conversationId: conversation?.id ?? "")) { [weak self] response in
+            switch response {
+            case .success(let entities):
+                print(entities)
+                self?.messages = entities
+                self?.messageTableView.reloadData()
+                self?.messageTableView.scroll(to: .bottom, animated: true)
+            case .failure(let error):
+                self?.showError(message: error.localizedDescription)
+            case .unknown:
+                return
+            }
+        }
     }
     
     private func send(_ message: Message) {
-//        manager.create(message, conversation: conversation) {[weak self] response in
-//            guard let weakSelf = self else { return }
-//            if response == .failure {
-//                weakSelf.showAlert()
-//                return
-//            }
-//            weakSelf.conversation.timestamp = Int(Date().timeIntervalSince1970)
-//            switch message.contentType {
-//            case .none: weakSelf.conversation.lastMessage = message.message
-//            case .photo: weakSelf.conversation.lastMessage = "Attachment"
-//            case .location: weakSelf.conversation.lastMessage = "Location"
-//            default: break
-//            }
-//            if let currentUserID = UserManager().currentUserID() {
-//                weakSelf.conversation.isRead[currentUserID] = true
-//            }
-//            ConversationManager().create(weakSelf.conversation)
-//        }
+        guard var conversation = conversation else { return }
+        manager.create(documentRef: .messageRef(conversationID: conversation.id, messageID: message.id), message: message, conversation: conversation) { response in
+            switch response {
+            case .success(_):
+                conversation.time = Date(timeIntervalSince1970: Date().timeIntervalSince1970)
+                switch message.contentType {
+                case .none: conversation.lastMessage = message.message
+                case .photo: conversation.lastMessage = "Attachment"
+                default: break
+                }
+                conversation.isRead[AppUserDefaults.getAuthToken()] = true
+                ConversationManager().create(documentRef: .conversationRef(conversationID: conversation.id), conversation: conversation,
+                                             completion: { response in
+                    switch response {
+                    case .success(_):
+                        return
+                    case .failure(let error):
+                        self.showError(message: error.localizedDescription)
+                    case .unknown:
+                        return
+                    }
+                })
+            case .failure(let error):
+                self.showError(message: error.localizedDescription)
+            case .unknown:
+                return
+            }
+        }
     }
     
     //// revieveでfetchUserNameする
     private func fetchUserName() {
-//        guard let currentUserID = UserManager().currentUserID() else { return }
-//        guard let userID = conversation.userIDs.filter({$0 != currentUserID}).first else { return }
-//        UserManager().userData(for: userID) {[weak self] user in
-//            guard let name = user?.name else { return }
-//            self?.navigationItem.title = name
-//        }
+        guard let userID = conversation?.userIDs.filter({ $0 != AppUserDefaults.getAuthToken() }).first else { return }
+        UserEntityManager().fetchUserEntity(documentRef: .userRef(authorToken: userID)) { [weak self] response in
+            switch response {
+            case .success(let entity):
+                self?.navigationItem.title = entity.name
+            case .failure(let error):
+                self?.showError(message: error.localizedDescription)
+            case .unknown:
+                return
+            }
+        }
     }
     
     private func showActionButtons(_ status: Bool) {
@@ -100,25 +128,20 @@ extension MessagesViewController {
 extension MessagesViewController {
     
     @IBAction func sendMessagePressed(_ sender: Any) {
-//        guard let text = inputTextField.text, !text.isEmpty else { return }
-//        let message = ObjectMessage()
-//        message.message = text
-//        message.ownerID = UserManager().currentUserID()
-//        inputTextField.text = nil
-//        showActionButtons(false)
-//        send(message)
+        guard let text = messageInputTextField.text, !text.isEmpty else { return }
+        let message = Message(message: text, ownerID: AppUserDefaults.getAuthToken())
+        messageInputTextField.text = nil
+        showActionButtons(false)
+        send(message)
     }
     
     @IBAction func sendImagePressed(_ sender: UIButton) {
-//        imageService.pickImage(from: self, allowEditing: false, source: sender.tag == 0 ? .photoLibrary : .camera) {[weak self] image in
-//            let message = ObjectMessage()
-//            message.contentType = .photo
-//            message.profilePic = image
-//            message.ownerID = UserManager().currentUserID()
-//            self?.send(message)
-//            self?.inputTextField.text = nil
-//            self?.showActionButtons(false)
-//        }
+        imageService.pickImage(from: self, allowEditing: false, source: sender.tag == 0 ? .photoLibrary : .camera) {[weak self] image in
+            let message = Message(contentType: .photo, profilePic: image, ownerID: AppUserDefaults.getAuthToken())
+            self?.send(message)
+            self?.messageInputTextField.text = nil
+            self?.showActionButtons(false)
+        }
     }
     
     @IBAction func expandItemsPressed(_ sender: UIButton) {
@@ -134,7 +157,7 @@ extension MessagesViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let message = messages?[indexPath.row] else { return UITableViewCell() }
-        if message.contentType == .none {
+        if message.contentType == ContentType.none {
             let cell = tableView.dequeueReusableCell(withIdentifier: message.ownerID == AppUserDefaults.getAuthToken() ? "MessageTableViewCell" : "UserMessageTableViewCell") as! MessageTableViewCell
             cell.set(message)
             return cell
@@ -156,7 +179,7 @@ extension MessagesViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let message = messages?[indexPath.row] else { return }
         switch message.contentType {
-        case .photo?:
+        case .photo:
             break
 //            let vc: ImagePreviewController = UIStoryboard.controller(storyboard: .previews)
 //            vc.imageURLString = message.profilePicLink

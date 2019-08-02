@@ -11,14 +11,22 @@ class MessageTableViewCell: UITableViewCell {
     
     //// String == ObjectMessage
     func set(_ message: Message) {
+        print(message)
         messagesTextView?.text = message.message
         guard let imageView = messageProfilePic else { return }
         guard let userID = message.ownerID else { return }
         //// userId でprofile情報を取得
-//        ProfileManager.shared.userData(id: userID) { user in
-//            guard let urlString = user?.profilePicLink else { return }
-//            imageView.setImage(url: URL(string: urlString))
-//        }
+        UserEntityManager().fetchUserEntity(documentRef: .userRef(authorToken: userID)) { response in
+            switch response {
+            case .success(let entity):
+                imageView.setImage(url: entity.userImage)
+            case .failure(let error):
+                print("エラー")
+                print(error.localizedDescription)
+            case .unknown:
+                return
+            }
+        }
     }
 }
 
@@ -42,7 +50,7 @@ class MessageAttachmentTableViewCell: MessageTableViewCell {
     override func set(_ message: Message) {
         super.set(message)
         switch message.contentType {
-        case .photo?:
+        case .photo:
             guard let urlString = message.profilePicLink else { return }
             messageAttachmentImageView.setImage(url: URL(string: urlString)) {[weak self] image in
                 guard let image = image, let weakSelf = self else { return }

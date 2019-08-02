@@ -49,7 +49,7 @@ struct UserRemoteDataStoreImpl: UserRemoteDataStore {
     
     func uploadImage(_ image: UIImage, at storageRef: FirebaseStorageRef) -> Single<URL> {
         return Single.create(subscribe: { single -> Disposable in
-            AccountEntityManager().uploadImage(image, at: storageRef, completion: { response in
+            UploadImageManager().uploadImage(image, at: storageRef, completion: { response in
                 switch response {
                 case .success(let entity):
                     single(.success(entity))
@@ -116,6 +116,16 @@ struct UserRemoteDataStoreImpl: UserRemoteDataStore {
     
     func getConversations(queryRef: FirebaseQueryRef) -> Single<[ConversationEntity]> {
         return Single.create(subscribe: { single -> Disposable in
+            ConversationManager().fetchConversationEntities(queryRef: queryRef, completion: { response in
+                switch response {
+                case .success(let entities):
+                    single(.success(entities))
+                case .failure(let error):
+                    single(.error(FirebaseError.resultError(error)))
+                case .unknown:
+                    single(.error(FirebaseError.unknown))
+                }
+            })
             return Disposables.create()
         })
     }

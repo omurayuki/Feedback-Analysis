@@ -18,6 +18,7 @@
  // mypageやotherpageのprofileはaddsnapshotlistener
  // 櫻井さんに教えてもらった方法でクライアントサイドジョイン解消
  // mypage detailをaddsnapshot(編集から戻ってきたときやコメント書き込みされたあとなどの理由から)
+ // 他人のページの目標を編集できてしまう
  
  //////////必須
  // push通知設定
