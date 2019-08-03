@@ -1,7 +1,6 @@
 import UIKit
 
 protocol TimelineUI: UI {
-    var searchBtn: UIBarButtonItem { get }
     var timelineSegmented: CustomSegmentedControl { get }
     var containerView: UIView { get }
     var timelinePages: UIPageViewController { get set }
@@ -12,12 +11,6 @@ protocol TimelineUI: UI {
 final class TimelineUIImpl: TimelineUI {
     
     weak var viewController: UIViewController?
-    
-    private(set) var searchBtn: UIBarButtonItem = {
-        let btn = UIBarButtonItem(title: "検索", style: .plain, target: nil, action: nil)
-        btn.tintColor = .appSubColor
-        return btn
-    }()
     
     private(set) var timelineSegmented: CustomSegmentedControl = {
         let segment = CustomSegmentedControl(frame: CGRect(), buttonTitle: ["目標", "達成"])
@@ -44,8 +37,9 @@ extension TimelineUIImpl {
     func setup() {
         guard let vc = viewController else { return }
         vc.view.backgroundColor = .appMainColor
+        vc.navigationItem.title = "Post"
+        vc.navigationItem.largeTitleDisplayMode = .never
         vc.coloringAppMainNavBar()
-        vc.navigationItem.rightBarButtonItem = searchBtn
         
         vc.addChild(timelinePages)
         [timelineSegmented, containerView].forEach { vc.view.addSubview($0) }

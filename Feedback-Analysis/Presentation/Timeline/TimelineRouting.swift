@@ -2,15 +2,9 @@ import Foundation
 import UIKit
 import RxSwift
 
-protocol TimelineRouting: Routing {
-    func showSearchPage()
-}
+protocol TimelineRouting: Routing {}
 
 final class TimelineRoutingImpl: TimelineRouting {
     
     var viewController: UIViewController?
-    
-    func showSearchPage() {
-        print("search")
-    }
 }

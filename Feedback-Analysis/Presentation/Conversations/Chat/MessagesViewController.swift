@@ -34,7 +34,6 @@ class MessagesViewController: UIViewController, KeyboardHandler {
         messageTableView.dataSource = self
         
         fetchMessages()
-        fetchUserName()
     }
 }
 
@@ -82,21 +81,6 @@ extension MessagesViewController {
                 })
             case .failure(let error):
                 self.showError(message: error.localizedDescription)
-            case .unknown:
-                return
-            }
-        }
-    }
-    
-    //// revieveでfetchUserNameする
-    private func fetchUserName() {
-        guard let userID = conversation?.userIDs.filter({ $0 != AppUserDefaults.getAuthToken() }).first else { return }
-        UserEntityManager().fetchUserEntity(documentRef: .userRef(authorToken: userID)) { [weak self] response in
-            switch response {
-            case .success(let entity):
-                self?.navigationItem.title = entity.name
-            case .failure(let error):
-                self?.showError(message: error.localizedDescription)
             case .unknown:
                 return
             }

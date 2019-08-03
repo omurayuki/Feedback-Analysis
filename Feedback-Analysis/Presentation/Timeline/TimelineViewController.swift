@@ -24,12 +24,7 @@ final class TimelineViewController: UIViewController {
     }
     
     var disposeBag: DisposeBag! {
-        didSet {
-            ui.searchBtn.rx.tap.asDriver()
-                .drive(onNext: { [unowned self] _ in
-                    self.routing.showSearchPage()
-                }).disposed(by: disposeBag)
-        }
+        didSet {}
     }
     
     func inject(ui: TimelineUI,

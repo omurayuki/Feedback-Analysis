@@ -15,7 +15,7 @@ extension MainTabController: MainTabbarProtocol {
         var resouces = [#imageLiteral(resourceName: "diary"), #imageLiteral(resourceName: "bell"), #imageLiteral(resourceName: "mail"), #imageLiteral(resourceName: "home")]
         var viewControllers: [UIViewController] = []
         
-        [initTimelineVC(), UIViewController(), UIViewController(), initMypageVC(with: AppUserDefaults.getAuthToken())].enumerated().forEach { index, controller in
+        [initTimelineVC(), UIViewController(), ConversationViewController(), initMypageVC(with: AppUserDefaults.getAuthToken())].enumerated().forEach { index, controller in
             let navi = UINavigationController(rootViewController: controller)
             navi.tabBarItem = UITabBarItem(title: nil, image: resouces[index], tag: index)
             
