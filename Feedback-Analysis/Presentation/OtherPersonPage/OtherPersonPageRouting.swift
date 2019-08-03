@@ -4,7 +4,7 @@ import RxSwift
 
 protocol OtherPersonPageRouting: Routing {
     func showFollowListPage()
-    func showChatPage(conversation: Conversation)
+    func showMessagePage(conversation: Conversation)
 }
 
 final class OtherPersonPageRoutingImpl: OtherPersonPageRouting {
@@ -38,8 +38,7 @@ final class OtherPersonPageRoutingImpl: OtherPersonPageRouting {
         viewController?.navigationController?.pushViewController(vc, animated: true)
     }
     
-    func showChatPage(conversation: Conversation) {
-        //// userdefaultsに保存したconversaionをmessageVCのinjectに渡す
+    func showMessagePage(conversation: Conversation) {
         let sb = UIStoryboard(name: "Messages", bundle: nil)
         guard let vc = sb.instantiateViewController(withIdentifier: "MessagesViewController") as? MessagesViewController else { return }
         vc.inject(conversation: conversation)

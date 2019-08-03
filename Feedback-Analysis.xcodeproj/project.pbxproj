@@ -119,6 +119,13 @@
 		C98E986322F5540E00101214 /* ConversationUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98E986222F5540E00101214 /* ConversationUI.swift */; };
 		C98E986522F5541800101214 /* ConversationRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98E986422F5541800101214 /* ConversationRouting.swift */; };
 		C98E986722F573B400101214 /* ConversationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98E986622F573B400101214 /* ConversationCell.swift */; };
+		C98E986A22F585B900101214 /* ConversationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98E986922F585B900101214 /* ConversationPresenter.swift */; };
+		C98E986C22F585C400101214 /* ConversationPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98E986B22F585C400101214 /* ConversationPresenterImpl.swift */; };
+		C98E986E22F5877400101214 /* ConversationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98E986D22F5877400101214 /* ConversationUseCase.swift */; };
+		C98E987022F587CD00101214 /* ConversationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98E986F22F587CD00101214 /* ConversationRepository.swift */; };
+		C98E987322F588F000101214 /* ConversationRemoteDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98E987222F588F000101214 /* ConversationRemoteDataStore.swift */; };
+		C98E987522F5890300101214 /* ConversationLocalDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98E987422F5890300101214 /* ConversationLocalDataStore.swift */; };
+		C98E987722F5891000101214 /* ConversationDataStoreFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98E987622F5891000101214 /* ConversationDataStoreFactory.swift */; };
 		C990788B22EAD0C9009076FA /* GoalEntityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C990788A22EAD0C9009076FA /* GoalEntityManager.swift */; };
 		C990788E22EAD43C009076FA /* AccountEntityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C990788D22EAD43C009076FA /* AccountEntityManager.swift */; };
 		C990789022EAD689009076FA /* CommentEntityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C990788F22EAD689009076FA /* CommentEntityManager.swift */; };
@@ -374,6 +381,13 @@
 		C98E986222F5540E00101214 /* ConversationUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationUI.swift; sourceTree = "<group>"; };
 		C98E986422F5541800101214 /* ConversationRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationRouting.swift; sourceTree = "<group>"; };
 		C98E986622F573B400101214 /* ConversationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationCell.swift; sourceTree = "<group>"; };
+		C98E986922F585B900101214 /* ConversationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationPresenter.swift; sourceTree = "<group>"; };
+		C98E986B22F585C400101214 /* ConversationPresenterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationPresenterImpl.swift; sourceTree = "<group>"; };
+		C98E986D22F5877400101214 /* ConversationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationUseCase.swift; sourceTree = "<group>"; };
+		C98E986F22F587CD00101214 /* ConversationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationRepository.swift; sourceTree = "<group>"; };
+		C98E987222F588F000101214 /* ConversationRemoteDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationRemoteDataStore.swift; sourceTree = "<group>"; };
+		C98E987422F5890300101214 /* ConversationLocalDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationLocalDataStore.swift; sourceTree = "<group>"; };
+		C98E987622F5891000101214 /* ConversationDataStoreFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationDataStoreFactory.swift; sourceTree = "<group>"; };
 		C990788A22EAD0C9009076FA /* GoalEntityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalEntityManager.swift; sourceTree = "<group>"; };
 		C990788D22EAD43C009076FA /* AccountEntityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountEntityManager.swift; sourceTree = "<group>"; };
 		C990788F22EAD689009076FA /* CommentEntityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentEntityManager.swift; sourceTree = "<group>"; };
@@ -811,6 +825,7 @@
 				C9CC391522D5CD46001010F4 /* TimelineUseCase.swift */,
 				C9391A2322E01E35006E3A14 /* OtherPersonPageUseCase.swift */,
 				C9F37E9622E36712003D503A /* FollowUseCase.swift */,
+				C98E986D22F5877400101214 /* ConversationUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -854,6 +869,7 @@
 				C9CC391722D5CD87001010F4 /* TimelineRepository.swift */,
 				C9391A2522E01E93006E3A14 /* OtherPersonPageRepository.swift */,
 				C9F37E9822E36740003D503A /* FollowRepository.swift */,
+				C98E986F22F587CD00101214 /* ConversationRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -881,6 +897,7 @@
 				C93271D422CF69D000AA9BA6 /* Goal */,
 				C9D5413422CF69A8008BDCC3 /* Detail */,
 				C9F37E9A22E3675D003D503A /* Follow */,
+				C98E987122F588D500101214 /* Conversation */,
 			);
 			path = DataStore;
 			sourceTree = "<group>";
@@ -951,6 +968,25 @@
 				C98E986422F5541800101214 /* ConversationRouting.swift */,
 			);
 			path = Conversations;
+			sourceTree = "<group>";
+		};
+		C98E986822F5858E00101214 /* Conversations */ = {
+			isa = PBXGroup;
+			children = (
+				C98E986922F585B900101214 /* ConversationPresenter.swift */,
+				C98E986B22F585C400101214 /* ConversationPresenterImpl.swift */,
+			);
+			path = Conversations;
+			sourceTree = "<group>";
+		};
+		C98E987122F588D500101214 /* Conversation */ = {
+			isa = PBXGroup;
+			children = (
+				C98E987222F588F000101214 /* ConversationRemoteDataStore.swift */,
+				C98E987422F5890300101214 /* ConversationLocalDataStore.swift */,
+				C98E987622F5891000101214 /* ConversationDataStoreFactory.swift */,
+			);
+			path = Conversation;
 			sourceTree = "<group>";
 		};
 		C990789722EB3182009076FA /* PrivateTimelineContent */ = {
@@ -1362,6 +1398,7 @@
 				C97DDD7E22AD550F00A84219 /* Presenter.swift */,
 				C9D9012F22AB55DE0040390E /* Account */,
 				C9A610C722D5CB6500300837 /* Timeline */,
+				C98E986822F5858E00101214 /* Conversations */,
 				C92FAA7922E3600000459A08 /* FollowListManaging */,
 				C9391A1E22E01C57006E3A14 /* OtherPersonPage */,
 				C9A6066822B26D9800184E0F /* Mypage */,
@@ -1723,6 +1760,7 @@
 				C9A6066722B26CCB00184E0F /* MypagePresenterImpl.swift in Sources */,
 				C968989F22E34D0900881054 /* FollowListViewController.swift in Sources */,
 				C98E986522F5541800101214 /* ConversationRouting.swift in Sources */,
+				C98E987022F587CD00101214 /* ConversationRepository.swift in Sources */,
 				C9A6066122B2676B00184E0F /* MypagePresenter.swift in Sources */,
 				C941332222C8B2CC0082A01C /* DetailViewController.swift in Sources */,
 				C9CC28F422AD3BEB006E69E5 /* SignupInputViewController.swift in Sources */,
@@ -1766,6 +1804,7 @@
 				C93271DC22CF6B7800AA9BA6 /* UserDataStoreFactory.swift in Sources */,
 				C9EA654622BBDAB4002BE1C8 /* GoalPostPresenterImpl.swift in Sources */,
 				C9E6EAE922E31AB8008D0809 /* FollowListManagingUI.swift in Sources */,
+				C98E987522F5890300101214 /* ConversationLocalDataStore.swift in Sources */,
 				C94EE04922D0632500937CFA /* ReplyUI.swift in Sources */,
 				C9D9013122AB55F40040390E /* LoginInputPresenter.swift in Sources */,
 				C9EA654A22BC194D002BE1C8 /* GoalRepository.swift in Sources */,
@@ -1800,8 +1839,10 @@
 				C941332D22C8BD390082A01C /* DetailPresenterImpl.swift in Sources */,
 				C9CC28EF22AD1288006E69E5 /* LoginInputRouting.swift in Sources */,
 				C9EB3D4A22D7255B0063434A /* AccountLocalDataStore.swift in Sources */,
+				C98E986E22F5877400101214 /* ConversationUseCase.swift in Sources */,
 				C9E5911C22E9630D0083E5F5 /* PublicTimelineContentUI.swift in Sources */,
 				C95CA40F22F0A54900478295 /* MessageEntity.swift in Sources */,
+				C98E986C22F585C400101214 /* ConversationPresenterImpl.swift in Sources */,
 				C98C7A4622D8A73100EF9B8F /* KeyboardNotifier.swift in Sources */,
 				C9EB3D4C22D78A2B0063434A /* GrowingTextView+Extension.swift in Sources */,
 				C9C43B8722D0BD03006CBC1B /* ReplyPresenter.swift in Sources */,
@@ -1817,6 +1858,7 @@
 				C9A6067122B2980D00184E0F /* Const.swift in Sources */,
 				C978FD2622C60B3A00859851 /* GoalTranslator.swift in Sources */,
 				C97F25C722D63F1500D61FF4 /* UserLocalDataStore.swift in Sources */,
+				C98E987722F5891000101214 /* ConversationDataStoreFactory.swift in Sources */,
 				C95CA40D22F09D6F00478295 /* TypeAliases.swift in Sources */,
 				C91FA65B22B53F9C006D9E6D /* Update.swift in Sources */,
 				C972692C22BB4A1B00CDFD59 /* GoalEntity.swift in Sources */,
@@ -1886,6 +1928,7 @@
 				C9B55D1622B1062600845381 /* RemindUseCase.swift in Sources */,
 				C9A6065B22B2633600184E0F /* UIStackView+Extension.swift in Sources */,
 				C9A6066F22B2980700184E0F /* Firebase.swift in Sources */,
+				C98E987322F588F000101214 /* ConversationRemoteDataStore.swift in Sources */,
 				C958D9E722B62B9900565EDE /* UIImage+Extension.swift in Sources */,
 				C93271E022CF6CAA00AA9BA6 /* GoalLocalDataStore.swift in Sources */,
 				C9EA654422BBDAAA002BE1C8 /* GoalPostPresenter.swift in Sources */,
@@ -1902,6 +1945,7 @@
 				C95ADED022AB141D00D851A0 /* R.generated.swift in Sources */,
 				C9ED720022B137CD00BDB9A7 /* MypageUI.swift in Sources */,
 				C9035CB422B77E10006DFAB9 /* SettingsSection.swift in Sources */,
+				C98E986A22F585B900101214 /* ConversationPresenter.swift in Sources */,
 				C935C0AE22E48C5B0016682C /* FollowListPresenter.swift in Sources */,
 				C935C0B222E6380B0016682C /* UIDevice+Extension.swift in Sources */,
 				C9391A2622E01E93006E3A14 /* OtherPersonPageRepository.swift in Sources */,

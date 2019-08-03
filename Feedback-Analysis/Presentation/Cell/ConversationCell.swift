@@ -5,7 +5,6 @@ final class ConversationCell: UITableViewCell {
     private(set) var userPhoto: UIImageView = {
         let image = UIImageView.Builder()
             .cornerRadius(25)
-            .backgroundColor(.green)
             .isUserInteractionEnabled(false)
             .build()
         return image
@@ -13,21 +12,47 @@ final class ConversationCell: UITableViewCell {
     
     private(set) var userName: UILabel = {
         let label = UILabel()
-        label.apply(.h4_Bold, title: "オムラユウキ")
+        label.apply(.h4)
         return label
     }()
     
     private(set) var time: UILabel = {
         let label = UILabel()
-        label.apply(.body_CoolGrey, title: "10:10")
+        label.apply(.body_CoolGrey)
         return label
     }()
     
     private(set) var attributeMessage: UILabel = {
         let label = UILabel()
-        label.apply(.body_CoolGrey13, title: "hogehogehogehogehogehogehogehogehoge")
+        label.apply(.body_CoolGrey13)
         return label
     }()
+    
+    var content: Conversation? {
+        didSet {
+            let userID = AppUserDefaults.getAuthToken()
+            time.text = content?.timestamp.offsetFrom()
+            attributeMessage.text = content?.lastMessage
+            guard let id = content?.userIDs.filter({$0 != userID}).first else { return }
+            let isRead = content?.isRead[userID] ?? true
+            if !isRead {
+                userName.font = userName.font.bold
+                attributeMessage.font = attributeMessage.font.bold
+                time.font = time.font.bold
+            }
+            UserEntityManager().fetchUserEntity(documentRef: .userRef(authorToken: id)) { response in
+                switch response {
+                case .success(let entity):
+                    self.userName.text = entity.name
+                    self.userPhoto.setImage(url: entity.userImage)
+                case .failure(_):
+                    return
+                case .unknown:
+                    return
+                }
+            }
+        }
+    }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -46,9 +71,9 @@ extension ConversationCell {
         [userPhoto, userName, time, attributeMessage].forEach { addSubview($0) }
         
         userPhoto.anchor()
-            .top(to: topAnchor, constant: 5)
+            .top(to: topAnchor, constant: 10)
             .left(to: leftAnchor, constant: 20)
-            .bottom(to: bottomAnchor, constant: -5)
+            .bottom(to: bottomAnchor, constant: -15)
             .width(constant: 50)
             .height(constant: 50)
             .activate()

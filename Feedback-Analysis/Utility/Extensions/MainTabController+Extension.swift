@@ -15,7 +15,7 @@ extension MainTabController: MainTabbarProtocol {
         var resouces = [#imageLiteral(resourceName: "diary"), #imageLiteral(resourceName: "bell"), #imageLiteral(resourceName: "mail"), #imageLiteral(resourceName: "home")]
         var viewControllers: [UIViewController] = []
         
-        [initTimelineVC(), UIViewController(), ConversationViewController(), initMypageVC(with: AppUserDefaults.getAuthToken())].enumerated().forEach { index, controller in
+        [initTimelineVC(), UIViewController(), initConversationVC(), initMypageVC(with: AppUserDefaults.getAuthToken())].enumerated().forEach { index, controller in
             let navi = UINavigationController(rootViewController: controller)
             navi.tabBarItem = UITabBarItem(title: nil, image: resouces[index], tag: index)
             
@@ -48,6 +48,26 @@ extension MainTabController: MainTabbarProtocol {
                   disposeBag: DisposeBag())
         
         ui.timelinePages.dataSource = vc.dataSource
+        
+        return vc
+    }
+    
+    private func initConversationVC() -> ConversationViewController {
+        let repository = ConversationRepositoryImpl.shared
+        let useCase = ConversationUseCaseImpl(repository: repository)
+        let presenter = ConversationPresenterImpl(useCase: useCase)
+        let vc = ConversationViewController()
+        
+        let ui = ConversationUIImpl()
+        let routing = ConversationRoutingImpl()
+        ui.viewController = vc
+        routing.viewController = vc
+        ui.tableView.dataSource = vc.dataSource
+        ui.tableView.delegate = presenter
+        vc.inject(ui: ui,
+                  presenter: presenter,
+                  routing: routing,
+                  disposeBag: DisposeBag())
         
         return vc
     }

@@ -28,7 +28,7 @@ class OtherPersonPageViewController: UIViewController {
             ui.messageBtn.rx.tap.asDriver()
                 .drive(onNext: { [unowned self] _ in
                     self.presenter.getConversation(completion: { [unowned self] conversation in
-                        self.routing.showChatPage(conversation: conversation)
+                        self.routing.showMessagePage(conversation: conversation)
                     })
                 }).disposed(by: disposeBag)
             
@@ -136,7 +136,6 @@ extension OtherPersonPageViewController {
     func setConversationInObjectUser() {
         presenter.getConversations(queryRef: .conversationsRef) { [unowned self] conversations in
             self.presenter.getBothToken { subjectToken, objectToken in
-                print(conversations)
                 if let conversation = conversations.filter({ $0.userIDs.contains(objectToken) }).first {
                     self.presenter.setConversation(conversation)
                     return

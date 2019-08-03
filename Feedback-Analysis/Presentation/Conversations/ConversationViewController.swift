@@ -3,41 +3,63 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-final class ConversationViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+final class ConversationViewController: UIViewController {
     
-    
-//    typealias DataSource = TableViewDataSource<ConversationCell, Timeline>
-//
-//    private(set) lazy var dataSource: DataSource = {
-//        return DataSource(cellReuseIdentifier: String(describing: ConversationCell.self),
-//                          listItems: [],
-//                          isSkelton: false,
-//                          cellConfigurationHandler: { (cell, item, indexPath) in
-//        })
-//    }()
-    
-    private lazy var ui: ConversationUI = {
-        let ui = ConversationUIImpl()
-        ui.viewController = self
-        return ui
+    typealias DataSource = TableViewDataSource<ConversationCell, Conversation>
+
+    private(set) lazy var dataSource: DataSource = {
+        return DataSource(cellReuseIdentifier: String(describing: ConversationCell.self),
+                          listItems: [],
+                          isSkelton: false,
+                          cellConfigurationHandler: { (cell, item, indexPath) in
+            cell.content = item
+        })
     }()
+    
+    var ui: ConversationUI!
+    
+    var routing: ConversationRouting!
+    
+    var presenter: ConversationPresenter! {
+        didSet {
+            presenter.view = self
+        }
+    }
+    
+    var disposeBag: DisposeBag! {
+        didSet {}
+    }
+    
+    func inject(ui: ConversationUI,
+                presenter: ConversationPresenter,
+                routing: ConversationRouting,
+                disposeBag: DisposeBag) {
+        self.ui = ui
+        self.routing = routing
+        self.presenter = presenter
+        self.disposeBag = disposeBag
+        
+        self.presenter.fetchConversations(queryRef: .conversationsRef)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         ui.setup()
-        ui.tableView.delegate = self
-        ui.tableView.dataSource = self
+    }
+}
+
+extension ConversationViewController: ConversationPresenterView {
+    
+    func didFetch(conversation: [Conversation]) {
+        dataSource.listItems = []
+        dataSource.listItems += conversation
+        ui.tableView.reloadData()
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ConversationCell.self), for: indexPath) as? ConversationCell else {
-            return UITableViewCell()
-        }
-        
-        return cell
+    func didSelect(indexPath: IndexPath, tableView: UITableView) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let conversation = dataSource.listItems[indexPath.row]
+        routing.showMessagePage(conversation: conversation)
+        presenter.markAsRead(conversation: conversation)
     }
 }

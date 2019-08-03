@@ -23,4 +23,37 @@ struct Conversation: Codable {
         self.lastMessage = ""
         self.isRead = isRead
     }
+    
+    init(conversation: [String: Any]) {
+        guard
+            let id = conversation["id"] as? String,
+            let userIDs = conversation["userIDs"] as? [String],
+            let timestamp = conversation["timestamp"] as? Date,
+            let lastMessage = conversation["lastMessage"] as? String,
+            let isRead = conversation["isRead"] as? [String: Bool]
+        else {
+            self.id = ""
+            self.userIDs = [String]()
+            self.timestamp = Date()
+            self.lastMessage = ""
+            self.isRead = [String: Bool]()
+            return
+        }
+        self.id = id
+        self.userIDs = userIDs
+        self.timestamp = timestamp
+        self.lastMessage = lastMessage
+        self.isRead = isRead
+    }
+}
+
+extension Conversation {
+    
+    func encode() -> [String: Any] {
+        return ["id": id,
+                "userIDs": userIDs,
+                "timestamp": timestamp,
+                "lastMessage": lastMessage ?? "",
+                "isRead": isRead]
+    }
 }

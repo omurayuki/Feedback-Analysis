@@ -24,7 +24,8 @@ struct MessageManager {
     }
     
     func create(documentRef: FirebaseDocumentRef, message: Message, conversation: Conversation,
-                completion: @escaping (_ response: FirestoreResponse<()>) -> Void) {
+                completion: @escaping (_ response: FirestoreResponse<Conversation>) -> Void) {
+        var conversation = conversation
         UploadImageManager().upload(message, reference: .messages) { response in
             switch response {
             case .success(let uploadedMessage):
@@ -33,14 +34,21 @@ struct MessageManager {
                             "profilePickLink": uploadedMessage.profilePicLink ?? ""] as [String : Any]
                 Provider().setData(documentRef: documentRef, fields: data, completion: { response in
                     switch response {
-                    case .success(let response):
-                        completion(.success(response))
-                        var conversation = conversation
-                        if let id = conversation.isRead.filter({ $0.key != AppUserDefaults.getAuthToken() }).first {
-                            conversation.isRead[id.key] = false
-                        }
-                        ConversationManager().create(documentRef: .conversationRef(conversationID: conversation.id),
-                                                     conversation: conversation, completion: nil)
+                    case .success(_):
+                        return
+                    case .failure(let error):
+                        completion(.failure(error))
+                    case .unknown:
+                        completion(.unknown)
+                    }
+                })
+                if let id = conversation.isRead.filter({ $0.key != AppUserDefaults.getAuthToken() }).first {
+                    conversation.isRead[id.key] = false
+                }
+                Provider().update(documentRef: .conversationRef(conversationID: conversation.id), fields: ["isRead": conversation.isRead], completion: { response in
+                    switch response {
+                    case .success(_):
+                        completion(.success(Conversation(conversation: conversation.encode())))
                     case .failure(let error):
                         completion(.failure(error))
                     case .unknown:

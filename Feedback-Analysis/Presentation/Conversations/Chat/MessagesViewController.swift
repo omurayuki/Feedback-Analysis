@@ -57,18 +57,19 @@ extension MessagesViewController {
     }
     
     private func send(_ message: Message) {
-        guard var conversation = conversation else { return }
+        guard let conversation = conversation else { return }
         manager.create(documentRef: .messageRef(conversationID: conversation.id, messageID: message.id), message: message, conversation: conversation) { response in
             switch response {
-            case .success(_):
-                conversation.timestamp = Date(timeIntervalSince1970: Date().timeIntervalSince1970)
+            //// updateされた後のconversationでなければ、isReadの値が引き継がれない
+            case .success(var updatedConversation):
+                updatedConversation.timestamp = Date(timeIntervalSince1970: Date().timeIntervalSince1970)
                 switch message.contentType {
-                case .none: conversation.lastMessage = message.message
-                case .photo: conversation.lastMessage = "Attachment"
+                case .none: updatedConversation.lastMessage = message.message
+                case .photo: updatedConversation.lastMessage = "Attachment"
                 default: break
                 }
-                conversation.isRead[AppUserDefaults.getAuthToken()] = true
-                ConversationManager().create(documentRef: .conversationRef(conversationID: conversation.id), conversation: conversation,
+                updatedConversation.isRead[AppUserDefaults.getAuthToken()] = true
+                ConversationManager().create(documentRef: .conversationRef(conversationID: updatedConversation.id), conversation: updatedConversation,
                                              completion: { response in
                     switch response {
                     case .success(_):
