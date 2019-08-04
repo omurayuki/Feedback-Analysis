@@ -33,7 +33,7 @@ struct ConversationManager {
     
     func create(documentRef: FirebaseDocumentRef, conversation: Conversation,
                 completion: ((_ response: FirestoreResponse<()>) -> Void)? = nil) {
-        Provider().update(documentRef: documentRef, fields: ["id": conversation.id, "isRead": conversation.isRead,
+        Provider().setData(documentRef: documentRef, fields: ["id": conversation.id, "isRead": conversation.isRead,
                                                               "lastMessage": conversation.lastMessage ?? "", "timestamp": conversation.timestamp,
                                                               "userIDs": conversation.userIDs]) { response in
             guard let completion = completion else { return }

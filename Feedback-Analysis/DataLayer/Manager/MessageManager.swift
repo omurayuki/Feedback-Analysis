@@ -45,7 +45,7 @@ struct MessageManager {
                 if let id = conversation.isRead.filter({ $0.key != AppUserDefaults.getAuthToken() }).first {
                     conversation.isRead[id.key] = false
                 }
-                Provider().update(documentRef: .conversationRef(conversationID: conversation.id), fields: ["isRead": conversation.isRead], completion: { response in
+                ConversationManager().create(documentRef: .conversationRef(conversationID: conversation.id), conversation: conversation, completion: { response in
                     switch response {
                     case .success(_):
                         completion(.success(Conversation(conversation: conversation.encode())))

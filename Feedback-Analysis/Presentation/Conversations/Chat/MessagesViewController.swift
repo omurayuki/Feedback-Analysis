@@ -44,7 +44,6 @@ extension MessagesViewController {
         manager.fetchMessageEntities(queryRef: .messagesRef(conversationId: conversation?.id ?? "")) { [weak self] response in
             switch response {
             case .success(let entities):
-                print(entities)
                 self?.messages = entities
                 self?.messageTableView.reloadData()
                 self?.messageTableView.scroll(to: .bottom, animated: true)
