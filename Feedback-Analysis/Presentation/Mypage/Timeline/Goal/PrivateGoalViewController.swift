@@ -19,4 +19,3 @@ class PrivateGoalViewController: PrivateTimelineContentViewController {
         self.queryRef = .goalRef(authorToken: recieveToken)
     }
 }
-

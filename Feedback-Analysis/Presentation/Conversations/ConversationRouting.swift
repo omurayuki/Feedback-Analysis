@@ -11,9 +11,16 @@ final class ConversationRoutingImpl: ConversationRouting {
     var viewController: UIViewController?
     
     func showMessagePage(conversation: Conversation) {
+        let repository = ConversationRepositoryImpl.shared
+        let useCase = ConversationUseCaseImpl(repository: repository)
+        let presenter = MessagesPresenterImpl(useCase: useCase)
+        let routing = MessagesRoutingImpl()
         let sb = UIStoryboard(name: "Messages", bundle: nil)
-        guard let vc = sb.instantiateViewController(withIdentifier: "MessagesViewController") as? MessagesViewController else { return }
-        vc.inject(conversation: conversation)
-        viewController?.navigationController?.pushViewController(vc, animated: true)
+        if let vc = sb.instantiateViewController(withIdentifier: "MessagesViewController") as? MessagesViewController {
+            routing.viewController = vc
+            vc.inject(presenter: presenter, routing: routing)
+            vc.recieve(conversation: conversation)
+            viewController?.navigationController?.pushViewController(vc, animated: true)
+        }
     }
 }

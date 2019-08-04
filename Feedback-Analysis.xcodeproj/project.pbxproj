@@ -137,6 +137,9 @@
 		C99116AE22B8A323007C67C7 /* PasswordEditingRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99116AD22B8A323007C67C7 /* PasswordEditingRouting.swift */; };
 		C99116B022B8A912007C67C7 /* PasswordEditingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99116AF22B8A912007C67C7 /* PasswordEditingPresenter.swift */; };
 		C99116B222B8A917007C67C7 /* PasswordEditingPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99116B122B8A917007C67C7 /* PasswordEditingPresenterImpl.swift */; };
+		C995F3DB22F7041C007588B8 /* MessagesRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C995F3DA22F7041C007588B8 /* MessagesRouting.swift */; };
+		C995F3DE22F70464007588B8 /* MessagesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C995F3DD22F70464007588B8 /* MessagesPresenter.swift */; };
+		C995F3E022F7046B007588B8 /* MessagesPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C995F3DF22F7046B007588B8 /* MessagesPresenterImpl.swift */; };
 		C99EB6FD22F1E2FF00675E55 /* ConversationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99EB6FC22F1E2FF00675E55 /* ConversationManager.swift */; };
 		C99EB6FF22F1E91200675E55 /* MessageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99EB6FE22F1E91200675E55 /* MessageManager.swift */; };
 		C9A1573522A6CA1F00D7D047 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A1573422A6CA1F00D7D047 /* AppDelegate.swift */; };
@@ -399,6 +402,9 @@
 		C99116AD22B8A323007C67C7 /* PasswordEditingRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordEditingRouting.swift; sourceTree = "<group>"; };
 		C99116AF22B8A912007C67C7 /* PasswordEditingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordEditingPresenter.swift; sourceTree = "<group>"; };
 		C99116B122B8A917007C67C7 /* PasswordEditingPresenterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordEditingPresenterImpl.swift; sourceTree = "<group>"; };
+		C995F3DA22F7041C007588B8 /* MessagesRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesRouting.swift; sourceTree = "<group>"; };
+		C995F3DD22F70464007588B8 /* MessagesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesPresenter.swift; sourceTree = "<group>"; };
+		C995F3DF22F7046B007588B8 /* MessagesPresenterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesPresenterImpl.swift; sourceTree = "<group>"; };
 		C99EB6FC22F1E2FF00675E55 /* ConversationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationManager.swift; sourceTree = "<group>"; };
 		C99EB6FE22F1E91200675E55 /* MessageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageManager.swift; sourceTree = "<group>"; };
 		C9A1573122A6CA1F00D7D047 /* Feedback-Analysis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Feedback-Analysis.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -565,6 +571,7 @@
 			children = (
 				C91EB4C622EEA2EB0008FD03 /* Messages.storyboard */,
 				C91EB4C422EEA2DB0008FD03 /* MessagesViewController.swift */,
+				C995F3DA22F7041C007588B8 /* MessagesRouting.swift */,
 				C91EB4C822EEB2760008FD03 /* MessageTableViewCell.swift */,
 			);
 			path = Chat;
@@ -975,6 +982,7 @@
 			children = (
 				C98E986922F585B900101214 /* ConversationPresenter.swift */,
 				C98E986B22F585C400101214 /* ConversationPresenterImpl.swift */,
+				C995F3DC22F70448007588B8 /* Chat */,
 			);
 			path = Conversations;
 			sourceTree = "<group>";
@@ -1008,6 +1016,15 @@
 				C9D77F8022C9C58D0007835B /* Edit */,
 			);
 			path = GoalPost;
+			sourceTree = "<group>";
+		};
+		C995F3DC22F70448007588B8 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				C995F3DD22F70464007588B8 /* MessagesPresenter.swift */,
+				C995F3DF22F7046B007588B8 /* MessagesPresenterImpl.swift */,
+			);
+			path = Chat;
 			sourceTree = "<group>";
 		};
 		C9A1572822A6CA1F00D7D047 = {
@@ -1716,6 +1733,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C995F3E022F7046B007588B8 /* MessagesPresenterImpl.swift in Sources */,
 				C9035CB022B77734006DFAB9 /* SettingsUI.swift in Sources */,
 				C97F25C322D6033800D61FF4 /* UIPageViewController+Extension.swift in Sources */,
 				C9F37E9722E36712003D503A /* FollowUseCase.swift in Sources */,
@@ -1790,6 +1808,7 @@
 				C9391A1A22E01821006E3A14 /* OtherPersonPageUI.swift in Sources */,
 				C98AE9AB22DFA4840021DD73 /* AuthorTokensTranslator.swift in Sources */,
 				C9A6065D22B2643F00184E0F /* TimelineCell+Extension.swift in Sources */,
+				C995F3DB22F7041C007588B8 /* MessagesRouting.swift in Sources */,
 				C9DE385322EB33E800AEEF07 /* PrivateTimelineContentUI.swift in Sources */,
 				C99116AC22B8A318007C67C7 /* PasswordEditingUI.swift in Sources */,
 				C9035CAE22B7772A006DFAB9 /* SettingsViewController.swift in Sources */,
@@ -1923,6 +1942,7 @@
 				C9CC28F622AD3BF8006E69E5 /* SignupInputUI.swift in Sources */,
 				C9391A2022E01C72006E3A14 /* OtherPersonPagePresenter.swift in Sources */,
 				C9F2496B22B79383007E82A0 /* SettingsUseCase.swift in Sources */,
+				C995F3DE22F70464007588B8 /* MessagesPresenter.swift in Sources */,
 				C9F2496722B78EAC007E82A0 /* SettingsPresenter.swift in Sources */,
 				C94EE04B22D0633100937CFA /* ReplyRouting.swift in Sources */,
 				C9B55D1622B1062600845381 /* RemindUseCase.swift in Sources */,

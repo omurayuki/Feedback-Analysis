@@ -259,9 +259,6 @@
                                                     <constraint firstAttribute="height" constant="25" id="VDb-G3-P3q"/>
                                                 </constraints>
                                                 <state key="normal" image="sendBtn"/>
-                                                <connections>
-                                                    <action selector="sendMessagePressed:" destination="ETC-W7-Ciu" eventType="touchUpInside" id="gV3-uT-p2P"/>
-                                                </connections>
                                             </button>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="4RB-g5-xAT">
                                                 <rect key="frame" x="6" y="12.5" width="32" height="25"/>
@@ -273,9 +270,6 @@
                                                             <constraint firstAttribute="width" constant="32" id="Tkn-1h-kKD"/>
                                                         </constraints>
                                                         <state key="normal" image="selectCameraBtn"/>
-                                                        <connections>
-                                                            <action selector="sendImagePressed:" destination="ETC-W7-Ciu" eventType="touchUpInside" id="LU5-Vt-IdA"/>
-                                                        </connections>
                                                     </button>
                                                     <button hidden="YES" opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SYV-IR-9o8">
                                                         <rect key="frame" x="0.0" y="0.0" width="32" height="25"/>
@@ -284,9 +278,6 @@
                                                             <constraint firstAttribute="height" constant="25" id="UY4-g0-R4Z"/>
                                                         </constraints>
                                                         <state key="normal" image="selectPhotoBtn"/>
-                                                        <connections>
-                                                            <action selector="sendImagePressed:" destination="ETC-W7-Ciu" eventType="touchUpInside" id="SZh-JO-JIR"/>
-                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RXv-3s-DnJ">
                                                         <rect key="frame" x="0.0" y="0.0" width="32" height="25"/>
@@ -295,9 +286,6 @@
                                                             <constraint firstAttribute="height" constant="25" id="xqM-fA-MVU"/>
                                                         </constraints>
                                                         <state key="normal" image="backBtn"/>
-                                                        <connections>
-                                                            <action selector="expandItemsPressed:" destination="ETC-W7-Ciu" eventType="touchUpInside" id="Req-fP-fpg"/>
-                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <constraints>
@@ -361,6 +349,7 @@
                         <outlet property="messageBarBottomConstraint" destination="UG7-gG-XQR" id="TXF-YF-Fd4"/>
                         <outlet property="messageExpandButton" destination="RXv-3s-DnJ" id="3Gc-GD-eh3"/>
                         <outlet property="messageInputTextField" destination="8HA-EA-7Uf" id="Pg7-if-bK2"/>
+                        <outlet property="messageSendButton" destination="dh4-3y-68f" id="sMU-Qo-tly"/>
                         <outlet property="messageStackViewWidthConstraint" destination="yYX-tv-R92" id="I2O-iy-moG"/>
                         <outlet property="messageTableView" destination="INw-55-hOC" id="djf-13-YTw"/>
                         <outletCollection property="messageActionButtons" destination="Hda-cr-Ibe" collectionClass="NSMutableArray" id="fNt-Gx-w24"/>
