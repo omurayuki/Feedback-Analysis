@@ -3,10 +3,19 @@ import UIKit
 
 class PrivateAllViewController: PrivateTimelineContentViewController {
     
+    var recieveToken: String
+    
+    init(recieveToken: String) {
+        self.recieveToken = recieveToken
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter.getAuthorToken { [unowned self] token in
-            self.queryRef = .allRef(authorToken: token)
-        }
+        self.queryRef = .allRef(authorToken: recieveToken)
     }
 }

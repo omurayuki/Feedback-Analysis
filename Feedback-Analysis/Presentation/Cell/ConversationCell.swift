@@ -39,6 +39,10 @@ final class ConversationCell: UITableViewCell {
                 userName.font = userName.font.bold
                 attributeMessage.font = attributeMessage.font.bold
                 time.font = time.font.bold
+            } else {
+                userName.apply(.h4)
+                time.apply(.body_darkGray)
+                attributeMessage.apply(.body_darkGray13)
             }
             UserEntityManager().fetchUserEntity(documentRef: .userRef(authorToken: id)) { response in
                 switch response {

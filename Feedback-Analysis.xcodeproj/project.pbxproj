@@ -962,10 +962,10 @@
 		C98E985F22F5528C00101214 /* Conversations */ = {
 			isa = PBXGroup;
 			children = (
-				C91EB4C322EEA29F0008FD03 /* Chat */,
 				C98E986022F5534800101214 /* ConversationViewController.swift */,
 				C98E986222F5540E00101214 /* ConversationUI.swift */,
 				C98E986422F5541800101214 /* ConversationRouting.swift */,
+				C91EB4C322EEA29F0008FD03 /* Chat */,
 			);
 			path = Conversations;
 			sourceTree = "<group>";

@@ -60,6 +60,8 @@ extension ConversationViewController: ConversationPresenterView {
         tableView.deselectRow(at: indexPath, animated: true)
         let conversation = dataSource.listItems[indexPath.row]
         routing.showMessagePage(conversation: conversation)
-        presenter.markAsRead(conversation: conversation)
+        presenter.markAsRead(conversation: conversation) {
+            self.ui.tableView.reloadData()
+        }
     }
 }

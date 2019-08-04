@@ -21,12 +21,12 @@ class ConversationPresenterImpl: NSObject, ConversationPresenter {
             }).disposed(by: view.disposeBag)
     }
     
-    func markAsRead(conversation: Conversation) {
+    func markAsRead(conversation: Conversation, completion: @escaping () -> Void) {
         useCase.markAsRead(conversation: conversation)
             .subscribe { result in
                 switch result {
                 case .success(_):
-                    return
+                    completion()
                 case .error(let error):
                     self.view.showError(message: error.localizedDescription)
                 }

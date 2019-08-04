@@ -8,7 +8,7 @@ protocol ConversationPresenter: Presenter {
     var view: ConversationPresenterView! { get set }
     
     func fetchConversations(queryRef: FirebaseQueryRef)
-    func markAsRead(conversation: Conversation)
+    func markAsRead(conversation: Conversation, completion: @escaping () -> Void)
 }
 
 protocol ConversationPresenterView: class {

@@ -148,7 +148,7 @@ class CreateControllers: NSObject {
         let repository = GoalRepositoryImpl.shared
         let useCase = GoalPostUseCaseImpl(repository: repository)
         let presenter = PrivateTimelineContentPresenterImpl(useCase: useCase)
-        let vc = PrivateGoalViewController()
+        let vc = PrivateGoalViewController(recieveToken: token)
         
         let ui = PrivateTimelineContentUIImpl()
         let routing = PrivateTimelineContentRoutingImpl()
@@ -165,7 +165,7 @@ class CreateControllers: NSObject {
         let repository = GoalRepositoryImpl.shared
         let useCase = GoalPostUseCaseImpl(repository: repository)
         let presenter = PrivateTimelineContentPresenterImpl(useCase: useCase)
-        let vc = PrivateCompleteViewController()
+        let vc = PrivateCompleteViewController(recieveToken: token)
         
         let ui = PrivateTimelineContentUIImpl()
         let routing = PrivateTimelineContentRoutingImpl()
@@ -174,6 +174,7 @@ class CreateControllers: NSObject {
         ui.timeline.delegate = presenter
         routing.viewController = vc
         vc.inject(ui: ui, presenter: presenter, routing: routing, disposeBag: DisposeBag())
+        
         vc.recieve(with: token)
         return vc
     }
@@ -199,7 +200,7 @@ class CreateControllers: NSObject {
         let repository = GoalRepositoryImpl.shared
         let useCase = GoalPostUseCaseImpl(repository: repository)
         let presenter = PrivateTimelineContentPresenterImpl(useCase: useCase)
-        let vc = PrivateAllViewController()
+        let vc = PrivateAllViewController(recieveToken: token)
         
         let ui = PrivateTimelineContentUIImpl()
         let routing = PrivateTimelineContentRoutingImpl()
