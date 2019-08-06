@@ -242,6 +242,7 @@
 		C9E6EAE922E31AB8008D0809 /* FollowListManagingUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E6EAE822E31AB8008D0809 /* FollowListManagingUI.swift */; };
 		C9E6EAEB22E31AC0008D0809 /* FollowListManagingRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E6EAEA22E31AC0008D0809 /* FollowListManagingRouting.swift */; };
 		C9E8517C22F9C90E00CFC59A /* ImageZoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E8517B22F9C90E00CFC59A /* ImageZoomView.swift */; };
+		C9E8517E22F9DE7B00CFC59A /* MessageTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E8517D22F9DE7B00CFC59A /* MessageTranslator.swift */; };
 		C9EA654422BBDAAA002BE1C8 /* GoalPostPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EA654322BBDAAA002BE1C8 /* GoalPostPresenter.swift */; };
 		C9EA654622BBDAB4002BE1C8 /* GoalPostPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EA654522BBDAB4002BE1C8 /* GoalPostPresenterImpl.swift */; };
 		C9EA654822BBDD20002BE1C8 /* GoalPostUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EA654722BBDD20002BE1C8 /* GoalPostUseCase.swift */; };
@@ -513,6 +514,7 @@
 		C9E6EAE822E31AB8008D0809 /* FollowListManagingUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowListManagingUI.swift; sourceTree = "<group>"; };
 		C9E6EAEA22E31AC0008D0809 /* FollowListManagingRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowListManagingRouting.swift; sourceTree = "<group>"; };
 		C9E8517B22F9C90E00CFC59A /* ImageZoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageZoomView.swift; sourceTree = "<group>"; };
+		C9E8517D22F9DE7B00CFC59A /* MessageTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTranslator.swift; sourceTree = "<group>"; };
 		C9EA654322BBDAAA002BE1C8 /* GoalPostPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalPostPresenter.swift; sourceTree = "<group>"; };
 		C9EA654522BBDAB4002BE1C8 /* GoalPostPresenterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalPostPresenterImpl.swift; sourceTree = "<group>"; };
 		C9EA654722BBDD20002BE1C8 /* GoalPostUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalPostUseCase.swift; sourceTree = "<group>"; };
@@ -899,6 +901,7 @@
 				C9C43B9222D1078C006CBC1B /* ReplyTranslator.swift */,
 				C98AE9AA22DFA4840021DD73 /* AuthorTokensTranslator.swift */,
 				C9AB906C22F11E0F004559C3 /* ConversationTranslator.swift */,
+				C9E8517D22F9DE7B00CFC59A /* MessageTranslator.swift */,
 			);
 			path = Translator;
 			sourceTree = "<group>";
@@ -1841,6 +1844,7 @@
 				C93271DA22CF6B5D00AA9BA6 /* GoalDataStoreFactory.swift in Sources */,
 				C9D77F8822C9CACE0007835B /* GoalPostEditViewController+Extension.swift in Sources */,
 				C9D9013D22AB5E870040390E /* TopUI.swift in Sources */,
+				C9E8517E22F9DE7B00CFC59A /* MessageTranslator.swift in Sources */,
 				C93271DC22CF6B7800AA9BA6 /* UserDataStoreFactory.swift in Sources */,
 				C9EA654622BBDAB4002BE1C8 /* GoalPostPresenterImpl.swift in Sources */,
 				C9E6EAE922E31AB8008D0809 /* FollowListManagingUI.swift in Sources */,

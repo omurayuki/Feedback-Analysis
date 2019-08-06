@@ -4,6 +4,7 @@ import RxSwift
 protocol ConversationUseCase {
     func fetchConversations(from queryRef: FirebaseQueryRef) -> Observable<[Conversation]>
     func markAsRead(conversation: Conversation) -> Single<()>
+    func fetchMessages(queryRef: FirebaseQueryRef) -> Observable<[Message]>
 }
 
 struct ConversationUseCaseImpl: ConversationUseCase {
@@ -20,5 +21,9 @@ struct ConversationUseCaseImpl: ConversationUseCase {
     
     func markAsRead(conversation: Conversation) -> Single<()> {
         return repository.markAsRead(conversation: conversation)
+    }
+    
+    func fetchMessages(queryRef: FirebaseQueryRef) -> Observable<[Message]> {
+        return repository.fetchMessages(queryRef: queryRef).map { MessagesTranslator().translate($0) }
     }
 }

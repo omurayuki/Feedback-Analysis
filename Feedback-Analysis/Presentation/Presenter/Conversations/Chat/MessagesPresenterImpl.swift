@@ -17,4 +17,13 @@ class MessagesPresenterImpl: NSObject, MessagesPresenter {
     }
     
     func setup() {}
+    
+    func fetchMessages(queryRef: FirebaseQueryRef) {
+        useCase.fetchMessages(queryRef: queryRef)
+            .subscribe(onNext: { [unowned self] entities in
+                self.view.didFetchMessages(messages: entities)
+            }, onError: { [unowned self] error in
+                self.view.showError(message: error.localizedDescription)
+            }).disposed(by: disposeBag)
+    }
 }

@@ -4,6 +4,7 @@ import RxSwift
 protocol ConversationRepository {
     func fetchConversations(from queryRef: FirebaseQueryRef) -> Observable<[ConversationEntity]>
     func markAsRead(conversation: Conversation) -> Single<()>
+    func fetchMessages(queryRef: FirebaseQueryRef) -> Observable<[MessageEntity]>
 }
 
 struct ConversationRepositoryImpl: ConversationRepository {
@@ -18,5 +19,10 @@ struct ConversationRepositoryImpl: ConversationRepository {
     func markAsRead(conversation: Conversation) -> Single<()> {
         let dataStore = ConversationDataStoreFactory.createConversationRemoteDataStore()
         return dataStore.markAsRead(conversation: conversation)
+    }
+    
+    func fetchMessages(queryRef: FirebaseQueryRef) -> Observable<[MessageEntity]> {
+        let dataStore = ConversationDataStoreFactory.createConversationRemoteDataStore()
+        return dataStore.fetchMessages(queryRef: queryRef)
     }
 }

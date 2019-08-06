@@ -46,18 +46,23 @@ class MessagesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchMessages()
         addKeyboard()
         bindUI()
+        messageInputTextField.delegate = self
     }
 }
 
-extension MessagesViewController: MessagesPresenterView {}
+extension MessagesViewController: MessagesPresenterView {
+    func didFetchMessages(messages: [Message]) {
+        self.messages = messages
+    }
+}
 
 extension MessagesViewController {
     
     func recieve(conversation: Conversation) {
         presenter.conversation = conversation
+        presenter.fetchMessages(queryRef: .messagesRef(conversationId: conversation.id))
     }
     
     private func bindUI() {
@@ -91,25 +96,6 @@ extension MessagesViewController {
             .drive(onNext: { [unowned self] _ in
                 self.showActionButtons(false)
             }).disposed(by: presenter.disposeBag)
-        
-        messageInputTextField.rx.controlEvent(.touchUpInside).asDriver()
-            .drive(onNext: { [unowned self] _ in
-                self.messageInputTextField.resignFirstResponder()
-            }).disposed(by: presenter.disposeBag)
-    }
-    
-    //// 前画面からのrecieveでfetchMessagesを走らす(conversationを引数にとって)
-    private func fetchMessages() {
-        manager.fetchMessageEntities(queryRef: .messagesRef(conversationId: presenter.conversation?.id ?? "")) { [weak self] response in
-            switch response {
-            case .success(let entities):
-                self?.messages = entities
-            case .failure(let error):
-                self?.showError(message: error.localizedDescription)
-            case .unknown:
-                return
-            }
-        }
     }
     
     private func send(_ message: Message) {
@@ -187,7 +173,6 @@ extension MessagesViewController: UITableViewDataSource {
             return cell
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: message.ownerID == AppUserDefaults.getAuthToken() ? "MessageAttachmentTableViewCell" : "UserMessageAttachmentTableViewCell") as! MessageAttachmentTableViewCell
-        cell.delegate = self
         cell.set(message)
         return cell
     }
@@ -214,12 +199,11 @@ extension MessagesViewController: UITableViewDelegate {
     }
 }
 
-extension MessagesViewController: MessageTableViewCellDelegate {
-    
-    func messageTableViewCellUpdate() {
-        messageTableView.beginUpdates()
-        messageTableView.endUpdates()
+extension MessagesViewController: KeyboardHandler {}
+
+extension MessagesViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }
-
-extension MessagesViewController: KeyboardHandler {}

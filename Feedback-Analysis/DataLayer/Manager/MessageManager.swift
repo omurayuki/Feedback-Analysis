@@ -4,17 +4,13 @@ import FirebaseFirestore
 struct MessageManager {
     
     func fetchMessageEntities(queryRef: FirebaseQueryRef,
-                                   completion: @escaping (_ response: FirestoreResponse<[Message]>) -> Void) {
+                                   completion: @escaping (_ response: FirestoreResponse<[MessageEntity]>) -> Void) {
         Provider().observe(queryRef: queryRef) { response in
             switch response {
             case .success(let entities):
-                let messageEntity = entities.compactMap { value  -> MessageEntity in
+                completion(.success(entities.compactMap { value  -> MessageEntity in
                     return MessageEntity(document: value.data())
-                    
-                }
-                completion(.success(messageEntity.compactMap {
-                    return Message(entity: $0)
-                } ))
+                }))
             case .failure(let error):
                 completion(.failure(error))
             case .unknown:
