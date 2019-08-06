@@ -63,6 +63,9 @@ extension MessagesViewController {
     func recieve(conversation: Conversation) {
         presenter.conversation = conversation
         presenter.fetchMessages(queryRef: .messagesRef(conversationId: conversation.id))
+        presenter.getAuthToken { [unowned self] subjectToken in
+            self.presenter.subjectToken = subjectToken
+        }
     }
     
     private func bindUI() {
@@ -75,7 +78,7 @@ extension MessagesViewController {
             value.rx.tap.asDriver()
                 .drive(onNext: { [unowned self] _ in
                     self.imageService.pickImage(from: self, allowEditing: false, source: value.tag == 0 ? .photoLibrary : .camera) { [unowned self] image in
-                        let message = Message(contentType: .photo, profilePic: image, ownerID: AppUserDefaults.getAuthToken())
+                        let message = Message(contentType: .photo, profilePic: image, ownerID: self.presenter.subjectToken)
                         self.send(message)
                         self.messageInputTextField.text = nil
                         self.showActionButtons(false)
@@ -86,7 +89,7 @@ extension MessagesViewController {
         messageSendButton.rx.tap.asDriver()
             .drive(onNext: { [unowned self] _ in
                 guard let text = self.messageInputTextField.text, !text.isEmpty else { return }
-                let message = Message(message: text, ownerID: AppUserDefaults.getAuthToken())
+                let message = Message(message: text, ownerID: self.presenter.subjectToken)
                 self.messageInputTextField.text = nil
                 self.showActionButtons(false)
                 self.send(message)
@@ -110,7 +113,7 @@ extension MessagesViewController {
                 case .photo: updatedConversation.lastMessage = "Attachment"
                 default: break
                 }
-                updatedConversation.isRead[AppUserDefaults.getAuthToken()] = true
+                updatedConversation.isRead[self.presenter.subjectToken] = true
                 ConversationManager().create(documentRef: .conversationRef(conversationID: updatedConversation.id), conversation: updatedConversation,
                                              completion: { response in
                     switch response {
@@ -168,11 +171,11 @@ extension MessagesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let message = messages?[indexPath.row] else { return UITableViewCell() }
         if message.contentType == ContentType.none {
-            let cell = tableView.dequeueReusableCell(withIdentifier: message.ownerID == AppUserDefaults.getAuthToken() ? "MessageTableViewCell" : "UserMessageTableViewCell") as! MessageTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: message.ownerID == presenter.subjectToken ? "MessageTableViewCell" : "UserMessageTableViewCell") as! MessageTableViewCell
             cell.set(message)
             return cell
         }
-        let cell = tableView.dequeueReusableCell(withIdentifier: message.ownerID == AppUserDefaults.getAuthToken() ? "MessageAttachmentTableViewCell" : "UserMessageAttachmentTableViewCell") as! MessageAttachmentTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: message.ownerID == presenter.subjectToken ? "MessageAttachmentTableViewCell" : "UserMessageAttachmentTableViewCell") as! MessageAttachmentTableViewCell
         cell.set(message)
         return cell
     }

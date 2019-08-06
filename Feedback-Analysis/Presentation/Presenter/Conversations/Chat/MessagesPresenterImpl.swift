@@ -8,6 +8,8 @@ class MessagesPresenterImpl: NSObject, MessagesPresenter {
     
     var conversation: Conversation!
     
+    var subjectToken: String!
+    
     var view: MessagesPresenterView!
     
     private var useCase: ConversationUseCase
@@ -25,5 +27,17 @@ class MessagesPresenterImpl: NSObject, MessagesPresenter {
             }, onError: { [unowned self] error in
                 self.view.showError(message: error.localizedDescription)
             }).disposed(by: disposeBag)
+    }
+    
+    func getAuthToken(completion: @escaping (String) -> Void) {
+        useCase.getAuthToken()
+            .subscribe { result in
+                switch result {
+                case .success(let response):
+                    completion(response)
+                case .error(_):
+                    return
+                }
+            }.disposed(by: disposeBag)
     }
 }

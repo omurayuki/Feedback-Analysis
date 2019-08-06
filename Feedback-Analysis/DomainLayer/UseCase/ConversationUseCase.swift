@@ -5,6 +5,7 @@ protocol ConversationUseCase {
     func fetchConversations(from queryRef: FirebaseQueryRef) -> Observable<[Conversation]>
     func markAsRead(conversation: Conversation) -> Single<()>
     func fetchMessages(queryRef: FirebaseQueryRef) -> Observable<[Message]>
+    func getAuthToken() -> Single<String>
 }
 
 struct ConversationUseCaseImpl: ConversationUseCase {
@@ -25,5 +26,9 @@ struct ConversationUseCaseImpl: ConversationUseCase {
     
     func fetchMessages(queryRef: FirebaseQueryRef) -> Observable<[Message]> {
         return repository.fetchMessages(queryRef: queryRef).map { MessagesTranslator().translate($0) }
+    }
+    
+    func getAuthToken() -> Single<String> {
+        return repository.getAuthToken()
     }
 }
