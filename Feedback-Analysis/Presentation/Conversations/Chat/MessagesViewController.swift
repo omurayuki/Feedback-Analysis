@@ -46,7 +46,7 @@ class MessagesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setup()
+        fetchMessages()
         addKeyboard()
         bindUI()
     }
@@ -55,13 +55,6 @@ class MessagesViewController: UIViewController {
 extension MessagesViewController: MessagesPresenterView {}
 
 extension MessagesViewController {
-    
-    private func setup() {
-        messageTableView.dataSource = self
-        messageTableView.delegate = self
-        fetchMessages()
-        view.addGestureRecognizer(viewTapGesture)
-    }
     
     func recieve(conversation: Conversation) {
         presenter.conversation = conversation
@@ -103,11 +96,6 @@ extension MessagesViewController {
             .drive(onNext: { [unowned self] _ in
                 self.messageInputTextField.resignFirstResponder()
             }).disposed(by: presenter.disposeBag)
-        
-        viewTapGesture.rx.event
-            .bind { [unowned self] _ in
-                self.view.endEditing(true)
-            }.disposed(by: presenter.disposeBag)
     }
     
     //// 前画面からのrecieveでfetchMessagesを走らす(conversationを引数にとって)
@@ -211,10 +199,8 @@ extension MessagesViewController: UITableViewDelegate {
         guard let message = messages?[indexPath.row] else { return }
         switch message.contentType {
         case .photo:
-            break
-            //            let vc: ImagePreviewController = UIStoryboard.controller(storyboard: .previews)
-            //            vc.imageURLString = message.profilePicLink
-        //            navigationController?.present(vc, animated: true)
+            guard let imageLink = message.profilePicLink else { return }
+            routing.showPreviewPage(imageLink: imageLink)
         default: break
         }
     }

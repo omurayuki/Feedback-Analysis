@@ -219,6 +219,10 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="ETC-W7-Ciu" id="v7a-ca-NTD"/>
+                                    <outlet property="delegate" destination="ETC-W7-Ciu" id="mA1-6g-ncy"/>
+                                </connections>
                             </tableView>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fod-tl-Yez">
                                 <rect key="frame" x="0.0" y="812" width="414" height="84"/>
