@@ -21,8 +21,6 @@ class MessagesViewController: UIViewController {
         }
     }
     
-    //// userdefaultsからのauthortokenをpresenterで保管
-    
     var bottomInset: CGFloat {
         return view.safeAreaInsets.bottom + 50
     }
@@ -47,8 +45,12 @@ class MessagesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         addKeyboard()
-        bindUI()
         messageInputTextField.delegate = self
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        bindUI()
     }
 }
 

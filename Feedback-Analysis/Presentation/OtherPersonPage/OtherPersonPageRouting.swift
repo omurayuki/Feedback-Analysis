@@ -46,6 +46,7 @@ final class OtherPersonPageRoutingImpl: OtherPersonPageRouting {
         let sb = UIStoryboard(name: "Messages", bundle: nil)
         if let vc = sb.instantiateViewController(withIdentifier: "MessagesViewController") as? MessagesViewController {
             routing.viewController = vc
+            let _ = vc.view
             vc.inject(presenter: presenter, routing: routing)
             vc.recieve(conversation: conversation)
             viewController?.navigationController?.pushViewController(vc, animated: true)
