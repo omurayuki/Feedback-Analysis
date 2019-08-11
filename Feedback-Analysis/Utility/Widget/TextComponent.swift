@@ -48,6 +48,7 @@ enum TextComponent {
     case body_CharcoalGrey
     case body_CharcoalGrey80
     case body_CoolGrey
+    case body_darkGray
     case body_Bold
     case body_Bold_White
     case cap
@@ -57,6 +58,7 @@ enum TextComponent {
     case cap_Bold_White
     case appMain
     case body_CoolGrey13
+    case body_darkGray13
     case appMain10
     case h5_appSub_bold
     case h6_appSub_bold
@@ -76,11 +78,11 @@ enum TextComponent {
             return .font(.fontSize20)
         case .h4, .h4_White, .h4_CharcoalGrey25, .h4_CharcoalGrey, .h4_LightishGreen, .h4_ReddishOrange, .h4_PurpleyGrey, .h4_CoolGrey, .h4_appMain:
             return .font(.fontSize17)
-        case .title, .title_White, .title_Black40, .title_CharcoalGrey, .title_LightishGreen, .title_Bold_LightishGreen, .body_CoolGrey13:
+        case .title, .title_White, .title_Black40, .title_CharcoalGrey, .title_LightishGreen, .title_Bold_LightishGreen, .body_CoolGrey13, .body_darkGray13:
             return .font(.fontSize13)
         case .h5, .h5_appSub, .body_CoolGrey16:
             return .font(.fontSize16)
-        case .body, .body_LightGray, .body_CharcoalGrey80, .body_CoolGrey, .body_CharcoalGrey, .body_White:
+        case .body, .body_LightGray, .body_CharcoalGrey80, .body_CoolGrey, .body_CharcoalGrey, .body_White, .body_darkGray:
             return .font(.fontSize12)
         case .cap, .cap_White, .cap_LightGray:
             return .font(.fontSize10)
@@ -111,6 +113,8 @@ enum TextComponent {
             return .black
         case .h1_Bold_White, .h2_White, .h3_White, .h4_White, .title_White, .body_White, .body_Bold_White, .cap_White, .cap_Bold_White:
             return .white
+        case .body_darkGray13, .body_darkGray:
+            return .darkGray
         case .title_Black40:
             return .appBlack40
         case .h1_LightGray, .h1_Bold_LightGray, .h2_LightGray, .h2_Bold_LightGray, .body_LightGray, .cap_LightGray:

@@ -3,7 +3,7 @@ import Kingfisher
 
 extension UIImageView {
     
-    func setImage(url: String) {
+    func setImage(url: String, completion: (() -> Void)? = nil) {
         
         if URL(string: url) != nil && url.count > 0 {
             let resource = ImageResource(downloadURL: URL(string: url)!, cacheKey: url)
@@ -12,6 +12,21 @@ extension UIImageView {
         else{
             self.image = R.image.logo()
         }
+    }
+    
+    func setImage(url: URL?, completion: CompletionObject<UIImage?>? = nil) {
+        kf.setImage(with: url) { result in
+            switch result {
+            case .success(let value):
+                completion?(value.image)
+            case .failure(_):
+                completion?(nil)
+            }
+        }
+    }
+    
+    func cancelDownload() {
+        kf.cancelDownloadTask()
     }
     
     class Builder {
@@ -23,7 +38,7 @@ extension UIImageView {
         private var borderColor: CGColor = UIColor.white.cgColor
         private var backgroundColor: UIColor = .white
         private var clipsToBounds: Bool = true
-        private var contentMode: ContentMode = .scaleAspectFill
+        private var contentMode: ContentMode = .scaleAspectFit
         
         func cornerRadius(_ cornerRadius: CGFloat) -> Builder {
             self.cornerRadius = cornerRadius

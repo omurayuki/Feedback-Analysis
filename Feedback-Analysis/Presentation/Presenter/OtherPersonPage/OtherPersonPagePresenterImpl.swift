@@ -97,12 +97,49 @@ class OtherPersonPagePresenterImpl: NSObject, OtherPersonPagePresenter {
     //// subjectToken, objectTokenの両方を一気に取得するとcallback地獄になりにくいと思った
     func getBothToken(completion: @escaping (String, String) -> Void) {
         useCase.getBothToken()
-            .subscribe { result in
+            .subscribe { [unowned self] result in
                 switch result {
                 case .success(let response):
                     completion(response.0, response.1)
                 case .error(let error):
                     self.view.showError(message: error.localizedDescription)
+                }
+            }.disposed(by: view.disposeBag)
+    }
+    
+    func getConversations(queryRef: FirebaseQueryRef,
+                          completion: @escaping ([Conversation]) -> Void) {
+        useCase.getConversations(queryRef: queryRef)
+            .subscribe { [unowned self] result in
+                switch result {
+                case .success(let response):
+                    completion(response)
+                case .error(let error):
+                    self.view.showError(message: error.localizedDescription)
+                }
+            }.disposed(by: view.disposeBag)
+    }
+    
+    func setConversation(_ conversation: Conversation) {
+        useCase.setConversation(conversation)
+            .subscribe { result in
+                switch result {
+                case .success(_):
+                    return
+                case .error(_):
+                    return
+                }
+            }.disposed(by: view.disposeBag)
+    }
+    
+    func getConversation(completion: @escaping (Conversation) -> Void) {
+        useCase.getConversation()
+            .subscribe { result in
+                switch result {
+                case .success(let response):
+                    completion(response)
+                case .error(_):
+                    return
                 }
             }.disposed(by: view.disposeBag)
     }

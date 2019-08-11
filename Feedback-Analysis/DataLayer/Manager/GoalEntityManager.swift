@@ -9,7 +9,7 @@ struct GoalEntityManager {
                 switch response {
                 case .success(let goalEntities):
                     goalEntities.forEach { goal in
-                        Provider().observe(documentRef: FirebaseDocumentRef.userRef(authorToken: authorToken),
+                        Provider().observe(documentRef: .userRef(authorToken: authorToken),
                                            completion: { response in
                             switch response {
                             case .success(let userEntity):

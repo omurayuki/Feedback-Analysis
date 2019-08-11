@@ -219,6 +219,10 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="ETC-W7-Ciu" id="v7a-ca-NTD"/>
+                                    <outlet property="delegate" destination="ETC-W7-Ciu" id="mA1-6g-ncy"/>
+                                </connections>
                             </tableView>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fod-tl-Yez">
                                 <rect key="frame" x="0.0" y="812" width="414" height="84"/>
@@ -254,21 +258,22 @@
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dh4-3y-68f">
                                                 <rect key="frame" x="370" y="12.5" width="32" height="25"/>
-                                                <color key="backgroundColor" red="0.84842956849999995" green="0.043400456099999998" blue="0.059256642220000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="32" id="D1c-fc-i2o"/>
                                                     <constraint firstAttribute="height" constant="25" id="VDb-G3-P3q"/>
                                                 </constraints>
+                                                <state key="normal" image="sendBtn"/>
                                             </button>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="4RB-g5-xAT">
                                                 <rect key="frame" x="6" y="12.5" width="32" height="25"/>
                                                 <subviews>
-                                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hda-cr-Ibe">
+                                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hda-cr-Ibe">
                                                         <rect key="frame" x="0.0" y="0.0" width="32" height="25"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="25" id="LUT-8a-iU4"/>
                                                             <constraint firstAttribute="width" constant="32" id="Tkn-1h-kKD"/>
                                                         </constraints>
+                                                        <state key="normal" image="selectCameraBtn"/>
                                                     </button>
                                                     <button hidden="YES" opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SYV-IR-9o8">
                                                         <rect key="frame" x="0.0" y="0.0" width="32" height="25"/>
@@ -276,21 +281,15 @@
                                                             <constraint firstAttribute="width" constant="32" id="Jat-GG-DEs"/>
                                                             <constraint firstAttribute="height" constant="25" id="UY4-g0-R4Z"/>
                                                         </constraints>
-                                                    </button>
-                                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XTh-xV-sVX">
-                                                        <rect key="frame" x="0.0" y="0.0" width="32" height="25"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="25" id="EdP-Xd-9jA"/>
-                                                            <constraint firstAttribute="width" constant="32" id="Gk0-nK-TuC"/>
-                                                        </constraints>
+                                                        <state key="normal" image="selectPhotoBtn"/>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RXv-3s-DnJ">
                                                         <rect key="frame" x="0.0" y="0.0" width="32" height="25"/>
-                                                        <color key="backgroundColor" red="0.84842956849999995" green="0.043400456099999998" blue="0.059256642220000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="32" id="YKg-Cn-f6g"/>
                                                             <constraint firstAttribute="height" constant="25" id="xqM-fA-MVU"/>
                                                         </constraints>
+                                                        <state key="normal" image="backBtn"/>
                                                     </button>
                                                 </subviews>
                                                 <constraints>
@@ -354,11 +353,11 @@
                         <outlet property="messageBarBottomConstraint" destination="UG7-gG-XQR" id="TXF-YF-Fd4"/>
                         <outlet property="messageExpandButton" destination="RXv-3s-DnJ" id="3Gc-GD-eh3"/>
                         <outlet property="messageInputTextField" destination="8HA-EA-7Uf" id="Pg7-if-bK2"/>
+                        <outlet property="messageSendButton" destination="dh4-3y-68f" id="sMU-Qo-tly"/>
                         <outlet property="messageStackViewWidthConstraint" destination="yYX-tv-R92" id="I2O-iy-moG"/>
                         <outlet property="messageTableView" destination="INw-55-hOC" id="djf-13-YTw"/>
                         <outletCollection property="messageActionButtons" destination="Hda-cr-Ibe" collectionClass="NSMutableArray" id="fNt-Gx-w24"/>
                         <outletCollection property="messageActionButtons" destination="SYV-IR-9o8" collectionClass="NSMutableArray" id="P51-x4-BSM"/>
-                        <outletCollection property="messageActionButtons" destination="XTh-xV-sVX" collectionClass="NSMutableArray" id="Bsd-TU-d4U"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jtj-nF-Jse" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -366,4 +365,10 @@
             <point key="canvasLocation" x="-189.85507246376812" y="300"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="backBtn" width="34" height="54"/>
+        <image name="selectCameraBtn" width="64" height="50"/>
+        <image name="selectPhotoBtn" width="64" height="50"/>
+        <image name="sendBtn" width="64" height="50"/>
+    </resources>
 </document>

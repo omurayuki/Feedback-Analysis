@@ -85,32 +85,4 @@ struct AccountEntityManager {
             completion(.success(()))
         })
     }
-    
-    func uploadImage(_ image: UIImage, at storageRef: FirebaseStorageRef,
-                     completion: @escaping (FirestoreResponse<URL>) -> Void) {
-        guard let imageData = image.pngData() else {
-            completion(.unknown)
-            return
-        }
-        storageRef
-            .destination
-            .putData(imageData, metadata: nil, completion: { (metadata, error) in
-                if let error = error {
-                    completion(.failure(error))
-                    return
-                }
-                storageRef
-                    .destination
-                    .downloadURL(completion: { (url, error) in
-                        if let error = error {
-                            completion(.failure(error))
-                        }
-                        guard let url = url else {
-                            completion(.unknown)
-                            return
-                        }
-                        completion(.success(url))
-                    })
-            })
-    }
 }

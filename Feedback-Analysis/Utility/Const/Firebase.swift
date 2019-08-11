@@ -15,6 +15,18 @@ enum FirestoreResponse<T> {
     case unknown
 }
 
+enum ContentType: Int {
+    case none
+    case photo
+    case unknown
+}
+
+enum FirestoreCollectionReference: String {
+    case users = "Users"
+    case conversations = "Conversations"
+    case messages = "Messages"
+}
+
 enum FirebaseDocumentRef {
     case userRef(authorToken: String)
     case authorRef(authorToken: String)
@@ -25,8 +37,10 @@ enum FirebaseDocumentRef {
     case replyRef(commentDocument: String)
     case likeUserRef(goalDocument: String, authorToken: String)
     case likeCommentRef(commentDocument: String, authorToken: String)
+    case messageRef(conversationID: String, messageID: String)
     //// subject = 主体, object = 客体
     case followRef(subject: String, object: String)
+    case conversationRef(conversationID: String)
     
     var destination: DocumentReference {
         switch self {
@@ -86,6 +100,16 @@ enum FirebaseDocumentRef {
                 .document(subjectToken)
                 .collection("Following")
                 .document(objectToken)
+        case .messageRef(let conversationID, let messageID):
+            return Firestore.firestore()
+                .collection("Conversations")
+                .document(conversationID)
+                .collection("Messages")
+                .document(messageID)
+        case .conversationRef(let conversationID):
+            return Firestore.firestore()
+                .collection("Conversations")
+                .document(conversationID)
         }
     }
 }
@@ -117,6 +141,8 @@ enum FirebaseQueryRef {
     case followerRefFromOtherPerson
     case followeeRefFromMypage
     case followerRefFromMypage
+    case conversationsRef
+    case messagesRef(conversationId: String)
     
     var destination: Query {
         switch self {
@@ -198,6 +224,17 @@ enum FirebaseQueryRef {
                 .document(AppUserDefaults.getAuthToken())
                 .collection("Follower")
                 .order(by: "created_at", descending: true)
+        case .conversationsRef:
+            return Firestore.firestore()
+                .collection("Conversations")
+                .whereField("userIDs", arrayContains: AppUserDefaults.getAuthToken())
+                .order(by: "timestamp", descending: true)
+        case .messagesRef(let conversationId):
+            return Firestore.firestore()
+                .collection("Conversations")
+                .document(conversationId)
+                .collection("Messages")
+                .order(by: "created_at", descending: false)
         }
     }
     

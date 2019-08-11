@@ -11,7 +11,7 @@ struct Provider {
     
     func setData(documentRef: FirebaseDocumentRef, fields: EntityType,
                  completion: @escaping (_ response: FirestoreResponse<()>) -> Void) {
-        documentRef.destination.setData(fields, completion: { error in
+        documentRef.destination.setData(fields, merge: true, completion: { error in
             if let error = error {
                 completion(.failure(error))
                 return

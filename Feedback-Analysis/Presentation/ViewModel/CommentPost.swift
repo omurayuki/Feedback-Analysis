@@ -21,13 +21,13 @@ struct CommentPost {
         
         var description: String {
             switch self {
-            case .authorToken:    return "author_token"
+            case .authorToken:      return "author_token"
             case .goalDocumentId:   return "goal_document_id"
-            case .comment:      return "comment"
-            case .likeCount:    return "like_count"
-            case .repliedCount: return "replied_count"
-            case .createdAt:    return "created_at"
-            case .updatedAt:    return "updated_at"
+            case .comment:          return "comment"
+            case .likeCount:        return "like_count"
+            case .repliedCount:     return "replied_count"
+            case .createdAt:        return "created_at"
+            case .updatedAt:        return "updated_at"
             }
         }
     }

@@ -9,6 +9,9 @@ protocol OtherPersonPageRepository {
     func checkFollowing(documentRef: FirebaseDocumentRef) -> Single<Bool>
     func setObjectToken(_ token: String) -> Single<()>
     func getBothToken() -> Single<(String, String)>
+    func getConversations(queryRef: FirebaseQueryRef) -> Single<[ConversationEntity]>
+    func setConversation(_ conversation: Conversation) -> Single<()>
+    func getConversation() -> Single<Conversation>
 }
 
 struct OtherPersonPageRepositoryImpl: OtherPersonPageRepository {
@@ -48,5 +51,20 @@ struct OtherPersonPageRepositoryImpl: OtherPersonPageRepository {
     func getBothToken() -> Single<(String, String)> {
         let dataStore = UserDataStoreFactory.createUserLocalDataStore()
         return dataStore.getBothToken()
+    }
+    
+    func getConversations(queryRef: FirebaseQueryRef) -> Single<[ConversationEntity]> {
+        let dataStore = UserDataStoreFactory.createUserRemoteDataStore()
+        return dataStore.getConversations(queryRef: queryRef)
+    }
+    
+    func setConversation(_ conversation: Conversation) -> Single<()> {
+        let dataStore = UserDataStoreFactory.createUserLocalDataStore()
+        return dataStore.setConversation(conversation)
+    }
+    
+    func getConversation() -> Single<Conversation> {
+        let dataStore = UserDataStoreFactory.createUserLocalDataStore()
+        return dataStore.getConversation()
     }
 }

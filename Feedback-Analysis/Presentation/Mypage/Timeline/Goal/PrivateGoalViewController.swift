@@ -2,12 +2,20 @@ import Foundation
 import UIKit
 
 class PrivateGoalViewController: PrivateTimelineContentViewController {
+    
+    var recieveToken: String
+    
+    init(recieveToken: String) {
+        self.recieveToken = recieveToken
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter.getAuthorToken { [unowned self] token in
-            self.queryRef = .goalRef(authorToken: token)
-        }
+        self.queryRef = .goalRef(authorToken: recieveToken)
     }
 }
-

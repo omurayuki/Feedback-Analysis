@@ -25,6 +25,13 @@ class OtherPersonPageViewController: UIViewController {
     
     var disposeBag: DisposeBag! {
         didSet {
+            ui.messageBtn.rx.tap.asDriver()
+                .drive(onNext: { [unowned self] _ in
+                    self.presenter.getConversation(completion: { [unowned self] conversation in
+                        self.routing.showMessagePage(conversation: conversation)
+                    })
+                }).disposed(by: disposeBag)
+            
             ui.followBtn.rx.tap.asDriver()
                 .drive(onNext: { [unowned self] _ in
                     self.presenter.getBothToken(completion: { [unowned self] subjectToken, objectToken in
@@ -103,6 +110,7 @@ extension OtherPersonPageViewController {
         presenter.setObjectToken(token)
         checkFollowing(objectToken: token)
         presenter.fetch(to: .userRef(authorToken: token), completion: nil)
+        setConversationInObjectUser()
     }
     
     func follow(documentRef: FirebaseDocumentRef) {
@@ -121,6 +129,20 @@ extension OtherPersonPageViewController {
         presenter.getAuthorToken { [unowned self] subjectToken in
             self.presenter.checkFollowing(documentRef: .followRef(subject: subjectToken, object: objectToken)) { bool in
                 bool ? (self.ui.followBtn.currentState = .following) : (self.ui.followBtn.currentState = .unFollowing)
+            }
+        }
+    }
+    
+    func setConversationInObjectUser() {
+        presenter.getConversations(queryRef: .conversationsRef) { [unowned self] conversations in
+            self.presenter.getBothToken { subjectToken, objectToken in
+                if let conversation = conversations.filter({ $0.userIDs.contains(objectToken) }).first {
+                    self.presenter.setConversation(conversation)
+                    return
+                }
+                let conversation = Conversation(userIds: [subjectToken, objectToken],
+                                                isRead: [subjectToken: true, objectToken: true])
+                self.presenter.setConversation(conversation)
             }
         }
     }
