@@ -40,7 +40,7 @@ struct GoalEntityManager {
             case .success(let entities):
                 entities.forEach {
                     guard let token = $0.data()["author_token"] as? String else {
-                        completion(.unknown)
+                        completion(.unknown) 
                         return
                     }
                     Provider().observe(documentRef: .authorRef(authorToken: token), completion: { response in

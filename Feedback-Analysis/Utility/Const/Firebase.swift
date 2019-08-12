@@ -143,6 +143,7 @@ enum FirebaseQueryRef {
     case followerRefFromMypage
     case conversationsRef
     case messagesRef(conversationId: String)
+    case passedGoalRef
     
     var destination: Query {
         switch self {
@@ -235,6 +236,15 @@ enum FirebaseQueryRef {
                 .document(conversationId)
                 .collection("Messages")
                 .order(by: "created_at", descending: false)
+        case .passedGoalRef:
+            return Firestore.firestore()
+                .collection("Users")
+                .document(AppUserDefaults.getAuthToken())
+                .collection("Goals")
+//                .whereField("deadline", isDateInYear: Date())
+                .whereField("achieved_flag", isEqualTo: false)
+                .whereField("draft_flag", isEqualTo: false)
+                .order(by: "updated_at", descending: true)
         }
     }
     

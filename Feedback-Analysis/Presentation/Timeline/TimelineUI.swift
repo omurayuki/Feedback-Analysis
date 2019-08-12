@@ -38,8 +38,6 @@ extension TimelineUIImpl {
         guard let vc = viewController else { return }
         vc.view.backgroundColor = .appMainColor
         vc.navigationItem.title = "Post"
-        vc.navigationItem.largeTitleDisplayMode = .never
-        vc.coloringAppMainNavBar()
         
         vc.addChild(timelinePages)
         [timelineSegmented, containerView].forEach { vc.view.addSubview($0) }

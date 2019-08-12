@@ -126,6 +126,9 @@
 		C98E987322F588F000101214 /* ConversationRemoteDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98E987222F588F000101214 /* ConversationRemoteDataStore.swift */; };
 		C98E987522F5890300101214 /* ConversationLocalDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98E987422F5890300101214 /* ConversationLocalDataStore.swift */; };
 		C98E987722F5891000101214 /* ConversationDataStoreFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98E987622F5891000101214 /* ConversationDataStoreFactory.swift */; };
+		C98F62E02301372500535C29 /* AnalysisListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98F62DF2301372500535C29 /* AnalysisListPresenter.swift */; };
+		C98F62E22301373000535C29 /* AnalysisListPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98F62E12301373000535C29 /* AnalysisListPresenterImpl.swift */; };
+		C98F62E4230156D100535C29 /* CollectionReference+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98F62E3230156D100535C29 /* CollectionReference+Extension.swift */; };
 		C990788B22EAD0C9009076FA /* GoalEntityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C990788A22EAD0C9009076FA /* GoalEntityManager.swift */; };
 		C990788E22EAD43C009076FA /* AccountEntityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C990788D22EAD43C009076FA /* AccountEntityManager.swift */; };
 		C990789022EAD689009076FA /* CommentEntityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C990788F22EAD689009076FA /* CommentEntityManager.swift */; };
@@ -232,6 +235,9 @@
 		C9DE385122EB33D300AEEF07 /* PrivateTimelineContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DE385022EB33D300AEEF07 /* PrivateTimelineContentViewController.swift */; };
 		C9DE385322EB33E800AEEF07 /* PrivateTimelineContentUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DE385222EB33E800AEEF07 /* PrivateTimelineContentUI.swift */; };
 		C9DE385522EB33F400AEEF07 /* PrivateTimelineContentRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DE385422EB33F400AEEF07 /* PrivateTimelineContentRouting.swift */; };
+		C9DFF0B02301311C009DE302 /* AnalysisListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DFF0AF2301311C009DE302 /* AnalysisListViewController.swift */; };
+		C9DFF0B223013126009DE302 /* AnalysisListUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DFF0B123013126009DE302 /* AnalysisListUI.swift */; };
+		C9DFF0B423013136009DE302 /* AnalysisListRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DFF0B323013136009DE302 /* AnalysisListRouting.swift */; };
 		C9E5911A22E962E90083E5F5 /* PublicTimelineContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E5911922E962E90083E5F5 /* PublicTimelineContentViewController.swift */; };
 		C9E5911C22E9630D0083E5F5 /* PublicTimelineContentUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E5911B22E9630D0083E5F5 /* PublicTimelineContentUI.swift */; };
 		C9E5911E22E9633E0083E5F5 /* PublicTimelineContentRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E5911D22E9633E0083E5F5 /* PublicTimelineContentRouting.swift */; };
@@ -396,6 +402,9 @@
 		C98E987222F588F000101214 /* ConversationRemoteDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationRemoteDataStore.swift; sourceTree = "<group>"; };
 		C98E987422F5890300101214 /* ConversationLocalDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationLocalDataStore.swift; sourceTree = "<group>"; };
 		C98E987622F5891000101214 /* ConversationDataStoreFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationDataStoreFactory.swift; sourceTree = "<group>"; };
+		C98F62DF2301372500535C29 /* AnalysisListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalysisListPresenter.swift; sourceTree = "<group>"; };
+		C98F62E12301373000535C29 /* AnalysisListPresenterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalysisListPresenterImpl.swift; sourceTree = "<group>"; };
+		C98F62E3230156D100535C29 /* CollectionReference+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CollectionReference+Extension.swift"; sourceTree = "<group>"; };
 		C990788A22EAD0C9009076FA /* GoalEntityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalEntityManager.swift; sourceTree = "<group>"; };
 		C990788D22EAD43C009076FA /* AccountEntityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountEntityManager.swift; sourceTree = "<group>"; };
 		C990788F22EAD689009076FA /* CommentEntityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentEntityManager.swift; sourceTree = "<group>"; };
@@ -504,6 +513,9 @@
 		C9DE385022EB33D300AEEF07 /* PrivateTimelineContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateTimelineContentViewController.swift; sourceTree = "<group>"; };
 		C9DE385222EB33E800AEEF07 /* PrivateTimelineContentUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateTimelineContentUI.swift; sourceTree = "<group>"; };
 		C9DE385422EB33F400AEEF07 /* PrivateTimelineContentRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateTimelineContentRouting.swift; sourceTree = "<group>"; };
+		C9DFF0AF2301311C009DE302 /* AnalysisListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalysisListViewController.swift; sourceTree = "<group>"; };
+		C9DFF0B123013126009DE302 /* AnalysisListUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalysisListUI.swift; sourceTree = "<group>"; };
+		C9DFF0B323013136009DE302 /* AnalysisListRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalysisListRouting.swift; sourceTree = "<group>"; };
 		C9E5911922E962E90083E5F5 /* PublicTimelineContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicTimelineContentViewController.swift; sourceTree = "<group>"; };
 		C9E5911B22E9630D0083E5F5 /* PublicTimelineContentUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicTimelineContentUI.swift; sourceTree = "<group>"; };
 		C9E5911D22E9633E0083E5F5 /* PublicTimelineContentRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicTimelineContentRouting.swift; sourceTree = "<group>"; };
@@ -621,6 +633,14 @@
 				C972692922BB3BA300CDFD59 /* Genre.swift */,
 			);
 			path = Const;
+			sourceTree = "<group>";
+		};
+		C929C2BB22FFE5AC00A73001 /* Analysis */ = {
+			isa = PBXGroup;
+			children = (
+				C9DFF0B723013154009DE302 /* AnalysisList */,
+			);
+			path = Analysis;
 			sourceTree = "<group>";
 		};
 		C92B5E3F22EB38DC0056AB2B /* PrivateTimelineContent */ = {
@@ -1008,6 +1028,23 @@
 			path = Conversation;
 			sourceTree = "<group>";
 		};
+		C98F62DD2301370700535C29 /* Analysis */ = {
+			isa = PBXGroup;
+			children = (
+				C98F62DE2301371500535C29 /* AnalysisList */,
+			);
+			path = Analysis;
+			sourceTree = "<group>";
+		};
+		C98F62DE2301371500535C29 /* AnalysisList */ = {
+			isa = PBXGroup;
+			children = (
+				C98F62DF2301372500535C29 /* AnalysisListPresenter.swift */,
+				C98F62E12301373000535C29 /* AnalysisListPresenterImpl.swift */,
+			);
+			path = AnalysisList;
+			sourceTree = "<group>";
+		};
 		C990789722EB3182009076FA /* PrivateTimelineContent */ = {
 			isa = PBXGroup;
 			children = (
@@ -1343,6 +1380,7 @@
 				C9D9012222AB532A0040390E /* Account */,
 				C95E08A922B116EF000C41C7 /* MainTab */,
 				C9CB2B4322D4F6350081C499 /* Timeline */,
+				C929C2BB22FFE5AC00A73001 /* Analysis */,
 				C98E985F22F5528C00101214 /* Conversations */,
 				C947E72A22E31A45001F176F /* FollowListManaging */,
 				C9391A1622E017FD006E3A14 /* OtherPersonPage */,
@@ -1391,6 +1429,7 @@
 				C97F25C222D6033800D61FF4 /* UIPageViewController+Extension.swift */,
 				C9EB3D4B22D78A2B0063434A /* GrowingTextView+Extension.swift */,
 				C935C0B122E6380B0016682C /* UIDevice+Extension.swift */,
+				C98F62E3230156D100535C29 /* CollectionReference+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1437,6 +1476,7 @@
 				C97DDD7E22AD550F00A84219 /* Presenter.swift */,
 				C9D9012F22AB55DE0040390E /* Account */,
 				C9A610C722D5CB6500300837 /* Timeline */,
+				C98F62DD2301370700535C29 /* Analysis */,
 				C98E986822F5858E00101214 /* Conversations */,
 				C92FAA7922E3600000459A08 /* FollowListManaging */,
 				C9391A1E22E01C57006E3A14 /* OtherPersonPage */,
@@ -1487,6 +1527,16 @@
 				C9E8517B22F9C90E00CFC59A /* ImageZoomView.swift */,
 			);
 			path = Custom;
+			sourceTree = "<group>";
+		};
+		C9DFF0B723013154009DE302 /* AnalysisList */ = {
+			isa = PBXGroup;
+			children = (
+				C9DFF0AF2301311C009DE302 /* AnalysisListViewController.swift */,
+				C9DFF0B123013126009DE302 /* AnalysisListUI.swift */,
+				C9DFF0B323013136009DE302 /* AnalysisListRouting.swift */,
+			);
+			path = AnalysisList;
 			sourceTree = "<group>";
 		};
 		C9E5911822E962BB0083E5F5 /* PublicTimelineContent */ = {
@@ -1826,6 +1876,7 @@
 				C9391A2222E01C89006E3A14 /* OtherPersonPagePresenterImpl.swift in Sources */,
 				C9F2496F22B79CBF007E82A0 /* EmailEditingViewController.swift in Sources */,
 				C9CC391222D5CBAA001010F4 /* TimelinePresenter.swift in Sources */,
+				C98F62E22301373000535C29 /* AnalysisListPresenterImpl.swift in Sources */,
 				C979404922BF447A00929C2A /* Array+Extension.swift in Sources */,
 				C9E5911E22E9633E0083E5F5 /* PublicTimelineContentRouting.swift in Sources */,
 				C9391A1A22E01821006E3A14 /* OtherPersonPageUI.swift in Sources */,
@@ -1877,6 +1928,7 @@
 				C9D9011222AB4F130040390E /* UIBarButtonItem+Extension.swift in Sources */,
 				C9A6065922B1DF8700184E0F /* TimelineCell.swift in Sources */,
 				C990788B22EAD0C9009076FA /* GoalEntityManager.swift in Sources */,
+				C9DFF0B223013126009DE302 /* AnalysisListUI.swift in Sources */,
 				C9B55D1422B1010C00845381 /* RemindPresenterImpl.swift in Sources */,
 				C91FA65622B4FF8B006D9E6D /* EditPresenterImpl.swift in Sources */,
 				C9F2497322B79D1F007E82A0 /* EmailEditingRouting.swift in Sources */,
@@ -1890,6 +1942,8 @@
 				C98C7A4622D8A73100EF9B8F /* KeyboardNotifier.swift in Sources */,
 				C9EB3D4C22D78A2B0063434A /* GrowingTextView+Extension.swift in Sources */,
 				C9C43B8722D0BD03006CBC1B /* ReplyPresenter.swift in Sources */,
+				C98F62E4230156D100535C29 /* CollectionReference+Extension.swift in Sources */,
+				C9DFF0B02301311C009DE302 /* AnalysisListViewController.swift in Sources */,
 				C91FA65422B4FF84006D9E6D /* EditPresenter.swift in Sources */,
 				C92E0BBF22CB02BC007A2F0C /* CommentTranslator.swift in Sources */,
 				C93271D822CF6B4500AA9BA6 /* DetailDataStoreFactory.swift in Sources */,
@@ -1922,6 +1976,7 @@
 				C93271E222CF6E6100AA9BA6 /* DetailLocalDataStore.swift in Sources */,
 				C9328AA622C732130065027B /* PrivateAllViewController.swift in Sources */,
 				C972692822BB2DD400CDFD59 /* ExpectedResultView.swift in Sources */,
+				C9DFF0B423013136009DE302 /* AnalysisListRouting.swift in Sources */,
 				C9391A1822E01813006E3A14 /* OtherPersonPageViewController.swift in Sources */,
 				C9D9011422AB502E0040390E /* UIButton+Extension.swift in Sources */,
 				C91EB4C522EEA2DB0008FD03 /* MessagesViewController.swift in Sources */,
@@ -2004,6 +2059,7 @@
 				C97DDD8222AD71C100A84219 /* SignupUseCase.swift in Sources */,
 				C92E0BBD22CB0145007A2F0C /* Comment.swift in Sources */,
 				C9391A2422E01E35006E3A14 /* OtherPersonPageUseCase.swift in Sources */,
+				C98F62E02301372500535C29 /* AnalysisListPresenter.swift in Sources */,
 				C97DDD8522AD74C900A84219 /* Account.swift in Sources */,
 				C9C43B8D22D0C686006CBC1B /* ReplyPost.swift in Sources */,
 				C9F37E9522E36041003D503A /* FollowListManagingPresenterImpl.swift in Sources */,
