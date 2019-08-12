@@ -52,22 +52,28 @@ extension MainTabController: MainTabbarProtocol {
         return vc
     }
     
-    private func initAnalysisVC() -> AnalysisListViewController {
+    private func initAnalysisVC() -> AnalysisWrapViewController {
+        let controllers = [createAnalysisResultController(),
+                           createAnalysisListController()]
+        controllers.enumerated().forEach { index, controller in controller.view.tag = index }
         let repository = TimelineRepositoryImpl.shared
         let useCase = TimelineUseCaseImpl(repository: repository)
-        let presenter = AnalysisListPresenterImpl(useCase: useCase)
-        let vc = AnalysisListViewController()
+        let presenter = AnalysisWrapPresenterImpl(useCase: useCase)
+        let vc = AnalysisWrapViewController()
         
-        let ui = AnalysisListUIImpl()
-        let routing = AnalysisListRoutingImpl()
+        let ui = AnalysisWrapUIImpl()
+        let routing = AnalysisWrapRoutingImpl()
         ui.viewController = vc
         routing.viewController = vc
-        ui.tableView.dataSource = vc.dataSource
-        ui.tableView.delegate = presenter
+        ui.segmented.delegate = presenter
+        ui.pages.delegate = presenter
         vc.inject(ui: ui,
                   presenter: presenter,
                   routing: routing,
+                  viewControllers: controllers,
                   disposeBag: DisposeBag())
+        
+        ui.pages.dataSource = vc.dataSource
         
         return vc
     }
@@ -152,6 +158,33 @@ extension MainTabController {
         ui.timeline.delegate = presenter
         routing.viewController = vc
         vc.inject(ui: ui, presenter: presenter, routing: routing, disposeBag: DisposeBag())
+        return vc
+    }
+}
+
+extension MainTabController {
+    
+    func createAnalysisResultController() -> UIViewController {
+        return UIViewController()
+    }
+    
+    func createAnalysisListController() -> UIViewController {
+        let repository = TimelineRepositoryImpl.shared
+        let useCase = TimelineUseCaseImpl(repository: repository)
+        let presenter = AnalysisListPresenterImpl(useCase: useCase)
+        let vc = AnalysisListViewController()
+        
+        let ui = AnalysisListUIImpl()
+        let routing = AnalysisListRoutingImpl()
+        ui.viewController = vc
+        routing.viewController = vc
+        ui.tableView.dataSource = vc.dataSource
+        ui.tableView.delegate = presenter
+        vc.inject(ui: ui,
+                  presenter: presenter,
+                  routing: routing,
+                  disposeBag: DisposeBag())
+        
         return vc
     }
 }
