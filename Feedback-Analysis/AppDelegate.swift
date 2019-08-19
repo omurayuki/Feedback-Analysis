@@ -14,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().tintColor = .appSubColor
         UINavigationBar.appearance().backIndicatorImage = UIImage()
         UINavigationBar.appearance().backIndicatorTransitionMaskImage = UIImage()
-        UINavigationBar.appearance().backgroundColor = .appMainSupportColor
+        UINavigationBar.appearance().backgroundColor = .clear
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.appSubColor]
 
         let vc = TopViewController()

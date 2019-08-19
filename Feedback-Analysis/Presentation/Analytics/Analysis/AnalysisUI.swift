@@ -1,57 +1,99 @@
 import UIKit
 
 protocol AnalysisUI: UI {
-    var firstAnalysisView: AnalysisView { get set }
-    var secondAnalysisView: AnalysisView { get set }
-    var thirdAnalysisView: AnalysisView { get set }
+    var slides: [UIView] { get set }
+    var segment: CustomSegmentedControl { get }
+    var viewTapGesture: UITapGestureRecognizer { get }
+    var saveBtn: UIBarButtonItem { get }
+    var scrollView: UIScrollView { get }
+    var pageControl: UIPageControl { get }
     
     func setup()
-    func mapping()
+    func setupSlideScrollView(slides: [UIView])
 }
 
 final class AnalysisUIImpl: AnalysisUI {
     
-    var viewController: UIViewController?
+    weak var viewController: UIViewController?
     
-    var firstAnalysisView: AnalysisView = {
-        let view = AnalysisView()
-        return view
+    var slides: [UIView] = []
+    
+    private(set) var segment: CustomSegmentedControl = {
+        let segment = CustomSegmentedControl(frame: CGRect(), buttonTitle: ["1", "2", "3", "4"])
+        segment.backgroundColor = .clear
+        return segment
     }()
     
-    var secondAnalysisView: AnalysisView = {
-        let view = AnalysisView()
-        return view
+    private(set) var viewTapGesture: UITapGestureRecognizer = {
+        let gesture = UITapGestureRecognizer()
+        return gesture
     }()
     
-    var thirdAnalysisView: AnalysisView = {
-        let view = AnalysisView()
-        return view
+    private(set) var saveBtn: UIBarButtonItem = {
+        let item = UIBarButtonItem()
+        item.title = "保存"
+        item.style = .plain
+        return item
+    }()
+    
+    private(set) var scrollView: UIScrollView = {
+        let scroll = UIScrollView()
+        scroll.isScrollEnabled = true
+        scroll.bounces = false
+        scroll.showsHorizontalScrollIndicator = false
+        scroll.showsVerticalScrollIndicator = false
+        scroll.isPagingEnabled = true
+        return scroll
+    }()
+    
+    private(set) var pageControl: UIPageControl = {
+        let control = UIPageControl()
+        control.pageIndicatorTintColor = .appMainColor
+        control.currentPageIndicatorTintColor = .appSubColor
+        control.currentPage = 0
+        return control
     }()
 }
 
 extension AnalysisUIImpl {
-    
     func setup() {
+        
         guard let vc = viewController else { return }
-        [firstAnalysisView, secondAnalysisView, thirdAnalysisView].forEach { vc.view.addSubview($0) }
+        vc.navigationController?.navigationItem.rightBarButtonItem = saveBtn
+        vc.view.backgroundColor = .appMainColor
         
-        firstAnalysisView.anchor()
+        vc.view.addGestureRecognizer(viewTapGesture)
+        [segment, scrollView, pageControl].forEach { vc.view.addSubview($0) }
+        
+        segment.anchor()
+            .centerXToSuperview()
             .top(to: vc.view.safeAreaLayoutGuide.topAnchor)
-            .width(to: vc.view.widthAnchor)
+            .width(to: vc.view.widthAnchor, multiplier: 0.95)
+            .height(constant: 35)
             .activate()
         
-        secondAnalysisView.anchor()
-            .top(to: firstAnalysisView.bottomAnchor)
-            .width(to: vc.view.widthAnchor)
+        scrollView.anchor()
+            .top(to: segment.bottomAnchor, constant: 2)
+            .left(to: vc.view.leftAnchor)
+            .right(to: vc.view.rightAnchor)
+            .height(constant: vc.view.frame.size.height)
             .activate()
         
-        thirdAnalysisView.anchor()
-            .top(to: secondAnalysisView.bottomAnchor)
-            .width(to: vc.view.widthAnchor)
+        pageControl.anchor()
+            .centerXToSuperview()
+            .bottom(to: vc.view.bottomAnchor, constant: -50)
+            .width(constant: vc.view.frame.size.width / 1.5)
             .activate()
     }
     
-    func mapping() {
-        
+    func setupSlideScrollView(slides: [UIView]) {
+        guard let vc = viewController else { return }
+        pageControl.numberOfPages = slides.count
+        scrollView.frame = CGRect(x: 0, y: 0, width: vc.view.frame.width, height: vc.view.frame.height)
+        scrollView.contentSize = CGSize(width: vc.view.frame.width * CGFloat(slides.count), height: vc.view.frame.height)
+        slides.enumerated().forEach { index, slide in
+            slide.frame = CGRect(x: vc.view.frame.width * CGFloat(index), y: 0, width: vc.view.frame.width, height: vc.view.frame.height)
+            scrollView.addSubview(slide)
+        }
     }
 }

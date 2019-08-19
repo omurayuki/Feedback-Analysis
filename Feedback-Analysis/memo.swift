@@ -22,10 +22,21 @@
  
  //////////必須
  // push通知設定
- // チャット機能実装
  // 強み分析機能実装
  
+ //// 強み結果表示までの構造
+ // 強み分析post
+    // GoalsのdocumentIDを紐づけて、個々のUser配下に(Goalsと同列)Completesというcollection作成
+    // そこにGoalsのdocumentIDを筆頭として、目標に対するfieldを作成
+    // AnalysisResultのチャート項目にはCompletesにある個々の強みを参照して表示
+    // 強み項目をたっぷした時に、UserのCompletesからCompletesDocumentIDを参照して結果をみれる
+    // タイムラインの項目(自分)の達成のどれかをタップしたら、自分のCompletesのマッチするGoalsDocumentIDをみて遷移する
+    // タイムラインの項目(フォローユーザー)の達成をどれかタップしたら、そのユーザーのauthorTokenを使ってそのUserのCompletesのマッチするGoalsDocumentIDをみて遷移する
  
+ // 配列形式でstrengthをpost 可能
+ // user配下にstrengthをカウントするためだけのcollectionを作成して配列の中の要素(1~3)をカウント 可能
+ // AnalysisResultの画面を構成するのはこのstrengthCollection
+ // それぞれの強みをタップすると、
  
  //// マストじゃないがゆくゆく実装するもの
  //  mypageをscrollViewにする
