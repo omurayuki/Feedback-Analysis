@@ -10,6 +10,7 @@ protocol GoalRemoteDataStore {
     func get(documentRef: FirebaseDocumentRef) -> Single<Bool>
     func create(documentRef: FirebaseDocumentRef, value: [String: Any]) -> Single<()>
     func delete(documentRef: FirebaseDocumentRef) -> Single<()>
+    func fetchCompletes(queryRef: FirebaseQueryRef) -> Single<[Complete]>
 }
 
 struct GoalRemoteDataStoreImpl: GoalRemoteDataStore {
@@ -140,6 +141,22 @@ struct GoalRemoteDataStoreImpl: GoalRemoteDataStore {
                     single(.error(FirebaseError.unknown))
                 }
             })
+            return Disposables.create()
+        })
+    }
+    
+    func fetchCompletes(queryRef: FirebaseQueryRef) -> Single<[Complete]> {
+        return Single.create(subscribe: { single -> Disposable in
+            single(.success([
+                 Complete(achoevement: ["hoge", "fuga"], analysis: ["分析", "分析"], strength: "特質系", goalDocumentId: "fdopfk", documentId: "fopskf", time: "10:10"),
+                 Complete(achoevement: ["hoge", "fuga"], analysis: ["分析", "分析"], strength: "強化系", goalDocumentId: "fdopfk", documentId: "fopskf", time: "10:10"),
+                 Complete(achoevement: ["hoge", "fuga"], analysis: ["分析", "分析"], strength: "特質系", goalDocumentId: "fdopfk", documentId: "fopskf", time: "10:10"),
+                 Complete(achoevement: ["hoge", "fuga"], analysis: ["分析", "分析"], strength: "特質系", goalDocumentId: "fdopfk", documentId: "fopskf", time: "10:10"),
+                 Complete(achoevement: ["hoge", "fuga"], analysis: ["分析", "分析"], strength: "変化系", goalDocumentId: "fdopfk", documentId: "fopskf", time: "10:10"),
+                 Complete(achoevement: ["hoge", "fuga"], analysis: ["分析", "分析"], strength: "特質系", goalDocumentId: "fdopfk", documentId: "fopskf", time: "10:10"),
+                 Complete(achoevement: ["hoge", "fuga"], analysis: ["分析", "分析"], strength: "特質系", goalDocumentId: "fdopfk", documentId: "fopskf", time: "10:10"),
+                 Complete(achoevement: ["hoge", "fuga"], analysis: ["分析", "分析"], strength: "具現化系", goalDocumentId: "fdopfk", documentId: "fopskf", time: "10:10"),
+                 Complete(achoevement: ["hoge", "fuga"], analysis: ["分析", "分析"], strength: "操作系", goalDocumentId: "fdopfk", documentId: "fopskf", time: "10:10")]))
             return Disposables.create()
         })
     }

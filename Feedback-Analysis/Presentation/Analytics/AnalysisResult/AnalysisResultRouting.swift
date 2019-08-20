@@ -1,9 +1,16 @@
-//
-//  AnalysisResultRouting.swift
-//  Feedback-Analysis
-//
-//  Created by オムラユウキ on 2019/08/19.
-//  Copyright © 2019 Swifter. All rights reserved.
-//
-
 import Foundation
+import UIKit
+import RxSwift
+
+protocol AnalysisResultRouting: Routing {
+    func showCompletesPage()
+}
+
+final class AnalysisResultRoutingImpl: AnalysisResultRouting {
+    
+    var viewController: UIViewController?
+    
+    func showCompletesPage() {
+        print("")
+    }
+}

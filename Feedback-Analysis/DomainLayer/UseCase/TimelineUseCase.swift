@@ -16,6 +16,7 @@ protocol TimelineUseCase {
     func getCompleteAuthorTokens(_ index: Int) -> Single<String>
     func setFollowAuthorTokens(_ values: [String]) -> Single<()>
     func getFollowAuthorTokens(_ index: Int) -> Single<String>
+    func fetchCompletes(queryRef: FirebaseQueryRef) -> Single<[Complete]>
 }
 
 struct TimelineUseCaseImpl: TimelineUseCase {
@@ -80,5 +81,10 @@ struct TimelineUseCaseImpl: TimelineUseCase {
     
     func getFollowAuthorTokens(_ index: Int) -> Single<String> {
         return repository.getFollowAuthorTokens().map { AuthorTokensTranslator().translate($0, index) }
+    }
+    
+    func fetchCompletes(queryRef: FirebaseQueryRef) -> Single<[Complete]> {
+//        return repository.fetchCompletes(queryRef: queryRef).map { CompletesTranslator().translate($0) }
+        return repository.fetchCompletes(queryRef: queryRef)
     }
 }

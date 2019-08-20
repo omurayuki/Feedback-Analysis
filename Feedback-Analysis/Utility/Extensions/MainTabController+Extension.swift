@@ -165,7 +165,24 @@ extension MainTabController {
 extension MainTabController {
     
     func createAnalysisResultController() -> UIViewController {
-        return UIViewController()
+        let repository = TimelineRepositoryImpl.shared
+        let useCase = TimelineUseCaseImpl(repository: repository)
+        let presenter = AnalysisResultPresenterImpl(useCase: useCase)
+        let routing = AnalysisResultRoutingImpl()
+        let sb = UIStoryboard(name: "AnalysisResult", bundle: nil)
+        guard
+            let vc = sb.instantiateViewController(withIdentifier: "AnalysisResultViewControllor") as? AnalysisResultViewControllor
+        else {
+            return UIViewController()
+        }
+        let _ = vc.view
+        routing.viewController = vc
+        vc.AnalysisTableView.dataSource = vc.dataSource
+        vc.AnalysisTableView.delegate = presenter
+        vc.inject(presenter: presenter,
+                  routing: routing,
+                  disposeBag: DisposeBag())
+        return vc
     }
     
     func createAnalysisListController() -> UIViewController {

@@ -16,6 +16,7 @@ protocol TimelineRepository {
     func getCompleteAuthorTokens() -> Single<[String]>
     func setFollowAuthorTokens(_ values: [String]) -> Single<()>
     func getFollowAuthorTokens() -> Single<[String]>
+    func fetchCompletes(queryRef: FirebaseQueryRef) -> Single<[Complete]>
 }
 
 struct TimelineRepositoryImpl: TimelineRepository {
@@ -90,5 +91,10 @@ struct TimelineRepositoryImpl: TimelineRepository {
     func getFollowAuthorTokens() -> Single<[String]> {
         let dataStore = GoalDataStoreFactory.createGoalLocalDataStore()
         return dataStore.getFollowAuthorTokens()
+    }
+    
+    func fetchCompletes(queryRef: FirebaseQueryRef) -> Single<[Complete]> {
+        let dataStore = GoalDataStoreFactory.createGoalRemoteDataStore()
+        return dataStore.fetchCompletes(queryRef: queryRef)
     }
 }
