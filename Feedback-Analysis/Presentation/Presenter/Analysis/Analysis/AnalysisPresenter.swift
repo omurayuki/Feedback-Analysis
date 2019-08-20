@@ -7,6 +7,8 @@ protocol AnalysisPresenter {
     var startPoint: CGPoint? { get set }
     var view: AnalysisPresenterView! { get set }
     var isLoading: BehaviorRelay<Bool> { get }
+    
+    func post(documentRef: FirebaseDocumentRef, fields: CompletePost)
 }
 
 protocol AnalysisPresenterView: class {

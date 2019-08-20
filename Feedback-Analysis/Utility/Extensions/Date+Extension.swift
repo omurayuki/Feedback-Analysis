@@ -76,3 +76,17 @@ extension Date {
         return Calendar.current.dateComponents([.second], from: self, to: Date()).second ?? 0
     }
 }
+
+extension Date {
+    
+    /// 日付→文字列に変換する
+    ///
+    /// - Parameter format: フォーマット
+    /// - Returns: 変換後の文字列
+    public func toString(format: String) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = DateFormatter.dateFormat(fromTemplate: format, options: 0,
+                                                        locale: Locale(identifier: "ja_JP"))
+        return formatter.string(from: self)
+    }
+}

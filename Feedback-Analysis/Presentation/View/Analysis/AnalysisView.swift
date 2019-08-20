@@ -4,7 +4,7 @@ final class AnalysisView: UIView {
     
     private(set) var achieveTitle: UILabel = {
         let label = UILabel()
-        label.apply(.h5_appSub_bold, title: "強みのタイトル")
+        label.apply(.h5_appSub_bold)
         return label
     }()
     

@@ -19,7 +19,7 @@ final class AnalysisUIImpl: AnalysisUI {
     var slides: [UIView] = []
     
     private(set) var segment: CustomSegmentedControl = {
-        let segment = CustomSegmentedControl(frame: CGRect(), buttonTitle: ["1", "2", "3", "4"])
+        let segment = CustomSegmentedControl(frame: CGRect(), buttonTitle: ["ぶ", "ん", "せ", "き"])
         segment.backgroundColor = .clear
         return segment
     }()

@@ -5,7 +5,7 @@ struct GoalPost {
     let genre: [String: String]
     let newThings: String
     let goal: [String: String]
-    let deadline: String
+    let deadline: Date
     let achievedFlag: Bool
     let draftFlag: Bool
     let likeCount: Int

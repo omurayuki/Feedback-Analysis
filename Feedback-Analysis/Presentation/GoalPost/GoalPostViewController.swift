@@ -63,7 +63,7 @@ class GoalPostViewController: UIViewController {
                                                            expectedResultField1: _expectedResultField1,
                                                            expectedResultField2: _expectedResultField2,
                                                            expectedResultField3: _expectedResultField3,
-                                                           deadline: expectedResultView.deadline.text ?? "", draft: true)
+                                                           deadline: (expectedResultView.deadline.text ?? "").toDate(format: "yyyy年MM月dd日"), draft: true)
                         self.presenter.getAuthorToken(completion: { [unowned self] token in
                             self.presenter.post(to: .goalPostRef(authorToken: token), fields: goalPost)
                         })
@@ -84,7 +84,7 @@ class GoalPostViewController: UIViewController {
                                                            expectedResultField1: _expectedResultField1,
                                                            expectedResultField2: _expectedResultField2,
                                                            expectedResultField3: _expectedResultField3,
-                                                           deadline: expectedResultView.deadline.text ?? "", draft: false)
+                                                           deadline: (expectedResultView.deadline.text ?? "").toDate(format: "yyyy年MM月dd日"), draft: false)
                         self.presenter.getAuthorToken(completion: { [unowned self] token in
                             self.presenter.post(to: .goalPostRef(authorToken: token), fields: goalPost)
                         })

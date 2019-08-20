@@ -6,6 +6,8 @@ import FirebaseFirestore
 
 class AnalysisViewController: UIViewController {
     
+    private var goalDocumentId = String()
+    
     var ui: AnalysisUI!
     
     var routing: AnalysisRouting!
@@ -74,19 +76,28 @@ extension AnalysisViewController {
                 return $1
             }.disposed(by: disposeBag)
         
+        fourceView.strengthPickerView.rx.modelSelected(String.self).asDriver()
+            .drive(onNext: { str in
+                fourceView.strength.text = str.first
+            }).disposed(by: disposeBag)
+        
         fourceView.strengthDoneBtn.rx.tap
             .bind { _ in
-                fourceView.endEditing(true)
-            }.disposed(by: disposeBag)
-        
-        fourceView.strengthPickerView.rx.modelSelected(String.self)
-            .bind { str in
-                fourceView.strength.text = str.first
+                fourceView.strength.resignFirstResponder()
             }.disposed(by: disposeBag)
         
         fourceView.saveBtn.rx.tap
-            .bind { _ in
-                print("save")
+            .bind { [unowned self] _ in
+                self.presenter.post(documentRef: .completePostRef,
+                                    fields: CompletePost(actualAchievement: [firstView.actualAchievement.text ?? "",
+                                                                             secondView.actualAchievement.text ?? "",
+                                                                             thirdView.actualAchievement.text ?? ""],
+                                                         analysis: [firstView.analysisField.text ?? "",
+                                                                    secondView.analysisField.text ?? "",
+                                                                    thirdView.analysisField.text ?? ""],
+                                                         strength: fourceView.strength.text ?? "",
+                                                         goalDocumentId: self.goalDocumentId,
+                                                         createdAt: FieldValue.serverTimestamp()))
             }.disposed(by: disposeBag)
         
         presenter.isLoading
@@ -94,6 +105,18 @@ extension AnalysisViewController {
                 self.view.endEditing(true)
                 self.setIndicator(show: isLoading)
             }).disposed(by: disposeBag)
+    }
+    
+    func recieve(data: Timeline) {
+        guard let firstView = ui.slides[0] as? AnalysisView else { return }
+        guard let secondView = ui.slides[1] as? AnalysisView else { return }
+        guard let thirdView = ui.slides[2] as? AnalysisView else { return }
+        
+        firstView.achieveTitle.text = data.goal1
+        secondView.achieveTitle.text = data.goal2
+        thirdView.achieveTitle.text = data.goal3
+        
+        goalDocumentId = data.documentId
     }
 }
 

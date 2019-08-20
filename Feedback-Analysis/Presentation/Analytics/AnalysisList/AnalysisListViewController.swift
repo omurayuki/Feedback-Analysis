@@ -68,6 +68,6 @@ extension AnalysisListViewController: AnalysisListPresenterView {
     
     func didSelect(indexPath: IndexPath, tableView: UITableView) {
         tableView.deselectRow(at: indexPath, animated: true)
-        routing.showAnalysisPage()
+        routing.showAnalysisPage(data: dataSource.listItems[indexPath.row])
     }
 }

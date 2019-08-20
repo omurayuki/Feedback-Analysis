@@ -23,6 +23,7 @@
  //////////必須
  // push通知設定
  // 強み分析機能実装
+ // goalPostのdatepickerの挙動がおかしい(Analysisのstrengthmo)
  
  //// 強み結果表示までの構造
  // 強み分析post

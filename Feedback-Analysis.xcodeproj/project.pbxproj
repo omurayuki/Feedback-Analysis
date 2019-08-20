@@ -250,6 +250,7 @@
 		C9DFF0B02301311C009DE302 /* AnalysisListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DFF0AF2301311C009DE302 /* AnalysisListViewController.swift */; };
 		C9DFF0B223013126009DE302 /* AnalysisListUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DFF0B123013126009DE302 /* AnalysisListUI.swift */; };
 		C9DFF0B423013136009DE302 /* AnalysisListRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DFF0B323013136009DE302 /* AnalysisListRouting.swift */; };
+		C9E2AF88230BB81200BC9C76 /* CompletePost.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E2AF87230BB81200BC9C76 /* CompletePost.swift */; };
 		C9E5911A22E962E90083E5F5 /* PublicTimelineContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E5911922E962E90083E5F5 /* PublicTimelineContentViewController.swift */; };
 		C9E5911C22E9630D0083E5F5 /* PublicTimelineContentUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E5911B22E9630D0083E5F5 /* PublicTimelineContentUI.swift */; };
 		C9E5911E22E9633E0083E5F5 /* PublicTimelineContentRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E5911D22E9633E0083E5F5 /* PublicTimelineContentRouting.swift */; };
@@ -277,6 +278,7 @@
 		C9F01CF7230A999F00729C3E /* AnalysisResult.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9F01CF6230A999F00729C3E /* AnalysisResult.storyboard */; };
 		C9F01CF9230AA3C100729C3E /* AnalysisResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F01CF8230AA3C100729C3E /* AnalysisResultCell.swift */; };
 		C9F01CFB230ABCF100729C3E /* StrengthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F01CFA230ABCF100729C3E /* StrengthView.swift */; };
+		C9F01CFD230AE16900729C3E /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F01CFC230AE16900729C3E /* String.swift */; };
 		C9F2496722B78EAC007E82A0 /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F2496622B78EAC007E82A0 /* SettingsPresenter.swift */; };
 		C9F2496922B78EB7007E82A0 /* SettingsPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F2496822B78EB7007E82A0 /* SettingsPresenterImpl.swift */; };
 		C9F2496B22B79383007E82A0 /* SettingsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F2496A22B79383007E82A0 /* SettingsUseCase.swift */; };
@@ -545,6 +547,7 @@
 		C9DFF0AF2301311C009DE302 /* AnalysisListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalysisListViewController.swift; sourceTree = "<group>"; };
 		C9DFF0B123013126009DE302 /* AnalysisListUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalysisListUI.swift; sourceTree = "<group>"; };
 		C9DFF0B323013136009DE302 /* AnalysisListRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalysisListRouting.swift; sourceTree = "<group>"; };
+		C9E2AF87230BB81200BC9C76 /* CompletePost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletePost.swift; sourceTree = "<group>"; };
 		C9E5911922E962E90083E5F5 /* PublicTimelineContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicTimelineContentViewController.swift; sourceTree = "<group>"; };
 		C9E5911B22E9630D0083E5F5 /* PublicTimelineContentUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicTimelineContentUI.swift; sourceTree = "<group>"; };
 		C9E5911D22E9633E0083E5F5 /* PublicTimelineContentRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicTimelineContentRouting.swift; sourceTree = "<group>"; };
@@ -572,6 +575,7 @@
 		C9F01CF6230A999F00729C3E /* AnalysisResult.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AnalysisResult.storyboard; sourceTree = "<group>"; };
 		C9F01CF8230AA3C100729C3E /* AnalysisResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalysisResultCell.swift; sourceTree = "<group>"; };
 		C9F01CFA230ABCF100729C3E /* StrengthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrengthView.swift; sourceTree = "<group>"; };
+		C9F01CFC230AE16900729C3E /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		C9F2496622B78EAC007E82A0 /* SettingsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPresenter.swift; sourceTree = "<group>"; };
 		C9F2496822B78EB7007E82A0 /* SettingsPresenterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPresenterImpl.swift; sourceTree = "<group>"; };
 		C9F2496A22B79383007E82A0 /* SettingsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsUseCase.swift; sourceTree = "<group>"; };
@@ -656,6 +660,7 @@
 				C9C2808322BBD6A3002E905E /* GoalPost.swift */,
 				C9D77F9022CA59110007835B /* CommentPost.swift */,
 				C9C43B8C22D0C686006CBC1B /* ReplyPost.swift */,
+				C9E2AF87230BB81200BC9C76 /* CompletePost.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -1504,6 +1509,7 @@
 				C9EB3D4B22D78A2B0063434A /* GrowingTextView+Extension.swift */,
 				C935C0B122E6380B0016682C /* UIDevice+Extension.swift */,
 				C98F62E3230156D100535C29 /* CollectionReference+Extension.swift */,
+				C9F01CFC230AE16900729C3E /* String.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1897,6 +1903,7 @@
 				C9A6066C22B26E1F00184E0F /* MypageRepository.swift in Sources */,
 				C9D9013822AB5E480040390E /* LoginInputPresenterImpl.swift in Sources */,
 				C9D9014922AB85890040390E /* TopRouting.swift in Sources */,
+				C9E2AF88230BB81200BC9C76 /* CompletePost.swift in Sources */,
 				C95CA41122F0B0FD00478295 /* Message.swift in Sources */,
 				C990788E22EAD43C009076FA /* AccountEntityManager.swift in Sources */,
 				C9E5912522E96D610083E5F5 /* PageViewDataSource.swift in Sources */,
@@ -1992,6 +1999,7 @@
 				C9823FB5230192DE00495E7F /* AnalysisViewController.swift in Sources */,
 				C94EE04922D0632500937CFA /* ReplyUI.swift in Sources */,
 				C9D9013122AB55F40040390E /* LoginInputPresenter.swift in Sources */,
+				C9F01CFD230AE16900729C3E /* String.swift in Sources */,
 				C9EA654A22BC194D002BE1C8 /* GoalRepository.swift in Sources */,
 				C99116B222B8A917007C67C7 /* PasswordEditingPresenterImpl.swift in Sources */,
 				C9E6EAEB22E31AC0008D0809 /* FollowListManagingRouting.swift in Sources */,

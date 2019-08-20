@@ -15,6 +15,10 @@ class AnalysisPresenterImpl: NSObject, AnalysisPresenter {
     init(useCase: TimelineUseCase) {
         self.useCase = useCase
     }
+    
+    func post(documentRef: FirebaseDocumentRef, fields: CompletePost) {
+        print("hoge")
+    }
 }
 
 extension AnalysisPresenterImpl: CustomSegmentedControlDelegate {

@@ -28,7 +28,7 @@ extension GoalPostEditViewController {
                         expectedResultField1: String,
                         expectedResultField2: String,
                         expectedResultField3: String,
-                        deadline: String, draft: Bool) -> GoalPost {
+                        deadline: Date, draft: Bool) -> GoalPost {
         return GoalPost(genre: ["genre1": genre[0],
                                 "genre2": genre[1]],
                         newThings: newThings,

@@ -41,6 +41,7 @@ enum FirebaseDocumentRef {
     //// subject = 主体, object = 客体
     case followRef(subject: String, object: String)
     case conversationRef(conversationID: String)
+    case completePostRef
     
     var destination: DocumentReference {
         switch self {
@@ -110,6 +111,12 @@ enum FirebaseDocumentRef {
             return Firestore.firestore()
                 .collection("Conversations")
                 .document(conversationID)
+        case .completePostRef:
+            return Firestore.firestore()
+                .collection("Users")
+                .document(AppUserDefaults.getAuthToken())
+                .collection("Completes")
+                .document()
         }
     }
 }
@@ -241,10 +248,9 @@ enum FirebaseQueryRef {
                 .collection("Users")
                 .document(AppUserDefaults.getAuthToken())
                 .collection("Goals")
-//                .whereField("deadline", isDateInYear: Date())
+                .whereField("deadline", isLessThan: Timestamp(date: Date()))
                 .whereField("achieved_flag", isEqualTo: false)
                 .whereField("draft_flag", isEqualTo: false)
-                .order(by: "updated_at", descending: true)
         }
     }
     

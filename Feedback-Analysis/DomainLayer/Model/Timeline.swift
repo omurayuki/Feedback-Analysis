@@ -30,7 +30,7 @@ struct Timeline {
         self.goal1 = entity.goal["goal1"]
         self.goal2 = entity.goal["goal2"]
         self.goal3 = entity.goal["goal3"]
-        self.deadLine = entity.deadLine
+        self.deadLine = entity.deadLine.dateValue().toString(format: "yyyy年MM月dd日")
         self.postImage = nil
         self.achievedFlag = entity.achievedFlag
         self.draftFlag = entity.draftFlag
