@@ -22,13 +22,14 @@ final class AnalysisResultViewControllor: UIViewController {
         didSet {
             pieChart.backgroundColor = .appMainColor
             pieChart.chartDescription?.text = ""
-            pieChart.transparentCircleColor = .appMainColor
+            pieChart.legend.textColor = .appSubColor
+            pieChart.noDataText = "データがありません"
         }
     }
     
-    @IBOutlet weak var AnalysisTableView: UITableView! {
+    @IBOutlet weak var analysisTableView: UITableView! {
         didSet {
-            AnalysisTableView.register(AnalysisResultCell.self, forCellReuseIdentifier: String(describing: AnalysisResultCell.self))
+            analysisTableView.register(AnalysisResultCell.self, forCellReuseIdentifier: String(describing: AnalysisResultCell.self))
         }
     }
     
@@ -58,6 +59,11 @@ final class AnalysisResultViewControllor: UIViewController {
         super.viewDidLoad()
         setupUI()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        pieChart.animate(yAxisDuration: 0.5)
+    }
 }
 
 extension AnalysisResultViewControllor: AnalysisResultPresenterView {
@@ -69,18 +75,33 @@ extension AnalysisResultViewControllor: AnalysisResultPresenterView {
     
     func didSelect(indexPath: IndexPath, tableView: UITableView) {
         tableView.deselectRow(at: indexPath, animated: true)
-        routing.showCompletesPage()
+        let completes = presenter.completes.filter { $0.strength == dataSource.listItems[indexPath.row].0 }
+        
+        routing.showCompletesPage(completes)
     }
     
     func updateLoading(_ isLoading: Bool) {
         presenter.isLoading.accept(isLoading)
+    }
+    
+    func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
+        let animator = Animator()
+        
+        animator.updateBlock = {
+            let phaseShift = 10 * animator.phaseX
+            let dataSet = chartView.data?.dataSets.first as? PieChartDataSet
+            dataSet?.selectionShift = CGFloat(phaseShift)
+            chartView.setNeedsDisplay()
+        }
+        
+        animator.animate(xAxisDuration: 0.3, easingOption: .easeInCubic)
     }
 }
 
 extension AnalysisResultViewControllor {
     
     func setupUI() {
-        AnalysisTableView.tableHeaderView = pieChart
+        analysisTableView.tableHeaderView = pieChart
     }
     
     func updateChartData(dataEntries: [PieChartDataEntry]) -> PieChartData {

@@ -6,6 +6,9 @@ struct CompletePost {
     let analysis: [String]
     let strength: String
     let goalDocumentId: String
+    let goal1: String
+    let goal2: String
+    let goal3: String
     let createdAt: FieldValue
     
     fileprivate enum Key {
@@ -13,6 +16,9 @@ struct CompletePost {
         case analysis
         case strength
         case goalDocumentId
+        case goal1
+        case goal2
+        case goal3
         case createdAt
         
         var description: String {
@@ -21,6 +27,9 @@ struct CompletePost {
             case .analysis:          return "analysis"
             case .strength:          return "strength"
             case .goalDocumentId:    return "goal_document_id"
+            case .goal1:              return "goal1"
+            case .goal2:              return "goal2"
+            case .goal3:              return "goal3"
             case .createdAt:         return "created_at"
             }
         }
@@ -31,6 +40,9 @@ struct CompletePost {
                 Key.analysis.description: analysis,
                 Key.strength.description: strength,
                 Key.goalDocumentId.description: goalDocumentId,
+                Key.goal1.description: goal1,
+                Key.goal2.description: goal2,
+                Key.goal3.description: goal3,
                 Key.createdAt.description: createdAt]
     }
 }

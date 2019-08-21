@@ -177,8 +177,9 @@ extension MainTabController {
         }
         let _ = vc.view
         routing.viewController = vc
-        vc.AnalysisTableView.dataSource = vc.dataSource
-        vc.AnalysisTableView.delegate = presenter
+        vc.analysisTableView.dataSource = vc.dataSource
+        vc.analysisTableView.delegate = presenter
+        vc.pieChart.delegate = presenter
         vc.inject(presenter: presenter,
                   routing: routing,
                   disposeBag: DisposeBag())

@@ -23,5 +23,6 @@ protocol AnalysisResultPresenterView: class {
     func showError(message: String)
     func didFetch(completes: [Complete])
     func didSelect(indexPath: IndexPath, tableView: UITableView)
+    func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight)
     func updateLoading(_ isLoading: Bool)
 }

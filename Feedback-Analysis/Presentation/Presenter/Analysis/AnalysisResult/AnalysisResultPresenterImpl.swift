@@ -49,3 +49,10 @@ extension AnalysisResultPresenterImpl: UITableViewDelegate {
         view.didSelect(indexPath: indexPath, tableView: tableView)
     }
 }
+
+extension AnalysisResultPresenterImpl: ChartViewDelegate {
+    
+    func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
+        view.chartValueSelected(chartView, entry: entry, highlight: highlight)
+    }
+}

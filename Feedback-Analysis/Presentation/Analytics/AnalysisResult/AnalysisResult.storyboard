@@ -33,7 +33,7 @@
                         <viewLayoutGuide key="safeArea" id="0lw-cz-t7V"/>
                     </view>
                     <connections>
-                        <outlet property="AnalysisTableView" destination="7Nq-e2-Gsd" id="L2F-dF-NqN"/>
+                        <outlet property="analysisTableView" destination="7Nq-e2-Gsd" id="KFG-C3-Z4P"/>
                         <outlet property="pieChart" destination="FGn-Bb-feE" id="16o-Iq-Bua"/>
                     </connections>
                 </viewController>

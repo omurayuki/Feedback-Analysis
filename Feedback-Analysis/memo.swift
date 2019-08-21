@@ -38,6 +38,7 @@
  // user配下にstrengthをカウントするためだけのcollectionを作成して配列の中の要素(1~3)をカウント 可能
  // AnalysisResultの画面を構成するのはこのstrengthCollection
  // それぞれの強みをタップすると、
+ // completesにpostすると、cloudfunctionで強みのデータだけその目標のfieldに追加する(強みを有している目標を取得するため)
  
  //// マストじゃないがゆくゆく実装するもの
  //  mypageをscrollViewにする

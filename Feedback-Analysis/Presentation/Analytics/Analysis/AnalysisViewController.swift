@@ -8,6 +8,12 @@ class AnalysisViewController: UIViewController {
     
     private var goalDocumentId = String()
     
+    private var goal1 = String()
+    
+    private var goal2 = String()
+    
+    private var goal3 = String()
+    
     var ui: AnalysisUI!
     
     var routing: AnalysisRouting!
@@ -97,6 +103,9 @@ extension AnalysisViewController {
                                                                     thirdView.analysisField.text ?? ""],
                                                          strength: fourceView.strength.text ?? "",
                                                          goalDocumentId: self.goalDocumentId,
+                                                         goal1: self.goal1,
+                                                         goal2: self.goal2,
+                                                         goal3: self.goal3,
                                                          createdAt: FieldValue.serverTimestamp()))
             }.disposed(by: disposeBag)
         
@@ -117,6 +126,9 @@ extension AnalysisViewController {
         thirdView.achieveTitle.text = data.goal3
         
         goalDocumentId = data.documentId
+        goal1 = data.goal1 ?? ""
+        goal2 = data.goal2 ?? ""
+        goal3 = data.goal3 ?? ""
     }
 }
 

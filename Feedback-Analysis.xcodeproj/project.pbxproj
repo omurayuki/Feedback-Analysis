@@ -183,7 +183,13 @@
 		C9A6067922B2AAB600184E0F /* UserRemoteDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A6067822B2AAB600184E0F /* UserRemoteDataStore.swift */; };
 		C9A7F86D22C717EF005B4C44 /* PrivateCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A7F86C22C717EF005B4C44 /* PrivateCompleteViewController.swift */; };
 		C9AB906D22F11E0F004559C3 /* ConversationTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9AB906C22F11E0F004559C3 /* ConversationTranslator.swift */; };
+		C9AEA9B2230D088B008B3F30 /* CategorizedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9AEA9B1230D088B008B3F30 /* CategorizedViewController.swift */; };
+		C9AEA9B4230D08AE008B3F30 /* CategorizedUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9AEA9B3230D08AE008B3F30 /* CategorizedUI.swift */; };
+		C9AEA9B6230D08B9008B3F30 /* CategorizedRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9AEA9B5230D08B9008B3F30 /* CategorizedRouting.swift */; };
 		C9AED93C22B4CDD2002D37A0 /* UnderlinedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9AED93B22B4CDD2002D37A0 /* UnderlinedTextField.swift */; };
+		C9B0FF21230D2B79005FE329 /* CategorizedPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B0FF20230D2B79005FE329 /* CategorizedPresenter.swift */; };
+		C9B0FF23230D2B85005FE329 /* CategorizedPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B0FF22230D2B85005FE329 /* CategorizedPresenterImpl.swift */; };
+		C9B0FF25230D4EA8005FE329 /* CompleteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B0FF24230D4EA8005FE329 /* CompleteCell.swift */; };
 		C9B55D0B22B0FE1B00845381 /* RemindViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B55D0A22B0FE1B00845381 /* RemindViewController.swift */; };
 		C9B55D0D22B0FE2200845381 /* RemindUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B55D0C22B0FE2200845381 /* RemindUI.swift */; };
 		C9B55D0F22B0FE2E00845381 /* RemingRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B55D0E22B0FE2E00845381 /* RemingRouting.swift */; };
@@ -487,7 +493,13 @@
 		C9A6067822B2AAB600184E0F /* UserRemoteDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRemoteDataStore.swift; sourceTree = "<group>"; };
 		C9A7F86C22C717EF005B4C44 /* PrivateCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateCompleteViewController.swift; sourceTree = "<group>"; };
 		C9AB906C22F11E0F004559C3 /* ConversationTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationTranslator.swift; sourceTree = "<group>"; };
+		C9AEA9B1230D088B008B3F30 /* CategorizedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorizedViewController.swift; sourceTree = "<group>"; };
+		C9AEA9B3230D08AE008B3F30 /* CategorizedUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorizedUI.swift; sourceTree = "<group>"; };
+		C9AEA9B5230D08B9008B3F30 /* CategorizedRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorizedRouting.swift; sourceTree = "<group>"; };
 		C9AED93B22B4CDD2002D37A0 /* UnderlinedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlinedTextField.swift; sourceTree = "<group>"; };
+		C9B0FF20230D2B79005FE329 /* CategorizedPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorizedPresenter.swift; sourceTree = "<group>"; };
+		C9B0FF22230D2B85005FE329 /* CategorizedPresenterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorizedPresenterImpl.swift; sourceTree = "<group>"; };
+		C9B0FF24230D4EA8005FE329 /* CompleteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteCell.swift; sourceTree = "<group>"; };
 		C9B55D0A22B0FE1B00845381 /* RemindViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindViewController.swift; sourceTree = "<group>"; };
 		C9B55D0C22B0FE2200845381 /* RemindUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindUI.swift; sourceTree = "<group>"; };
 		C9B55D0E22B0FE2E00845381 /* RemingRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemingRouting.swift; sourceTree = "<group>"; };
@@ -829,6 +841,16 @@
 			path = Reply;
 			sourceTree = "<group>";
 		};
+		C94F4CE0230D084A00F1252E /* Categorized */ = {
+			isa = PBXGroup;
+			children = (
+				C9AEA9B1230D088B008B3F30 /* CategorizedViewController.swift */,
+				C9AEA9B3230D08AE008B3F30 /* CategorizedUI.swift */,
+				C9AEA9B5230D08B9008B3F30 /* CategorizedRouting.swift */,
+			);
+			path = Categorized;
+			sourceTree = "<group>";
+		};
 		C953152A22D5E33100EEB3C0 /* Goal */ = {
 			isa = PBXGroup;
 			children = (
@@ -868,6 +890,7 @@
 				C9F01CF0230A90B900729C3E /* AnalysisResultViewController.swift */,
 				C9F01CF6230A999F00729C3E /* AnalysisResult.storyboard */,
 				C9F01CF4230A90E800729C3E /* AnalysisResultRouting.swift */,
+				C94F4CE0230D084A00F1252E /* Categorized */,
 			);
 			path = AnalysisResult;
 			sourceTree = "<group>";
@@ -1025,6 +1048,7 @@
 			children = (
 				C94F4CDA230C2A3D00F1252E /* AnalysisResultPresenter.swift */,
 				C94F4CDC230C2A4800F1252E /* AnalysisResultPresenterImpl.swift */,
+				C9AEA9B7230D2B4E008B3F30 /* Categorized */,
 			);
 			path = AnalysisResult;
 			sourceTree = "<group>";
@@ -1239,6 +1263,7 @@
 				C98E986622F573B400101214 /* ConversationCell.swift */,
 				C91EB4C822EEB2760008FD03 /* MessageTableViewCell.swift */,
 				C9F01CF8230AA3C100729C3E /* AnalysisResultCell.swift */,
+				C9B0FF24230D4EA8005FE329 /* CompleteCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1283,6 +1308,15 @@
 				C9E5911F22E963800083E5F5 /* PublicTimelineContent */,
 			);
 			path = Timeline;
+			sourceTree = "<group>";
+		};
+		C9AEA9B7230D2B4E008B3F30 /* Categorized */ = {
+			isa = PBXGroup;
+			children = (
+				C9B0FF20230D2B79005FE329 /* CategorizedPresenter.swift */,
+				C9B0FF22230D2B85005FE329 /* CategorizedPresenterImpl.swift */,
+			);
+			path = Categorized;
 			sourceTree = "<group>";
 		};
 		C9B55D0922B0FE0700845381 /* Remind */ = {
@@ -1948,6 +1982,7 @@
 				C91FA65D22B5686B006D9E6D /* DateFormatter+ Extension.swift in Sources */,
 				C99116AA22B8A30C007C67C7 /* PasswordEditingViewController.swift in Sources */,
 				C99116B022B8A912007C67C7 /* PasswordEditingPresenter.swift in Sources */,
+				C9AEA9B4230D08AE008B3F30 /* CategorizedUI.swift in Sources */,
 				C941332B22C8BD300082A01C /* DetailPresenter.swift in Sources */,
 				C9F2497922B7B34E007E82A0 /* EmailEditingPresenterImpl.swift in Sources */,
 				C9035CB222B7773D006DFAB9 /* SettingsRouting.swift in Sources */,
@@ -2038,6 +2073,7 @@
 				C926CD9E22B3C417008672AA /* EditViewController.swift in Sources */,
 				C988631B22C5E92000CABD62 /* Timeline.swift in Sources */,
 				C9B55D0D22B0FE2200845381 /* RemindUI.swift in Sources */,
+				C9AEA9B2230D088B008B3F30 /* CategorizedViewController.swift in Sources */,
 				C9E6EAE722E31AB2008D0809 /* FollowListManagingViewController.swift in Sources */,
 				C95CA41522F0B59D00478295 /* Conversation.swift in Sources */,
 				C9D9011B22AB513B0040390E /* UIColor+Extension.swift in Sources */,
@@ -2113,8 +2149,10 @@
 				C972692822BB2DD400CDFD59 /* ExpectedResultView.swift in Sources */,
 				C9DFF0B423013136009DE302 /* AnalysisListRouting.swift in Sources */,
 				C9391A1822E01813006E3A14 /* OtherPersonPageViewController.swift in Sources */,
+				C9B0FF25230D4EA8005FE329 /* CompleteCell.swift in Sources */,
 				C9D9011422AB502E0040390E /* UIButton+Extension.swift in Sources */,
 				C94F4CDD230C2A4800F1252E /* AnalysisResultPresenterImpl.swift in Sources */,
+				C9B0FF23230D2B85005FE329 /* CategorizedPresenterImpl.swift in Sources */,
 				C91EB4C522EEA2DB0008FD03 /* MessagesViewController.swift in Sources */,
 				C98F62EA2301790100535C29 /* AnalysisWrapUI.swift in Sources */,
 				C988631322C5E0F200CABD62 /* PrivateGoalViewController.swift in Sources */,
@@ -2157,6 +2195,7 @@
 				C941332622C8B2DC0082A01C /* DetailRouting.swift in Sources */,
 				C9C2808422BBD6A3002E905E /* GoalPost.swift in Sources */,
 				C9C43B7F22D09207006CBC1B /* HalfModalInteractiveTransition.swift in Sources */,
+				C9B0FF21230D2B79005FE329 /* CategorizedPresenter.swift in Sources */,
 				C9BF74D122F2F511006337F0 /* FireCodable.swift in Sources */,
 				C9E5911A22E962E90083E5F5 /* PublicTimelineContentViewController.swift in Sources */,
 				C98F62F023017A2500535C29 /* AnalysisWrapPresenterImpl.swift in Sources */,
@@ -2208,6 +2247,7 @@
 				C9C43B8D22D0C686006CBC1B /* ReplyPost.swift in Sources */,
 				C9F37E9522E36041003D503A /* FollowListManagingPresenterImpl.swift in Sources */,
 				C97DDD8E22AD82AC00A84219 /* AccountRepository.swift in Sources */,
+				C9AEA9B6230D08B9008B3F30 /* CategorizedRouting.swift in Sources */,
 				C98E1A5A22E34DAD00CC60BA /* FollowListUI.swift in Sources */,
 				C926CDA222B3C425008672AA /* EditRouting.swift in Sources */,
 				C9C844B522AFADB000083280 /* LoginUseCase.swift in Sources */,
