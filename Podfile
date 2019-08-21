@@ -22,4 +22,5 @@ target 'Feedback-Analysis' do
     pod 'Charts'
     pod 'MBProgressHUD', '~> 1.1.0'
     pod 'GrowingTextView', '0.7.0'
+    pod 'TransitionableTab', '~> 0.2.0'
 end

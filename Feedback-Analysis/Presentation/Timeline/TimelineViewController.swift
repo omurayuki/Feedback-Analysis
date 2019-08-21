@@ -44,6 +44,13 @@ final class TimelineViewController: UIViewController {
         ui.setup()
         ui.timelinePages.setViewControllers([viewControllers.first!], direction: .forward, animated: true, completion: nil)
     }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        if let index = presenter.currentStateIndex {
+            ui.timelineSegmented.setIndex(index: index)
+        }
+    }
 }
 
 extension TimelineViewController: TimelinePresenterView {
@@ -55,6 +62,7 @@ extension TimelineViewController: TimelinePresenterView {
             ui.timelinePages.setViewControllers([viewControllers[index]], direction: .reverse, animated: true, completion: nil)
         }
         presenter.previousIndex = index
+        presenter.currentStateIndex = index
     }
     
     func willTransitionTo(_ pageViewController: UIPageViewController, pendingViewControllers: [UIViewController]) {
@@ -65,6 +73,7 @@ extension TimelineViewController: TimelinePresenterView {
                             previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
         guard completed else { return }
         presenter.currentIndex = presenter.pendingIndex
+        presenter.currentStateIndex = presenter.pendingIndex
         if let index = presenter.currentIndex {
             ui.timelineSegmented.setIndex(index: index)
         }

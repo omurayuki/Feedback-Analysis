@@ -36,8 +36,9 @@ final class AnalysisWrapUIImpl: AnalysisWrapUI {
 extension AnalysisWrapUIImpl {
     func setup() {
         guard let vc = viewController else { return }
+        vc.navigationController?.navigationBar.barTintColor = .appMainColor
         vc.view.backgroundColor = .appMainColor
-        vc.navigationItem.title = "Post"
+        vc.navigationItem.title = "Analysis"
         
         vc.addChild(pages)
         [segmented, containerView].forEach { vc.view.addSubview($0) }

@@ -4,6 +4,7 @@ import RxSwift
 import RxCocoa
 
 protocol TimelinePresenter: Presenter {
+    var currentStateIndex: Int? { get set }
     var pendingIndex: Int? { get set }
     var currentIndex: Int? { get set }
     var previousIndex: Int { get set }

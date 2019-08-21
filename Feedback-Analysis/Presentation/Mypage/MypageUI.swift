@@ -162,7 +162,6 @@ extension MypageUIImpl {
     func setup() {
         guard let vc = viewController else { return }
         vc.view.backgroundColor = .appMainColor
-        vc.navigationController?.navigationBar.backgroundColor = .clear
         vc.clearNavBar()
         
         let residenceStack = UIStackView.setupStack(lhs: residence, rhs: residenceField, spacing: 5)

@@ -4,6 +4,7 @@ import RxCocoa
 
 class AnalysisWrapPresenterImpl: NSObject, AnalysisWrapPresenter {
     
+    var currentStateIndex: Int?
     var pendingIndex: Int?
     var currentIndex: Int?
     var previousIndex = 0

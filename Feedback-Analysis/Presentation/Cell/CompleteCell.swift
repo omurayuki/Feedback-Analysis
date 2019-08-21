@@ -81,7 +81,7 @@ extension CompleteCell {
          completeTitle1, completeTitle2, completeTitle3, time].forEach { addSubview($0) }
         
         goalTitle1.anchor()
-            .top(to: topAnchor, constant: 15)
+            .top(to: topAnchor, constant: 35)
             .left(to: leftAnchor, constant: 20)
             .right(to: rightAnchor, constant: -20)
             .activate()

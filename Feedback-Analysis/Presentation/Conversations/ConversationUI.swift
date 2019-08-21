@@ -26,6 +26,7 @@ extension ConversationUIImpl {
     
     func setup() {
         guard let vc = viewController else { return }
+        vc.navigationController?.navigationBar.barTintColor = .appMainColor
         vc.view.backgroundColor = .white
         vc.navigationItem.title = "Messsage"
         

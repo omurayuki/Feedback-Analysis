@@ -4,6 +4,7 @@ import RxCocoa
 
 class TimelinePresenterImpl: NSObject, TimelinePresenter {
     
+    var currentStateIndex: Int?
     var pendingIndex: Int?
     var currentIndex: Int?
     var previousIndex = 0

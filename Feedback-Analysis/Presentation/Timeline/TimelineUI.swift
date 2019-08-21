@@ -36,6 +36,7 @@ final class TimelineUIImpl: TimelineUI {
 extension TimelineUIImpl {
     func setup() {
         guard let vc = viewController else { return }
+        vc.navigationController?.navigationBar.barTintColor = .appMainColor
         vc.view.backgroundColor = .appMainColor
         vc.navigationItem.title = "Post"
         

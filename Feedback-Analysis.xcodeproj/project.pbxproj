@@ -226,6 +226,7 @@
 		C9CC391622D5CD46001010F4 /* TimelineUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CC391522D5CD46001010F4 /* TimelineUseCase.swift */; };
 		C9CC391822D5CD87001010F4 /* TimelineRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CC391722D5CD87001010F4 /* TimelineRepository.swift */; };
 		C9CC391A22D5D682001010F4 /* MainTabController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CC391922D5D682001010F4 /* MainTabController+Extension.swift */; };
+		C9D54B8F230D8DB9007FC409 /* TransitionableTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D54B8E230D8DB9007FC409 /* TransitionableTabBarController.swift */; };
 		C9D77F8222C9C5B20007835B /* GoalPostEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D77F8122C9C5B20007835B /* GoalPostEditViewController.swift */; };
 		C9D77F8422C9C5C10007835B /* GoalPostEditUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D77F8322C9C5C10007835B /* GoalPostEditUI.swift */; };
 		C9D77F8622C9C5C80007835B /* GoalPostEditRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D77F8522C9C5C80007835B /* GoalPostEditRouting.swift */; };
@@ -536,6 +537,7 @@
 		C9CC391522D5CD46001010F4 /* TimelineUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineUseCase.swift; sourceTree = "<group>"; };
 		C9CC391722D5CD87001010F4 /* TimelineRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineRepository.swift; sourceTree = "<group>"; };
 		C9CC391922D5D682001010F4 /* MainTabController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainTabController+Extension.swift"; sourceTree = "<group>"; };
+		C9D54B8E230D8DB9007FC409 /* TransitionableTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionableTabBarController.swift; sourceTree = "<group>"; };
 		C9D77F8122C9C5B20007835B /* GoalPostEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalPostEditViewController.swift; sourceTree = "<group>"; };
 		C9D77F8322C9C5C10007835B /* GoalPostEditUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalPostEditUI.swift; sourceTree = "<group>"; };
 		C9D77F8522C9C5C80007835B /* GoalPostEditRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalPostEditRouting.swift; sourceTree = "<group>"; };
@@ -1667,6 +1669,7 @@
 				C97901D122B9DE1300C245B2 /* GenreButton.swift */,
 				C947E72822E30873001F176F /* FollowButton.swift */,
 				C9E8517B22F9C90E00CFC59A /* ImageZoomView.swift */,
+				C9D54B8E230D8DB9007FC409 /* TransitionableTabBarController.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -1976,6 +1979,7 @@
 				C990789622EAFE10009076FA /* JustToBeSure.swift in Sources */,
 				C9DE385522EB33F400AEEF07 /* PrivateTimelineContentRouting.swift in Sources */,
 				C972692A22BB3BA300CDFD59 /* Genre.swift in Sources */,
+				C9D54B8F230D8DB9007FC409 /* TransitionableTabBarController.swift in Sources */,
 				C9328A9C22C72FA00065027B /* PrivateDraftViewController.swift in Sources */,
 				C9D9013B22AB5E800040390E /* TopViewController.swift in Sources */,
 				C9F37E9922E36740003D503A /* FollowRepository.swift in Sources */,

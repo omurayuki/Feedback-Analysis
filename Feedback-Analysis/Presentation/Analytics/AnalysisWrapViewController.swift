@@ -44,6 +44,13 @@ final class AnalysisWrapViewController: UIViewController {
         ui.setup()
         ui.pages.setViewControllers([viewControllers.first!], direction: .forward, animated: true, completion: nil)
     }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        if let index = presenter.currentStateIndex {
+            ui.segmented.setIndex(index: index)
+        }
+    }
 }
 
 extension AnalysisWrapViewController: AnalysisWrapPresenterView {
@@ -55,6 +62,7 @@ extension AnalysisWrapViewController: AnalysisWrapPresenterView {
             ui.pages.setViewControllers([viewControllers[index]], direction: .reverse, animated: true, completion: nil)
         }
         presenter.previousIndex = index
+        presenter.currentStateIndex = index
     }
     
     func willTransitionTo(_ pageViewController: UIPageViewController, pendingViewControllers: [UIViewController]) {
@@ -65,6 +73,7 @@ extension AnalysisWrapViewController: AnalysisWrapPresenterView {
                             previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
         guard completed else { return }
         presenter.currentIndex = presenter.pendingIndex
+        presenter.currentStateIndex = presenter.pendingIndex
         if let index = presenter.currentIndex {
             ui.segmented.setIndex(index: index)
         }
