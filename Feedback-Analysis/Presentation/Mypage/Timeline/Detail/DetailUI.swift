@@ -3,9 +3,8 @@ import GrowingTextView
 
 protocol DetailUI: UI {
     var textViewBottomConstraint: NSLayoutConstraint { get set }
-    var detailUserPhotoGesture: UITapGestureRecognizer { get }
     var detailUserPhotoGestureView: UIView { get }
-    var detail: UITableView { get }
+    var detail: TimelineView { get }
     var refControl: UIRefreshControl { get }
     var commentTable: UITableView { get }
     var editBtn: UIBarButtonItem { get }
@@ -20,7 +19,6 @@ protocol DetailUI: UI {
     func isHiddenSubmitBtn(_ bool: Bool)
     func isHiddenTextCount(_ bool: Bool)
     func clearCommentField()
-    func updateCommentCount(_ count: Int)
     func changeViewWithKeyboardY(_ bool: Bool, height: CGFloat)
 }
 
@@ -31,11 +29,6 @@ final class DetailUIImpl: DetailUI {
     var textViewBottomConstraint: NSLayoutConstraint = {
         let constraint = NSLayoutConstraint()
         return constraint
-    }()
-    
-    private(set) var detailUserPhotoGesture: UITapGestureRecognizer = {
-        let gesture = UITapGestureRecognizer()
-        return gesture
     }()
     
     private(set) var detailUserPhotoGestureView: UIView = {
@@ -51,13 +44,8 @@ final class DetailUIImpl: DetailUI {
         return item
     }()
     
-    private(set) var detail: UITableView = {
-        let table = UITableView.Builder()
-            .estimatedRowHeight(400)
-            .isUserInteractionEnabled(false)
-            .build()
-        table.register(TimelineCell.self, forCellReuseIdentifier: String(describing: TimelineCell.self))
-        return table
+    private(set) var detail: TimelineView = {
+        return TimelineView()
     }()
     
     var refControl: UIRefreshControl = {
@@ -125,27 +113,18 @@ extension DetailUIImpl {
         vc.navigationController?.navigationBar.shadowImage = nil
         vc.view.backgroundColor = .appMainColor
         [commentField, submitBtn].forEach { inputToolBar.addSubview($0) }
-        [detailUserPhotoGestureView, detail, commentTable, inputToolBar, commentFieldTextCount].forEach { vc.view.addSubview($0) }
-        detailUserPhotoGestureView.addGestureRecognizer(detailUserPhotoGesture)
+        [detailUserPhotoGestureView, commentTable, inputToolBar, commentFieldTextCount].forEach { vc.view.addSubview($0) }
         commentTable.addSubview(refControl)
+        commentTable.tableHeaderView = detail
         
-        detailUserPhotoGestureView.anchor()
-            .top(to: vc.view.safeAreaLayoutGuide.topAnchor, constant: 5)
-            .left(to: vc.view.leftAnchor, constant: 20)
-            .width(constant: 50)
-            .height(constant: 50)
+        commentTable.anchor()
+            .top(to: vc.view.safeAreaLayoutGuide.topAnchor)
+            .width(to: vc.view.widthAnchor)
+            .bottom(to: inputToolBar.topAnchor)
             .activate()
         
         detail.anchor()
-            .top(to: vc.view.safeAreaLayoutGuide.topAnchor)
-            .left(to: vc.view.leftAnchor)
-            .right(to: vc.view.rightAnchor)
-            .activate()
-        
-        commentTable.anchor()
-            .top(to: detail.bottomAnchor)
-            .width(to: vc.view.widthAnchor)
-            .bottom(to: inputToolBar.topAnchor)
+            .width(to: commentTable.widthAnchor)
             .activate()
         
         let topConstraint = commentField.topAnchor.constraint(equalTo: inputToolBar.topAnchor, constant: 8)
@@ -210,12 +189,6 @@ extension DetailUIImpl {
             .animations {
                 self.commentField.text = ""
             }.animate()
-    }
-    
-    func updateCommentCount(_ count: Int) {
-        let indexPath = NSIndexPath(row: 0, section: 0)
-        guard let cell = detail.cellForRow(at: indexPath as IndexPath) as? TimelineCell else { return }
-        cell.commentCount.text = "\(count)"
     }
     
     func changeViewWithKeyboardY(_ bool: Bool, height: CGFloat) {

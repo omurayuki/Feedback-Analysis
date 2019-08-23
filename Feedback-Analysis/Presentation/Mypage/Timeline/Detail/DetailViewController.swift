@@ -6,17 +6,7 @@ import FirebaseFirestore
 
 class DetailViewController: UIViewController {
     
-    typealias DetailDataSource = TableViewDataSource<TimelineCell, Timeline>
     typealias CommentDataStore = TableViewDataSource<CommentCell, Comment>
-    
-    private(set) lazy var detailDataSource: DetailDataSource = {
-        return DetailDataSource(cellReuseIdentifier: String(describing: TimelineCell.self),
-                                listItems: [],
-                                isSkelton: false,
-                                cellConfigurationHandler: { (cell, item, _) in
-            cell.content = item
-        })
-    }()
     
     private(set) lazy var commentDataSource: CommentDataStore = {
         return CommentDataStore(cellReuseIdentifier: String(describing: CommentCell.self),
@@ -29,6 +19,8 @@ class DetailViewController: UIViewController {
             cell.content = item
         })
     }()
+    
+    var timeline: Timeline!
     
     var ui: DetailUI!
     
@@ -47,18 +39,18 @@ class DetailViewController: UIViewController {
                     self.getComments(isLoading: false)
                 }).disposed(by: disposeBag)
             
-            ui.detailUserPhotoGesture.rx.event.asDriver()
+            ui.detail.userPhotoGesture.rx.event.asDriver()
                 .drive(onNext: { [unowned self] _ in
-                    self.presenter.getOtherPersonAuthorToken(completion: { [unowned self] objectToken in
-                        self.presenter.getAuthorToken(completion: { [unowned self] subjectToken in
-                            objectToken == subjectToken ? (self.view.shake(duration: 1)) : self.routing.showOtherPersonPage(with: objectToken)
-                        })
-                    })
+                    self.presenter.getAuthorToken { [unowned self] subjectToken in
+                        self.presenter.getAuthorToken { [unowned self] objectToken in
+                            subjectToken == objectToken ? (self.view.shake(duration: 1)) : (self.routing.showOtherPersonPage(with: objectToken))
+                        }
+                    }
                 }).disposed(by: disposeBag)
             
             ui.editBtn.rx.tap.asDriver()
                 .drive(onNext: { [unowned self] _ in
-                    self.routing.moveGoalPostEditPage(with: self.detailDataSource.listItems[0])
+                    self.routing.moveGoalPostEditPage(with: self.timeline)
                 }).disposed(by: disposeBag)
             
             ui.submitBtn.rx.tap.asDriver()
@@ -135,7 +127,6 @@ extension DetailViewController: DetailPresenterView {
     
     func didFetchComments(comments: [Comment]) {
         mappingDataToDataSource(comments: comments)
-        ui.updateCommentCount(commentDataSource.listItems.count)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
             self.presenter.view.updateLoading(false)
             self.commentDataSource.listItems.isEmpty ? () : self.ui.commentTable.reloadData()
@@ -202,9 +193,9 @@ extension DetailViewController {
         presenter.set(document: timeline.documentId) {
             self.isEnableEdit(timeline.achievedFlag)
             self.ui.determineHeight(height: height)
-            self.detailDataSource.listItems.append(timeline)
-            self.ui.detail.reloadData()
+            self.ui.detail.content = timeline
             self.getComments(isLoading: true)
+            self.timeline = timeline
         }
     }
     

@@ -84,7 +84,7 @@ final class AnalysisResultViewControllor: UIViewController {
 extension AnalysisResultViewControllor: AnalysisResultPresenterView {
     
     func didFetch(completes: [Complete]) {
-        completes.isEmpty ? layoutTable() : ()
+        completes.isEmpty ? removeTableHeader() : ()
         dataSource.listItems = presenter.tableData
         pieChart.data = updateChartData(dataEntries: presenter.numberOfDownloadsDataEntries)
     }
@@ -129,7 +129,7 @@ extension AnalysisResultViewControllor {
         return chartData
     }
     
-    func layoutTable() {
+    func removeTableHeader() {
         analysisTableView.tableHeaderView = nil
         analysisTableView.separatorStyle = .none
     }

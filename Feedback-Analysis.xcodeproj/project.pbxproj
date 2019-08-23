@@ -166,6 +166,7 @@
 		C995F3E822F7459D007588B8 /* PreviewRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C995F3E722F7459D007588B8 /* PreviewRouting.swift */; };
 		C99EB6FD22F1E2FF00675E55 /* ConversationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99EB6FC22F1E2FF00675E55 /* ConversationManager.swift */; };
 		C99EB6FF22F1E91200675E55 /* MessageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99EB6FE22F1E91200675E55 /* MessageManager.swift */; };
+		C9A11EC823105DC600A7CADA /* TimelineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A11EC723105DC600A7CADA /* TimelineView.swift */; };
 		C9A1573522A6CA1F00D7D047 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A1573422A6CA1F00D7D047 /* AppDelegate.swift */; };
 		C9A1573C22A6CA2000D7D047 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9A1573B22A6CA2000D7D047 /* Assets.xcassets */; };
 		C9A1573F22A6CA2000D7D047 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9A1573D22A6CA2000D7D047 /* LaunchScreen.storyboard */; };
@@ -476,6 +477,7 @@
 		C995F3E722F7459D007588B8 /* PreviewRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewRouting.swift; sourceTree = "<group>"; };
 		C99EB6FC22F1E2FF00675E55 /* ConversationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationManager.swift; sourceTree = "<group>"; };
 		C99EB6FE22F1E91200675E55 /* MessageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageManager.swift; sourceTree = "<group>"; };
+		C9A11EC723105DC600A7CADA /* TimelineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineView.swift; sourceTree = "<group>"; };
 		C9A1573122A6CA1F00D7D047 /* Feedback-Analysis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Feedback-Analysis.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9A1573422A6CA1F00D7D047 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C9A1573B22A6CA2000D7D047 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -1217,6 +1219,14 @@
 			path = Preview;
 			sourceTree = "<group>";
 		};
+		C9A11EC623105DBA00A7CADA /* Timeline */ = {
+			isa = PBXGroup;
+			children = (
+				C9A11EC723105DC600A7CADA /* TimelineView.swift */,
+			);
+			path = Timeline;
+			sourceTree = "<group>";
+		};
 		C9A1572822A6CA1F00D7D047 = {
 			isa = PBXGroup;
 			children = (
@@ -1444,6 +1454,7 @@
 		C9D77F7F22C9C4ED0007835B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				C9A11EC623105DBA00A7CADA /* Timeline */,
 				C9DE2B242301A3F300D94C80 /* Analysis */,
 				C97901CE22B95A7E00C245B2 /* Genre */,
 				C92E7FE822B950B50031AE4F /* NewThings */,
@@ -2179,6 +2190,7 @@
 				C9A6067722B2A88500184E0F /* UserTranslator.swift in Sources */,
 				C99116AE22B8A323007C67C7 /* PasswordEditingRouting.swift in Sources */,
 				C98E986122F5534800101214 /* ConversationViewController.swift in Sources */,
+				C9A11EC823105DC600A7CADA /* TimelineView.swift in Sources */,
 				C9B55D0B22B0FE1B00845381 /* RemindViewController.swift in Sources */,
 				C9F2497B22B88E93007E82A0 /* PaddingTextField.swift in Sources */,
 				C92E0BBB22CAFEF8007A2F0C /* CommentEntity.swift in Sources */,

@@ -19,7 +19,6 @@ final class PublicTimelineContentRoutingImpl: PublicTimelineContentRouting {
         let ui = DetailUIImpl()
         let routing = DetailRoutingImpl()
         ui.viewController = vc
-        ui.detail.dataSource = vc.detailDataSource
         ui.commentTable.dataSource = vc.commentDataSource
         ui.commentTable.delegate = presenter
         ui.commentField.delegate = presenter
