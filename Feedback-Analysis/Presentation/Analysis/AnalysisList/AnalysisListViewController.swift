@@ -52,6 +52,11 @@ final class AnalysisListViewController: UIViewController {
         super.viewDidLoad()
         ui.setup()
     }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        presenter.fetch(from: .passedGoalRef, loading: true, completion: nil)
+    }
 }
 
 extension AnalysisListViewController: AnalysisListPresenterView {

@@ -11,6 +11,7 @@ protocol GoalRemoteDataStore {
     func create(documentRef: FirebaseDocumentRef, value: [String: Any]) -> Single<()>
     func delete(documentRef: FirebaseDocumentRef) -> Single<()>
     func fetchCompletes(queryRef: FirebaseQueryRef) -> Single<[Complete]>
+    func post(documentRef: FirebaseDocumentRef, fields: CompletePost) -> Single<()>
 }
 
 struct GoalRemoteDataStoreImpl: GoalRemoteDataStore {
@@ -157,6 +158,22 @@ struct GoalRemoteDataStoreImpl: GoalRemoteDataStore {
                  Complete(achoevement: ["complete1", "complete2", ""], analysis: ["分析", "分析"], strength: "特質系", goalDocumentId: "fdopfk", documentId: "fopskf", goal1: "goal1", goal2: "goal2", goal3: "", time: "10:10"),
                  Complete(achoevement: ["complete1", "complete2", ""], analysis: ["分析", "分析"], strength: "具現化系", goalDocumentId: "fdopfk", documentId: "fopskf", goal1: "goal1", goal2: "goal2", goal3: "", time: "10:10"),
                  Complete(achoevement: ["complete1", "complete2", ""], analysis: ["分析", "分析"], strength: "操作系", goalDocumentId: "fdopfk", documentId: "fopskf", goal1: "goal1", goal2: "goal2", goal3: "", time: "10:10")]))
+            return Disposables.create()
+        })
+    }
+    
+    func post(documentRef: FirebaseDocumentRef, fields: CompletePost) -> Single<()> {
+        return Single.create(subscribe: { single -> Disposable in
+            Provider().setData(documentRef: documentRef, fields: fields.encode(), completion: { response in
+                switch response {
+                case .success(_):
+                    single(.success(()))
+                case .failure(let error):
+                    single(.error(FirebaseError.resultError(error)))
+                case .unknown:
+                    single(.error(FirebaseError.unknown))
+                }
+            })
             return Disposables.create()
         })
     }

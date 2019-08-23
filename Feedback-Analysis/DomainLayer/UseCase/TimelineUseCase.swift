@@ -17,6 +17,7 @@ protocol TimelineUseCase {
     func setFollowAuthorTokens(_ values: [String]) -> Single<()>
     func getFollowAuthorTokens(_ index: Int) -> Single<String>
     func fetchCompletes(queryRef: FirebaseQueryRef) -> Single<[Complete]>
+    func post(documentRef: FirebaseDocumentRef, fields: CompletePost) -> Single<()>
 }
 
 struct TimelineUseCaseImpl: TimelineUseCase {
@@ -83,8 +84,13 @@ struct TimelineUseCaseImpl: TimelineUseCase {
         return repository.getFollowAuthorTokens().map { AuthorTokensTranslator().translate($0, index) }
     }
     
+    // 現在ダミーデータを使用しているため以下コメントアウト中
     func fetchCompletes(queryRef: FirebaseQueryRef) -> Single<[Complete]> {
 //        return repository.fetchCompletes(queryRef: queryRef).map { CompletesTranslator().translate($0) }
         return repository.fetchCompletes(queryRef: queryRef)
+    }
+    
+    func post(documentRef: FirebaseDocumentRef, fields: CompletePost) -> Single<()> {
+        return repository.post(documentRef: documentRef, fields: fields)
     }
 }

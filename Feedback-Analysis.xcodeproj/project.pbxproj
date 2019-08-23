@@ -703,7 +703,7 @@
 			path = Const;
 			sourceTree = "<group>";
 		};
-		C929C2BB22FFE5AC00A73001 /* Analytics */ = {
+		C929C2BB22FFE5AC00A73001 /* Analysis */ = {
 			isa = PBXGroup;
 			children = (
 				C98F62E7230178F600535C29 /* AnalysisWrapViewController.swift */,
@@ -713,7 +713,7 @@
 				C9DFF0B723013154009DE302 /* AnalysisList */,
 				C98F62F12301928A00535C29 /* Analysis */,
 			);
-			path = Analytics;
+			path = Analysis;
 			sourceTree = "<group>";
 		};
 		C92B5E3F22EB38DC0056AB2B /* PrivateTimelineContent */ = {
@@ -1523,7 +1523,7 @@
 				C9D9012222AB532A0040390E /* Account */,
 				C95E08A922B116EF000C41C7 /* MainTab */,
 				C9CB2B4322D4F6350081C499 /* Timeline */,
-				C929C2BB22FFE5AC00A73001 /* Analytics */,
+				C929C2BB22FFE5AC00A73001 /* Analysis */,
 				C98E985F22F5528C00101214 /* Conversations */,
 				C947E72A22E31A45001F176F /* FollowListManaging */,
 				C9391A1622E017FD006E3A14 /* OtherPersonPage */,

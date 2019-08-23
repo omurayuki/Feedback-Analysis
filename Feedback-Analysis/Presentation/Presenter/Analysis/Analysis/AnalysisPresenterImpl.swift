@@ -8,6 +8,8 @@ class AnalysisPresenterImpl: NSObject, AnalysisPresenter {
     
     var view: AnalysisPresenterView!
     
+    var disposeBag: DisposeBag = DisposeBag()
+    
     var isLoading: BehaviorRelay<Bool> = BehaviorRelay<Bool>(value: false)
     
     private var useCase: TimelineUseCase
@@ -17,7 +19,18 @@ class AnalysisPresenterImpl: NSObject, AnalysisPresenter {
     }
     
     func post(documentRef: FirebaseDocumentRef, fields: CompletePost) {
-        print("hoge")
+        view.updateLoading(true)
+        useCase.post(documentRef: documentRef, fields: fields)
+            .subscribe { result in
+                switch result {
+                case .success(_):
+                    self.view.updateLoading(false)
+                    self.view.didPostSuccess()
+                case .error(let error):
+                    self.view.updateLoading(false)
+                    self.view.showError(message: error.localizedDescription)
+                }
+            }.disposed(by: disposeBag)
     }
 }
 

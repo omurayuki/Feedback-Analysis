@@ -47,6 +47,10 @@ export const onUserFollowDeleted = functions.firestore.document('/Follows/{subje
 	await updateFollowerCount(context);
 });
 
+export const onCompleteCreated = functions.firestore.document('/Users/{userId}/Completes/{completeId}').onCreate(async (snapshot, context) => {
+	await updateGoalAttribute(snapshot, context)
+})
+
 async function copyToRootWithUsersPostSnapshot(snapshot: FirebaseFirestore.DocumentSnapshot, context: functions.EventContext) {
 	const postId = snapshot.id;
 	const userId = context.params.userId;
@@ -167,4 +171,16 @@ async function updateFollowerCount(context: functions.EventContext) {
 			console.log(err.log);
 		});
 	await firestore.collection('Users').doc(objectUserId).set({ follower: index }, { merge: true });
+}
+
+async function updateGoalAttribute(snapshot: FirebaseFirestore.DocumentSnapshot, context: functions.EventContext) {
+	const userId = context.params.userId;
+	let goalDocumentId = '';
+	const complete = snapshot.data();
+	console.log(complete)
+	if (complete != undefined) {
+		goalDocumentId = complete.goal_document_id;
+		console.log(goalDocumentId)
+	}
+	await firestore.collection('Users').doc(userId).collection('Goals').doc(goalDocumentId).set({ achieved_flag: true }, { merge: true });
 }

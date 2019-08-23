@@ -138,6 +138,10 @@ extension AnalysisViewController: AnalysisPresenterView {
         presenter.isLoading.accept(isLoading)
     }
     
+    func didPostSuccess() {
+        routing.dismiss()
+    }
+    
     func didSelectSegment(with index: Int) {
         UIView.Animator(duration: 0.26)
             .animations {

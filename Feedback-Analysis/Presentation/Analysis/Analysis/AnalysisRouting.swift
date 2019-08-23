@@ -11,6 +11,6 @@ final class AnalysisRoutingImpl: AnalysisRouting {
     var viewController: UIViewController?
     
     func dismiss() {
-        viewController?.dismiss(animated: true)
+        viewController?.navigationController?.popViewController(animated: true)
     }
 }
