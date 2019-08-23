@@ -29,6 +29,13 @@ final class AnalysisResultViewControllor: UIViewController {
     
     @IBOutlet weak var analysisTableView: UITableView! {
         didSet {
+            analysisTableView.backgroundView = UIImageView(image: #imageLiteral(resourceName: "logo"))
+            analysisTableView.backgroundView?.alpha = 0.1
+            analysisTableView.contentMode = .scaleAspectFit
+            analysisTableView.clipsToBounds = true
+            analysisTableView.backgroundColor = .appMainColor
+            analysisTableView.backgroundView?.clipsToBounds = true
+            analysisTableView.backgroundView?.contentMode = .scaleAspectFit
             analysisTableView.register(AnalysisResultCell.self, forCellReuseIdentifier: String(describing: AnalysisResultCell.self))
         }
     }
@@ -77,6 +84,7 @@ final class AnalysisResultViewControllor: UIViewController {
 extension AnalysisResultViewControllor: AnalysisResultPresenterView {
     
     func didFetch(completes: [Complete]) {
+        completes.isEmpty ? layoutTable() : ()
         dataSource.listItems = presenter.tableData
         pieChart.data = updateChartData(dataEntries: presenter.numberOfDownloadsDataEntries)
     }
@@ -119,5 +127,10 @@ extension AnalysisResultViewControllor {
         let colors: [UIColor] = [.blue, .flatOrange, .purple, .red, .green]
         chartDataSet.colors = colors
         return chartData
+    }
+    
+    func layoutTable() {
+        analysisTableView.tableHeaderView = nil
+        analysisTableView.separatorStyle = .none
     }
 }

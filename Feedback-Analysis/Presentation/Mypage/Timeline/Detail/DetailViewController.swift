@@ -49,8 +49,10 @@ class DetailViewController: UIViewController {
             
             ui.detailUserPhotoGesture.rx.event.asDriver()
                 .drive(onNext: { [unowned self] _ in
-                    self.presenter.getOtherPersonAuthorToken(completion: { [unowned self] token in
-                        self.routing.showOtherPersonPage(with: token)
+                    self.presenter.getOtherPersonAuthorToken(completion: { [unowned self] objectToken in
+                        self.presenter.getAuthorToken(completion: { subjectToken in
+                            objectToken == subjectToken ? () : self.routing.showOtherPersonPage(with: objectToken)
+                        })
                     })
                 }).disposed(by: disposeBag)
             

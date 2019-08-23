@@ -48,8 +48,10 @@ class ReplyViewController: UIViewController {
             
             ui.replyUserPhotoGesture.rx.event.asDriver()
                 .drive(onNext: { [unowned self] _ in
-                    self.presenter.getOtherPersonAuthorToken(completion: { [unowned self] token in
-                        self.routing.showOtherPersonPage(with: token)
+                    self.presenter.getOtherPersonAuthorToken(completion: { [unowned self] objectToken in
+                        self.presenter.getAuthorToken(completion: { subjectToken in
+                            objectToken == subjectToken ? () : self.routing.showOtherPersonPage(with: objectToken)
+                        })
                         self.maximizeToFullScreen()
                     })
                 }).disposed(by: disposeBag)

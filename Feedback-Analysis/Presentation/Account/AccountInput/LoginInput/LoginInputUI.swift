@@ -44,6 +44,7 @@ final class LoginInputUIImpl: LoginInputUI {
         field.textColor = .appSubColor
         field.backgroundColor = UIColor(white: 1, alpha: 0.5)
         field.layer.cornerRadius = 5
+        field.isSecureTextEntry = true
         return field
     }()
     
