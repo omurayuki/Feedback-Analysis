@@ -1,7 +1,6 @@
 import UIKit
 
 protocol MypageUI: UI {
-    var headerImage: UIImageView { get }
     var userImage: UIImageView { get }
     var userName: UILabel { get }
     var settingsBtn: UIButton { get }
@@ -27,13 +26,6 @@ protocol MypageUI: UI {
 final class MypageUIImpl: MypageUI {
     
     weak var viewController: UIViewController?
-    
-    private(set) var headerImage: UIImageView = {
-        let image = UIImageView()
-        image.clipsToBounds = true
-        image.contentMode = UIView.ContentMode.scaleAspectFill
-        return image
-    }()
     
     private(set) var userImage: UIImageView = {
         let image = UIImageView.Builder()
@@ -162,7 +154,7 @@ extension MypageUIImpl {
     func setup() {
         guard let vc = viewController else { return }
         vc.view.backgroundColor = .appMainColor
-        vc.clearNavBar()
+        vc.navigationItem.title = "Mypage"
         
         let residenceStack = UIStackView.setupStack(lhs: residence, rhs: residenceField, spacing: 5)
         let birthStack = UIStackView.setupStack(lhs: birthDay, rhs: birthDayField, spacing: 5)
@@ -170,21 +162,15 @@ extension MypageUIImpl {
         let followerStack = UIStackView.setupStack(lhs: followerCount, rhs: follower, spacing: 5)
         
         vc.addChild(timelinePages)
-        [headerImage, userImage, userName, editBtn,
+        [userImage, userName, editBtn,
          settingsBtn, contentField, residenceStack,
          birthStack, followStack, followerStack,
          timelineSegmented, containerView, goalPostBtn].forEach { vc.view.addSubview($0) }
         containerView.addSubview(timelinePages.view)
         timelinePages.didMove(toParent: vc)
         
-        headerImage.anchor()
-            .top(to: vc.view.topAnchor)
-            .width(to: vc.view.widthAnchor)
-            .height(to: vc.view.heightAnchor, multiplier: 0.15)
-            .activate()
-        
         userImage.anchor()
-            .top(to: headerImage.bottomAnchor, constant: -20)
+            .top(to: vc.view.safeAreaLayoutGuide.topAnchor, constant: 10)
             .left(to: vc.view.leftAnchor, constant: 20)
             .width(constant: 60)
             .height(constant: 60)
@@ -196,12 +182,12 @@ extension MypageUIImpl {
             .activate()
         
         editBtn.anchor()
-            .top(to: headerImage.bottomAnchor, constant: 10)
+            .top(to: vc.view.safeAreaLayoutGuide.topAnchor, constant: 20)
             .right(to: vc.view.rightAnchor, constant: -20)
             .activate()
         
         settingsBtn.anchor()
-            .top(to: headerImage.bottomAnchor, constant: 10)
+            .top(to: vc.view.safeAreaLayoutGuide.topAnchor, constant: 20)
             .right(to: editBtn.leftAnchor, constant: -20)
             .activate()
         
@@ -257,7 +243,6 @@ extension MypageUIImpl {
     }
     
     func updateUser(user: User) {
-        headerImage.setImage(url: user.headerImage)
         userImage.setImage(url: user.userImage)
         userName.text = user.name
         contentField.text = user.content

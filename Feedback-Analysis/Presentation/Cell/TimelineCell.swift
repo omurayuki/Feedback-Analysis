@@ -2,11 +2,11 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-protocol CellTapDelegate {
+protocol CellTapDelegate: AnyObject {
     func tappedLikeBtn(index: Int)
 }
 
-protocol UserPhotoTapDelegate {
+protocol UserPhotoTapDelegate: AnyObject {
     func tappedUserPhoto(index: Int)
 }
 
@@ -14,9 +14,9 @@ final class TimelineCell: UITableViewCell {
     
     let disposeBag = DisposeBag()
     
-    var cellTapDelegate: CellTapDelegate?
+    weak var cellTapDelegate: CellTapDelegate?
     
-    var userPhotoTapDelegate: UserPhotoTapDelegate?
+    weak var userPhotoTapDelegate: UserPhotoTapDelegate?
     
     var identificationId = Int()
     

@@ -14,6 +14,7 @@ class PrivateTimelineContentViewController: UIViewController {
                           isSkelton: false,
                           cellConfigurationHandler: { (cell, item, indexPath) in
             cell.cellTapDelegate = self
+            cell.userPhotoTapDelegate = self
             cell.identificationId = indexPath.row
             cell.content = item
         })
@@ -72,7 +73,9 @@ extension PrivateTimelineContentViewController: PrivateTimelineContentPresenterV
     func didSelect(indexPath: IndexPath, tableView: UITableView) {
         tableView.deselectRow(at: indexPath, animated: true)
         guard let height = tableView.cellForRow(at: indexPath)?.contentView.frame.height else { return }
-        routing.showDetail(with: dataSource.listItems[indexPath.row], height: height + 2)
+        routing.showDetail(with: dataSource.listItems[indexPath.row], height: height + 2) {
+            self.undoNavBar()
+        }
     }
     
     func didCheckIfYouLiked(_ bool: Bool) {
@@ -133,5 +136,12 @@ extension PrivateTimelineContentViewController: CellTapDelegate {
                                                          authorToken: token))
             self.presenter.setSelected(index: index)
         })
+    }
+}
+
+extension PrivateTimelineContentViewController: UserPhotoTapDelegate {
+    
+    func tappedUserPhoto(index: Int) {
+        self.view.shake(duration: 1)
     }
 }

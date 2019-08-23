@@ -50,7 +50,7 @@ class ReplyViewController: UIViewController {
                 .drive(onNext: { [unowned self] _ in
                     self.presenter.getOtherPersonAuthorToken(completion: { [unowned self] objectToken in
                         self.presenter.getAuthorToken(completion: { subjectToken in
-                            objectToken == subjectToken ? () : self.routing.showOtherPersonPage(with: objectToken)
+                            objectToken == subjectToken ? (self.view.shake(duration: 1)) : self.routing.showOtherPersonPage(with: objectToken)
                         })
                         self.maximizeToFullScreen()
                     })
@@ -195,7 +195,7 @@ extension ReplyViewController: UserPhotoTapDelegate {
         presenter.getAuthorToken { [unowned self] subjectToken in
             self.presenter.getAuthorToken(index) { [unowned self] objectToken in
                 if subjectToken == objectToken {
-                    UIDevice.vibrate()
+                    self.view.shake(duration: 1)
                 } else {
                     self.routing.showOtherPersonPage(with: objectToken)
                     self.maximizeToFullScreen()

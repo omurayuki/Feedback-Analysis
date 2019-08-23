@@ -8,7 +8,6 @@ protocol EditUI: UI {
     var saveBtn: UIBarButtonItem { get }
     var headerImage: UIImageView { get }
     var gesture: UIGestureRecognizer { get }
-    var headerImageEditBtn: UIButton { get }
     var userImage: UIImageView { get }
     var userImageEditBtn: UIButton { get }
     var name: UILabel { get }
@@ -85,15 +84,6 @@ final class EditUIImpl: EditUI {
     private(set) var gesture: UIGestureRecognizer = {
         let gesture = UIGestureRecognizer()
         return gesture
-    }()
-    
-    private(set) var headerImageEditBtn: UIButton = {
-        let button = UIButton()
-        button.backgroundColor = .clear
-        button.setImage(#imageLiteral(resourceName: "add"), for: .normal)
-        button.imageView?.isUserInteractionEnabled = true
-        button.imageView?.clipsToBounds = true
-        return button
     }()
     
     private(set) var userImage: UIImageView = {
@@ -256,7 +246,6 @@ extension EditUIImpl {
         [navBar, headerImage, userImage, borderView, nameStack, nameTextCount,
          content, contentField, contentTextCount, residenceStack, birthStack].forEach { vc.view.addSubview($0) }
         headerImage.addSubview(headerImageEditView)
-        headerImage.addSubview(headerImageEditBtn)
         headerImage.addGestureRecognizer(gesture)
         userImage.addSubview(userImageEditView)
         userImage.addSubview(userImageEditBtn)
@@ -274,12 +263,6 @@ extension EditUIImpl {
         
         headerImageEditView.anchor()
             .edgesToSuperview()
-            .activate()
-        
-        headerImageEditBtn.anchor()
-            .width(constant: 30)
-            .height(constant: 30)
-            .centerToSuperview()
             .activate()
         
         userImage.anchor()

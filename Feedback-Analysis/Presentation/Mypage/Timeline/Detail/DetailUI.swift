@@ -119,7 +119,10 @@ extension DetailUIImpl {
     
     func setup() {
         guard let vc = viewController else { return }
+        vc.navigationItem.title = "コメント"
         vc.navigationItem.rightBarButtonItem = editBtn
+        vc.navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
+        vc.navigationController?.navigationBar.shadowImage = nil
         vc.view.backgroundColor = .appMainColor
         [commentField, submitBtn].forEach { inputToolBar.addSubview($0) }
         [detailUserPhotoGestureView, detail, commentTable, inputToolBar, commentFieldTextCount].forEach { vc.view.addSubview($0) }

@@ -50,8 +50,8 @@ class DetailViewController: UIViewController {
             ui.detailUserPhotoGesture.rx.event.asDriver()
                 .drive(onNext: { [unowned self] _ in
                     self.presenter.getOtherPersonAuthorToken(completion: { [unowned self] objectToken in
-                        self.presenter.getAuthorToken(completion: { subjectToken in
-                            objectToken == subjectToken ? () : self.routing.showOtherPersonPage(with: objectToken)
+                        self.presenter.getAuthorToken(completion: { [unowned self] subjectToken in
+                            objectToken == subjectToken ? (self.view.shake(duration: 1)) : self.routing.showOtherPersonPage(with: objectToken)
                         })
                     })
                 }).disposed(by: disposeBag)
@@ -246,7 +246,7 @@ extension DetailViewController: UserPhotoTapDelegate {
     func tappedUserPhoto(index: Int) {
         presenter.getAuthorToken { [unowned self] subjectToken in
             self.presenter.getAuthorToken(index) { [unowned self] objectToken in
-                subjectToken == objectToken ? (UIDevice.vibrate()) : (self.routing.showOtherPersonPage(with: objectToken))
+                subjectToken == objectToken ? (self.view.shake(duration: 1)) : (self.routing.showOtherPersonPage(with: objectToken))
             }
         }
     }

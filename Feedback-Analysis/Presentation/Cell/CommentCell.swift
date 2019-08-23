@@ -6,9 +6,9 @@ final class CommentCell: UITableViewCell {
     
     let disposeBag = DisposeBag()
     
-    var cellTapDelegate: CellTapDelegate?
+    weak var cellTapDelegate: CellTapDelegate?
     
-    var userPhotoTapDelegate: UserPhotoTapDelegate?
+    weak var userPhotoTapDelegate: UserPhotoTapDelegate?
     
     var identificationId = Int()
     

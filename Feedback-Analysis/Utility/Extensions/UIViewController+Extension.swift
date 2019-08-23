@@ -97,6 +97,11 @@ extension UIViewController {
         navigationController?.navigationBar.shadowImage = UIImage()
     }
     
+    func undoNavBar() {
+        navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
+        navigationController?.navigationBar.shadowImage = nil
+    }
+    
     func coloringAppMainNavBar() {
         navigationController?.navigationBar.barTintColor = .appMainColor
         navigationController?.navigationBar.shadowImage = UIImage()
@@ -109,5 +114,13 @@ extension UIViewController {
             completion()
         })
         present(alert, animated: true)
+    }
+    
+    func getParentViewController<T: UIViewController>(before: Int) -> T? {
+        let count = (self.navigationController?.viewControllers.count)! - (before + 1)
+        if let vc = self.navigationController?.viewControllers[count] {
+            return vc as? T
+        }
+        return nil
     }
 }

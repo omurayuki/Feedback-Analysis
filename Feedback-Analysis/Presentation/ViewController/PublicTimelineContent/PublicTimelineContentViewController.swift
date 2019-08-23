@@ -158,7 +158,7 @@ extension PublicTimelineContentViewController: UserPhotoTapDelegate {
     func tappedUserPhoto(index: Int) {
         presenter.getAuthorToken { [unowned self] subjectToken in
             self.presenter.getAuthorToken(index) { [unowned self] objectToken in
-                objectToken == subjectToken ? (UIDevice.vibrate()) : (self.routing.showOtherPersonPage(with: objectToken))
+                objectToken == subjectToken ? (self.view.shake(duration: 1)) : (self.routing.showOtherPersonPage(with: objectToken))
             }
         }
     }
