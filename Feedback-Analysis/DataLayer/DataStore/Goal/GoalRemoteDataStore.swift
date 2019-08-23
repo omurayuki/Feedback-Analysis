@@ -10,7 +10,7 @@ protocol GoalRemoteDataStore {
     func get(documentRef: FirebaseDocumentRef) -> Single<Bool>
     func create(documentRef: FirebaseDocumentRef, value: [String: Any]) -> Single<()>
     func delete(documentRef: FirebaseDocumentRef) -> Single<()>
-    func fetchCompletes(queryRef: FirebaseQueryRef) -> Single<[Complete]>
+    func fetchCompletes(queryRef: FirebaseQueryRef) -> Single<[CompleteEntity]>
     func post(documentRef: FirebaseDocumentRef, fields: CompletePost) -> Single<()>
 }
 
@@ -146,18 +146,18 @@ struct GoalRemoteDataStoreImpl: GoalRemoteDataStore {
         })
     }
     
-    func fetchCompletes(queryRef: FirebaseQueryRef) -> Single<[Complete]> {
+    func fetchCompletes(queryRef: FirebaseQueryRef) -> Single<[CompleteEntity]> {
         return Single.create(subscribe: { single -> Disposable in
-            single(.success([
-                 Complete(achoevement: ["complete1", "complete2", "complete3"], analysis: ["分析", "分析"], strength: "特質系", goalDocumentId: "fdopfk", documentId: "fopskf", goal1: "goal1", goal2: "goal2", goal3: "goal3", time: "10:10"),
-                 Complete(achoevement: ["complete1", "complete2", ""], analysis: ["分析", "分析"], strength: "強化系", goalDocumentId: "fdopfk", documentId: "fopskf", goal1: "goal1", goal2: "goal2", goal3: "", time: "10:10"),
-                 Complete(achoevement: ["complete1", "complete2", ""], analysis: ["分析", "分析"], strength: "特質系", goalDocumentId: "fdopfk", documentId: "fopskf", goal1: "goal1", goal2: "goal2", goal3: "", time: "10:10"),
-                 Complete(achoevement: ["complete1", "complete2", ""], analysis: ["分析", "分析"], strength: "特質系", goalDocumentId: "fdopfk", documentId: "fopskf", goal1: "goal1", goal2: "goal2", goal3: "", time: "10:10"),
-                 Complete(achoevement: ["complete1", "complete2", ""], analysis: ["分析", "分析"], strength: "変化系", goalDocumentId: "fdopfk", documentId: "fopskf", goal1: "goal1", goal2: "goal2", goal3: "", time: "10:10"),
-                 Complete(achoevement: ["complete1", "complete2", ""], analysis: ["分析", "分析"], strength: "特質系", goalDocumentId: "fdopfk", documentId: "fopskf", goal1: "goal1", goal2: "goal2", goal3: "", time: "10:10"),
-                 Complete(achoevement: ["complete1", "complete2", ""], analysis: ["分析", "分析"], strength: "特質系", goalDocumentId: "fdopfk", documentId: "fopskf", goal1: "goal1", goal2: "goal2", goal3: "", time: "10:10"),
-                 Complete(achoevement: ["complete1", "complete2", ""], analysis: ["分析", "分析"], strength: "具現化系", goalDocumentId: "fdopfk", documentId: "fopskf", goal1: "goal1", goal2: "goal2", goal3: "", time: "10:10"),
-                 Complete(achoevement: ["complete1", "complete2", ""], analysis: ["分析", "分析"], strength: "操作系", goalDocumentId: "fdopfk", documentId: "fopskf", goal1: "goal1", goal2: "goal2", goal3: "", time: "10:10")]))
+            CompleteManager().fetchCompleteEntities(queryRef: queryRef, completion: { response in
+                switch response {
+                case .success(let entities):
+                    single(.success(entities))
+                case .failure(let error):
+                    single(.error(FirebaseError.resultError(error)))
+                case .unknown:
+                    single(.error(FirebaseError.unknown))
+                }
+            })
             return Disposables.create()
         })
     }

@@ -56,6 +56,7 @@ final class AnalysisListViewController: UIViewController {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         presenter.fetch(from: .passedGoalRef, loading: true, completion: nil)
+        ui.tableView.reloadData()
     }
 }
 

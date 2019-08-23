@@ -64,6 +64,7 @@
 		C941332622C8B2DC0082A01C /* DetailRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C941332522C8B2DC0082A01C /* DetailRouting.swift */; };
 		C941332B22C8BD300082A01C /* DetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C941332A22C8BD300082A01C /* DetailPresenter.swift */; };
 		C941332D22C8BD390082A01C /* DetailPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C941332C22C8BD390082A01C /* DetailPresenterImpl.swift */; };
+		C943E184230F89CD0013ABF2 /* CompleteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C943E183230F89CD0013ABF2 /* CompleteManager.swift */; };
 		C94704D322D390D200DF2F16 /* memo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94704D222D390D200DF2F16 /* memo.swift */; };
 		C947E72922E30873001F176F /* FollowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C947E72822E30873001F176F /* FollowButton.swift */; };
 		C94EE04722D0631E00937CFA /* ReplyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94EE04622D0631E00937CFA /* ReplyViewController.swift */; };
@@ -373,6 +374,7 @@
 		C941332522C8B2DC0082A01C /* DetailRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRouting.swift; sourceTree = "<group>"; };
 		C941332A22C8BD300082A01C /* DetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPresenter.swift; sourceTree = "<group>"; };
 		C941332C22C8BD390082A01C /* DetailPresenterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPresenterImpl.swift; sourceTree = "<group>"; };
+		C943E183230F89CD0013ABF2 /* CompleteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteManager.swift; sourceTree = "<group>"; };
 		C94704D222D390D200DF2F16 /* memo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = memo.swift; sourceTree = "<group>"; };
 		C947E72822E30873001F176F /* FollowButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowButton.swift; sourceTree = "<group>"; };
 		C94EE04622D0631E00937CFA /* ReplyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplyViewController.swift; sourceTree = "<group>"; };
@@ -1804,6 +1806,7 @@
 				C990789122EAD694009076FA /* ReplyEntityManager.swift */,
 				C99EB6FC22F1E2FF00675E55 /* ConversationManager.swift */,
 				C99EB6FE22F1E91200675E55 /* MessageManager.swift */,
+				C943E183230F89CD0013ABF2 /* CompleteManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -2246,6 +2249,7 @@
 				C97DDD8222AD71C100A84219 /* SignupUseCase.swift in Sources */,
 				C92E0BBD22CB0145007A2F0C /* Comment.swift in Sources */,
 				C9391A2422E01E35006E3A14 /* OtherPersonPageUseCase.swift in Sources */,
+				C943E184230F89CD0013ABF2 /* CompleteManager.swift in Sources */,
 				C98F62E02301372500535C29 /* AnalysisListPresenter.swift in Sources */,
 				C97DDD8522AD74C900A84219 /* Account.swift in Sources */,
 				C9C43B8D22D0C686006CBC1B /* ReplyPost.swift in Sources */,

@@ -151,6 +151,7 @@ enum FirebaseQueryRef {
     case conversationsRef
     case messagesRef(conversationId: String)
     case passedGoalRef
+    case completesRef
     
     var destination: Query {
         switch self {
@@ -251,6 +252,12 @@ enum FirebaseQueryRef {
                 .whereField("deadline", isLessThan: Timestamp(date: Date()))
                 .whereField("achieved_flag", isEqualTo: false)
                 .whereField("draft_flag", isEqualTo: false)
+        case .completesRef:
+            return Firestore.firestore()
+                .collection("Users")
+                .document(AppUserDefaults.getAuthToken())
+                .collection("Completes")
+                .order(by: "created_at", descending: false)
         }
     }
     

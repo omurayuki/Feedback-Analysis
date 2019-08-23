@@ -52,7 +52,7 @@ final class AnalysisResultViewControllor: UIViewController {
         self.routing = routing
         self.disposeBag = disposeBag
         
-        presenter.fetch(queryRef: .allRef(authorToken: ""))
+        presenter.fetch(queryRef: .completesRef)
     }
     
     override func viewDidLoad() {
@@ -62,7 +62,7 @@ final class AnalysisResultViewControllor: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             self.pieChart.isHidden = false
             self.pieChart.animate(yAxisDuration: 0.5)
         }
