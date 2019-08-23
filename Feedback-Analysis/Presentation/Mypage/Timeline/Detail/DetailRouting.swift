@@ -50,7 +50,6 @@ final class DetailRoutingImpl: DetailRouting {
         let ui = ReplyUIImpl()
         let routing = ReplyRoutingImpl()
         ui.viewController = vc
-        ui.comment.dataSource = vc.commentDataSource
         ui.replyTable.dataSource = vc.replyDataSource
         ui.replyField.delegate = presenter
         routing.viewController = vc

@@ -6,17 +6,7 @@ import FirebaseFirestore
 
 class ReplyViewController: UIViewController {
     
-    typealias CommentDataSource = TableViewDataSource<CommentCell, Comment>
     typealias ReplyDataStore = TableViewDataSource<ReplyCell, Reply>
-    
-    private(set) lazy var commentDataSource: CommentDataSource = {
-        return CommentDataSource(cellReuseIdentifier: String(describing: CommentCell.self),
-                                listItems: [],
-                                isSkelton: false,
-                                cellConfigurationHandler: { (cell, item, _) in
-            cell.content = item
-        })
-    }()
     
     private(set) lazy var replyDataSource: ReplyDataStore = {
         return ReplyDataStore(cellReuseIdentifier: String(describing: ReplyCell.self),
@@ -28,6 +18,8 @@ class ReplyViewController: UIViewController {
             cell.content = item
         })
     }()
+    
+    var comment: Comment!
     
     var ui: ReplyUI!
     
@@ -46,7 +38,7 @@ class ReplyViewController: UIViewController {
                     self.getReplies(isLoading: false)
                 }).disposed(by: disposeBag)
             
-            ui.replyUserPhotoGesture.rx.event.asDriver()
+            ui.comment.userPhotoGesture.rx.event.asDriver()
                 .drive(onNext: { [unowned self] _ in
                     self.presenter.getOtherPersonAuthorToken(completion: { [unowned self] objectToken in
                         self.presenter.getAuthorToken(completion: { subjectToken in
@@ -143,7 +135,6 @@ extension ReplyViewController: ReplyPresenterView {
     
     func didFetchReplies(replies: [Reply]) {
         mappingDataToDataSource(replies: replies)
-        ui.updateReplyCount(replyDataSource.listItems.count)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
             self.presenter.view.updateLoading(false)
             self.replyDataSource.listItems.isEmpty ? () : self.ui.replyTable.reloadData()
@@ -170,9 +161,9 @@ extension ReplyViewController {
         presenter.set(otherPersonAuthorToken: comment.authorToken)
         presenter.set(comment: comment.documentId) {
             self.ui.determineHeight(height: height)
-            self.commentDataSource.listItems.append(comment)
-            self.ui.comment.reloadData()
             self.getReplies(isLoading: true)
+            self.ui.comment.content = comment
+            self.comment = comment
         }
     }
     

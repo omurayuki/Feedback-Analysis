@@ -2,12 +2,11 @@ import UIKit
 import GrowingTextView
 
 protocol ReplyUI: UI {
-    var replyUserPhotoGesture: UITapGestureRecognizer { get }
     var replyUserPhotoGestureView: UIView { get }
     var cancelBtn: UIBarButtonItem { get }
     var expandBtn: UIBarButtonItem { get }
     var textViewBottomConstraint: NSLayoutConstraint { get set }
-    var comment: UITableView { get }
+    var comment: CommentView { get }
     var refControl: UIRefreshControl { get }
     var replyTable: UITableView { get }
     var inputToolBar: UIView { get }
@@ -21,18 +20,12 @@ protocol ReplyUI: UI {
     func isHiddenSubmitBtn(_ bool: Bool)
     func isHiddenTextCount(_ bool: Bool)
     func clearReplyField()
-    func updateReplyCount(_ count: Int)
     func changeViewWithKeyboardY(_ bool: Bool, height: CGFloat)
 }
 
 final class ReplyUIImpl: ReplyUI {
     
     weak var viewController: UIViewController?
-    
-    private(set) var replyUserPhotoGesture: UITapGestureRecognizer = {
-        let gesture = UITapGestureRecognizer()
-        return gesture
-    }()
     
     private(set) var replyUserPhotoGestureView: UIView = {
         let view = UIView()
@@ -58,13 +51,8 @@ final class ReplyUIImpl: ReplyUI {
         return constraint
     }()
     
-    private(set) var comment: UITableView = {
-        let table = UITableView.Builder()
-            .estimatedRowHeight(400)
-            .isUserInteractionEnabled(false)
-            .build()
-        table.register(CommentCell.self, forCellReuseIdentifier: String(describing: CommentCell.self))
-        return table
+    private(set) var comment: CommentView = {
+        return CommentView()
     }()
     
     var refControl: UIRefreshControl = {
@@ -132,27 +120,18 @@ extension ReplyUIImpl {
         vc.view.backgroundColor = .appMainColor
         [replyField, submitBtn].forEach { inputToolBar.addSubview($0) }
         vc.view.addGestureRecognizer(viewTapGesture)
-        [replyUserPhotoGestureView, comment, replyTable, inputToolBar, replyFieldTextCount].forEach { vc.view.addSubview($0) }
-        replyUserPhotoGestureView.addGestureRecognizer(replyUserPhotoGesture)
+        [replyUserPhotoGestureView, replyTable, inputToolBar, replyFieldTextCount].forEach { vc.view.addSubview($0) }
         replyTable.addSubview(refControl)
+        replyTable.tableHeaderView = comment
         
-        replyUserPhotoGestureView.anchor()
-            .top(to: vc.view.safeAreaLayoutGuide.topAnchor, constant: 5)
-            .left(to: vc.view.leftAnchor, constant: 20)
-            .width(constant: 50)
-            .height(constant: 50)
+        replyTable.anchor()
+            .top(to: vc.view.safeAreaLayoutGuide.topAnchor)
+            .width(to: vc.view.widthAnchor)
+            .bottom(to: inputToolBar.topAnchor)
             .activate()
         
         comment.anchor()
-            .top(to: vc.view.safeAreaLayoutGuide.topAnchor)
-            .left(to: vc.view.leftAnchor)
-            .right(to: vc.view.rightAnchor)
-            .activate()
-        
-        replyTable.anchor()
-            .top(to: comment.bottomAnchor)
-            .width(to: vc.view.widthAnchor)
-            .bottom(to: inputToolBar.topAnchor)
+            .width(to: replyTable.widthAnchor)
             .activate()
         
         let topConstraint = replyField.topAnchor.constraint(equalTo: inputToolBar.topAnchor, constant: 8)
@@ -216,12 +195,6 @@ extension ReplyUIImpl {
             .animations {
                 self.replyField.text = ""
             }.animate()
-    }
-    
-    func updateReplyCount(_ count: Int) {
-        let indexPath = NSIndexPath(row: 0, section: 0)
-        guard let cell = comment.cellForRow(at: indexPath as IndexPath) as? CommentCell else { return }
-        cell.repliedCount.text = "\(count)"
     }
     
     func changeViewWithKeyboardY(_ bool: Bool, height: CGFloat) {

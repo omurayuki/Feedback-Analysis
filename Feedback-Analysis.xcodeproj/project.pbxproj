@@ -214,6 +214,7 @@
 		C9C43B8F22D0C813006CBC1B /* Reply.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C43B8E22D0C813006CBC1B /* Reply.swift */; };
 		C9C43B9122D0C83C006CBC1B /* ReplyEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C43B9022D0C83C006CBC1B /* ReplyEntity.swift */; };
 		C9C43B9322D1078C006CBC1B /* ReplyTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C43B9222D1078C006CBC1B /* ReplyTranslator.swift */; };
+		C9C55267231081020080D680 /* CommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C55266231081020080D680 /* CommentView.swift */; };
 		C9C844B522AFADB000083280 /* LoginUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C844B422AFADB000083280 /* LoginUseCase.swift */; };
 		C9CB2B4222D4CE320081C499 /* UITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CB2B4122D4CE320081C499 /* UITableViewCell.swift */; };
 		C9CC28E922ACD892006E69E5 /* LoginInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CC28E822ACD892006E69E5 /* LoginInputViewController.swift */; };
@@ -527,6 +528,7 @@
 		C9C43B8E22D0C813006CBC1B /* Reply.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reply.swift; sourceTree = "<group>"; };
 		C9C43B9022D0C83C006CBC1B /* ReplyEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplyEntity.swift; sourceTree = "<group>"; };
 		C9C43B9222D1078C006CBC1B /* ReplyTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplyTranslator.swift; sourceTree = "<group>"; };
+		C9C55266231081020080D680 /* CommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentView.swift; sourceTree = "<group>"; };
 		C9C844B422AFADB000083280 /* LoginUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUseCase.swift; sourceTree = "<group>"; };
 		C9CB2B4122D4CE320081C499 /* UITableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCell.swift; sourceTree = "<group>"; };
 		C9CC28E822ACD892006E69E5 /* LoginInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInputViewController.swift; sourceTree = "<group>"; };
@@ -1397,6 +1399,14 @@
 			path = Reply;
 			sourceTree = "<group>";
 		};
+		C9C55265231080F00080D680 /* Comment */ = {
+			isa = PBXGroup;
+			children = (
+				C9C55266231081020080D680 /* CommentView.swift */,
+			);
+			path = Comment;
+			sourceTree = "<group>";
+		};
 		C9CB2B4322D4F6350081C499 /* Timeline */ = {
 			isa = PBXGroup;
 			children = (
@@ -1455,6 +1465,7 @@
 			isa = PBXGroup;
 			children = (
 				C9A11EC623105DBA00A7CADA /* Timeline */,
+				C9C55265231080F00080D680 /* Comment */,
 				C9DE2B242301A3F300D94C80 /* Analysis */,
 				C97901CE22B95A7E00C245B2 /* Genre */,
 				C92E7FE822B950B50031AE4F /* NewThings */,
@@ -2022,6 +2033,7 @@
 				C97DDD7B22AD543F00A84219 /* SignupInputPresenter.swift in Sources */,
 				C9DE385122EB33D300AEEF07 /* PrivateTimelineContentViewController.swift in Sources */,
 				C9A6066722B26CCB00184E0F /* MypagePresenterImpl.swift in Sources */,
+				C9C55267231081020080D680 /* CommentView.swift in Sources */,
 				C968989F22E34D0900881054 /* FollowListViewController.swift in Sources */,
 				C98E986522F5541800101214 /* ConversationRouting.swift in Sources */,
 				C98E987022F587CD00101214 /* ConversationRepository.swift in Sources */,
