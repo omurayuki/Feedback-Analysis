@@ -5,6 +5,7 @@ final class AnalysisView: UIView {
     private(set) var achieveTitle: UILabel = {
         let label = UILabel()
         label.apply(.h5_appSub_bold)
+        label.numberOfLines = 0
         return label
     }()
     
@@ -53,7 +54,7 @@ extension AnalysisView {
         achieveTitle.anchor()
             .top(to: safeAreaLayoutGuide.topAnchor, constant: 35)
             .left(to: leftAnchor, constant: 20)
-            .width(to: widthAnchor)
+            .right(to: rightAnchor, constant: -20)
             .activate()
         
         actualAchievement.anchor()

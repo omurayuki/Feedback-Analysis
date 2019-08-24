@@ -109,10 +109,10 @@ extension UIView {
     func shake(duration: CFTimeInterval) {
         let translation = CAKeyframeAnimation(keyPath: "transform.translation.x")
         translation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
-        translation.values = [-2, 2, -2, 2, -1, 1, 0]
+        translation.values = [-1, 1, -1, 1, 0]
         
         let rotation = CAKeyframeAnimation(keyPath: "transform.rotation.z")
-        rotation.values = [-2, 2, -2, 2, -1, 1, 0].map {
+        rotation.values = [-1, 1, -1, 1, 0].map {
             (degrees: Double) -> Double in
             let radians: Double = (.pi * degrees) / 180.0
             return radians

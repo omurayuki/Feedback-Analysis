@@ -43,7 +43,7 @@ class DetailViewController: UIViewController {
                 .drive(onNext: { [unowned self] _ in
                     self.presenter.getAuthorToken { [unowned self] subjectToken in
                         self.presenter.getAuthorToken { [unowned self] objectToken in
-                            subjectToken == objectToken ? (self.view.shake(duration: 1)) : (self.routing.showOtherPersonPage(with: objectToken))
+                            subjectToken == objectToken ? (self.view.shake(duration: shakeDuration)) : (self.routing.showOtherPersonPage(with: objectToken))
                         }
                     }
                 }).disposed(by: disposeBag)
@@ -237,7 +237,7 @@ extension DetailViewController: UserPhotoTapDelegate {
     func tappedUserPhoto(index: Int) {
         presenter.getAuthorToken { [unowned self] subjectToken in
             self.presenter.getAuthorToken(index) { [unowned self] objectToken in
-                subjectToken == objectToken ? (self.view.shake(duration: 1)) : (self.routing.showOtherPersonPage(with: objectToken))
+                subjectToken == objectToken ? (self.view.shake(duration: shakeDuration)) : (self.routing.showOtherPersonPage(with: objectToken))
             }
         }
     }

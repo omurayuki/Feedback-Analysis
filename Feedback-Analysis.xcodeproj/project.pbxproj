@@ -164,6 +164,7 @@
 		C995F3E422F7458B007588B8 /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C995F3E322F7458B007588B8 /* PreviewViewController.swift */; };
 		C995F3E622F74594007588B8 /* PreviewUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C995F3E522F74594007588B8 /* PreviewUI.swift */; };
 		C995F3E822F7459D007588B8 /* PreviewRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C995F3E722F7459D007588B8 /* PreviewRouting.swift */; };
+		C99BE6AD2311162E00468BFC /* ShakeDuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99BE6AC2311162D00468BFC /* ShakeDuration.swift */; };
 		C99EB6FD22F1E2FF00675E55 /* ConversationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99EB6FC22F1E2FF00675E55 /* ConversationManager.swift */; };
 		C99EB6FF22F1E91200675E55 /* MessageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99EB6FE22F1E91200675E55 /* MessageManager.swift */; };
 		C9A11EC823105DC600A7CADA /* TimelineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A11EC723105DC600A7CADA /* TimelineView.swift */; };
@@ -476,6 +477,7 @@
 		C995F3E322F7458B007588B8 /* PreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
 		C995F3E522F74594007588B8 /* PreviewUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewUI.swift; sourceTree = "<group>"; };
 		C995F3E722F7459D007588B8 /* PreviewRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewRouting.swift; sourceTree = "<group>"; };
+		C99BE6AC2311162D00468BFC /* ShakeDuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeDuration.swift; sourceTree = "<group>"; };
 		C99EB6FC22F1E2FF00675E55 /* ConversationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationManager.swift; sourceTree = "<group>"; };
 		C99EB6FE22F1E91200675E55 /* MessageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageManager.swift; sourceTree = "<group>"; };
 		C9A11EC723105DC600A7CADA /* TimelineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineView.swift; sourceTree = "<group>"; };
@@ -705,6 +707,7 @@
 				C91FA65F22B577BB006D9E6D /* Residence.swift */,
 				C972692922BB3BA300CDFD59 /* Genre.swift */,
 				C960C71F230A820800ABFBF8 /* Strength.swift */,
+				C99BE6AC2311162D00468BFC /* ShakeDuration.swift */,
 			);
 			path = Const;
 			sourceTree = "<group>";
@@ -2003,6 +2006,7 @@
 				C9D77F8F22CA41870007835B /* CommentCell.swift in Sources */,
 				C990789622EAFE10009076FA /* JustToBeSure.swift in Sources */,
 				C9DE385522EB33F400AEEF07 /* PrivateTimelineContentRouting.swift in Sources */,
+				C99BE6AD2311162E00468BFC /* ShakeDuration.swift in Sources */,
 				C972692A22BB3BA300CDFD59 /* Genre.swift in Sources */,
 				C9D54B8F230D8DB9007FC409 /* TransitionableTabBarController.swift in Sources */,
 				C9328A9C22C72FA00065027B /* PrivateDraftViewController.swift in Sources */,

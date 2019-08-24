@@ -142,6 +142,6 @@ extension PrivateTimelineContentViewController: CellTapDelegate {
 extension PrivateTimelineContentViewController: UserPhotoTapDelegate {
     
     func tappedUserPhoto(index: Int) {
-        self.view.shake(duration: 1)
+        self.view.shake(duration: shakeDuration)
     }
 }
