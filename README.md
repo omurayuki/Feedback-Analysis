@@ -6,6 +6,8 @@
 <img width="150" src="https://user-images.githubusercontent.com/39009922/63653726-98e52580-c7ab-11e9-93ec-6bc105413d83.png" />  <img width="150" src="https://user-images.githubusercontent.com/39009922/63653727-997dbc00-c7ab-11e9-9af2-400247bb70f0.png" />
 <img width="150" src="https://user-images.githubusercontent.com/39009922/63653728-997dbc00-c7ab-11e9-8819-292e744503d4.png" />  <img width="150" src="https://user-images.githubusercontent.com/39009922/63653729-997dbc00-c7ab-11e9-92cd-b63c865f9ef9.png" />
 <img width="150" src="https://user-images.githubusercontent.com/39009922/63653730-997dbc00-c7ab-11e9-8b91-9f1ffa4cde72.png" />  <img width="150" src="https://user-images.githubusercontent.com/39009922/63653731-9a165280-c7ab-11e9-8594-4e820ddc517a.png" />
+<img width="150" src="https://user-images.githubusercontent.com/39009922/63653915-422d1b00-c7ae-11e9-934f-5113f81c0f4e.png" />  <img width="150" src="https://user-images.githubusercontent.com/39009922/63653916-422d1b00-c7ae-11e9-8469-c0cd92d51b02.png" />
+
 
 
 
@@ -24,6 +26,17 @@ To get started and run the app, you need to follow these simple steps:
 
 
 
+## Main functions
+- timeline
+- chat
+- strength views
+- mypage
+- comment
+- reply
+- follow
+
+
+
 ## Compatibility
 
 This project is written in Swift 5.0 and requires Xcode 10.2.1 to build and run.
@@ -34,19 +47,19 @@ Feedback-Analysis is compatible with iOS 11.0+.
 
 ## Technology used
 
-RxSwift
-RxCocoa
-FirebaseFirestore
-Cloud Function
+- RxSwift
+- RxCocoa
+- FirebaseFirestore
+- Cloud Function
 
 
 
 ## Architecture used
 
-MPV + Clean Architecture
+- MPV + Clean Architecture
 
 
 
 ## Author
 
-[Yuki Omura](https://twitter.com/yuking_0319)
+- [Yuki Omura](https://twitter.com/yuking_0319)
