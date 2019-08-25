@@ -26,6 +26,14 @@ To get started and run the app, you need to follow these simple steps:
 
 
 
+## Compatibility
+
+This project is written in Swift 5.0 and requires Xcode 10.2.1 to build and run.
+
+Feedback-Analysis is compatible with iOS 11.0+.
+
+
+
 ## Main functions
 - timeline
 - chat
@@ -37,18 +45,11 @@ To get started and run the app, you need to follow these simple steps:
 
 
 
-## Compatibility
-
-This project is written in Swift 5.0 and requires Xcode 10.2.1 to build and run.
-
-Feedback-Analysis is compatible with iOS 11.0+.
-
-
-
 ## Technology used
 
 - RxSwift
 - RxCocoa
+- Firebase Authorization
 - FirebaseFirestore
 - Cloud Function
 
