@@ -35,13 +35,13 @@ Feedback-Analysis is compatible with iOS 11.0+.
 
 
 ## Main functions
-- timeline
-- chat
-- strength views
-- mypage
-- comment
-- reply
-- follow
+- Timeline
+- Chat
+- Strength views
+- Mypage
+- Comment
+- Reply
+- Follow
 
 
 
