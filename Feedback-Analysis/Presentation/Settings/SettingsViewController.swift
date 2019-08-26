@@ -57,6 +57,7 @@ extension SettingsViewController: SettingsPresenterView {
     }
     
     func didLogoutSuccess() {
+        AppUserDefaults.setAuthToken(token: "")
         routing.moveTopPage()
     }
 }

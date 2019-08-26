@@ -12,12 +12,13 @@ extension MainTabController: MainTabbarProtocol {
         tabBar.barStyle = .default
         tabBar.clipsToBounds = true
         
-        var resouces = [#imageLiteral(resourceName: "diary"), #imageLiteral(resourceName: "bell"), #imageLiteral(resourceName: "mail"), #imageLiteral(resourceName: "home")]
+        var resouces = [#imageLiteral(resourceName: "iconfinder_news_216342"), #imageLiteral(resourceName: "iconfinder_film_216198"), #imageLiteral(resourceName: "iconfinder_mail_216294"), #imageLiteral(resourceName: "iconfinder_home-outline_216240")]
+        var titles = ["TIMELINE", "ANALYSIS", "CHAT", "MYPAGE"]
         var viewControllers: [UIViewController] = []
         
         [initTimelineVC(), initAnalysisVC(), initConversationVC(), initMypageVC(with: AppUserDefaults.getAuthToken())].enumerated().forEach { index, controller in
             let navi = UINavigationController(rootViewController: controller)
-            navi.tabBarItem = UITabBarItem(title: nil, image: resouces[index], tag: index)
+            navi.tabBarItem = UITabBarItem(title: titles[index], image: resouces[index], tag: index)
             
             viewControllers.append(navi)
         }

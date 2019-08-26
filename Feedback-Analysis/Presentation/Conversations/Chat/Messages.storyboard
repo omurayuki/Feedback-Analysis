@@ -256,44 +256,44 @@
                                                 <fontDescription key="fontDescription" name="AlNile" family="Al Nile" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardAppearance="alert" returnKeyType="done"/>
                                             </textField>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dh4-3y-68f">
+                                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dh4-3y-68f">
                                                 <rect key="frame" x="370" y="12.5" width="32" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="32" id="D1c-fc-i2o"/>
                                                     <constraint firstAttribute="height" constant="25" id="VDb-G3-P3q"/>
                                                 </constraints>
                                                 <color key="tintColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
-                                                <state key="normal" image="sendBtn"/>
+                                                <state key="normal" image="iconfinder_location-arrow_216279"/>
                                             </button>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="4RB-g5-xAT">
                                                 <rect key="frame" x="6" y="12.5" width="25" height="25"/>
                                                 <subviews>
-                                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hda-cr-Ibe">
+                                                    <button hidden="YES" opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hda-cr-Ibe">
                                                         <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="25" id="LUT-8a-iU4"/>
                                                             <constraint firstAttribute="width" constant="25" id="dzH-5c-mF5"/>
                                                         </constraints>
                                                         <color key="tintColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
-                                                        <state key="normal" image="selectCameraBtn"/>
+                                                        <state key="normal" image="iconfinder_camera-outline_216123"/>
                                                     </button>
-                                                    <button hidden="YES" opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SYV-IR-9o8">
+                                                    <button hidden="YES" opaque="NO" tag="1" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SYV-IR-9o8">
                                                         <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="25" id="5gm-6b-dZK"/>
                                                             <constraint firstAttribute="height" constant="25" id="UY4-g0-R4Z"/>
                                                         </constraints>
                                                         <color key="tintColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
-                                                        <state key="normal" image="selectPhotoBtn"/>
+                                                        <state key="normal" image="iconfinder_image_216246"/>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RXv-3s-DnJ">
+                                                    <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RXv-3s-DnJ">
                                                         <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="25" id="sao-qC-e0D"/>
                                                             <constraint firstAttribute="height" constant="25" id="xqM-fA-MVU"/>
                                                         </constraints>
                                                         <color key="tintColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
-                                                        <state key="normal" image="backBtn"/>
+                                                        <state key="normal" image="iconfinder_chevron-right_216151"/>
                                                     </button>
                                                 </subviews>
                                                 <constraints>
@@ -370,9 +370,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="backBtn" width="34" height="54"/>
-        <image name="selectCameraBtn" width="64" height="50"/>
-        <image name="selectPhotoBtn" width="64" height="50"/>
-        <image name="sendBtn" width="64" height="50"/>
+        <image name="iconfinder_camera-outline_216123" width="48" height="48"/>
+        <image name="iconfinder_chevron-right_216151" width="48" height="48"/>
+        <image name="iconfinder_image_216246" width="48" height="48"/>
+        <image name="iconfinder_location-arrow_216279" width="48" height="48"/>
     </resources>
 </document>

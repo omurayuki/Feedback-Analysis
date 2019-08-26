@@ -28,6 +28,7 @@ struct AccountEntityManager {
     
     func login(email: String, pass: String,
                completion: @escaping (FirestoreResponse<AccountEntity>) -> Void) {
+        
         Auth.auth().signIn(withEmail: email, password: pass, completion: { authResult, error in
             if let error = error {
                 completion(.failure(error))

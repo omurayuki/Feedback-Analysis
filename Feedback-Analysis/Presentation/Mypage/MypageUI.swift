@@ -143,7 +143,7 @@ final class MypageUIImpl: MypageUI {
         let button = UIButton.Builder()
             .backgroundColor(.appSubColor)
             .tintColor(.white)
-            .image(#imageLiteral(resourceName: "goal_post"))
+            .image(#imageLiteral(resourceName: "iconfinder_edit_216184"))
             .cornerRadius(25)
             .build()
         return button
