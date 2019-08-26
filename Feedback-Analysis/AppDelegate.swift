@@ -1,6 +1,7 @@
 import UIKit
 import RxSwift
 import Firebase
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,14 +18,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().backgroundColor = .clear
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.appSubColor]
 
-        let vc = TopViewController()
-        var routing: TopRouting = TopRoutingImpl()
-        routing.viewController = vc
-        var ui: TopUI = TopUIImpl()
-        ui.viewController = vc
-        vc.inject(ui: ui, routing: routing, disposeBag: DisposeBag())
-        window?.rootViewController = UINavigationController(rootViewController: vc)
-        window?.makeKeyAndVisible()
+        if AccountEntityManager().currentUserID().isNone {
+            let vc = TopViewController()
+            var routing: TopRouting = TopRoutingImpl()
+            routing.viewController = vc
+            var ui: TopUI = TopUIImpl()
+            ui.viewController = vc
+            vc.inject(ui: ui, routing: routing, disposeBag: DisposeBag())
+            window?.rootViewController = UINavigationController(rootViewController: vc)
+            window?.makeKeyAndVisible()
+        } else {
+            let vc = MainTabController()
+            window?.rootViewController = vc
+            window?.makeKeyAndVisible()
+        }
+        
+        UNUserNotificationCenter.current().requestAuthorization(
+        options: [.alert, .sound, .badge]){
+            (granted, _) in
+            if granted{
+                UNUserNotificationCenter.current().delegate = self
+            }
+        }
 
         return true
     }
@@ -38,4 +53,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidBecomeActive(_ application: UIApplication) {}
 
     func applicationWillTerminate(_ application: UIApplication) {}
+}
+
+extension AppDelegate: UNUserNotificationCenterDelegate{
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification,
+                                withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        // アプリ起動中でもアラートと音で通知
+        completionHandler([.alert, .sound])
+        
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse,
+                                withCompletionHandler completionHandler: @escaping () -> Void) {
+        completionHandler()
+        
+    }
 }

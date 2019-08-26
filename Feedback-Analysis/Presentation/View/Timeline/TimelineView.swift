@@ -97,6 +97,12 @@ final class TimelineView: UIView {
         return label
     }()
     
+    private(set) var borderBottom: UIView = {
+        let view = UIView()
+        view.backgroundColor = .appSubColor
+        return view
+    }()
+    
     var content: Timeline! {
         didSet {
             userPhoto.setImage(url: content.userImage)
@@ -153,7 +159,7 @@ extension TimelineView {
         
         [userPhoto, userName, postedTime, genres,
          newThingsStack, goalsStack, deadLineStack,
-         postContent].forEach { addSubview($0) }
+         postContent, borderBottom].forEach { addSubview($0) }
         
         userPhoto.addGestureRecognizer(userPhotoGesture)
         
@@ -217,6 +223,12 @@ extension TimelineView {
             .right(to: rightAnchor, constant: -20)
             .bottom(to: bottomAnchor, constant: -20)
             .width(constant: frame.width / 1.1)
+            .activate()
+        
+        borderBottom.anchor()
+            .bottom(to: bottomAnchor)
+            .width(to: widthAnchor)
+            .height(constant: 0.5)
             .activate()
     }
     

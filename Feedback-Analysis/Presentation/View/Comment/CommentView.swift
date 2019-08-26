@@ -33,6 +33,12 @@ final class CommentView: UIView {
         return label
     }()
     
+    private(set) var borderBottom: UIView = {
+        let view = UIView()
+        view.backgroundColor = .appSubColor
+        return view
+    }()
+    
     var content: Comment? {
         didSet {
             guard let url = content?.userImage else { return }
@@ -57,7 +63,7 @@ extension CommentView {
     
     private func setup() {
         backgroundColor = .appMainColor
-        [userPhoto, userName, postedTime, comment].forEach { addSubview($0) }
+        [userPhoto, userName, postedTime, comment, borderBottom].forEach { addSubview($0) }
         
         userPhoto.addGestureRecognizer(userPhotoGesture)
         
@@ -83,6 +89,12 @@ extension CommentView {
             .top(to: userName.bottomAnchor, constant: 5)
             .left(to: leftAnchor, constant: 80)
             .right(to: rightAnchor, constant: -10)
+            .activate()
+        
+        borderBottom.anchor()
+            .bottom(to: bottomAnchor)
+            .width(to: widthAnchor)
+            .height(constant: 0.5)
             .activate()
     }
 }

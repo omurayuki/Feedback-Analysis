@@ -38,7 +38,6 @@ extension FollowListManagingUIImpl {
     func setup() {
         guard let vc = viewController else { return }
         vc.view.backgroundColor = .appMainColor
-        vc.coloringAppMainNavBar()
         
         vc.addChild(followPages)
         [followSegment, containerView].forEach { vc.view.addSubview($0) }

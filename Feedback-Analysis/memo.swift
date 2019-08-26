@@ -22,28 +22,12 @@
  
  //////////必須
  // push通知設定
- // 強み分析機能実装
  // goalPostのdatepickerの挙動がおかしい(Analysisのstrengthmo)
  
- //// 強み結果表示までの構造
- // 強み分析post
-    // GoalsのdocumentIDを紐づけて、個々のUser配下に(Goalsと同列)Completesというcollection作成
-    // そこにGoalsのdocumentIDを筆頭として、目標に対するfieldを作成
-    // AnalysisResultのチャート項目にはCompletesにある個々の強みを参照して表示
-    // 強み項目をたっぷした時に、UserのCompletesからCompletesDocumentIDを参照して結果をみれる
-    // タイムラインの項目(自分)の達成のどれかをタップしたら、自分のCompletesのマッチするGoalsDocumentIDをみて遷移する
-    // タイムラインの項目(フォローユーザー)の達成をどれかタップしたら、そのユーザーのauthorTokenを使ってそのUserのCompletesのマッチするGoalsDocumentIDをみて遷移する
- 
- // 配列形式でstrengthをpost 可能
- // user配下にstrengthをカウントするためだけのcollectionを作成して配列の中の要素(1~3)をカウント 可能
- // AnalysisResultの画面を構成するのはこのstrengthCollection
- // それぞれの強みをタップすると、
- // completesにpostすると、cloudfunctionで強みのデータだけその目標のfieldに追加する(強みを有している目標を取得するため)
+ // push通知
+ // パパッと終わらしたいから、どっかのタイミングで適当な定期通知"目標の確認をしよう！"みたいなの入れる
  
  //// マストじゃないがゆくゆく実装するもの
- //  mypageをscrollViewにする
- //  detailをscrollViewにする
- //  目標投稿時のimage選択(複数)
  //  変更に強いプログラムにするため、各レイヤーを依存関係逆転の原則で置き換えられるか検討
  
  ///////マイページからの投稿, タイムラインからの投稿で向き咲き分けるべき？
@@ -68,7 +52,16 @@
  // deinit走らない..... lintの大切さ
  // UIも修正しやすいつくりに
  // ツールや環境は先に.....
+ // firestore ルールをあらかじめデフォでもいいので
+ // アプリは最初小さく.......
+ // swiftLint必要だった.....(deinit走らなかった、どこが原因か特定するのに時間がかかることがよくあった)
+ // 最低限エラーハンドリングを行う
  
  //// documentにまとめる項目
  // databaseの構造を定義した理由
  // documentにまとめることを調べてまとめる
+
+ //// 次に作るアプリ
+ // firebaseの機能を網羅したいから規模が小さいアプリ
+ // webでも同様のサービスを開発したい
+ // できたら外部APIを使いたい

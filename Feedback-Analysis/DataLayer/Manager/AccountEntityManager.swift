@@ -7,6 +7,10 @@ import RxSwift
 
 struct AccountEntityManager {
     
+    func currentUserID() -> String? {
+        return Auth.auth().currentUser?.uid
+    }
+    
     func signup(email: String, pass: String,
                 completion: @escaping (FirestoreResponse<AccountEntity>) -> Void) {
         Auth.auth().createUser(withEmail: email, password: pass, completion: { authResult, error in

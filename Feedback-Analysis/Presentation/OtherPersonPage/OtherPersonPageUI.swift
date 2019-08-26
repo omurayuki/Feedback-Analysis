@@ -1,7 +1,6 @@
 import UIKit
 
 protocol OtherPersonPageUI: UI {
-    var headerImage: UIImageView { get }
     var userImage: UIImageView { get }
     var userName: UILabel { get }
     var followBtn: FollowButton { get }
@@ -26,13 +25,6 @@ protocol OtherPersonPageUI: UI {
 final class OtherPersonPageUIImpl: OtherPersonPageUI {
     
     weak var viewController: UIViewController?
-    
-    private(set) var headerImage: UIImageView = {
-        let image = UIImageView()
-        image.clipsToBounds = true
-        image.contentMode = UIView.ContentMode.scaleAspectFill
-        return image
-    }()
     
     private(set) var userImage: UIImageView = {
         let image = UIImageView.Builder()
@@ -145,7 +137,7 @@ extension OtherPersonPageUIImpl {
     func setup() {
         guard let vc = viewController else { return }
         vc.view.backgroundColor = .appMainColor
-        vc.clearNavBar()
+        vc.navigationItem.title = "Other Person"
         
         let residenceStack = UIStackView.setupStack(lhs: residence, rhs: residenceField, spacing: 5)
         let birthStack = UIStackView.setupStack(lhs: birthDay, rhs: birthDayField, spacing: 5)
@@ -153,21 +145,15 @@ extension OtherPersonPageUIImpl {
         let followerStack = UIStackView.setupStack(lhs: followerCount, rhs: follower, spacing: 5)
         
         vc.addChild(timelinePages)
-        [headerImage, userImage, userName, followBtn,
+        [userImage, userName, followBtn,
          messageBtn, contentField, residenceStack,
          birthStack, followStack, followerStack,
          timelineSegmented, containerView].forEach { vc.view.addSubview($0) }
         containerView.addSubview(timelinePages.view)
         timelinePages.didMove(toParent: vc)
         
-        headerImage.anchor()
-            .top(to: vc.view.topAnchor)
-            .width(to: vc.view.widthAnchor)
-            .height(to: vc.view.heightAnchor, multiplier: 0.15)
-            .activate()
-        
         userImage.anchor()
-            .top(to: headerImage.bottomAnchor, constant: -20)
+            .top(to: vc.view.safeAreaLayoutGuide.topAnchor, constant: 10)
             .left(to: vc.view.leftAnchor, constant: 20)
             .width(constant: 60)
             .height(constant: 60)
@@ -179,12 +165,12 @@ extension OtherPersonPageUIImpl {
             .activate()
         
         followBtn.anchor()
-            .top(to: headerImage.bottomAnchor, constant: 10)
+            .top(to: vc.view.safeAreaLayoutGuide.topAnchor, constant: 10)
             .right(to: vc.view.rightAnchor, constant: -20)
             .activate()
         
         messageBtn.anchor()
-            .top(to: headerImage.bottomAnchor, constant: 10)
+            .top(to: vc.view.safeAreaLayoutGuide.topAnchor, constant: 10)
             .right(to: followBtn.leftAnchor, constant: -10)
             .activate()
         
@@ -233,7 +219,6 @@ extension OtherPersonPageUIImpl {
     }
     
     func updateUser(user: User) {
-        headerImage.setImage(url: user.headerImage)
         userImage.setImage(url: user.userImage)
         userName.text = user.name
         contentField.text = user.content

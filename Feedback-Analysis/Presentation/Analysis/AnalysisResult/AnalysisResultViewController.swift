@@ -65,19 +65,7 @@ final class AnalysisResultViewControllor: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            self.pieChart.isHidden = false
-            self.pieChart.animate(yAxisDuration: 0.5)
-        }
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        pieChart.isHidden = true
+        pieChart.animate(yAxisDuration: 0.5)
     }
 }
 

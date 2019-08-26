@@ -27,7 +27,6 @@ extension CategorizedUIImpl {
     func setup() {
         guard let vc = viewController else { return }
         vc.view.backgroundColor = .white
-        vc.clearNavBar()
         
         vc.view.addSubview(tableView)
         

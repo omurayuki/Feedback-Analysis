@@ -10,8 +10,16 @@ class MessagesViewController: UIViewController {
     @IBOutlet weak var messageExpandButton: UIButton!
     @IBOutlet weak var messageBarBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var messageStackViewWidthConstraint: NSLayoutConstraint!
-    @IBOutlet weak var messageSendButton: UIButton!
-    @IBOutlet var messageActionButtons: [UIButton]!
+    @IBOutlet weak var messageSendButton: UIButton! {
+        didSet {
+            messageSendButton.tintColor = .appSubColor
+        }
+    }
+    @IBOutlet var messageActionButtons: [UIButton]! {
+        didSet {
+            messageActionButtons.forEach { $0.tintColor = .appSubColor }
+        }
+    }
     private(set) var viewTapGesture = UITapGestureRecognizer()
     
     var messages: [Message]? {
@@ -55,6 +63,7 @@ class MessagesViewController: UIViewController {
 }
 
 extension MessagesViewController: MessagesPresenterView {
+    
     func didFetchMessages(messages: [Message]) {
         self.messages = messages
     }
@@ -79,7 +88,7 @@ extension MessagesViewController {
         messageActionButtons.forEach { value in
             value.rx.tap.asDriver()
                 .drive(onNext: { [unowned self] _ in
-                    self.imageService.pickImage(from: self, allowEditing: false, source: value.tag == 0 ? .photoLibrary : .camera) { [unowned self] image in
+                    self.imageService.pickImage(from: self, allowEditing: false, source: value.tag == 0 ? .photoLibrary : .photoLibrary) { [unowned self] image in
                         let message = Message(contentType: .photo, profilePic: image, ownerID: self.presenter.subjectToken)
                         self.send(message)
                         self.messageInputTextField.text = nil
@@ -137,7 +146,7 @@ extension MessagesViewController {
     
     private func showActionButtons(_ status: Bool) {
         guard !status else {
-            messageStackViewWidthConstraint.constant = 112
+            messageStackViewWidthConstraint.constant = 75
             UIView.animate(withDuration: 0.3) {
                 self.messageExpandButton.isHidden = true
                 self.messageExpandButton.alpha = 0
@@ -146,9 +155,9 @@ extension MessagesViewController {
             }
             return
         }
-        guard messageStackViewWidthConstraint.constant != 32 else { return }
-        messageStackViewWidthConstraint.constant = 32
-        UIView.animate(withDuration: 0.3) {
+        guard messageStackViewWidthConstraint.constant != 25 else { return }
+        messageStackViewWidthConstraint.constant = 25
+        UIView.animate(withDuration: 0.2) {
             self.messageExpandButton.isHidden = false
             self.messageExpandButton.alpha = 1
             self.messageActionButtons.forEach({ $0.isHidden = true })

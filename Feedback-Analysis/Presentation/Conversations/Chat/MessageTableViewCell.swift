@@ -32,7 +32,11 @@ class MessageTableViewCell: UITableViewCell {
 
 class MessageAttachmentTableViewCell: MessageTableViewCell {
     
-    @IBOutlet weak var messageAttachmentImageView: UIImageView!
+    @IBOutlet weak var messageAttachmentImageView: UIImageView! {
+        didSet {
+            messageAttachmentImageView.contentMode = .scaleAspectFill
+        }
+    }
     @IBOutlet weak var messageAttachmentImageViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var messageAttachmentImageViewWidthConstraint: NSLayoutConstraint!
     

@@ -41,20 +41,6 @@ final class ReplyCell: UITableViewCell {
         return label
     }()
     
-    private(set) var likeCount: UILabel = {
-        let label = UILabel()
-        label.apply(.title_Bold, title: "0")
-        return label
-    }()
-    
-    private(set) var likeBtn: UIButton = {
-        let button = UIButton.Builder()
-            .title("♡")
-            .component(.body_CoolGrey13)
-            .build()
-        return button
-    }()
-    
     var content: Reply? {
         didSet {
             guard let url = content?.userImage else { return }
@@ -80,10 +66,9 @@ extension ReplyCell {
     private func setup() {
         bindUI()
         backgroundColor = .appMainColor
-        let likeStack = UIStackView.setupStack(lhs: likeBtn, rhs: likeCount, spacing: 5)
         
         [userPhoto, userName,
-         postedTime, reply, likeStack].forEach { addSubview($0) }
+         postedTime, reply].forEach { addSubview($0) }
         
         userPhoto.addGestureRecognizer(userPhotoGesture)
         
@@ -110,13 +95,8 @@ extension ReplyCell {
             .top(to: userName.bottomAnchor, constant: 5)
             .left(to: userPhoto.rightAnchor, constant: 10)
             .right(to: rightAnchor, constant: -10)
-            .width(constant: frame.width / 1.1)
-            .activate()
-        
-        likeStack.anchor()
-            .top(to: reply.bottomAnchor, constant: 2)
-            .left(to: userPhoto.rightAnchor, constant: 10)
             .bottom(to: bottomAnchor, constant: -5)
+            .width(constant: frame.width / 1.1)
             .activate()
     }
 }
