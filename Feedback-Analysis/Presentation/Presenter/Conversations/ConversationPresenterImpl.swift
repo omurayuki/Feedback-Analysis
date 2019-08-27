@@ -23,7 +23,7 @@ class ConversationPresenterImpl: NSObject, ConversationPresenter {
     
     func markAsRead(conversation: Conversation, completion: @escaping () -> Void) {
         useCase.markAsRead(conversation: conversation)
-            .subscribe { result in
+            .subscribe { [unowned self] result in
                 switch result {
                 case .success(_):
                     completion()

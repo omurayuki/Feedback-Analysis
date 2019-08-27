@@ -56,7 +56,7 @@ class GoalPostEditViewController: UIViewController {
                                           expectedResult1: expectedResultView.expectedResultField1.text ?? "",
                                           expectedResult2: expectedResultView.expectedResultField2.text ?? "",
                                           expectedResult3: expectedResultView.expectedResultField3.text ?? "",
-                                          execute: { _genres, _newThings, _expectedResultField1, _expectedResultField2, _expectedResultField3 in
+                                          execute: { [unowned self] _genres, _newThings, _expectedResultField1, _expectedResultField2, _expectedResultField3 in
                         let goalPost = self.createGoalPost(genre: _genres,
                                                            newThings: _newThings,
                                                            expectedResultField1: _expectedResultField1,

@@ -48,7 +48,7 @@ class OtherPersonPagePresenterImpl: NSObject, OtherPersonPagePresenter {
     
     func follow(documentRef: FirebaseDocumentRef, completion: @escaping () -> Void) {
         useCase.follow(documentRef: documentRef)
-            .subscribe { result in
+            .subscribe { [unowned self] result in
                 switch result {
                 case .success(_):
                     completion()
@@ -60,7 +60,7 @@ class OtherPersonPagePresenterImpl: NSObject, OtherPersonPagePresenter {
     
     func unFollow(documentRef: FirebaseDocumentRef, completion: @escaping () -> Void) {
         useCase.unFollow(documentRef: documentRef)
-            .subscribe { result in
+            .subscribe { [unowned self] result in
                 switch result {
                 case .success(_):
                     completion()
@@ -72,7 +72,7 @@ class OtherPersonPagePresenterImpl: NSObject, OtherPersonPagePresenter {
     
     func checkFollowing(documentRef: FirebaseDocumentRef, completion: @escaping (Bool) -> Void) {
         useCase.checkFollowing(documentRef: documentRef)
-            .subscribe { result in
+            .subscribe { [unowned self] result in
                 switch result {
                 case .success(let response):
                     completion(response)
@@ -84,7 +84,7 @@ class OtherPersonPagePresenterImpl: NSObject, OtherPersonPagePresenter {
     
     func setObjectToken(_ token: String) {
         useCase.setObjectToken(token)
-            .subscribe { result in
+            .subscribe { [unowned self] result in
                 switch result {
                 case .success(_):
                     return

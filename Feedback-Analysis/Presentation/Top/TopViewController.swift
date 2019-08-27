@@ -12,12 +12,12 @@ class TopViewController: UIViewController {
     var disposeBag: DisposeBag! {
         didSet {
             ui.loginBtn.rx.tap.asDriver()
-                .drive(onNext: { _ in
+                .drive(onNext: { [unowned self] _ in
                     self.routing.login()
                 }).disposed(by: disposeBag)
             
             ui.signupBtn.rx.tap.asDriver()
-                .drive(onNext: { _ in
+                .drive(onNext: { [unowned self] _ in
                     self.routing.signup()
                 }).disposed(by: disposeBag)
         }

@@ -21,7 +21,7 @@ class AnalysisPresenterImpl: NSObject, AnalysisPresenter {
     func post(documentRef: FirebaseDocumentRef, fields: CompletePost) {
         view.updateLoading(true)
         useCase.post(documentRef: documentRef, fields: fields)
-            .subscribe { result in
+            .subscribe { [unowned self] result in
                 switch result {
                 case .success(_):
                     self.view.updateLoading(false)

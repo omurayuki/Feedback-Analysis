@@ -18,11 +18,11 @@ class PasswordEditingViewController: UIViewController {
     var disposeBag: DisposeBag! {
         didSet {
             ui.updateBtn.rx.tap.asDriver()
-                .drive(onNext: { _ in
+                .drive(onNext: { [unowned self] _ in
                     self.validateAccount(email: self.ui.emailField.text ?? "",
                                          pass: self.ui.oldPasswordField.text ?? "",
                                          rePass: self.ui.newPasswordField.text ?? "",
-                                         account: { _email, _old, _new in
+                                         account: { [unowned self] _email, _old, _new in
                         self.presenter.update(with: _email, oldPass: _old, newPass: _new)
                     })
                 }).disposed(by: disposeBag)

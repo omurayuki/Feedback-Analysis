@@ -65,7 +65,6 @@
 		C941332B22C8BD300082A01C /* DetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C941332A22C8BD300082A01C /* DetailPresenter.swift */; };
 		C941332D22C8BD390082A01C /* DetailPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C941332C22C8BD390082A01C /* DetailPresenterImpl.swift */; };
 		C943E184230F89CD0013ABF2 /* CompleteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C943E183230F89CD0013ABF2 /* CompleteManager.swift */; };
-		C94704D322D390D200DF2F16 /* memo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94704D222D390D200DF2F16 /* memo.swift */; };
 		C947E72922E30873001F176F /* FollowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C947E72822E30873001F176F /* FollowButton.swift */; };
 		C949D2032313E416006F08C4 /* Optional+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C949D2022313E415006F08C4 /* Optional+Extension.swift */; };
 		C94EE04722D0631E00937CFA /* ReplyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94EE04622D0631E00937CFA /* ReplyViewController.swift */; };
@@ -379,7 +378,6 @@
 		C941332A22C8BD300082A01C /* DetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPresenter.swift; sourceTree = "<group>"; };
 		C941332C22C8BD390082A01C /* DetailPresenterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPresenterImpl.swift; sourceTree = "<group>"; };
 		C943E183230F89CD0013ABF2 /* CompleteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteManager.swift; sourceTree = "<group>"; };
-		C94704D222D390D200DF2F16 /* memo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = memo.swift; sourceTree = "<group>"; };
 		C947E72822E30873001F176F /* FollowButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowButton.swift; sourceTree = "<group>"; };
 		C949D2022313E415006F08C4 /* Optional+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+Extension.swift"; sourceTree = "<group>"; };
 		C94EE04622D0631E00937CFA /* ReplyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplyViewController.swift; sourceTree = "<group>"; };
@@ -1260,7 +1258,6 @@
 				C958D9E022B5ACF800565EDE /* Localizable.strings */,
 				C95ADECF22AB141D00D851A0 /* R.generated.swift */,
 				C990789522EAFE10009076FA /* JustToBeSure.swift */,
-				C94704D222D390D200DF2F16 /* memo.swift */,
 				C9D9010322AB44150040390E /* Utility */,
 				C9D9010422AB44270040390E /* DataLayer */,
 				C9D9010522AB44390040390E /* DomainLayer */,
@@ -2047,7 +2044,6 @@
 				C9A6066122B2676B00184E0F /* MypagePresenter.swift in Sources */,
 				C941332222C8B2CC0082A01C /* DetailViewController.swift in Sources */,
 				C9CC28F422AD3BEB006E69E5 /* SignupInputViewController.swift in Sources */,
-				C94704D322D390D200DF2F16 /* memo.swift in Sources */,
 				C92B5E4322EB38F90056AB2B /* PrivateTimelineContentPresenterImpl.swift in Sources */,
 				C9A6067922B2AAB600184E0F /* UserRemoteDataStore.swift in Sources */,
 				C94F080F22ABEBF800BF3534 /* UIVIew+Extension.swift in Sources */,

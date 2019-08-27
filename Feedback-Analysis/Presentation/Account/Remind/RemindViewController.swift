@@ -26,7 +26,7 @@ class RemindViewController: UIViewController {
                 }).disposed(by: disposeBag)
             
             presenter.isLoading
-                .subscribe(onNext: { isLoading in
+                .subscribe(onNext: { [unowned self] isLoading in
                     self.view.endEditing(true)
                     self.setIndicator(show: isLoading)
                 }).disposed(by: disposeBag)

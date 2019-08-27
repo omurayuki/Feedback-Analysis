@@ -23,7 +23,7 @@ class FollowListPresenterImpl: NSObject, FollowListPresenter {
         case true:
             view.updateLoading(loading)
             useCase.fetchFollowee(from: queryRef)
-                .subscribe { result in
+                .subscribe { [unowned self] result in
                     switch result {
                     case .success(let response):
                         self.view.updateLoading(false)
@@ -37,7 +37,7 @@ class FollowListPresenterImpl: NSObject, FollowListPresenter {
         case false:
             view.updateLoading(loading)
             useCase.fetchFollower(from: queryRef)
-                .subscribe { result in
+                .subscribe { [unowned self] result in
                     switch result {
                     case .success(let response):
                         self.view.updateLoading(false)
