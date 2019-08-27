@@ -10,6 +10,10 @@
 
 
 
+## Firestore Data Structure
+- [Firestore Data Structure](https://github.com/omurayuki/FeedbackAnalysis/wiki/Firestore-Data-Structure)
+
+
 
 ## Getting Started
 
