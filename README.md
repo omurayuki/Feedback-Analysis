@@ -54,7 +54,8 @@ Feedback-Analysis is compatible with iOS 11.0+.
 - RxSwift
 - RxCocoa
 - Firebase Authorization
-- FirebaseFirestore
+- Firebase Firestore
+- Firebase Storage
 - Cloud Function
 
 
